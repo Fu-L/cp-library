@@ -8,7 +8,7 @@ const ll inf=1e18;
 const ll MOD=1e9+7;
 class TopCoder{
 public:
-    int answer(int n,int k){
+    int solution(int n,int k){
         
     }
 };
@@ -19,6 +19,6 @@ int main(void){
     ll n,k;
     cin>>n>>k;
     TopCoder ans;
-    cout<<ans.answer(n,k)<<endl;
+    cout<<ans.solution(n,k)<<endl;
 }
 */
