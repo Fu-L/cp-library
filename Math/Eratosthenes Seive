@@ -1,4 +1,4 @@
-//ll p=seive(n); でn以下の素数を列挙する。pはn以下の素数の個数、prime[i]はi番目の素数、is_prime[i]はiが素数かどうかを表す。
+// ll p=seive(n); でn以下の素数を列挙する。pはn以下の素数の個数、prime[i]はi番目の素数、is_prime[i]はiが素数かどうかを表す。
 ll prime[MAX_N];
 bool is_prime[MAX_N];
 ll seive(ll n){
