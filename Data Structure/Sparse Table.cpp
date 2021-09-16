@@ -1,7 +1,7 @@
 // vector<int> vec(n); SparseTable<int> st(vec); でSparseTableを構築。
 // st.query(l,r); でvec[l]~vec[r-1]のminを求める。minをmax,gcd,lcmに変えることもできる。vecの更新はできない。
-// string s; vector<int> sa=saffix_array(s); vector<int> lcp=lcp_array(s,sa);　を求めておくと、
-// SparseTable<int> st(lcp); で任意の接頭辞で先頭何文字が共通しているかを求められる。
+// string s; vector<int> sa=saffix_array(s); vector<int> lcp=lcp_array(s,sa); SparseTable<int> st(lcp);を求めておくと、
+// int len=st.query(l,r); でsのsa[l]からとsa[r]からの接頭辞が何文字共通しているかが求められる。
 template<typename T>
 struct SparseTable{
     vector<vector<T>> st;
