@@ -1,4 +1,8 @@
-// Rerooting g(n)でn頂点のグラフを作成。
+// 全方位木DPをする。
+// Rerooting g(n); でn頂点のグラフを作成。
+// g.add_edge(u,v,c); で頂点u,v間にコストcの辺をはる。
+// g.build(); で全方位木DPをする。
+// id,merge,add_root,dfs,bfsは適宜変更する必要がある。
 struct Rerooting{
     const ll id=0;
     function<ll(ll,ll)> merge=[](ll dp_cum,ll d)->ll{
