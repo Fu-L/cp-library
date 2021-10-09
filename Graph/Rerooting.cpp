@@ -9,7 +9,7 @@ struct Rerooting{
         return max(dp_cum,d);
     };
     function<ll(ll,ll)> add_root=[](ll v,ll d)->ll{
-        return max(D[v],d);
+        return d;
     };
     struct edge{
         ll to,cost;
