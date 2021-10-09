@@ -1,6 +1,6 @@
 // 根付き木で最近共通祖先LCAを求める。
 // LCA<ll> g(n); でn頂点のグラフを作る。
-// g.addEdge(a,b,c); でaとbの間にコストcの辺を張る。
+// g.add_edge(a,b,c); でaとbの間にコストcの辺を張る。
 // g.init() でlcaを求める準備をする。
 // g.dep[v] で頂点vの深さ、g.par[v][0] で頂点vの親が求まる。
 // g.lca(a,b) でaとbのLCAを求める。
@@ -18,7 +18,7 @@ struct LCA{
         while((1<<l)<n) ++l;
         par=vector<vector<ll>>(n+1,vector<ll>(l,n));
     }
-    void addEdge(ll a,ll b,T c=0){
+    void add_edge(ll a,ll b,T c=0){
         to[a].push_back(b); co[a].push_back(c);
         to[b].push_back(a); co[b].push_back(c);
     }
