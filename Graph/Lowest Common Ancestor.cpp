@@ -35,6 +35,7 @@ struct LCA{
     void init(ll _root=0){
         root=_root;
         dfs(root);
+        dep[n]=-1;
         for(ll i=0;i<l-1;++i){
             for(ll v=0;v<n;++v){
                 par[v][i+1]=par[par[v][i]][i];
