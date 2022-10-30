@@ -49,6 +49,9 @@ struct V {
     long double norm() const {
         return sqrt(x * x + y * y);
     }
+    long double arg() const {
+        return atan2(y, x);
+    }
     V rotate() const {
         return V(y, -x);
     }
@@ -58,10 +61,15 @@ struct V {
         else return x > 0 ? 4 : 3;
     }
     bool operator<(const V& v) const {
-        int o = ort(), vo = v.ort();
-        if(o != vo) return o < vo;
-        return cross(v) > 0;
+        long double theta = arg();
+        long double vtheta = v.arg();
+        return theta < vtheta;
     }
+    // bool operator<(const V& v) const {
+    //     int o = ort(), vo = v.ort();
+    //     if(o != vo) return o < vo;
+    //     return cross(v) > 0;
+    // }
     // bool operator<(const V& v) const {
     //     if(x != v.x) return x < v.x;
     //     return y < v.y;
