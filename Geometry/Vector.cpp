@@ -37,27 +37,33 @@ struct V {
     V operator/(long double s) const {
         return V(*this) /= s;
     }
-    long double dod(const V& v1, const V& v2) const {
-        return v1.x * v2.x + v1.y * v2.y;
+    long double dot(const V& v) const {
+        return x * v.x + y * v.y;
     }
-    long double cross(const V& v1, const V& v2) const {
-        return v1.x * v2.y - v2.x * v1.y;
+    long double cross(const V& v) const {
+        return x * v.y - v.x * y;
     }
-    long double abs(V v) const {
-        return sqrt(v.x * v.x + v.y * v.y);
+    long double norm2() const {
+        return x * x + y * y;
     }
-    long double dist(V v1, V v2) const {
-        return abs(v2 - v1);
+    long double norm() const {
+        return sqrt(x * x + y * y);
     }
-    long double arg(const V& v) const {
-        return atan2(v.y, v.x);
+    V rotate() const {
+        return V(y, -x);
     }
-    V rotate(long double theta) {
-        return V(x * cos(theta) - y * sin(theta), x * sin(theta) + y * cos(theta));
+    int ort() const {
+        if(abs(x) < eps && abs(y) < eps) return 0;
+        if(y > 0) return x > 0 ? 1 : 2;
+        else return x > 0 ? 4 : 3;
     }
     bool operator<(const V& v) const {
-        long double theta = arg(V(x, y));
-        long double vtheta = arg(v);
-        return theta < vtheta;
+        int o = ort(), vo = v.ort();
+        if(o != vo) return o < vo;
+        return cross(v) > 0;
     }
+    // bool operator<(const V& v) const {
+    //     if(x != v.x) return x < v.x;
+    //     return y < v.y;
+    // }
 };
