@@ -1,6 +1,6 @@
 // cht.add(a,b); で、直線y=ax+bを追加する。aは単調性が必要。
 // cht.query(x); で、x=xでの最小値がもとまる。
-template<typename T>
+template <typename T>
 struct CHT{
     deque<pair<T,T>> deq;
     T calc(pair<T,T> p,T x){
