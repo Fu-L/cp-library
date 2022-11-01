@@ -1,4 +1,4 @@
-int mod = 998244353;
+const int mod = 998244353;
 struct mint {
     ll x;
     mint(ll x = 0)
