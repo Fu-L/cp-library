@@ -6,6 +6,12 @@ struct mint {
     int val() const {
         return x;
     }
+    mint operator+() const {
+        return *this;
+    }
+    mint operator-() const {
+        return mint() - *this;
+    }
     mint& operator++() {
         x++;
         if(x == mod) x = 0;
@@ -16,29 +22,17 @@ struct mint {
         x--;
         return *this;
     }
-    mint operator-() const {
-        return mint(-x);
-    }
-    mint& operator+=(const mint a) {
+    mint& operator+=(const mint& a) {
         if((x += a.x) >= mod) x -= mod;
         return *this;
     }
-    mint& operator-=(const mint a) {
+    mint& operator-=(const mint& a) {
         if((x += mod - a.x) >= mod) x -= mod;
         return *this;
     }
-    mint& operator*=(const mint a) {
+    mint& operator*=(const mint& a) {
         (x *= a.x) %= mod;
         return *this;
-    }
-    mint operator+(const mint a) const {
-        return mint(*this) += a;
-    }
-    mint operator-(const mint a) const {
-        return mint(*this) -= a;
-    }
-    mint operator*(const mint a) const {
-        return mint(*this) *= a;
     }
     mint pow(ll t) const {
         if(!t) return 1;
@@ -53,13 +47,22 @@ struct mint {
     mint& operator/=(const mint a) {
         return *this *= a.inv();
     }
-    mint operator/(const mint a) const {
-        return mint(*this) /= a;
+    friend mint operator+(const mint& a, const mint& b) {
+        return mint(a) += b;
     }
-    bool operator==(const mint& p) const {
-        return x == p.x;
+    friend mint operator-(const mint& a, const mint& b) {
+        return mint(a) -= b;
     }
-    bool operator!=(const mint& p) const {
-        return x != p.x;
+    friend mint operator*(const mint& a, const mint& b) {
+        return mint(a) *= b;
+    }
+    friend mint operator/(const mint& a, const mint& b) {
+        return mint(a) /= b;
+    }
+    friend bool operator==(const mint& a, const mint& b) {
+        return a.x == b.x;
+    }
+    friend bool operator!=(const mint& a, const mint& b) {
+        return a.x != b.x;
     }
 };
