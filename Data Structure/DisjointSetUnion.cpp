@@ -1,31 +1,54 @@
 struct dsu {
-    int n;
-    vector<int> data;
-    dsu(int N)
-        : n(N), data(N, -1) {}
-    int leader(int x) {
-        assert(0 <= x && x < n);
-        if(data[x] < 0) return x;
-        return data[x] = leader(data[x]);
+   public:
+    dsu()
+        : _n(0) {}
+    explicit dsu(int n)
+        : _n(n), parent_or_size(n, -1) {}
+    int merge(int a, int b) {
+        assert(0 <= a && a < _n);
+        assert(0 <= b && b < _n);
+        int x = leader(a), y = leader(b);
+        if(x == y) return x;
+        if(-parent_or_size[x] < -parent_or_size[y]) swap(x, y);
+        parent_or_size[x] += parent_or_size[y];
+        parent_or_size[y] = x;
+        return x;
     }
-    int merge(int x, int y) {
-        assert(0 <= x && x < n);
-        assert(0 <= y && y < n);
-        x = leader(x);
-        y = leader(y);
-        if(x == y) return false;
-        if(data[x] > data[y]) swap(x, y);
-        data[x] += data[y];
-        data[y] = x;
-        return true;
+    bool same(int a, int b) {
+        assert(0 <= a && a < _n);
+        assert(0 <= b && b < _n);
+        return leader(a) == leader(b);
     }
-    bool same(int x, int y) {
-        assert(0 <= x && x < n);
-        assert(0 <= y && y < n);
-        return leader(x) == leader(y);
+    int leader(int a) {
+        assert(0 <= a && a < _n);
+        if(parent_or_size[a] < 0) return a;
+        return parent_or_size[a] = leader(parent_or_size[a]);
     }
-    int size(int x) {
-        assert(0 <= x && x < n);
-        return -data[leader(x)];
+    int size(int a) {
+        assert(0 <= a && a < _n);
+        return -parent_or_size[leader(a)];
     }
+    vector<vector<int>> groups() {
+        vector<int> leader_buf(_n), group_size(_n);
+        for(int i = 0; i < _n; i++) {
+            leader_buf[i] = leader(i);
+            group_size[leader_buf[i]]++;
+        }
+        vector<vector<int>> result(_n);
+        for(int i = 0; i < _n; i++) {
+            result[i].reserve(group_size[i]);
+        }
+        for(int i = 0; i < _n; i++) {
+            result[leader_buf[i]].push_back(i);
+        }
+        result.erase(
+            remove_if(result.begin(), result.end(),
+                      [&](const vector<int>& v) { return v.empty(); }),
+            result.end());
+        return result;
+    }
+
+   private:
+    int _n;
+    vector<int> parent_or_size;
 };
