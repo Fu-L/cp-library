@@ -41,11 +41,10 @@ struct RollingHash {
     ll calc_mod(ull val) {
         val = (val & MOD) + (val >> 61);
         if(val > MOD) val -= MOD;
-        return (ll)val;
+        return val;
     }
     ll get(int l, int r) {
-        assert(0 <= l and l < len);
-        assert(l <= r and r <= len);
+        assert(0 <= l and l <= r and r <= len);
         return calc_mod(hash[r] + POSITIVIZER - mul(hash[l], pow[r - l]));
     }
     ll get_hash(string &t) {
