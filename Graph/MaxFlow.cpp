@@ -59,7 +59,7 @@ struct mf_graph {
         assert(s != t);
         vector<int> level(n), iter(n);
         queue<int> que;
-        function<void()> bfs = [&]() {
+        auto bfs = [&]() -> void {
             fill(level.begin(), level.end(), -1);
             level[s] = 0;
             queue<int>().swap(que);
@@ -75,14 +75,14 @@ struct mf_graph {
                 }
             }
         };
-        function<Cap(int, Cap)> dfs = [&](int v, Cap up) {
+        auto dfs = [&](auto& dfs, int v, Cap up) -> Cap {
             if(v == s) return up;
             Cap res = 0;
             int level_v = level[v];
             for(int& i = iter[v]; i < int(g[v].size()); i++) {
                 _edge& e = g[v][i];
                 if(level_v <= level[e.to] || g[e.to][e.rev].cap == 0) continue;
-                Cap d = dfs(e.to, min(up - res, g[e.to][e.rev].cap));
+                Cap d = dfs(dfs, e.to, min(up - res, g[e.to][e.rev].cap));
                 if(d <= 0) continue;
                 g[v][i].cap += d;
                 g[e.to][e.rev].cap -= d;
@@ -97,7 +97,7 @@ struct mf_graph {
             bfs();
             if(level[t] == -1) break;
             fill(iter.begin(), iter.end(), 0);
-            Cap f = dfs(t, flow_limit - flow);
+            Cap f = dfs(dfs, t, flow_limit - flow);
             if(!f) break;
             flow += f;
         }
