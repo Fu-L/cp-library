@@ -7,7 +7,7 @@ using P = pair<ll, ll>;
 using mint = modint998244353;
 #define rep(i, a, b) for(ll i = a; i < b; i++)
 #define rrep(i, a, b) for(ll i = a; i >= b; i--)
-const ll inf = 4e18;
+constexpr ll inf = 4e18;
 int main(void) {
     cin.tie(0);
     ios::sync_with_stdio(0);

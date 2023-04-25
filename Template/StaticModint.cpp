@@ -1,4 +1,4 @@
-const int mod = 998244353;
+constexpr int mod = 998244353;
 struct mint {
     ll x;
     mint(ll x = 0)
@@ -35,10 +35,12 @@ struct mint {
         return *this;
     }
     mint pow(ll t) const {
-        if(!t) return 1;
-        mint a = pow(t >> 1);
-        a *= a;
-        if(t & 1) a *= *this;
+        mint x = *this, a = 1;
+        while(t) {
+            if(t & 1) a *= x;
+            x *= x;
+            t >>= 1;
+        }
         return a;
     }
     mint inv() const {
