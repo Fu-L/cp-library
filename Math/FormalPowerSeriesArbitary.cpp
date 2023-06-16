@@ -1,3 +1,28 @@
+template <class mint, internal::is_static_modint_t<mint> * = nullptr>
+vector<mint> convolution_arbitary(const vector<mint> &a, const vector<mint> &b) {
+    int n = int(a.size()), m = int(b.size());
+    static constexpr ll MOD1 = 754974721;
+    static constexpr ll MOD2 = 167772161;
+    static constexpr ll MOD3 = 469762049;
+    static constexpr ll M1_inv_M2 = internal::inv_gcd(MOD1, MOD2).second;
+    static constexpr ll M12_inv_M3 = internal::inv_gcd(MOD1 * MOD2, MOD3).second;
+    static constexpr ll M12_mod = (MOD1 * MOD2) % mint::mod();
+    vector<ll> a_(n), b_(m);
+    for(int i = 0; i < n; i++) a_[i] = a[i].val();
+    for(int i = 0; i < m; i++) b_[i] = b[i].val();
+    vector<ll> x = convolution<MOD1>(a_, b_);
+    vector<ll> y = convolution<MOD2>(a_, b_);
+    vector<ll> z = convolution<MOD3>(a_, b_);
+    vector<mint> c(n + m - 1);
+    for(int i = 0; i < n + m - 1; i++) {
+        ll v1 = (y[i] - x[i]) * M1_inv_M2 % MOD2;
+        if(v1 < 0) v1 += MOD2;
+        ll v2 = (z[i] - (x[i] + MOD1 * v1) % MOD3) * M12_inv_M3 % MOD3;
+        if(v2 < 0) v2 += MOD3;
+        c[i] = x[i] + MOD1 * v1 + M12_mod * v2;
+    }
+    return c;
+}
 template <class T>
 struct FPS : vector<T> {
     using vector<T>::vector;
@@ -38,7 +63,7 @@ struct FPS : vector<T> {
         return (*this);
     }
     F &operator*=(const F &g) {
-        (*this) = convolution((*this), g);
+        (*this) = convolution_arbitary((*this), g);
         return (*this);
     }
     F &operator*=(const T &r) {
@@ -47,7 +72,7 @@ struct FPS : vector<T> {
     }
     F &operator/=(const F &g) {
         const int n = (*this).size();
-        (*this) = convolution((*this), g.inv());
+        (*this) = convolution_arbitary((*this), g.inv());
         (*this).resize(n);
         return (*this);
     }
@@ -108,29 +133,11 @@ struct FPS : vector<T> {
         const int n = (*this).size();
         if(deg == -1) deg = n;
         assert(n > 0 && (*this)[0] != T(0));
-        F g(1);
-        g[0] = (*this)[0].inv();
-        while((int)g.size() < deg) {
-            int m = g.size();
-            F f(begin(*this), begin(*this) + min(n, 2 * m));
-            F r(g);
-            f.resize(2 * m);
-            r.resize(2 * m);
-            internal::butterfly(f);
-            internal::butterfly(r);
-            for(int i = 0; i < 2 * m; i++) f[i] *= r[i];
-            internal::butterfly_inv(f);
-            f.erase(f.begin(), f.begin() + m);
-            f.resize(2 * m);
-            internal::butterfly(f);
-            for(int i = 0; i < 2 * m; i++) f[i] *= r[i];
-            internal::butterfly_inv(f);
-            T in = T(2 * m).inv();
-            in *= -in;
-            for(int i = 0; i < m; i++) f[i] *= in;
-            g.insert(g.end(), f.begin(), f.begin() + m);
+        F ret({T(1) / (*this)[0]});
+        for(int i = 1; i < deg; i <<= 1) {
+            ret = (ret + ret - ret * ret * (*this).pre(i << 1)).pre(i << 1);
         }
-        return g.pre(deg);
+        return ret.pre(deg);
     }
     T eval(const T &a) {
         T x = 1;
@@ -179,77 +186,12 @@ struct FPS : vector<T> {
     F exp(int deg = -1) const {
         const int n = (*this).size();
         if(deg == -1) deg = n;
-        assert(n == 0 || (*this)[0] == 0);
-        F Inv;
-        Inv.reserve(deg);
-        Inv.push_back(T(0));
-        Inv.push_back(T(1));
-        auto inplace_integral = [&](F &f) -> void {
-            const int n = (int)f.size();
-            int mod = T::mod();
-            while((int)Inv.size() <= n) {
-                int i = Inv.size();
-                Inv.push_back((-Inv[mod % i]) * (mod / i));
-            }
-            f.insert(begin(f), T(0));
-            for(int i = 1; i <= n; i++) f[i] *= Inv[i];
-        };
-        auto inplace_diff = [](F &f) -> void {
-            if(f.empty()) return;
-            f.erase(begin(f));
-            T coeff = 1;
-            for(int i = 0; i < (int)f.size(); i++) {
-                f[i] *= coeff;
-                coeff++;
-            }
-        };
-        F b{1, 1 < (int)(*this).size() ? (*this)[1] : 0}, c{1}, z1, z2{1, 1};
-        for(int m = 2; m <= deg; m <<= 1) {
-            auto y = b;
-            y.resize(2 * m);
-            internal::butterfly(y);
-            z1 = z2;
-            F z(m);
-            for(int i = 0; i < m; i++) z[i] = y[i] * z1[i];
-            internal::butterfly_inv(z);
-            T si = T(m).inv();
-            for(int i = 0; i < m; i++) z[i] *= si;
-            fill(begin(z), begin(z) + m / 2, T(0));
-            internal::butterfly(z);
-            for(int i = 0; i < m; i++) z[i] *= -z1[i];
-            internal::butterfly_inv(z);
-            for(int i = 0; i < m; i++) z[i] *= si;
-            c.insert(end(c), begin(z) + m / 2, end(z));
-            z2 = c;
-            z2.resize(2 * m);
-            internal::butterfly(z2);
-            F x(begin((*this)), begin((*this)) + min<int>((*this).size(), m));
-            x.resize(m);
-            inplace_diff(x);
-            x.push_back(T(0));
-            internal::butterfly(x);
-            for(int i = 0; i < m; i++) x[i] *= y[i];
-            internal::butterfly_inv(x);
-            for(int i = 0; i < m; i++) x[i] *= si;
-            x -= b.diff();
-            x.resize(2 * m);
-            for(int i = 0; i < m - 1; i++) x[m + i] = x[i], x[i] = T(0);
-            internal::butterfly(x);
-            for(int i = 0; i < 2 * m; i++) x[i] *= z2[i];
-            internal::butterfly_inv(x);
-            T si2 = T(m << 1).inv();
-            for(int i = 0; i < 2 * m; i++) x[i] *= si2;
-            x.pop_back();
-            inplace_integral(x);
-            for(int i = m; i < min<int>((*this).size(), 2 * m); i++) x[i] += (*this)[i];
-            fill(begin(x), begin(x) + m, T(0));
-            internal::butterfly(x);
-            for(int i = 0; i < 2 * m; i++) x[i] *= y[i];
-            internal::butterfly_inv(x);
-            for(int i = 0; i < 2 * m; i++) x[i] *= si2;
-            b.insert(end(b), begin(x) + m, end(x));
+        assert(n == 0 or (*this)[0] == T(0));
+        F ret({T(1)});
+        for(int i = 1; i < deg; i <<= 1) {
+            ret = (ret * (pre(i << 1) + T(1) - ret.log(i << 1))).pre(i << 1);
         }
-        return b.pre(deg);
+        return ret.pre(deg);
     }
     F pow(ll k, int deg = -1) {
         const int n = (*this).size();
@@ -291,7 +233,7 @@ struct FPS : vector<T> {
             now *= c;
             y *= inv[i + 1];
         }
-        auto tmp = convolution(g, (*this));
+        auto tmp = convolution_arbitary(g, (*this));
         T z = 1;
         for(int i = 0; i < n; i++) {
             (*this)[i] = tmp[n + i - 1] * z;
