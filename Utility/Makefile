@@ -1,5 +1,7 @@
 a.out: main.cpp
 	g++ -std=gnu++20 -Wall -Wextra -O2 -o a.out main.cpp
+debug: main.cpp
+	g++ -std=gnu++20 -Wall -Wextra -fsanitize=address,undefined -O2 -o debug main.cpp
 tle: tle.cpp
 	g++ -std=gnu++20 -Wall -Wextra -O2 -o tle tle.cpp
 gen: gen.cpp
@@ -25,11 +27,11 @@ out:
 
 .PHONY: t
 t:
-	oj t
+	g++ -std=gnu++20 -Wall -Wextra -O2 -o a.out main.cpp && oj t
 
 .PHONY: et
 et:
-	oj t -e 1e-6
+	g++ -std=gnu++20 -Wall -Wextra -O2 -o a.out main.cpp && oj t -e 1e-6
 
 .PHONY: j
 j:
