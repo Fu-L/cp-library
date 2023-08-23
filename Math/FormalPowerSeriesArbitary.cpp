@@ -77,8 +77,8 @@ struct FPS : vector<T> {
         return (*this);
     }
     F &operator/=(const T &r) {
-        r = r.inv();
-        for(int i = 0; i < (int)(*this).size(); i++) (*this)[i] *= r;
+        T inv_r = r.inv();
+        for(int i = 0; i < (int)(*this).size(); i++) (*this)[i] *= inv_r;
         return (*this);
     }
     F &operator<<=(const int d) {
