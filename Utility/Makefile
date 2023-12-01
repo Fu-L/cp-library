@@ -40,3 +40,7 @@ j:
 .PHONY: re
 re:
 	g++ -std=gnu++20 -Wall -Wextra -O2 -o judge judge.cpp && oj t/r ./judge
+
+.PHONY: s
+s:
+	acc s -s -- -w 0 -l 5001
