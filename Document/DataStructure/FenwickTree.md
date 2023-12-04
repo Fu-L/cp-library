@@ -1,0 +1,1 @@
+ACLのfenwick_treeと同じ
