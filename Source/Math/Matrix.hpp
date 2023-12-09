@@ -52,11 +52,11 @@ struct Matrix {
         A.swap(C);
         return (*this);
     }
-    Matrix& pow(const ll t) {
+    Matrix& pow(ll t) {
         assert(h == w);
         Matrix B = Matrix::I(h);
         while(t > 0) {
-            if(t & 1) B *= (*this);
+            if(t & 1ll) B *= (*this);
             (*this) *= (*this);
             t >>= 1ll;
         }

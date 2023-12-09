@@ -44,7 +44,7 @@ class StaticModint {
     constexpr StaticModint() {}
     template <class T>
     constexpr StaticModint(T v) {
-        static_assert(is_integral_v<T>, "T is not integral type.");
+        static_assert(is_integral_v<T>);
         if constexpr(is_signed_v<T>) {
             int64_t x = int64_t(v % int64_t(m));
             if(x < 0) x += m;

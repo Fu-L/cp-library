@@ -2,37 +2,34 @@
 using namespace std;
 template <typename T>
 struct ConvexHullTrick {
+    void add(const T& a, const T& b) {
+        Linear l(a, b);
+        assert((int)ls.size() == 0 or ls.back().a >= l.a);
+        int len = (int)ls.size();
+        while(len >= 2 and check(ls[len - 2], ls[len - 1], l)) {
+            --len;
+            ls.pop_back();
+        }
+        ls.push_back(l);
+    }
+    T operator()(const T& x) {
+        while((int)ls.size() >= 2 and ls[0](x) >= ls[1](x)) {
+            ls.pop_front();
+        }
+        return ls[0](x);
+    }
+
+   private:
     struct Linear {
+        T a, b;
         Linear(const T& a = 0, const T& b = 0)
             : a(a), b(b) {}
         inline T operator()(const T& x) const {
             return a * x + b;
         }
-
-       private:
-        T a, b;
     };
-    void add(const T& a, const T& b) {
-        Linear l(a, b);
-        assert((int)ls.size() == 0 or ls.back().a <= l.a);
-        while((int)ls.size() >= 2) {
-            const Linear& l1 = ls[(int)ls.size() - 2];
-            const Linear& l2 = ls.back();
-            if((l.a - l2.a) * (l1.b - l2.b) < (l2.a - l1.a) * (l2.b - l.b)) break;
-            ls.pop_back();
-        }
+    inline bool check(const Linear& f1, const Linear& f2, const Linear& f3) const {
+        return (f2.a - f1.a) * (f3.b - f2.b) >= (f2.b - f1.b) * (f3.a - f2.a);
     }
-    T operator()(const T& x) {
-        T res = ls[0](x);
-        while((int)ls.size() >= 2) {
-            T now = ls[1](x);
-            if(now < res) break;
-            res = now;
-            ls.pop_front();
-        }
-        return res;
-    }
-
-   private:
     deque<Linear> ls;
 };
