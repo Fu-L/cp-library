@@ -48,7 +48,7 @@ def space(n, g):
     print(" " * n, end="", file=g)
 
 
-with open("hoge.json", "w") as g:
+with open("cpp.json", "w") as g:
     print("{", file=g)
     for filename in filenames:
         start = len(filename) - 1
@@ -89,12 +89,3 @@ with open("hoge.json", "w") as g:
         space(4, g)
         print("},", file=g)
     print("}", file=g)
-
-# n = int(input())
-# for i in range(n):
-#     s = input()
-#     s = s.replace("    ", "\\t")
-#     t = '"' + s + '"'
-#     if i != n - 1:
-#         t += ","
-#     print(t)

@@ -17,6 +17,10 @@ struct MaxFlow {
         g[to].push_back(_edge{from, from_id, 0});
         return m;
     }
+    struct edge {
+        int from, to;
+        Cap cap, flow;
+    };
     edge get_edge(int i) const {
         int m = int(pos.size());
         assert(0 <= i and i < m);
@@ -116,10 +120,6 @@ struct MaxFlow {
     struct _edge {
         int to, rev;
         Cap cap;
-    };
-    struct edge {
-        int from, to;
-        Cap cap, flow;
     };
     int n;
     vector<pair<int, int>> pos;

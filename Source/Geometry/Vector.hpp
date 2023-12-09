@@ -48,10 +48,10 @@ struct V {
         return x * x + y * y;
     }
     long double norm() const {
-        return sqrt(x * x + y * y);
+        return sqrtl(x * x + y * y);
     }
     long double arg() const {
-        return atan2(y, x);
+        return atan2l(y, x);
     }
     V rotate() const {
         return V(y, -x);

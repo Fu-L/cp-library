@@ -71,7 +71,7 @@ struct LowestCommonAncestor {
         par[0][v] = p;
         dep[v] = d;
         costs[v] = c;
-        for(int i = 0; i < (int)g[to[v]].size(); ++i) {
+        for(int i = 0; i < (int)to[v].size(); ++i) {
             int u = to[v][i];
             if(u == p) continue;
             dfs(u, d + 1, c + co[v][i], v);
