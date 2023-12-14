@@ -38,6 +38,7 @@ filenames = [
     # Template
     "../Template/RandomNumberGenerator.hpp",
     "../Template/StaticModint.hpp",
+    "../Template/DynamicModint.hpp",
     "../Template/TemplateAtCoder.cpp",
     "../Template/TemplateCodeforces.cpp",
     "../Template/TemplateTopcoder.cpp",
