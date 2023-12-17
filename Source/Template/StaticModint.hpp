@@ -14,7 +14,7 @@ struct StaticModint {
     constexpr StaticModint()
         : _v(0) {}
     template <class T>
-    constexpr StaticModint(T v) {
+    constexpr StaticModint(const T& v) {
         static_assert(is_integral_v<T>);
         if constexpr(is_signed_v<T>) {
             int64_t x = int64_t(v % int64_t(m));
@@ -143,6 +143,6 @@ istream& operator>>(istream& in, mint& x) {
     x = a;
     return in;
 }
-ostream& operator<<(ostream& out, mint x) {
+ostream& operator<<(ostream& out, const mint& x) {
     return out << x.val();
 }

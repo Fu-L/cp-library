@@ -37,13 +37,13 @@ struct DynamicModint {
     DynamicModint()
         : _v(0) {}
     template <class T>
-    DynamicModint(T v) {
+    DynamicModint(const T& v) {
         static_assert(is_integral_v<T>);
         if(is_signed_v<T>) {
-            long long x = (long long)(v % (long long)(mod()));
-            if(x < 0) x += mod();
+            long long x = (long long)(v % (long long)(umod()));
+            if(x < 0) x += umod();
             _v = (unsigned int)(x);
-        } else _v = (unsigned int)(v % mod());
+        } else _v = (unsigned int)(v % umod());
     }
     unsigned int val() const {
         return _v;
@@ -69,13 +69,13 @@ struct DynamicModint {
         return res;
     }
     mint& operator+=(const mint& rhs) {
-        if(_v >= umod() - rhs._v) _v -= umod();
         _v += rhs._v;
+        if(_v >= umod()) _v -= umod();
         return *this;
     }
     mint& operator-=(const mint& rhs) {
-        if(_v < rhs._v) _v += umod();
-        _v -= rhs._v;
+        _v += mod() - rhs._v;
+        if(_v >= umod()) _v -= umod();
         return *this;
     }
     mint& operator*=(const mint& rhs) {
@@ -119,15 +119,15 @@ struct DynamicModint {
     friend mint operator/(const mint& lhs, const mint& rhs) {
         return mint(lhs) /= rhs;
     }
-    friend bool operator==(mint lhs, mint rhs) {
+    friend bool operator==(const mint& lhs, const mint& rhs) {
         return lhs._v == rhs._v;
     }
-    friend bool operator!=(mint lhs, mint rhs) {
+    friend bool operator!=(const mint& lhs, const mint& rhs) {
         return lhs._v != rhs._v;
     }
 
    private:
-    int _v = 0;
+    unsigned int _v = 0;
     static barrett bt;
     inline static unsigned int umod() {
         return bt.umod();
@@ -155,6 +155,6 @@ istream& operator>>(istream& in, mint& x) {
     x = a;
     return in;
 }
-ostream& operator<<(ostream& out, mint x) {
+ostream& operator<<(ostream& out, const mint& x) {
     return out << x.val();
 }
