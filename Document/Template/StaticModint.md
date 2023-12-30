@@ -1,1 +1,0 @@
-ACLのmodintと同じ．
