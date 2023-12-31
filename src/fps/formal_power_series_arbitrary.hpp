@@ -1,6 +1,5 @@
 #pragma once
 #include "cp-library/src/template/template.hpp"
-#include "cp-library/src/template/static_modint.hpp"
 #include "cp-library/src/math/convolution_arbitrary.hpp"
 template <typename mint>
 struct FormalPowerSeries : vector<mint> {
@@ -9,7 +8,7 @@ struct FormalPowerSeries : vector<mint> {
     F& operator=(const vector<mint>& g) {
         const int n = (*this).size();
         const int m = g.size();
-        if(n < m) (*this).resize(n);
+        if(n < m) (*this).resize(m);
         for(int i = 0; i < m; ++i) (*this)[i] = g[i];
         return (*this);
     }
@@ -26,7 +25,7 @@ struct FormalPowerSeries : vector<mint> {
         return (*this);
     }
     F& operator+=(const mint& r) {
-        if((int)(*this).size() == 0) (*this).resize(1);
+        if((*this).empty()) (*this).resize(1);
         (*this)[0] += r;
         return (*this);
     }
@@ -38,7 +37,7 @@ struct FormalPowerSeries : vector<mint> {
         return (*this);
     }
     F& operator-=(const mint& r) {
-        if((int)(*this).size() == 0) (*this).resize(1);
+        if((*this).empty()) (*this).resize(1);
         (*this)[0] -= r;
         return (*this);
     }
@@ -62,15 +61,10 @@ struct FormalPowerSeries : vector<mint> {
         for(int i = 0; i < (int)n; ++i) (*this)[i] *= inv_r;
         return (*this);
     }
-    F& operator<<=(const int d) {
-        const int n = (*this).size();
-        (*this).insert((*this).begin(), d, mint(0));
-        return *this;
-    }
-    F& operator>>=(const int d) {
-        const int n = (*this).size();
-        (*this).erase((*this).begin(), (*this).begin() + min(n, d));
-        return *this;
+    F& operator%=(const F& g) {
+        (*this) -= (*this) / g * g;
+        shrink();
+        return (*this);
     }
     F operator*(const mint& g) const {
         return F(*this) *= g;
@@ -100,20 +94,29 @@ struct FormalPowerSeries : vector<mint> {
         return F(*this) %= g;
     }
     F operator<<(const int d) const {
-        return F(*this) <<= d;
+        F ret(*this);
+        ret.insert(ret.begin(), d, mint(0));
+        return ret;
     }
     F operator>>(const int d) const {
-        return F(*this) >>= d;
+        const int n = (*this).size();
+        if(n <= d) return {};
+        F ret(*this);
+        ret.erase(ret.begin(), ret.begin() + d);
+        return ret;
+    }
+    void shrink() {
+        while((*this).size() and (*this).back() == mint(0)) (*this).pop_back();
     }
     F rev() const {
         F ret(*this);
         reverse(begin(ret), end(ret));
         return ret;
     }
-    F pre(const int sz) const {
-        F res(begin(*this), begin(*this) + min((int)(*this).size(), sz));
-        if((int)res.size() < sz) res.resize(sz);
-        return res;
+    F pre(const int deg) const {
+        F ret(begin(*this), begin(*this) + min((int)(*this).size(), deg));
+        if((int)ret.size() < deg) ret.resize(deg);
+        return ret;
     }
     mint eval(const mint& a) const {
         const int n = (*this).size();
@@ -201,5 +204,22 @@ struct FormalPowerSeries : vector<mint> {
             if(__int128_t(i + 1) * k >= deg) return F(deg, mint(0));
         }
         return F(deg, mint(0));
+    }
+    F shift(const mint& c) const {
+        int n = (*this).size();
+        vector<mint> fact(n), ifact(n);
+        fact[0] = ifact[0] = mint(1);
+        for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;
+        ifact[n - 1] = mint(1) / fact[n - 1];
+        for(int i = n - 1; i > 1; --i) ifact[i - 1] = ifact[i] * i;
+        F ret(*this);
+        for(int i = 0; i < n; ++i) ret[i] *= fact[i];
+        ret = ret.rev();
+        F bs(n, mint(1));
+        for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i - 1];
+        ret = (ret * bs).pre(n);
+        ret = ret.rev();
+        for(int i = 0; i < n; ++i) p[i] *= ifact[i];
+        return ret;
     }
 };
