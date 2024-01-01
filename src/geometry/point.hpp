@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 const long double pi = acosl(-1);
 constexpr long double eps = 1e-7;
 struct Point {
