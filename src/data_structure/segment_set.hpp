@@ -2,7 +2,6 @@
 #include "src/template/template.hpp"
 template <typename T>
 struct SegmentSet {
-    map<T, T> st;
     SegmentSet() = default;
     using const_iterator = typename map<T, T>::const_iterator;
     const_iterator begin() const {
@@ -11,17 +10,17 @@ struct SegmentSet {
     const_iterator end() const {
         return st.end();
     }
-    const_iterator find(const T& x) const {
+    const_iterator find(T x) const {
         auto it = st.upper_bound(x);
         if(it == st.begin() or (--it)->second <= x) return st.end();
         return it;
     }
-    const_iterator lower_bound(const T& x) const {
+    const_iterator lower_bound(T x) const {
         auto it = st.lower_bound(x);
         if(it == st.begin() or prev(it)->second <= x) return it;
         return prev(it);
     }
-    void insert(const T& l, const T& r) {
+    void insert(T l, T r) {
         auto L = st.upper_bound(l), R = st.upper_bound(r);
         if(L != st.begin() and l <= prev(L)->second) --L;
         if(L != R) {
@@ -31,7 +30,7 @@ struct SegmentSet {
         }
         st[l] = r;
     }
-    void erase(const T& l, const T& r) {
+    void erase(T l, T r) {
         auto L = st.upper_bound(l), R = st.upper_bound(r);
         if(L != st.begin() and l <= prev(L)->second) --L;
         if(L == R) return;
@@ -40,12 +39,15 @@ struct SegmentSet {
         if(nl < l) st[nl] = l;
         if(r < nr) st[r] = nr;
     }
-    T next(const T& x) const {
+    T next(T x) const {
         auto it = this->lower_bound(x);
         if(it == this->end()) return numeric_limits<T>::max();
         return max<T>(x, it->first);
     }
-    size_t size() {
+    size_t size() const {
         return st.size();
     }
+
+   private:
+    map<T, T> st;
 };

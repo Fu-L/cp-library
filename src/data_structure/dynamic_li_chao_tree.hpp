@@ -12,7 +12,7 @@ struct DynamicLiChaoTree {
         Line x(a, b);
         root = add_segment(root, x, l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));
     }
-    T query(const T &x) const {
+    T operator()(const T& x) const {
         assert(x_low <= x and x <= x_high);
         return query(root, x_low, x_high, x);
     }
