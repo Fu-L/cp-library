@@ -1,6 +1,6 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
-#include "cp-library/src/math/convolution_arbitrary.hpp"
+#include "src/template/template.hpp"
+#include "src/math/convolution_arbitrary.hpp"
 template <typename mint>
 struct FormalPowerSeries : vector<mint> {
     using vector<mint>::vector;
