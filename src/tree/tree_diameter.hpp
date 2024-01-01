@@ -1,6 +1,6 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
-#include "cp-library/src/graph/graph_template.hpp"
+#include "src/template/template.hpp"
+#include "src/graph/graph_template.hpp"
 template <typename T = int>
 pair<T, vector<int>> tree_diameter(const Graph<T>& g) {
     int n = (int)g.size();

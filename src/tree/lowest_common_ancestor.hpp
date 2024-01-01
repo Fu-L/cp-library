@@ -1,6 +1,6 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
-#include "cp-library/src/graph/graph_template.hpp"
+#include "src/template/template.hpp"
+#include "src/graph/graph_template.hpp"
 template <typename T = int>
 struct LowestCommonAncestor {
     LowestCommonAncestor(const Graph<T>& g, int root = 0) {
