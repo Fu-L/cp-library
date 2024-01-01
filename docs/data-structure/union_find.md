@@ -1,4 +1,4 @@
-# DisjointSetUnion
+# UnionFind
 
 - 頂点集合のマージ
 - $2$ 頂点が連結かの判定
@@ -6,12 +6,12 @@
 - 頂点集合のサイズの取得
 - 頂点集合の列挙
 
-をならし $O(\alpha(n))$ 時間で処理することができます．
+を償却 $O(\alpha(n))$ 時間で処理することができます．
 
 ## コンストラクタ
 
 ```cpp
-DisjointSetUnion uf(int n)
+UnionFind uf(int n)
 ```
 
 - $n$ 頂点 $0$ 辺の無向グラフを作ります．
@@ -37,7 +37,7 @@ int uf.merge(int a, int b)
 
 **計算量**
 
-- ならし $O(\alpha(n))$
+- 償却 $O(\alpha(n))$
 
 ## same
 
@@ -54,7 +54,7 @@ bool uf.same(int a, int b)
 
 **計算量**
 
-- ならし $O(\alpha(n))$
+- 償却 $O(\alpha(n))$
 
 ## leader
 
@@ -70,7 +70,7 @@ int uf.leader(int a)
 
 **計算量**
 
-- ならし $O(\alpha(n))$
+- 償却 $O(\alpha(n))$
 
 ## size
 
@@ -86,7 +86,7 @@ int uf.size(int a)
 
 **計算量**
 
-- ならし $O(\alpha(n))$
+- 償却 $O(\alpha(n))$
 
 ## groups
 

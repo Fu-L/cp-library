@@ -1,4 +1,4 @@
-# Tree
+# SortedSet
 
 - 要素の挿入・削除
 - 要素の検索
@@ -11,8 +11,8 @@
 ## コンストラクタ
 
 ```cpp
-(1) Set st
-(2) MultiSet mst
+(1) SortedSet st
+(2) SortedMultiSet mst
 ```
 
 - (1): 空の平衡二分探索木 `st` を構築します．
