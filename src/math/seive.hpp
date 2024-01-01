@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 pair<vector<int>, vector<bool>> seive(int n) {
     assert(n >= 1);
     vector<bool> is_prime(n + 1, true);

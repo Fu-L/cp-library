@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 map<ll, ll> prime_factor(ll n) {
     assert(n >= 1);
     map<ll, ll> res;

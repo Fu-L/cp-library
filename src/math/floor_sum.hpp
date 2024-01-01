@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 ll floor_sum(ll n, ll m, ll a, ll b) {
     ll res = 0;
     if(a >= m) res += (n - 1) * n * (a / m) / 2, a %= m;

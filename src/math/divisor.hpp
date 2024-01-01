@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 vector<ll> divisor(ll n) {
     assert(n >= 1);
     vector<ll> res;

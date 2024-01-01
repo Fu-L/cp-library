@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 constexpr pair<ll, ll> inv_gcd(ll a, ll b) {
     a %= b;
     if(a < 0) a += b;

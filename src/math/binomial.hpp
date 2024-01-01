@@ -1,7 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
-#include "cp-library/src/template/static_modint.hpp"
-#include "cp-library/src/template/dynamic_modint.hpp"
+#include "src/template/template.hpp"
 template <typename mint>
 struct Binomial {
     Binomial(int n)

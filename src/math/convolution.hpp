@@ -1,7 +1,6 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
-#include "cp-library/src/template/static_modint.hpp"
-#include "cp-library/src/math/primitive_root.hpp"
+#include "src/template/template.hpp"
+#include "src/math/primitive_root.hpp"
 constexpr int countr_zero(unsigned int n) {
     int res = 0;
     while(!(n & (1 << res))) ++res;

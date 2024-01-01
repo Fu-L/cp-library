@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 constexpr ll pow_mod(ll x, ll n, ll mod) {
     assert(n >= 0 and mod >= 1);
     x %= mod;

@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 constexpr bool is_prime(ll n) {
     if(n <= 1) return false;
     for(ll i = 2; i * i <= n; ++i) {
