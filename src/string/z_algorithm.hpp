@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 template <typename T>
 vector<int> z_algorithm(const vector<T>& s) {
     int n = (int)s.size();
