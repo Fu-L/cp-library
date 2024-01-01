@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 template <typename T>
 struct ConvexHullTrick {
     void add(const T& a, const T& b) {

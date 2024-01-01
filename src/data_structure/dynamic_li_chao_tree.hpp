@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 template <typename T, T x_low, T x_high>
 struct DynamicLiChaoTree {
     DynamicLiChaoTree()

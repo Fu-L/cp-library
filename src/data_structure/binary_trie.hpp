@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 template <typename T, int MAX_LOG>
 struct BinaryTrie {
     BinaryTrie()

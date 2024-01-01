@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 struct UnionFind {
     UnionFind(int N)
         : n(N), data(N, -1) {}
