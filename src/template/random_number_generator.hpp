@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 struct RandomNumberGenerator {
     mt19937_64 mt;
     RandomNumberGenerator()

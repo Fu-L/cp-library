@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 struct Barrett {
     explicit Barrett(unsigned int m)
         : _m(m), im((unsigned long long)(-1) / m + 1) {}
