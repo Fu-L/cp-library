@@ -1,6 +1,5 @@
 #pragma once
 #include "src/template/template.hpp"
-template <typename T>
 struct Mo {
     Mo(int N, int Q)
         : n(N), order(Q) {
@@ -12,7 +11,7 @@ struct Mo {
         left.push_back(l);
         right.push_back(r);
     }
-    template <auto AL, auto AR, auto DL, auto DR, auto OUT>
+    template <typename AL, typename AR, typename DL, typename DR, typename OUT>
     void run(const AL& add_left, const AR& add_right, const DL& delete_left, const DR& delete_right, const OUT& out) {
         assert(left.size() == order.size());
         sort(order.begin(), order.end(), [&](int i, int j) {

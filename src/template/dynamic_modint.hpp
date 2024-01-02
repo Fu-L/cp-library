@@ -27,7 +27,7 @@ struct DynamicModint {
     }
     static void set_mod(int m) {
         assert(1 <= m);
-        bt = barrett(m);
+        bt = Barrett(m);
     }
     static mint raw(int v) {
         mint a;
@@ -157,3 +157,4 @@ struct DynamicModint {
 };
 template <int id>
 Barrett DynamicModint<id>::bt(998244353);
+using modint = DynamicModint<-1>;

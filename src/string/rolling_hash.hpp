@@ -3,7 +3,7 @@
 struct RollingHash {
     using ull = unsigned long long;
     RollingHash(const string &s, ll BASE = 0) {
-        len = ssize(s);
+        len = (int)s.size();
         if(BASE <= 0) {
             mt19937 mt(chrono::steady_clock::now().time_since_epoch().count());
             uniform_int_distribution<int> dist(1e8, 1e9);

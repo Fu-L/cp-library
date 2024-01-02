@@ -145,3 +145,5 @@ struct StaticModint {
         return {s, m0};
     }
 };
+using modint998244353 = StaticModint<998244353>;
+using modint1000000007 = StaticModint<1000000007>;

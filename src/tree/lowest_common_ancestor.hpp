@@ -30,7 +30,7 @@ struct LowestCommonAncestor {
         if(dep[u] > dep[v]) swap(u, v);
         v = parent(v, dep[v] - dep[u]);
         if(u == v) return u;
-        for(int i = ssize(par) - 1; i >= 0; --i) {
+        for(int i = (int)par.size() - 1; i >= 0; --i) {
             if(par[i][u] != par[i][v]) {
                 u = par[i][u];
                 v = par[i][v];
@@ -58,9 +58,9 @@ struct LowestCommonAncestor {
         while((1 << h) < n) ++h;
         par.assign(h, vector<int>(n, -1));
         dep.assign(n, -1);
-        co(n, -1);
+        co.assign(n, -1);
         dfs(g, root, -1, 0, 0);
-        for(int i = 0; i + 1 < ssize(par); ++i) {
+        for(int i = 0; i + 1 < (int)par.size(); ++i) {
             for(int v = 0; v < n; ++v) {
                 if(par[i][v] != -1) {
                     par[i + 1][v] = par[i][par[i][v]];

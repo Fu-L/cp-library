@@ -51,6 +51,10 @@ struct FormalPowerSeries : vector<mint> {
         return (*this);
     }
     F& operator/=(const F& g) {
+        if((*this).size() < g.size()) {
+            (*this).clear();
+            return (*this);
+        }
         const int n = (*this).size() - g.size() + 1;
         (*this) = ((*this).rev().pre(n) * g.rev().inv(n)).pre(n).rev();
         return (*this);

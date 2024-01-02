@@ -1,7 +1,7 @@
 #pragma once
 #include "src/template/template.hpp"
 #include "src/template/policy_based_data_structure.hpp"
-ll mod_log(ll a, ll b, ll mod) {
+ll log_mod(ll a, ll b, ll mod) {
     ll g = 1;
     for(ll i = mod; i; i /= 2) (g *= a) %= mod;
     g = gcd(g, mod);
