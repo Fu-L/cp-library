@@ -1,17 +1,17 @@
 #pragma once
 #include "src/template/template.hpp"
-pair<vector<int>, vector<bool>> seive(int n) {
+pair<vector<int>, vector<int>> seive(int n) {
     assert(n >= 1);
-    vector<bool> is_prime(n + 1, true);
+    vector<int> min_factor(n + 1);
+    iota(min_factor.begin(), min_factor.end(), 0);
+    min_factor[0] = min_factor[1] = -1;
     vector<int> prime;
-    is_prime[0] = is_prime[1] = false;
-    for(int i = 2; i <= n; ++i) {
-        if(is_prime[i]) {
-            prime.push_back(i);
-            for(int j = 2 * i; j <= n; j += i) {
-                is_prime[j] = false;
-            }
+    for(int i = 2; i * i <= n; ++i) {
+        if(min_factor[i] < i) continue;
+        prime.push_back(i);
+        for(int j = i * i; j <= n; j += i) {
+            if(min_factor[j] == j) min_factor[j] = i;
         }
     }
-    return {prime, is_prime};
+    return {prime, min_factor};
 }
