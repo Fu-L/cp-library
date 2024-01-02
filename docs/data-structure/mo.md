@@ -50,6 +50,18 @@ void mo.run(auto add_left, auto add_right, auto delete_left, auto delete_right, 
 
 `main` 関数でラムダ式などの形で定義して引数に入れてください．
 
+例えば `add_left` や `out` は以下のように定義できます．
+
+```cpp
+auto add_left = [&](int idx) -> void{
+    // [idx + 1, r) の結果から [idx, r) の結果を計算する処理を書く
+};
+
+auto out = [&](int idx) -> void{
+    // 例えば ans[idx] = hoge; など
+};
+```
+
 **制約**
 
 - `run` が呼び出される前に `insert` がちょうど $Q$ 回呼び出されている．
