@@ -1,3 +1,8 @@
+---
+title: RandomNumberGenerator
+documentation_of: ../../src/template/random_number_generator.hpp
+---
+
 # RandomNumberGenerator
 
 - 一様ランダムな整数・実数

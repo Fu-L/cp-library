@@ -1,3 +1,8 @@
+---
+title: inv_gcd
+documentation_of: ../../src/math/inv_gcd.hpp
+---
+
 ## inv_gcd
 
 ```cpp

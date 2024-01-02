@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 template <template <typename> typename FormalPowerSeries, typename mint>
 mint bostan_mori(const FormalPowerSeries<mint>& a, const FormalPowerSeries<mint>& c, ll k) {
     if(k < (int)a.size()) return a[k];

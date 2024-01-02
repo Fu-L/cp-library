@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
-#include "src/template/template.hpp"
-#include "src/graph/graph_template.hpp"
-#include "src/tree/lowest_common_ancestor.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/graph/graph_template.hpp"
+#include "../../../src/tree/lowest_common_ancestor.hpp"
 int main(void) {
     int n, q;
     cin >> n >> q;

@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 namespace internal {
 template <class E>
 struct csr {

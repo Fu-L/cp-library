@@ -1,3 +1,8 @@
+---
+title: prime_factor
+documentation_of: ../../src/math/prime_factor.hpp
+---
+
 ## prime_factor
 
 ```cpp

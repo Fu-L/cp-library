@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/product_of_polynomial_sequence"
-#include "src/template/template.hpp"
-#include "src/template/static_modint.hpp"
-#include "src/fps/formal_power_series.hpp"
-#include "src/fps/all_product.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/template/static_modint.hpp"
+#include "../../../src/fps/formal_power_series.hpp"
+#include "../../../src/fps/all_product.hpp"
 using mint = modint998244353;
 int main(void) {
     int n;

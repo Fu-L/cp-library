@@ -1,3 +1,8 @@
+---
+title: DynamicLiChaoTree
+documentation_of: ../../src/data_structure/dynamic_li_chao_tree.hpp
+---
+
 # DynamicLiChaoTree
 
 - 直線 $y = ax + b$ の追加

@@ -1,3 +1,8 @@
+---
+title: SlideWindowAggregation
+documentation_of: ../../src/data_structure/slide_window_aggregation.hpp
+---
+
 # SlideWindowAggregation
 
 モノイド，つまり

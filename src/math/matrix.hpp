@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 template <typename T>
 struct Matrix {
     Matrix(int h, int w, T val = 0)

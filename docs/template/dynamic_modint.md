@@ -1,3 +1,8 @@
+---
+title: DynamicModint
+documentation_of: ../../src/template/dynamic_modint.hpp
+---
+
 # DynamicModint
 
 自動で $\mathrm{mod}$ をとる構造体です．

@@ -1,3 +1,8 @@
+---
+title: pow_mod
+documentation_of: ../../src/math/pow_mod.hpp
+---
+
 ## pow_mod
 
 ```cpp

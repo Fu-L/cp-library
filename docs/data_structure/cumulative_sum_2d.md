@@ -1,3 +1,8 @@
+---
+title: CumulativeSum2D
+documentation_of: ../../src/data_structure/cumulative_sum_2d.hpp
+---
+
 # CumulativeSum2D
 
 $2$ 次元累積和を計算するデータ構造です．

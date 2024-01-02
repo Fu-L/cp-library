@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 vector<int> suffix_array(const vector<int>& s) {
     int n = (int)s.size();
     vector<int> sa(n), rank(n), tmp(n);

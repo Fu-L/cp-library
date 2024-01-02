@@ -1,3 +1,8 @@
+---
+title: chinese_remainder_theorem
+documentation_of: ../../src/math/chinese_remainder_theorem.hpp
+---
+
 ## chinese_remainder_theorem
 
 ```cpp

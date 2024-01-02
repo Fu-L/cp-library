@@ -1,3 +1,8 @@
+---
+title: Lucas
+documentation_of: ../../src/math/lucas.hpp
+---
+
 # Lucas
 
 - 二項係数 $_n C _k \pmod{p}$

@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 ll euler_phi(ll n) {
     ll res = max(n, 0ll);
     for(ll i = 2; i * i <= n; ++i) {

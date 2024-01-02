@@ -1,3 +1,8 @@
+---
+title: WeightedUnionFind
+documentation_of: ../../src/data_structure/weighted_union_find.hpp
+---
+
 # WeightedUnionFind
 
 通常のUnionFindに加えて，

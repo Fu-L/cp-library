@@ -1,6 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/14/ALDS1_14_B"
-#include "src/template/template.hpp"
-#include "src/string/rolling_hash.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/string/rolling_hash.hpp"
 int main(void) {
     string t, p;
     cin >> t >> p;

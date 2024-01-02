@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 template <template <typename> typename FormalPowerSeries, typename mint>
 FormalPowerSeries<mint> all_product(vector<FormalPowerSeries<mint>> f) {
     if((int)f.size() == 0) return {1};

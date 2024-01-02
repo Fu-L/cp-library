@@ -1,3 +1,8 @@
+---
+title: BinaryTrie
+documentation_of: ../../src/data_structure/binary_trie.hpp
+---
+
 # BinaryTrie
 
 - 値の挿入・削除

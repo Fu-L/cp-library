@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 pair<vector<int>, vector<int>> seive(int n) {
     assert(n >= 1);
     vector<int> min_factor(n + 1);

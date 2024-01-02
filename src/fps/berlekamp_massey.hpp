@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 template <template <typename> typename FormalPowerSeries, typename mint>
 FormalPowerSeries<mint> berlekamp_massey(const FormalPowerSeries<mint>& s) {
     const int n = (int)s.size();

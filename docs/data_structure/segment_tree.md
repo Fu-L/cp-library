@@ -1,3 +1,8 @@
+---
+title: SegmentTree
+documentation_of: ../../src/data_structure/segment_tree.hpp
+---
+
 # SegmentTree
 
 モノイド，つまり

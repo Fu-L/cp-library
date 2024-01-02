@@ -1,3 +1,8 @@
+---
+title: UnionFind
+documentation_of: ../../src/data_structure/union_find.hpp
+---
+
 # UnionFind
 
 - 頂点集合のマージ

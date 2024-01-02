@@ -1,3 +1,8 @@
+---
+title: primitive_root
+documentation_of: ../../src/math/primitive_root.hpp
+---
+
 ## primitive_root
 
 ```cpp

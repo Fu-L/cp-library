@@ -1,3 +1,8 @@
+---
+title: LowestCommonAncestor
+documentation_of: ../../src/tree/lowest_common_ancestor.hpp
+---
+
 # LowestCommonAncestor
 
 $n$ 頂点の根付き木が与えられたとき，

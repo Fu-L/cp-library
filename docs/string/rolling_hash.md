@@ -1,3 +1,8 @@
+---
+title: RollingHash
+documentation_of: ../../src/string/rolling_hash.hpp
+---
+
 # RollingHash
 
 文字列 `s` に対して，

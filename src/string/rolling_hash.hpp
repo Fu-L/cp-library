@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 struct RollingHash {
     using ull = unsigned long long;
     RollingHash(const string &s, ll BASE = 0) {

@@ -1,3 +1,8 @@
+---
+title: LazySegmentTree
+documentation_of: ../../src/data_structure/lazy_segment_tree.hpp
+---
+
 # LazySegmentTree
 
 モノイド $(S, \cdot: S \times S \to S, e \in S)$と，$S$ から $S$ への写像の集合 $F$ であって，以下の条件を満たすようなものについて使用できるデータ構造です．

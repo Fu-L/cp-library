@@ -1,3 +1,8 @@
+---
+title: SortedSet
+documentation_of: ../../src/data_structure/sorted_set.hpp
+---
+
 # SortedSet
 
 - 要素の挿入・削除

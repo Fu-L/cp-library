@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 template <typename S, auto op, auto e>
 struct SlideWindowAggregationDeque {
     void push_front(const S &t) {

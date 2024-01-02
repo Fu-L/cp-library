@@ -1,3 +1,8 @@
+---
+title: SegmentSet
+documentation_of: ../../src/data_structure/segment_set.hpp
+---
+
 # SegmentSet
 
 区間の集合を管理するデータ構造です．

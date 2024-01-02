@@ -1,3 +1,8 @@
+---
+title: Mo
+documentation_of: ../../src/data_structure/mo.hpp
+---
+
 # Mo
 
 - 配列の要素が不変

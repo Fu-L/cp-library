@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 struct Mo {
     Mo(int N, int Q)
         : n(N), order(Q) {

@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 template <typename S, auto op, auto e>
 struct SparseTable2D {
     SparseTable2D(const vector<vector<S>>& v)

@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 struct RollbackUnionFind {
     RollbackUnionFind(int N)
         : n(N), inner_snap(0), data(N, -1) {

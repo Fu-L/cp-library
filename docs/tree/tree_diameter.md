@@ -1,3 +1,8 @@
+---
+title: tree_diameter
+documentation_of: ../../src/tree/tree_diameter.hpp
+---
+
 # tree_diameter
 
 ```cpp

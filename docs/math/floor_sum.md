@@ -1,3 +1,8 @@
+---
+title: floor_sum
+documentation_of: ../../src/math/floor_sum.hpp
+---
+
 ## floor_sum
 
 ```cpp

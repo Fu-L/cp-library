@@ -1,3 +1,8 @@
+---
+title: seive
+documentation_of: ../../src/math/seive.hpp
+---
+
 ## seive
 
 ```cpp

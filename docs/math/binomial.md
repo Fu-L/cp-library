@@ -1,3 +1,8 @@
+---
+title: Binomial
+documentation_of: ../../src/math/binomial.hpp
+---
+
 # Binomial
 
 - 二項係数 $_n C _k \pmod{p}$

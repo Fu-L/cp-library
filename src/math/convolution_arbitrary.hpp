@@ -1,7 +1,7 @@
 #pragma once
-#include "src/template/template.hpp"
-#include "src/template/static_modint.hpp"
-#include "src/math/convolution.hpp"
+#include "../template/template.hpp"
+#include "../template/static_modint.hpp"
+#include "./convolution.hpp"
 template <typename mint>
 vector<mint> convolution_arbitary(const vector<mint>& a, const vector<mint>& b) {
     int n = (int)a.size(), m = (int)b.size();

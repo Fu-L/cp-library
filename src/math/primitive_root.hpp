@@ -1,6 +1,6 @@
 #pragma once
-#include "src/template/template.hpp"
-#include "src/math/pow_mod.hpp"
+#include "../template/template.hpp"
+#include "./pow_mod.hpp"
 constexpr int primitive_root(int m) {
     if(m == 2) return 1;
     if(m == 167772161) return 3;

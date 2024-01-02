@@ -1,3 +1,8 @@
+---
+title: log_mod
+documentation_of: ../../src/math/log_mod.hpp
+---
+
 ## log_mod
 
 ```cpp

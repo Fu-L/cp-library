@@ -1,3 +1,8 @@
+---
+title: z_algorithm
+documentation_of: ../../src/string/z_algorithm.hpp
+---
+
 ## z_algorithm
 
 ```cpp

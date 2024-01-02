@@ -1,6 +1,6 @@
 #pragma once
-#include "src/template/template.hpp"
-#include "src/math/inv_gcd.hpp"
+#include "../template/template.hpp"
+#include "./inv_gcd.hpp"
 pair<ll, ll> chinese_remainder_theorem(const vector<ll>& r, const vector<ll>& m) {
     assert(r.size() == m.size());
     int n = (int)r.size();

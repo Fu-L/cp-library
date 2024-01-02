@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
-#include "src/template/template.hpp"
-#include "src/template/static_modint.hpp"
-#include "src/math/matrix.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/template/static_modint.hpp"
+#include "../../../src/math/matrix.hpp"
 using mint = modint998244353;
 int main(void) {
     int n, m, k;

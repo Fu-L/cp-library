@@ -1,3 +1,8 @@
+---
+title: euler_phi
+documentation_of: ../../src/math/euler_phi.hpp
+---
+
 ## euler_phi
 
 ```cpp

@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
-#include "src/template/template.hpp"
-#include "src/data_structure/sparse_table.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/data_structure/sparse_table.hpp"
 int op(int x, int y) {
     return min(x, y);
 }

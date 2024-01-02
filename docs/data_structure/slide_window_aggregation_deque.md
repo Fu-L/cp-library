@@ -1,3 +1,8 @@
+---
+title: SlideWindowAggregationDeque
+documentation_of: ../../src/data_structure/slide_window_aggregation_deque.hpp
+---
+
 # SlideWindowAggregationDeque
 
 モノイド，つまり

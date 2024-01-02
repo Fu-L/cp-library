@@ -1,3 +1,8 @@
+---
+title: miller_rabin
+documentation_of: ../../src/math/miller_rabin.hpp
+---
+
 ## miller_rabin
 
 ```cpp

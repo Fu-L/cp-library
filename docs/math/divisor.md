@@ -1,3 +1,8 @@
+---
+title: divisor
+documentation_of: ../../src/math/divisor.hpp
+---
+
 ## divisor
 
 ```cpp

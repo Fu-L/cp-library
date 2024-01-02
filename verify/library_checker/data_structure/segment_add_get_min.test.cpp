@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/segment_add_get_min"
-#include "src/template/template.hpp"
-#include "src/data_structure/dynamic_li_chao_tree.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/data_structure/dynamic_li_chao_tree.hpp"
 int main(void) {
     int n, q;
     cin >> n >> q;

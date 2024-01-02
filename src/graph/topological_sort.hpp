@@ -1,6 +1,6 @@
 #pragma once
-#include "src/template/template.hpp"
-#include "src/graph/graph_template.hpp"
+#include "../template/template.hpp"
+#include "./graph_template.hpp"
 template <typename T = int>
 vector<int> topological_sort(const Graph<T>& g) {
     const int n = (int)g.size();

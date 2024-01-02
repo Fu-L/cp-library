@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/number_of_substrings"
-#include "src/template/template.hpp"
-#include "src/string/rolling_hash.hpp"
-#include "src/string/suffix_array.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/string/rolling_hash.hpp"
+#include "../../../src/string/suffix_array.hpp"
 int main(void) {
     string s;
     cin >> s;

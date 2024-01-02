@@ -1,3 +1,8 @@
+---
+title: suffix_array
+documentation_of: ../../src/string/suffix_array.hpp
+---
+
 ## suffix_array
 
 ```cpp

@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "../template/template.hpp"
 constexpr __int128_t pow_mod_128(__int128_t x, __int128_t n, __int128_t mod) {
     assert(n >= 0 and mod >= 1);
     x %= mod;

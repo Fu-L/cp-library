@@ -1,3 +1,8 @@
+---
+title: is_prime
+documentation_of: ../../src/math/is_prime.hpp
+---
+
 ## is_prime
 
 ```cpp

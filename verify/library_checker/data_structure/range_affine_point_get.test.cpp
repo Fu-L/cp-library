@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_point_get"
-#include "src/template/template.hpp"
-#include "src/template/static_modint.hpp"
-#include "src/data_structure/lazy_segment_tree.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/template/static_modint.hpp"
+#include "../../../src/data_structure/lazy_segment_tree.hpp"
 using mint = modint998244353;
 struct S {
     mint a;

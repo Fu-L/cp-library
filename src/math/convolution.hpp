@@ -1,6 +1,6 @@
 #pragma once
-#include "src/template/template.hpp"
-#include "src/math/primitive_root.hpp"
+#include "../template/template.hpp"
+#include "./primitive_root.hpp"
 constexpr int countr_zero(unsigned int n) {
     int res = 0;
     while(!(n & (1 << res))) ++res;

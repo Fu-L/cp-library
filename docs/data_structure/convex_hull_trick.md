@@ -1,3 +1,8 @@
+---
+title: ConvexHullTrick
+documentation_of: ../../src/data_structure/convex_hull_trick.hpp
+---
+
 # ConvexHullTrick
 
 - 直線 $y = ax + b$ の追加

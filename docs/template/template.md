@@ -1,3 +1,8 @@
+---
+title: template
+documentation_of: ../../src/template/template.hpp
+---
+
 # template
 
 C++のテンプレートです．

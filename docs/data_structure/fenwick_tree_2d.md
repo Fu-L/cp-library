@@ -1,3 +1,8 @@
+---
+title: FenwickTree2D
+documentation_of: ../../src/data_structure/fenwick_tree_2d.hpp
+---
+
 # FenwickTree2D
 
 サイズが $N \times M$ である $2$ 次元配列に対し，

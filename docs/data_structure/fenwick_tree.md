@@ -1,3 +1,8 @@
+---
+title: FenwickTree
+documentation_of: ../../src/data_structure/fenwick_tree.hpp
+---
+
 # FenwickTree
 
 長さ $N$ の配列に対し，

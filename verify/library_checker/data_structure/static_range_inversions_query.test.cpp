@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_inversions_query"
-#include "src/template/template.hpp"
-#include "src/data_structure/fenwick_tree.hpp"
-#include "src/data_structure/mo.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/data_structure/fenwick_tree.hpp"
+#include "../../../src/data_structure/mo.hpp"
 int main(void) {
     int n, q;
     cin >> n >> q;

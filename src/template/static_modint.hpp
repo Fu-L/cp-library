@@ -1,5 +1,5 @@
 #pragma once
-#include "src/template/template.hpp"
+#include "./template.hpp"
 template <uint32_t m>
 struct StaticModint {
     using mint = StaticModint;

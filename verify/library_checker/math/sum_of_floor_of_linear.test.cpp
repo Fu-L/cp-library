@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/sum_of_floor_of_linear"
-#include "src/template/template.hpp"
-#include "src/math/floor_sum.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/math/floor_sum.hpp"
 int main(void) {
     int t;
     cin >> t;

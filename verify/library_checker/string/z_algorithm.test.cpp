@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
-#include "src/template/template.hpp"
-#include "src/string/z_algorithm.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/string/z_algorithm.hpp"
 int main(void) {
     string s;
     cin >> s;

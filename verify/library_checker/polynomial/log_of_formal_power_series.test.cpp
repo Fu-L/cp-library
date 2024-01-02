@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/log_of_formal_power_series"
-#include "src/template/template.hpp"
-#include "src/template/static_modint.hpp"
-#include "src/fps/formal_power_series.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/template/static_modint.hpp"
+#include "../../../src/fps/formal_power_series.hpp"
 using mint = modint998244353;
 int main(void) {
     int n;

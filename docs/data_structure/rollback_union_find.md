@@ -1,3 +1,8 @@
+---
+title: RollbackUnionFind
+documentation_of: ../../src/data_structure/rollback_union_find.hpp
+---
+
 # RollbackUnionFind
 
 通常のUnionFindに加えて，

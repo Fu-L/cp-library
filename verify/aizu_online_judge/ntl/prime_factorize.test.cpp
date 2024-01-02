@@ -1,6 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A"
-#include "src/template/template.hpp"
-#include "src/math/prime_factorization.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/math/prime_factorization.hpp"
 int main(void) {
     ll n;
     cin >> n;

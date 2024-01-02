@@ -1,3 +1,8 @@
+---
+title: StaticModint
+documentation_of: ../../src/template/static_modint.hpp
+---
+
 # StaticModint
 
 自動で $\mathrm{mod}$ をとる構造体です．<br>

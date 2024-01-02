@@ -1,3 +1,8 @@
+---
+title: SparseTable2D
+documentation_of: ../../src/data_structure/sparse_table_2d.hpp
+---
+
 # SparseTable2D
 
 冪等モノイド，つまり
