@@ -1,5 +1,5 @@
 #pragma once
-#include "cp-library/src/template/template.hpp"
+#include "src/template/template.hpp"
 template <typename T = int>
 struct Edge {
     int from, to;
@@ -12,10 +12,8 @@ struct Edge {
     }
 };
 template <typename T = int>
-using Edges = vector<Edge<T>>;
-template <typename T = int>
 struct Graph {
-    vector<Edges> g;
+    vector<vector<Edge<T>>> g;
     int es;
     Graph(int n)
         : g(n), es(0) {}
@@ -29,10 +27,12 @@ struct Graph {
     void add_directed_edge(int from, int to, T cost = 1) {
         g[from].emplace_back(from, to, cost, es++);
     }
-    inline Edges& operator[](const int& k) {
+    inline vector<Edge<T>>& operator[](const int& k) {
         return g[k];
     }
-    inline const Edges& operator[](const int& k) const {
+    inline const vector<Edge<T>>& operator[](const int& k) const {
         return g[k];
     }
 };
+template <typename T = int>
+using Edges = vector<Edge<T>>;
