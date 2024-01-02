@@ -1,7 +1,3 @@
-### 依存関係
-
-- `lib/math/ElementaryFunction.hpp`
-
 ## chinese_remainder_theorem
 
 ```cpp

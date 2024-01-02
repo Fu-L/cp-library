@@ -1,9 +1,3 @@
-### 依存関係
-
-- `lib/template/StaticModint.hpp` または `lib/template/DynamicModint.hpp`
-- `lib/math/ElementaryFunction.hpp`
-- `lib/math/Convolution.hpp`
-
 ## convolution_arbitrary
 
 ```cpp

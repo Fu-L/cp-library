@@ -1,7 +1,3 @@
-### 依存関係
-
-- `lib/template/StaticModint.hpp` または `lib/template/DynamicModint.hpp`
-
 # Lucas
 
 - 二項係数 $_n C _k \pmod{p}$
