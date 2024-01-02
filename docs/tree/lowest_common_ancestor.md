@@ -1,6 +1,6 @@
-# LowestCommonAncestor_Weigthed
+# LowestCommonAncestor
 
-$n$ 頂点重み付き根付き木が与えられたとき，
+$n$ 頂点の根付き木が与えられたとき，
 
 - $2$ 頂点の最小共通祖先の取得
 - $2$ 頂点間の距離の取得
@@ -12,10 +12,10 @@ $n$ 頂点重み付き根付き木が与えられたとき，
 ## コンストラクタ
 
 ```cpp
-LowestCommonAncestor_Weighted tree(vector<vector<pair<int, T>>> g, int root = 0)
+LowestCommonAncestor tree(Graph<T> g, int root = 0)
 ```
 
-- 頂点数 $n$ の隣接リスト形式の重み付き木 `g` を与えると，`root` を根として前計算を行います．
+- 頂点数 $n$ の木 `g` を与えると，`root` を根として前計算を行います．
 
 **制約**
 
@@ -46,7 +46,7 @@ int tree.depth(int v)
 ## cost
 
 ```cpp
-int tree.cost(int v)
+T tree.cost(int v)
 ```
 
 根付き木 `tree` における根 `root` と頂点 `v` の距離を返します．
@@ -115,7 +115,7 @@ int tree.dist(int u, int v)
 ## length
 
 ```cpp
-int tree.length(int u, int v)
+T tree.length(int u, int v)
 ```
 
 根付き木 `tree` における頂点 `u` と `v` の間の距離を返します．
