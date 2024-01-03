@@ -96,6 +96,9 @@ data:
     path: src/graph/topological_sort.hpp
     title: topological_sort
   - icon: ':heavy_check_mark:'
+    path: src/graph/two_sat.hpp
+    title: TwoSAT
+  - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
   - icon: ':warning:'
@@ -280,6 +283,9 @@ data:
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/math/2_sat.test.cpp
+    title: verify/library_checker/math/2_sat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -420,6 +426,7 @@ data:
   - src/graph/max_flow.hpp
   - src/graph/topological_sort.hpp
   - src/graph/strongly_connected_components.hpp
+  - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/geometry/point.hpp
   - src/string/rolling_hash.hpp
@@ -453,6 +460,7 @@ data:
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/math/find_linear_recurrence.test.cpp
   - verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+  - verify/library_checker/math/2_sat.test.cpp
   - verify/library_checker/math/discrete_logarithm.test.cpp
   - verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp

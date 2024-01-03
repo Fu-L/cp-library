@@ -102,6 +102,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/topological_sort.hpp
       title: topological_sort
+    - icon: ':heavy_check_mark:'
+      path: src/graph/two_sat.hpp
+      title: TwoSAT
   - name: src/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -318,6 +321,9 @@ data:
       title: verify/library_checker/graph/strongly_connected_components.test.cpp
   - name: verify/library_checker/math
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/math/2_sat.test.cpp
+      title: verify/library_checker/math/2_sat.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
       title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp

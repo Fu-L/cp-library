@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
+  - icon: ':heavy_check_mark:'
+    path: src/graph/two_sat.hpp
+    title: TwoSAT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/math/2_sat.test.cpp
+    title: verify/library_checker/math/2_sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -41,20 +47,20 @@ data:
     \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
     \ {\n        return g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const\
     \ int& k) const {\n        return g[k];\n    }\n};\ntemplate <typename T = int>\n\
-    using Edges = vector<Edge<T>>;\n#line 3 \"src/graph/compressed_sparse_row.hpp\"\
+    using Edges = vector<Edge<T>>;\n#line 4 \"src/graph/compressed_sparse_row.hpp\"\
     \ntemplate <typename T>\nstruct CompressedSparseRow {\n    vector<int> start,\
     \ elist;\n    CompressedSparseRow(const Graph<T>& g)\n        : start(g.size()\
     \ + 1), elist(g.es) {\n        int n = (int)g.size();\n        for(int i = 0;\
     \ i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n        \
     \    int counter = start[i];\n            for(const auto& to : g[i]) {\n     \
     \           elist[counter++] = to;\n            }\n        }\n    }\n};\n"
-  code: "#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\n\
-    template <typename T>\nstruct CompressedSparseRow {\n    vector<int> start, elist;\n\
-    \    CompressedSparseRow(const Graph<T>& g)\n        : start(g.size() + 1), elist(g.es)\
-    \ {\n        int n = (int)g.size();\n        for(int i = 0; i < n; ++i) {\n  \
-    \          start[i + 1] = start[i] + g[i].size();\n            int counter = start[i];\n\
-    \            for(const auto& to : g[i]) {\n                elist[counter++] =\
-    \ to;\n            }\n        }\n    }\n};"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
+    \ntemplate <typename T>\nstruct CompressedSparseRow {\n    vector<int> start,\
+    \ elist;\n    CompressedSparseRow(const Graph<T>& g)\n        : start(g.size()\
+    \ + 1), elist(g.es) {\n        int n = (int)g.size();\n        for(int i = 0;\
+    \ i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n        \
+    \    int counter = start[i];\n            for(const auto& to : g[i]) {\n     \
+    \           elist[counter++] = to;\n            }\n        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -62,10 +68,12 @@ data:
   path: src/graph/compressed_sparse_row.hpp
   requiredBy:
   - src/graph/strongly_connected_components.hpp
-  timestamp: '2024-01-04 00:43:08+09:00'
+  - src/graph/two_sat.hpp
+  timestamp: '2024-01-04 01:33:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+  - verify/library_checker/math/2_sat.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
 documentation_of: src/graph/compressed_sparse_row.hpp
 layout: document
