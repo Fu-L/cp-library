@@ -304,11 +304,11 @@ $a$ または $b$ が空配列の場合は空配列を返します．
 `mint` の法を $m$ として，
 
 - $\mathrm{m}$ は素数
-- $2^c | (\mathrm{m} - 1)$ かつ $|a| + |b| - 1 \leq 2^c$ なる $c$ が存在する
+- $2^c | (\mathrm{m} - 1)$ かつ $N + M - 1 \leq 2^c$ なる $c$ が存在する
 
 **計算量**
 
-$n = |a| + |b|$ として，
+$n = N + M$ として，
 
 - $O(n \log n + \log m)$
 
@@ -323,14 +323,11 @@ void butterfly(vector<mint>& a)
 
 **制約**
 
-`mint` の法を $m$ として，
-
-- $\mathrm{m}$ は素数
-- $2^c | (\mathrm{m} - 1)$ かつ $|a| + |b| - 1 \leq 2^c$ なる $c$ が存在する
+- `mint` の法 $m$ が NTT-friendlyである
 
 **計算量**
 
-- $O(|a| \log |a| + \log m)$
+- $O(N \log N + \log m)$
 
 ## butterfly_inv
 
@@ -343,11 +340,8 @@ void butterfly_inv(vector<mint>& a)
 
 **制約**
 
-`mint` の法を $m$ として，
-
-- $\mathrm{m}$ は素数
-- $2^c | (\mathrm{m} - 1)$ かつ $|a| + |b| - 1 \leq 2^c$ なる $c$ が存在する
+- `mint` の法 $m$ が NTT-friendlyである
 
 **計算量**
 
-- $O(|a| \log |a| + \log m)$
+- $O(N \log N + \log m)$

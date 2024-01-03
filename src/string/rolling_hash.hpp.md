@@ -106,24 +106,24 @@ title: RollingHash
 
 # RollingHash
 
-文字列 `s` に対して，
+長さ $n$ の文字列 `s` に対して，
 
 - 部分文字列のハッシュ値の取得
 
-を 前計算 $O(|s|)$ クエリ $O(1)$ で行えるアルゴリズムです．
+を 前計算 $O(n)$ クエリ $O(1)$ で行えるアルゴリズムです．
 
 ## コンストラクタ
 ```cpp
 RollingHash rh(string s, ll BASE = 0)
 ```
 
-- 文字列 `s` に対するローリングハッシュ，`rh` を構築します．
+- 長さ $n$ の文字列 `s` に対するローリングハッシュ，`rh` を構築します．
 
 - 法は $2^{61} - 1$ です．`BASE` を指定しないときや負の値を指定したとき，基数は乱数となります．
 
 **計算量**
 
-- $O(|s|)$
+- $O(n)$
 
 ## get
 ```cpp
@@ -134,7 +134,7 @@ ll rh.get(int lower, int upper)
 
 **制約**
 
-- $0 \leq \mathrm{lower} \leq \mathrm{upper} \leq |s|$
+- $0 \leq \mathrm{lower} \leq \mathrm{upper} \leq n$
 
 **計算量**
 
@@ -146,11 +146,11 @@ ll rh.get(int lower, int upper)
 ll rh.get_hash(string t)
 ```
 
-文字列 `t` のハッシュ値を返します．
+長さ $m$ の文字列 `t` のハッシュ値を返します．
 
 **計算量**
 
-- $O(|t|)$
+- $O(m)$
 
 ## find
 
@@ -163,7 +163,7 @@ int rh.find(string t, int lower = 0)
 
 **計算量**
 
-- $O(|s|)$
+- $O(n)$
 
 ## lcp
 
@@ -171,9 +171,9 @@ int rh.find(string t, int lower = 0)
 int rh.lcp(RollingHash a, RollingHash b, int al, int bl)
 ```
 
-文字列 `a[al, |a|)` と文字列 `b[bl, |b|)` のLongest Common Prefix (先頭から何文字一致するか) を返します．<br>
-$\mathrm{min} (|a| - al, |b| - bl) \geq 0$ のときは $0$ を返します．
+文字列 `a[al, a.size())` と文字列 `b[bl, b.size())` のLongest Common Prefix (先頭から何文字一致するか) を返します．<br>
+$\mathrm{min} (a.\mathrm{size}() - al, b.\mathrm{size}() - bl) \geq 0$ のときは $0$ を返します．
 
 **計算量**
 
-- $O(\log (|a| + |b|))$
+- $O(\log (a.\mathrm{size}() + b.\mathrm{size}()))$

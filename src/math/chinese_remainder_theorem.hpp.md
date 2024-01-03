@@ -79,7 +79,7 @@ $n = 0$ の時は $(0, 1)$ を返します．
 
 **制約**
 
-- $|r| = |m|$
+- $r.\mathrm{size}() = m.\mathrm{size}()$
 - $1 \le m[i]$
 - $\mathrm{lcm} (m[i])$ が `ll` に収まる．
 
