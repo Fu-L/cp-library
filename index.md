@@ -54,7 +54,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/union_find.hpp
       title: UnionFind
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/weighted_union_find.hpp
       title: WeightedUnionFind
   - name: src/fps
@@ -208,6 +208,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
       title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+      title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   - name: verify/aizu_online_judge/itp1
     pages:
     - icon: ':heavy_check_mark:'

@@ -5,10 +5,13 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+    title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -21,8 +24,8 @@ data:
     \ N)\n        : n(N), data(N, -1), ws(N, T()) {}\n    bool merge(int a, int b,\
     \ T w) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
     \        w += weight(b) - weight(a);\n        int x = leader(a), y = leader(b);\n\
-    \        if(x == y) return w == T();\n        if(-data[x] < -data[y]) swap(x,\
-    \ y), w = -w;\n        data[x] += data[y];\n        data[y] = x;\n        ws[y]\
+    \        if(x == y) return w == T();\n        if(-data[x] > -data[y]) swap(x,\
+    \ y), w = -w;\n        data[y] += data[x];\n        data[x] = y;\n        ws[x]\
     \ = w;\n        return true;\n    }\n    bool same(int a, int b) {\n        assert(0\
     \ <= a and a < n);\n        assert(0 <= b and b < n);\n        return leader(a)\
     \ == leader(b);\n    }\n    int leader(int a) {\n        assert(0 <= a and a <\
@@ -39,8 +42,8 @@ data:
     \ -1), ws(N, T()) {}\n    bool merge(int a, int b, T w) {\n        assert(0 <=\
     \ a and a < n);\n        assert(0 <= b and b < n);\n        w += weight(b) - weight(a);\n\
     \        int x = leader(a), y = leader(b);\n        if(x == y) return w == T();\n\
-    \        if(-data[x] < -data[y]) swap(x, y), w = -w;\n        data[x] += data[y];\n\
-    \        data[y] = x;\n        ws[y] = w;\n        return true;\n    }\n    bool\
+    \        if(-data[x] > -data[y]) swap(x, y), w = -w;\n        data[y] += data[x];\n\
+    \        data[x] = y;\n        ws[x] = w;\n        return true;\n    }\n    bool\
     \ same(int a, int b) {\n        assert(0 <= a and a < n);\n        assert(0 <=\
     \ b and b < n);\n        return leader(a) == leader(b);\n    }\n    int leader(int\
     \ a) {\n        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n\
@@ -56,9 +59,10 @@ data:
   isVerificationFile: false
   path: src/data_structure/weighted_union_find.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2024-01-03 22:10:13+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
 documentation_of: src/data_structure/weighted_union_find.hpp
 layout: document
 title: WeightedUnionFind
@@ -162,7 +166,7 @@ int uf.size(int a)
 T uf.weight(int a)
 ```
 
-$\mathrm{weight}_{a} - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
+$\mathrm{weight}_a - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
 
 **制約**
 
@@ -178,7 +182,7 @@ $\mathrm{weight}_{a} - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
 T uf.diff(int a, int b)
 ```
 
-$\mathrm{weight}_{a} - \mathrm{weight}_{b}$ を返します．
+$\mathrm{weight}_a - \mathrm{weight}_b$ を返します．
 
 **制約**
 

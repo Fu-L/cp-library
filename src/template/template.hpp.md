@@ -53,7 +53,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
   - icon: ':heavy_check_mark:'
@@ -183,6 +183,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
     title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+    title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
     title: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
@@ -392,6 +395,7 @@ data:
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
+  - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
   - verify/aizu_online_judge/ntl/extended_euclid_algorithm.test.cpp
   - verify/aizu_online_judge/ntl/prime_factorize.test.cpp
