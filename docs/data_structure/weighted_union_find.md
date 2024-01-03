@@ -101,7 +101,7 @@ int uf.size(int a)
 T uf.weight(int a)
 ```
 
-$\mathrm{weight}_{a} - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
+$\mathrm{weight}_a - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
 
 **制約**
 
@@ -117,7 +117,7 @@ $\mathrm{weight}_{a} - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
 T uf.diff(int a, int b)
 ```
 
-$\mathrm{weight}_{a} - \mathrm{weight}_{b}$ を返します．
+$\mathrm{weight}_a - \mathrm{weight}_b$ を返します．
 
 **制約**
 

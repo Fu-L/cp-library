@@ -10,10 +10,10 @@ struct WeightedUnionFind {
         w += weight(b) - weight(a);
         int x = leader(a), y = leader(b);
         if(x == y) return w == T();
-        if(-data[x] < -data[y]) swap(x, y), w = -w;
-        data[x] += data[y];
-        data[y] = x;
-        ws[y] = w;
+        if(-data[x] > -data[y]) swap(x, y), w = -w;
+        data[y] += data[x];
+        data[x] = y;
+        ws[x] = w;
         return true;
     }
     bool same(int a, int b) {
