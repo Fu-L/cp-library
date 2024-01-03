@@ -19,6 +19,9 @@ data:
     path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
     title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+    title: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
     title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -76,6 +79,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+  - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp

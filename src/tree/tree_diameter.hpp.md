@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+    title: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
   _isVerificationFailed: false
@@ -68,6 +71,7 @@ data:
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
 documentation_of: src/tree/tree_diameter.hpp
 layout: document

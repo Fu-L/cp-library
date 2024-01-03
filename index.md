@@ -217,6 +217,9 @@ data:
       path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
       title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+      title: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
       title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - name: verify/aizu_online_judge/itp1

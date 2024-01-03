@@ -52,17 +52,18 @@ data:
     \  while(s != -1) {\n        path.push_back(s);\n        s = par[s];\n    }\n\
     \    return {diameter, path};\n}\n#line 5 \"verify/library_checker/tree/tree_diameter.test.cpp\"\
     \nint main(void) {\n    int n;\n    cin >> n;\n    Graph<ll> g(n);\n    rep(i,\
-    \ 0, n) {\n        int a, b, c;\n        cin >> a >> b >> c;\n        g.add_edge(a,\
+    \ 0, n - 1) {\n        int a, b, c;\n        cin >> a >> b >> c;\n        g.add_edge(a,\
     \ b, c);\n    }\n    auto [d, path] = tree_diameter(g);\n    cout << d << ' '\
     \ << path.size() << '\\n';\n    for(const auto& p : path) {\n        cout << p\
     \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include\
     \ \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
     \n#include \"../../../src/tree/tree_diameter.hpp\"\nint main(void) {\n    int\
-    \ n;\n    cin >> n;\n    Graph<ll> g(n);\n    rep(i, 0, n) {\n        int a, b,\
-    \ c;\n        cin >> a >> b >> c;\n        g.add_edge(a, b, c);\n    }\n    auto\
-    \ [d, path] = tree_diameter(g);\n    cout << d << ' ' << path.size() << '\\n';\n\
-    \    for(const auto& p : path) {\n        cout << p << '\\n';\n    }\n}"
+    \ n;\n    cin >> n;\n    Graph<ll> g(n);\n    rep(i, 0, n - 1) {\n        int\
+    \ a, b, c;\n        cin >> a >> b >> c;\n        g.add_edge(a, b, c);\n    }\n\
+    \    auto [d, path] = tree_diameter(g);\n    cout << d << ' ' << path.size() <<\
+    \ '\\n';\n    for(const auto& p : path) {\n        cout << p << '\\n';\n    }\n\
+    }"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -70,7 +71,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-01-03 23:04:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/tree_diameter.test.cpp
