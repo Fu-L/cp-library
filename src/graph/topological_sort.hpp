@@ -6,7 +6,7 @@ vector<int> topological_sort(const Graph<T>& g) {
     const int n = (int)g.size();
     vector<int> deg(n);
     for(int i = 0; i < n; ++i) {
-        for(const int& to : g[i]) {
+        for(const auto& to : g[i]) {
             ++deg[to];
         }
     }
@@ -22,7 +22,7 @@ vector<int> topological_sort(const Graph<T>& g) {
         int p = st.top();
         st.pop();
         res.push_back(p);
-        for(const int& to : g[p]) {
+        for(const auto& to : g[p]) {
             if(--deg[to] == 0) {
                 st.push(to);
             }
