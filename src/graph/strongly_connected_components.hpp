@@ -1,8 +1,9 @@
+#pragma once
 #include "../template/template.hpp"
 #include "./graph_template.hpp"
 #include "./compressed_sparse_row.hpp"
 template <typename T>
-vector<vector<int>> strongly_connected_components(const Graph<T>& g) {
+pair<int, vector<int>> scc_ids(const Graph<T>& g) {
     int n = (int)g.size();
     CompressedSparseRow<T> g_csr(g);
     int now_ord = 0, group_num = 0;
@@ -37,6 +38,12 @@ vector<vector<int>> strongly_connected_components(const Graph<T>& g) {
         }
     }
     for(auto& x : ids) x = group_num - 1 - x;
+    return {group_num, ids};
+}
+template <typename T>
+vector<vector<int>> strongly_connected_components(const Graph<T>& g) {
+    auto [group_num, ids] = scc_ids(g);
+    int n = (int)g.size();
     vector<int> counts(group_num);
     for(const auto& x : ids) ++counts[x];
     vector<vector<int>> groups(group_num);
