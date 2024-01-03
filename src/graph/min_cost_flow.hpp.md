@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
     title: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/assignment_problem.test.cpp
+    title: verify/library_checker/graph/assignment_problem.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -215,6 +218,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
+  - verify/library_checker/graph/assignment_problem.test.cpp
 documentation_of: src/graph/min_cost_flow.hpp
 layout: document
 title: MinCostFlow

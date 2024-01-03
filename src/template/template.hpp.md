@@ -262,6 +262,12 @@ data:
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/assignment_problem.test.cpp
+    title: verify/library_checker/graph/assignment_problem.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+    title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -457,6 +463,8 @@ data:
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/graph/assignment_problem.test.cpp
+  - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp
   - verify/library_checker/string/number_of_substrings_2.test.cpp
   - verify/library_checker/string/suffix_array.test.cpp
