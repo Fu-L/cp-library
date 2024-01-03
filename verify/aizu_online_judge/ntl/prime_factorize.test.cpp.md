@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/math/prime_factorization.hpp
-    title: src/math/prime_factorization.hpp
+    title: prime_factor
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template

@@ -78,6 +78,9 @@ data:
     path: src/geometry/point.hpp
     title: Point
   - icon: ':heavy_check_mark:'
+    path: src/graph/compressed_sparse_row.hpp
+    title: CompressedSparseRow
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -86,6 +89,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
+  - icon: ':heavy_check_mark:'
+    path: src/graph/strongly_connected_components.hpp
+    title: strongly_connected_components
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
@@ -136,7 +142,7 @@ data:
     title: pow_mod
   - icon: ':heavy_check_mark:'
     path: src/math/prime_factorization.hpp
-    title: src/math/prime_factorization.hpp
+    title: prime_factor
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
@@ -205,6 +211,9 @@ data:
     path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
     title: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+    title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
     title: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - icon: ':heavy_check_mark:'
@@ -267,6 +276,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/strongly_connected_components.test.cpp
+    title: verify/library_checker/graph/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
@@ -407,6 +419,8 @@ data:
   - src/graph/min_cost_flow.hpp
   - src/graph/max_flow.hpp
   - src/graph/topological_sort.hpp
+  - src/graph/strongly_connected_components.hpp
+  - src/graph/compressed_sparse_row.hpp
   - src/geometry/point.hpp
   - src/string/rolling_hash.hpp
   - src/string/suffix_array.hpp
@@ -418,6 +432,7 @@ data:
   - verify/aizu_online_judge/alds1/string_search.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
   - verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+  - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
@@ -463,6 +478,7 @@ data:
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/assignment_problem.test.cpp
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp

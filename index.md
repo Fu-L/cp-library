@@ -85,6 +85,9 @@ data:
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/graph/compressed_sparse_row.hpp
+      title: CompressedSparseRow
+    - icon: ':heavy_check_mark:'
       path: src/graph/graph_template.hpp
       title: Graph
     - icon: ':heavy_check_mark:'
@@ -93,6 +96,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/min_cost_flow.hpp
       title: MinCostFlow
+    - icon: ':heavy_check_mark:'
+      path: src/graph/strongly_connected_components.hpp
+      title: strongly_connected_components
     - icon: ':heavy_check_mark:'
       path: src/graph/topological_sort.hpp
       title: topological_sort
@@ -145,7 +151,7 @@ data:
       title: pow_mod
     - icon: ':heavy_check_mark:'
       path: src/math/prime_factorization.hpp
-      title: src/math/prime_factorization.hpp
+      title: prime_factor
     - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: primitive_root
@@ -231,6 +237,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
       title: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+      title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - name: verify/aizu_online_judge/itp1
     pages:
     - icon: ':heavy_check_mark:'
@@ -304,6 +313,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
       title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/strongly_connected_components.test.cpp
+      title: verify/library_checker/graph/strongly_connected_components.test.cpp
   - name: verify/library_checker/math
     pages:
     - icon: ':heavy_check_mark:'

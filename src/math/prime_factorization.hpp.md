@@ -40,8 +40,21 @@ data:
   - verify/aizu_online_judge/ntl/prime_factorize.test.cpp
 documentation_of: src/math/prime_factorization.hpp
 layout: document
-redirect_from:
-- /library/src/math/prime_factorization.hpp
-- /library/src/math/prime_factorization.hpp.html
-title: src/math/prime_factorization.hpp
+title: prime_factor
 ---
+
+## prime_factor
+
+```cpp
+map<ll, ll> prime_factor(ll n)
+```
+
+正整数 $n$ を素因数分解します．
+
+**制約**
+
+- $1 \leq n$
+
+**計算量**
+
+- $O(\sqrt{n})$
