@@ -1,6 +1,6 @@
 ---
 title: prime_factor
-documentation_of: ../../src/math/prime_factor.hpp
+documentation_of: ../../src/math/prime_factorization.hpp
 ---
 
 ## prime_factor
