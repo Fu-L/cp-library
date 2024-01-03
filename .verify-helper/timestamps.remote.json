@@ -42,5 +42,6 @@
 "verify/library_checker/string/suffix_array.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/string/z_algorithm.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/tree/lowest_common_ancestor.test.cpp": "2024-01-03 04:25:42 +0900",
-"verify/library_checker/tree/tree_diameter.test.cpp": "2024-01-03 04:25:42 +0900"
+"verify/library_checker/tree/tree_diameter.test.cpp": "2024-01-03 04:25:42 +0900",
+"verify/yukicoder/649.test.cpp": "2024-01-03 17:12:25 +0900"
 }
