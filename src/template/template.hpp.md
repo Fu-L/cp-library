@@ -86,7 +86,7 @@ data:
   - icon: ':warning:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
   - icon: ':heavy_check_mark:'
@@ -186,6 +186,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
     title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+    title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
     title: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
@@ -393,6 +396,7 @@ data:
   - verify/aizu_online_judge/alds1/prime_numbers.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
+  - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
   - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp

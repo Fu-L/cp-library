@@ -8,10 +8,13 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+    title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -35,22 +38,22 @@ data:
     using Edges = vector<Edge<T>>;\n#line 4 \"src/graph/topological_sort.hpp\"\ntemplate\
     \ <typename T = int>\nvector<int> topological_sort(const Graph<T>& g) {\n    const\
     \ int n = (int)g.size();\n    vector<int> deg(n);\n    for(int i = 0; i < n; ++i)\
-    \ {\n        for(const int& to : g[i]) {\n            ++deg[to];\n        }\n\
+    \ {\n        for(const auto& to : g[i]) {\n            ++deg[to];\n        }\n\
     \    }\n    stack<int> st;\n    for(int i = 0; i < n; ++i) {\n        if(deg[i]\
     \ == 0) {\n            st.push(i);\n        }\n    }\n    vector<int> res;\n \
     \   res.reserve(n);\n    while(!st.empty()) {\n        int p = st.top();\n   \
-    \     st.pop();\n        res.push_back(p);\n        for(const int& to : g[p])\
+    \     st.pop();\n        res.push_back(p);\n        for(const auto& to : g[p])\
     \ {\n            if(--deg[to] == 0) {\n                st.push(to);\n        \
     \    }\n        }\n    }\n    if((int)res.size() != n) return {};\n    return\
     \ res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
     \ntemplate <typename T = int>\nvector<int> topological_sort(const Graph<T>& g)\
     \ {\n    const int n = (int)g.size();\n    vector<int> deg(n);\n    for(int i\
-    \ = 0; i < n; ++i) {\n        for(const int& to : g[i]) {\n            ++deg[to];\n\
+    \ = 0; i < n; ++i) {\n        for(const auto& to : g[i]) {\n            ++deg[to];\n\
     \        }\n    }\n    stack<int> st;\n    for(int i = 0; i < n; ++i) {\n    \
     \    if(deg[i] == 0) {\n            st.push(i);\n        }\n    }\n    vector<int>\
     \ res;\n    res.reserve(n);\n    while(!st.empty()) {\n        int p = st.top();\n\
-    \        st.pop();\n        res.push_back(p);\n        for(const int& to : g[p])\
+    \        st.pop();\n        res.push_back(p);\n        for(const auto& to : g[p])\
     \ {\n            if(--deg[to] == 0) {\n                st.push(to);\n        \
     \    }\n        }\n    }\n    if((int)res.size() != n) return {};\n    return\
     \ res;\n}"
@@ -60,9 +63,10 @@ data:
   isVerificationFile: false
   path: src/graph/topological_sort.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2024-01-03 22:50:06+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
 documentation_of: src/graph/topological_sort.hpp
 layout: document
 title: topological_sort

@@ -93,7 +93,7 @@ data:
     - icon: ':warning:'
       path: src/graph/min_cost_flow.hpp
       title: MinCostFlow
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/topological_sort.hpp
       title: topological_sort
   - name: src/math
@@ -211,6 +211,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
       title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+  - name: verify/aizu_online_judge/grl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+      title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - name: verify/aizu_online_judge/itp1
     pages:
     - icon: ':heavy_check_mark:'
