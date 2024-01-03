@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+    title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
   _isVerificationFailed: false
@@ -104,6 +107,7 @@ data:
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
 documentation_of: src/tree/lowest_common_ancestor.hpp
 layout: document
