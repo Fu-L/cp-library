@@ -8,7 +8,7 @@ data:
   - icon: ':warning:'
     path: src/data_structure/convex_hull_trick.hpp
     title: ConvexHullTrick
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/cumulative_sum_2d.hpp
     title: CumulativeSum2D
   - icon: ':heavy_check_mark:'
@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree_2d.hpp
     title: FenwickTree2D
   - icon: ':heavy_check_mark:'
@@ -177,6 +177,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/alds1/string_search.test.cpp
     title: verify/aizu_online_judge/alds1/string_search.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
+    title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
+    title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
     title: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
@@ -385,6 +391,8 @@ data:
   - verify/aizu_online_judge/alds1/string_search.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
+  - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
+  - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
   - verify/aizu_online_judge/ntl/extended_euclid_algorithm.test.cpp
   - verify/aizu_online_judge/ntl/prime_factorize.test.cpp
   - verify/aizu_online_judge/ntl/power.test.cpp

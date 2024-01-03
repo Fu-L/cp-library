@@ -9,7 +9,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/convex_hull_trick.hpp
       title: ConvexHullTrick
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/cumulative_sum_2d.hpp
       title: CumulativeSum2D
     - icon: ':heavy_check_mark:'
@@ -18,7 +18,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: FenwickTree
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree_2d.hpp
       title: FenwickTree2D
     - icon: ':heavy_check_mark:'
@@ -200,6 +200,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/alds1/string_search.test.cpp
       title: verify/aizu_online_judge/alds1/string_search.test.cpp
+  - name: verify/aizu_online_judge/dsl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
+      title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
+      title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
   - name: verify/aizu_online_judge/itp1
     pages:
     - icon: ':heavy_check_mark:'
