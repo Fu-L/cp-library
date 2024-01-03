@@ -87,10 +87,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/graph_template.hpp
       title: Graph
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: MaxFlow
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/min_cost_flow.hpp
       title: MinCostFlow
     - icon: ':heavy_check_mark:'
@@ -214,6 +214,9 @@ data:
   - name: verify/aizu_online_judge/grl
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+      title: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
       title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
     - icon: ':heavy_check_mark:'
@@ -222,6 +225,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
       title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/maximum_flow.test.cpp
+      title: verify/aizu_online_judge/grl/maximum_flow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
+      title: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
   - name: verify/aizu_online_judge/itp1
     pages:
     - icon: ':heavy_check_mark:'

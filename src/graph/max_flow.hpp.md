@@ -5,10 +5,16 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+    title: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/maximum_flow.test.cpp
+    title: verify/aizu_online_judge/grl/maximum_flow.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -126,8 +132,10 @@ data:
   path: src/graph/max_flow.hpp
   requiredBy: []
   timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+  - verify/aizu_online_judge/grl/maximum_flow.test.cpp
 documentation_of: src/graph/max_flow.hpp
 layout: document
 title: MaxFlow
