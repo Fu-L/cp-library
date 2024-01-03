@@ -85,7 +85,7 @@ WeightedUnionFind<T> uf(int n)
 ```
 
 - $n$ 頂点 $0$ 辺の無向グラフを作ります．
-- 各頂点の重み $\mathrm{weight}_i$ は $0$ で初期化されます．
+- 各頂点の重み $\mathrm{weight_i}$ は $0$ で初期化されます．
 
 **計算量**
 
@@ -97,10 +97,10 @@ WeightedUnionFind<T> uf(int n)
 bool uf.merge(int a, int b, T w)
 ```
 
-辺 $(a, b)$ を追加し， $\mathrm{weight}_a = \mathrm{weight}_b + w$ と設定します．
+辺 $(a, b)$ を追加し， $\mathrm{weight_a} = \mathrm{weight_b} + w$ と設定します．
 
 今までの情報と矛盾が生じない場合は `true` を返し，矛盾が生じる場合は `false` を返します．<br>
-矛盾が生じるとは `merge` を行う前の状態において，頂点 $a$ と $b$ が連結かつ$\mathrm{weight}_a - \mathrm{weight}_b \neq w$ であることを指します．
+矛盾が生じるとは `merge` を行う前の状態において，頂点 $a$ と $b$ が連結かつ$\mathrm{weight_a} - \mathrm{weight_b} \neq w$ であることを指します．
 
 **制約**
 
@@ -166,7 +166,7 @@ int uf.size(int a)
 T uf.weight(int a)
 ```
 
-$\mathrm{weight}_a - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
+$\mathrm{weight_a} - \mathrm{weight_{leader(a)}}$ を返します．
 
 **制約**
 
@@ -182,7 +182,7 @@ $\mathrm{weight}_a - \mathrm{weight}_{\mathrm{leader(a)}}$ を返します．
 T uf.diff(int a, int b)
 ```
 
-$\mathrm{weight}_a - \mathrm{weight}_b$ を返します．
+$\mathrm{weight_a} - \mathrm{weight_b}$ を返します．
 
 **制約**
 
