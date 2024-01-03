@@ -16,7 +16,7 @@ vector<int> suffix_array(string s)
 
 **計算量**
 
-- $O(|s| \log |s|)$
+- $O(n \log n)$
 
 ## lcp_array
 
@@ -31,7 +31,7 @@ vector<int> lcp_array(string s, vector<int> sa)
 
 **計算量**
 
-- $O(|s|)$
+- $O(n)$
 
 ## チートシート
 ```cpp

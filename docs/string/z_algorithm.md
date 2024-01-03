@@ -15,4 +15,4 @@ vector<int> z_algorithm(string s)
 
 **計算量**
 
-- $O(|s|)$
+- $O(n)$
