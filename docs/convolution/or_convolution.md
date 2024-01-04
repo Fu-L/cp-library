@@ -1,4 +1,4 @@
 ---
-title: and_convolution
-documentation_of: ../../src/convolution/and_convolution.hpp
+title: or_convolution
+documentation_of: ../../src/convolution/or_convolution.hpp
 ---
