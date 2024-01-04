@@ -85,7 +85,7 @@ data:
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
-    title: src/graph/kruskal.hpp
+    title: kruskal
   - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: MaxFlow

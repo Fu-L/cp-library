@@ -10,7 +10,7 @@ data:
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
-    title: src/graph/kruskal.hpp
+    title: kruskal
   - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components

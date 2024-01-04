@@ -88,8 +88,5 @@ data:
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
 documentation_of: src/graph/kruskal.hpp
 layout: document
-redirect_from:
-- /library/src/graph/kruskal.hpp
-- /library/src/graph/kruskal.hpp.html
-title: src/graph/kruskal.hpp
+title: kruskal
 ---

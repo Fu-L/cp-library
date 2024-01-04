@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
-    title: src/graph/kruskal.hpp
+    title: kruskal
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
