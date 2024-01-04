@@ -5,12 +5,10 @@
 int main(void) {
     int n, m;
     cin >> n >> m;
-    Edges<int> e;
-    e.reserve(m);
+    Edges<int> e(m);
     rep(i, 0, m) {
-        int a, b, c;
-        cin >> a >> b >> c;
-        e.emplace_back(a, b, c, i);
+        cin >> e[i].from >> e[i].to >> e[i].cost;
+        e[i].idx = i;
     }
     cout << kruskal(n, e).first << '\n';
 }
