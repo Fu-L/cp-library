@@ -37,6 +37,7 @@
 "verify/library_checker/graph/minimum_spanning_tree.test.cpp": "2024-01-04 22:45:10 +0900",
 "verify/library_checker/graph/strongly_connected_components.test.cpp": "2024-01-04 01:33:44 +0900",
 "verify/library_checker/math/2_sat.test.cpp": "2024-01-04 01:33:44 +0900",
+"verify/library_checker/math/and_convolution.test.cpp": "2024-01-04 23:45:50 +0900",
 "verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/math/discrete_logarithm.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/math/find_linear_recurrence.test.cpp": "2024-01-03 04:25:42 +0900",
