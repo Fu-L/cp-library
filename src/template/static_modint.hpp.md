@@ -34,6 +34,9 @@ data:
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/math/and_convolution.test.cpp
+    title: verify/library_checker/math/and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/find_linear_recurrence.test.cpp
     title: verify/library_checker/math/find_linear_recurrence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -199,6 +202,7 @@ data:
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/math/find_linear_recurrence.test.cpp
+  - verify/library_checker/math/and_convolution.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp

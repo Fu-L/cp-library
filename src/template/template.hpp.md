@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/convolution/and_convolution.hpp
+    title: and_convolution
+  - icon: ':warning:'
+    path: src/convolution/or_convolution.hpp
+    title: src/convolution/or_convolution.hpp
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/binary_trie.hpp
     title: BinaryTrie
   - icon: ':warning:'
@@ -156,6 +162,9 @@ data:
     path: src/math/seive.hpp
     title: seive
   - icon: ':heavy_check_mark:'
+    path: src/math/zeta_transform.hpp
+    title: zeta_transform
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
   - icon: ':heavy_check_mark:'
@@ -298,6 +307,9 @@ data:
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/math/and_convolution.test.cpp
+    title: verify/library_checker/math/and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -399,6 +411,7 @@ data:
   - src/math/binomial.hpp
   - src/math/chinese_remainder_theorem.hpp
   - src/math/log_mod.hpp
+  - src/math/zeta_transform.hpp
   - src/math/extgcd.hpp
   - src/math/inv_gcd.hpp
   - src/math/convolution.hpp
@@ -416,6 +429,8 @@ data:
   - src/fps/nth_term.hpp
   - src/fps/all_product.hpp
   - src/fps/formal_power_series.hpp
+  - src/convolution/or_convolution.hpp
+  - src/convolution/and_convolution.hpp
   - src/data_structure/weighted_union_find.hpp
   - src/data_structure/sparse_table_2d.hpp
   - src/data_structure/lazy_segment_tree.hpp
@@ -482,6 +497,7 @@ data:
   - verify/library_checker/math/find_linear_recurrence.test.cpp
   - verify/library_checker/math/sum_of_floor_of_linear.test.cpp
   - verify/library_checker/math/2_sat.test.cpp
+  - verify/library_checker/math/and_convolution.test.cpp
   - verify/library_checker/math/discrete_logarithm.test.cpp
   - verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp

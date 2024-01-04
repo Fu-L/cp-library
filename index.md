@@ -1,6 +1,14 @@
 ---
 data:
   libraryCategories:
+  - name: src/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/and_convolution.hpp
+      title: and_convolution
+    - icon: ':warning:'
+      path: src/convolution/or_convolution.hpp
+      title: src/convolution/or_convolution.hpp
   - name: src/data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -164,6 +172,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/seive.hpp
       title: seive
+    - icon: ':heavy_check_mark:'
+      path: src/math/zeta_transform.hpp
+      title: zeta_transform
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -336,6 +347,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/math/2_sat.test.cpp
       title: verify/library_checker/math/2_sat.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/math/and_convolution.test.cpp
+      title: verify/library_checker/math/and_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
       title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
