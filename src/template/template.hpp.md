@@ -99,6 +99,9 @@ data:
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
+    path: src/graph/dijkstra.hpp
+    title: dijkstra
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -331,6 +334,9 @@ data:
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/shortest_path.test.cpp
+    title: verify/library_checker/graph/shortest_path.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
@@ -495,6 +501,7 @@ data:
   - src/graph/topological_sort.hpp
   - src/graph/strongly_connected_components.hpp
   - src/graph/two_edge_connected_components.hpp
+  - src/graph/dijkstra.hpp
   - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/graph/kruskal.hpp
@@ -563,6 +570,7 @@ data:
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
+  - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/assignment_problem.test.cpp
