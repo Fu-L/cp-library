@@ -1,6 +1,6 @@
 ---
 title: convolution
-documentation_of: ../../src/math/convolution.hpp
+documentation_of: ../../src/convolution/convolution.hpp
 ---
 
 ## convolution

@@ -1,6 +1,6 @@
 ---
 title: convolution_arbitrary
-documentation_of: ../../src/math/convolution_arbitrary.hpp
+documentation_of: ../../src/convolution/convolution_arbitrary.hpp
 ---
 
 ## convolution_arbitrary

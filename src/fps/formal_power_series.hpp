@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-#include "../math/convolution.hpp"
+#include "../convolution/convolution.hpp"
 template <typename mint>
 struct FormalPowerSeries : vector<mint> {
     using vector<mint>::vector;
