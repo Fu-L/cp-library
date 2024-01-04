@@ -104,7 +104,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/math/chinese_remainder_theorem.hpp
     title: chinese_remainder_theorem
   - icon: ':heavy_check_mark:'
@@ -125,7 +125,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/floor_sum.hpp
     title: floor_sum
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/math/inv_gcd.hpp
     title: inv_gcd
   - icon: ':heavy_check_mark:'
@@ -361,6 +361,9 @@ data:
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/186.test.cpp
+    title: verify/yukicoder/186.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
   _isVerificationFailed: false
@@ -505,6 +508,7 @@ data:
   - verify/library_checker/string/number_of_substrings_2.test.cpp
   - verify/library_checker/string/suffix_array.test.cpp
   - verify/library_checker/string/number_of_substrings.test.cpp
+  - verify/yukicoder/186.test.cpp
   - verify/yukicoder/649.test.cpp
 documentation_of: src/template/template.hpp
 layout: document

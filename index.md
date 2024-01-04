@@ -113,7 +113,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/binomial.hpp
       title: Binomial
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/math/chinese_remainder_theorem.hpp
       title: chinese_remainder_theorem
     - icon: ':heavy_check_mark:'
@@ -134,7 +134,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/floor_sum.hpp
       title: floor_sum
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/math/inv_gcd.hpp
       title: inv_gcd
     - icon: ':heavy_check_mark:'
@@ -409,6 +409,9 @@ data:
       title: verify/library_checker/tree/tree_diameter.test.cpp
   - name: verify/yukicoder
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/yukicoder/186.test.cpp
+      title: verify/yukicoder/186.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/649.test.cpp
       title: verify/yukicoder/649.test.cpp
