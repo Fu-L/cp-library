@@ -1,10 +1,10 @@
 #pragma once
 #include "../template/template.hpp"
 template <typename T>
-void superset_zeta_transform(vector<T>& f, bool inv = true) {
+void superset_zeta_transform(vector<T>& f, bool inv = false) {
     int n = (int)f.size();
     assert((n & (n - 1)) == 0);
-    const int sign = inv ? 1 : -1;
+    const int sign = inv ? -1 : 1;
     for(int i = 1; i < n; i <<= 1) {
         for(int j = 0; j < n; ++j) {
             if((j & i) == 0) {
@@ -14,10 +14,10 @@ void superset_zeta_transform(vector<T>& f, bool inv = true) {
     }
 }
 template <typename T>
-void subset_zeta_transform(vector<T>& f, bool inv = true) {
+void subset_zeta_transform(vector<T>& f, bool inv = false) {
     int n = (int)f.size();
     assert((n & (n - 1)) == 0);
-    const int sign = inv ? 1 : -1;
+    const int sign = inv ? -1 : 1;
     for(int i = 1; i < n; i <<= 1) {
         for(int j = 0; j < n; ++j) {
             if((j & i) == 0) {
