@@ -84,6 +84,9 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
+    path: src/graph/kruskal.hpp
+    title: src/graph/kruskal.hpp
+  - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: MaxFlow
   - icon: ':heavy_check_mark:'
@@ -214,6 +217,9 @@ data:
     path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
     title: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+    title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
@@ -279,6 +285,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
+    title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
@@ -428,6 +437,7 @@ data:
   - src/graph/strongly_connected_components.hpp
   - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
+  - src/graph/kruskal.hpp
   - src/geometry/point.hpp
   - src/string/rolling_hash.hpp
   - src/string/suffix_array.hpp
@@ -441,6 +451,7 @@ data:
   - verify/aizu_online_judge/grl/bipartite_matching.test.cpp
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
@@ -488,6 +499,7 @@ data:
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/assignment_problem.test.cpp
+  - verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp
   - verify/library_checker/string/number_of_substrings_2.test.cpp

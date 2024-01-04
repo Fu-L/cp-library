@@ -91,6 +91,9 @@ data:
       path: src/graph/graph_template.hpp
       title: Graph
     - icon: ':heavy_check_mark:'
+      path: src/graph/kruskal.hpp
+      title: src/graph/kruskal.hpp
+    - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: MaxFlow
     - icon: ':heavy_check_mark:'
@@ -241,6 +244,9 @@ data:
       path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
       title: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+      title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
       title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - name: verify/aizu_online_judge/itp1
@@ -316,6 +322,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
       title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
+      title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/strongly_connected_components.test.cpp
       title: verify/library_checker/graph/strongly_connected_components.test.cpp

@@ -9,6 +9,9 @@ data:
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
+    path: src/graph/kruskal.hpp
+    title: src/graph/kruskal.hpp
+  - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
@@ -34,8 +37,14 @@ data:
     path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
     title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+    title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
+    title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
@@ -96,17 +105,20 @@ data:
   - src/graph/strongly_connected_components.hpp
   - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
+  - src/graph/kruskal.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/library_checker/math/2_sat.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
+  - verify/library_checker/graph/minimum_spanning_tree.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph
