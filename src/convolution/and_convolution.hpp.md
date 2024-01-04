@@ -24,30 +24,30 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/zeta_transform.hpp\"\
     \ntemplate <typename T>\nvoid superset_zeta_transform(vector<T>& f, bool inv =\
-    \ true) {\n    int n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n    const\
-    \ int sign = inv ? 1 : -1;\n    for(int i = 1; i < n; i <<= 1) {\n        for(int\
+    \ false) {\n    int n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n    const\
+    \ int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i <<= 1) {\n        for(int\
     \ j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n                f[j] +=\
     \ sign * f[j | i];\n            }\n        }\n    }\n}\ntemplate <typename T>\n\
-    void subset_zeta_transform(vector<T>& f, bool inv = true) {\n    int n = (int)f.size();\n\
-    \    assert((n & (n - 1)) == 0);\n    const int sign = inv ? 1 : -1;\n    for(int\
+    void subset_zeta_transform(vector<T>& f, bool inv = false) {\n    int n = (int)f.size();\n\
+    \    assert((n & (n - 1)) == 0);\n    const int sign = inv ? -1 : 1;\n    for(int\
     \ i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n           \
     \ if((j & i) == 0) {\n                f[j | i] += f[j];\n            }\n     \
     \   }\n    }\n}\n#line 4 \"src/convolution/and_convolution.hpp\"\ntemplate <typename\
     \ T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n    superset_zeta_transform(a);\n\
     \    superset_zeta_transform(b);\n    for(int i = 0; i < (int)a.size(); ++i) a[i]\
-    \ *= b[i];\n    superset_zeta_transform(a, false);\n    return a;\n}\n"
+    \ *= b[i];\n    superset_zeta_transform(a, true);\n    return a;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../math/zeta_transform.hpp\"\
     \ntemplate <typename T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n\
     \    superset_zeta_transform(a);\n    superset_zeta_transform(b);\n    for(int\
     \ i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    superset_zeta_transform(a,\
-    \ false);\n    return a;\n}"
+    \ true);\n    return a;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/math/zeta_transform.hpp
   isVerificationFile: false
   path: src/convolution/and_convolution.hpp
   requiredBy: []
-  timestamp: '2024-01-04 23:45:50+09:00'
+  timestamp: '2024-01-05 00:03:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/math/and_convolution.test.cpp
