@@ -14,7 +14,7 @@ data:
       title: convolution_arbitrary
     - icon: ':warning:'
       path: src/convolution/or_convolution.hpp
-      title: src/convolution/or_convolution.hpp
+      title: or_convolution
   - name: src/data_structure
     pages:
     - icon: ':heavy_check_mark:'

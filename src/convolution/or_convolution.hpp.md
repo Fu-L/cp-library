@@ -49,8 +49,5 @@ data:
   verifiedWith: []
 documentation_of: src/convolution/or_convolution.hpp
 layout: document
-redirect_from:
-- /library/src/convolution/or_convolution.hpp
-- /library/src/convolution/or_convolution.hpp.html
-title: src/convolution/or_convolution.hpp
+title: or_convolution
 ---

@@ -10,7 +10,7 @@ data:
     title: and_convolution
   - icon: ':warning:'
     path: src/convolution/or_convolution.hpp
-    title: src/convolution/or_convolution.hpp
+    title: or_convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/and_convolution.test.cpp
