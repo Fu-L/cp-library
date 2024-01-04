@@ -195,6 +195,9 @@ data:
   - name: src/tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/tree/cartesian_tree.hpp
+      title: cartesian_tree
+    - icon: ':heavy_check_mark:'
       path: src/tree/lowest_common_ancestor.hpp
       title: LowestCommonAncestor
     - icon: ':heavy_check_mark:'
@@ -401,6 +404,9 @@ data:
       title: verify/library_checker/string/z_algorithm.test.cpp
   - name: verify/library_checker/tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/cartesian_tree.test.cpp
+      title: verify/library_checker/tree/cartesian_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
