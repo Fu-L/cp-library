@@ -57,6 +57,7 @@
 "verify/library_checker/string/number_of_substrings_2.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/string/suffix_array.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/string/z_algorithm.test.cpp": "2024-01-03 04:25:42 +0900",
+"verify/library_checker/tree/cartesian_tree.test.cpp": "2024-01-04 23:19:00 +0900",
 "verify/library_checker/tree/lowest_common_ancestor.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/tree/tree_diameter.test.cpp": "2024-01-03 23:04:37 +0900",
 "verify/yukicoder/186.test.cpp": "2024-01-04 22:56:05 +0900",
