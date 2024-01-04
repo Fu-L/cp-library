@@ -61,6 +61,9 @@ data:
     path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
     title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+    title: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
@@ -149,6 +152,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
+  - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp

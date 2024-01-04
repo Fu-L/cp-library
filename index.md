@@ -285,6 +285,9 @@ data:
       path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
       title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+      title: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
       title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - name: verify/aizu_online_judge/itp1

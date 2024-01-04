@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+    title: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
   _isVerificationFailed: false
@@ -67,6 +70,7 @@ data:
   timestamp: '2024-01-05 04:01:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document
