@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/convolution.hpp
+    path: src/convolution/convolution.hpp
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
@@ -67,7 +67,7 @@ data:
     \ = x;\n    }\n    for(int g = 2;; ++g) {\n        bool ok = true;\n        for(int\
     \ i = 0; i < cnt; ++i) {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1)\
     \ {\n                ok = false;\n                break;\n            }\n    \
-    \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/math/convolution.hpp\"\
+    \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\
     \nconstexpr int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n\
     \ & (1 << res))) ++res;\n    return res;\n}\ntemplate <typename mint, int g =\
     \ primitive_root(mint::mod())>\nstruct FFT_Info {\n    static constexpr int rank2\
@@ -288,7 +288,7 @@ data:
     \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
     \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
     \ i = 0; i < n; ++i) ret[i] *= ifact[i];\n        return ret;\n    }\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../math/convolution.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution.hpp\"\
     \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
     \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
     \ vector<mint>& g) {\n        const int n = (*this).size();\n        const int\
@@ -425,13 +425,13 @@ data:
     \       return ret;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
-  - src/math/convolution.hpp
+  - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: false
   path: src/fps/formal_power_series.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-01-04 23:50:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp

@@ -5,6 +5,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
+  - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution.hpp
+    title: convolution
+  - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution_arbitrary.hpp
+    title: convolution_arbitrary
   - icon: ':warning:'
     path: src/convolution/or_convolution.hpp
     title: src/convolution/or_convolution.hpp
@@ -113,12 +119,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/chinese_remainder_theorem.hpp
     title: chinese_remainder_theorem
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution.hpp
-    title: convolution
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution_arbitrary.hpp
-    title: convolution_arbitrary
   - icon: ':heavy_check_mark:'
     path: src/math/divisor.hpp
     title: divisor
@@ -405,7 +405,6 @@ data:
   path: src/template/template.hpp
   requiredBy:
   - src/math/miller_rabin.hpp
-  - src/math/convolution_arbitrary.hpp
   - src/math/prime_factorization.hpp
   - src/math/lucas.hpp
   - src/math/binomial.hpp
@@ -414,7 +413,6 @@ data:
   - src/math/zeta_transform.hpp
   - src/math/extgcd.hpp
   - src/math/inv_gcd.hpp
-  - src/math/convolution.hpp
   - src/math/seive.hpp
   - src/math/floor_sum.hpp
   - src/math/divisor.hpp
@@ -429,7 +427,9 @@ data:
   - src/fps/nth_term.hpp
   - src/fps/all_product.hpp
   - src/fps/formal_power_series.hpp
+  - src/convolution/convolution_arbitrary.hpp
   - src/convolution/or_convolution.hpp
+  - src/convolution/convolution.hpp
   - src/convolution/and_convolution.hpp
   - src/data_structure/weighted_union_find.hpp
   - src/data_structure/sparse_table_2d.hpp

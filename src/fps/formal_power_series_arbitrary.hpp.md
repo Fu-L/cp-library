@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/convolution.hpp
+    path: src/convolution/convolution.hpp
     title: convolution
   - icon: ':heavy_check_mark:'
-    path: src/math/convolution_arbitrary.hpp
+    path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
@@ -99,14 +99,14 @@ data:
     \ = 2;; ++g) {\n        bool ok = true;\n        for(int i = 0; i < cnt; ++i)\
     \ {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1) {\n               \
     \ ok = false;\n                break;\n            }\n        }\n        if(ok)\
-    \ return g;\n    }\n}\n#line 4 \"src/math/convolution.hpp\"\nconstexpr int countr_zero(unsigned\
-    \ int n) {\n    int res = 0;\n    while(!(n & (1 << res))) ++res;\n    return\
-    \ res;\n}\ntemplate <typename mint, int g = primitive_root(mint::mod())>\nstruct\
-    \ FFT_Info {\n    static constexpr int rank2 = countr_zero(mint::mod() - 1);\n\
-    \    array<mint, rank2 + 1> root;\n    array<mint, rank2 + 1> iroot;\n    array<mint,\
-    \ max(0, rank2 - 2 + 1)> rate2;\n    array<mint, max(0, rank2 - 2 + 1)> irate2;\n\
-    \    array<mint, max(0, rank2 - 3 + 1)> rate3;\n    array<mint, max(0, rank2 -\
-    \ 3 + 1)> irate3;\n    FFT_Info() {\n        root[rank2] = mint(g).pow((mint::mod()\
+    \ return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\nconstexpr\
+    \ int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n & (1 << res)))\
+    \ ++res;\n    return res;\n}\ntemplate <typename mint, int g = primitive_root(mint::mod())>\n\
+    struct FFT_Info {\n    static constexpr int rank2 = countr_zero(mint::mod() -\
+    \ 1);\n    array<mint, rank2 + 1> root;\n    array<mint, rank2 + 1> iroot;\n \
+    \   array<mint, max(0, rank2 - 2 + 1)> rate2;\n    array<mint, max(0, rank2 -\
+    \ 2 + 1)> irate2;\n    array<mint, max(0, rank2 - 3 + 1)> rate3;\n    array<mint,\
+    \ max(0, rank2 - 3 + 1)> irate3;\n    FFT_Info() {\n        root[rank2] = mint(g).pow((mint::mod()\
     \ - 1) >> rank2);\n        iroot[rank2] = root[rank2].inv();\n        for(int\
     \ i = rank2 - 1; i >= 0; --i) {\n            root[i] = root[i + 1] * root[i +\
     \ 1];\n            iroot[i] = iroot[i + 1] * iroot[i + 1];\n        }\n      \
@@ -186,14 +186,14 @@ data:
     \    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n    for(int i = 0; i\
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
     \   mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i] *= iz;\n\
-    \    return a;\n}\n#line 5 \"src/math/convolution_arbitrary.hpp\"\ntemplate <typename\
-    \ mint>\nvector<mint> convolution_arbitary(const vector<mint>& a, const vector<mint>&\
-    \ b) {\n    int n = (int)a.size(), m = (int)b.size();\n    static constexpr ll\
-    \ MOD1 = 754974721;\n    static constexpr ll MOD2 = 167772161;\n    static constexpr\
-    \ ll MOD3 = 469762049;\n    static constexpr ll M1_inv_M2 = 95869806;\n    static\
-    \ constexpr ll M12_inv_M3 = 187290749;\n    static constexpr ll M12_mod = MOD1\
-    \ * MOD2 % mint::mod();\n    using mint1 = StaticModint<(uint32_t)MOD1>;\n   \
-    \ using mint2 = StaticModint<(uint32_t)MOD2>;\n    using mint3 = StaticModint<(uint32_t)MOD3>;\n\
+    \    return a;\n}\n#line 5 \"src/convolution/convolution_arbitrary.hpp\"\ntemplate\
+    \ <typename mint>\nvector<mint> convolution_arbitary(const vector<mint>& a, const\
+    \ vector<mint>& b) {\n    int n = (int)a.size(), m = (int)b.size();\n    static\
+    \ constexpr ll MOD1 = 754974721;\n    static constexpr ll MOD2 = 167772161;\n\
+    \    static constexpr ll MOD3 = 469762049;\n    static constexpr ll M1_inv_M2\
+    \ = 95869806;\n    static constexpr ll M12_inv_M3 = 187290749;\n    static constexpr\
+    \ ll M12_mod = MOD1 * MOD2 % mint::mod();\n    using mint1 = StaticModint<(uint32_t)MOD1>;\n\
+    \    using mint2 = StaticModint<(uint32_t)MOD2>;\n    using mint3 = StaticModint<(uint32_t)MOD3>;\n\
     \    vector<mint1> a1(n), b1(m);\n    vector<mint2> a2(n), b2(m);\n    vector<mint3>\
     \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int\
     \ i = 0; i < n; ++i) a2[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i]\
@@ -300,7 +300,7 @@ data:
     \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
     \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
     \ i = 0; i < n; ++i) p[i] *= ifact[i];\n        return ret;\n    }\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../math/convolution_arbitrary.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_arbitrary.hpp\"\
     \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
     \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
     \ vector<mint>& g) {\n        const int n = (*this).size();\n        const int\
@@ -397,15 +397,15 @@ data:
     \ i = 0; i < n; ++i) p[i] *= ifact[i];\n        return ret;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
-  - src/math/convolution_arbitrary.hpp
+  - src/convolution/convolution_arbitrary.hpp
   - src/template/static_modint.hpp
-  - src/math/convolution.hpp
+  - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: false
   path: src/fps/formal_power_series_arbitrary.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-01-04 23:50:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/fps/formal_power_series_arbitrary.hpp

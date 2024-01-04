@@ -12,14 +12,14 @@ data:
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution_arbitrary.hpp
+    title: convolution_arbitrary
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: src/fps/formal_power_series.hpp
   - icon: ':warning:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution_arbitrary.hpp
-    title: convolution_arbitrary
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution.test.cpp
@@ -79,7 +79,7 @@ data:
     \ = x;\n    }\n    for(int g = 2;; ++g) {\n        bool ok = true;\n        for(int\
     \ i = 0; i < cnt; ++i) {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1)\
     \ {\n                ok = false;\n                break;\n            }\n    \
-    \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/math/convolution.hpp\"\
+    \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\
     \nconstexpr int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n\
     \ & (1 << res))) ++res;\n    return res;\n}\ntemplate <typename mint, int g =\
     \ primitive_root(mint::mod())>\nstruct FFT_Info {\n    static constexpr int rank2\
@@ -167,7 +167,7 @@ data:
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
     \   mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i] *= iz;\n\
     \    return a;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./primitive_root.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../math/primitive_root.hpp\"\
     \nconstexpr int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n\
     \ & (1 << res))) ++res;\n    return res;\n}\ntemplate <typename mint, int g =\
     \ primitive_root(mint::mod())>\nstruct FFT_Info {\n    static constexpr int rank2\
@@ -260,12 +260,12 @@ data:
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: false
-  path: src/math/convolution.hpp
+  path: src/convolution/convolution.hpp
   requiredBy:
-  - src/math/convolution_arbitrary.hpp
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series.hpp
-  timestamp: '2024-01-03 04:25:42+09:00'
+  - src/convolution/convolution_arbitrary.hpp
+  timestamp: '2024-01-04 23:50:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
@@ -279,7 +279,7 @@ data:
   - verify/library_checker/polynomial/division_of_polynomial.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
-documentation_of: src/math/convolution.hpp
+documentation_of: src/convolution/convolution.hpp
 layout: document
 title: convolution
 ---

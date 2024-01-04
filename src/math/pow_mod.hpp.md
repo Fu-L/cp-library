@@ -6,17 +6,17 @@ data:
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution.hpp
+    title: convolution
+  - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution_arbitrary.hpp
+    title: convolution_arbitrary
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: src/fps/formal_power_series.hpp
   - icon: ':warning:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution.hpp
-    title: convolution
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution_arbitrary.hpp
-    title: convolution_arbitrary
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
@@ -82,11 +82,11 @@ data:
   isVerificationFile: false
   path: src/math/pow_mod.hpp
   requiredBy:
-  - src/math/convolution_arbitrary.hpp
-  - src/math/convolution.hpp
   - src/math/primitive_root.hpp
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series.hpp
+  - src/convolution/convolution_arbitrary.hpp
+  - src/convolution/convolution.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

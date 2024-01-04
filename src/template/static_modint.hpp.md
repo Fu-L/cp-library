@@ -5,12 +5,12 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution_arbitrary.hpp
+    title: convolution_arbitrary
   - icon: ':warning:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution_arbitrary.hpp
-    title: convolution_arbitrary
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution.test.cpp
@@ -192,8 +192,8 @@ data:
   isVerificationFile: false
   path: src/template/static_modint.hpp
   requiredBy:
-  - src/math/convolution_arbitrary.hpp
   - src/fps/formal_power_series_arbitrary.hpp
+  - src/convolution/convolution_arbitrary.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution.hpp
+    title: convolution
+  - icon: ':heavy_check_mark:'
     path: src/fps/all_product.hpp
     title: src/fps/all_product.hpp
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: src/fps/formal_power_series.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/math/convolution.hpp
-    title: convolution
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
@@ -106,14 +106,14 @@ data:
     \ = 2;; ++g) {\n        bool ok = true;\n        for(int i = 0; i < cnt; ++i)\
     \ {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1) {\n               \
     \ ok = false;\n                break;\n            }\n        }\n        if(ok)\
-    \ return g;\n    }\n}\n#line 4 \"src/math/convolution.hpp\"\nconstexpr int countr_zero(unsigned\
-    \ int n) {\n    int res = 0;\n    while(!(n & (1 << res))) ++res;\n    return\
-    \ res;\n}\ntemplate <typename mint, int g = primitive_root(mint::mod())>\nstruct\
-    \ FFT_Info {\n    static constexpr int rank2 = countr_zero(mint::mod() - 1);\n\
-    \    array<mint, rank2 + 1> root;\n    array<mint, rank2 + 1> iroot;\n    array<mint,\
-    \ max(0, rank2 - 2 + 1)> rate2;\n    array<mint, max(0, rank2 - 2 + 1)> irate2;\n\
-    \    array<mint, max(0, rank2 - 3 + 1)> rate3;\n    array<mint, max(0, rank2 -\
-    \ 3 + 1)> irate3;\n    FFT_Info() {\n        root[rank2] = mint(g).pow((mint::mod()\
+    \ return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\nconstexpr\
+    \ int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n & (1 << res)))\
+    \ ++res;\n    return res;\n}\ntemplate <typename mint, int g = primitive_root(mint::mod())>\n\
+    struct FFT_Info {\n    static constexpr int rank2 = countr_zero(mint::mod() -\
+    \ 1);\n    array<mint, rank2 + 1> root;\n    array<mint, rank2 + 1> iroot;\n \
+    \   array<mint, max(0, rank2 - 2 + 1)> rate2;\n    array<mint, max(0, rank2 -\
+    \ 2 + 1)> irate2;\n    array<mint, max(0, rank2 - 3 + 1)> rate3;\n    array<mint,\
+    \ max(0, rank2 - 3 + 1)> irate3;\n    FFT_Info() {\n        root[rank2] = mint(g).pow((mint::mod()\
     \ - 1) >> rank2);\n        iroot[rank2] = root[rank2].inv();\n        for(int\
     \ i = rank2 - 1; i >= 0; --i) {\n            root[i] = root[i + 1] * root[i +\
     \ 1];\n            iroot[i] = iroot[i + 1] * iroot[i + 1];\n        }\n      \
@@ -354,14 +354,14 @@ data:
   - src/template/template.hpp
   - src/template/static_modint.hpp
   - src/fps/formal_power_series.hpp
-  - src/math/convolution.hpp
+  - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   - src/fps/all_product.hpp
   isVerificationFile: true
   path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-01-04 23:50:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp

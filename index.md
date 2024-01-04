@@ -6,6 +6,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/and_convolution.hpp
       title: and_convolution
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/convolution.hpp
+      title: convolution
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/convolution_arbitrary.hpp
+      title: convolution_arbitrary
     - icon: ':warning:'
       path: src/convolution/or_convolution.hpp
       title: src/convolution/or_convolution.hpp
@@ -124,12 +130,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/chinese_remainder_theorem.hpp
       title: chinese_remainder_theorem
-    - icon: ':heavy_check_mark:'
-      path: src/math/convolution.hpp
-      title: convolution
-    - icon: ':heavy_check_mark:'
-      path: src/math/convolution_arbitrary.hpp
-      title: convolution_arbitrary
     - icon: ':heavy_check_mark:'
       path: src/math/divisor.hpp
       title: divisor
