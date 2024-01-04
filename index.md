@@ -102,6 +102,9 @@ data:
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/graph/biconnected_components.hpp
+      title: BiconnectedComponents
+    - icon: ':heavy_check_mark:'
       path: src/graph/compressed_sparse_row.hpp
       title: CompressedSparseRow
     - icon: ':heavy_check_mark:'
@@ -110,6 +113,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/kruskal.hpp
       title: kruskal
+    - icon: ':heavy_check_mark:'
+      path: src/graph/low_link.hpp
+      title: LowLink
     - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: MaxFlow
@@ -122,6 +128,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/topological_sort.hpp
       title: topological_sort
+    - icon: ':heavy_check_mark:'
+      path: src/graph/two_edge_connected_components.hpp
+      title: TwoEdgeConnectedComponents
     - icon: ':heavy_check_mark:'
       path: src/graph/two_sat.hpp
       title: TwoSAT
@@ -246,8 +255,14 @@ data:
   - name: verify/aizu_online_judge/grl
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/articulation_points.test.cpp
+      title: verify/aizu_online_judge/grl/articulation_points.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
       title: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/bridges.test.cpp
+      title: verify/aizu_online_judge/grl/bridges.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
       title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
@@ -346,6 +361,9 @@ data:
       path: verify/library_checker/graph/assignment_problem.test.cpp
       title: verify/library_checker/graph/assignment_problem.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/biconnected_components.test.cpp
+      title: verify/library_checker/graph/biconnected_components.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
       title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     - icon: ':heavy_check_mark:'
@@ -354,6 +372,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/strongly_connected_components.test.cpp
       title: verify/library_checker/graph/strongly_connected_components.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/two_edge_connected_components.test.cpp
+      title: verify/library_checker/graph/two_edge_connected_components.test.cpp
   - name: verify/library_checker/math
     pages:
     - icon: ':heavy_check_mark:'

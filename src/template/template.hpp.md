@@ -93,6 +93,9 @@ data:
     path: src/geometry/point.hpp
     title: Point
   - icon: ':heavy_check_mark:'
+    path: src/graph/biconnected_components.hpp
+    title: BiconnectedComponents
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
@@ -101,6 +104,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
+  - icon: ':heavy_check_mark:'
+    path: src/graph/low_link.hpp
+    title: LowLink
   - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: MaxFlow
@@ -113,6 +119,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
+  - icon: ':heavy_check_mark:'
+    path: src/graph/two_edge_connected_components.hpp
+    title: TwoEdgeConnectedComponents
   - icon: ':heavy_check_mark:'
     path: src/graph/two_sat.hpp
     title: TwoSAT
@@ -217,8 +226,14 @@ data:
     path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
     title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/articulation_points.test.cpp
+    title: verify/aizu_online_judge/grl/articulation_points.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
     title: verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/bridges.test.cpp
+    title: verify/aizu_online_judge/grl/bridges.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
     title: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
@@ -307,6 +322,9 @@ data:
     path: verify/library_checker/graph/assignment_problem.test.cpp
     title: verify/library_checker/graph/assignment_problem.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/biconnected_components.test.cpp
+    title: verify/library_checker/graph/biconnected_components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - icon: ':heavy_check_mark:'
@@ -315,6 +333,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/two_edge_connected_components.test.cpp
+    title: verify/library_checker/graph/two_edge_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
@@ -468,9 +489,12 @@ data:
   - src/tree/tree_diameter.hpp
   - src/graph/graph_template.hpp
   - src/graph/min_cost_flow.hpp
+  - src/graph/biconnected_components.hpp
   - src/graph/max_flow.hpp
+  - src/graph/low_link.hpp
   - src/graph/topological_sort.hpp
   - src/graph/strongly_connected_components.hpp
+  - src/graph/two_edge_connected_components.hpp
   - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/graph/kruskal.hpp
@@ -484,12 +508,14 @@ data:
   - verify/aizu_online_judge/alds1/prime_numbers.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
+  - verify/aizu_online_judge/grl/articulation_points.test.cpp
   - verify/aizu_online_judge/grl/bipartite_matching.test.cpp
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+  - verify/aizu_online_judge/grl/bridges.test.cpp
   - verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
   - verify/aizu_online_judge/grl/maximum_flow.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
@@ -536,6 +562,8 @@ data:
   - verify/library_checker/tree/cartesian_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/graph/two_edge_connected_components.test.cpp
+  - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/assignment_problem.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
