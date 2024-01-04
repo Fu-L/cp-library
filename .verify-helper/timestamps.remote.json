@@ -14,6 +14,7 @@
 "verify/aizu_online_judge/grl/maximum_flow.test.cpp": "2024-01-03 23:17:14 +0900",
 "verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp": "2024-01-03 23:17:14 +0900",
 "verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp": "2024-01-05 00:27:33 +0900",
+"verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp": "2024-01-05 04:04:56 +0900",
 "verify/aizu_online_judge/grl/strongly_connected_components.test.cpp": "2024-01-05 00:27:33 +0900",
 "verify/aizu_online_judge/itp1/how_many_divisors.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp": "2024-01-03 04:25:42 +0900",
