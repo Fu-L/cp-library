@@ -40,6 +40,7 @@
 "verify/library_checker/graph/biconnected_components.test.cpp": "2024-01-05 02:58:47 +0900",
 "verify/library_checker/graph/matching_on_bipartite_graph.test.cpp": "2024-01-03 23:23:43 +0900",
 "verify/library_checker/graph/minimum_spanning_tree.test.cpp": "2024-01-05 00:27:33 +0900",
+"verify/library_checker/graph/shortest_path.test.cpp": "2024-01-05 04:01:43 +0900",
 "verify/library_checker/graph/strongly_connected_components.test.cpp": "2024-01-05 00:27:33 +0900",
 "verify/library_checker/graph/two_edge_connected_components.test.cpp": "2024-01-05 02:58:47 +0900",
 "verify/library_checker/math/2_sat.test.cpp": "2024-01-05 00:27:33 +0900",
