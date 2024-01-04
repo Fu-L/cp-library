@@ -15,6 +15,9 @@ data:
     path: src/convolution/or_convolution.hpp
     title: or_convolution
   - icon: ':heavy_check_mark:'
+    path: src/convolution/xor_convolution.hpp
+    title: xor_convolution
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/binary_trie.hpp
     title: BinaryTrie
   - icon: ':warning:'
@@ -162,6 +165,9 @@ data:
     path: src/math/seive.hpp
     title: seive
   - icon: ':heavy_check_mark:'
+    path: src/math/walsh_hadamard_transform.hpp
+    title: walsh_hadamard_transform
+  - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':heavy_check_mark:'
@@ -250,6 +256,12 @@ data:
     path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
     title: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+    title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+    title: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution.test.cpp
     title: verify/library_checker/convolution/convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -306,9 +318,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/and_convolution.test.cpp
-    title: verify/library_checker/math/and_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
@@ -408,6 +417,7 @@ data:
   - src/math/prime_factorization.hpp
   - src/math/lucas.hpp
   - src/math/binomial.hpp
+  - src/math/walsh_hadamard_transform.hpp
   - src/math/chinese_remainder_theorem.hpp
   - src/math/log_mod.hpp
   - src/math/zeta_transform.hpp
@@ -431,6 +441,7 @@ data:
   - src/convolution/or_convolution.hpp
   - src/convolution/convolution.hpp
   - src/convolution/and_convolution.hpp
+  - src/convolution/xor_convolution.hpp
   - src/data_structure/weighted_union_find.hpp
   - src/data_structure/sparse_table_2d.hpp
   - src/data_structure/lazy_segment_tree.hpp
@@ -497,11 +508,12 @@ data:
   - verify/library_checker/math/find_linear_recurrence.test.cpp
   - verify/library_checker/math/sum_of_floor_of_linear.test.cpp
   - verify/library_checker/math/2_sat.test.cpp
-  - verify/library_checker/math/and_convolution.test.cpp
   - verify/library_checker/math/discrete_logarithm.test.cpp
   - verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
+  - verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+  - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp
   - verify/library_checker/data_structure/static_rmq.test.cpp

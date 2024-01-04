@@ -15,6 +15,9 @@ data:
     - icon: ':warning:'
       path: src/convolution/or_convolution.hpp
       title: or_convolution
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/xor_convolution.hpp
+      title: xor_convolution
   - name: src/data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -173,6 +176,9 @@ data:
       path: src/math/seive.hpp
       title: seive
     - icon: ':heavy_check_mark:'
+      path: src/math/walsh_hadamard_transform.hpp
+      title: walsh_hadamard_transform
+    - icon: ':heavy_check_mark:'
       path: src/math/zeta_transform.hpp
       title: zeta_transform
   - name: src/string
@@ -285,6 +291,12 @@ data:
   - name: verify/library_checker/convolution
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+      title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+      title: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/convolution/convolution.test.cpp
       title: verify/library_checker/convolution/convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -347,9 +359,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/math/2_sat.test.cpp
       title: verify/library_checker/math/2_sat.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/and_convolution.test.cpp
-      title: verify/library_checker/math/and_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
       title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp

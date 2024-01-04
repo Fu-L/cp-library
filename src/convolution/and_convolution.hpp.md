@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/and_convolution.test.cpp
-    title: verify/library_checker/math/and_convolution.test.cpp
+    path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+    title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
   timestamp: '2024-01-05 00:03:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/math/and_convolution.test.cpp
+  - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
 documentation_of: src/convolution/and_convolution.hpp
 layout: document
 title: and_convolution

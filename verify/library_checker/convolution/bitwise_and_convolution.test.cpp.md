@@ -23,8 +23,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
     links:
     - https://judge.yosupo.jp/problem/bitwise_and_convolution
-  bundledCode: "#line 1 \"verify/library_checker/math/and_convolution.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\
+  bundledCode: "#line 1 \"verify/library_checker/convolution/bitwise_and_convolution.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
     \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
@@ -95,7 +95,7 @@ data:
     \ntemplate <typename T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n\
     \    superset_zeta_transform(a);\n    superset_zeta_transform(b);\n    for(int\
     \ i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    superset_zeta_transform(a,\
-    \ true);\n    return a;\n}\n#line 5 \"verify/library_checker/math/and_convolution.test.cpp\"\
+    \ true);\n    return a;\n}\n#line 5 \"verify/library_checker/convolution/bitwise_and_convolution.test.cpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
     \    vector<mint> a(1 << n), b(1 << n);\n    rep(i, 0, 1 << n) cin >> a[i];\n\
     \    rep(i, 0, 1 << n) cin >> b[i];\n    vector<mint> c = and_convolution(a, b);\n\
@@ -113,15 +113,15 @@ data:
   - src/convolution/and_convolution.hpp
   - src/math/zeta_transform.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/and_convolution.test.cpp
+  path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-01-05 00:03:06+09:00'
+  timestamp: '2024-01-05 00:10:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/and_convolution.test.cpp
+documentation_of: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/and_convolution.test.cpp
-- /verify/verify/library_checker/math/and_convolution.test.cpp.html
-title: verify/library_checker/math/and_convolution.test.cpp
+- /verify/verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+- /verify/verify/library_checker/convolution/bitwise_and_convolution.test.cpp.html
+title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
 ---
