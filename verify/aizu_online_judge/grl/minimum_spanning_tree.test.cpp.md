@@ -31,10 +31,11 @@ data:
     \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T = int>\nstruct\
-    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge(int from, int\
-    \ to, T cost = 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
-    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
-    \ T = int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n    Graph(int\
+    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        :\
+    \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, T cost =\
+    \ 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n  \
+    \  operator int() const {\n        return to;\n    }\n};\ntemplate <typename T\
+    \ = int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n    Graph(int\
     \ n)\n        : g(n), es(0) {}\n    size_t size() const {\n        return g.size();\n\
     \    }\n    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
     \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
@@ -67,16 +68,15 @@ data:
     \    res.reserve(n - 1);\n    for(const auto& e : es) {\n        if(uf.same(e.from,\
     \ e.to)) continue;\n        cost += e.cost;\n        uf.merge(e.from, e.to);\n\
     \        res.emplace_back(e);\n    }\n    return {cost, res};\n}\n#line 5 \"verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp\"\
-    \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Edges<int> e;\n   \
-    \ e.reserve(m);\n    rep(i, 0, m) {\n        int a, b, c;\n        cin >> a >>\
-    \ b >> c;\n        e.emplace_back(a, b, c, i);\n    }\n    cout << kruskal(n,\
-    \ e).first << '\\n';\n}\n"
+    \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Edges<int> e(m);\n\
+    \    rep(i, 0, m) {\n        cin >> e[i].from >> e[i].to >> e[i].cost;\n     \
+    \   e[i].idx = i;\n    }\n    cout << kruskal(n, e).first << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
     \n#include \"../../../src/graph/kruskal.hpp\"\nint main(void) {\n    int n, m;\n\
-    \    cin >> n >> m;\n    Edges<int> e;\n    e.reserve(m);\n    rep(i, 0, m) {\n\
-    \        int a, b, c;\n        cin >> a >> b >> c;\n        e.emplace_back(a,\
-    \ b, c, i);\n    }\n    cout << kruskal(n, e).first << '\\n';\n}"
+    \    cin >> n >> m;\n    Edges<int> e(m);\n    rep(i, 0, m) {\n        cin >>\
+    \ e[i].from >> e[i].to >> e[i].cost;\n        e[i].idx = i;\n    }\n    cout <<\
+    \ kruskal(n, e).first << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -85,7 +85,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-01-04 22:45:10+09:00'
+  timestamp: '2024-01-05 00:27:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp

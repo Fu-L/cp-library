@@ -28,10 +28,11 @@ data:
     \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T = int>\nstruct\
-    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge(int from, int\
-    \ to, T cost = 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
-    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
-    \ T = int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n    Graph(int\
+    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        :\
+    \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, T cost =\
+    \ 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n  \
+    \  operator int() const {\n        return to;\n    }\n};\ntemplate <typename T\
+    \ = int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n    Graph(int\
     \ n)\n        : g(n), es(0) {}\n    size_t size() const {\n        return g.size();\n\
     \    }\n    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
     \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
@@ -70,7 +71,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 22:50:06+09:00'
+  timestamp: '2024-01-05 00:27:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
