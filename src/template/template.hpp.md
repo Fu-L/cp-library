@@ -99,6 +99,9 @@ data:
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
+    path: src/graph/cycle_detection.hpp
+    title: cycle_detection
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
   - icon: ':heavy_check_mark:'
@@ -331,6 +334,12 @@ data:
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/cycle_detection_directed.test.cpp
+    title: verify/library_checker/graph/cycle_detection_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
+    title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - icon: ':heavy_check_mark:'
@@ -508,6 +517,7 @@ data:
   - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/graph/kruskal.hpp
+  - src/graph/cycle_detection.hpp
   - src/geometry/point.hpp
   - src/string/rolling_hash.hpp
   - src/string/suffix_array.hpp
@@ -573,6 +583,7 @@ data:
   - verify/library_checker/tree/cartesian_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/graph/cycle_detection_directed.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/biconnected_components.test.cpp
@@ -580,6 +591,7 @@ data:
   - verify/library_checker/graph/assignment_problem.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+  - verify/library_checker/graph/cycle_detection_undirected.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp
   - verify/library_checker/string/number_of_substrings_2.test.cpp
   - verify/library_checker/string/suffix_array.test.cpp

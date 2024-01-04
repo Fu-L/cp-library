@@ -12,6 +12,9 @@ data:
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
+    path: src/graph/cycle_detection.hpp
+    title: cycle_detection
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
   - icon: ':heavy_check_mark:'
@@ -69,6 +72,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/cycle_detection_directed.test.cpp
+    title: verify/library_checker/graph/cycle_detection_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
+    title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
@@ -148,6 +157,7 @@ data:
   - src/graph/two_sat.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/graph/kruskal.hpp
+  - src/graph/cycle_detection.hpp
   timestamp: '2024-01-05 00:27:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -163,11 +173,13 @@ data:
   - verify/library_checker/tree/cartesian_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/graph/cycle_detection_directed.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
+  - verify/library_checker/graph/cycle_detection_undirected.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

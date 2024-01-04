@@ -108,6 +108,9 @@ data:
       path: src/graph/compressed_sparse_row.hpp
       title: CompressedSparseRow
     - icon: ':heavy_check_mark:'
+      path: src/graph/cycle_detection.hpp
+      title: cycle_detection
+    - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: dijkstra
     - icon: ':heavy_check_mark:'
@@ -369,6 +372,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/biconnected_components.test.cpp
       title: verify/library_checker/graph/biconnected_components.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/cycle_detection_directed.test.cpp
+      title: verify/library_checker/graph/cycle_detection_directed.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
+      title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
       title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
