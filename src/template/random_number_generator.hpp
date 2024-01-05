@@ -62,6 +62,8 @@ struct RandomNumberGenerator {
     }
     inline pair<vector<int>, vector<int>> tree(const int n, const bool one = true) {
         assert(1 <= n and n <= (int)2e5);
+        if(n == 1) return {{}, {}};
+        if(n == 2) return {{0 + one}, {1 + one}};
         vector<int> u(n - 1), v(n - 1);
         vector<ll> pruefer = vec(n - 2, 0, n - 1);
         set<int> st;
