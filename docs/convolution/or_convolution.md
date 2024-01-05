@@ -3,6 +3,8 @@ title: or_convolution
 documentation_of: ../../src/convolution/or_convolution.hpp
 ---
 
+## or_convolution
+
 ```cpp
 vector<T> or_convolution(vector<T> a, vector<T> b)
 ```

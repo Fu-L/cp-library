@@ -3,6 +3,8 @@ title: xor_convolution
 documentation_of: ../../src/convolution/xor_convolution.hpp
 ---
 
+## xor_convolution
+
 ```cpp
 vector<T> xor_convolution(vector<T> a, vector<T> b)
 ```

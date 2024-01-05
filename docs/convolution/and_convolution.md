@@ -3,6 +3,8 @@ title: and_convolution
 documentation_of: ../../src/convolution/and_convolution.hpp
 ---
 
+## and_convolution
+
 ```cpp
 vector<T> and_convolution(vector<T> a, vector<T> b)
 ```
