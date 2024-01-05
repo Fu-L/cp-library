@@ -177,7 +177,7 @@ struct RandomNumberGenerator {
             edge.reserve(n * (n - 1) / 2 - (n - 1));
             for(int i = 0; i < n; ++i) {
                 for(int j = i + 1; j < n; ++j) {
-                    if(!used.contains({i, j})) edge.push_back({i, j});
+                    if(used.find({i, j}) == used.end()) edge.push_back({i, j});
                 }
             }
             vector<int> p = perm(n * (n - 1) / 2 - (n - 1), false);
