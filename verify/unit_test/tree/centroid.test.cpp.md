@@ -2,14 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/sparse_table_2d.hpp
-    title: SparseTable2D
+    path: src/graph/graph_template.hpp
+    title: Graph
   - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
+  - icon: ':heavy_check_mark:'
+    path: src/tree/centroid.hpp
+    title: centroid
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,8 +23,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
+  bundledCode: "#line 1 \"verify/unit_test/tree/centroid.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
     \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
@@ -133,68 +136,89 @@ data:
     \ (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"(\";\n      \
     \          --M;\n            } else {\n                res += \")\";\n       \
     \         --N;\n            }\n        }\n        return res;\n    }\n} rng;\n\
-    #line 3 \"src/data_structure/sparse_table_2d.hpp\"\ntemplate <typename S, auto\
-    \ op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const vector<vector<S>>&\
-    \ v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {\n\
-    \        rep(i, 2, (int)LOG.size()) LOG[i] = LOG[i / 2] + 1;\n        table =\
-    \ vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
-    \ + 1, vector<vector<S>>(h, vector<S>(w, e()))));\n        for(int i = 0; i <\
-    \ h; ++i) {\n            for(int j = 0; j < w; ++j) {\n                table[0][0][i][j]\
-    \ = v[i][j];\n            }\n        }\n        for(int i = 0; i <= LOG[h]; ++i)\
-    \ {\n            for(int j = 0; j <= LOG[w]; ++j) {\n                for(int x\
-    \ = 0; x < h; ++x) {\n                    for(int y = 0; y < w; ++y) {\n     \
-    \                   if(i < LOG[h]) table[i + 1][j][x][y] = op(table[i][j][x][y],\
-    \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
-    \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
-    \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S query(int lx, int rx,\
-    \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
-    \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
-    \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
-    \ - ly];\n        return op(op(table[kx][ky][lx][ly], table[kx][ky][rx - (1 <<\
-    \ kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx - (1 << kx)][ry\
-    \ - (1 << ky)]));\n    }\n\n   private:\n    int h, w;\n    vector<vector<vector<vector<S>>>>\
-    \ table;\n    vector<int> LOG;\n};\n#line 5 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
-    \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
-    }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
-    \ a(h, vector<int>(w));\n    rep(i, 0, h) {\n        rep(j, 0, w) {\n        \
-    \    a[i][j] = rng(0, (int)1e9);\n        }\n    }\n    SparseTable2D<int, op,\
-    \ e> st(a);\n    int query_num = 1000;\n    while(query_num--) {\n        int\
-    \ xl = rng(0, h), xr = rng(xl, h);\n        int yl = rng(0, w), yr = rng(yl, w);\n\
-    \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
-    \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
-    \       }\n        assert(st.query(xl, xr, yl, yr) == expected);\n    }\n}\nint\
-    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
-    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
-    \ << '\\n';\n}\n"
+    #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T = int>\nstruct\
+    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        :\
+    \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, T cost =\
+    \ 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n  \
+    \  operator int() const {\n        return to;\n    }\n};\ntemplate <typename T\
+    \ = int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n    Graph(int\
+    \ n)\n        : g(n), es(0) {}\n    size_t size() const {\n        return g.size();\n\
+    \    }\n    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
+    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
+    \   void add_directed_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
+    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
+    \ {\n        return g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const\
+    \ int& k) const {\n        return g[k];\n    }\n};\ntemplate <typename T = int>\n\
+    using Edges = vector<Edge<T>>;\n#line 4 \"src/tree/centroid.hpp\"\ntemplate <typename\
+    \ T>\nvector<int> centroid(const Graph<T>& g) {\n    int n = (int)g.size();\n\
+    \    stack<pair<int, int>> st;\n    st.emplace(0, -1);\n    vector<int> sz(n),\
+    \ par(n);\n    while(!st.empty()) {\n        pair<int, int> p = st.top();\n  \
+    \      if(sz[p.first] == 0) {\n            sz[p.first] = 1;\n            for(const\
+    \ Edge<T>& e : g[p.first]) {\n                if(e.to != p.second) {\n       \
+    \             st.emplace(e.to, p.first);\n                }\n            }\n \
+    \       } else {\n            for(const Edge<T>& e : g[p.first]) {\n         \
+    \       if(e.to != p.second) {\n                    sz[p.first] += sz[e.to];\n\
+    \                }\n            }\n            par[p.first] = p.second;\n    \
+    \        st.pop();\n        }\n    }\n    vector<int> ret;\n    int size = n;\n\
+    \    for(int i = 0; i < n; ++i) {\n        int val = n - sz[i];\n        for(const\
+    \ Edge<T>& e : g[i]) {\n            if(e.to != par[i]) {\n                val\
+    \ = max(val, sz[e.to]);\n            }\n        }\n        if(val < size) size\
+    \ = val, ret.clear();\n        if(val == size) ret.emplace_back(i);\n    }\n \
+    \   return ret;\n}\n#line 6 \"verify/unit_test/tree/centroid.test.cpp\"\nvoid\
+    \ test() {\n    int n = rng(2, 1000);\n    auto [u, v] = rng.tree(n, false);\n\
+    \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        g.add_edge(u[i], v[i]);\n\
+    \    }\n    vector<bool> visited(n);\n    auto dfs = [&](auto& dfs, int cur, int\
+    \ root, bool is_centroid) -> int {\n        visited[cur] = true;\n        vector<int>\
+    \ sub;\n        int sum = 1;\n        for(const auto& e : g[cur]) {\n        \
+    \    if(visited[e.to]) continue;\n            sub.push_back(dfs(dfs, e.to, root,\
+    \ is_centroid));\n            sum += sub.back();\n        }\n        if(cur ==\
+    \ root) {\n            if(is_centroid) {\n                for(const int val :\
+    \ sub) {\n                    assert(2 * val <= n);\n                }\n     \
+    \       } else {\n                bool flag = false;\n                for(const\
+    \ int val : sub) {\n                    if(2 * val > n) flag = true;\n       \
+    \         }\n                assert(flag);\n            }\n        }\n       \
+    \ visited[cur] = false;\n        return sum;\n    };\n    vector<int> cent = centroid(g);\n\
+    \    rep(i, 0, n) {\n        bool is_centroid = false;\n        for(const int\
+    \ x : cent) {\n            if(i == x) is_centroid = true;\n        }\n       \
+    \ dfs(dfs, i, i, is_centroid);\n    }\n}\nint main(void) {\n    constexpr int\
+    \ test_num = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int\
+    \ a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/data_structure/sparse_table_2d.hpp\"\nint op(int a, int b) {\n  \
-    \  return min(a, b);\n}\nint e() {\n    return (int)1e9;\n}\nvoid test() {\n \
-    \   int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>> a(h, vector<int>(w));\n\
-    \    rep(i, 0, h) {\n        rep(j, 0, w) {\n            a[i][j] = rng(0, (int)1e9);\n\
-    \        }\n    }\n    SparseTable2D<int, op, e> st(a);\n    int query_num = 1000;\n\
-    \    while(query_num--) {\n        int xl = rng(0, h), xr = rng(xl, h);\n    \
-    \    int yl = rng(0, w), yr = rng(yl, w);\n        int expected = 1e9;\n     \
-    \   rep(i, xl, xr) {\n            rep(j, yl, yr) {\n                expected =\
-    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.query(xl,\
-    \ xr, yl, yr) == expected);\n    }\n}\nint main(void) {\n    constexpr int test_num\
-    \ = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int a, b;\n \
-    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    ../../../src/graph/graph_template.hpp\"\n#include \"../../../src/tree/centroid.hpp\"\
+    \nvoid test() {\n    int n = rng(2, 1000);\n    auto [u, v] = rng.tree(n, false);\n\
+    \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        g.add_edge(u[i], v[i]);\n\
+    \    }\n    vector<bool> visited(n);\n    auto dfs = [&](auto& dfs, int cur, int\
+    \ root, bool is_centroid) -> int {\n        visited[cur] = true;\n        vector<int>\
+    \ sub;\n        int sum = 1;\n        for(const auto& e : g[cur]) {\n        \
+    \    if(visited[e.to]) continue;\n            sub.push_back(dfs(dfs, e.to, root,\
+    \ is_centroid));\n            sum += sub.back();\n        }\n        if(cur ==\
+    \ root) {\n            if(is_centroid) {\n                for(const int val :\
+    \ sub) {\n                    assert(2 * val <= n);\n                }\n     \
+    \       } else {\n                bool flag = false;\n                for(const\
+    \ int val : sub) {\n                    if(2 * val > n) flag = true;\n       \
+    \         }\n                assert(flag);\n            }\n        }\n       \
+    \ visited[cur] = false;\n        return sum;\n    };\n    vector<int> cent = centroid(g);\n\
+    \    rep(i, 0, n) {\n        bool is_centroid = false;\n        for(const int\
+    \ x : cent) {\n            if(i == x) is_centroid = true;\n        }\n       \
+    \ dfs(dfs, i, i, is_centroid);\n    }\n}\nint main(void) {\n    constexpr int\
+    \ test_num = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int\
+    \ a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
-  - src/data_structure/sparse_table_2d.hpp
+  - src/graph/graph_template.hpp
+  - src/tree/centroid.hpp
   isVerificationFile: true
-  path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  path: verify/unit_test/tree/centroid.test.cpp
   requiredBy: []
   timestamp: '2024-01-06 02:59:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+documentation_of: verify/unit_test/tree/centroid.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp
-- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp.html
-title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+- /verify/verify/unit_test/tree/centroid.test.cpp
+- /verify/verify/unit_test/tree/centroid.test.cpp.html
+title: verify/unit_test/tree/centroid.test.cpp
 ---

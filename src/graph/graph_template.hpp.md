@@ -38,7 +38,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid.hpp
     title: centroid
   - icon: ':heavy_check_mark:'
@@ -111,6 +111,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/centroid.test.cpp
+    title: verify/unit_test/tree/centroid.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -192,6 +195,7 @@ data:
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - verify/library_checker/graph/cycle_detection_undirected.test.cpp
+  - verify/unit_test/tree/centroid.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

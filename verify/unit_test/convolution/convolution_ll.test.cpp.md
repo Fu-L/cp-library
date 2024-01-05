@@ -70,12 +70,13 @@ data:
     \ < n; ++i) res[i] = i + one;\n        for(int i = n - 1; i > 0; --i) {\n    \
     \        swap(res[i], res[num(0, i)]);\n        }\n        return res;\n    }\n\
     \    inline pair<vector<int>, vector<int>> tree(const int n, const bool one =\
-    \ true) {\n        assert(1 <= n and n <= (int)2e5);\n        vector<int> u(n\
-    \ - 1), v(n - 1);\n        vector<ll> pruefer = vec(n - 2, 0, n - 1);\n      \
-    \  set<int> st;\n        vector<int> cnt(n);\n        for(int i = 0; i < n; ++i)\
-    \ st.insert(i);\n        auto add = [&](int x) -> void {\n            if(x > n)\
-    \ return;\n            if(cnt[x] == 0) st.erase(x);\n            ++cnt[x];\n \
-    \       };\n        auto del = [&](int x) -> void {\n            if(x > n) return;\n\
+    \ true) {\n        assert(1 <= n and n <= (int)2e5);\n        if(n == 1) return\
+    \ {{}, {}};\n        if(n == 2) return {{0 + one}, {1 + one}};\n        vector<int>\
+    \ u(n - 1), v(n - 1);\n        vector<ll> pruefer = vec(n - 2, 0, n - 1);\n  \
+    \      set<int> st;\n        vector<int> cnt(n);\n        for(int i = 0; i < n;\
+    \ ++i) st.insert(i);\n        auto add = [&](int x) -> void {\n            if(x\
+    \ > n) return;\n            if(cnt[x] == 0) st.erase(x);\n            ++cnt[x];\n\
+    \        };\n        auto del = [&](int x) -> void {\n            if(x > n) return;\n\
     \            --cnt[x];\n            if(cnt[x] == 0) st.insert(x);\n        };\n\
     \        for(int i = 0; i < n - 2; ++i) add(pruefer[i]);\n        for(int i =\
     \ 0; i < n - 2; ++i) {\n            int a = *st.begin();\n            int b =\
@@ -359,7 +360,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2024-01-06 00:23:09+09:00'
+  timestamp: '2024-01-06 02:59:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp

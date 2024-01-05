@@ -212,7 +212,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid.hpp
     title: centroid
   - icon: ':heavy_check_mark:'
@@ -448,6 +448,9 @@ data:
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/centroid.test.cpp
+    title: verify/unit_test/tree/centroid.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
   - icon: ':heavy_check_mark:'
@@ -626,6 +629,7 @@ data:
   - verify/yukicoder/649.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - verify/unit_test/tree/centroid.test.cpp
 documentation_of: src/template/template.hpp
 layout: document
 title: template

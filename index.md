@@ -235,7 +235,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: cartesian_tree
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/centroid.hpp
       title: centroid
     - icon: ':heavy_check_mark:'
@@ -500,6 +500,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
       title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - name: verify/unit_test/tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/tree/centroid.test.cpp
+      title: verify/unit_test/tree/centroid.test.cpp
   - name: verify/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

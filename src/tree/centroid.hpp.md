@@ -8,10 +8,13 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/centroid.test.cpp
+    title: verify/unit_test/tree/centroid.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -71,8 +74,9 @@ data:
   path: src/tree/centroid.hpp
   requiredBy: []
   timestamp: '2024-01-06 02:37:03+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/unit_test/tree/centroid.test.cpp
 documentation_of: src/tree/centroid.hpp
 layout: document
 title: centroid
