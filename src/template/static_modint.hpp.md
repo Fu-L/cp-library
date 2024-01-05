@@ -1,13 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
+  - icon: ':x:'
+    path: src/convolution/convolution_ll.hpp
+    title: convolution_ll
   - icon: ':warning:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
@@ -75,9 +78,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/unit_test/convolution/convolution_ll.test.cpp
+    title: verify/unit_test/convolution/convolution_ll.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -197,8 +203,9 @@ data:
   requiredBy:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/convolution/convolution_arbitrary.hpp
+  - src/convolution/convolution_ll.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/matrix/matrix_product.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
@@ -221,6 +228,7 @@ data:
   - verify/library_checker/polynomial/division_of_polynomial.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
+  - verify/unit_test/convolution/convolution_ll.test.cpp
 documentation_of: src/template/static_modint.hpp
 layout: document
 title: StaticModint

@@ -5,12 +5,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
+  - icon: ':x:'
+    path: src/convolution/convolution_ll.hpp
+    title: convolution_ll
   - icon: ':warning:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
@@ -167,13 +170,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/pow_mod.hpp
     title: pow_mod
   - icon: ':heavy_check_mark:'
     path: src/math/prime_factorization.hpp
     title: prime_factor
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':heavy_check_mark:'
@@ -197,10 +200,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
@@ -426,6 +429,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/convolution/convolution_ll.test.cpp
+    title: verify/unit_test/convolution/convolution_ll.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
@@ -435,9 +441,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -481,6 +487,7 @@ data:
   - src/fps/formal_power_series.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/or_convolution.hpp
+  - src/convolution/convolution_ll.hpp
   - src/convolution/convolution.hpp
   - src/convolution/and_convolution.hpp
   - src/convolution/xor_convolution.hpp
@@ -526,7 +533,7 @@ data:
   - src/string/suffix_array.hpp
   - src/string/z_algorithm.hpp
   timestamp: '2023-12-31 01:05:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aizu_online_judge/alds1/prime_numbers.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
@@ -601,6 +608,7 @@ data:
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/yukicoder/186.test.cpp
   - verify/yukicoder/649.test.cpp
+  - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
 documentation_of: src/template/template.hpp
 layout: document

@@ -1,23 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
+  - icon: ':x:'
+    path: src/convolution/convolution_ll.hpp
+    title: convolution_ll
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: src/fps/formal_power_series.hpp
   - icon: ':warning:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
   _extendedVerifiedWith:
@@ -57,9 +60,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/unit_test/convolution/convolution_ll.test.cpp
+    title: verify/unit_test/convolution/convolution_ll.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -86,9 +92,10 @@ data:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series.hpp
   - src/convolution/convolution_arbitrary.hpp
+  - src/convolution/convolution_ll.hpp
   - src/convolution/convolution.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aizu_online_judge/ntl/power.test.cpp
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
@@ -102,6 +109,7 @@ data:
   - verify/library_checker/polynomial/division_of_polynomial.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
+  - verify/unit_test/convolution/convolution_ll.test.cpp
 documentation_of: src/math/pow_mod.hpp
 layout: document
 title: pow_mod

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/bostan_mori.hpp
     title: src/fps/bostan_mori.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
