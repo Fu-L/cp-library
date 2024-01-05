@@ -299,7 +299,7 @@ data:
     \ ret[i] *= fact[i];\n        ret = ret.rev();\n        F bs(n, mint(1));\n  \
     \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
     \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
-    \ i = 0; i < n; ++i) p[i] *= ifact[i];\n        return ret;\n    }\n};\n"
+    \ i = 0; i < n; ++i) ret[i] *= ifact[i];\n        return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_arbitrary.hpp\"\
     \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
     \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
@@ -394,7 +394,7 @@ data:
     \ ret[i] *= fact[i];\n        ret = ret.rev();\n        F bs(n, mint(1));\n  \
     \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
     \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
-    \ i = 0; i < n; ++i) p[i] *= ifact[i];\n        return ret;\n    }\n};"
+    \ i = 0; i < n; ++i) ret[i] *= ifact[i];\n        return ret;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   - src/convolution/convolution_arbitrary.hpp
@@ -405,7 +405,7 @@ data:
   isVerificationFile: false
   path: src/fps/formal_power_series_arbitrary.hpp
   requiredBy: []
-  timestamp: '2024-01-04 23:50:33+09:00'
+  timestamp: '2024-01-05 14:38:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/fps/formal_power_series_arbitrary.hpp
