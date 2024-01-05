@@ -223,7 +223,7 @@ struct FormalPowerSeries : vector<mint> {
         for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i - 1];
         ret = (ret * bs).pre(n);
         ret = ret.rev();
-        for(int i = 0; i < n; ++i) p[i] *= ifact[i];
+        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];
         return ret;
     }
 };
