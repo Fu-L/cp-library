@@ -427,8 +427,8 @@ data:
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/unit_test/sparse_table_2d.test.cpp
-    title: verify/unit_test/sparse_table_2d.test.cpp
+    path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+    title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
@@ -601,7 +601,7 @@ data:
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/yukicoder/186.test.cpp
   - verify/yukicoder/649.test.cpp
-  - verify/unit_test/sparse_table_2d.test.cpp
+  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
 documentation_of: src/template/template.hpp
 layout: document
 title: template

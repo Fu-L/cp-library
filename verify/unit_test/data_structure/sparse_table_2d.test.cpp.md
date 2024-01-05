@@ -20,8 +20,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"verify/unit_test/sparse_table_2d.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
+  bundledCode: "#line 1 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
     \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
@@ -153,7 +153,7 @@ data:
     \ - ly];\n        return op(op(table[kx][ky][lx][ly], table[kx][ky][rx - (1 <<\
     \ kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx - (1 << kx)][ry\
     \ - (1 << ky)]));\n    }\n\n   private:\n    int h, w;\n    vector<vector<vector<vector<S>>>>\
-    \ table;\n    vector<int> LOG;\n};\n#line 5 \"verify/unit_test/sparse_table_2d.test.cpp\"\
+    \ table;\n    vector<int> LOG;\n};\n#line 5 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
     \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
     }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
     \ a(h, vector<int>(w));\n    rep(i, 0, h) {\n        rep(j, 0, w) {\n        \
@@ -166,34 +166,34 @@ data:
     \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
     \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
     \ << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../src/template/template.hpp\"\
-    \n#include \"../../src/template/random_number_generator.hpp\"\n#include \"../../src/data_structure/sparse_table_2d.hpp\"\
-    \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
-    }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
-    \ a(h, vector<int>(w));\n    rep(i, 0, h) {\n        rep(j, 0, w) {\n        \
-    \    a[i][j] = rng(0, (int)1e9);\n        }\n    }\n    SparseTable2D<int, op,\
-    \ e> st(a);\n    int query_num = 1000;\n    while(query_num--) {\n        int\
-    \ xl = rng(0, h), xr = rng(xl, h);\n        int yl = rng(0, w), yr = rng(yl, w);\n\
-    \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
-    \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
-    \       }\n        assert(st.query(xl, xr, yl, yr) == expected);\n    }\n}\nint\
-    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
-    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
-    \ << '\\n';\n}"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
+    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
+    ../../../src/data_structure/sparse_table_2d.hpp\"\nint op(int a, int b) {\n  \
+    \  return min(a, b);\n}\nint e() {\n    return (int)1e9;\n}\nvoid test() {\n \
+    \   int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>> a(h, vector<int>(w));\n\
+    \    rep(i, 0, h) {\n        rep(j, 0, w) {\n            a[i][j] = rng(0, (int)1e9);\n\
+    \        }\n    }\n    SparseTable2D<int, op, e> st(a);\n    int query_num = 1000;\n\
+    \    while(query_num--) {\n        int xl = rng(0, h), xr = rng(xl, h);\n    \
+    \    int yl = rng(0, w), yr = rng(yl, w);\n        int expected = 1e9;\n     \
+    \   rep(i, xl, xr) {\n            rep(j, yl, yr) {\n                expected =\
+    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.query(xl,\
+    \ xr, yl, yr) == expected);\n    }\n}\nint main(void) {\n    constexpr int test_num\
+    \ = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int a, b;\n \
+    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
   - src/data_structure/sparse_table_2d.hpp
   isVerificationFile: true
-  path: verify/unit_test/sparse_table_2d.test.cpp
+  path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   requiredBy: []
-  timestamp: '2024-01-05 14:36:12+09:00'
+  timestamp: '2024-01-05 23:48:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/unit_test/sparse_table_2d.test.cpp
+documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/unit_test/sparse_table_2d.test.cpp
-- /verify/verify/unit_test/sparse_table_2d.test.cpp.html
-title: verify/unit_test/sparse_table_2d.test.cpp
+- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp
+- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp.html
+title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
 ---

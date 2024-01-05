@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/unit_test/sparse_table_2d.test.cpp
-    title: verify/unit_test/sparse_table_2d.test.cpp
+    path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+    title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -71,7 +71,7 @@ data:
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/sparse_table_2d.test.cpp
+  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
 documentation_of: src/data_structure/sparse_table_2d.hpp
 layout: document
 title: SparseTable2D

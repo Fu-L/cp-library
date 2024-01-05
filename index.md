@@ -475,11 +475,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/tree_diameter.test.cpp
       title: verify/library_checker/tree/tree_diameter.test.cpp
-  - name: verify/unit_test
+  - name: verify/unit_test/data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/unit_test/sparse_table_2d.test.cpp
-      title: verify/unit_test/sparse_table_2d.test.cpp
+      path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+      title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - name: verify/yukicoder
     pages:
     - icon: ':heavy_check_mark:'
