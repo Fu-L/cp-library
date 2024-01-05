@@ -62,7 +62,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/data_structure/sparse_table_2d.hpp
     title: SparseTable2D
   - icon: ':heavy_check_mark:'
@@ -197,7 +197,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
@@ -426,15 +426,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/sparse_table_2d.test.cpp
+    title: verify/unit_test/sparse_table_2d.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -523,7 +526,7 @@ data:
   - src/string/suffix_array.hpp
   - src/string/z_algorithm.hpp
   timestamp: '2023-12-31 01:05:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aizu_online_judge/alds1/prime_numbers.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
@@ -598,6 +601,7 @@ data:
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/yukicoder/186.test.cpp
   - verify/yukicoder/649.test.cpp
+  - verify/unit_test/sparse_table_2d.test.cpp
 documentation_of: src/template/template.hpp
 layout: document
 title: template

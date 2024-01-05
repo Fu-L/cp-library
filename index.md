@@ -65,7 +65,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/sparse_table.hpp
       title: SparseTable
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/sparse_table_2d.hpp
       title: SparseTable2D
     - icon: ':heavy_check_mark:'
@@ -215,13 +215,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/template/random_number_generator.hpp
       title: RandomNumberGenerator
     - icon: ':heavy_check_mark:'
       path: src/template/static_modint.hpp
       title: StaticModint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/template.hpp
       title: template
   - name: src/tree
@@ -475,6 +475,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/tree_diameter.test.cpp
       title: verify/library_checker/tree/tree_diameter.test.cpp
+  - name: verify/unit_test
+    pages:
+    - icon: ':x:'
+      path: verify/unit_test/sparse_table_2d.test.cpp
+      title: verify/unit_test/sparse_table_2d.test.cpp
   - name: verify/yukicoder
     pages:
     - icon: ':heavy_check_mark:'
