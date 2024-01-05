@@ -18,6 +18,7 @@ documentation_of: ../../src/math/zeta_transform.hpp
 上位・下位高速ゼータ変換の定義式は以下の通りで，メビウス変換はその逆変換です．
 
 $$ (1) ~ g_x = \sum\limits_{i \supseteq x} f_i$$
+
 $$ (2) ~ g_x = \sum\limits_{i \subseteq x} f_i$$
 
 **制約**
