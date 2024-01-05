@@ -235,6 +235,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: cartesian_tree
+    - icon: ':warning:'
+      path: src/tree/centroid.hpp
+      title: centroid
     - icon: ':heavy_check_mark:'
       path: src/tree/centroid_decomposition.hpp
       title: centroid_decomposition

@@ -38,6 +38,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
+  - icon: ':warning:'
+    path: src/tree/centroid.hpp
+    title: centroid
   - icon: ':heavy_check_mark:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
@@ -151,6 +154,7 @@ data:
   isVerificationFile: false
   path: src/graph/graph_template.hpp
   requiredBy:
+  - src/tree/centroid.hpp
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/cartesian_tree.hpp
   - src/tree/centroid_decomposition.hpp
