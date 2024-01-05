@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/sparse_table_2d.test.cpp
     title: verify/unit_test/sparse_table_2d.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -108,10 +108,10 @@ data:
     \ vt[i]), max(ut[i], vt[i])});\n            }\n            vector<pair<int, int>>\
     \ edge;\n            edge.reserve(n * (n - 1) / 2 - (n - 1));\n            for(int\
     \ i = 0; i < n; ++i) {\n                for(int j = i + 1; j < n; ++j) {\n   \
-    \                 if(!used.contains({i, j})) edge.push_back({i, j});\n       \
-    \         }\n            }\n            vector<int> p = perm(n * (n - 1) / 2 -\
-    \ (n - 1), false);\n            for(int i = 0; i < m - (n - 1); ++i) {\n     \
-    \           u.push_back(edge[p[i]].first + one);\n                v.push_back(edge[p[i]].second\
+    \                 if(used.find({i, j}) == used.end()) edge.push_back({i, j});\n\
+    \                }\n            }\n            vector<int> p = perm(n * (n - 1)\
+    \ / 2 - (n - 1), false);\n            for(int i = 0; i < m - (n - 1); ++i) {\n\
+    \                u.push_back(edge[p[i]].first + one);\n                v.push_back(edge[p[i]].second\
     \ + one);\n            }\n        }\n        return {u, v};\n    }\n    inline\
     \ tuple<vector<int>, vector<int>, vector<int>> weighted_connected_graph(const\
     \ int n, const int m, const int lower, const int upper, const bool one = true)\
@@ -213,10 +213,10 @@ data:
     \ vt[i]), max(ut[i], vt[i])});\n            }\n            vector<pair<int, int>>\
     \ edge;\n            edge.reserve(n * (n - 1) / 2 - (n - 1));\n            for(int\
     \ i = 0; i < n; ++i) {\n                for(int j = i + 1; j < n; ++j) {\n   \
-    \                 if(!used.contains({i, j})) edge.push_back({i, j});\n       \
-    \         }\n            }\n            vector<int> p = perm(n * (n - 1) / 2 -\
-    \ (n - 1), false);\n            for(int i = 0; i < m - (n - 1); ++i) {\n     \
-    \           u.push_back(edge[p[i]].first + one);\n                v.push_back(edge[p[i]].second\
+    \                 if(used.find({i, j}) == used.end()) edge.push_back({i, j});\n\
+    \                }\n            }\n            vector<int> p = perm(n * (n - 1)\
+    \ / 2 - (n - 1), false);\n            for(int i = 0; i < m - (n - 1); ++i) {\n\
+    \                u.push_back(edge[p[i]].first + one);\n                v.push_back(edge[p[i]].second\
     \ + one);\n            }\n        }\n        return {u, v};\n    }\n    inline\
     \ tuple<vector<int>, vector<int>, vector<int>> weighted_connected_graph(const\
     \ int n, const int m, const int lower, const int upper, const bool one = true)\
@@ -235,8 +235,8 @@ data:
   isVerificationFile: false
   path: src/template/random_number_generator.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-01-05 14:36:12+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/sparse_table_2d.test.cpp
 documentation_of: src/template/random_number_generator.hpp

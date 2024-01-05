@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table_2d.hpp
     title: SparseTable2D
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -115,10 +115,10 @@ data:
     \ vt[i]), max(ut[i], vt[i])});\n            }\n            vector<pair<int, int>>\
     \ edge;\n            edge.reserve(n * (n - 1) / 2 - (n - 1));\n            for(int\
     \ i = 0; i < n; ++i) {\n                for(int j = i + 1; j < n; ++j) {\n   \
-    \                 if(!used.contains({i, j})) edge.push_back({i, j});\n       \
-    \         }\n            }\n            vector<int> p = perm(n * (n - 1) / 2 -\
-    \ (n - 1), false);\n            for(int i = 0; i < m - (n - 1); ++i) {\n     \
-    \           u.push_back(edge[p[i]].first + one);\n                v.push_back(edge[p[i]].second\
+    \                 if(used.find({i, j}) == used.end()) edge.push_back({i, j});\n\
+    \                }\n            }\n            vector<int> p = perm(n * (n - 1)\
+    \ / 2 - (n - 1), false);\n            for(int i = 0; i < m - (n - 1); ++i) {\n\
+    \                u.push_back(edge[p[i]].first + one);\n                v.push_back(edge[p[i]].second\
     \ + one);\n            }\n        }\n        return {u, v};\n    }\n    inline\
     \ tuple<vector<int>, vector<int>, vector<int>> weighted_connected_graph(const\
     \ int n, const int m, const int lower, const int upper, const bool one = true)\
@@ -187,8 +187,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/sparse_table_2d.test.cpp
   requiredBy: []
-  timestamp: '2024-01-05 14:33:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-01-05 14:36:12+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/sparse_table_2d.test.cpp
 layout: document
