@@ -56,6 +56,8 @@ layout: document
 title: and_convolution
 ---
 
+## and_convolution
+
 ```cpp
 vector<T> and_convolution(vector<T> a, vector<T> b)
 ```

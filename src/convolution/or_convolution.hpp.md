@@ -52,6 +52,8 @@ layout: document
 title: or_convolution
 ---
 
+## or_convolution
+
 ```cpp
 vector<T> or_convolution(vector<T> a, vector<T> b)
 ```

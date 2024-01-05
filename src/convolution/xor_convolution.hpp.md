@@ -54,6 +54,8 @@ layout: document
 title: xor_convolution
 ---
 
+## xor_convolution
+
 ```cpp
 vector<T> xor_convolution(vector<T> a, vector<T> b)
 ```
