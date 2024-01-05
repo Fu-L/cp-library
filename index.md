@@ -245,6 +245,9 @@ data:
       path: src/tree/lowest_common_ancestor.hpp
       title: LowestCommonAncestor
     - icon: ':heavy_check_mark:'
+      path: src/tree/rerooting.hpp
+      title: rerooting
+    - icon: ':heavy_check_mark:'
       path: src/tree/tree_diameter.hpp
       title: tree_diameter
   verificationCategories:
@@ -287,6 +290,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
       title: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
+      title: verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
       title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp

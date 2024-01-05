@@ -48,6 +48,9 @@ data:
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
   - icon: ':heavy_check_mark:'
+    path: src/tree/rerooting.hpp
+    title: rerooting
+  - icon: ':heavy_check_mark:'
     path: src/tree/tree_diameter.hpp
     title: tree_diameter
   _extendedVerifiedWith:
@@ -63,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
     title: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
+    title: verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
     title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
@@ -157,6 +163,7 @@ data:
   isVerificationFile: false
   path: src/graph/graph_template.hpp
   requiredBy:
+  - src/tree/rerooting.hpp
   - src/tree/centroid.hpp
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/cartesian_tree.hpp
@@ -177,6 +184,7 @@ data:
   verifiedWith:
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
   - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+  - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
