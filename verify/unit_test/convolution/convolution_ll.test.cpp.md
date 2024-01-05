@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -327,7 +327,8 @@ data:
     \ return c;\n}\n#line 5 \"verify/unit_test/convolution/convolution_ll.test.cpp\"\
     \nvoid test() {\n    int n = rng(0, 1000), m = rng(0, 1000);\n    vector<ll> a(n),\
     \ b(m);\n    rep(i, 0, n) a[i] = rng(-1000000, 1000000);\n    rep(i, 0, m) b[i]\
-    \ = rng(-1000000, 1000000);\n    vector<ll> c = convolution_ll(a, b);\n    vector<ll>\
+    \ = rng(-1000000, 1000000);\n    vector<ll> c = convolution_ll(a, b);\n    if(!n\
+    \ or !m) {\n        assert(c.empty());\n        return;\n    }\n    vector<ll>\
     \ expected(n + m - 1);\n    rep(i, 0, n + m - 1) {\n        rep(j, 0, i + 1) {\n\
     \            if(0 <= j and j < n and 0 <= i - j and i - j < m) expected[i] +=\
     \ a[j] * b[i - j];\n        }\n    }\n    rep(i, 0, n + m - 1) {\n        assert(c[i]\
@@ -339,13 +340,14 @@ data:
     ../../../src/convolution/convolution_ll.hpp\"\nvoid test() {\n    int n = rng(0,\
     \ 1000), m = rng(0, 1000);\n    vector<ll> a(n), b(m);\n    rep(i, 0, n) a[i]\
     \ = rng(-1000000, 1000000);\n    rep(i, 0, m) b[i] = rng(-1000000, 1000000);\n\
-    \    vector<ll> c = convolution_ll(a, b);\n    vector<ll> expected(n + m - 1);\n\
-    \    rep(i, 0, n + m - 1) {\n        rep(j, 0, i + 1) {\n            if(0 <= j\
-    \ and j < n and 0 <= i - j and i - j < m) expected[i] += a[j] * b[i - j];\n  \
-    \      }\n    }\n    rep(i, 0, n + m - 1) {\n        assert(c[i] == expected[i]);\n\
-    \    }\n}\nint main(void) {\n    constexpr int test_num = 100;\n    rep(_, 0,\
-    \ test_num) {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n   \
-    \ cout << a + b << '\\n';\n}"
+    \    vector<ll> c = convolution_ll(a, b);\n    if(!n or !m) {\n        assert(c.empty());\n\
+    \        return;\n    }\n    vector<ll> expected(n + m - 1);\n    rep(i, 0, n\
+    \ + m - 1) {\n        rep(j, 0, i + 1) {\n            if(0 <= j and j < n and\
+    \ 0 <= i - j and i - j < m) expected[i] += a[j] * b[i - j];\n        }\n    }\n\
+    \    rep(i, 0, n + m - 1) {\n        assert(c[i] == expected[i]);\n    }\n}\n\
+    int main(void) {\n    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n\
+    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
+    \ << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
@@ -357,8 +359,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2024-01-06 00:01:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-01-06 00:23:09+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp
 layout: document

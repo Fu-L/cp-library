@@ -6,13 +6,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/and_convolution.hpp
       title: and_convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/convolution/convolution.hpp
       title: convolution
     - icon: ':heavy_check_mark:'
       path: src/convolution/convolution_arbitrary.hpp
       title: convolution_arbitrary
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/convolution/convolution_ll.hpp
       title: convolution_ll
     - icon: ':warning:'
@@ -181,13 +181,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/miller_rabin.hpp
       title: miller_rabin
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/pow_mod.hpp
       title: pow_mod
     - icon: ':heavy_check_mark:'
       path: src/math/prime_factorization.hpp
       title: prime_factor
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: primitive_root
     - icon: ':heavy_check_mark:'
@@ -218,13 +218,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template/random_number_generator.hpp
       title: RandomNumberGenerator
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template/static_modint.hpp
       title: StaticModint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template/template.hpp
       title: template
   - name: src/tree
@@ -480,7 +480,7 @@ data:
       title: verify/library_checker/tree/tree_diameter.test.cpp
   - name: verify/unit_test/convolution
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/unit_test/convolution/convolution_ll.test.cpp
       title: verify/unit_test/convolution/convolution_ll.test.cpp
   - name: verify/unit_test/data_structure
