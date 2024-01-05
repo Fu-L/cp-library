@@ -5,6 +5,9 @@ data:
     path: src/convolution/convolution.hpp
     title: convolution
   - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution_ll.hpp
+    title: convolution_ll
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
   - icon: ':heavy_check_mark:'
@@ -16,17 +19,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/fps/formal_power_series_ll.hpp
-    title: src/fps/formal_power_series_ll.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/unit_test/convolution/convolution_ll.test.cpp
-    title: verify/unit_test/convolution/convolution_ll.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -218,70 +215,122 @@ data:
     \ - ((ll)x % (ll)MOD1 + (ll)MOD1) % (ll)MOD1;\n        if(diff < 0) diff += MOD1;\n\
     \        static constexpr unsigned long long offset[5] = {0, 0, M1M2M3, 2 * M1M2M3,\
     \ 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i] = x;\n    }\n   \
-    \ return c;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/static_modint.hpp\"\
-    \n#include \"./convolution.hpp\"\nvector<ll> convolution_ll(const vector<ll>&\
-    \ a, const vector<ll>& b) {\n    int n = (int)a.size(), m = (int)b.size();\n \
-    \   if(!n or !m) return {};\n    static constexpr unsigned long long MOD1 = 754974721;\n\
-    \    static constexpr unsigned long long MOD2 = 167772161;\n    static constexpr\
-    \ unsigned long long MOD3 = 469762049;\n    static constexpr unsigned long long\
-    \ M2M3 = MOD2 * MOD3;\n    static constexpr unsigned long long M1M3 = MOD1 * MOD3;\n\
-    \    static constexpr unsigned long long M1M2 = MOD1 * MOD2;\n    static constexpr\
-    \ unsigned long long M1M2M3 = MOD1 * MOD2 * MOD3;\n    static constexpr unsigned\
-    \ long long i1 = 190329765;\n    static constexpr unsigned long long i2 = 58587104;\n\
-    \    static constexpr unsigned long long i3 = 187290749;\n    static constexpr\
-    \ int MAX_AB_BIT = 24;\n    assert(n + m - 1 <= (1 << MAX_AB_BIT));\n    using\
-    \ mint1 = StaticModint<MOD1>;\n    using mint2 = StaticModint<MOD2>;\n    using\
-    \ mint3 = StaticModint<MOD3>;\n    vector<mint1> a1(n), b1(m);\n    vector<mint2>\
-    \ a2(n), b2(m);\n    vector<mint3> a3(n), b3(m);\n    for(int i = 0; i < n; ++i)\
-    \ a1[i] = a[i];\n    for(int i = 0; i < n; ++i) a2[i] = a[i];\n    for(int i =\
-    \ 0; i < n; ++i) a3[i] = a[i];\n    for(int i = 0; i < m; ++i) b1[i] = b[i];\n\
-    \    for(int i = 0; i < m; ++i) b2[i] = b[i];\n    for(int i = 0; i < m; ++i)\
-    \ b3[i] = b[i];\n    vector<mint1> c1 = convolution<mint1>(a1, b1);\n    vector<mint2>\
-    \ c2 = convolution<mint2>(a2, b2);\n    vector<mint3> c3 = convolution<mint3>(a3,\
-    \ b3);\n    vector<ll> c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i) {\n\
-    \        unsigned long long x = 0;\n        x += (c1[i].val() * i1) % MOD1 * M2M3;\n\
-    \        x += (c2[i].val() * i2) % MOD2 * M1M3;\n        x += (c3[i].val() * i3)\
-    \ % MOD3 * M1M2;\n        ll diff = c1[i].val() - ((ll)x % (ll)MOD1 + (ll)MOD1)\
-    \ % (ll)MOD1;\n        if(diff < 0) diff += MOD1;\n        static constexpr unsigned\
-    \ long long offset[5] = {0, 0, M1M2M3, 2 * M1M2M3, 3 * M1M2M3};\n        x -=\
-    \ offset[diff % 5];\n        c[i] = x;\n    }\n    return c;\n}"
+    \ return c;\n}\n#line 4 \"src/fps/formal_power_series_ll.hpp\"\ntemplate <typename\
+    \ T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n \
+    \   using F = FormalPowerSeries;\n    F& operator=(const vector<T>& g) {\n   \
+    \     const int n = (*this).size();\n        const int m = g.size();\n       \
+    \ if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
+    \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
+    \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
+    \ int n = (*this).size();\n        const int m = g.size();\n        if(n < m)\
+    \ (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] += g[i];\n\
+    \        return (*this);\n    }\n    F& operator+=(const T& r) {\n        if((*this).empty())\
+    \ (*this).resize(1, T(0));\n        (*this)[0] += r;\n        return (*this);\n\
+    \    }\n    F& operator-=(const F& g) {\n        const int n = (*this).size();\n\
+    \        const int m = g.size();\n        if(n < m) (*this).resize(m);\n     \
+    \   for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n        return (*this);\n\
+    \    }\n    F& operator-=(const T& r) {\n        if((*this).empty()) (*this).resize(1,\
+    \ T(0));\n        (*this)[0] -= r;\n        return (*this);\n    }\n    F& operator*=(const\
+    \ F& g) {\n        (*this) = convolution_ll((*this), g);\n        return (*this);\n\
+    \    }\n    F& operator*=(const T& r) {\n        const int n = (*this).size();\n\
+    \        for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n\
+    \    }\n    F& operator/=(const T& r) {\n        const int n = (*this).size();\n\
+    \        for(int i = 0; i < (int)n; ++i) (*this)[i] /= r;\n        return (*this);\n\
+    \    }\n    F operator*(const T& g) const {\n        return F(*this) *= g;\n \
+    \   }\n    F operator-(const T& g) const {\n        return F(*this) -= g;\n  \
+    \  }\n    F operator+(const T& g) const {\n        return F(*this) += g;\n   \
+    \ }\n    F operator/(const T& g) const {\n        return F(*this) /= g;\n    }\n\
+    \    F operator*(const F& g) const {\n        return F(*this) *= g;\n    }\n \
+    \   F operator-(const F& g) const {\n        return F(*this) -= g;\n    }\n  \
+    \  F operator+(const F& g) const {\n        return F(*this) += g;\n    }\n   \
+    \ F operator<<(const int d) const {\n        F ret(*this);\n        ret.insert(ret.begin(),\
+    \ d, T(0));\n        return ret;\n    }\n    F operator>>(const int d) const {\n\
+    \        const int n = (*this).size();\n        if(n <= d) return {};\n      \
+    \  F ret(*this);\n        ret.erase(ret.begin(), ret.begin() + d);\n        return\
+    \ ret;\n    }\n    void shrink() {\n        while((*this).size() and (*this).back()\
+    \ == T(0)) (*this).pop_back();\n    }\n    F rev() const {\n        F ret(*this);\n\
+    \        reverse(begin(ret), end(ret));\n        return ret;\n    }\n    F pre(const\
+    \ int deg) const {\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
+    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
+    \    }\n    T eval(const T& a) const {\n        const int n = (*this).size();\n\
+    \        T x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n           \
+    \ ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
+    \    }\n    void onemul(const int d, const T& c, int deg = -1) {\n        const\
+    \ int n = (*this).size();\n        if(deg == -1) deg = n + d;\n        if(deg\
+    \ > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >= 0; --i) {\n\
+    \            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n    void onediv(const\
+    \ int d, const T& c, int deg = -1) {\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
+    \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
+    \ * c;\n        }\n    }\n};\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_ll.hpp\"\
+    \ntemplate <typename T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
+    \    using F = FormalPowerSeries;\n    F& operator=(const vector<T>& g) {\n  \
+    \      const int n = (*this).size();\n        const int m = g.size();\n      \
+    \  if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
+    \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
+    \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
+    \ int n = (*this).size();\n        const int m = g.size();\n        if(n < m)\
+    \ (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] += g[i];\n\
+    \        return (*this);\n    }\n    F& operator+=(const T& r) {\n        if((*this).empty())\
+    \ (*this).resize(1, T(0));\n        (*this)[0] += r;\n        return (*this);\n\
+    \    }\n    F& operator-=(const F& g) {\n        const int n = (*this).size();\n\
+    \        const int m = g.size();\n        if(n < m) (*this).resize(m);\n     \
+    \   for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n        return (*this);\n\
+    \    }\n    F& operator-=(const T& r) {\n        if((*this).empty()) (*this).resize(1,\
+    \ T(0));\n        (*this)[0] -= r;\n        return (*this);\n    }\n    F& operator*=(const\
+    \ F& g) {\n        (*this) = convolution_ll((*this), g);\n        return (*this);\n\
+    \    }\n    F& operator*=(const T& r) {\n        const int n = (*this).size();\n\
+    \        for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n\
+    \    }\n    F& operator/=(const T& r) {\n        const int n = (*this).size();\n\
+    \        for(int i = 0; i < (int)n; ++i) (*this)[i] /= r;\n        return (*this);\n\
+    \    }\n    F operator*(const T& g) const {\n        return F(*this) *= g;\n \
+    \   }\n    F operator-(const T& g) const {\n        return F(*this) -= g;\n  \
+    \  }\n    F operator+(const T& g) const {\n        return F(*this) += g;\n   \
+    \ }\n    F operator/(const T& g) const {\n        return F(*this) /= g;\n    }\n\
+    \    F operator*(const F& g) const {\n        return F(*this) *= g;\n    }\n \
+    \   F operator-(const F& g) const {\n        return F(*this) -= g;\n    }\n  \
+    \  F operator+(const F& g) const {\n        return F(*this) += g;\n    }\n   \
+    \ F operator<<(const int d) const {\n        F ret(*this);\n        ret.insert(ret.begin(),\
+    \ d, T(0));\n        return ret;\n    }\n    F operator>>(const int d) const {\n\
+    \        const int n = (*this).size();\n        if(n <= d) return {};\n      \
+    \  F ret(*this);\n        ret.erase(ret.begin(), ret.begin() + d);\n        return\
+    \ ret;\n    }\n    void shrink() {\n        while((*this).size() and (*this).back()\
+    \ == T(0)) (*this).pop_back();\n    }\n    F rev() const {\n        F ret(*this);\n\
+    \        reverse(begin(ret), end(ret));\n        return ret;\n    }\n    F pre(const\
+    \ int deg) const {\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
+    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
+    \    }\n    T eval(const T& a) const {\n        const int n = (*this).size();\n\
+    \        T x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n           \
+    \ ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
+    \    }\n    void onemul(const int d, const T& c, int deg = -1) {\n        const\
+    \ int n = (*this).size();\n        if(deg == -1) deg = n + d;\n        if(deg\
+    \ > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >= 0; --i) {\n\
+    \            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n    void onediv(const\
+    \ int d, const T& c, int deg = -1) {\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
+    \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
+    \ * c;\n        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
+  - src/convolution/convolution_ll.hpp
   - src/template/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: false
-  path: src/convolution/convolution_ll.hpp
-  requiredBy:
-  - src/fps/formal_power_series_ll.hpp
-  timestamp: '2024-01-06 00:01:16+09:00'
+  path: src/fps/formal_power_series_ll.hpp
+  requiredBy: []
+  timestamp: '2024-01-06 02:09:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - verify/unit_test/convolution/convolution_ll.test.cpp
-documentation_of: src/convolution/convolution_ll.hpp
+documentation_of: src/fps/formal_power_series_ll.hpp
 layout: document
-title: convolution_ll
+redirect_from:
+- /library/src/fps/formal_power_series_ll.hpp
+- /library/src/fps/formal_power_series_ll.hpp.html
+title: src/fps/formal_power_series_ll.hpp
 ---
-
-## convolution_ll
-
-```cpp
-vector<ll> convolution_ll(vector<ll> a, vector<ll> b)
-```
-
-長さ $N$ の配列 $a$ と長さ $M$ の配列 $b$ の畳み込みを `long long` で計算します．<br>
-$N$ または $M$ の少なくとも一方が $0$ である場合は空配列を返します．
-
-**制約**
-
-- $N + M - 1 \leq 2^{24}$
-- 計算結果が `long long` 型に収まる．
-
-**計算量**
-
-$n = N + M$ として，
-
-- $O(n \log n)$

@@ -94,6 +94,9 @@ data:
     - icon: ':warning:'
       path: src/fps/formal_power_series_arbitrary.hpp
       title: src/fps/formal_power_series_arbitrary.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/fps/formal_power_series_ll.hpp
+      title: src/fps/formal_power_series_ll.hpp
     - icon: ':warning:'
       path: src/fps/nth_term.hpp
       title: src/fps/nth_term.hpp
@@ -232,6 +235,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: cartesian_tree
+    - icon: ':heavy_check_mark:'
+      path: src/tree/centroid_decomposition.hpp
+      title: centroid_decomposition
     - icon: ':heavy_check_mark:'
       path: src/tree/lowest_common_ancestor.hpp
       title: LowestCommonAncestor
@@ -472,6 +478,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/cartesian_tree.test.cpp
       title: verify/library_checker/tree/cartesian_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+      title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp

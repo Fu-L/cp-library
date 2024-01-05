@@ -21,6 +21,9 @@ data:
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
   - icon: ':heavy_check_mark:'
+    path: src/fps/formal_power_series_ll.hpp
+    title: src/fps/formal_power_series_ll.hpp
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
   _extendedVerifiedWith:
@@ -61,6 +64,9 @@ data:
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+    title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
   _isVerificationFailed: false
@@ -90,6 +96,7 @@ data:
   requiredBy:
   - src/math/primitive_root.hpp
   - src/fps/formal_power_series_arbitrary.hpp
+  - src/fps/formal_power_series_ll.hpp
   - src/fps/formal_power_series.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/convolution_ll.hpp
@@ -109,6 +116,7 @@ data:
   - verify/library_checker/polynomial/division_of_polynomial.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
 documentation_of: src/math/pow_mod.hpp
 layout: document

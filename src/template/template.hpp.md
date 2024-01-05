@@ -89,6 +89,9 @@ data:
   - icon: ':warning:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: src/fps/formal_power_series_arbitrary.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/fps/formal_power_series_ll.hpp
+    title: src/fps/formal_power_series_ll.hpp
   - icon: ':warning:'
     path: src/fps/nth_term.hpp
     title: src/fps/nth_term.hpp
@@ -209,6 +212,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
+  - icon: ':heavy_check_mark:'
+    path: src/tree/centroid_decomposition.hpp
+    title: centroid_decomposition
   - icon: ':heavy_check_mark:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
@@ -424,6 +430,9 @@ data:
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+    title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -484,6 +493,7 @@ data:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/nth_term.hpp
   - src/fps/all_product.hpp
+  - src/fps/formal_power_series_ll.hpp
   - src/fps/formal_power_series.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/or_convolution.hpp
@@ -514,6 +524,7 @@ data:
   - src/template/dynamic_modint.hpp
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/cartesian_tree.hpp
+  - src/tree/centroid_decomposition.hpp
   - src/tree/tree_diameter.hpp
   - src/graph/graph_template.hpp
   - src/graph/min_cost_flow.hpp
@@ -593,6 +604,7 @@ data:
   - verify/library_checker/tree/cartesian_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/library_checker/graph/cycle_detection_directed.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp

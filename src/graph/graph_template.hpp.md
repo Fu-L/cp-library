@@ -39,6 +39,9 @@ data:
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
   - icon: ':heavy_check_mark:'
+    path: src/tree/centroid_decomposition.hpp
+    title: centroid_decomposition
+  - icon: ':heavy_check_mark:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
   - icon: ':heavy_check_mark:'
@@ -97,6 +100,9 @@ data:
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+    title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -147,6 +153,7 @@ data:
   requiredBy:
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/cartesian_tree.hpp
+  - src/tree/centroid_decomposition.hpp
   - src/tree/tree_diameter.hpp
   - src/graph/biconnected_components.hpp
   - src/graph/low_link.hpp
@@ -173,6 +180,7 @@ data:
   - verify/library_checker/tree/cartesian_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/library_checker/graph/cycle_detection_directed.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
