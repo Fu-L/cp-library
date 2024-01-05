@@ -8,6 +8,10 @@ void test() {
     rep(i, 0, n) a[i] = rng(-1000000, 1000000);
     rep(i, 0, m) b[i] = rng(-1000000, 1000000);
     vector<ll> c = convolution_ll(a, b);
+    if(!n or !m) {
+        assert(c.empty());
+        return;
+    }
     vector<ll> expected(n + m - 1);
     rep(i, 0, n + m - 1) {
         rep(j, 0, i + 1) {
