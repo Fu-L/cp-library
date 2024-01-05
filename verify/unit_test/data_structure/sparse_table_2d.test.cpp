@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
-#include "../../src/template/template.hpp"
-#include "../../src/template/random_number_generator.hpp"
-#include "../../src/data_structure/sparse_table_2d.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/template/random_number_generator.hpp"
+#include "../../../src/data_structure/sparse_table_2d.hpp"
 int op(int a, int b) {
     return min(a, b);
 }
