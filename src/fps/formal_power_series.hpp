@@ -131,7 +131,7 @@ struct FormalPowerSeries : vector<mint> {
         }
         return ret;
     }
-    void onemul(const int d, const mint& c, const int deg = -1) {
+    void onemul(const int d, const mint& c, int deg = -1) {
         const int n = (*this).size();
         if(deg == -1) deg = n + d;
         if(deg > n) (*this).resize(deg);
@@ -139,7 +139,7 @@ struct FormalPowerSeries : vector<mint> {
             (*this)[i + d] += (*this)[i] * c;
         }
     }
-    void onediv(const int d, const mint& c, const int deg = -1) {
+    void onediv(const int d, const mint& c, int deg = -1) {
         const int n = (*this).size();
         if(deg == -1) deg = n;
         if(deg > n) (*this).resize(deg + 1);
