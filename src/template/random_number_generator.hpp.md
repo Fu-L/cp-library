@@ -13,6 +13,9 @@ data:
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/bipartite.test.cpp
+    title: verify/unit_test/graph/bipartite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   _isVerificationFailed: false
@@ -249,6 +252,7 @@ data:
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/template/random_number_generator.hpp
 layout: document
 title: RandomNumberGenerator

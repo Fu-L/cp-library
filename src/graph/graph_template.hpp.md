@@ -9,6 +9,9 @@ data:
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
   - icon: ':heavy_check_mark:'
+    path: src/graph/bipartite.hpp
+    title: bipartite
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
@@ -118,6 +121,9 @@ data:
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/bipartite.test.cpp
+    title: verify/unit_test/graph/bipartite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   _isVerificationFailed: false
@@ -169,6 +175,7 @@ data:
   - src/tree/cartesian_tree.hpp
   - src/tree/centroid_decomposition.hpp
   - src/tree/tree_diameter.hpp
+  - src/graph/bipartite.hpp
   - src/graph/biconnected_components.hpp
   - src/graph/low_link.hpp
   - src/graph/topological_sort.hpp
@@ -204,6 +211,7 @@ data:
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - verify/library_checker/graph/cycle_detection_undirected.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

@@ -102,6 +102,9 @@ data:
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
   - icon: ':heavy_check_mark:'
+    path: src/graph/bipartite.hpp
+    title: bipartite
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
@@ -454,6 +457,9 @@ data:
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/bipartite.test.cpp
+    title: verify/unit_test/graph/bipartite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   - icon: ':heavy_check_mark:'
@@ -544,6 +550,7 @@ data:
   - src/tree/centroid_decomposition.hpp
   - src/tree/tree_diameter.hpp
   - src/graph/graph_template.hpp
+  - src/graph/bipartite.hpp
   - src/graph/min_cost_flow.hpp
   - src/graph/biconnected_components.hpp
   - src/graph/max_flow.hpp
@@ -642,6 +649,7 @@ data:
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/template/template.hpp
 layout: document
 title: template

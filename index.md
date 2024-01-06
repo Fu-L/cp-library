@@ -111,6 +111,9 @@ data:
       path: src/graph/biconnected_components.hpp
       title: BiconnectedComponents
     - icon: ':heavy_check_mark:'
+      path: src/graph/bipartite.hpp
+      title: bipartite
+    - icon: ':heavy_check_mark:'
       path: src/graph/compressed_sparse_row.hpp
       title: CompressedSparseRow
     - icon: ':heavy_check_mark:'
@@ -506,6 +509,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
       title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - name: verify/unit_test/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/bipartite.test.cpp
+      title: verify/unit_test/graph/bipartite.test.cpp
   - name: verify/unit_test/tree
     pages:
     - icon: ':heavy_check_mark:'

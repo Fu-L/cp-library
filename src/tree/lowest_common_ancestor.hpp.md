@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/bipartite.test.cpp
+    title: verify/unit_test/graph/bipartite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -110,6 +113,7 @@ data:
   verifiedWith:
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/tree/lowest_common_ancestor.hpp
 layout: document
 title: LowestCommonAncestor
