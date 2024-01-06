@@ -258,51 +258,51 @@ data:
     \    }\n    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
     \        mint x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n        \
     \    ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
-    \    }\n    void onemul(const int d, const mint& c, const int deg = -1) {\n  \
-    \      const int n = (*this).size();\n        if(deg == -1) deg = n + d;\n   \
-    \     if(deg > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >=\
-    \ 0; --i) {\n            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n\
-    \    void onediv(const int d, const mint& c, const int deg = -1) {\n        const\
-    \ int n = (*this).size();\n        if(deg == -1) deg = n;\n        if(deg > n)\
-    \ (*this).resize(deg + 1);\n        for(int i = 0; i < deg - d; ++i) {\n     \
-    \       (*this)[i + d] -= (*this)[i] * c;\n        }\n    }\n    F diff() const\
-    \ {\n        const int n = (*this).size();\n        F ret(max(0, n - 1));\n  \
-    \      for(int i = 1; i < n; ++i) ret[i - 1] = (*this)[i] * i;\n        return\
-    \ ret;\n    }\n    F integral() const {\n        const int n = (*this).size(),\
-    \ mod = mint::mod();\n        F ret(n + 1);\n        ret[0] = mint(0);\n     \
-    \   if(n > 0) ret[1] = mint(1);\n        for(int i = 2; i <= n; ++i) ret[i] =\
-    \ (-ret[mod % i]) * (mod / i);\n        for(int i = 0; i < n; ++i) ret[i + 1]\
-    \ *= (*this)[i];\n        return ret;\n    }\n    F inv(int deg = -1) const {\n\
-    \        const int n = (*this).size();\n        assert(n > 0 and (*this)[0] !=\
-    \ mint(0));\n        if(deg == -1) deg = n;\n        F ret({mint(1) / (*this)[0]});\n\
-    \        for(int i = 1; i < deg; i <<= 1) {\n            ret = (ret + ret - ret\
-    \ * ret * (*this).pre(i << 1)).pre(i << 1);\n        }\n        return ret.pre(deg);\n\
-    \    }\n    F log(int deg = -1) const {\n        const int n = (*this).size();\n\
-    \        assert(n > 0 and (*this)[0] == mint(1));\n        if(deg == -1) deg =\
-    \ n;\n        return ((*this).diff() * (*this).inv(deg)).pre(deg - 1).integral();\n\
-    \    }\n    F exp(int deg = -1) const {\n        const int n = (*this).size();\n\
-    \        assert(n == 0 or (*this)[0] == mint(0));\n        if(deg == -1) deg =\
-    \ n;\n        F ret({mint(1)});\n        for(int i = 1; i < deg; i <<= 1) {\n\
-    \            ret = (ret * (pre(i << 1) + mint(1) - ret.log(i << 1))).pre(i <<\
-    \ 1);\n        }\n        return ret.pre(deg);\n    }\n    F pow(const ll k, int\
-    \ deg = -1) const {\n        const int n = (*this).size();\n        if(deg ==\
-    \ -1) deg = n;\n        if(k == 0) {\n            F ret(deg);\n            if(deg)\
-    \ ret[0] = 1;\n            return ret;\n        }\n        for(int i = 0; i <\
-    \ n; ++i) {\n            if((*this)[i] != mint(0)) {\n                mint rev\
-    \ = mint(1) / (*this)[i];\n                F ret = (((*this * rev) >> i).log(deg)\
-    \ * k).exp(deg);\n                ret *= (*this)[i].pow(k);\n                ret\
-    \ = (ret << (i * k)).pre(deg);\n                if((int)ret.size() < deg) ret.resize(deg,\
-    \ mint(0));\n                return ret;\n            }\n            if(__int128_t(i\
-    \ + 1) * k >= deg) return F(deg, mint(0));\n        }\n        return F(deg, mint(0));\n\
-    \    }\n    F shift(const mint& c) const {\n        int n = (*this).size();\n\
-    \        vector<mint> fact(n), ifact(n);\n        fact[0] = ifact[0] = mint(1);\n\
-    \        for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;\n        ifact[n\
-    \ - 1] = mint(1) / fact[n - 1];\n        for(int i = n - 1; i > 1; --i) ifact[i\
-    \ - 1] = ifact[i] * i;\n        F ret(*this);\n        for(int i = 0; i < n; ++i)\
-    \ ret[i] *= fact[i];\n        ret = ret.rev();\n        F bs(n, mint(1));\n  \
-    \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
-    \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
-    \ i = 0; i < n; ++i) ret[i] *= ifact[i];\n        return ret;\n    }\n};\n"
+    \    }\n    void onemul(const int d, const mint& c, int deg = -1) {\n        const\
+    \ int n = (*this).size();\n        if(deg == -1) deg = n + d;\n        if(deg\
+    \ > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >= 0; --i) {\n\
+    \            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n    void onediv(const\
+    \ int d, const mint& c, int deg = -1) {\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
+    \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
+    \ * c;\n        }\n    }\n    F diff() const {\n        const int n = (*this).size();\n\
+    \        F ret(max(0, n - 1));\n        for(int i = 1; i < n; ++i) ret[i - 1]\
+    \ = (*this)[i] * i;\n        return ret;\n    }\n    F integral() const {\n  \
+    \      const int n = (*this).size(), mod = mint::mod();\n        F ret(n + 1);\n\
+    \        ret[0] = mint(0);\n        if(n > 0) ret[1] = mint(1);\n        for(int\
+    \ i = 2; i <= n; ++i) ret[i] = (-ret[mod % i]) * (mod / i);\n        for(int i\
+    \ = 0; i < n; ++i) ret[i + 1] *= (*this)[i];\n        return ret;\n    }\n   \
+    \ F inv(int deg = -1) const {\n        const int n = (*this).size();\n       \
+    \ assert(n > 0 and (*this)[0] != mint(0));\n        if(deg == -1) deg = n;\n \
+    \       F ret({mint(1) / (*this)[0]});\n        for(int i = 1; i < deg; i <<=\
+    \ 1) {\n            ret = (ret + ret - ret * ret * (*this).pre(i << 1)).pre(i\
+    \ << 1);\n        }\n        return ret.pre(deg);\n    }\n    F log(int deg =\
+    \ -1) const {\n        const int n = (*this).size();\n        assert(n > 0 and\
+    \ (*this)[0] == mint(1));\n        if(deg == -1) deg = n;\n        return ((*this).diff()\
+    \ * (*this).inv(deg)).pre(deg - 1).integral();\n    }\n    F exp(int deg = -1)\
+    \ const {\n        const int n = (*this).size();\n        assert(n == 0 or (*this)[0]\
+    \ == mint(0));\n        if(deg == -1) deg = n;\n        F ret({mint(1)});\n  \
+    \      for(int i = 1; i < deg; i <<= 1) {\n            ret = (ret * (pre(i <<\
+    \ 1) + mint(1) - ret.log(i << 1))).pre(i << 1);\n        }\n        return ret.pre(deg);\n\
+    \    }\n    F pow(const ll k, int deg = -1) const {\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n;\n        if(k == 0) {\n            F ret(deg);\n\
+    \            if(deg) ret[0] = 1;\n            return ret;\n        }\n       \
+    \ for(int i = 0; i < n; ++i) {\n            if((*this)[i] != mint(0)) {\n    \
+    \            mint rev = mint(1) / (*this)[i];\n                F ret = (((*this\
+    \ * rev) >> i).log(deg) * k).exp(deg);\n                ret *= (*this)[i].pow(k);\n\
+    \                ret = (ret << (i * k)).pre(deg);\n                if((int)ret.size()\
+    \ < deg) ret.resize(deg, mint(0));\n                return ret;\n            }\n\
+    \            if(__int128_t(i + 1) * k >= deg) return F(deg, mint(0));\n      \
+    \  }\n        return F(deg, mint(0));\n    }\n    F shift(const mint& c) const\
+    \ {\n        int n = (*this).size();\n        vector<mint> fact(n), ifact(n);\n\
+    \        fact[0] = ifact[0] = mint(1);\n        for(int i = 1; i < n; ++i) fact[i]\
+    \ = fact[i - 1] * i;\n        ifact[n - 1] = mint(1) / fact[n - 1];\n        for(int\
+    \ i = n - 1; i > 1; --i) ifact[i - 1] = ifact[i] * i;\n        F ret(*this);\n\
+    \        for(int i = 0; i < n; ++i) ret[i] *= fact[i];\n        ret = ret.rev();\n\
+    \        F bs(n, mint(1));\n        for(int i = 1; i < n; ++i) bs[i] = bs[i -\
+    \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
+    \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
+    \       return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_arbitrary.hpp\"\
     \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
     \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
@@ -353,51 +353,51 @@ data:
     \    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
     \        mint x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n        \
     \    ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
-    \    }\n    void onemul(const int d, const mint& c, const int deg = -1) {\n  \
-    \      const int n = (*this).size();\n        if(deg == -1) deg = n + d;\n   \
-    \     if(deg > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >=\
-    \ 0; --i) {\n            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n\
-    \    void onediv(const int d, const mint& c, const int deg = -1) {\n        const\
-    \ int n = (*this).size();\n        if(deg == -1) deg = n;\n        if(deg > n)\
-    \ (*this).resize(deg + 1);\n        for(int i = 0; i < deg - d; ++i) {\n     \
-    \       (*this)[i + d] -= (*this)[i] * c;\n        }\n    }\n    F diff() const\
-    \ {\n        const int n = (*this).size();\n        F ret(max(0, n - 1));\n  \
-    \      for(int i = 1; i < n; ++i) ret[i - 1] = (*this)[i] * i;\n        return\
-    \ ret;\n    }\n    F integral() const {\n        const int n = (*this).size(),\
-    \ mod = mint::mod();\n        F ret(n + 1);\n        ret[0] = mint(0);\n     \
-    \   if(n > 0) ret[1] = mint(1);\n        for(int i = 2; i <= n; ++i) ret[i] =\
-    \ (-ret[mod % i]) * (mod / i);\n        for(int i = 0; i < n; ++i) ret[i + 1]\
-    \ *= (*this)[i];\n        return ret;\n    }\n    F inv(int deg = -1) const {\n\
-    \        const int n = (*this).size();\n        assert(n > 0 and (*this)[0] !=\
-    \ mint(0));\n        if(deg == -1) deg = n;\n        F ret({mint(1) / (*this)[0]});\n\
-    \        for(int i = 1; i < deg; i <<= 1) {\n            ret = (ret + ret - ret\
-    \ * ret * (*this).pre(i << 1)).pre(i << 1);\n        }\n        return ret.pre(deg);\n\
-    \    }\n    F log(int deg = -1) const {\n        const int n = (*this).size();\n\
-    \        assert(n > 0 and (*this)[0] == mint(1));\n        if(deg == -1) deg =\
-    \ n;\n        return ((*this).diff() * (*this).inv(deg)).pre(deg - 1).integral();\n\
-    \    }\n    F exp(int deg = -1) const {\n        const int n = (*this).size();\n\
-    \        assert(n == 0 or (*this)[0] == mint(0));\n        if(deg == -1) deg =\
-    \ n;\n        F ret({mint(1)});\n        for(int i = 1; i < deg; i <<= 1) {\n\
-    \            ret = (ret * (pre(i << 1) + mint(1) - ret.log(i << 1))).pre(i <<\
-    \ 1);\n        }\n        return ret.pre(deg);\n    }\n    F pow(const ll k, int\
-    \ deg = -1) const {\n        const int n = (*this).size();\n        if(deg ==\
-    \ -1) deg = n;\n        if(k == 0) {\n            F ret(deg);\n            if(deg)\
-    \ ret[0] = 1;\n            return ret;\n        }\n        for(int i = 0; i <\
-    \ n; ++i) {\n            if((*this)[i] != mint(0)) {\n                mint rev\
-    \ = mint(1) / (*this)[i];\n                F ret = (((*this * rev) >> i).log(deg)\
-    \ * k).exp(deg);\n                ret *= (*this)[i].pow(k);\n                ret\
-    \ = (ret << (i * k)).pre(deg);\n                if((int)ret.size() < deg) ret.resize(deg,\
-    \ mint(0));\n                return ret;\n            }\n            if(__int128_t(i\
-    \ + 1) * k >= deg) return F(deg, mint(0));\n        }\n        return F(deg, mint(0));\n\
-    \    }\n    F shift(const mint& c) const {\n        int n = (*this).size();\n\
-    \        vector<mint> fact(n), ifact(n);\n        fact[0] = ifact[0] = mint(1);\n\
-    \        for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;\n        ifact[n\
-    \ - 1] = mint(1) / fact[n - 1];\n        for(int i = n - 1; i > 1; --i) ifact[i\
-    \ - 1] = ifact[i] * i;\n        F ret(*this);\n        for(int i = 0; i < n; ++i)\
-    \ ret[i] *= fact[i];\n        ret = ret.rev();\n        F bs(n, mint(1));\n  \
-    \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
-    \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
-    \ i = 0; i < n; ++i) ret[i] *= ifact[i];\n        return ret;\n    }\n};"
+    \    }\n    void onemul(const int d, const mint& c, int deg = -1) {\n        const\
+    \ int n = (*this).size();\n        if(deg == -1) deg = n + d;\n        if(deg\
+    \ > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >= 0; --i) {\n\
+    \            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n    void onediv(const\
+    \ int d, const mint& c, int deg = -1) {\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
+    \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
+    \ * c;\n        }\n    }\n    F diff() const {\n        const int n = (*this).size();\n\
+    \        F ret(max(0, n - 1));\n        for(int i = 1; i < n; ++i) ret[i - 1]\
+    \ = (*this)[i] * i;\n        return ret;\n    }\n    F integral() const {\n  \
+    \      const int n = (*this).size(), mod = mint::mod();\n        F ret(n + 1);\n\
+    \        ret[0] = mint(0);\n        if(n > 0) ret[1] = mint(1);\n        for(int\
+    \ i = 2; i <= n; ++i) ret[i] = (-ret[mod % i]) * (mod / i);\n        for(int i\
+    \ = 0; i < n; ++i) ret[i + 1] *= (*this)[i];\n        return ret;\n    }\n   \
+    \ F inv(int deg = -1) const {\n        const int n = (*this).size();\n       \
+    \ assert(n > 0 and (*this)[0] != mint(0));\n        if(deg == -1) deg = n;\n \
+    \       F ret({mint(1) / (*this)[0]});\n        for(int i = 1; i < deg; i <<=\
+    \ 1) {\n            ret = (ret + ret - ret * ret * (*this).pre(i << 1)).pre(i\
+    \ << 1);\n        }\n        return ret.pre(deg);\n    }\n    F log(int deg =\
+    \ -1) const {\n        const int n = (*this).size();\n        assert(n > 0 and\
+    \ (*this)[0] == mint(1));\n        if(deg == -1) deg = n;\n        return ((*this).diff()\
+    \ * (*this).inv(deg)).pre(deg - 1).integral();\n    }\n    F exp(int deg = -1)\
+    \ const {\n        const int n = (*this).size();\n        assert(n == 0 or (*this)[0]\
+    \ == mint(0));\n        if(deg == -1) deg = n;\n        F ret({mint(1)});\n  \
+    \      for(int i = 1; i < deg; i <<= 1) {\n            ret = (ret * (pre(i <<\
+    \ 1) + mint(1) - ret.log(i << 1))).pre(i << 1);\n        }\n        return ret.pre(deg);\n\
+    \    }\n    F pow(const ll k, int deg = -1) const {\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n;\n        if(k == 0) {\n            F ret(deg);\n\
+    \            if(deg) ret[0] = 1;\n            return ret;\n        }\n       \
+    \ for(int i = 0; i < n; ++i) {\n            if((*this)[i] != mint(0)) {\n    \
+    \            mint rev = mint(1) / (*this)[i];\n                F ret = (((*this\
+    \ * rev) >> i).log(deg) * k).exp(deg);\n                ret *= (*this)[i].pow(k);\n\
+    \                ret = (ret << (i * k)).pre(deg);\n                if((int)ret.size()\
+    \ < deg) ret.resize(deg, mint(0));\n                return ret;\n            }\n\
+    \            if(__int128_t(i + 1) * k >= deg) return F(deg, mint(0));\n      \
+    \  }\n        return F(deg, mint(0));\n    }\n    F shift(const mint& c) const\
+    \ {\n        int n = (*this).size();\n        vector<mint> fact(n), ifact(n);\n\
+    \        fact[0] = ifact[0] = mint(1);\n        for(int i = 1; i < n; ++i) fact[i]\
+    \ = fact[i - 1] * i;\n        ifact[n - 1] = mint(1) / fact[n - 1];\n        for(int\
+    \ i = n - 1; i > 1; --i) ifact[i - 1] = ifact[i] * i;\n        F ret(*this);\n\
+    \        for(int i = 0; i < n; ++i) ret[i] *= fact[i];\n        ret = ret.rev();\n\
+    \        F bs(n, mint(1));\n        for(int i = 1; i < n; ++i) bs[i] = bs[i -\
+    \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
+    \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
+    \       return ret;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   - src/convolution/convolution_arbitrary.hpp
@@ -408,7 +408,7 @@ data:
   isVerificationFile: false
   path: src/fps/formal_power_series_arbitrary.hpp
   requiredBy: []
-  timestamp: '2024-01-05 14:38:28+09:00'
+  timestamp: '2024-01-07 00:57:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
