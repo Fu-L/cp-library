@@ -91,13 +91,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series.hpp
       title: src/fps/formal_power_series.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series_arbitrary.hpp
       title: src/fps/formal_power_series_arbitrary.hpp
     - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series_ll.hpp
       title: src/fps/formal_power_series_ll.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/fps/nth_term.hpp
       title: src/fps/nth_term.hpp
   - name: src/geometry
@@ -513,6 +513,9 @@ data:
       title: verify/unit_test/tree/centroid.test.cpp
   - name: verify/yukicoder
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/yukicoder/1559.test.cpp
+      title: verify/yukicoder/1559.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/186.test.cpp
       title: verify/yukicoder/186.test.cpp

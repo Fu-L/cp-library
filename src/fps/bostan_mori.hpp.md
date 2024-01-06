@@ -5,13 +5,16 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/nth_term.hpp
     title: src/fps/nth_term.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/1559.test.cpp
+    title: verify/yukicoder/1559.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,6 +61,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/bostan_mori.hpp
 layout: document
 redirect_from:
