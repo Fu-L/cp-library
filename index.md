@@ -209,16 +209,16 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/matrix/gauss_elimination.hpp
-      title: src/matrix/gauss_elimination.hpp
+      title: gauss_elimination
     - icon: ':heavy_check_mark:'
       path: src/matrix/inverse.hpp
-      title: src/matrix/inverse.hpp
+      title: inverse
     - icon: ':heavy_check_mark:'
       path: src/matrix/linear_equation.hpp
-      title: src/matrix/linear_equation.hpp
+      title: linear_equation
     - icon: ':heavy_check_mark:'
       path: src/matrix/matrix.hpp
-      title: src/matrix/matrix.hpp
+      title: Matrix
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'

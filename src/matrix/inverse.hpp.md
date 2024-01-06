@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
-    title: src/matrix/gauss_elimination.hpp
+    title: gauss_elimination
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
-    title: src/matrix/matrix.hpp
+    title: Matrix
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
@@ -60,8 +60,8 @@ data:
     \ ++i) {\n            for(int j = 0; j < w; ++j) {\n                if(A[i][j]\
     \ != B[i][j]) return true;\n            }\n        }\n        return false;\n\
     \    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n#line 4 \"\
-    src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>\
-    \ &a, int pivot_end = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1\
+    src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>&\
+    \ a, int pivot_end = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1\
     \ <= pivot_end and pivot_end <= w);\n    if(pivot_end == -1) pivot_end = w;\n\
     \    T det = 1;\n    for(int j = 0; j < pivot_end; ++j) {\n        int idx = -1;\n\
     \        for(int i = rank; i < h; ++i) {\n            if(a[i][j] != T(0)) {\n\
@@ -98,14 +98,29 @@ data:
   isVerificationFile: false
   path: src/matrix/inverse.hpp
   requiredBy: []
-  timestamp: '2024-01-07 03:22:48+09:00'
+  timestamp: '2024-01-07 03:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/inverse_matrix.test.cpp
 documentation_of: src/matrix/inverse.hpp
 layout: document
-redirect_from:
-- /library/src/matrix/inverse.hpp
-- /library/src/matrix/inverse.hpp.html
-title: src/matrix/inverse.hpp
+title: inverse
 ---
+
+## inverse
+
+```cpp
+Matrix<T> inverse(Matrix<T> A)
+```
+
+$N \times N$ 行列 $A$ の逆行列を返します．
+
+逆行列が存在しない場合は $0 \times 0$ の行列を返します．
+
+**制約**
+
+- $A$ は正方行列
+
+**計算量**
+
+- $O(N^3)$

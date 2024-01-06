@@ -3,17 +3,17 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
-    title: src/matrix/matrix.hpp
+    title: Matrix
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
-    title: src/matrix/inverse.hpp
+    title: inverse
   - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
-    title: src/matrix/linear_equation.hpp
+    title: linear_equation
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
@@ -72,8 +72,8 @@ data:
     \ ++i) {\n            for(int j = 0; j < w; ++j) {\n                if(A[i][j]\
     \ != B[i][j]) return true;\n            }\n        }\n        return false;\n\
     \    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n#line 4 \"\
-    src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>\
-    \ &a, int pivot_end = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1\
+    src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>&\
+    \ a, int pivot_end = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1\
     \ <= pivot_end and pivot_end <= w);\n    if(pivot_end == -1) pivot_end = w;\n\
     \    T det = 1;\n    for(int j = 0; j < pivot_end; ++j) {\n        int idx = -1;\n\
     \        for(int i = rank; i < h; ++i) {\n            if(a[i][j] != T(0)) {\n\
@@ -87,7 +87,7 @@ data:
     \                for(int k = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;\n \
     \           }\n        }\n        ++rank;\n    }\n    return {rank, det};\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./matrix.hpp\"\
-    \ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T> &a, int pivot_end\
+    \ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>& a, int pivot_end\
     \ = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1 <= pivot_end\
     \ and pivot_end <= w);\n    if(pivot_end == -1) pivot_end = w;\n    T det = 1;\n\
     \    for(int j = 0; j < pivot_end; ++j) {\n        int idx = -1;\n        for(int\
@@ -109,7 +109,7 @@ data:
   requiredBy:
   - src/matrix/linear_equation.hpp
   - src/matrix/inverse.hpp
-  timestamp: '2024-01-07 03:22:48+09:00'
+  timestamp: '2024-01-07 03:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/rank_of_matrix.test.cpp
@@ -118,8 +118,27 @@ data:
   - verify/library_checker/matrix/system_of_linear_equations.test.cpp
 documentation_of: src/matrix/gauss_elimination.hpp
 layout: document
-redirect_from:
-- /library/src/matrix/gauss_elimination.hpp
-- /library/src/matrix/gauss_elimination.hpp.html
-title: src/matrix/gauss_elimination.hpp
+title: gauss_elimination
 ---
+
+## gauss_elimination
+
+```cpp
+pair<int, T> gauss_elimination(Matrix<T>& A, int pivot_end = -1)
+```
+
+$H \times W$ 行列 $A$ の階数と行列式を返します．<br>
+副作用として $A$ は簡約階段系になります．
+
+$A$ が正方行列でないとき，返り値の行列式の値は未定義です．
+
+$\mathrm{pivot\_end}$ で行列の何列目までを見て欲しいかを指定することができます．(実質的に内部用の変数)<br>
+$\mathrm{pivot\_end} = -1$ のときは $W$ 列目まで見ます．
+
+**制約**
+
+- $-1 \leq \mathrm{pivot\_end} \leq W$
+
+**計算量**
+
+- $O(HW^2)$

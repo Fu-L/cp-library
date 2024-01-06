@@ -3,13 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
-    title: src/matrix/gauss_elimination.hpp
+    title: gauss_elimination
   - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
-    title: src/matrix/linear_equation.hpp
+    title: linear_equation
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
-    title: src/matrix/matrix.hpp
+    title: Matrix
   - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
@@ -120,7 +120,7 @@ data:
     \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
     \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n\
     #line 4 \"src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int,\
-    \ T> gauss_elimination(Matrix<T> &a, int pivot_end = -1) {\n    int h = a.H(),\
+    \ T> gauss_elimination(Matrix<T>& a, int pivot_end = -1) {\n    int h = a.H(),\
     \ w = a.W(), rank = 0;\n    assert(-1 <= pivot_end and pivot_end <= w);\n    if(pivot_end\
     \ == -1) pivot_end = w;\n    T det = 1;\n    for(int j = 0; j < pivot_end; ++j)\
     \ {\n        int idx = -1;\n        for(int i = rank; i < h; ++i) {\n        \
@@ -175,7 +175,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 03:22:48+09:00'
+  timestamp: '2024-01-07 03:53:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/system_of_linear_equations.test.cpp

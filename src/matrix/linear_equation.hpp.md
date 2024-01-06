@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
-    title: src/matrix/gauss_elimination.hpp
+    title: gauss_elimination
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
-    title: src/matrix/matrix.hpp
+    title: Matrix
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
@@ -60,8 +60,8 @@ data:
     \ ++i) {\n            for(int j = 0; j < w; ++j) {\n                if(A[i][j]\
     \ != B[i][j]) return true;\n            }\n        }\n        return false;\n\
     \    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n#line 4 \"\
-    src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>\
-    \ &a, int pivot_end = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1\
+    src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>&\
+    \ a, int pivot_end = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    assert(-1\
     \ <= pivot_end and pivot_end <= w);\n    if(pivot_end == -1) pivot_end = w;\n\
     \    T det = 1;\n    for(int j = 0; j < pivot_end; ++j) {\n        int idx = -1;\n\
     \        for(int i = rank; i < h; ++i) {\n            if(a[i][j] != T(0)) {\n\
@@ -110,14 +110,34 @@ data:
   isVerificationFile: false
   path: src/matrix/linear_equation.hpp
   requiredBy: []
-  timestamp: '2024-01-07 03:22:48+09:00'
+  timestamp: '2024-01-07 03:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/system_of_linear_equations.test.cpp
 documentation_of: src/matrix/linear_equation.hpp
 layout: document
-redirect_from:
-- /library/src/matrix/linear_equation.hpp
-- /library/src/matrix/linear_equation.hpp.html
-title: src/matrix/linear_equation.hpp
+title: linear_equation
 ---
+
+## linear_equation
+
+```cpp
+vector<vector<T>> linear_equation(Matrix<T> A, Matrix<T> b)
+```
+
+線形方程式 $Ax = b$ を解きます．
+
+返り値は $\{v, w_1, w_2, ..., w_k\}$ という `vector<vector<T>>` です．<br>
+$v$ は方程式の解のうちの $1$ つである `vector<T>` です．<br>
+$w_i$ は解空間の（それぞれ独立な）基底ベクトルである `vector<T>` です．
+
+**制約**
+
+- $A.H() = b.H()$
+- $b.W() = 1$
+
+**計算量**
+
+行列 $A$ のサイズを $H \times W$ として
+
+- $O(HW^2)$

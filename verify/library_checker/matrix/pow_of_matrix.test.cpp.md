@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
-    title: src/matrix/matrix.hpp
+    title: Matrix
   - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
