@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 #include "./matrix.hpp"
 template <typename T>
-pair<int, T> gauss_elimination(Matrix<T> &a, int pivot_end = -1) {
+pair<int, T> gauss_elimination(Matrix<T>& a, int pivot_end = -1) {
     int h = a.H(), w = a.W(), rank = 0;
     assert(-1 <= pivot_end and pivot_end <= w);
     if(pivot_end == -1) pivot_end = w;
