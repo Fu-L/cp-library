@@ -3,6 +3,7 @@
 template <typename T>
 void walsh_hadamard_transform(vector<T>& f, bool inv = false) {
     int n = f.size();
+    assert((n & (n - 1)) == 0);
     for(int i = 1; i < n; i <<= 1) {
         for(int j = 0; j < n; ++j) {
             if((j & i) == 0) {

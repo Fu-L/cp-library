@@ -5,6 +5,7 @@
 template <typename mint>
 vector<mint> convolution_arbitary(const vector<mint>& a, const vector<mint>& b) {
     int n = (int)a.size(), m = (int)b.size();
+    if(!n or !m) return {};
     static constexpr ll MOD1 = 754974721;
     static constexpr ll MOD2 = 167772161;
     static constexpr ll MOD3 = 469762049;

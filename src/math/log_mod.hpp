@@ -2,6 +2,7 @@
 #include "../template/template.hpp"
 #include "../template/policy_based_data_structure.hpp"
 ll log_mod(ll a, ll b, ll mod) {
+    assert(mod >= 1);
     ll g = 1;
     for(ll i = mod; i; i /= 2) (g *= a) %= mod;
     g = gcd(g, mod);

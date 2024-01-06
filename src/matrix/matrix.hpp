@@ -11,9 +11,11 @@ struct Matrix {
         return w;
     }
     const vector<T>& operator[](int i) const {
+        assert(0 <= i and i < h);
         return A[i];
     }
     vector<T>& operator[](int i) {
+        assert(0 <= i and i < h);
         return A[i];
     }
     static Matrix I(int n) {
@@ -54,6 +56,7 @@ struct Matrix {
     }
     Matrix& pow(ll t) {
         assert(h == w);
+        assert(t >= 0);
         Matrix B = Matrix::I(h);
         while(t > 0) {
             if(t & 1ll) B *= (*this);
@@ -73,7 +76,7 @@ struct Matrix {
         return (Matrix(*this) *= B);
     }
     bool operator==(const Matrix& B) const {
-        assert(h == B.h and w == B.w);
+        assert(h == B.H() and w == B.W());
         rep(i, 0, h) {
             rep(j, 0, w) {
                 if(A[i][j] != B[i][j]) return false;
@@ -82,7 +85,7 @@ struct Matrix {
         return true;
     }
     bool operator!=(const Matrix& B) const {
-        assert(h == B.h and w == B.w);
+        assert(h == B.H() and w == B.W());
         for(int i = 0; i < h; ++i) {
             for(int j = 0; j < w; ++j) {
                 if(A[i][j] != B[i][j]) return true;
