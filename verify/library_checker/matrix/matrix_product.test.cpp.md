@@ -83,9 +83,10 @@ data:
     \  Matrix(int h, int w, T val = 0)\n        : h(h), w(w), A(h, vector<T>(w, val))\
     \ {}\n    int H() const {\n        return h;\n    }\n    int W() const {\n   \
     \     return w;\n    }\n    const vector<T>& operator[](int i) const {\n     \
-    \   return A[i];\n    }\n    vector<T>& operator[](int i) {\n        return A[i];\n\
-    \    }\n    static Matrix I(int n) {\n        Matrix mat(n, n);\n        for(int\
-    \ i = 0; i < n; ++i) mat[i][i] = 1;\n        return mat;\n    }\n    Matrix& operator+=(const\
+    \   assert(0 <= i and i < h);\n        return A[i];\n    }\n    vector<T>& operator[](int\
+    \ i) {\n        assert(0 <= i and i < h);\n        return A[i];\n    }\n    static\
+    \ Matrix I(int n) {\n        Matrix mat(n, n);\n        for(int i = 0; i < n;\
+    \ ++i) mat[i][i] = 1;\n        return mat;\n    }\n    Matrix& operator+=(const\
     \ Matrix& B) {\n        assert(h == B.h and w == B.w);\n        for(int i = 0;\
     \ i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n                (*this)[i][j]\
     \ += B[i][j];\n            }\n        }\n        return (*this);\n    }\n    Matrix&\
@@ -98,26 +99,27 @@ data:
     \     for(int j = 0; j < B.w; ++j) {\n                    C[i][j] += (*this)[i][k]\
     \ * B[k][j];\n                }\n            }\n        }\n        A.swap(C);\n\
     \        return (*this);\n    }\n    Matrix& pow(ll t) {\n        assert(h ==\
-    \ w);\n        Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t\
-    \ & 1ll) B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n\
-    \        }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
-    \ Matrix& B) const {\n        return (Matrix(*this) += B);\n    }\n    Matrix\
-    \ operator-(const Matrix& B) const {\n        return (Matrix(*this) -= B);\n \
-    \   }\n    Matrix operator*(const Matrix& B) const {\n        return (Matrix(*this)\
-    \ *= B);\n    }\n    bool operator==(const Matrix& B) const {\n        assert(h\
-    \ == B.h and w == B.w);\n        rep(i, 0, h) {\n            rep(j, 0, w) {\n\
-    \                if(A[i][j] != B[i][j]) return false;\n            }\n       \
-    \ }\n        return true;\n    }\n    bool operator!=(const Matrix& B) const {\n\
-    \        assert(h == B.h and w == B.w);\n        for(int i = 0; i < h; ++i) {\n\
-    \            for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j])\
-    \ return true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
-    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 5 \"verify/library_checker/matrix/matrix_product.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n, m, k;\n    cin >>\
-    \ n >> m >> k;\n    Matrix<mint> a(n, m), b(m, k);\n    rep(i, 0, n) {\n     \
-    \   rep(j, 0, m) {\n            cin >> a[i][j];\n        }\n    }\n    rep(i,\
-    \ 0, m) {\n        rep(j, 0, k) {\n            cin >> b[i][j];\n        }\n  \
-    \  }\n    Matrix<mint> c = a * b;\n    rep(i, 0, n) {\n        rep(j, 0, k) {\n\
-    \            cout << c[i][j] << \" \\n\"[j + 1 == k];\n        }\n    }\n}\n"
+    \ w);\n        assert(t >= 0);\n        Matrix B = Matrix::I(h);\n        while(t\
+    \ > 0) {\n            if(t & 1ll) B *= (*this);\n            (*this) *= (*this);\n\
+    \            t >>= 1ll;\n        }\n        A.swap(B.A);\n        return (*this);\n\
+    \    }\n    Matrix operator+(const Matrix& B) const {\n        return (Matrix(*this)\
+    \ += B);\n    }\n    Matrix operator-(const Matrix& B) const {\n        return\
+    \ (Matrix(*this) -= B);\n    }\n    Matrix operator*(const Matrix& B) const {\n\
+    \        return (Matrix(*this) *= B);\n    }\n    bool operator==(const Matrix&\
+    \ B) const {\n        assert(h == B.H() and w == B.W());\n        rep(i, 0, h)\
+    \ {\n            rep(j, 0, w) {\n                if(A[i][j] != B[i][j]) return\
+    \ false;\n            }\n        }\n        return true;\n    }\n    bool operator!=(const\
+    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
+    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
+    \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
+    \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n\
+    #line 5 \"verify/library_checker/matrix/matrix_product.test.cpp\"\nusing mint\
+    \ = modint998244353;\nint main(void) {\n    int n, m, k;\n    cin >> n >> m >>\
+    \ k;\n    Matrix<mint> a(n, m), b(m, k);\n    rep(i, 0, n) {\n        rep(j, 0,\
+    \ m) {\n            cin >> a[i][j];\n        }\n    }\n    rep(i, 0, m) {\n  \
+    \      rep(j, 0, k) {\n            cin >> b[i][j];\n        }\n    }\n    Matrix<mint>\
+    \ c = a * b;\n    rep(i, 0, n) {\n        rep(j, 0, k) {\n            cout <<\
+    \ c[i][j] << \" \\n\"[j + 1 == k];\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\
     \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/matrix/matrix.hpp\"\nusing mint = modint998244353;\n\
@@ -134,7 +136,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/matrix/matrix_product.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 02:15:30+09:00'
+  timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/matrix_product.test.cpp

@@ -93,8 +93,9 @@ data:
     \ j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n                f[j |\
     \ i] += f[j];\n            }\n        }\n    }\n}\n#line 4 \"src/convolution/and_convolution.hpp\"\
     \ntemplate <typename T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n\
-    \    superset_zeta_transform(a);\n    superset_zeta_transform(b);\n    for(int\
-    \ i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    superset_zeta_transform(a,\
+    \    const int n = (int)a.size(), m = (int)b.size();\n    assert(n == m and (n\
+    \ & (n - 1)) == 0);\n    superset_zeta_transform(a);\n    superset_zeta_transform(b);\n\
+    \    for(int i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    superset_zeta_transform(a,\
     \ true);\n    return a;\n}\n#line 5 \"verify/library_checker/convolution/bitwise_and_convolution.test.cpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
     \    vector<mint> a(1 << n), b(1 << n);\n    rep(i, 0, 1 << n) cin >> a[i];\n\
@@ -115,7 +116,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-01-05 00:10:00+09:00'
+  timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/bitwise_and_convolution.test.cpp

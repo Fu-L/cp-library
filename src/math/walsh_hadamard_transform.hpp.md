@@ -24,28 +24,29 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/walsh_hadamard_transform.hpp\"\
     \ntemplate <typename T>\nvoid walsh_hadamard_transform(vector<T>& f, bool inv\
-    \ = false) {\n    int n = f.size();\n    for(int i = 1; i < n; i <<= 1) {\n  \
-    \      for(int j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n        \
-    \        T x = f[j], y = f[j | i];\n                f[j] = x + y, f[j | i] = x\
-    \ - y;\n            }\n        }\n    }\n    if(inv) {\n        if constexpr(is_integral<T>::value)\
-    \ {\n            for(auto& x : f) x /= n;\n        } else {\n            T invn\
-    \ = T(1) / T(f.size());\n            for(auto& x : f) x *= invn;\n        }\n\
-    \    }\n}\n"
+    \ = false) {\n    int n = f.size();\n    assert((n & (n - 1)) == 0);\n    for(int\
+    \ i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n           \
+    \ if((j & i) == 0) {\n                T x = f[j], y = f[j | i];\n            \
+    \    f[j] = x + y, f[j | i] = x - y;\n            }\n        }\n    }\n    if(inv)\
+    \ {\n        if constexpr(is_integral<T>::value) {\n            for(auto& x :\
+    \ f) x /= n;\n        } else {\n            T invn = T(1) / T(f.size());\n   \
+    \         for(auto& x : f) x *= invn;\n        }\n    }\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     void walsh_hadamard_transform(vector<T>& f, bool inv = false) {\n    int n = f.size();\n\
-    \    for(int i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n\
-    \            if((j & i) == 0) {\n                T x = f[j], y = f[j | i];\n \
-    \               f[j] = x + y, f[j | i] = x - y;\n            }\n        }\n  \
-    \  }\n    if(inv) {\n        if constexpr(is_integral<T>::value) {\n         \
-    \   for(auto& x : f) x /= n;\n        } else {\n            T invn = T(1) / T(f.size());\n\
-    \            for(auto& x : f) x *= invn;\n        }\n    }\n}"
+    \    assert((n & (n - 1)) == 0);\n    for(int i = 1; i < n; i <<= 1) {\n     \
+    \   for(int j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n           \
+    \     T x = f[j], y = f[j | i];\n                f[j] = x + y, f[j | i] = x -\
+    \ y;\n            }\n        }\n    }\n    if(inv) {\n        if constexpr(is_integral<T>::value)\
+    \ {\n            for(auto& x : f) x /= n;\n        } else {\n            T invn\
+    \ = T(1) / T(f.size());\n            for(auto& x : f) x *= invn;\n        }\n\
+    \    }\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/walsh_hadamard_transform.hpp
   requiredBy:
   - src/convolution/xor_convolution.hpp
-  timestamp: '2024-01-05 00:10:00+09:00'
+  timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/convolution/bitwise_xor_convolution.test.cpp

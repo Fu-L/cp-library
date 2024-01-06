@@ -33,13 +33,16 @@ data:
     \ i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n           \
     \ if((j & i) == 0) {\n                f[j | i] += f[j];\n            }\n     \
     \   }\n    }\n}\n#line 4 \"src/convolution/and_convolution.hpp\"\ntemplate <typename\
-    \ T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n    superset_zeta_transform(a);\n\
-    \    superset_zeta_transform(b);\n    for(int i = 0; i < (int)a.size(); ++i) a[i]\
-    \ *= b[i];\n    superset_zeta_transform(a, true);\n    return a;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../math/zeta_transform.hpp\"\
-    \ntemplate <typename T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n\
+    \ T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n    const int n =\
+    \ (int)a.size(), m = (int)b.size();\n    assert(n == m and (n & (n - 1)) == 0);\n\
     \    superset_zeta_transform(a);\n    superset_zeta_transform(b);\n    for(int\
     \ i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    superset_zeta_transform(a,\
+    \ true);\n    return a;\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../math/zeta_transform.hpp\"\
+    \ntemplate <typename T>\nvector<T> and_convolution(vector<T> a, vector<T> b) {\n\
+    \    const int n = (int)a.size(), m = (int)b.size();\n    assert(n == m and (n\
+    \ & (n - 1)) == 0);\n    superset_zeta_transform(a);\n    superset_zeta_transform(b);\n\
+    \    for(int i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    superset_zeta_transform(a,\
     \ true);\n    return a;\n}"
   dependsOn:
   - src/template/template.hpp
@@ -47,7 +50,7 @@ data:
   isVerificationFile: false
   path: src/convolution/and_convolution.hpp
   requiredBy: []
-  timestamp: '2024-01-05 00:03:06+09:00'
+  timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp

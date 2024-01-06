@@ -30,14 +30,15 @@ data:
     #line 2 \"src/template/policy_based_data_structure.hpp\"\n#include <ext/pb_ds/assoc_container.hpp>\n\
     #include <ext/pb_ds/tree_policy.hpp>\n#include <ext/pb_ds/tag_and_trait.hpp>\n\
     using namespace __gnu_pbds;\n#line 4 \"src/math/log_mod.hpp\"\nll log_mod(ll a,\
-    \ ll b, ll mod) {\n    ll g = 1;\n    for(ll i = mod; i; i /= 2) (g *= a) %= mod;\n\
-    \    g = gcd(g, mod);\n    ll t = 1, c = 0;\n    for(; t % g; ++c) {\n       \
-    \ if(t == b) return c;\n        (t *= a) %= mod;\n    }\n    if(b % g) return\
-    \ -1;\n    t /= g;\n    b /= g;\n    ll n = mod / g, h = 0, gs = 1;\n    for(;\
-    \ h * h < n; ++h) (gs *= a) %= n;\n    gp_hash_table<ll, ll> ht;\n    for(ll s\
-    \ = 0, e = b; s < h; ht[e] = ++s) {\n        (e *= a) %= n;\n    }\n    for(ll\
-    \ s = 0, e = t; s < n;) {\n        (e *= gs) %= n;\n        s += h;\n        if(ht.find(e)\
-    \ != ht.end()) return c + s - ht[e];\n    }\n    return -1;\n}\n#line 4 \"verify/library_checker/math/discrete_logarithm.test.cpp\"\
+    \ ll b, ll mod) {\n    assert(mod >= 1);\n    ll g = 1;\n    for(ll i = mod; i;\
+    \ i /= 2) (g *= a) %= mod;\n    g = gcd(g, mod);\n    ll t = 1, c = 0;\n    for(;\
+    \ t % g; ++c) {\n        if(t == b) return c;\n        (t *= a) %= mod;\n    }\n\
+    \    if(b % g) return -1;\n    t /= g;\n    b /= g;\n    ll n = mod / g, h = 0,\
+    \ gs = 1;\n    for(; h * h < n; ++h) (gs *= a) %= n;\n    gp_hash_table<ll, ll>\
+    \ ht;\n    for(ll s = 0, e = b; s < h; ht[e] = ++s) {\n        (e *= a) %= n;\n\
+    \    }\n    for(ll s = 0, e = t; s < n;) {\n        (e *= gs) %= n;\n        s\
+    \ += h;\n        if(ht.find(e) != ht.end()) return c + s - ht[e];\n    }\n   \
+    \ return -1;\n}\n#line 4 \"verify/library_checker/math/discrete_logarithm.test.cpp\"\
     \nint main(void) {\n    int t;\n    cin >> t;\n    while(t--) {\n        ll x,\
     \ y, m;\n        cin >> x >> y >> m;\n        cout << log_mod(x, y, m) << '\\\
     n';\n    }\n}\n"
@@ -53,7 +54,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/math/discrete_logarithm.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/math/discrete_logarithm.test.cpp

@@ -194,46 +194,46 @@ data:
     \   mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i] *= iz;\n\
     \    return a;\n}\n#line 5 \"src/convolution/convolution_arbitrary.hpp\"\ntemplate\
     \ <typename mint>\nvector<mint> convolution_arbitary(const vector<mint>& a, const\
-    \ vector<mint>& b) {\n    int n = (int)a.size(), m = (int)b.size();\n    static\
-    \ constexpr ll MOD1 = 754974721;\n    static constexpr ll MOD2 = 167772161;\n\
-    \    static constexpr ll MOD3 = 469762049;\n    static constexpr ll M1_inv_M2\
-    \ = 95869806;\n    static constexpr ll M12_inv_M3 = 187290749;\n    static constexpr\
-    \ ll M12_mod = MOD1 * MOD2 % mint::mod();\n    using mint1 = StaticModint<(uint32_t)MOD1>;\n\
-    \    using mint2 = StaticModint<(uint32_t)MOD2>;\n    using mint3 = StaticModint<(uint32_t)MOD3>;\n\
-    \    vector<mint1> a1(n), b1(m);\n    vector<mint2> a2(n), b2(m);\n    vector<mint3>\
-    \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int\
-    \ i = 0; i < n; ++i) a2[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i]\
-    \ = a[i].val();\n    for(int i = 0; i < m; ++i) b1[i] = b[i].val();\n    for(int\
-    \ i = 0; i < m; ++i) b2[i] = b[i].val();\n    for(int i = 0; i < m; ++i) b3[i]\
-    \ = b[i].val();\n    vector<mint1> x = convolution<mint1>(a1, b1);\n    vector<mint2>\
-    \ y = convolution<mint2>(a2, b2);\n    vector<mint3> z = convolution<mint3>(a3,\
-    \ b3);\n    vector<mint> c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i)\
-    \ {\n        ll v1 = ((ll)y[i].val() - (ll)x[i].val()) * M1_inv_M2 % MOD2;\n \
-    \       if(v1 < 0) v1 += MOD2;\n        ll v2 = ((ll)z[i].val() - ((ll)x[i].val()\
-    \ + MOD1 * v1) % MOD3) * M12_inv_M3 % MOD3;\n        if(v2 < 0) v2 += MOD3;\n\
-    \        c[i] = (ll)x[i].val() + MOD1 * v1 + M12_mod * v2;\n    }\n    return\
-    \ c;\n}\n"
+    \ vector<mint>& b) {\n    int n = (int)a.size(), m = (int)b.size();\n    if(!n\
+    \ or !m) return {};\n    static constexpr ll MOD1 = 754974721;\n    static constexpr\
+    \ ll MOD2 = 167772161;\n    static constexpr ll MOD3 = 469762049;\n    static\
+    \ constexpr ll M1_inv_M2 = 95869806;\n    static constexpr ll M12_inv_M3 = 187290749;\n\
+    \    static constexpr ll M12_mod = MOD1 * MOD2 % mint::mod();\n    using mint1\
+    \ = StaticModint<(uint32_t)MOD1>;\n    using mint2 = StaticModint<(uint32_t)MOD2>;\n\
+    \    using mint3 = StaticModint<(uint32_t)MOD3>;\n    vector<mint1> a1(n), b1(m);\n\
+    \    vector<mint2> a2(n), b2(m);\n    vector<mint3> a3(n), b3(m);\n    for(int\
+    \ i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a2[i]\
+    \ = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i] = a[i].val();\n    for(int\
+    \ i = 0; i < m; ++i) b1[i] = b[i].val();\n    for(int i = 0; i < m; ++i) b2[i]\
+    \ = b[i].val();\n    for(int i = 0; i < m; ++i) b3[i] = b[i].val();\n    vector<mint1>\
+    \ x = convolution<mint1>(a1, b1);\n    vector<mint2> y = convolution<mint2>(a2,\
+    \ b2);\n    vector<mint3> z = convolution<mint3>(a3, b3);\n    vector<mint> c(n\
+    \ + m - 1);\n    for(int i = 0; i < n + m - 1; ++i) {\n        ll v1 = ((ll)y[i].val()\
+    \ - (ll)x[i].val()) * M1_inv_M2 % MOD2;\n        if(v1 < 0) v1 += MOD2;\n    \
+    \    ll v2 = ((ll)z[i].val() - ((ll)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3\
+    \ % MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (ll)x[i].val() + MOD1\
+    \ * v1 + M12_mod * v2;\n    }\n    return c;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/static_modint.hpp\"\
     \n#include \"./convolution.hpp\"\ntemplate <typename mint>\nvector<mint> convolution_arbitary(const\
     \ vector<mint>& a, const vector<mint>& b) {\n    int n = (int)a.size(), m = (int)b.size();\n\
-    \    static constexpr ll MOD1 = 754974721;\n    static constexpr ll MOD2 = 167772161;\n\
-    \    static constexpr ll MOD3 = 469762049;\n    static constexpr ll M1_inv_M2\
-    \ = 95869806;\n    static constexpr ll M12_inv_M3 = 187290749;\n    static constexpr\
-    \ ll M12_mod = MOD1 * MOD2 % mint::mod();\n    using mint1 = StaticModint<(uint32_t)MOD1>;\n\
-    \    using mint2 = StaticModint<(uint32_t)MOD2>;\n    using mint3 = StaticModint<(uint32_t)MOD3>;\n\
-    \    vector<mint1> a1(n), b1(m);\n    vector<mint2> a2(n), b2(m);\n    vector<mint3>\
-    \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int\
-    \ i = 0; i < n; ++i) a2[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i]\
-    \ = a[i].val();\n    for(int i = 0; i < m; ++i) b1[i] = b[i].val();\n    for(int\
-    \ i = 0; i < m; ++i) b2[i] = b[i].val();\n    for(int i = 0; i < m; ++i) b3[i]\
-    \ = b[i].val();\n    vector<mint1> x = convolution<mint1>(a1, b1);\n    vector<mint2>\
-    \ y = convolution<mint2>(a2, b2);\n    vector<mint3> z = convolution<mint3>(a3,\
-    \ b3);\n    vector<mint> c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i)\
-    \ {\n        ll v1 = ((ll)y[i].val() - (ll)x[i].val()) * M1_inv_M2 % MOD2;\n \
-    \       if(v1 < 0) v1 += MOD2;\n        ll v2 = ((ll)z[i].val() - ((ll)x[i].val()\
-    \ + MOD1 * v1) % MOD3) * M12_inv_M3 % MOD3;\n        if(v2 < 0) v2 += MOD3;\n\
-    \        c[i] = (ll)x[i].val() + MOD1 * v1 + M12_mod * v2;\n    }\n    return\
-    \ c;\n}"
+    \    if(!n or !m) return {};\n    static constexpr ll MOD1 = 754974721;\n    static\
+    \ constexpr ll MOD2 = 167772161;\n    static constexpr ll MOD3 = 469762049;\n\
+    \    static constexpr ll M1_inv_M2 = 95869806;\n    static constexpr ll M12_inv_M3\
+    \ = 187290749;\n    static constexpr ll M12_mod = MOD1 * MOD2 % mint::mod();\n\
+    \    using mint1 = StaticModint<(uint32_t)MOD1>;\n    using mint2 = StaticModint<(uint32_t)MOD2>;\n\
+    \    using mint3 = StaticModint<(uint32_t)MOD3>;\n    vector<mint1> a1(n), b1(m);\n\
+    \    vector<mint2> a2(n), b2(m);\n    vector<mint3> a3(n), b3(m);\n    for(int\
+    \ i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a2[i]\
+    \ = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i] = a[i].val();\n    for(int\
+    \ i = 0; i < m; ++i) b1[i] = b[i].val();\n    for(int i = 0; i < m; ++i) b2[i]\
+    \ = b[i].val();\n    for(int i = 0; i < m; ++i) b3[i] = b[i].val();\n    vector<mint1>\
+    \ x = convolution<mint1>(a1, b1);\n    vector<mint2> y = convolution<mint2>(a2,\
+    \ b2);\n    vector<mint3> z = convolution<mint3>(a3, b3);\n    vector<mint> c(n\
+    \ + m - 1);\n    for(int i = 0; i < n + m - 1; ++i) {\n        ll v1 = ((ll)y[i].val()\
+    \ - (ll)x[i].val()) * M1_inv_M2 % MOD2;\n        if(v1 < 0) v1 += MOD2;\n    \
+    \    ll v2 = ((ll)z[i].val() - ((ll)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3\
+    \ % MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (ll)x[i].val() + MOD1\
+    \ * v1 + M12_mod * v2;\n    }\n    return c;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
@@ -244,7 +244,7 @@ data:
   path: src/convolution/convolution_arbitrary.hpp
   requiredBy:
   - src/fps/formal_power_series_arbitrary.hpp
-  timestamp: '2024-01-04 23:50:33+09:00'
+  timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
