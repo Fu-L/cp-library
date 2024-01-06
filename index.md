@@ -259,6 +259,9 @@ data:
       path: src/tree/centroid_decomposition.hpp
       title: centroid_decomposition
     - icon: ':heavy_check_mark:'
+      path: src/tree/heavy_light_decomposition.hpp
+      title: HeavyLightDecomposition
+    - icon: ':heavy_check_mark:'
       path: src/tree/lowest_common_ancestor.hpp
       title: LowestCommonAncestor
     - icon: ':heavy_check_mark:'
@@ -322,6 +325,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
       title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
+      title: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
+      title: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
       title: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
@@ -399,6 +408,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/unionfind.test.cpp
       title: verify/library_checker/data_structure/unionfind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+      title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+      title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+      title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - name: verify/library_checker/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -516,6 +534,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
       title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/jump_on_tree.test.cpp
+      title: verify/library_checker/tree/jump_on_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp

@@ -46,6 +46,9 @@ data:
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+    title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/find_linear_recurrence.test.cpp
     title: verify/library_checker/math/find_linear_recurrence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -243,6 +246,7 @@ data:
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
+  - verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
   - verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp

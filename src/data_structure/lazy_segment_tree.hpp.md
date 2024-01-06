@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
+    title: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_affine_point_get.test.cpp
     title: verify/library_checker/data_structure/range_affine_point_get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -160,6 +163,7 @@ data:
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
   - verify/library_checker/data_structure/range_affine_point_get.test.cpp
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
 documentation_of: src/data_structure/lazy_segment_tree.hpp

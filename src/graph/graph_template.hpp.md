@@ -48,6 +48,9 @@ data:
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
   - icon: ':heavy_check_mark:'
+    path: src/tree/heavy_light_decomposition.hpp
+    title: HeavyLightDecomposition
+  - icon: ':heavy_check_mark:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
   - icon: ':heavy_check_mark:'
@@ -79,11 +82,26 @@ data:
     path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
     title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
+    title: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
+    title: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
     title: verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+    title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+    title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+    title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
@@ -114,6 +132,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/jump_on_tree.test.cpp
+    title: verify/library_checker/tree/jump_on_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
@@ -174,6 +195,7 @@ data:
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/cartesian_tree.hpp
   - src/tree/centroid_decomposition.hpp
+  - src/tree/heavy_light_decomposition.hpp
   - src/tree/tree_diameter.hpp
   - src/graph/bipartite.hpp
   - src/graph/biconnected_components.hpp
@@ -190,6 +212,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
+  - verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
   - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
   - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
@@ -197,8 +220,13 @@ data:
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+  - verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
   - verify/aizu_online_judge/grl/bridges.test.cpp
   - verify/library_checker/math/2_sat.test.cpp
+  - verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+  - verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+  - verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+  - verify/library_checker/tree/jump_on_tree.test.cpp
   - verify/library_checker/tree/cartesian_tree.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
