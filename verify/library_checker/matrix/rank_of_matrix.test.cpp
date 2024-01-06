@@ -1,18 +1,17 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_rank"
 #include "../../../src/template/template.hpp"
 #include "../../../src/template/static_modint.hpp"
-#include "../../../src/matrix/matrix.hpp"
 #include "../../../src/matrix/gauss_elimination.hpp"
 using mint = modint998244353;
 int main(void) {
-    int n;
-    cin >> n;
-    Matrix<mint> a(n, n);
+    int n, m;
+    cin >> n >> m;
+    Matrix<mint> a(n, m);
     rep(i, 0, n) {
-        rep(j, 0, n) {
+        rep(j, 0, m) {
             cin >> a[i][j];
         }
     }
     auto [rank, det] = gauss_elimination(a);
-    cout << det << '\n';
+    cout << rank << '\n';
 }

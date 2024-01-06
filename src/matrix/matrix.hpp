@@ -10,10 +10,10 @@ struct Matrix {
     int W() const {
         return w;
     }
-    inline const vector<T>& operator[](int i) const {
+    const vector<T>& operator[](int i) const {
         return A[i];
     }
-    inline vector<T>& operator[](int i) {
+    vector<T>& operator[](int i) {
         return A[i];
     }
     static Matrix I(int n) {
@@ -89,38 +89,6 @@ struct Matrix {
             }
         }
         return false;
-    }
-    T determinant() const {
-        assert(h == w);
-        Matrix B(*this);
-        T res = 1;
-        for(int i = 0; i < h; ++i) {
-            int idx = -1;
-            for(int j = i; j < w; ++j) {
-                if(B[j][i] != 0) {
-                    idx = j;
-                    break;
-                }
-            }
-            if(idx == -1) return 0;
-            if(i != idx) {
-                res *= T(-1);
-                swap(B[i], B[idx]);
-            }
-            res *= B[i][i];
-            T inv = T(1) / B[i][i];
-            for(int j = 0; j < w; ++j) {
-                B[i][j] *= inv;
-            }
-            for(int j = i + 1; j < h; ++j) {
-                T a = B[j][i];
-                if(a == 0) continue;
-                for(int k = i; k < w; ++k) {
-                    B[j][k] -= B[i][k] * a;
-                }
-            }
-        }
-        return res;
     }
 
    private:
