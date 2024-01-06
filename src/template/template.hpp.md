@@ -171,9 +171,6 @@ data:
     path: src/math/lucas.hpp
     title: Lucas
   - icon: ':heavy_check_mark:'
-    path: src/math/matrix.hpp
-    title: Matrix
-  - icon: ':heavy_check_mark:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':heavy_check_mark:'
@@ -197,6 +194,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/gauss_elimination.hpp
+    title: src/matrix/gauss_elimination.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/inverse.hpp
+    title: src/matrix/inverse.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/linear_equation.hpp
+    title: src/matrix/linear_equation.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/matrix.hpp
+    title: src/matrix/matrix.hpp
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
@@ -403,11 +412,20 @@ data:
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/inverse_matrix.test.cpp
+    title: verify/library_checker/matrix/inverse_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/matrix_product.test.cpp
     title: verify/library_checker/matrix/matrix_product.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/pow_of_matrix.test.cpp
     title: verify/library_checker/matrix/pow_of_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/rank_of_matrix.test.cpp
+    title: verify/library_checker/matrix/rank_of_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
+    title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
@@ -497,6 +515,10 @@ data:
   isVerificationFile: false
   path: src/template/template.hpp
   requiredBy:
+  - src/matrix/linear_equation.hpp
+  - src/matrix/inverse.hpp
+  - src/matrix/gauss_elimination.hpp
+  - src/matrix/matrix.hpp
   - src/math/miller_rabin.hpp
   - src/math/xor_base.hpp
   - src/math/prime_factorization.hpp
@@ -515,7 +537,6 @@ data:
   - src/math/euler_phi.hpp
   - src/math/pow_mod.hpp
   - src/math/primitive_root.hpp
-  - src/math/matrix.hpp
   - src/fps/berlekamp_massey.hpp
   - src/fps/bostan_mori.hpp
   - src/fps/formal_power_series_arbitrary.hpp
@@ -601,8 +622,11 @@ data:
   - verify/aizu_online_judge/ntl/power.test.cpp
   - verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
   - verify/library_checker/matrix/matrix_product.test.cpp
+  - verify/library_checker/matrix/rank_of_matrix.test.cpp
+  - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
+  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - verify/library_checker/math/primality_test.test.cpp
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/math/find_linear_recurrence.test.cpp

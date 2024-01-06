@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: src/matrix/gauss_elimination.hpp
+    title: src/matrix/gauss_elimination.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/inverse.hpp
+    title: src/matrix/inverse.hpp
+  - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: src/matrix/matrix.hpp
   - icon: ':heavy_check_mark:'
@@ -17,11 +23,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
+    PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
     links:
-    - https://judge.yosupo.jp/problem/pow_of_matrix
-  bundledCode: "#line 1 \"verify/library_checker/matrix/pow_of_matrix.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n#line 2 \"\
+    - https://judge.yosupo.jp/problem/inverse_matrix
+  bundledCode: "#line 1 \"verify/library_checker/matrix/inverse_matrix.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/inverse_matrix\"\n#line 2 \"\
     src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i\
     \ = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
@@ -111,34 +117,60 @@ data:
     \        assert(h == B.h and w == B.w);\n        for(int i = 0; i < h; ++i) {\n\
     \            for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j])\
     \ return true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
-    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 5 \"verify/library_checker/matrix/pow_of_matrix.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    ll k;\n   \
-    \ cin >> n >> k;\n    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j,\
-    \ 0, n) {\n            cin >> a[i][j];\n        }\n    }\n    Matrix<mint> b =\
-    \ a.pow(k);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cout << b[i][j]\
-    \ << \" \\n\"[j + 1 == n];\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n#include\
-    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
-    \n#include \"../../../src/matrix/matrix.hpp\"\nusing mint = modint998244353;\n\
-    int main(void) {\n    int n;\n    ll k;\n    cin >> n >> k;\n    Matrix<mint>\
+    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 4 \"src/matrix/gauss_elimination.hpp\"\
+    \ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T> &a, int pivot_end\
+    \ = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    if(pivot_end == -1) pivot_end\
+    \ = w;\n    T det = 1;\n    for(int j = 0; j < pivot_end; ++j) {\n        int\
+    \ idx = -1;\n        for(int i = rank; i < h; ++i) {\n            if(a[i][j] !=\
+    \ T(0)) {\n                idx = i;\n                break;\n            }\n \
+    \       }\n        if(idx == -1) {\n            det = 0;\n            continue;\n\
+    \        }\n        if(rank != idx) det = -det, swap(a[rank], a[idx]);\n     \
+    \   det *= a[rank][j];\n        if(a[rank][j] != T(1)) {\n            T coeff\
+    \ = T(1) / a[rank][j];\n            for(int k = j; k < w; ++k) a[rank][k] *= coeff;\n\
+    \        }\n        for(int i = 0; i < h; ++i) {\n            if(i == rank) continue;\n\
+    \            if(a[i][j] != T(0)) {\n                T coeff = a[i][j] / a[rank][j];\n\
+    \                for(int k = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;\n \
+    \           }\n        }\n        ++rank;\n    }\n    return {rank, det};\n}\n\
+    #line 5 \"src/matrix/inverse.hpp\"\ntemplate <typename T>\nMatrix<T> inverse(const\
+    \ Matrix<T>& a) {\n    int n = a.H();\n    assert(n > 0);\n    assert(n == a.W());\n\
+    \    Matrix<T> m(n, 2 * n);\n    for(int i = 0; i < n; ++i) {\n        for(int\
+    \ j = 0; j < n; ++j) {\n            m[i][j] = a[i][j];\n        }\n        m[i][n\
+    \ + i] = 1;\n    }\n    auto [rank, det] = gauss_elimination(m, n);\n    if(rank\
+    \ != n) {\n        Matrix<T> res(0, 0);\n        return res;\n    }\n    Matrix<T>\
+    \ b(n, n);\n    for(int i = 0; i < n; ++i) {\n        for(int j = 0; j < n; ++j)\
+    \ {\n            b[i][j] = m[i][j + n];\n        }\n    }\n    return b;\n}\n\
+    #line 6 \"verify/library_checker/matrix/inverse_matrix.test.cpp\"\nusing mint\
+    \ = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n    Matrix<mint>\
     \ a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cin >> a[i][j];\n\
-    \        }\n    }\n    Matrix<mint> b = a.pow(k);\n    rep(i, 0, n) {\n      \
-    \  rep(j, 0, n) {\n            cout << b[i][j] << \" \\n\"[j + 1 == n];\n    \
-    \    }\n    }\n}"
+    \        }\n    }\n    Matrix<mint> b = inverse(a);\n    if(!b.H() and !b.W())\
+    \ {\n        cout << -1 << '\\n';\n        return 0;\n    }\n    rep(i, 0, n)\
+    \ {\n        rep(j, 0, n) {\n            cout << b[i][j] << \" \\n\"[j + 1 ==\
+    \ n];\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inverse_matrix\"\n#include\
+    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/matrix/matrix.hpp\"\n#include \"../../../src/matrix/inverse.hpp\"\
+    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
+    \    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n     \
+    \       cin >> a[i][j];\n        }\n    }\n    Matrix<mint> b = inverse(a);\n\
+    \    if(!b.H() and !b.W()) {\n        cout << -1 << '\\n';\n        return 0;\n\
+    \    }\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cout << b[i][j]\
+    \ << \" \\n\"[j + 1 == n];\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
   - src/matrix/matrix.hpp
+  - src/matrix/inverse.hpp
+  - src/matrix/gauss_elimination.hpp
   isVerificationFile: true
-  path: verify/library_checker/matrix/pow_of_matrix.test.cpp
+  path: verify/library_checker/matrix/inverse_matrix.test.cpp
   requiredBy: []
   timestamp: '2024-01-07 02:15:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/matrix/pow_of_matrix.test.cpp
+documentation_of: verify/library_checker/matrix/inverse_matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/matrix/pow_of_matrix.test.cpp
-- /verify/verify/library_checker/matrix/pow_of_matrix.test.cpp.html
-title: verify/library_checker/matrix/pow_of_matrix.test.cpp
+- /verify/verify/library_checker/matrix/inverse_matrix.test.cpp
+- /verify/verify/library_checker/matrix/inverse_matrix.test.cpp.html
+title: verify/library_checker/matrix/inverse_matrix.test.cpp
 ---

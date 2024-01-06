@@ -182,9 +182,6 @@ data:
       path: src/math/lucas.hpp
       title: Lucas
     - icon: ':heavy_check_mark:'
-      path: src/math/matrix.hpp
-      title: Matrix
-    - icon: ':heavy_check_mark:'
       path: src/math/miller_rabin.hpp
       title: miller_rabin
     - icon: ':heavy_check_mark:'
@@ -208,6 +205,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/zeta_transform.hpp
       title: zeta_transform
+  - name: src/matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/matrix/gauss_elimination.hpp
+      title: src/matrix/gauss_elimination.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/matrix/inverse.hpp
+      title: src/matrix/inverse.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/matrix/linear_equation.hpp
+      title: src/matrix/linear_equation.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/matrix/matrix.hpp
+      title: src/matrix/matrix.hpp
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -446,11 +457,20 @@ data:
       path: verify/library_checker/matrix/determinant_of_matric.test.cpp
       title: verify/library_checker/matrix/determinant_of_matric.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/inverse_matrix.test.cpp
+      title: verify/library_checker/matrix/inverse_matrix.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/matrix/matrix_product.test.cpp
       title: verify/library_checker/matrix/matrix_product.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/matrix/pow_of_matrix.test.cpp
       title: verify/library_checker/matrix/pow_of_matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/rank_of_matrix.test.cpp
+      title: verify/library_checker/matrix/rank_of_matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
+      title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - name: verify/library_checker/polynomial
     pages:
     - icon: ':heavy_check_mark:'

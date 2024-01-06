@@ -2,8 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/matrix.hpp
-    title: Matrix
+    path: src/matrix/gauss_elimination.hpp
+    title: src/matrix/gauss_elimination.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/matrix.hpp
+    title: src/matrix/matrix.hpp
   - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
@@ -79,11 +82,11 @@ data:
     \ u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n        if(m0\
     \ < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
-    #line 3 \"src/math/matrix.hpp\"\ntemplate <typename T>\nstruct Matrix {\n    Matrix(int\
-    \ h, int w, T val = 0)\n        : h(h), w(w), A(h, vector<T>(w, val)) {}\n   \
-    \ int H() const {\n        return h;\n    }\n    int W() const {\n        return\
-    \ w;\n    }\n    inline const vector<T>& operator[](int i) const {\n        return\
-    \ A[i];\n    }\n    inline vector<T>& operator[](int i) {\n        return A[i];\n\
+    #line 3 \"src/matrix/matrix.hpp\"\ntemplate <typename T>\nstruct Matrix {\n  \
+    \  Matrix(int h, int w, T val = 0)\n        : h(h), w(w), A(h, vector<T>(w, val))\
+    \ {}\n    int H() const {\n        return h;\n    }\n    int W() const {\n   \
+    \     return w;\n    }\n    const vector<T>& operator[](int i) const {\n     \
+    \   return A[i];\n    }\n    vector<T>& operator[](int i) {\n        return A[i];\n\
     \    }\n    static Matrix I(int n) {\n        Matrix mat(n, n);\n        for(int\
     \ i = 0; i < n; ++i) mat[i][i] = 1;\n        return mat;\n    }\n    Matrix& operator+=(const\
     \ Matrix& B) {\n        assert(h == B.h and w == B.w);\n        for(int i = 0;\
@@ -110,38 +113,42 @@ data:
     \ }\n        return true;\n    }\n    bool operator!=(const Matrix& B) const {\n\
     \        assert(h == B.h and w == B.w);\n        for(int i = 0; i < h; ++i) {\n\
     \            for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j])\
-    \ return true;\n            }\n        }\n        return false;\n    }\n    T\
-    \ determinant() const {\n        assert(h == w);\n        Matrix B(*this);\n \
-    \       T res = 1;\n        for(int i = 0; i < h; ++i) {\n            int idx\
-    \ = -1;\n            for(int j = i; j < w; ++j) {\n                if(B[j][i]\
-    \ != 0) {\n                    idx = j;\n                    break;\n        \
-    \        }\n            }\n            if(idx == -1) return 0;\n            if(i\
-    \ != idx) {\n                res *= T(-1);\n                swap(B[i], B[idx]);\n\
-    \            }\n            res *= B[i][i];\n            T inv = T(1) / B[i][i];\n\
-    \            for(int j = 0; j < w; ++j) {\n                B[i][j] *= inv;\n \
-    \           }\n            for(int j = i + 1; j < h; ++j) {\n                T\
-    \ a = B[j][i];\n                if(a == 0) continue;\n                for(int\
-    \ k = i; k < w; ++k) {\n                    B[j][k] -= B[i][k] * a;\n        \
-    \        }\n            }\n        }\n        return res;\n    }\n\n   private:\n\
-    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 5 \"verify/library_checker/matrix/determinant_of_matric.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
-    \    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n     \
-    \       cin >> a[i][j];\n        }\n    }\n    cout << a.determinant() << '\\\
-    n';\n}\n"
+    \ return true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 4 \"src/matrix/gauss_elimination.hpp\"\
+    \ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T> &a, int pivot_end\
+    \ = -1) {\n    int h = a.H(), w = a.W(), rank = 0;\n    if(pivot_end == -1) pivot_end\
+    \ = w;\n    T det = 1;\n    for(int j = 0; j < pivot_end; ++j) {\n        int\
+    \ idx = -1;\n        for(int i = rank; i < h; ++i) {\n            if(a[i][j] !=\
+    \ T(0)) {\n                idx = i;\n                break;\n            }\n \
+    \       }\n        if(idx == -1) {\n            det = 0;\n            continue;\n\
+    \        }\n        if(rank != idx) det = -det, swap(a[rank], a[idx]);\n     \
+    \   det *= a[rank][j];\n        if(a[rank][j] != T(1)) {\n            T coeff\
+    \ = T(1) / a[rank][j];\n            for(int k = j; k < w; ++k) a[rank][k] *= coeff;\n\
+    \        }\n        for(int i = 0; i < h; ++i) {\n            if(i == rank) continue;\n\
+    \            if(a[i][j] != T(0)) {\n                T coeff = a[i][j] / a[rank][j];\n\
+    \                for(int k = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;\n \
+    \           }\n        }\n        ++rank;\n    }\n    return {rank, det};\n}\n\
+    #line 6 \"verify/library_checker/matrix/determinant_of_matric.test.cpp\"\nusing\
+    \ mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n    Matrix<mint>\
+    \ a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cin >> a[i][j];\n\
+    \        }\n    }\n    auto [rank, det] = gauss_elimination(a);\n    cout << det\
+    \ << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#include\
     \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
-    \n#include \"../../../src/math/matrix.hpp\"\nusing mint = modint998244353;\nint\
-    \ main(void) {\n    int n;\n    cin >> n;\n    Matrix<mint> a(n, n);\n    rep(i,\
-    \ 0, n) {\n        rep(j, 0, n) {\n            cin >> a[i][j];\n        }\n  \
-    \  }\n    cout << a.determinant() << '\\n';\n}"
+    \n#include \"../../../src/matrix/matrix.hpp\"\n#include \"../../../src/matrix/gauss_elimination.hpp\"\
+    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
+    \    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n     \
+    \       cin >> a[i][j];\n        }\n    }\n    auto [rank, det] = gauss_elimination(a);\n\
+    \    cout << det << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
-  - src/math/matrix.hpp
+  - src/matrix/matrix.hpp
+  - src/matrix/gauss_elimination.hpp
   isVerificationFile: true
   path: verify/library_checker/matrix/determinant_of_matric.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-01-07 02:15:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/determinant_of_matric.test.cpp

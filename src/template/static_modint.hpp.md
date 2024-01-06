@@ -55,11 +55,20 @@ data:
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/inverse_matrix.test.cpp
+    title: verify/library_checker/matrix/inverse_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/matrix_product.test.cpp
     title: verify/library_checker/matrix/matrix_product.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/pow_of_matrix.test.cpp
     title: verify/library_checker/matrix/pow_of_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/rank_of_matrix.test.cpp
+    title: verify/library_checker/matrix/rank_of_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
+    title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
@@ -218,8 +227,11 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/matrix_product.test.cpp
+  - verify/library_checker/matrix/rank_of_matrix.test.cpp
+  - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
+  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/math/find_linear_recurrence.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp
