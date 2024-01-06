@@ -203,6 +203,9 @@ data:
       path: src/math/walsh_hadamard_transform.hpp
       title: walsh_hadamard_transform
     - icon: ':heavy_check_mark:'
+      path: src/math/xor_base.hpp
+      title: xor_base
+    - icon: ':heavy_check_mark:'
       path: src/math/zeta_transform.hpp
       title: zeta_transform
   - name: src/string
@@ -524,6 +527,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/1559.test.cpp
       title: verify/yukicoder/1559.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yukicoder/184.test.cpp
+      title: verify/yukicoder/184.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/186.test.cpp
       title: verify/yukicoder/186.test.cpp

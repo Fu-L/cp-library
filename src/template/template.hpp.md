@@ -192,6 +192,9 @@ data:
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
   - icon: ':heavy_check_mark:'
+    path: src/math/xor_base.hpp
+    title: xor_base
+  - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':heavy_check_mark:'
@@ -466,6 +469,9 @@ data:
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/184.test.cpp
+    title: verify/yukicoder/184.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
   - icon: ':heavy_check_mark:'
@@ -492,6 +498,7 @@ data:
   path: src/template/template.hpp
   requiredBy:
   - src/math/miller_rabin.hpp
+  - src/math/xor_base.hpp
   - src/math/prime_factorization.hpp
   - src/math/lucas.hpp
   - src/math/binomial.hpp
@@ -646,6 +653,7 @@ data:
   - verify/yukicoder/186.test.cpp
   - verify/yukicoder/649.test.cpp
   - verify/yukicoder/1559.test.cpp
+  - verify/yukicoder/184.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
