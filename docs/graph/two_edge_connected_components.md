@@ -5,9 +5,9 @@ documentation_of: ../../src/graph/two_edge_connected_components.hpp
 
 # TwoEdgeConnectedComponents
 
-グラフの二重辺連結成分分解を行います．
+無向グラフの二重辺連結成分分解を行います．
 
-二重辺連結成分とは，グラフから橋を全て削除したときの連結成分です．
+二重辺連結成分とは，無向グラフから橋を全て削除したときの連結成分です．
 
 異なる $2$ つの二重辺連結成分 $A, B$ について，以下の性質が成り立ちます．
 
@@ -21,7 +21,7 @@ documentation_of: ../../src/graph/two_edge_connected_components.hpp
 TwoEdgeConnectedComponents<T> tecc(Graph<T> g)
 ```
 
-$n$ 頂点 $m$ 辺のグラフ `g` を二重辺連結成分分解します．
+$n$ 頂点 $m$ 辺の無向グラフ `g` を二重辺連結成分分解します．
 
 **計算量**
 

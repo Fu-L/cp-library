@@ -5,7 +5,7 @@ documentation_of: ../../src/graph/biconnected_components.hpp
 
 # BiconnectedComponents
 
-グラフの二重頂点連結成分分解を行います．
+無向グラフの二重頂点連結成分分解を行います．
 
 頂点の部分集合 $A$ が二重頂点連結成分であるとは，任意の頂点 $a \in A$ について， $A$ から $a$ を除いても連結であり，かつ $A$ が極大であることを言います．
 
@@ -15,7 +15,7 @@ documentation_of: ../../src/graph/biconnected_components.hpp
 BiconnectedComponents<T> low(Graph<T> g)
 ```
 
-$n$ 頂点 $m$ 辺のグラフ `g` を二重頂点連結成分分解します．
+$n$ 頂点 $m$ 辺の無向グラフ `g` を二重頂点連結成分分解します．
 
 **計算量**
 
