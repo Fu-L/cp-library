@@ -27,16 +27,20 @@ data:
     \    int idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n\
     \    Edge(int from, int to, T cost = 1, int idx = -1)\n        : from(from), to(to),\
     \ cost(cost), idx(idx) {}\n    operator int() const {\n        return to;\n  \
-    \  }\n};\ntemplate <typename T = int>\nstruct Graph {\n    vector<vector<Edge<T>>>\
-    \ g;\n    int es;\n    Graph(int n)\n        : g(n), es(0) {}\n    size_t size()\
-    \ const {\n        return g.size();\n    }\n    void add_edge(int from, int to,\
-    \ T cost = 1) {\n        g[from].emplace_back(from, to, cost, es);\n        g[to].emplace_back(to,\
-    \ from, cost, es++);\n    }\n    void add_directed_edge(int from, int to, T cost\
-    \ = 1) {\n        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline\
-    \ vector<Edge<T>>& operator[](const int& k) {\n        return g[k];\n    }\n \
-    \   inline const vector<Edge<T>>& operator[](const int& k) const {\n        return\
-    \ g[k];\n    }\n};\ntemplate <typename T = int>\nusing Edges = vector<Edge<T>>;\n\
-    #line 4 \"src/tree/centroid.hpp\"\ntemplate <typename T>\nvector<int> centroid(const\
+    \  }\n};\ntemplate <typename T = int>\nstruct Graph {\n    Graph(int N)\n    \
+    \    : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n    }\n\
+    \    int edge_size() const {\n        return es;\n    }\n    void add_edge(int\
+    \ from, int to, T cost = 1) {\n        assert(0 <= from and from < n);\n     \
+    \   assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
+    \ es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(int\
+    \ from, int to, T cost = 1) {\n        assert(0 <= from and from < n);\n     \
+    \   assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
+    \ es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k) {\n    \
+    \    assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline const\
+    \ vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <= k and\
+    \ k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
+    \ g;\n};\ntemplate <typename T = int>\nusing Edges = vector<Edge<T>>;\n#line 4\
+    \ \"src/tree/centroid.hpp\"\ntemplate <typename T>\nvector<int> centroid(const\
     \ Graph<T>& g) {\n    int n = (int)g.size();\n    stack<pair<int, int>> st;\n\
     \    st.emplace(0, -1);\n    vector<int> sz(n), par(n);\n    while(!st.empty())\
     \ {\n        pair<int, int> p = st.top();\n        if(sz[p.first] == 0) {\n  \
@@ -73,7 +77,7 @@ data:
   isVerificationFile: false
   path: src/tree/centroid.hpp
   requiredBy: []
-  timestamp: '2024-01-06 02:37:03+09:00'
+  timestamp: '2024-01-14 17:33:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/tree/centroid.test.cpp

@@ -32,20 +32,24 @@ data:
     \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, T cost =\
     \ 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n  \
     \  operator int() const {\n        return to;\n    }\n};\ntemplate <typename T\
-    \ = int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n    Graph(int\
-    \ n)\n        : g(n), es(0) {}\n    size_t size() const {\n        return g.size();\n\
-    \    }\n    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
-    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
-    \ {\n        return g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const\
-    \ int& k) const {\n        return g[k];\n    }\n};\ntemplate <typename T = int>\n\
-    using Edges = vector<Edge<T>>;\n#line 4 \"src/graph/cycle_detection.hpp\"\ntemplate\
-    \ <typename T>\nEdges<T> cycle_detection(const Graph<T>& g, bool directed = true)\
-    \ {\n    int n = g.size();\n    for(int i = 0; i < n; ++i) {\n        for(const\
-    \ Edge<T>& e : g[i]) {\n            if(i == e.to) return {e};\n        }\n   \
-    \ }\n    Edges<T> cycle;\n    vector<int> pre(n, -1), visited(n, 0);\n    int\
-    \ finish = 0;\n    auto dfs = [&](auto& dfs, int cur, int pval, const Edge<T>&\
+    \ = int>\nstruct Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n \
+    \   int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(int from, int to, T cost = 1) {\n\
+    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
+    \        g[from].emplace_back(from, to, cost, es);\n        g[to].emplace_back(to,\
+    \ from, cost, es++);\n    }\n    void add_directed_edge(int from, int to, T cost\
+    \ = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <= to and\
+    \ to < n);\n        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline\
+    \ vector<Edge<T>>& operator[](const int& k) {\n        assert(0 <= k and k < n);\n\
+    \        return g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const\
+    \ int& k) const {\n        assert(0 <= k and k < n);\n        return g[k];\n \
+    \   }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate\
+    \ <typename T = int>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/cycle_detection.hpp\"\
+    \ntemplate <typename T>\nEdges<T> cycle_detection(const Graph<T>& g, bool directed\
+    \ = true) {\n    int n = g.size();\n    for(int i = 0; i < n; ++i) {\n       \
+    \ for(const Edge<T>& e : g[i]) {\n            if(i == e.to) return {e};\n    \
+    \    }\n    }\n    Edges<T> cycle;\n    vector<int> pre(n, -1), visited(n, 0);\n\
+    \    int finish = 0;\n    auto dfs = [&](auto& dfs, int cur, int pval, const Edge<T>&\
     \ par) -> int {\n        pre[cur] = pval;\n        visited[cur] = 1;\n       \
     \ for(const Edge<T>& e : g[cur]) {\n            if(finish) return -1;\n      \
     \      if(!directed and e.idx == par.idx) continue;\n            if(pre[e.to]\
@@ -82,7 +86,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
   requiredBy: []
-  timestamp: '2024-01-05 04:52:36+09:00'
+  timestamp: '2024-01-14 17:33:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/cycle_detection_undirected.test.cpp
