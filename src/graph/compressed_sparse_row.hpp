@@ -5,7 +5,7 @@ template <typename T>
 struct CompressedSparseRow {
     vector<int> start, elist;
     CompressedSparseRow(const Graph<T>& g)
-        : start(g.size() + 1), elist(g.es) {
+        : start(g.size() + 1), elist(g.edge_size()) {
         int n = (int)g.size();
         for(int i = 0; i < n; ++i) {
             start[i + 1] = start[i] + g[i].size();

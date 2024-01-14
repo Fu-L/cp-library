@@ -5,7 +5,7 @@
 int main(void) {
     int n, m;
     cin >> n >> m;
-    Graph g(n);
+    Graph<int> g(n);
     rep(i, 0, m) {
         int u, v;
         cin >> u >> v;

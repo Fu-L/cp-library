@@ -15,26 +15,37 @@ struct Edge {
 };
 template <typename T = int>
 struct Graph {
-    vector<vector<Edge<T>>> g;
-    int es;
-    Graph(int n)
-        : g(n), es(0) {}
-    size_t size() const {
-        return g.size();
+    Graph(int N)
+        : n(N), es(0), g(N) {}
+    int size() const {
+        return n;
+    }
+    int edge_size() const {
+        return es;
     }
     void add_edge(int from, int to, T cost = 1) {
+        assert(0 <= from and from < n);
+        assert(0 <= to and to < n);
         g[from].emplace_back(from, to, cost, es);
         g[to].emplace_back(to, from, cost, es++);
     }
     void add_directed_edge(int from, int to, T cost = 1) {
+        assert(0 <= from and from < n);
+        assert(0 <= to and to < n);
         g[from].emplace_back(from, to, cost, es++);
     }
     inline vector<Edge<T>>& operator[](const int& k) {
+        assert(0 <= k and k < n);
         return g[k];
     }
     inline const vector<Edge<T>>& operator[](const int& k) const {
+        assert(0 <= k and k < n);
         return g[k];
     }
+
+   private:
+    int n, es;
+    vector<vector<Edge<T>>> g;
 };
 template <typename T = int>
 using Edges = vector<Edge<T>>;
