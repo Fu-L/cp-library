@@ -6,7 +6,7 @@ data:
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/fps/berlekamp_massey.hpp
-    title: src/fps/berlekamp_massey.hpp
+    title: berlekamp_massey
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: src/fps/formal_power_series.hpp

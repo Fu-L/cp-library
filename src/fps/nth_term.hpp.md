@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/fps/berlekamp_massey.hpp
-    title: src/fps/berlekamp_massey.hpp
+    title: berlekamp_massey
   - icon: ':heavy_check_mark:'
     path: src/fps/bostan_mori.hpp
     title: src/fps/bostan_mori.hpp
