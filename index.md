@@ -99,7 +99,7 @@ data:
       title: src/fps/formal_power_series_ll.hpp
     - icon: ':heavy_check_mark:'
       path: src/fps/nth_term.hpp
-      title: src/fps/nth_term.hpp
+      title: nth_term
   - name: src/geometry
     pages:
     - icon: ':warning:'

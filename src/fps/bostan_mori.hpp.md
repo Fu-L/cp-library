@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/fps/nth_term.hpp
-    title: src/fps/nth_term.hpp
+    title: nth_term
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
