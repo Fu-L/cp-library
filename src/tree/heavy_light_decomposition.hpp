@@ -13,29 +13,30 @@ struct HeavyLightDecomposition {
         assert(0 <= i and i < n);
         return make_pair(down[i], up[i]);
     }
-    int la(int a, int k) const {
-        assert(0 <= a and a < n);
-        if(k > depth[a]) return -1;
+    int la(int v, int x = 1) const {
+        assert(0 <= v and v < n);
+        assert(x >= 0);
+        if(x > depth[v]) return -1;
         while(true) {
-            int b = nex[a];
-            if(down[a] - k >= down[b]) return rev[down[a] - k];
-            k -= down[a] - down[b] + 1;
-            a = par[b];
+            int u = nex[v];
+            if(down[v] - x >= down[u]) return rev[down[v] - x];
+            x -= down[v] - down[u] + 1;
+            v = par[u];
         }
     }
-    int lca(int a, int b) const {
-        assert(0 <= a and a < n);
-        assert(0 <= b and b < n);
-        while(nex[a] != nex[b]) {
-            if(down[a] < down[b]) swap(a, b);
-            a = par[nex[a]];
+    int lca(int u, int v) const {
+        assert(0 <= u and u < n);
+        assert(0 <= v and v < n);
+        while(nex[u] != nex[v]) {
+            if(down[u] < down[v]) swap(u, v);
+            u = par[nex[u]];
         }
-        return depth[a] < depth[b] ? a : b;
+        return depth[u] < depth[v] ? u : v;
     }
-    int dist(int a, int b) const {
-        assert(0 <= a and a < n);
-        assert(0 <= b and b < n);
-        return depth[a] + depth[b] - depth[lca(a, b)] * 2;
+    int dist(int u, int v) const {
+        assert(0 <= u and u < n);
+        assert(0 <= v and v < n);
+        return depth[u] + depth[v] - depth[lca(u, v)] * 2;
     }
     template <typename F>
     void path_query(int u, int v, bool vertex, const F& f) {
@@ -47,9 +48,9 @@ struct HeavyLightDecomposition {
         for(auto&& [a, b] : descend(l, v)) f(a, b + 1);
     }
     template <typename F>
-    void subtree_query(int u, bool vertex, const F& f) {
-        assert(0 <= u and u < n);
-        f(down[u] + int(!vertex), up[u]);
+    void subtree_query(int v, bool vertex, const F& f) {
+        assert(0 <= v and v < n);
+        f(down[v] + int(!vertex), up[v]);
     }
 
    private:
