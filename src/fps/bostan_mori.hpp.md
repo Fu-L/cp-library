@@ -64,8 +64,24 @@ data:
   - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/bostan_mori.hpp
 layout: document
-redirect_from:
-- /library/src/fps/bostan_mori.hpp
-- /library/src/fps/bostan_mori.hpp.html
-title: src/fps/bostan_mori.hpp
+title: bostan_mori
 ---
+
+## bostan_mori
+
+```cpp
+mint bostan_mori(FPS<mint> a, FPS<mint> c, ll k)
+```
+
+斉次線形漸化式
+$$a_i = \sum\limits_{j=0}^{d-1} c_j a_{i-1-j}$$
+の $a$ の前 $n ~(\geq d)$ 項と $c$ が与えられたときに $a_k$ を返します．
+
+**制約**
+
+- $0 \leq k$
+- $d \leq n$
+
+**計算量**
+
+- $O(d \log d \log k)$

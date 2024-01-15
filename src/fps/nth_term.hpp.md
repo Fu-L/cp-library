@@ -6,7 +6,7 @@ data:
     title: berlekamp_massey
   - icon: ':heavy_check_mark:'
     path: src/fps/bostan_mori.hpp
-    title: src/fps/bostan_mori.hpp
+    title: bostan_mori
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
