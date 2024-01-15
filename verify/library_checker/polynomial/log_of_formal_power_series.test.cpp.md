@@ -6,7 +6,7 @@ data:
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
-    title: src/fps/formal_power_series.hpp
+    title: FormalPowerSeries
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
@@ -324,14 +324,15 @@ data:
     \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
     \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
     \       return ret;\n    }\n};\n#line 5 \"verify/library_checker/polynomial/log_of_formal_power_series.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
-    \    FormalPowerSeries<mint> f(n);\n    rep(i, 0, n) cin >> f[i];\n    FormalPowerSeries<mint>\
-    \ g = f.log();\n    rep(i, 0, n) cout << g[i] << \" \\n\"[i + 1 == n];\n}\n"
+    \nusing mint = modint998244353;\nusing fps = FormalPowerSeries<mint>;\nint main(void)\
+    \ {\n    int n;\n    cin >> n;\n    fps f(n);\n    rep(i, 0, n) cin >> f[i];\n\
+    \    fps g = f.log();\n    rep(i, 0, n) cout << g[i] << \" \\n\"[i + 1 == n];\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/fps/formal_power_series.hpp\"\nusing mint = modint998244353;\n\
-    int main(void) {\n    int n;\n    cin >> n;\n    FormalPowerSeries<mint> f(n);\n\
-    \    rep(i, 0, n) cin >> f[i];\n    FormalPowerSeries<mint> g = f.log();\n   \
+    using fps = FormalPowerSeries<mint>;\nint main(void) {\n    int n;\n    cin >>\
+    \ n;\n    fps f(n);\n    rep(i, 0, n) cin >> f[i];\n    fps g = f.log();\n   \
     \ rep(i, 0, n) cout << g[i] << \" \\n\"[i + 1 == n];\n}"
   dependsOn:
   - src/template/template.hpp
@@ -343,7 +344,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 00:57:52+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp

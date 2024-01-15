@@ -9,7 +9,7 @@ data:
     title: all_product
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
-    title: src/fps/formal_power_series.hpp
+    title: FormalPowerSeries
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
@@ -327,29 +327,28 @@ data:
     \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
     \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
     \       return ret;\n    }\n};\n#line 3 \"src/fps/all_product.hpp\"\ntemplate\
-    \ <template <typename> typename FormalPowerSeries, typename mint>\nFormalPowerSeries<mint>\
-    \ all_product(vector<FormalPowerSeries<mint>> f) {\n    if((int)f.size() == 0)\
-    \ return {1};\n    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int,\
-    \ int>>> pq;\n    rep(i, 0, (int)f.size()) pq.push({f[i].size(), i});\n    while((int)pq.size()\
-    \ > 1) {\n        auto [d1, i1] = pq.top();\n        pq.pop();\n        auto [d2,\
-    \ i2] = pq.top();\n        pq.pop();\n        f[i1] *= f[i2];\n        f[i2].clear();\n\
-    \        pq.push({d1 + d2, i1});\n    }\n    return f[pq.top().second];\n}\n#line\
-    \ 6 \"verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
-    \    vector<int> d(n);\n    int D = 0;\n    vector<FormalPowerSeries<mint>> f(n);\n\
-    \    rep(i, 0, n) {\n        cin >> d[i];\n        D += d[i];\n        f[i].resize(d[i]\
-    \ + 1, mint(0));\n        rep(j, 0, d[i] + 1) cin >> f[i][j];\n    }\n    FormalPowerSeries<mint>\
-    \ ans = all_product(f);\n    rep(i, 0, D + 1) cout << ans[i] << \" \\n\"[i ==\
-    \ D];\n}\n"
+    \ <template <typename> typename FPS, typename T>\nFPS<T> all_product(vector<FPS<T>>\
+    \ f) {\n    if((int)f.size() == 0) return {1};\n    priority_queue<pair<int, int>,\
+    \ vector<pair<int, int>>, greater<pair<int, int>>> pq;\n    rep(i, 0, (int)f.size())\
+    \ pq.push({f[i].size(), i});\n    while((int)pq.size() > 1) {\n        auto [d1,\
+    \ i1] = pq.top();\n        pq.pop();\n        auto [d2, i2] = pq.top();\n    \
+    \    pq.pop();\n        f[i1] *= f[i2];\n        f[i2].clear();\n        pq.push({d1\
+    \ + d2, i1});\n    }\n    return f[pq.top().second];\n}\n#line 6 \"verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp\"\
+    \nusing mint = modint998244353;\nusing fps = FormalPowerSeries<mint>;\nint main(void)\
+    \ {\n    int n;\n    cin >> n;\n    vector<int> d(n);\n    int D = 0;\n    vector<fps>\
+    \ f(n);\n    rep(i, 0, n) {\n        cin >> d[i];\n        D += d[i];\n      \
+    \  f[i].resize(d[i] + 1, mint(0));\n        rep(j, 0, d[i] + 1) cin >> f[i][j];\n\
+    \    }\n    fps ans = all_product(f);\n    rep(i, 0, D + 1) cout << ans[i] <<\
+    \ \" \\n\"[i == D];\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/fps/formal_power_series.hpp\"\n#include \"../../../src/fps/all_product.hpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
-    \    vector<int> d(n);\n    int D = 0;\n    vector<FormalPowerSeries<mint>> f(n);\n\
-    \    rep(i, 0, n) {\n        cin >> d[i];\n        D += d[i];\n        f[i].resize(d[i]\
-    \ + 1, mint(0));\n        rep(j, 0, d[i] + 1) cin >> f[i][j];\n    }\n    FormalPowerSeries<mint>\
-    \ ans = all_product(f);\n    rep(i, 0, D + 1) cout << ans[i] << \" \\n\"[i ==\
-    \ D];\n}"
+    \nusing mint = modint998244353;\nusing fps = FormalPowerSeries<mint>;\nint main(void)\
+    \ {\n    int n;\n    cin >> n;\n    vector<int> d(n);\n    int D = 0;\n    vector<fps>\
+    \ f(n);\n    rep(i, 0, n) {\n        cin >> d[i];\n        D += d[i];\n      \
+    \  f[i].resize(d[i] + 1, mint(0));\n        rep(j, 0, d[i] + 1) cin >> f[i][j];\n\
+    \    }\n    fps ans = all_product(f);\n    rep(i, 0, D + 1) cout << ans[i] <<\
+    \ \" \\n\"[i == D];\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
@@ -361,7 +360,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 00:57:52+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp

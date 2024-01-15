@@ -9,7 +9,7 @@ data:
     title: convolution_ll
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
-    title: src/fps/formal_power_series_ll.hpp
+    title: FormalPowerSeriesLL
   - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
@@ -262,10 +262,10 @@ data:
     \        static constexpr unsigned long long offset[5] = {0, 0, M1M2M3, 2 * M1M2M3,\
     \ 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i] = x;\n    }\n   \
     \ return c;\n}\n#line 4 \"src/fps/formal_power_series_ll.hpp\"\ntemplate <typename\
-    \ T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n \
-    \   using F = FormalPowerSeries;\n    F& operator=(const vector<T>& g) {\n   \
-    \     const int n = (*this).size();\n        const int m = g.size();\n       \
-    \ if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ T>\nstruct FormalPowerSeriesLL : vector<T> {\n    using vector<T>::vector;\n\
+    \    using F = FormalPowerSeriesLL;\n    F& operator=(const vector<T>& g) {\n\
+    \        const int n = (*this).size();\n        const int m = g.size();\n    \
+    \    if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
     \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
     \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
     \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
@@ -310,49 +310,47 @@ data:
     \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
     \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
     \ * c;\n        }\n    }\n};\n#line 6 \"verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp\"\
-    \nint main() {\n    int n;\n    cin >> n;\n    Graph<int> g(n);\n    rep(i, 0,\
-    \ n - 1) {\n        int a, b;\n        cin >> a >> b;\n        g.add_edge(a, b);\n\
-    \    }\n    auto [tree, root] = centroid_decomposition(g);\n    vector<bool> visited(n);\n\
-    \    auto get_depth = [&](auto& get_depth, int cur, int depth, FormalPowerSeries<ll>&\
-    \ res) -> void {\n        visited[cur] = true;\n        if((int)res.size() < depth\
-    \ + 1) res.resize(depth + 1);\n        res[depth]++;\n        for(const auto&\
-    \ e : g[cur]) {\n            if(visited[e.to]) continue;\n            get_depth(get_depth,\
+    \nusing fps = FormalPowerSeriesLL<ll>;\nint main() {\n    int n;\n    cin >> n;\n\
+    \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        int a, b;\n        cin\
+    \ >> a >> b;\n        g.add_edge(a, b);\n    }\n    auto [tree, root] = centroid_decomposition(g);\n\
+    \    vector<bool> visited(n);\n    auto get_depth = [&](auto& get_depth, int cur,\
+    \ int depth, fps& res) -> void {\n        visited[cur] = true;\n        if((int)res.size()\
+    \ < depth + 1) res.resize(depth + 1);\n        res[depth]++;\n        for(const\
+    \ auto& e : g[cur]) {\n            if(visited[e.to]) continue;\n            get_depth(get_depth,\
     \ e.to, depth + 1, res);\n        }\n        visited[cur] = false;\n    };\n \
-    \   auto dfs = [&](auto& get_depth, auto& dfs, int cur, FormalPowerSeries<ll>&\
-    \ res) -> void {\n        visited[cur] = true;\n        for(const auto& e : tree[cur])\
-    \ {\n            if(visited[e.to]) continue;\n            dfs(get_depth, dfs,\
-    \ e.to, res);\n        }\n        vector<FormalPowerSeries<ll>> depth;\n     \
-    \   FormalPowerSeries<ll> sum(0), sum2(0);\n        for(const auto& e : g[cur])\
-    \ {\n            if(visited[e.to]) continue;\n            depth.emplace_back();\n\
-    \            get_depth(get_depth, e.to, 1, depth.back());\n            sum +=\
-    \ depth.back();\n            sum2 += depth.back() * depth.back();\n        }\n\
-    \        res += (sum * sum - sum2) / 2 + sum;\n        visited[cur] = false;\n\
-    \    };\n    FormalPowerSeries<ll> ans(0);\n    dfs(get_depth, dfs, root, ans);\n\
-    \    ans.resize(n);\n    rep(i, 1, n) {\n        cout << ans[i] << \" \\n\"[i\
-    \ + 1 == n];\n    }\n}\n"
+    \   auto dfs = [&](auto& get_depth, auto& dfs, int cur, fps& res) -> void {\n\
+    \        visited[cur] = true;\n        for(const auto& e : tree[cur]) {\n    \
+    \        if(visited[e.to]) continue;\n            dfs(get_depth, dfs, e.to, res);\n\
+    \        }\n        vector<fps> depth;\n        fps sum(0), sum2(0);\n       \
+    \ for(const auto& e : g[cur]) {\n            if(visited[e.to]) continue;\n   \
+    \         depth.emplace_back();\n            get_depth(get_depth, e.to, 1, depth.back());\n\
+    \            sum += depth.back();\n            sum2 += depth.back() * depth.back();\n\
+    \        }\n        res += (sum * sum - sum2) / 2 + sum;\n        visited[cur]\
+    \ = false;\n    };\n    fps ans(0);\n    dfs(get_depth, dfs, root, ans);\n   \
+    \ ans.resize(n);\n    rep(i, 1, n) {\n        cout << ans[i] << \" \\n\"[i + 1\
+    \ == n];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
     \n#include \"../../../src/tree/centroid_decomposition.hpp\"\n#include \"../../../src/fps/formal_power_series_ll.hpp\"\
-    \nint main() {\n    int n;\n    cin >> n;\n    Graph<int> g(n);\n    rep(i, 0,\
-    \ n - 1) {\n        int a, b;\n        cin >> a >> b;\n        g.add_edge(a, b);\n\
-    \    }\n    auto [tree, root] = centroid_decomposition(g);\n    vector<bool> visited(n);\n\
-    \    auto get_depth = [&](auto& get_depth, int cur, int depth, FormalPowerSeries<ll>&\
-    \ res) -> void {\n        visited[cur] = true;\n        if((int)res.size() < depth\
-    \ + 1) res.resize(depth + 1);\n        res[depth]++;\n        for(const auto&\
-    \ e : g[cur]) {\n            if(visited[e.to]) continue;\n            get_depth(get_depth,\
+    \nusing fps = FormalPowerSeriesLL<ll>;\nint main() {\n    int n;\n    cin >> n;\n\
+    \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        int a, b;\n        cin\
+    \ >> a >> b;\n        g.add_edge(a, b);\n    }\n    auto [tree, root] = centroid_decomposition(g);\n\
+    \    vector<bool> visited(n);\n    auto get_depth = [&](auto& get_depth, int cur,\
+    \ int depth, fps& res) -> void {\n        visited[cur] = true;\n        if((int)res.size()\
+    \ < depth + 1) res.resize(depth + 1);\n        res[depth]++;\n        for(const\
+    \ auto& e : g[cur]) {\n            if(visited[e.to]) continue;\n            get_depth(get_depth,\
     \ e.to, depth + 1, res);\n        }\n        visited[cur] = false;\n    };\n \
-    \   auto dfs = [&](auto& get_depth, auto& dfs, int cur, FormalPowerSeries<ll>&\
-    \ res) -> void {\n        visited[cur] = true;\n        for(const auto& e : tree[cur])\
-    \ {\n            if(visited[e.to]) continue;\n            dfs(get_depth, dfs,\
-    \ e.to, res);\n        }\n        vector<FormalPowerSeries<ll>> depth;\n     \
-    \   FormalPowerSeries<ll> sum(0), sum2(0);\n        for(const auto& e : g[cur])\
-    \ {\n            if(visited[e.to]) continue;\n            depth.emplace_back();\n\
-    \            get_depth(get_depth, e.to, 1, depth.back());\n            sum +=\
-    \ depth.back();\n            sum2 += depth.back() * depth.back();\n        }\n\
-    \        res += (sum * sum - sum2) / 2 + sum;\n        visited[cur] = false;\n\
-    \    };\n    FormalPowerSeries<ll> ans(0);\n    dfs(get_depth, dfs, root, ans);\n\
-    \    ans.resize(n);\n    rep(i, 1, n) {\n        cout << ans[i] << \" \\n\"[i\
-    \ + 1 == n];\n    }\n}"
+    \   auto dfs = [&](auto& get_depth, auto& dfs, int cur, fps& res) -> void {\n\
+    \        visited[cur] = true;\n        for(const auto& e : tree[cur]) {\n    \
+    \        if(visited[e.to]) continue;\n            dfs(get_depth, dfs, e.to, res);\n\
+    \        }\n        vector<fps> depth;\n        fps sum(0), sum2(0);\n       \
+    \ for(const auto& e : g[cur]) {\n            if(visited[e.to]) continue;\n   \
+    \         depth.emplace_back();\n            get_depth(get_depth, e.to, 1, depth.back());\n\
+    \            sum += depth.back();\n            sum2 += depth.back() * depth.back();\n\
+    \        }\n        res += (sum * sum - sum2) / 2 + sum;\n        visited[cur]\
+    \ = false;\n    };\n    fps ans(0);\n    dfs(get_depth, dfs, root, ans);\n   \
+    \ ans.resize(n);\n    rep(i, 1, n) {\n        cout << ans[i] << \" \\n\"[i + 1\
+    \ == n];\n    }\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -366,7 +364,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
-  timestamp: '2024-01-14 17:33:58+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp

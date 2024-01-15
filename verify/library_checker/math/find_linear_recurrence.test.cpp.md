@@ -9,7 +9,7 @@ data:
     title: berlekamp_massey
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
-    title: src/fps/formal_power_series.hpp
+    title: FormalPowerSeries
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
@@ -327,22 +327,22 @@ data:
     \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
     \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
     \       return ret;\n    }\n};\n#line 3 \"src/fps/berlekamp_massey.hpp\"\ntemplate\
-    \ <template <typename> typename FormalPowerSeries, typename mint>\nFormalPowerSeries<mint>\
-    \ berlekamp_massey(const FormalPowerSeries<mint>& s) {\n    const int n = (int)s.size();\n\
-    \    FormalPowerSeries<mint> b = {mint(-1)}, c = {mint(-1)};\n    mint y = mint(1);\n\
-    \    for(int ed = 1; ed <= n; ++ed) {\n        int l = (int)c.size(), m = (int)b.size();\n\
-    \        mint x = 0;\n        for(int i = 0; i < l; ++i) x += c[i] * s[ed - l\
-    \ + i];\n        b.emplace_back(0);\n        ++m;\n        if(x == mint(0)) continue;\n\
-    \        mint freq = x / y;\n        if(l < m) {\n            auto tmp = c;\n\
-    \            c.insert(begin(c), m - l, mint(0));\n            for(int i = 0; i\
-    \ < m; ++i) c[m - 1 - i] -= freq * b[m - 1 - i];\n            b = tmp;\n     \
-    \       y = x;\n        } else {\n            for(int i = 0; i < m; ++i) c[l -\
-    \ 1 - i] -= freq * b[m - 1 - i];\n        }\n    }\n    c.pop_back();\n    c =\
-    \ c.rev();\n    return c;\n}\n#line 6 \"verify/library_checker/math/find_linear_recurrence.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
-    \    FormalPowerSeries<mint> a(n);\n    rep(i, 0, n) cin >> a[i];\n    FormalPowerSeries<mint>\
-    \ c = berlekamp_massey(a);\n    int m = c.size();\n    cout << m << '\\n';\n \
-    \   rep(i, 0, m) {\n        cout << c[i] << \" \\n\"[i + 1 == m];\n    }\n}\n"
+    \ <template <typename> typename FPS, typename mint>\nFPS<mint> berlekamp_massey(const\
+    \ FPS<mint>& s) {\n    const int n = (int)s.size();\n    FPS<mint> b = {mint(-1)},\
+    \ c = {mint(-1)};\n    mint y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n\
+    \        int l = (int)c.size(), m = (int)b.size();\n        mint x = 0;\n    \
+    \    for(int i = 0; i < l; ++i) x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n\
+    \        ++m;\n        if(x == mint(0)) continue;\n        mint freq = x / y;\n\
+    \        if(l < m) {\n            auto tmp = c;\n            c.insert(begin(c),\
+    \ m - l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq\
+    \ * b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
+    \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
+    \        }\n    }\n    c.pop_back();\n    c = c.rev();\n    return c;\n}\n#line\
+    \ 6 \"verify/library_checker/math/find_linear_recurrence.test.cpp\"\nusing mint\
+    \ = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n    FormalPowerSeries<mint>\
+    \ a(n);\n    rep(i, 0, n) cin >> a[i];\n    FormalPowerSeries<mint> c = berlekamp_massey(a);\n\
+    \    int m = c.size();\n    cout << m << '\\n';\n    rep(i, 0, m) {\n        cout\
+    \ << c[i] << \" \\n\"[i + 1 == m];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/fps/formal_power_series.hpp\"\n#include \"../../../src/fps/berlekamp_massey.hpp\"\
@@ -361,7 +361,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/math/find_linear_recurrence.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 00:57:52+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/math/find_linear_recurrence.test.cpp

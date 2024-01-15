@@ -19,7 +19,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
-    title: src/fps/formal_power_series_ll.hpp
+    title: FormalPowerSeriesLL
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp

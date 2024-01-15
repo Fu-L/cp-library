@@ -6,7 +6,7 @@ data:
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
-    title: src/fps/formal_power_series.hpp
+    title: FormalPowerSeries
   - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
@@ -324,20 +324,20 @@ data:
     \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
     \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
     \       return ret;\n    }\n};\n#line 5 \"verify/library_checker/polynomial/division_of_polynomial.test.cpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n, m;\n    cin >> n\
-    \ >> m;\n    FormalPowerSeries<mint> f(n), g(m);\n    rep(i, 0, n) cin >> f[i];\n\
-    \    rep(i, 0, m) cin >> g[i];\n    FormalPowerSeries<mint> q = f / g, r = f %\
-    \ g;\n    cout << q.size() << ' ' << r.size() << '\\n';\n    rep(i, 0, (int)q.size())\
+    \nusing mint = modint998244353;\nusing fps = FormalPowerSeries<mint>;\nint main(void)\
+    \ {\n    int n, m;\n    cin >> n >> m;\n    fps f(n), g(m);\n    rep(i, 0, n)\
+    \ cin >> f[i];\n    rep(i, 0, m) cin >> g[i];\n    fps q = f / g, r = f % g;\n\
+    \    cout << q.size() << ' ' << r.size() << '\\n';\n    rep(i, 0, (int)q.size())\
     \ {\n        cout << q[i] << \" \\n\"[i + 1 == (int)q.size()];\n    }\n    rep(i,\
     \ 0, (int)r.size()) {\n        cout << r[i] << \" \\n\"[i + 1 == (int)r.size()];\n\
     \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/division_of_polynomials\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/fps/formal_power_series.hpp\"\nusing mint = modint998244353;\n\
-    int main(void) {\n    int n, m;\n    cin >> n >> m;\n    FormalPowerSeries<mint>\
-    \ f(n), g(m);\n    rep(i, 0, n) cin >> f[i];\n    rep(i, 0, m) cin >> g[i];\n\
-    \    FormalPowerSeries<mint> q = f / g, r = f % g;\n    cout << q.size() << '\
-    \ ' << r.size() << '\\n';\n    rep(i, 0, (int)q.size()) {\n        cout << q[i]\
+    using fps = FormalPowerSeries<mint>;\nint main(void) {\n    int n, m;\n    cin\
+    \ >> n >> m;\n    fps f(n), g(m);\n    rep(i, 0, n) cin >> f[i];\n    rep(i, 0,\
+    \ m) cin >> g[i];\n    fps q = f / g, r = f % g;\n    cout << q.size() << ' '\
+    \ << r.size() << '\\n';\n    rep(i, 0, (int)q.size()) {\n        cout << q[i]\
     \ << \" \\n\"[i + 1 == (int)q.size()];\n    }\n    rep(i, 0, (int)r.size()) {\n\
     \        cout << r[i] << \" \\n\"[i + 1 == (int)r.size()];\n    }\n}"
   dependsOn:
@@ -350,7 +350,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 00:57:52+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/polynomial/division_of_polynomial.test.cpp

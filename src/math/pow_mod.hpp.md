@@ -16,13 +16,13 @@ data:
     title: convolution_ll
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
-    title: src/fps/formal_power_series.hpp
+    title: FormalPowerSeries
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_arbitrary.hpp
-    title: src/fps/formal_power_series_arbitrary.hpp
+    title: FormalPowerSeriesArbitrary
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
-    title: src/fps/formal_power_series_ll.hpp
+    title: FormalPowerSeriesLL
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root

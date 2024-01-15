@@ -19,7 +19,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_arbitrary.hpp
-    title: src/fps/formal_power_series_arbitrary.hpp
+    title: FormalPowerSeriesArbitrary
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp

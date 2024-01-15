@@ -210,53 +210,53 @@ data:
     \    ll v2 = ((ll)z[i].val() - ((ll)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3\
     \ % MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (ll)x[i].val() + MOD1\
     \ * v1 + M12_mod * v2;\n    }\n    return c;\n}\n#line 4 \"src/fps/formal_power_series_arbitrary.hpp\"\
-    \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
-    \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
-    \ vector<mint>& g) {\n        const int n = (*this).size();\n        const int\
-    \ m = g.size();\n        if(n < m) (*this).resize(m);\n        for(int i = 0;\
-    \ i < m; ++i) (*this)[i] = g[i];\n        return (*this);\n    }\n    F& operator-()\
-    \ {\n        const int n = (*this).size();\n        for(int i = 0; i < n; ++i)\
-    \ (*this)[i] *= -1;\n        return (*this);\n    }\n    F& operator+=(const F&\
-    \ g) {\n        const int n = (*this).size();\n        const int m = g.size();\n\
-    \        if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
-    \ += g[i];\n        return (*this);\n    }\n    F& operator+=(const mint& r) {\n\
-    \        if((*this).empty()) (*this).resize(1);\n        (*this)[0] += r;\n  \
-    \      return (*this);\n    }\n    F& operator-=(const F& g) {\n        const\
-    \ int n = (*this).size();\n        const int m = g.size();\n        if(n < m)\
-    \ (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n\
-    \        return (*this);\n    }\n    F& operator-=(const mint& r) {\n        if((*this).empty())\
-    \ (*this).resize(1);\n        (*this)[0] -= r;\n        return (*this);\n    }\n\
-    \    F& operator*=(const F& g) {\n        (*this) = convolution_arbitary((*this),\
-    \ g);\n        return (*this);\n    }\n    F& operator*=(const mint& r) {\n  \
-    \      const int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i]\
-    \ *= r;\n        return (*this);\n    }\n    F& operator/=(const F& g) {\n   \
-    \     if((*this).size() < g.size()) {\n            (*this).clear();\n        \
-    \    return (*this);\n        }\n        const int n = (*this).size() - g.size()\
-    \ + 1;\n        (*this) = ((*this).rev().pre(n) * g.rev().inv(n)).pre(n).rev();\n\
-    \        return (*this);\n    }\n    F& operator/=(const mint& r) {\n        const\
-    \ int n = (*this).size();\n        mint inv_r = r.inv();\n        for(int i =\
-    \ 0; i < (int)n; ++i) (*this)[i] *= inv_r;\n        return (*this);\n    }\n \
-    \   F& operator%=(const F& g) {\n        (*this) -= (*this) / g * g;\n       \
-    \ shrink();\n        return (*this);\n    }\n    F operator*(const mint& g) const\
-    \ {\n        return F(*this) *= g;\n    }\n    F operator-(const mint& g) const\
-    \ {\n        return F(*this) -= g;\n    }\n    F operator+(const mint& g) const\
-    \ {\n        return F(*this) += g;\n    }\n    F operator/(const mint& g) const\
-    \ {\n        return F(*this) /= g;\n    }\n    F operator*(const F& g) const {\n\
-    \        return F(*this) *= g;\n    }\n    F operator-(const F& g) const {\n \
-    \       return F(*this) -= g;\n    }\n    F operator+(const F& g) const {\n  \
-    \      return F(*this) += g;\n    }\n    F operator/(const F& g) const {\n   \
-    \     return F(*this) /= g;\n    }\n    F operator%(const F& g) const {\n    \
-    \    return F(*this) %= g;\n    }\n    F operator<<(const int d) const {\n   \
-    \     F ret(*this);\n        ret.insert(ret.begin(), d, mint(0));\n        return\
-    \ ret;\n    }\n    F operator>>(const int d) const {\n        const int n = (*this).size();\n\
-    \        if(n <= d) return {};\n        F ret(*this);\n        ret.erase(ret.begin(),\
-    \ ret.begin() + d);\n        return ret;\n    }\n    void shrink() {\n       \
-    \ while((*this).size() and (*this).back() == mint(0)) (*this).pop_back();\n  \
-    \  }\n    F rev() const {\n        F ret(*this);\n        reverse(begin(ret),\
-    \ end(ret));\n        return ret;\n    }\n    F pre(const int deg) const {\n \
-    \       F ret(begin(*this), begin(*this) + min((int)(*this).size(), deg));\n \
-    \       if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n    }\n\
-    \    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
+    \ntemplate <typename mint>\nstruct FormalPowerSeriesArbitrary : vector<mint> {\n\
+    \    using vector<mint>::vector;\n    using F = FormalPowerSeriesArbitrary;\n\
+    \    F& operator=(const vector<mint>& g) {\n        const int n = (*this).size();\n\
+    \        const int m = g.size();\n        if(n < m) (*this).resize(m);\n     \
+    \   for(int i = 0; i < m; ++i) (*this)[i] = g[i];\n        return (*this);\n \
+    \   }\n    F& operator-() {\n        const int n = (*this).size();\n        for(int\
+    \ i = 0; i < n; ++i) (*this)[i] *= -1;\n        return (*this);\n    }\n    F&\
+    \ operator+=(const F& g) {\n        const int n = (*this).size();\n        const\
+    \ int m = g.size();\n        if(n < m) (*this).resize(m);\n        for(int i =\
+    \ 0; i < m; ++i) (*this)[i] += g[i];\n        return (*this);\n    }\n    F& operator+=(const\
+    \ mint& r) {\n        if((*this).empty()) (*this).resize(1);\n        (*this)[0]\
+    \ += r;\n        return (*this);\n    }\n    F& operator-=(const F& g) {\n   \
+    \     const int n = (*this).size();\n        const int m = g.size();\n       \
+    \ if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ -= g[i];\n        return (*this);\n    }\n    F& operator-=(const mint& r) {\n\
+    \        if((*this).empty()) (*this).resize(1);\n        (*this)[0] -= r;\n  \
+    \      return (*this);\n    }\n    F& operator*=(const F& g) {\n        (*this)\
+    \ = convolution_arbitary((*this), g);\n        return (*this);\n    }\n    F&\
+    \ operator*=(const mint& r) {\n        const int n = (*this).size();\n       \
+    \ for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n    }\n\
+    \    F& operator/=(const F& g) {\n        if((*this).size() < g.size()) {\n  \
+    \          (*this).clear();\n            return (*this);\n        }\n        const\
+    \ int n = (*this).size() - g.size() + 1;\n        (*this) = ((*this).rev().pre(n)\
+    \ * g.rev().inv(n)).pre(n).rev();\n        return (*this);\n    }\n    F& operator/=(const\
+    \ mint& r) {\n        const int n = (*this).size();\n        mint inv_r = r.inv();\n\
+    \        for(int i = 0; i < (int)n; ++i) (*this)[i] *= inv_r;\n        return\
+    \ (*this);\n    }\n    F& operator%=(const F& g) {\n        (*this) -= (*this)\
+    \ / g * g;\n        shrink();\n        return (*this);\n    }\n    F operator*(const\
+    \ mint& g) const {\n        return F(*this) *= g;\n    }\n    F operator-(const\
+    \ mint& g) const {\n        return F(*this) -= g;\n    }\n    F operator+(const\
+    \ mint& g) const {\n        return F(*this) += g;\n    }\n    F operator/(const\
+    \ mint& g) const {\n        return F(*this) /= g;\n    }\n    F operator*(const\
+    \ F& g) const {\n        return F(*this) *= g;\n    }\n    F operator-(const F&\
+    \ g) const {\n        return F(*this) -= g;\n    }\n    F operator+(const F& g)\
+    \ const {\n        return F(*this) += g;\n    }\n    F operator/(const F& g) const\
+    \ {\n        return F(*this) /= g;\n    }\n    F operator%(const F& g) const {\n\
+    \        return F(*this) %= g;\n    }\n    F operator<<(const int d) const {\n\
+    \        F ret(*this);\n        ret.insert(ret.begin(), d, mint(0));\n       \
+    \ return ret;\n    }\n    F operator>>(const int d) const {\n        const int\
+    \ n = (*this).size();\n        if(n <= d) return {};\n        F ret(*this);\n\
+    \        ret.erase(ret.begin(), ret.begin() + d);\n        return ret;\n    }\n\
+    \    void shrink() {\n        while((*this).size() and (*this).back() == mint(0))\
+    \ (*this).pop_back();\n    }\n    F rev() const {\n        F ret(*this);\n   \
+    \     reverse(begin(ret), end(ret));\n        return ret;\n    }\n    F pre(const\
+    \ int deg) const {\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
+    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
+    \    }\n    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
     \        mint x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n        \
     \    ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
     \    }\n    void onemul(const int d, const mint& c, int deg = -1) {\n        const\
@@ -305,53 +305,53 @@ data:
     \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
     \       return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_arbitrary.hpp\"\
-    \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
-    \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
-    \ vector<mint>& g) {\n        const int n = (*this).size();\n        const int\
-    \ m = g.size();\n        if(n < m) (*this).resize(m);\n        for(int i = 0;\
-    \ i < m; ++i) (*this)[i] = g[i];\n        return (*this);\n    }\n    F& operator-()\
-    \ {\n        const int n = (*this).size();\n        for(int i = 0; i < n; ++i)\
-    \ (*this)[i] *= -1;\n        return (*this);\n    }\n    F& operator+=(const F&\
-    \ g) {\n        const int n = (*this).size();\n        const int m = g.size();\n\
-    \        if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
-    \ += g[i];\n        return (*this);\n    }\n    F& operator+=(const mint& r) {\n\
-    \        if((*this).empty()) (*this).resize(1);\n        (*this)[0] += r;\n  \
-    \      return (*this);\n    }\n    F& operator-=(const F& g) {\n        const\
-    \ int n = (*this).size();\n        const int m = g.size();\n        if(n < m)\
-    \ (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n\
-    \        return (*this);\n    }\n    F& operator-=(const mint& r) {\n        if((*this).empty())\
-    \ (*this).resize(1);\n        (*this)[0] -= r;\n        return (*this);\n    }\n\
-    \    F& operator*=(const F& g) {\n        (*this) = convolution_arbitary((*this),\
-    \ g);\n        return (*this);\n    }\n    F& operator*=(const mint& r) {\n  \
-    \      const int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i]\
-    \ *= r;\n        return (*this);\n    }\n    F& operator/=(const F& g) {\n   \
-    \     if((*this).size() < g.size()) {\n            (*this).clear();\n        \
-    \    return (*this);\n        }\n        const int n = (*this).size() - g.size()\
-    \ + 1;\n        (*this) = ((*this).rev().pre(n) * g.rev().inv(n)).pre(n).rev();\n\
-    \        return (*this);\n    }\n    F& operator/=(const mint& r) {\n        const\
-    \ int n = (*this).size();\n        mint inv_r = r.inv();\n        for(int i =\
-    \ 0; i < (int)n; ++i) (*this)[i] *= inv_r;\n        return (*this);\n    }\n \
-    \   F& operator%=(const F& g) {\n        (*this) -= (*this) / g * g;\n       \
-    \ shrink();\n        return (*this);\n    }\n    F operator*(const mint& g) const\
-    \ {\n        return F(*this) *= g;\n    }\n    F operator-(const mint& g) const\
-    \ {\n        return F(*this) -= g;\n    }\n    F operator+(const mint& g) const\
-    \ {\n        return F(*this) += g;\n    }\n    F operator/(const mint& g) const\
-    \ {\n        return F(*this) /= g;\n    }\n    F operator*(const F& g) const {\n\
-    \        return F(*this) *= g;\n    }\n    F operator-(const F& g) const {\n \
-    \       return F(*this) -= g;\n    }\n    F operator+(const F& g) const {\n  \
-    \      return F(*this) += g;\n    }\n    F operator/(const F& g) const {\n   \
-    \     return F(*this) /= g;\n    }\n    F operator%(const F& g) const {\n    \
-    \    return F(*this) %= g;\n    }\n    F operator<<(const int d) const {\n   \
-    \     F ret(*this);\n        ret.insert(ret.begin(), d, mint(0));\n        return\
-    \ ret;\n    }\n    F operator>>(const int d) const {\n        const int n = (*this).size();\n\
-    \        if(n <= d) return {};\n        F ret(*this);\n        ret.erase(ret.begin(),\
-    \ ret.begin() + d);\n        return ret;\n    }\n    void shrink() {\n       \
-    \ while((*this).size() and (*this).back() == mint(0)) (*this).pop_back();\n  \
-    \  }\n    F rev() const {\n        F ret(*this);\n        reverse(begin(ret),\
-    \ end(ret));\n        return ret;\n    }\n    F pre(const int deg) const {\n \
-    \       F ret(begin(*this), begin(*this) + min((int)(*this).size(), deg));\n \
-    \       if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n    }\n\
-    \    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
+    \ntemplate <typename mint>\nstruct FormalPowerSeriesArbitrary : vector<mint> {\n\
+    \    using vector<mint>::vector;\n    using F = FormalPowerSeriesArbitrary;\n\
+    \    F& operator=(const vector<mint>& g) {\n        const int n = (*this).size();\n\
+    \        const int m = g.size();\n        if(n < m) (*this).resize(m);\n     \
+    \   for(int i = 0; i < m; ++i) (*this)[i] = g[i];\n        return (*this);\n \
+    \   }\n    F& operator-() {\n        const int n = (*this).size();\n        for(int\
+    \ i = 0; i < n; ++i) (*this)[i] *= -1;\n        return (*this);\n    }\n    F&\
+    \ operator+=(const F& g) {\n        const int n = (*this).size();\n        const\
+    \ int m = g.size();\n        if(n < m) (*this).resize(m);\n        for(int i =\
+    \ 0; i < m; ++i) (*this)[i] += g[i];\n        return (*this);\n    }\n    F& operator+=(const\
+    \ mint& r) {\n        if((*this).empty()) (*this).resize(1);\n        (*this)[0]\
+    \ += r;\n        return (*this);\n    }\n    F& operator-=(const F& g) {\n   \
+    \     const int n = (*this).size();\n        const int m = g.size();\n       \
+    \ if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ -= g[i];\n        return (*this);\n    }\n    F& operator-=(const mint& r) {\n\
+    \        if((*this).empty()) (*this).resize(1);\n        (*this)[0] -= r;\n  \
+    \      return (*this);\n    }\n    F& operator*=(const F& g) {\n        (*this)\
+    \ = convolution_arbitary((*this), g);\n        return (*this);\n    }\n    F&\
+    \ operator*=(const mint& r) {\n        const int n = (*this).size();\n       \
+    \ for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n    }\n\
+    \    F& operator/=(const F& g) {\n        if((*this).size() < g.size()) {\n  \
+    \          (*this).clear();\n            return (*this);\n        }\n        const\
+    \ int n = (*this).size() - g.size() + 1;\n        (*this) = ((*this).rev().pre(n)\
+    \ * g.rev().inv(n)).pre(n).rev();\n        return (*this);\n    }\n    F& operator/=(const\
+    \ mint& r) {\n        const int n = (*this).size();\n        mint inv_r = r.inv();\n\
+    \        for(int i = 0; i < (int)n; ++i) (*this)[i] *= inv_r;\n        return\
+    \ (*this);\n    }\n    F& operator%=(const F& g) {\n        (*this) -= (*this)\
+    \ / g * g;\n        shrink();\n        return (*this);\n    }\n    F operator*(const\
+    \ mint& g) const {\n        return F(*this) *= g;\n    }\n    F operator-(const\
+    \ mint& g) const {\n        return F(*this) -= g;\n    }\n    F operator+(const\
+    \ mint& g) const {\n        return F(*this) += g;\n    }\n    F operator/(const\
+    \ mint& g) const {\n        return F(*this) /= g;\n    }\n    F operator*(const\
+    \ F& g) const {\n        return F(*this) *= g;\n    }\n    F operator-(const F&\
+    \ g) const {\n        return F(*this) -= g;\n    }\n    F operator+(const F& g)\
+    \ const {\n        return F(*this) += g;\n    }\n    F operator/(const F& g) const\
+    \ {\n        return F(*this) /= g;\n    }\n    F operator%(const F& g) const {\n\
+    \        return F(*this) %= g;\n    }\n    F operator<<(const int d) const {\n\
+    \        F ret(*this);\n        ret.insert(ret.begin(), d, mint(0));\n       \
+    \ return ret;\n    }\n    F operator>>(const int d) const {\n        const int\
+    \ n = (*this).size();\n        if(n <= d) return {};\n        F ret(*this);\n\
+    \        ret.erase(ret.begin(), ret.begin() + d);\n        return ret;\n    }\n\
+    \    void shrink() {\n        while((*this).size() and (*this).back() == mint(0))\
+    \ (*this).pop_back();\n    }\n    F rev() const {\n        F ret(*this);\n   \
+    \     reverse(begin(ret), end(ret));\n        return ret;\n    }\n    F pre(const\
+    \ int deg) const {\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
+    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
+    \    }\n    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
     \        mint x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n        \
     \    ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
     \    }\n    void onemul(const int d, const mint& c, int deg = -1) {\n        const\
@@ -409,14 +409,11 @@ data:
   isVerificationFile: false
   path: src/fps/formal_power_series_arbitrary.hpp
   requiredBy: []
-  timestamp: '2024-01-07 03:22:48+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/formal_power_series_arbitrary.hpp
 layout: document
-redirect_from:
-- /library/src/fps/formal_power_series_arbitrary.hpp
-- /library/src/fps/formal_power_series_arbitrary.hpp.html
-title: src/fps/formal_power_series_arbitrary.hpp
+title: FormalPowerSeriesArbitrary
 ---

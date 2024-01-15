@@ -444,8 +444,5 @@ data:
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
 documentation_of: src/fps/formal_power_series.hpp
 layout: document
-redirect_from:
-- /library/src/fps/formal_power_series.hpp
-- /library/src/fps/formal_power_series.hpp.html
-title: src/fps/formal_power_series.hpp
+title: FormalPowerSeries
 ---

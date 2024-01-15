@@ -328,10 +328,22 @@ Graph<T = int> g(int n)
 ## size
 
 ```cpp
-size_t g.size()
+int g.size()
 ```
 
 グラフ `g` の頂点数を返します．
+
+**計算量**
+
+- $O(1)$
+
+## edge_size
+
+```cpp
+int g.edge_size()
+```
+
+グラフ `g` の辺数を返します．
 
 **計算量**
 
@@ -395,11 +407,3 @@ vector<Edge<T>> g[int i]
 **計算量**
 
 - $O(1)$
-
-## メンバ変数
-
-```cpp
-int g.es
-```
-
-`g` の辺数を返します．

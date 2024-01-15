@@ -216,10 +216,10 @@ data:
     \        static constexpr unsigned long long offset[5] = {0, 0, M1M2M3, 2 * M1M2M3,\
     \ 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i] = x;\n    }\n   \
     \ return c;\n}\n#line 4 \"src/fps/formal_power_series_ll.hpp\"\ntemplate <typename\
-    \ T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n \
-    \   using F = FormalPowerSeries;\n    F& operator=(const vector<T>& g) {\n   \
-    \     const int n = (*this).size();\n        const int m = g.size();\n       \
-    \ if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ T>\nstruct FormalPowerSeriesLL : vector<T> {\n    using vector<T>::vector;\n\
+    \    using F = FormalPowerSeriesLL;\n    F& operator=(const vector<T>& g) {\n\
+    \        const int n = (*this).size();\n        const int m = g.size();\n    \
+    \    if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
     \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
     \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
     \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
@@ -265,10 +265,10 @@ data:
     \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
     \ * c;\n        }\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_ll.hpp\"\
-    \ntemplate <typename T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
-    \    using F = FormalPowerSeries;\n    F& operator=(const vector<T>& g) {\n  \
-    \      const int n = (*this).size();\n        const int m = g.size();\n      \
-    \  if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ntemplate <typename T>\nstruct FormalPowerSeriesLL : vector<T> {\n    using vector<T>::vector;\n\
+    \    using F = FormalPowerSeriesLL;\n    F& operator=(const vector<T>& g) {\n\
+    \        const int n = (*this).size();\n        const int m = g.size();\n    \
+    \    if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
     \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
     \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
     \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
@@ -323,14 +323,11 @@ data:
   isVerificationFile: false
   path: src/fps/formal_power_series_ll.hpp
   requiredBy: []
-  timestamp: '2024-01-06 02:09:04+09:00'
+  timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
 documentation_of: src/fps/formal_power_series_ll.hpp
 layout: document
-redirect_from:
-- /library/src/fps/formal_power_series_ll.hpp
-- /library/src/fps/formal_power_series_ll.hpp.html
-title: src/fps/formal_power_series_ll.hpp
+title: FormalPowerSeriesLL
 ---

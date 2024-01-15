@@ -90,13 +90,13 @@ data:
       title: bostan_mori
     - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series.hpp
-      title: src/fps/formal_power_series.hpp
+      title: FormalPowerSeries
     - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series_arbitrary.hpp
-      title: src/fps/formal_power_series_arbitrary.hpp
+      title: FormalPowerSeriesArbitrary
     - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series_ll.hpp
-      title: src/fps/formal_power_series_ll.hpp
+      title: FormalPowerSeriesLL
     - icon: ':heavy_check_mark:'
       path: src/fps/nth_term.hpp
       title: nth_term
