@@ -595,7 +595,7 @@ fps >> int;
 `fps / fps` および `fps % fps` は，多項式としての除算です．<br>
 すなわち $f(x) = g(x) q(x) + r(x)$ と表せるとき，
 $$f(x) / g(x) = q(x)$$
-$$f(x) \% g(x) = r(x)$$
+$$f(x) \\% g(x) = r(x)$$
 です．
 
 また `fps << (int d)` は $f(x) * x^d$ です．<br>
