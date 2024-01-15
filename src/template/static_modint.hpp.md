@@ -270,8 +270,8 @@ $\mathrm{mod}$ はコンパイル時定数である必要があります．
 基本的には `modint998244353` か `modint1000000007` を使えば十分で，以下のように使えます．
 
 ```cpp
-#include "src/template/template.hpp"
-#include "src/template/static_modint.hpp"
+#include "template/template.hpp"
+#include "template/static_modint.hpp"
 using mint = modint998244353;
 int main(void) {
     mint sum = 0;
