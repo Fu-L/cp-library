@@ -6,7 +6,7 @@ data:
     title: convolution
   - icon: ':heavy_check_mark:'
     path: src/fps/all_product.hpp
-    title: src/fps/all_product.hpp
+    title: all_product
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: src/fps/formal_power_series.hpp

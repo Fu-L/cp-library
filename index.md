@@ -81,7 +81,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/fps/all_product.hpp
-      title: src/fps/all_product.hpp
+      title: all_product
     - icon: ':heavy_check_mark:'
       path: src/fps/berlekamp_massey.hpp
       title: src/fps/berlekamp_massey.hpp
