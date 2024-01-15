@@ -118,6 +118,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return ret;
     }
     F pre(const int deg) const {
+        assert(deg >= 0);
         F ret(begin(*this), begin(*this) + min((int)(*this).size(), deg));
         if((int)ret.size() < deg) ret.resize(deg);
         return ret;
@@ -132,6 +133,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return ret;
     }
     void onemul(const int d, const mint& c, int deg = -1) {
+        assert(deg >= -1);
         const int n = (*this).size();
         if(deg == -1) deg = n + d;
         if(deg > n) (*this).resize(deg);
@@ -140,6 +142,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         }
     }
     void onediv(const int d, const mint& c, int deg = -1) {
+        assert(deg >= -1);
         const int n = (*this).size();
         if(deg == -1) deg = n;
         if(deg > n) (*this).resize(deg + 1);
@@ -163,6 +166,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return ret;
     }
     F inv(int deg = -1) const {
+        assert(deg >= -1);
         const int n = (*this).size();
         assert(n > 0 and (*this)[0] != mint(0));
         if(deg == -1) deg = n;
@@ -173,12 +177,14 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return ret.pre(deg);
     }
     F log(int deg = -1) const {
+        assert(deg >= -1);
         const int n = (*this).size();
         assert(n > 0 and (*this)[0] == mint(1));
         if(deg == -1) deg = n;
         return ((*this).diff() * (*this).inv(deg)).pre(deg - 1).integral();
     }
     F exp(int deg = -1) const {
+        assert(deg >= -1);
         const int n = (*this).size();
         assert(n == 0 or (*this)[0] == mint(0));
         if(deg == -1) deg = n;
@@ -189,6 +195,8 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return ret.pre(deg);
     }
     F pow(const ll k, int deg = -1) const {
+        assert(deg >= -1);
+        assert(k >= 0);
         const int n = (*this).size();
         if(deg == -1) deg = n;
         if(k == 0) {

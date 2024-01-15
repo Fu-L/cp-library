@@ -97,6 +97,7 @@ struct FormalPowerSeriesLL : vector<T> {
         return ret;
     }
     F pre(const int deg) const {
+        assert(deg >= 0);
         F ret(begin(*this), begin(*this) + min((int)(*this).size(), deg));
         if((int)ret.size() < deg) ret.resize(deg);
         return ret;
@@ -111,6 +112,7 @@ struct FormalPowerSeriesLL : vector<T> {
         return ret;
     }
     void onemul(const int d, const T& c, int deg = -1) {
+        assert(deg >= -1);
         const int n = (*this).size();
         if(deg == -1) deg = n + d;
         if(deg > n) (*this).resize(deg);
@@ -119,6 +121,7 @@ struct FormalPowerSeriesLL : vector<T> {
         }
     }
     void onediv(const int d, const T& c, int deg = -1) {
+        assert(deg >= -1);
         const int n = (*this).size();
         if(deg == -1) deg = n;
         if(deg > n) (*this).resize(deg + 1);
