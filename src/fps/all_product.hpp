@@ -1,7 +1,7 @@
 #pragma once
 #include "../template/template.hpp"
-template <template <typename> typename FormalPowerSeries, typename mint>
-FormalPowerSeries<mint> all_product(vector<FormalPowerSeries<mint>> f) {
+template <template <typename> typename FPS, typename T>
+FPS<T> all_product(vector<FPS<T>> f) {
     if((int)f.size() == 0) return {1};
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     rep(i, 0, (int)f.size()) pq.push({f[i].size(), i});

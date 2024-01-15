@@ -1,9 +1,9 @@
 #pragma once
 #include "../template/template.hpp"
-template <template <typename> typename FormalPowerSeries, typename mint>
-FormalPowerSeries<mint> berlekamp_massey(const FormalPowerSeries<mint>& s) {
+template <template <typename> typename FPS, typename mint>
+FPS<mint> berlekamp_massey(const FPS<mint>& s) {
     const int n = (int)s.size();
-    FormalPowerSeries<mint> b = {mint(-1)}, c = {mint(-1)};
+    FPS<mint> b = {mint(-1)}, c = {mint(-1)};
     mint y = mint(1);
     for(int ed = 1; ed <= n; ++ed) {
         int l = (int)c.size(), m = (int)b.size();

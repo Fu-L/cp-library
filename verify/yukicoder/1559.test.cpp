@@ -4,9 +4,10 @@
 #include "../../src/fps/formal_power_series_arbitrary.hpp"
 #include "../../src/fps/nth_term.hpp"
 using mint = modint1000000007;
+using fps = FormalPowerSeriesArbitrary<mint>;
 int main(void) {
     ll n, k;
-    FormalPowerSeries<mint> f(10);
+    fps f(10);
     cin >> n >> f[0] >> f[1] >> k;
     rep(i, 2, 10) {
         f[i] = (f[i - 1] * f[i - 1] + k) / f[i - 2];

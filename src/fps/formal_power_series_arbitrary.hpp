@@ -2,9 +2,9 @@
 #include "../template/template.hpp"
 #include "../convolution/convolution_arbitrary.hpp"
 template <typename mint>
-struct FormalPowerSeries : vector<mint> {
+struct FormalPowerSeriesArbitrary : vector<mint> {
     using vector<mint>::vector;
-    using F = FormalPowerSeries;
+    using F = FormalPowerSeriesArbitrary;
     F& operator=(const vector<mint>& g) {
         const int n = (*this).size();
         const int m = g.size();

@@ -3,6 +3,7 @@
 #include "../../../src/graph/graph_template.hpp"
 #include "../../../src/tree/centroid_decomposition.hpp"
 #include "../../../src/fps/formal_power_series_ll.hpp"
+using fps = FormalPowerSeriesLL<ll>;
 int main() {
     int n;
     cin >> n;
@@ -14,7 +15,7 @@ int main() {
     }
     auto [tree, root] = centroid_decomposition(g);
     vector<bool> visited(n);
-    auto get_depth = [&](auto& get_depth, int cur, int depth, FormalPowerSeries<ll>& res) -> void {
+    auto get_depth = [&](auto& get_depth, int cur, int depth, fps& res) -> void {
         visited[cur] = true;
         if((int)res.size() < depth + 1) res.resize(depth + 1);
         res[depth]++;
@@ -24,14 +25,14 @@ int main() {
         }
         visited[cur] = false;
     };
-    auto dfs = [&](auto& get_depth, auto& dfs, int cur, FormalPowerSeries<ll>& res) -> void {
+    auto dfs = [&](auto& get_depth, auto& dfs, int cur, fps& res) -> void {
         visited[cur] = true;
         for(const auto& e : tree[cur]) {
             if(visited[e.to]) continue;
             dfs(get_depth, dfs, e.to, res);
         }
-        vector<FormalPowerSeries<ll>> depth;
-        FormalPowerSeries<ll> sum(0), sum2(0);
+        vector<fps> depth;
+        fps sum(0), sum2(0);
         for(const auto& e : g[cur]) {
             if(visited[e.to]) continue;
             depth.emplace_back();
@@ -42,7 +43,7 @@ int main() {
         res += (sum * sum - sum2) / 2 + sum;
         visited[cur] = false;
     };
-    FormalPowerSeries<ll> ans(0);
+    fps ans(0);
     dfs(get_depth, dfs, root, ans);
     ans.resize(n);
     rep(i, 1, n) {

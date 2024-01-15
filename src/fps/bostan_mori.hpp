@@ -1,11 +1,12 @@
 #pragma once
 #include "../template/template.hpp"
-template <template <typename> typename FormalPowerSeries, typename mint>
-mint bostan_mori(const FormalPowerSeries<mint>& a, const FormalPowerSeries<mint>& c, ll k) {
+template <template <typename> typename FPS, typename mint>
+mint bostan_mori(const FPS<mint>& a, const FPS<mint>& c, ll k) {
+    assert(k >= 0);
     if(k < (int)a.size()) return a[k];
     assert(a.size() >= c.size());
-    FormalPowerSeries<mint> q = FormalPowerSeries<mint>{1} - (c << 1);
-    FormalPowerSeries<mint> p = (a * q).pre((int)c.size());
+    FPS<mint> q = FPS<mint>{1} - (c << 1);
+    FPS<mint> p = (a * q).pre((int)c.size());
     while(k > 0) {
         auto q2 = q;
         for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];

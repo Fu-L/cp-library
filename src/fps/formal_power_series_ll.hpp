@@ -2,9 +2,9 @@
 #include "../template/template.hpp"
 #include "../convolution/convolution_ll.hpp"
 template <typename T>
-struct FormalPowerSeries : vector<T> {
+struct FormalPowerSeriesLL : vector<T> {
     using vector<T>::vector;
-    using F = FormalPowerSeries;
+    using F = FormalPowerSeriesLL;
     F& operator=(const vector<T>& g) {
         const int n = (*this).size();
         const int m = g.size();
