@@ -53,49 +53,49 @@ data:
     \ root), par(n, root), rev(n, 0) {\n        assert(0 <= root and root < n);\n\
     \        dfs_sz(root);\n        dfs_hld(root);\n    }\n    pair<int, int> idx(int\
     \ i) const {\n        assert(0 <= i and i < n);\n        return make_pair(down[i],\
-    \ up[i]);\n    }\n    int la(int a, int k) const {\n        assert(0 <= a and\
-    \ a < n);\n        if(k > depth[a]) return -1;\n        while(true) {\n      \
-    \      int b = nex[a];\n            if(down[a] - k >= down[b]) return rev[down[a]\
-    \ - k];\n            k -= down[a] - down[b] + 1;\n            a = par[b];\n  \
-    \      }\n    }\n    int lca(int a, int b) const {\n        assert(0 <= a and\
-    \ a < n);\n        assert(0 <= b and b < n);\n        while(nex[a] != nex[b])\
-    \ {\n            if(down[a] < down[b]) swap(a, b);\n            a = par[nex[a]];\n\
-    \        }\n        return depth[a] < depth[b] ? a : b;\n    }\n    int dist(int\
-    \ a, int b) const {\n        assert(0 <= a and a < n);\n        assert(0 <= b\
-    \ and b < n);\n        return depth[a] + depth[b] - depth[lca(a, b)] * 2;\n  \
-    \  }\n    template <typename F>\n    void path_query(int u, int v, bool vertex,\
-    \ const F& f) {\n        assert(0 <= u and u < n);\n        assert(0 <= v and\
-    \ v < n);\n        int l = lca(u, v);\n        for(auto&& [a, b] : ascend(u, l))\
-    \ f(a + 1, b);\n        if(vertex) f(down[l], down[l] + 1);\n        for(auto&&\
-    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n    template <typename F>\n   \
-    \ void subtree_query(int u, bool vertex, const F& f) {\n        assert(0 <= u\
-    \ and u < n);\n        f(down[u] + int(!vertex), up[u]);\n    }\n\n   private:\n\
-    \    Graph<T>& g;\n    int n, id;\n    vector<int> size, depth, down, up, nex,\
-    \ par, rev;\n    void dfs_sz(int cur) {\n        size[cur] = 1;\n        for(auto&\
-    \ edge : g[cur]) {\n            if(edge.to == par[cur]) {\n                if(g[cur].size()\
-    \ >= 2 and edge.to == g[cur][0].to) {\n                    swap(g[cur][0], g[cur][1]);\n\
-    \                } else {\n                    continue;\n                }\n\
-    \            }\n            depth[edge.to] = depth[cur] + 1;\n            par[edge.to]\
-    \ = cur;\n            dfs_sz(edge.to);\n            size[cur] += size[edge.to];\n\
-    \            if(size[edge.to] > size[g[cur][0].to]) {\n                swap(edge,\
-    \ g[cur][0]);\n            }\n        }\n    }\n    void dfs_hld(int cur) {\n\
-    \        down[cur] = id++;\n        rev[down[cur]] = cur;\n        for(const auto&\
-    \ edge : g[cur]) {\n            if(edge.to == par[cur]) continue;\n          \
-    \  nex[edge.to] = (edge.to == g[cur][0].to ? nex[cur] : edge.to);\n          \
-    \  dfs_hld(edge.to);\n        }\n        up[cur] = id;\n    }\n    vector<pair<int,\
-    \ int>> ascend(int u, int v) const {\n        vector<pair<int, int>> res;\n  \
-    \      while(nex[u] != nex[v]) {\n            res.emplace_back(down[u], down[nex[u]]);\n\
-    \            u = par[nex[u]];\n        }\n        if(u != v) res.emplace_back(down[u],\
-    \ down[v] + 1);\n        return res;\n    }\n    vector<pair<int, int>> descend(int\
-    \ u, int v) const {\n        if(u == v) return {};\n        if(nex[u] == nex[v])\
-    \ return {{down[u] + 1, down[v]}};\n        auto res = descend(u, par[nex[v]]);\n\
-    \        res.emplace_back(down[nex[v]], down[v]);\n        return res;\n    }\n\
-    };\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\ntemplate <typename T>\nstruct\
-    \ FenwickTree {\n    FenwickTree(int N)\n        : n(N), data(N) {}\n    void\
-    \ add(int p, T x) {\n        assert(0 <= p and p < n);\n        ++p;\n       \
-    \ while(p <= n) {\n            data[p - 1] += x;\n            p += p & -p;\n \
-    \       }\n    }\n    T sum(int l, int r) const {\n        assert(0 <= l and l\
-    \ <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T operator[](int\
+    \ up[i]);\n    }\n    int la(int v, int x = 1) const {\n        assert(0 <= v\
+    \ and v < n);\n        assert(x >= 0);\n        if(x > depth[v]) return -1;\n\
+    \        while(true) {\n            int u = nex[v];\n            if(down[v] -\
+    \ x >= down[u]) return rev[down[v] - x];\n            x -= down[v] - down[u] +\
+    \ 1;\n            v = par[u];\n        }\n    }\n    int lca(int u, int v) const\
+    \ {\n        assert(0 <= u and u < n);\n        assert(0 <= v and v < n);\n  \
+    \      while(nex[u] != nex[v]) {\n            if(down[u] < down[v]) swap(u, v);\n\
+    \            u = par[nex[u]];\n        }\n        return depth[u] < depth[v] ?\
+    \ u : v;\n    }\n    int dist(int u, int v) const {\n        assert(0 <= u and\
+    \ u < n);\n        assert(0 <= v and v < n);\n        return depth[u] + depth[v]\
+    \ - depth[lca(u, v)] * 2;\n    }\n    template <typename F>\n    void path_query(int\
+    \ u, int v, bool vertex, const F& f) {\n        assert(0 <= u and u < n);\n  \
+    \      assert(0 <= v and v < n);\n        int l = lca(u, v);\n        for(auto&&\
+    \ [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex) f(down[l], down[l] +\
+    \ 1);\n        for(auto&& [a, b] : descend(l, v)) f(a, b + 1);\n    }\n    template\
+    \ <typename F>\n    void subtree_query(int v, bool vertex, const F& f) {\n   \
+    \     assert(0 <= v and v < n);\n        f(down[v] + int(!vertex), up[v]);\n \
+    \   }\n\n   private:\n    Graph<T>& g;\n    int n, id;\n    vector<int> size,\
+    \ depth, down, up, nex, par, rev;\n    void dfs_sz(int cur) {\n        size[cur]\
+    \ = 1;\n        for(auto& edge : g[cur]) {\n            if(edge.to == par[cur])\
+    \ {\n                if(g[cur].size() >= 2 and edge.to == g[cur][0].to) {\n  \
+    \                  swap(g[cur][0], g[cur][1]);\n                } else {\n   \
+    \                 continue;\n                }\n            }\n            depth[edge.to]\
+    \ = depth[cur] + 1;\n            par[edge.to] = cur;\n            dfs_sz(edge.to);\n\
+    \            size[cur] += size[edge.to];\n            if(size[edge.to] > size[g[cur][0].to])\
+    \ {\n                swap(edge, g[cur][0]);\n            }\n        }\n    }\n\
+    \    void dfs_hld(int cur) {\n        down[cur] = id++;\n        rev[down[cur]]\
+    \ = cur;\n        for(const auto& edge : g[cur]) {\n            if(edge.to ==\
+    \ par[cur]) continue;\n            nex[edge.to] = (edge.to == g[cur][0].to ? nex[cur]\
+    \ : edge.to);\n            dfs_hld(edge.to);\n        }\n        up[cur] = id;\n\
+    \    }\n    vector<pair<int, int>> ascend(int u, int v) const {\n        vector<pair<int,\
+    \ int>> res;\n        while(nex[u] != nex[v]) {\n            res.emplace_back(down[u],\
+    \ down[nex[u]]);\n            u = par[nex[u]];\n        }\n        if(u != v)\
+    \ res.emplace_back(down[u], down[v] + 1);\n        return res;\n    }\n    vector<pair<int,\
+    \ int>> descend(int u, int v) const {\n        if(u == v) return {};\n       \
+    \ if(nex[u] == nex[v]) return {{down[u] + 1, down[v]}};\n        auto res = descend(u,\
+    \ par[nex[v]]);\n        res.emplace_back(down[nex[v]], down[v]);\n        return\
+    \ res;\n    }\n};\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\ntemplate <typename\
+    \ T>\nstruct FenwickTree {\n    FenwickTree(int N)\n        : n(N), data(N) {}\n\
+    \    void add(int p, T x) {\n        assert(0 <= p and p < n);\n        ++p;\n\
+    \        while(p <= n) {\n            data[p - 1] += x;\n            p += p &\
+    \ -p;\n        }\n    }\n    T sum(int l, int r) const {\n        assert(0 <=\
+    \ l and l <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T operator[](int\
     \ x) const {\n        assert(0 <= x and x < n);\n        return sum(x + 1) - sum(x);\n\
     \    }\n\n   private:\n    int n;\n    vector<T> data;\n    inline T sum(int r)\
     \ const {\n        T s = 0;\n        while(r > 0) {\n            s += data[r -\
@@ -130,7 +130,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/jump_on_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-01-14 17:33:58+09:00'
+  timestamp: '2024-01-16 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/jump_on_tree.test.cpp

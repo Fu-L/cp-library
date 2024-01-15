@@ -108,86 +108,87 @@ data:
     \ 0), down(n, -1), up(n, -1), nex(n, root), par(n, root), rev(n, 0) {\n      \
     \  assert(0 <= root and root < n);\n        dfs_sz(root);\n        dfs_hld(root);\n\
     \    }\n    pair<int, int> idx(int i) const {\n        assert(0 <= i and i < n);\n\
-    \        return make_pair(down[i], up[i]);\n    }\n    int la(int a, int k) const\
-    \ {\n        assert(0 <= a and a < n);\n        if(k > depth[a]) return -1;\n\
-    \        while(true) {\n            int b = nex[a];\n            if(down[a] -\
-    \ k >= down[b]) return rev[down[a] - k];\n            k -= down[a] - down[b] +\
-    \ 1;\n            a = par[b];\n        }\n    }\n    int lca(int a, int b) const\
-    \ {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n  \
-    \      while(nex[a] != nex[b]) {\n            if(down[a] < down[b]) swap(a, b);\n\
-    \            a = par[nex[a]];\n        }\n        return depth[a] < depth[b] ?\
-    \ a : b;\n    }\n    int dist(int a, int b) const {\n        assert(0 <= a and\
-    \ a < n);\n        assert(0 <= b and b < n);\n        return depth[a] + depth[b]\
-    \ - depth[lca(a, b)] * 2;\n    }\n    template <typename F>\n    void path_query(int\
-    \ u, int v, bool vertex, const F& f) {\n        assert(0 <= u and u < n);\n  \
-    \      assert(0 <= v and v < n);\n        int l = lca(u, v);\n        for(auto&&\
-    \ [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex) f(down[l], down[l] +\
-    \ 1);\n        for(auto&& [a, b] : descend(l, v)) f(a, b + 1);\n    }\n    template\
-    \ <typename F>\n    void subtree_query(int u, bool vertex, const F& f) {\n   \
-    \     assert(0 <= u and u < n);\n        f(down[u] + int(!vertex), up[u]);\n \
-    \   }\n\n   private:\n    Graph<T>& g;\n    int n, id;\n    vector<int> size,\
-    \ depth, down, up, nex, par, rev;\n    void dfs_sz(int cur) {\n        size[cur]\
-    \ = 1;\n        for(auto& edge : g[cur]) {\n            if(edge.to == par[cur])\
-    \ {\n                if(g[cur].size() >= 2 and edge.to == g[cur][0].to) {\n  \
-    \                  swap(g[cur][0], g[cur][1]);\n                } else {\n   \
-    \                 continue;\n                }\n            }\n            depth[edge.to]\
-    \ = depth[cur] + 1;\n            par[edge.to] = cur;\n            dfs_sz(edge.to);\n\
-    \            size[cur] += size[edge.to];\n            if(size[edge.to] > size[g[cur][0].to])\
-    \ {\n                swap(edge, g[cur][0]);\n            }\n        }\n    }\n\
-    \    void dfs_hld(int cur) {\n        down[cur] = id++;\n        rev[down[cur]]\
-    \ = cur;\n        for(const auto& edge : g[cur]) {\n            if(edge.to ==\
-    \ par[cur]) continue;\n            nex[edge.to] = (edge.to == g[cur][0].to ? nex[cur]\
-    \ : edge.to);\n            dfs_hld(edge.to);\n        }\n        up[cur] = id;\n\
-    \    }\n    vector<pair<int, int>> ascend(int u, int v) const {\n        vector<pair<int,\
-    \ int>> res;\n        while(nex[u] != nex[v]) {\n            res.emplace_back(down[u],\
-    \ down[nex[u]]);\n            u = par[nex[u]];\n        }\n        if(u != v)\
-    \ res.emplace_back(down[u], down[v] + 1);\n        return res;\n    }\n    vector<pair<int,\
-    \ int>> descend(int u, int v) const {\n        if(u == v) return {};\n       \
-    \ if(nex[u] == nex[v]) return {{down[u] + 1, down[v]}};\n        auto res = descend(u,\
-    \ par[nex[v]]);\n        res.emplace_back(down[nex[v]], down[v]);\n        return\
-    \ res;\n    }\n};\n#line 3 \"src/data_structure/segment_tree.hpp\"\ntemplate <typename\
-    \ S, auto op, auto e>\nstruct SegmentTree {\n    SegmentTree(int N)\n        :\
-    \ SegmentTree(vector<S>(N, e())) {}\n    SegmentTree(const vector<S>& v)\n   \
-    \     : n((int)v.size()) {\n        size = bit_ceil((unsigned int)n);\n      \
-    \  log = countr_zero((unsigned int)size);\n        data = vector<S>(2 * size,\
-    \ e());\n        for(int i = 0; i < n; ++i) {\n            data[size + i] = v[i];\n\
-    \        }\n        for(int i = size - 1; i >= 1; --i) {\n            update(i);\n\
-    \        }\n    }\n    void set(int p, const S& x) {\n        assert(0 <= p and\
-    \ p < n);\n        p += size;\n        data[p] = x;\n        for(int i = 1; i\
-    \ <= log; ++i) {\n            update(p >> i);\n        }\n    }\n    S get(int\
-    \ p) const {\n        assert(0 <= p and p < n);\n        return data[p + size];\n\
-    \    }\n    S prod(int l, int r) const {\n        assert(0 <= l and l <= r and\
-    \ r <= n);\n        S sml = e(), smr = e();\n        l += size;\n        r +=\
-    \ size;\n        while(l < r) {\n            if(l & 1) sml = op(sml, data[l++]);\n\
-    \            if(r & 1) smr = op(data[--r], smr);\n            l >>= 1;\n     \
-    \       r >>= 1;\n        }\n        return op(sml, smr);\n    }\n    S all_prod()\
-    \ const {\n        return data[1];\n    }\n\n    template <bool (*f)(S)>\n   \
-    \ int max_right(int l) const {\n        return max_right(l, [](const S& x) { return\
-    \ f(x); });\n    }\n    template <class F>\n    int max_right(int l, const F&\
-    \ f) const {\n        assert(0 <= l and l <= n);\n        assert(f(e()));\n  \
-    \      if(l == n) return n;\n        l += size;\n        S sm = e();\n       \
-    \ do {\n            while(l % 2 == 0) l >>= 1;\n            if(!f(op(sm, data[l])))\
-    \ {\n                while(l < size) {\n                    l = l * 2;\n     \
-    \               if(f(op(sm, data[l]))) {\n                        sm = op(sm,\
-    \ data[l]);\n                        ++l;\n                    }\n           \
-    \     }\n                return l - size;\n            }\n            sm = op(sm,\
-    \ data[l]);\n            ++l;\n        } while((l & -l) != l);\n        return\
-    \ n;\n    }\n\n    template <bool (*f)(S)>\n    int min_left(int r) const {\n\
-    \        return min_left(r, [](const S& x) { return f(x); });\n    }\n    template\
-    \ <class F>\n    int min_left(int r, const F& f) const {\n        assert(0 <=\
-    \ r and r <= n);\n        assert(f(e()));\n        if(r == 0) return 0;\n    \
-    \    r += size;\n        S sm = e();\n        do {\n            --r;\n       \
-    \     while(r > 1 and (r % 2)) r >>= 1;\n            if(!f(op(data[r], sm))) {\n\
-    \                while(r < size) {\n                    r = 2 * r + 1;\n     \
-    \               if(f(op(data[r], sm))) {\n                        sm = op(data[r],\
-    \ sm);\n                        --r;\n                    }\n                }\n\
-    \                return r + 1 - size;\n            }\n            sm = op(data[r],\
-    \ sm);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n   private:\n\
-    \    int n, size, log;\n    vector<S> data;\n    inline void update(int k) {\n\
-    \        data[k] = op(data[2 * k], data[2 * k + 1]);\n    }\n    inline unsigned\
-    \ int bit_ceil(unsigned int n) {\n        unsigned int res = 1;\n        while(res\
-    \ < n) res *= 2;\n        return res;\n    }\n    inline int countr_zero(unsigned\
-    \ int n) {\n        return __builtin_ctz(n);\n    }\n};\n#line 7 \"verify/library_checker/data_structure/vertex_set_path_composite.test.cpp\"\
+    \        return make_pair(down[i], up[i]);\n    }\n    int la(int v, int x = 1)\
+    \ const {\n        assert(0 <= v and v < n);\n        assert(x >= 0);\n      \
+    \  if(x > depth[v]) return -1;\n        while(true) {\n            int u = nex[v];\n\
+    \            if(down[v] - x >= down[u]) return rev[down[v] - x];\n           \
+    \ x -= down[v] - down[u] + 1;\n            v = par[u];\n        }\n    }\n   \
+    \ int lca(int u, int v) const {\n        assert(0 <= u and u < n);\n        assert(0\
+    \ <= v and v < n);\n        while(nex[u] != nex[v]) {\n            if(down[u]\
+    \ < down[v]) swap(u, v);\n            u = par[nex[u]];\n        }\n        return\
+    \ depth[u] < depth[v] ? u : v;\n    }\n    int dist(int u, int v) const {\n  \
+    \      assert(0 <= u and u < n);\n        assert(0 <= v and v < n);\n        return\
+    \ depth[u] + depth[v] - depth[lca(u, v)] * 2;\n    }\n    template <typename F>\n\
+    \    void path_query(int u, int v, bool vertex, const F& f) {\n        assert(0\
+    \ <= u and u < n);\n        assert(0 <= v and v < n);\n        int l = lca(u,\
+    \ v);\n        for(auto&& [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex)\
+    \ f(down[l], down[l] + 1);\n        for(auto&& [a, b] : descend(l, v)) f(a, b\
+    \ + 1);\n    }\n    template <typename F>\n    void subtree_query(int v, bool\
+    \ vertex, const F& f) {\n        assert(0 <= v and v < n);\n        f(down[v]\
+    \ + int(!vertex), up[v]);\n    }\n\n   private:\n    Graph<T>& g;\n    int n,\
+    \ id;\n    vector<int> size, depth, down, up, nex, par, rev;\n    void dfs_sz(int\
+    \ cur) {\n        size[cur] = 1;\n        for(auto& edge : g[cur]) {\n       \
+    \     if(edge.to == par[cur]) {\n                if(g[cur].size() >= 2 and edge.to\
+    \ == g[cur][0].to) {\n                    swap(g[cur][0], g[cur][1]);\n      \
+    \          } else {\n                    continue;\n                }\n      \
+    \      }\n            depth[edge.to] = depth[cur] + 1;\n            par[edge.to]\
+    \ = cur;\n            dfs_sz(edge.to);\n            size[cur] += size[edge.to];\n\
+    \            if(size[edge.to] > size[g[cur][0].to]) {\n                swap(edge,\
+    \ g[cur][0]);\n            }\n        }\n    }\n    void dfs_hld(int cur) {\n\
+    \        down[cur] = id++;\n        rev[down[cur]] = cur;\n        for(const auto&\
+    \ edge : g[cur]) {\n            if(edge.to == par[cur]) continue;\n          \
+    \  nex[edge.to] = (edge.to == g[cur][0].to ? nex[cur] : edge.to);\n          \
+    \  dfs_hld(edge.to);\n        }\n        up[cur] = id;\n    }\n    vector<pair<int,\
+    \ int>> ascend(int u, int v) const {\n        vector<pair<int, int>> res;\n  \
+    \      while(nex[u] != nex[v]) {\n            res.emplace_back(down[u], down[nex[u]]);\n\
+    \            u = par[nex[u]];\n        }\n        if(u != v) res.emplace_back(down[u],\
+    \ down[v] + 1);\n        return res;\n    }\n    vector<pair<int, int>> descend(int\
+    \ u, int v) const {\n        if(u == v) return {};\n        if(nex[u] == nex[v])\
+    \ return {{down[u] + 1, down[v]}};\n        auto res = descend(u, par[nex[v]]);\n\
+    \        res.emplace_back(down[nex[v]], down[v]);\n        return res;\n    }\n\
+    };\n#line 3 \"src/data_structure/segment_tree.hpp\"\ntemplate <typename S, auto\
+    \ op, auto e>\nstruct SegmentTree {\n    SegmentTree(int N)\n        : SegmentTree(vector<S>(N,\
+    \ e())) {}\n    SegmentTree(const vector<S>& v)\n        : n((int)v.size()) {\n\
+    \        size = bit_ceil((unsigned int)n);\n        log = countr_zero((unsigned\
+    \ int)size);\n        data = vector<S>(2 * size, e());\n        for(int i = 0;\
+    \ i < n; ++i) {\n            data[size + i] = v[i];\n        }\n        for(int\
+    \ i = size - 1; i >= 1; --i) {\n            update(i);\n        }\n    }\n   \
+    \ void set(int p, const S& x) {\n        assert(0 <= p and p < n);\n        p\
+    \ += size;\n        data[p] = x;\n        for(int i = 1; i <= log; ++i) {\n  \
+    \          update(p >> i);\n        }\n    }\n    S get(int p) const {\n     \
+    \   assert(0 <= p and p < n);\n        return data[p + size];\n    }\n    S prod(int\
+    \ l, int r) const {\n        assert(0 <= l and l <= r and r <= n);\n        S\
+    \ sml = e(), smr = e();\n        l += size;\n        r += size;\n        while(l\
+    \ < r) {\n            if(l & 1) sml = op(sml, data[l++]);\n            if(r &\
+    \ 1) smr = op(data[--r], smr);\n            l >>= 1;\n            r >>= 1;\n \
+    \       }\n        return op(sml, smr);\n    }\n    S all_prod() const {\n   \
+    \     return data[1];\n    }\n\n    template <bool (*f)(S)>\n    int max_right(int\
+    \ l) const {\n        return max_right(l, [](const S& x) { return f(x); });\n\
+    \    }\n    template <class F>\n    int max_right(int l, const F& f) const {\n\
+    \        assert(0 <= l and l <= n);\n        assert(f(e()));\n        if(l ==\
+    \ n) return n;\n        l += size;\n        S sm = e();\n        do {\n      \
+    \      while(l % 2 == 0) l >>= 1;\n            if(!f(op(sm, data[l]))) {\n   \
+    \             while(l < size) {\n                    l = l * 2;\n            \
+    \        if(f(op(sm, data[l]))) {\n                        sm = op(sm, data[l]);\n\
+    \                        ++l;\n                    }\n                }\n    \
+    \            return l - size;\n            }\n            sm = op(sm, data[l]);\n\
+    \            ++l;\n        } while((l & -l) != l);\n        return n;\n    }\n\
+    \n    template <bool (*f)(S)>\n    int min_left(int r) const {\n        return\
+    \ min_left(r, [](const S& x) { return f(x); });\n    }\n    template <class F>\n\
+    \    int min_left(int r, const F& f) const {\n        assert(0 <= r and r <= n);\n\
+    \        assert(f(e()));\n        if(r == 0) return 0;\n        r += size;\n \
+    \       S sm = e();\n        do {\n            --r;\n            while(r > 1 and\
+    \ (r % 2)) r >>= 1;\n            if(!f(op(data[r], sm))) {\n                while(r\
+    \ < size) {\n                    r = 2 * r + 1;\n                    if(f(op(data[r],\
+    \ sm))) {\n                        sm = op(data[r], sm);\n                   \
+    \     --r;\n                    }\n                }\n                return r\
+    \ + 1 - size;\n            }\n            sm = op(data[r], sm);\n        } while((r\
+    \ & -r) != r);\n        return 0;\n    }\n\n   private:\n    int n, size, log;\n\
+    \    vector<S> data;\n    inline void update(int k) {\n        data[k] = op(data[2\
+    \ * k], data[2 * k + 1]);\n    }\n    inline unsigned int bit_ceil(unsigned int\
+    \ n) {\n        unsigned int res = 1;\n        while(res < n) res *= 2;\n    \
+    \    return res;\n    }\n    inline int countr_zero(unsigned int n) {\n      \
+    \  return __builtin_ctz(n);\n    }\n};\n#line 7 \"verify/library_checker/data_structure/vertex_set_path_composite.test.cpp\"\
     \nusing mint = modint998244353;\nstruct S {\n    mint a, b;\n};\nS op1(S x, S\
     \ y) {\n    return {x.a * y.a, x.b * y.a + y.b};\n}\nS op2(S x, S y) {\n    return\
     \ {x.a * y.a, y.b * x.a + x.b};\n}\nS e() {\n    return {1, 0};\n}\nint main(void)\
@@ -240,7 +241,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-01-14 17:33:58+09:00'
+  timestamp: '2024-01-16 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
