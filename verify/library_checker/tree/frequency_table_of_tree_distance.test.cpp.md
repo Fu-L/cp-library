@@ -297,16 +297,17 @@ data:
     \ ret;\n    }\n    void shrink() {\n        while((*this).size() and (*this).back()\
     \ == T(0)) (*this).pop_back();\n    }\n    F rev() const {\n        F ret(*this);\n\
     \        reverse(begin(ret), end(ret));\n        return ret;\n    }\n    F pre(const\
-    \ int deg) const {\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
-    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
-    \    }\n    T eval(const T& a) const {\n        const int n = (*this).size();\n\
-    \        T x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n           \
-    \ ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
-    \    }\n    void onemul(const int d, const T& c, int deg = -1) {\n        const\
-    \ int n = (*this).size();\n        if(deg == -1) deg = n + d;\n        if(deg\
-    \ > n) (*this).resize(deg);\n        for(int i = deg - d - 1; i >= 0; --i) {\n\
-    \            (*this)[i + d] += (*this)[i] * c;\n        }\n    }\n    void onediv(const\
-    \ int d, const T& c, int deg = -1) {\n        const int n = (*this).size();\n\
+    \ int deg) const {\n        assert(deg >= 0);\n        F ret(begin(*this), begin(*this)\
+    \ + min((int)(*this).size(), deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n\
+    \        return ret;\n    }\n    T eval(const T& a) const {\n        const int\
+    \ n = (*this).size();\n        T x = 1, ret = 0;\n        for(int i = 0; i < n;\
+    \ ++i) {\n            ret += (*this)[i] * x;\n            x *= a;\n        }\n\
+    \        return ret;\n    }\n    void onemul(const int d, const T& c, int deg\
+    \ = -1) {\n        assert(deg >= -1);\n        const int n = (*this).size();\n\
+    \        if(deg == -1) deg = n + d;\n        if(deg > n) (*this).resize(deg);\n\
+    \        for(int i = deg - d - 1; i >= 0; --i) {\n            (*this)[i + d] +=\
+    \ (*this)[i] * c;\n        }\n    }\n    void onediv(const int d, const T& c,\
+    \ int deg = -1) {\n        assert(deg >= -1);\n        const int n = (*this).size();\n\
     \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
     \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
     \ * c;\n        }\n    }\n};\n#line 6 \"verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp\"\
@@ -364,7 +365,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
-  timestamp: '2024-01-16 00:37:59+09:00'
+  timestamp: '2024-01-16 03:17:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
