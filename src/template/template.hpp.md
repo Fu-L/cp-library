@@ -39,6 +39,9 @@ data:
     path: src/data_structure/fenwick_tree_2d.hpp
     title: FenwickTree2D
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/fenwick_tree_on_wavelet_matrix.hpp
+    title: FenwickTreeonWaveletMatrix
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segment_tree.hpp
     title: LazySegmentTree
   - icon: ':heavy_check_mark:'
@@ -346,6 +349,9 @@ data:
     path: verify/library_checker/data_structure/point_add_range_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
+    title: verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_set_range_composite.test.cpp
     title: verify/library_checker/data_structure/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -360,6 +366,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
     title: verify/library_checker/data_structure/range_kth_smallest.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
+    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
@@ -598,6 +607,7 @@ data:
   - src/data_structure/weighted_union_find.hpp
   - src/data_structure/segment_tree.hpp
   - src/data_structure/sparse_table.hpp
+  - src/data_structure/fenwick_tree_on_wavelet_matrix.hpp
   - src/data_structure/segment_set.hpp
   - src/data_structure/binary_trie.hpp
   - src/data_structure/fenwick_tree_2d.hpp
@@ -701,8 +711,10 @@ data:
   - verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - verify/library_checker/data_structure/range_affine_point_get.test.cpp
+  - verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
   - verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   - verify/library_checker/data_structure/static_range_frequency.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/string/suffix_array.test.cpp
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp
