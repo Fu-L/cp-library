@@ -45,8 +45,8 @@ data:
     \ int& k) const {\n        assert(0 <= k and k < n);\n        return g[k];\n \
     \   }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate\
     \ <typename T = int>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/tree/cartesian_tree.hpp\"\
-    \ntemplate <typename T>\npair<Graph<int>, int> cartesian_tree(const vector<T>\
-    \ &a) {\n    int n = (int)a.size();\n    Graph<int> g(n);\n    vector<int> p(n,\
+    \ntemplate <typename T>\npair<Graph<int>, int> cartesian_tree(const vector<T>&\
+    \ a) {\n    int n = (int)a.size();\n    Graph<int> g(n);\n    vector<int> p(n,\
     \ -1), st;\n    st.reserve(n);\n    for(int i = 0; i < n; ++i) {\n        int\
     \ prv = -1;\n        while(!st.empty() and a[i] < a[st.back()]) {\n          \
     \  prv = st.back();\n            st.pop_back();\n        }\n        if(prv !=\
@@ -73,7 +73,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/cartesian_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-01-14 17:33:58+09:00'
+  timestamp: '2024-02-15 00:10:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/cartesian_tree.test.cpp

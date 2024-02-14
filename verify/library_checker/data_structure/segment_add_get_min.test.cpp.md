@@ -26,19 +26,19 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/data_structure/dynamic_li_chao_tree.hpp\"\ntemplate <typename T,\
     \ T x_low, T x_high>\nstruct DynamicLiChaoTree {\n    DynamicLiChaoTree()\n  \
-    \      : root{nullptr} {}\n    void add_line(const T &a, const T &b) {\n     \
+    \      : root{nullptr} {}\n    void add_line(const T& a, const T& b) {\n     \
     \   Line x(a, b);\n        root = add_line(root, x, x_low, x_high, x.get(x_low),\
-    \ x.get(x_high));\n    }\n    void add_segment(const T &l, const T &r, const T\
-    \ &a, const T &b) {\n        Line x(a, b);\n        root = add_segment(root, x,\
+    \ x.get(x_high));\n    }\n    void add_segment(const T& l, const T& r, const T&\
+    \ a, const T& b) {\n        Line x(a, b);\n        root = add_segment(root, x,\
     \ l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));\n    }\n    T operator()(const\
     \ T& x) const {\n        assert(x_low <= x and x <= x_high);\n        return query(root,\
     \ x_low, x_high, x);\n    }\n\n   private:\n    struct Line {\n        T a, b;\n\
-    \        Line(const T &a, const T &b)\n            : a(a), b(b) {}\n        inline\
-    \ T get(const T &x) const {\n            return a * x + b;\n        }\n    };\n\
+    \        Line(const T& a, const T& b)\n            : a(a), b(b) {}\n        inline\
+    \ T get(const T& x) const {\n            return a * x + b;\n        }\n    };\n\
     \    struct Node {\n        Line x;\n        Node *l, *r;\n        Node(const\
-    \ Line &x)\n            : x{x}, l{nullptr}, r{nullptr} {}\n    };\n    const T\
-    \ id = numeric_limits<T>::max();\n    Node *root;\n    Node *add_line(Node *t,\
-    \ Line &x, const T &l, const T &r, const T &x_l, const T &x_r) {\n        if(!t)\
+    \ Line& x)\n            : x{x}, l{nullptr}, r{nullptr} {}\n    };\n    const T\
+    \ id = numeric_limits<T>::max();\n    Node* root;\n    Node* add_line(Node* t,\
+    \ Line& x, const T& l, const T& r, const T& x_l, const T& x_r) {\n        if(!t)\
     \ return new Node(x);\n        T t_l = t->x.get(l), t_r = t->x.get(r);\n     \
     \   if(t_l <= x_l and t_r <= x_r) {\n            return t;\n        } else if(t_l\
     \ >= x_l and t_r >= x_r) {\n            t->x = x;\n            return t;\n   \
@@ -49,8 +49,8 @@ data:
     \ t_m + x.a, t_r);\n            } else {\n                if(t_l >= x_l) t->l\
     \ = add_line(t->l, x, l, m, x_l, x_m);\n                else t->r = add_line(t->r,\
     \ x, m + 1, r, x_m + x.a, x_r);\n            }\n            return t;\n      \
-    \  }\n    }\n    Node *add_segment(Node *t, Line &x, const T &a, const T &b, const\
-    \ T &l, const T &r, const T &x_l, const T &x_r) {\n        if(r < a or b < l)\
+    \  }\n    }\n    Node* add_segment(Node* t, Line& x, const T& a, const T& b, const\
+    \ T& l, const T& r, const T& x_l, const T& x_r) {\n        if(r < a or b < l)\
     \ return t;\n        if(a <= l and r <= b) {\n            Line y{x};\n       \
     \     return add_line(t, y, l, r, x_l, x_r);\n        }\n        if(t) {\n   \
     \         T t_l = t->x.get(l), t_r = t->x.get(r);\n            if(t_l <= x_l and\
@@ -58,7 +58,7 @@ data:
     \        }\n        T m = (l + r) / 2;\n        if(m == r) --m;\n        T x_m\
     \ = x.get(m);\n        t->l = add_segment(t->l, x, a, b, l, m, x_l, x_m);\n  \
     \      t->r = add_segment(t->r, x, a, b, m + 1, r, x_m + x.a, x_r);\n        return\
-    \ t;\n    }\n    T query(const Node *t, const T &l, const T &r, const T &x) const\
+    \ t;\n    }\n    T query(const Node* t, const T& l, const T& r, const T& x) const\
     \ {\n        if(!t) return id;\n        if(l == r) return t->x.get(x);\n     \
     \   T m = (l + r) / 2;\n        if(m == r) --m;\n        if(x <= m) return min(t->x.get(x),\
     \ query(t->l, l, m, x));\n        else return min(t->x.get(x), query(t->r, m +\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-02-15 00:10:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segment_add_get_min.test.cpp

@@ -37,45 +37,44 @@ data:
     \ const {\n        return pos == int(payload.size());\n    }\n    void push(const\
     \ T& t) {\n        payload.push_back(t);\n    }\n    T& front() {\n        return\
     \ payload[pos];\n    }\n    void clear() {\n        payload.clear();\n       \
-    \ pos = 0;\n    }\n    void pop() {\n        ++pos;\n    }\n};\n}\ntemplate <class\
-    \ Cap, class Cost>\nstruct MinCostFlow {\n   public:\n    MinCostFlow() {}\n \
-    \   explicit MinCostFlow(int n)\n        : _n(n) {}\n    int add_edge(int from,\
-    \ int to, const Cap& cap, const Cost& cost) {\n        assert(0 <= from and from\
-    \ < _n);\n        assert(0 <= to and to < _n);\n        assert(0 <= cap);\n  \
-    \      assert(0 <= cost);\n        int m = int(_edges.size());\n        _edges.push_back({from,\
-    \ to, cap, 0, cost});\n        return m;\n    }\n    struct edge {\n        int\
-    \ from, to;\n        Cap cap, flow;\n        Cost cost;\n    };\n    edge get_edge(int\
-    \ i) {\n        int m = int(_edges.size());\n        assert(0 <= i and i < m);\n\
-    \        return _edges[i];\n    }\n    vector<edge> edges() {\n        return\
-    \ _edges;\n    }\n    pair<Cap, Cost> flow(int s, int t) {\n        return flow(s,\
-    \ t, numeric_limits<Cap>::max());\n    }\n    pair<Cap, Cost> flow(int s, int\
-    \ t, const Cap& flow_limit) {\n        return slope(s, t, flow_limit).back();\n\
-    \    }\n    vector<pair<Cap, Cost>> slope(int s, int t) {\n        return slope(s,\
-    \ t, numeric_limits<Cap>::max());\n    }\n    vector<pair<Cap, Cost>> slope(int\
-    \ s, int t, const Cap& flow_limit) {\n        assert(0 <= s and s < _n);\n   \
-    \     assert(0 <= t and t < _n);\n        assert(s != t);\n        int m = int(_edges.size());\n\
-    \        vector<int> edge_idx(m);\n        auto g = [&]() {\n            vector<int>\
-    \ degree(_n), redge_idx(m);\n            vector<pair<int, _edge>> elist;\n   \
-    \         elist.reserve(2 * m);\n            for(int i = 0; i < m; ++i) {\n  \
-    \              auto e = _edges[i];\n                edge_idx[i] = degree[e.from]++;\n\
-    \                redge_idx[i] = degree[e.to]++;\n                elist.push_back({e.from,\
-    \ {e.to, -1, e.cap - e.flow, e.cost}});\n                elist.push_back({e.to,\
-    \ {e.from, -1, e.flow, -e.cost}});\n            }\n            auto _g = internal::csr<_edge>(_n,\
-    \ elist);\n            for(int i = 0; i < m; ++i) {\n                auto e =\
-    \ _edges[i];\n                edge_idx[i] += _g.start[e.from];\n             \
-    \   redge_idx[i] += _g.start[e.to];\n                _g.elist[edge_idx[i]].rev\
-    \ = redge_idx[i];\n                _g.elist[redge_idx[i]].rev = edge_idx[i];\n\
-    \            }\n            return _g;\n        }();\n        auto result = slope(g,\
-    \ s, t, flow_limit);\n        for(int i = 0; i < m; ++i) {\n            auto e\
-    \ = g.elist[edge_idx[i]];\n            _edges[i].flow = _edges[i].cap - e.cap;\n\
-    \        }\n        return result;\n    }\n\n   private:\n    int _n;\n    vector<edge>\
-    \ _edges;\n    struct _edge {\n        int to, rev;\n        Cap cap;\n      \
-    \  Cost cost;\n    };\n    vector<pair<Cap, Cost>> slope(internal::csr<_edge>&\
-    \ g,\n                                            int s,\n                   \
-    \                         int t,\n                                           \
-    \ const Cap& flow_limit) {\n        vector<pair<Cost, Cost>> dual_dist(_n);\n\
-    \        vector<int> prev_e(_n);\n        vector<bool> vis(_n);\n        struct\
-    \ Q {\n            Cost key;\n            int to;\n            inline bool operator<(Q\
+    \ pos = 0;\n    }\n    void pop() {\n        ++pos;\n    }\n};\n}  // namespace\
+    \ internal\ntemplate <class Cap, class Cost>\nstruct MinCostFlow {\n   public:\n\
+    \    MinCostFlow() {}\n    explicit MinCostFlow(int n)\n        : _n(n) {}\n \
+    \   int add_edge(int from, int to, const Cap& cap, const Cost& cost) {\n     \
+    \   assert(0 <= from and from < _n);\n        assert(0 <= to and to < _n);\n \
+    \       assert(0 <= cap);\n        assert(0 <= cost);\n        int m = int(_edges.size());\n\
+    \        _edges.push_back({from, to, cap, 0, cost});\n        return m;\n    }\n\
+    \    struct edge {\n        int from, to;\n        Cap cap, flow;\n        Cost\
+    \ cost;\n    };\n    edge get_edge(int i) {\n        int m = int(_edges.size());\n\
+    \        assert(0 <= i and i < m);\n        return _edges[i];\n    }\n    vector<edge>\
+    \ edges() {\n        return _edges;\n    }\n    pair<Cap, Cost> flow(int s, int\
+    \ t) {\n        return flow(s, t, numeric_limits<Cap>::max());\n    }\n    pair<Cap,\
+    \ Cost> flow(int s, int t, const Cap& flow_limit) {\n        return slope(s, t,\
+    \ flow_limit).back();\n    }\n    vector<pair<Cap, Cost>> slope(int s, int t)\
+    \ {\n        return slope(s, t, numeric_limits<Cap>::max());\n    }\n    vector<pair<Cap,\
+    \ Cost>> slope(int s, int t, const Cap& flow_limit) {\n        assert(0 <= s and\
+    \ s < _n);\n        assert(0 <= t and t < _n);\n        assert(s != t);\n    \
+    \    int m = int(_edges.size());\n        vector<int> edge_idx(m);\n        auto\
+    \ g = [&]() {\n            vector<int> degree(_n), redge_idx(m);\n           \
+    \ vector<pair<int, _edge>> elist;\n            elist.reserve(2 * m);\n       \
+    \     for(int i = 0; i < m; ++i) {\n                auto e = _edges[i];\n    \
+    \            edge_idx[i] = degree[e.from]++;\n                redge_idx[i] = degree[e.to]++;\n\
+    \                elist.push_back({e.from, {e.to, -1, e.cap - e.flow, e.cost}});\n\
+    \                elist.push_back({e.to, {e.from, -1, e.flow, -e.cost}});\n   \
+    \         }\n            auto _g = internal::csr<_edge>(_n, elist);\n        \
+    \    for(int i = 0; i < m; ++i) {\n                auto e = _edges[i];\n     \
+    \           edge_idx[i] += _g.start[e.from];\n                redge_idx[i] +=\
+    \ _g.start[e.to];\n                _g.elist[edge_idx[i]].rev = redge_idx[i];\n\
+    \                _g.elist[redge_idx[i]].rev = edge_idx[i];\n            }\n  \
+    \          return _g;\n        }();\n        auto result = slope(g, s, t, flow_limit);\n\
+    \        for(int i = 0; i < m; ++i) {\n            auto e = g.elist[edge_idx[i]];\n\
+    \            _edges[i].flow = _edges[i].cap - e.cap;\n        }\n        return\
+    \ result;\n    }\n\n   private:\n    int _n;\n    vector<edge> _edges;\n    struct\
+    \ _edge {\n        int to, rev;\n        Cap cap;\n        Cost cost;\n    };\n\
+    \    vector<pair<Cap, Cost>> slope(internal::csr<_edge>& g, int s, int t, const\
+    \ Cap& flow_limit) {\n        vector<pair<Cost, Cost>> dual_dist(_n);\n      \
+    \  vector<int> prev_e(_n);\n        vector<bool> vis(_n);\n        struct Q {\n\
+    \            Cost key;\n            int to;\n            inline bool operator<(Q\
     \ r) const {\n                return key > r.key;\n            }\n        };\n\
     \        vector<int> que_min;\n        vector<Q> que;\n        auto dual_ref =\
     \ [&]() {\n            for(int i = 0; i < _n; ++i) {\n                dual_dist[i].second\
@@ -135,7 +134,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 23:17:14+09:00'
+  timestamp: '2024-02-15 00:10:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/minimum_cost_flow.test.cpp

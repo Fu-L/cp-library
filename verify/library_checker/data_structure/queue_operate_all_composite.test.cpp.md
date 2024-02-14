@@ -81,14 +81,14 @@ data:
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
     #line 3 \"src/data_structure/slide_window_aggregation.hpp\"\ntemplate <typename\
     \ S, auto op, auto e>\nstruct SlideWindowAggregation {\n    SlideWindowAggregation()\n\
-    \        : f0(e()), f1(e()) {}\n    void push(const S &x) {\n        if(a0.empty())\
+    \        : f0(e()), f1(e()) {}\n    void push(const S& x) {\n        if(a0.empty())\
     \ {\n            push_s0(x);\n            transfer();\n        } else {\n    \
     \        push_s1(x);\n        }\n    }\n    void pop() {\n        if(a0.empty())\
     \ transfer();\n        a0.pop_back();\n        r0.pop_back();\n        f0 = r0.empty()\
     \ ? e() : r0.back();\n    }\n    S query() {\n        return op(f0, f1);\n   \
     \ }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void push_s0(const\
-    \ S &x) {\n        a0.push_back(x);\n        r0.push_back(f0 = op(x, f0));\n \
-    \   }\n    void push_s1(const S &x) {\n        a1.push_back(x);\n        r1.push_back(f1\
+    \ S& x) {\n        a0.push_back(x);\n        r0.push_back(f0 = op(x, f0));\n \
+    \   }\n    void push_s1(const S& x) {\n        a1.push_back(x);\n        r1.push_back(f1\
     \ = op(f1, x));\n    }\n    void transfer() {\n        while(!a1.empty()) {\n\
     \            push_s0(a1.back());\n            a1.pop_back();\n        }\n    \
     \    while(!r1.empty()) r1.pop_back();\n        f1 = e();\n    }\n};\n#line 5\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-02-15 00:10:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
