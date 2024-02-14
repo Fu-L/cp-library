@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 struct RollingHash {
     using ull = unsigned long long;
-    RollingHash(const string &s, ll BASE = 0) {
+    RollingHash(const string& s, ll BASE = 0) {
         len = (int)s.size();
         if(BASE <= 0) {
             mt19937 mt(chrono::steady_clock::now().time_since_epoch().count());
@@ -24,14 +24,14 @@ struct RollingHash {
         assert(0 <= lower and lower <= upper and upper <= len);
         return calc_mod(hash[upper] + POSITIVIZER - mul(hash[lower], pow[upper - lower]));
     }
-    ll get_hash(const string &t) const {
+    ll get_hash(const string& t) const {
         ll res = 0;
         for(int i = 0; i < (int)t.size(); ++i) {
             res = calc_mod(mul(res, base) + t[i]);
         }
         return res;
     }
-    int find(const string &t, int lower = 0) const {
+    int find(const string& t, int lower = 0) const {
         if((int)t.size() > len) return -1;
         ll ha = get_hash(t);
         for(int i = lower; i < len - (int)t.size() + 1; ++i) {
@@ -39,7 +39,7 @@ struct RollingHash {
         }
         return -1;
     }
-    int lcp(const RollingHash &a, const RollingHash &b, int al, int bl) const {
+    int lcp(const RollingHash& a, const RollingHash& b, int al, int bl) const {
         int ok = 0, ng = min(a.len - al, b.len - bl) + 1;
         while(ok + 1 < ng) {
             int med = (ok + ng) / 2;

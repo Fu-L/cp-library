@@ -46,7 +46,7 @@ struct simple_queue {
         ++pos;
     }
 };
-}
+}  // namespace internal
 template <class Cap, class Cost>
 struct MinCostFlow {
    public:
@@ -127,10 +127,7 @@ struct MinCostFlow {
         Cap cap;
         Cost cost;
     };
-    vector<pair<Cap, Cost>> slope(internal::csr<_edge>& g,
-                                            int s,
-                                            int t,
-                                            const Cap& flow_limit) {
+    vector<pair<Cap, Cost>> slope(internal::csr<_edge>& g, int s, int t, const Cap& flow_limit) {
         vector<pair<Cost, Cost>> dual_dist(_n);
         vector<int> prev_e(_n);
         vector<bool> vis(_n);

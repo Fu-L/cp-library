@@ -13,5 +13,5 @@ PointerAlignment: Left,
 ReferenceAlignment: Left,
 SortIncludes: Never,
 SortUsingDeclarations: false,
-SpaceBeforeParens: Never
+SpaceBeforeParens: Never,
 }

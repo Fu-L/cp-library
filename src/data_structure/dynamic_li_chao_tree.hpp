@@ -4,11 +4,11 @@ template <typename T, T x_low, T x_high>
 struct DynamicLiChaoTree {
     DynamicLiChaoTree()
         : root{nullptr} {}
-    void add_line(const T &a, const T &b) {
+    void add_line(const T& a, const T& b) {
         Line x(a, b);
         root = add_line(root, x, x_low, x_high, x.get(x_low), x.get(x_high));
     }
-    void add_segment(const T &l, const T &r, const T &a, const T &b) {
+    void add_segment(const T& l, const T& r, const T& a, const T& b) {
         Line x(a, b);
         root = add_segment(root, x, l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));
     }
@@ -20,21 +20,21 @@ struct DynamicLiChaoTree {
    private:
     struct Line {
         T a, b;
-        Line(const T &a, const T &b)
+        Line(const T& a, const T& b)
             : a(a), b(b) {}
-        inline T get(const T &x) const {
+        inline T get(const T& x) const {
             return a * x + b;
         }
     };
     struct Node {
         Line x;
         Node *l, *r;
-        Node(const Line &x)
+        Node(const Line& x)
             : x{x}, l{nullptr}, r{nullptr} {}
     };
     const T id = numeric_limits<T>::max();
-    Node *root;
-    Node *add_line(Node *t, Line &x, const T &l, const T &r, const T &x_l, const T &x_r) {
+    Node* root;
+    Node* add_line(Node* t, Line& x, const T& l, const T& r, const T& x_l, const T& x_r) {
         if(!t) return new Node(x);
         T t_l = t->x.get(l), t_r = t->x.get(r);
         if(t_l <= x_l and t_r <= x_r) {
@@ -57,7 +57,7 @@ struct DynamicLiChaoTree {
             return t;
         }
     }
-    Node *add_segment(Node *t, Line &x, const T &a, const T &b, const T &l, const T &r, const T &x_l, const T &x_r) {
+    Node* add_segment(Node* t, Line& x, const T& a, const T& b, const T& l, const T& r, const T& x_l, const T& x_r) {
         if(r < a or b < l) return t;
         if(a <= l and r <= b) {
             Line y{x};
@@ -76,7 +76,7 @@ struct DynamicLiChaoTree {
         t->r = add_segment(t->r, x, a, b, m + 1, r, x_m + x.a, x_r);
         return t;
     }
-    T query(const Node *t, const T &l, const T &r, const T &x) const {
+    T query(const Node* t, const T& l, const T& r, const T& x) const {
         if(!t) return id;
         if(l == r) return t->x.get(x);
         T m = (l + r) / 2;

@@ -2,10 +2,10 @@
 #include "../template/template.hpp"
 template <typename S, auto op, auto e>
 struct SlideWindowAggregationDeque {
-    void push_front(const S &t) {
+    void push_front(const S& t) {
         push0(t);
     }
-    void push_back(const S &t) {
+    void push_back(const S& t) {
         push1(t);
     }
     S front() const {
@@ -36,11 +36,11 @@ struct SlideWindowAggregationDeque {
     S get1() const {
         return r1.empty() ? e() : r1.back();
     }
-    void push0(const S &x) {
+    void push0(const S& x) {
         a0.push_back(x);
         r0.push_back(op(x, get0()));
     }
-    void push1(const S &x) {
+    void push1(const S& x) {
         a1.push_back(x);
         r1.push_back(op(get1(), x));
     }

@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 #include "../graph/graph_template.hpp"
 template <typename T>
-pair<Graph<int>, int> cartesian_tree(const vector<T> &a) {
+pair<Graph<int>, int> cartesian_tree(const vector<T>& a) {
     int n = (int)a.size();
     Graph<int> g(n);
     vector<int> p(n, -1), st;

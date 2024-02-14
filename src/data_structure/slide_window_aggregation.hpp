@@ -4,7 +4,7 @@ template <typename S, auto op, auto e>
 struct SlideWindowAggregation {
     SlideWindowAggregation()
         : f0(e()), f1(e()) {}
-    void push(const S &x) {
+    void push(const S& x) {
         if(a0.empty()) {
             push_s0(x);
             transfer();
@@ -25,11 +25,11 @@ struct SlideWindowAggregation {
    private:
     vector<S> a0, a1, r0, r1;
     S f0, f1;
-    void push_s0(const S &x) {
+    void push_s0(const S& x) {
         a0.push_back(x);
         r0.push_back(f0 = op(x, f0));
     }
-    void push_s1(const S &x) {
+    void push_s1(const S& x) {
         a1.push_back(x);
         r1.push_back(f1 = op(f1, x));
     }
