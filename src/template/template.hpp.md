@@ -73,7 +73,7 @@ data:
     title: UnionFind
   - icon: ':heavy_check_mark:'
     path: src/data_structure/wavelet_matrix.hpp
-    title: src/data_structure/wavelet_matrix.hpp
+    title: WaveletMatrix
   - icon: ':heavy_check_mark:'
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
