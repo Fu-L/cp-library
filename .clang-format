@@ -1,0 +1,17 @@
+{
+BasedOnStyle: Google,
+IndentWidth: 4,
+BreakBeforeBraces: Attach,
+AllowShortFunctionsOnASingleLine: Empty,
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse,
+AllowShortBlocksOnASingleLine: Empty,
+AllowShortLoopsOnASingleLine: true,
+ColumnLimit: 0,
+DerivePointerAlignment: false,
+IncludeBlocks: Merge,
+PointerAlignment: Left,
+ReferenceAlignment: Left,
+SortIncludes: Never,
+SortUsingDeclarations: false,
+SpaceBeforeParens: Never
+}
