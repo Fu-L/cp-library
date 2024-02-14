@@ -1,6 +1,6 @@
 ---
 title: WaveletMatrix
-documentation_of: ../../src/data_structure/mavelet_matrix.hpp
+documentation_of: ../../src/data_structure/wavelet_matrix.hpp
 ---
 
 # WaveletMatrix
