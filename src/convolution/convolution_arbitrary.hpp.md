@@ -247,8 +247,8 @@ data:
   timestamp: '2024-01-07 03:22:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/yukicoder/1559.test.cpp
+  - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
 documentation_of: src/convolution/convolution_arbitrary.hpp
 layout: document
 title: convolution_arbitrary

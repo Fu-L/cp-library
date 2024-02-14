@@ -75,6 +75,9 @@ data:
       path: src/data_structure/union_find.hpp
       title: UnionFind
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/wavelet_matrix.hpp
+      title: src/data_structure/wavelet_matrix.hpp
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/weighted_union_find.hpp
       title: WeightedUnionFind
   - name: src/fps
@@ -394,11 +397,17 @@ data:
       path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
       title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
+      title: verify/library_checker/data_structure/range_kth_smallest.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
       title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/set_xor_min.test.cpp
       title: verify/library_checker/data_structure/set_xor_min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/static_range_frequency.test.cpp
+      title: verify/library_checker/data_structure/static_range_frequency.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
       title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp

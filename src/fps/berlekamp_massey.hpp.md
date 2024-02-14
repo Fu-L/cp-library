@@ -58,8 +58,8 @@ data:
   timestamp: '2024-01-16 00:37:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/math/find_linear_recurrence.test.cpp
   - verify/yukicoder/1559.test.cpp
+  - verify/library_checker/math/find_linear_recurrence.test.cpp
 documentation_of: src/fps/berlekamp_massey.hpp
 layout: document
 title: berlekamp_massey
