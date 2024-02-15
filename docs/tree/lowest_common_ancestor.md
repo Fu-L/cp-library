@@ -17,7 +17,7 @@ $n$ 頂点の根付き木が与えられたとき，
 ## コンストラクタ
 
 ```cpp
-LowestCommonAncestor tree(Graph<T> g, int root = 0)
+LowestCommonAncestor<T> tree(Graph<T> g, int root = 0)
 ```
 
 - 頂点数 $n$ の木 `g` を与えると，`root` を根として前計算を行います．
