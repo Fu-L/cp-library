@@ -9,6 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Install clang-format
+      run: sudo apt-get update && sudo apt-get install -y clang-format
+    
+    - name: Run clang-format
+      run: clang-format -i */*/*.hpp */*/*/*.cpp */*/*.cpp
+
     - name: Set up Python
       uses: actions/setup-python@v1
 
