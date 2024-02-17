@@ -313,8 +313,8 @@ data:
     path: verify/aizu_online_judge/cgl/projection.test.cpp
     title: verify/aizu_online_judge/cgl/projection.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/refrection.test.cpp
-    title: verify/aizu_online_judge/cgl/refrection.test.cpp
+    path: verify/aizu_online_judge/cgl/reflection.test.cpp
+    title: verify/aizu_online_judge/cgl/reflection.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
     title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
@@ -723,10 +723,10 @@ data:
   - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
   - verify/aizu_online_judge/cgl/convex_hull.test.cpp
-  - verify/aizu_online_judge/cgl/refrection.test.cpp
   - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   - verify/aizu_online_judge/cgl/is_convex.test.cpp
   - verify/aizu_online_judge/cgl/closest_pair.test.cpp
+  - verify/aizu_online_judge/cgl/reflection.test.cpp
   - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
   - verify/aizu_online_judge/cgl/intersection.test.cpp
   - verify/aizu_online_judge/cgl/projection.test.cpp

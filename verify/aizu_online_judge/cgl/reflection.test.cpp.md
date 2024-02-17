@@ -24,7 +24,7 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B
-  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/refrection.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/reflection.test.cpp\"\n#define\
     \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B\"\
     \n#define ERROR 0.00000001\n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
@@ -99,7 +99,7 @@ data:
     \ s2.a), dist_sp(s1, s2.b), dist_sp(s2, s1.a), dist_sp(s2, s1.b)});\n}\nReal dist_ls(const\
     \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
     \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
-    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 7 \"verify/aizu_online_judge/cgl/refrection.test.cpp\"\
+    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 7 \"verify/aizu_online_judge/cgl/reflection.test.cpp\"\
     \nint main(void) {\n    Point p1, p2;\n    cin >> p1 >> p2;\n    Line l = Line(p1,\
     \ p2);\n    int q;\n    cin >> q;\n    while(q--) {\n        Point p;\n      \
     \  cin >> p;\n        cout << reflection(l, p) << '\\n';\n    }\n}\n"
@@ -116,15 +116,15 @@ data:
   - src/geometry/point_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
   isVerificationFile: true
-  path: verify/aizu_online_judge/cgl/refrection.test.cpp
+  path: verify/aizu_online_judge/cgl/reflection.test.cpp
   requiredBy: []
-  timestamp: '2024-02-18 01:38:40+09:00'
+  timestamp: '2024-02-18 04:08:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aizu_online_judge/cgl/refrection.test.cpp
+documentation_of: verify/aizu_online_judge/cgl/reflection.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aizu_online_judge/cgl/refrection.test.cpp
-- /verify/verify/aizu_online_judge/cgl/refrection.test.cpp.html
-title: verify/aizu_online_judge/cgl/refrection.test.cpp
+- /verify/verify/aizu_online_judge/cgl/reflection.test.cpp
+- /verify/verify/aizu_online_judge/cgl/reflection.test.cpp.html
+title: verify/aizu_online_judge/cgl/reflection.test.cpp
 ---

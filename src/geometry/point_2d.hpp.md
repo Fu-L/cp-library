@@ -58,8 +58,8 @@ data:
     path: verify/aizu_online_judge/cgl/projection.test.cpp
     title: verify/aizu_online_judge/cgl/projection.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/refrection.test.cpp
-    title: verify/aizu_online_judge/cgl/refrection.test.cpp
+    path: verify/aizu_online_judge/cgl/reflection.test.cpp
+    title: verify/aizu_online_judge/cgl/reflection.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -147,10 +147,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/cgl/convex_hull.test.cpp
-  - verify/aizu_online_judge/cgl/refrection.test.cpp
   - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   - verify/aizu_online_judge/cgl/is_convex.test.cpp
   - verify/aizu_online_judge/cgl/closest_pair.test.cpp
+  - verify/aizu_online_judge/cgl/reflection.test.cpp
   - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
   - verify/aizu_online_judge/cgl/intersection.test.cpp
   - verify/aizu_online_judge/cgl/projection.test.cpp

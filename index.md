@@ -342,8 +342,8 @@ data:
       path: verify/aizu_online_judge/cgl/projection.test.cpp
       title: verify/aizu_online_judge/cgl/projection.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/aizu_online_judge/cgl/refrection.test.cpp
-      title: verify/aizu_online_judge/cgl/refrection.test.cpp
+      path: verify/aizu_online_judge/cgl/reflection.test.cpp
+      title: verify/aizu_online_judge/cgl/reflection.test.cpp
   - name: verify/aizu_online_judge/dsl
     pages:
     - icon: ':heavy_check_mark:'
