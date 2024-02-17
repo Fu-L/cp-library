@@ -306,6 +306,9 @@ data:
       path: verify/aizu_online_judge/cgl/area.test.cpp
       title: verify/aizu_online_judge/cgl/area.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/closest_pair.test.cpp
+      title: verify/aizu_online_judge/cgl/closest_pair.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/cgl/convex_cut.test.cpp
       title: verify/aizu_online_judge/cgl/convex_cut.test.cpp
     - icon: ':heavy_check_mark:'

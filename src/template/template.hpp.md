@@ -277,6 +277,9 @@ data:
     path: verify/aizu_online_judge/cgl/area.test.cpp
     title: verify/aizu_online_judge/cgl/area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/closest_pair.test.cpp
+    title: verify/aizu_online_judge/cgl/closest_pair.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/convex_cut.test.cpp
     title: verify/aizu_online_judge/cgl/convex_cut.test.cpp
   - icon: ':heavy_check_mark:'
@@ -723,6 +726,7 @@ data:
   - verify/aizu_online_judge/cgl/refrection.test.cpp
   - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   - verify/aizu_online_judge/cgl/is_convex.test.cpp
+  - verify/aizu_online_judge/cgl/closest_pair.test.cpp
   - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
   - verify/aizu_online_judge/cgl/intersection.test.cpp
   - verify/aizu_online_judge/cgl/projection.test.cpp
