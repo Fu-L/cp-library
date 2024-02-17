@@ -306,6 +306,18 @@ data:
       path: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
       title: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/cross_point.test.cpp
+      title: verify/aizu_online_judge/cgl/cross_point.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/distance.test.cpp
+      title: verify/aizu_online_judge/cgl/distance.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/intersection.test.cpp
+      title: verify/aizu_online_judge/cgl/intersection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
+      title: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/cgl/projection.test.cpp
       title: verify/aizu_online_judge/cgl/projection.test.cpp
     - icon: ':heavy_check_mark:'

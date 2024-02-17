@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: src/geometry/line_and_segment_2d.hpp
+    title: src/geometry/line_and_segment_2d.hpp
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: src/geometry/point_2d.hpp
   - icon: ':heavy_check_mark:'
@@ -10,38 +13,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/geometry/circle_2d.hpp
-    title: src/geometry/circle_2d.hpp
-  - icon: ':warning:'
-    path: src/geometry/polygon_2d.hpp
-    title: src/geometry/polygon_2d.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/cross_point.test.cpp
-    title: verify/aizu_online_judge/cgl/cross_point.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/distance.test.cpp
-    title: verify/aizu_online_judge/cgl/distance.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/intersection.test.cpp
-    title: verify/aizu_online_judge/cgl/intersection.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
-    title: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/projection.test.cpp
-    title: verify/aizu_online_judge/cgl/projection.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/refrection.test.cpp
-    title: verify/aizu_online_judge/cgl/refrection.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_D
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_D
+  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/distance.test.cpp\"\n#define\
+    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_D\"\
+    \n#define ERROR 0.00000001\n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
     \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
@@ -114,66 +99,33 @@ data:
     \ s2.a), dist_sp(s1, s2.b), dist_sp(s2, s1.a), dist_sp(s2, s1.b)});\n}\nReal dist_ls(const\
     \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
     \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
-    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./template.hpp\"\
-    \n#include \"./point_2d.hpp\"\nstruct Line {\n    Point a, b;\n    Line() = default;\n\
-    \    Line(const Point& a, const Point& b)\n        : a(a), b(b) {}\n};\nusing\
-    \ Segment = Line;\nbool is_parallel(const Line& a, const Line& b) {\n    return\
-    \ eq(cross(a.b - a.a, b.b - b.a), 0.0);\n}\nbool is_orthogonal(const Line& a,\
-    \ const Line& b) {\n    return eq(dot(a.b - a.a, b.b - b.a), 0.0);\n}\nPoint projection(const\
-    \ Line& l, const Point& p) {\n    Real t = dot(p - l.a, l.b - l.a) / norm(l.b\
-    \ - l.a);\n    return l.a + (l.b - l.a) * t;\n}\nPoint reflection(const Line&\
-    \ l, const Point& p) {\n    return p + (projection(l, p) - p) * 2.0;\n}\nbool\
-    \ is_intersect_lp(const Line& l, const Point& p) {\n    return abs(ccw(l.a, l.b,\
-    \ p)) != 1;\n}\nbool is_intersect_sp(const Segment& s, const Point& p) {\n   \
-    \ return ccw(s.a, s.b, p) == 0;\n}\nbool is_intersect_ll(const Line& l1, const\
-    \ Line& l2) {\n    if(!eq(cross(l1.b - l1.a, l2.b - l2.a), 0.0)) return true;\n\
-    \    return eq(cross(l1.b - l1.a, l2.b - l1.a), 0.0);\n}\nbool is_intersect_ls(const\
-    \ Line& l, const Segment& s) {\n    return sign(cross(l.b - l.a, s.a - l.a) *\
-    \ cross(l.b - l.a, s.b - l.a)) <= 0;\n}\nbool is_intersect_sl(const Segment& s,\
-    \ const Line& l) {\n    return is_intersect_ls(l, s);\n}\nbool is_intersect_ss(const\
-    \ Segment& s1, const Segment& s2) {\n    if(ccw(s1.a, s1.b, s2.a) * ccw(s1.a,\
-    \ s1.b, s2.b) > 0) return false;\n    return ccw(s2.a, s2.b, s1.a) * ccw(s2.a,\
-    \ s2.b, s1.b) <= 0;\n}\nvector<Point> intersection_ll(const Line& l1, const Line&\
-    \ l2) {\n    vector<Point> res;\n    if(!is_intersect_ll(l1, l2)) return res;\n\
-    \    Real a = cross(l1.b - l1.a, l2.b - l2.a);\n    Real b = cross(l1.b - l1.a,\
-    \ l1.b - l2.a);\n    if(eq(a, 0.0) and eq(b, 0.0)) {\n        res.push_back(l2.a);\n\
-    \    } else {\n        res.push_back(l2.a + (l2.b - l2.a) * b / a);\n    }\n \
-    \   return res;\n}\nvector<Point> intersection_ss(const Segment& s1, const Segment&\
-    \ s2) {\n    return is_intersect_ss(s1, s2) ? intersection_ll(Line(s1), Line(s2))\
-    \ : vector<Point>();\n}\nReal dist_lp(const Line& l, const Point& p) {\n    return\
-    \ abs(p - projection(l, p));\n}\nReal dist_sp(const Segment& s, const Point& p)\
-    \ {\n    Point h = projection(s, p);\n    if(is_intersect_sp(s, h)) return abs(h\
-    \ - p);\n    return min(abs(s.a - p), abs(s.b - p));\n}\nReal dist_ll(const Line&\
-    \ l1, const Line& l2) {\n    if(is_intersect_ll(l1, l2)) return 0.0;\n    return\
-    \ dist_lp(l1, l2.a);\n}\nReal dist_ss(const Segment& s1, const Segment& s2) {\n\
-    \    if(is_intersect_ss(s1, s2)) return 0.0;\n    return min({dist_sp(s1, s2.a),\
-    \ dist_sp(s1, s2.b), dist_sp(s2, s1.a), dist_sp(s2, s1.b)});\n}\nReal dist_ls(const\
-    \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
-    \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
-    \ s, const Line& l) {\n    return dist_ls(l, s);\n}"
+    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 7 \"verify/aizu_online_judge/cgl/distance.test.cpp\"\
+    \nint main(void) {\n    int q;\n    cin >> q;\n    while(q--) {\n        Point\
+    \ p0, p1, p2, p3;\n        cin >> p0 >> p1 >> p2 >> p3;\n        Segment s1 =\
+    \ Segment(p0, p1), s2 = Segment(p2, p3);\n        cout << dist_ss(s1, s2) << '\\\
+    n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_D\"\
+    \n#define ERROR 0.00000001\n#include \"../../../src/template/template.hpp\"\n\
+    #include \"../../../src/geometry/template.hpp\"\n#include \"../../../src/geometry/point_2d.hpp\"\
+    \n#include \"../../../src/geometry/line_and_segment_2d.hpp\"\nint main(void) {\n\
+    \    int q;\n    cin >> q;\n    while(q--) {\n        Point p0, p1, p2, p3;\n\
+    \        cin >> p0 >> p1 >> p2 >> p3;\n        Segment s1 = Segment(p0, p1), s2\
+    \ = Segment(p2, p3);\n        cout << dist_ss(s1, s2) << '\\n';\n    }\n}"
   dependsOn:
   - src/template/template.hpp
   - src/geometry/template.hpp
   - src/geometry/point_2d.hpp
-  isVerificationFile: false
-  path: src/geometry/line_and_segment_2d.hpp
-  requiredBy:
-  - src/geometry/polygon_2d.hpp
-  - src/geometry/circle_2d.hpp
-  timestamp: '2024-02-18 01:37:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aizu_online_judge/cgl/refrection.test.cpp
-  - verify/aizu_online_judge/cgl/intersection.test.cpp
-  - verify/aizu_online_judge/cgl/projection.test.cpp
-  - verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
-  - verify/aizu_online_judge/cgl/cross_point.test.cpp
-  - verify/aizu_online_judge/cgl/distance.test.cpp
-documentation_of: src/geometry/line_and_segment_2d.hpp
+  - src/geometry/line_and_segment_2d.hpp
+  isVerificationFile: true
+  path: verify/aizu_online_judge/cgl/distance.test.cpp
+  requiredBy: []
+  timestamp: '2024-02-18 01:51:13+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/aizu_online_judge/cgl/distance.test.cpp
 layout: document
 redirect_from:
-- /library/src/geometry/line_and_segment_2d.hpp
-- /library/src/geometry/line_and_segment_2d.hpp.html
-title: src/geometry/line_and_segment_2d.hpp
+- /verify/verify/aizu_online_judge/cgl/distance.test.cpp
+- /verify/verify/aizu_online_judge/cgl/distance.test.cpp.html
+title: verify/aizu_online_judge/cgl/distance.test.cpp
 ---

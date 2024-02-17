@@ -277,6 +277,18 @@ data:
     path: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
     title: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/cross_point.test.cpp
+    title: verify/aizu_online_judge/cgl/cross_point.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/distance.test.cpp
+    title: verify/aizu_online_judge/cgl/distance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/intersection.test.cpp
+    title: verify/aizu_online_judge/cgl/intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
+    title: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/projection.test.cpp
     title: verify/aizu_online_judge/cgl/projection.test.cpp
   - icon: ':heavy_check_mark:'
@@ -691,7 +703,11 @@ data:
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
   - verify/aizu_online_judge/cgl/refrection.test.cpp
   - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - verify/aizu_online_judge/cgl/intersection.test.cpp
   - verify/aizu_online_judge/cgl/projection.test.cpp
+  - verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
+  - verify/aizu_online_judge/cgl/cross_point.test.cpp
+  - verify/aizu_online_judge/cgl/distance.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/yukicoder/1559.test.cpp
   - verify/yukicoder/186.test.cpp
