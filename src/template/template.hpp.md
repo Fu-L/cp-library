@@ -277,11 +277,20 @@ data:
     path: verify/aizu_online_judge/cgl/area.test.cpp
     title: verify/aizu_online_judge/cgl/area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/convex_cut.test.cpp
+    title: verify/aizu_online_judge/cgl/convex_cut.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/convex_hull.test.cpp
+    title: verify/aizu_online_judge/cgl/convex_hull.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
     title: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/cross_point.test.cpp
     title: verify/aizu_online_judge/cgl/cross_point.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
+    title: verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/distance.test.cpp
     title: verify/aizu_online_judge/cgl/distance.test.cpp
@@ -710,6 +719,7 @@ data:
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
+  - verify/aizu_online_judge/cgl/convex_hull.test.cpp
   - verify/aizu_online_judge/cgl/refrection.test.cpp
   - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   - verify/aizu_online_judge/cgl/is_convex.test.cpp
@@ -718,6 +728,8 @@ data:
   - verify/aizu_online_judge/cgl/projection.test.cpp
   - verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
   - verify/aizu_online_judge/cgl/cross_point.test.cpp
+  - verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
+  - verify/aizu_online_judge/cgl/convex_cut.test.cpp
   - verify/aizu_online_judge/cgl/area.test.cpp
   - verify/aizu_online_judge/cgl/distance.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp

@@ -8,37 +8,28 @@ data:
     path: src/geometry/point_2d.hpp
     title: src/geometry/point_2d.hpp
   - icon: ':heavy_check_mark:'
+    path: src/geometry/polygon_2d.hpp
+    title: src/geometry/polygon_2d.hpp
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: src/geometry/template.hpp
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/area.test.cpp
-    title: verify/aizu_online_judge/cgl/area.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/convex_cut.test.cpp
-    title: verify/aizu_online_judge/cgl/convex_cut.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/convex_hull.test.cpp
-    title: verify/aizu_online_judge/cgl/convex_hull.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
-    title: verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/is_convex.test.cpp
-    title: verify/aizu_online_judge/cgl/is_convex.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
-    title: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_C
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_C
+  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/convex_cut.test.cpp\"\n#define\
+    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_C\"\
+    \n#define ERROR 0.00001\n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
     \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
@@ -143,62 +134,37 @@ data:
     \ res;\n    for(int i = 0; i < n; ++i) {\n        Point cur = ps[i], nex = ps[(i\
     \ + 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);\n     \
     \   if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.push_back(intersection_ll(Line(cur,\
-    \ nex), l)[0]);\n        }\n    }\n    return res;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./template.hpp\"\
-    \n#include \"./point_2d.hpp\"\n#include \"./line_and_segment_2d.hpp\"\nReal area(const\
-    \ vector<Point>& ps) {\n    Real res = 0.0;\n    int n = ps.size();\n    for(int\
-    \ i = 0; i < n; ++i) {\n        res += cross(ps[i], ps[(i + 1) % n]);\n    }\n\
-    \    return abs(res * 0.5);\n}\nbool is_convex(const vector<Point>& ps) {\n  \
-    \  int n = ps.size();\n    for(int i = 0; i < n; ++i) {\n        if(ccw(ps[(i\
-    \ - 1 + n) % n], ps[i], ps[(i + 1) % n]) == -1) return false;\n    }\n    return\
-    \ true;\n}\nint in_polygon(const vector<Point>& ps, const Point& p) {\n    int\
-    \ n = ps.size();\n    int ret = 0;\n    for(int i = 0; i < n; ++i) {\n       \
-    \ Point a = ps[i] - p, b = ps[(i + 1) % n] - p;\n        if(eq(cross(a, b), 0.0)\
-    \ and sign(dot(a, b)) <= 0) return 1;\n        if(a.imag() > b.imag()) swap(a,\
-    \ b);\n        if(sign(a.imag()) <= 0 and sign(b.imag()) == 1 and sign(cross(a,\
-    \ b)) == 1) ret ^= 2;\n    }\n    return ret;\n}\nvector<Point> convex_hull(vector<Point>\
-    \ ps) {\n    sort(ps.begin(), ps.end(), comp_x);\n    ps.erase(unique(ps.begin(),\
-    \ ps.end()), ps.end());\n    int n = ps.size(), k = 0;\n    if(n == 1) return\
-    \ ps;\n    vector<Point> ch(2 * n);\n    for(int i = 0; i < n; ch[k++] = ps[i++])\
-    \ {\n        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k -\
-    \ 1])) == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t\
-    \ = k + 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k\
-    \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
-    \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
-    \ ps) {\n    int n = ps.size(), is = 0, js = 0;\n    for(int i = 1; i < n; ++i)\
-    \ {\n        if(sign(ps[i].imag() - ps[is].imag()) == 1) is = i;\n        if(sign(ps[i].imag()\
-    \ - ps[js].imag()) == -1) js = i;\n    }\n    Real maxdis = norm(ps[is] - ps[js]);\n\
-    \    int i = is, j = js;\n    do {\n        if(sign(cross(ps[(i + 1) % n] - ps[i],\
-    \ ps[(j + 1) % n] - ps[j])) >= 0) {\n            j = (j + 1) % n;\n        } else\
-    \ {\n            i = (i + 1) % n;\n        }\n        if(norm(ps[i] - ps[j]) >\
-    \ maxdis) {\n            maxdis = norm(ps[i] - ps[j]);\n        }\n    } while(i\
-    \ != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point> convex_cut(const\
-    \ vector<Point>& ps, const Line& l) {\n    int n = ps.size();\n    vector<Point>\
-    \ res;\n    for(int i = 0; i < n; ++i) {\n        Point cur = ps[i], nex = ps[(i\
-    \ + 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);\n     \
-    \   if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.push_back(intersection_ll(Line(cur,\
-    \ nex), l)[0]);\n        }\n    }\n    return res;\n}"
+    \ nex), l)[0]);\n        }\n    }\n    return res;\n}\n#line 7 \"verify/aizu_online_judge/cgl/convex_cut.test.cpp\"\
+    \nint main(void) {\n    int n;\n    cin >> n;\n    vector<Point> polygon(n);\n\
+    \    rep(i, 0, n) {\n        cin >> polygon[i];\n    }\n    int q;\n    cin >>\
+    \ q;\n    while(q--) {\n        Point p1, p2;\n        cin >> p1 >> p2;\n    \
+    \    Line l = Line(p1, p2);\n        vector<Point> cut = convex_cut(polygon, l);\n\
+    \        cout << area(cut) << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_C\"\
+    \n#define ERROR 0.00001\n#include \"../../../src/template/template.hpp\"\n#include\
+    \ \"../../../src/geometry/template.hpp\"\n#include \"../../../src/geometry/point_2d.hpp\"\
+    \n#include \"../../../src/geometry/polygon_2d.hpp\"\nint main(void) {\n    int\
+    \ n;\n    cin >> n;\n    vector<Point> polygon(n);\n    rep(i, 0, n) {\n     \
+    \   cin >> polygon[i];\n    }\n    int q;\n    cin >> q;\n    while(q--) {\n \
+    \       Point p1, p2;\n        cin >> p1 >> p2;\n        Line l = Line(p1, p2);\n\
+    \        vector<Point> cut = convex_cut(polygon, l);\n        cout << area(cut)\
+    \ << '\\n';\n    }\n}"
   dependsOn:
   - src/template/template.hpp
   - src/geometry/template.hpp
   - src/geometry/point_2d.hpp
+  - src/geometry/polygon_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
-  isVerificationFile: false
-  path: src/geometry/polygon_2d.hpp
+  isVerificationFile: true
+  path: verify/aizu_online_judge/cgl/convex_cut.test.cpp
   requiredBy: []
-  timestamp: '2024-02-18 02:29:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aizu_online_judge/cgl/convex_hull.test.cpp
-  - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
-  - verify/aizu_online_judge/cgl/is_convex.test.cpp
-  - verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
-  - verify/aizu_online_judge/cgl/convex_cut.test.cpp
-  - verify/aizu_online_judge/cgl/area.test.cpp
-documentation_of: src/geometry/polygon_2d.hpp
+  timestamp: '2024-02-18 02:31:57+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/aizu_online_judge/cgl/convex_cut.test.cpp
 layout: document
 redirect_from:
-- /library/src/geometry/polygon_2d.hpp
-- /library/src/geometry/polygon_2d.hpp.html
-title: src/geometry/polygon_2d.hpp
+- /verify/verify/aizu_online_judge/cgl/convex_cut.test.cpp
+- /verify/verify/aizu_online_judge/cgl/convex_cut.test.cpp.html
+title: verify/aizu_online_judge/cgl/convex_cut.test.cpp
 ---
