@@ -117,16 +117,23 @@ data:
     \ ps.end()), ps.end());\n    int n = ps.size(), k = 0;\n    if(n == 1) return\
     \ ps;\n    vector<Point> ch(2 * n);\n    for(int i = 0; i < n; ch[k++] = ps[i++])\
     \ {\n        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k -\
-    \ 1])) <= 0) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t =\
-    \ k + 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k\
-    \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) <= 0) {\n            --k;\n        }\n\
-    \    }\n    ch.resize(k - 1);\n    return ch;\n}\nvector<Point> convex_cut(const\
+    \ 1])) == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t\
+    \ = k + 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k\
+    \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
+    \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
+    \ ps) {\n    int n = ps.size(), is = 0, js = 0;\n    for(int i = 1; i < n; ++i)\
+    \ {\n        if(sign(ps[i].imag() - ps[is].imag()) == 1) is = i;\n        if(sign(ps[i].imag()\
+    \ - ps[js].imag()) == -1) js = i;\n    }\n    Real maxdis = norm(ps[is] - ps[js]);\n\
+    \    int i = is, j = js;\n    do {\n        if(sign(cross(ps[(i + 1) % n] - ps[i],\
+    \ ps[(j + 1) % n] - ps[j])) >= 0) {\n            j = (j + 1) % n;\n        } else\
+    \ {\n            i = (i + 1) % n;\n        }\n        if(norm(ps[i] - ps[j]) >\
+    \ maxdis) {\n            maxdis = norm(ps[i] - ps[j]);\n        }\n    } while(i\
+    \ != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point> convex_cut(const\
     \ vector<Point>& ps, const Line& l) {\n    int n = ps.size();\n    vector<Point>\
-    \ res;\n    for(int i = 0; i < n; ++i) {\n        if(!eq(dist_lp(l, ps[i]), 0.0)\
-    \ and !eq(dist_lp(l, ps[i + 1]), 0.0)) {\n            Segment s(ps[i], ps[i +\
-    \ 1]);\n            if(eq(dist_ls(l, s), 0.0)) {\n                auto tmp = intersection_ll(l,\
-    \ s);\n                res.push_back(tmp[0]);\n            }\n        }\n    }\n\
-    \    return res;\n}\n#line 6 \"verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp\"\
+    \ res;\n    for(int i = 0; i < n; ++i) {\n        Point cur = ps[i], nex = ps[(i\
+    \ + 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);\n     \
+    \   if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.push_back(intersection_ll(Line(cur,\
+    \ nex), l)[0]);\n        }\n    }\n    return res;\n}\n#line 6 \"verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp\"\
     \nint main(void) {\n    int n;\n    cin >> n;\n    vector<Point> polygon(n);\n\
     \    rep(i, 0, n) {\n        cin >> polygon[i];\n    }\n    int q;\n    cin >>\
     \ q;\n    while(q--) {\n        Point p;\n        cin >> p;\n        cout << in_polygon(polygon,\
@@ -147,7 +154,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   requiredBy: []
-  timestamp: '2024-02-18 02:00:29+09:00'
+  timestamp: '2024-02-18 02:29:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
