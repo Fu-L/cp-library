@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: src/geometry/circle_2d.hpp
+    title: src/geometry/circle_2d.hpp
+  - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: src/geometry/line_and_segment_2d.hpp
   - icon: ':heavy_check_mark:'
@@ -14,40 +17,19 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
-    title: verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
-    title: verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/common_tangent.test.cpp
-    title: verify/aizu_online_judge/cgl/common_tangent.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
-    title: verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
-    title: verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/incircle_of_a_triangle.test.cpp
-    title: verify/aizu_online_judge/cgl/incircle_of_a_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/intersection_circle.test.cpp
-    title: verify/aizu_online_judge/cgl/intersection_circle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
-    title: verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
-    title: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C
+  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C\"\
+    \n#define ERROR 0.000001\n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
     \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
@@ -186,99 +168,33 @@ data:
     \      return calc_element(s, t, c.r, true) + calc_element(a, s, c.r, isin_a)\
     \ + calc_element(t, b, c.r, isin_b);\n    };\n    int n = ps.size();\n    if(n\
     \ < 3) return 0.0;\n    Real S = 0;\n    for(int i = 0; i < n; ++i) {\n      \
-    \  S += cross_area(c, ps[i], ps[(i + 1) % n]);\n    }\n    return S;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./template.hpp\"\
-    \n#include \"./point_2d.hpp\"\n#include \"./line_and_segment_2d.hpp\"\nstruct\
-    \ Circle {\n    Point p;\n    Real r;\n    Circle() = default;\n    Circle(const\
-    \ Point& p, const Real& r)\n        : p(p), r(r) {}\n};\nbool is_intersect_cp(const\
-    \ Circle& c, const Point& p) {\n    return eq(abs(p - c.p), c.r);\n}\nbool is_intersect_cl(const\
-    \ Circle& c, const Line& l) {\n    return sign(c.r - dist_lp(l, c.p)) >= 0;\n\
-    }\nint is_intersect_cc(Circle c1, Circle c2) {\n    if(c1.r < c2.r) swap(c1, c2);\n\
-    \    Real d = abs(c1.p - c2.p);\n    int a = sign(d - c1.r - c2.r);\n    if(a\
-    \ >= 0) return a + 3;\n    return sign(d - c1.r + c2.r) + 1;\n}\nvector<Point>\
-    \ intersection_cl(const Circle& c, const Line& l) {\n    Point h = projection(l,\
-    \ c.p);\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    vector<Point> res;\n\
-    \    if(!is_intersect_cl(c, l)) return res;\n    if(eq(dist_lp(l, c.p), c.r))\
-    \ {\n        res.push_back(h);\n    } else {\n        Real b = sqrt(c.r * c.r\
-    \ - norm(h - c.p));\n        res.push_back(h - e * b);\n        res.push_back(h\
-    \ + e * b);\n    }\n    return res;\n}\nvector<Point> intersection_cs(const Circle&\
-    \ c, const Segment& s) {\n    vector<Point> cand = intersection_cl(c, Line(s));\n\
-    \    vector<Point> res;\n    for(const Point& p : cand) {\n        if(ccw(s.a,\
-    \ s.b, p) == 0) {\n            res.push_back(p);\n        }\n    }\n    return\
-    \ res;\n}\nvector<Point> intersection_cc(const Circle& c1, const Circle& c2) {\n\
-    \    Real d = abs(c1.p - c2.p);\n    Real a = acos((c1.r * c1.r + d * d - c2.r\
-    \ * c2.r) / (2 * c1.r * d));\n    Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real()\
-    \ - c1.p.real());\n    vector<Point> res;\n    if(is_intersect_cc(c1, c2) % 4\
-    \ == 0) return res;\n    if(eq(a, 0.0)) {\n        res.push_back(c1.p + rot(Point(c1.r,\
-    \ 0.0), t));\n    } else {\n        res.push_back(c1.p + rot(Point(c1.r, 0.0),\
-    \ t + a));\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t - a));\n    }\n\
-    \    return res;\n}\nvector<Point> tangent_cp(const Circle& c, const Point& p)\
-    \ {\n    return intersection_cc(c, Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));\n\
-    }\nvector<Line> tangent_cc(Circle c1, Circle c2) {\n    vector<Line> res;\n  \
-    \  if(c1.r < c2.r) swap(c1, c2);\n    Real r = abs(c2.p - c1.p);\n    if(eq(r,\
-    \ 0.0)) return res;\n    Point u = (c2.p - c1.p) / r;\n    Point v = rot(u, PI\
-    \ * 0.5);\n    for(Real s : {1.0, -1.0}) {\n        Real h = (c1.r + c2.r * s)\
-    \ / r;\n        if(eq(abs(h), 1.0)) {\n            res.push_back({c1.p + u * c1.r,\
-    \ c1.p + (u + v) * c1.r});\n        } else if(abs(h) < 1.0) {\n            Point\
-    \ uu = u * h, vv = v * sqrt(1.0 - h * h);\n            res.push_back({c1.p + (uu\
-    \ + vv) * c1.r, c2.p - (uu + vv) * c2.r * s});\n            res.push_back({c1.p\
-    \ + (uu - vv) * c1.r, c2.p - (uu - vv) * c2.r * s});\n        }\n    }\n    return\
-    \ res;\n}\nCircle inscribed_circle(const Point& a, const Point& b, const Point&\
-    \ c) {\n    Real A = abs(b - c), B = abs(c - a), C = abs(a - b);\n    Point x\
-    \ = Point((a * A + b * B + c * C) / (A + B + C));\n    Real r = dist_sp(Segment(a,\
-    \ b), x);\n    return Circle(x, r);\n}\nCircle circumscribed_circle(const Point&\
-    \ a, const Point& b, const Point& c) {\n    Point m1((a + b) / 2.0), m2((b + c)\
-    \ / 2.0);\n    Point v((b - a).imag(), (a - b).real()), w((b - c).imag(), (c -\
-    \ b).real());\n    Line s(m1, Point(m1 + v)), t(m2, Point(m2 + w));\n    Point\
-    \ x = intersection_ll(s, t)[0];\n    return Circle(x, abs(a - x));\n}\nCircle\
-    \ appollonius(const Point& p1, const Point& p2, const Real& a, const Real& b)\
-    \ {\n    Point q1 = (p1 * b + p2 * a) / (a + b), q2 = (-p1 * b + p2 * a) / (a\
-    \ - b);\n    return Circle((q1 + q2) * 0.5, abs(q1 - q2) * 0.5);\n}\nReal area_cc(const\
-    \ Circle& c1, const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    if(c1.r\
-    \ + c2.r <= d + EPS) return 0.0;\n    if(d <= abs(c1.r - c2.r) + EPS) {\n    \
-    \    Real r = min(c1.r, c2.r);\n        return r * r * PI;\n    }\n    Real rc\
-    \ = (d * d + c1.r * c1.r - c2.r * c2.r) / (2.0 * d);\n    Real theta = acos(rc\
-    \ / c1.r);\n    Real phi = acos((d - rc) / c2.r);\n    return c1.r * c1.r * theta\
-    \ + c2.r * c2.r * phi - d * c1.r * sin(theta);\n}\nReal area_pc(const vector<Point>&\
-    \ ps, const Circle& c) {\n    auto calc_element = [&](const Point& a, const Point&\
-    \ b, Real r, bool triangle) -> Real {\n        if(triangle) return cross(a, b)\
-    \ / 2;\n        Point tmp = b * Point(a.real(), -a.imag());\n        Real ang\
-    \ = atan2(tmp.imag(), tmp.real());\n        return r * r * ang / 2;\n    };\n\
-    \    auto cross_area = [&](const Circle& c, const Point& ia, const Point& ib)\
-    \ -> Real {\n        Point a = ia - c.p, b = ib - c.p;\n        if(abs(a - b)\
-    \ < EPS) return 0;\n        bool isin_a = (abs(a) < c.r + EPS);\n        bool\
-    \ isin_b = (abs(b) < c.r + EPS);\n        if(isin_a and isin_b) return calc_element(a,\
-    \ b, c.r, true);\n        Circle oc(Point(0, 0), c.r);\n        Segment seg(a,\
-    \ b);\n        auto cr = intersection_cs(oc, seg);\n        if(cr.empty()) return\
-    \ calc_element(a, b, c.r, false);\n        auto s = cr[0], t = cr.back();\n  \
-    \      return calc_element(s, t, c.r, true) + calc_element(a, s, c.r, isin_a)\
-    \ + calc_element(t, b, c.r, isin_b);\n    };\n    int n = ps.size();\n    if(n\
-    \ < 3) return 0.0;\n    Real S = 0;\n    for(int i = 0; i < n; ++i) {\n      \
-    \  S += cross_area(c, ps[i], ps[(i + 1) % n]);\n    }\n    return S;\n}"
+    \  S += cross_area(c, ps[i], ps[(i + 1) % n]);\n    }\n    return S;\n}\n#line\
+    \ 7 \"verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp\"\
+    \nint main(void) {\n    Point p1, p2, p3;\n    cin >> p1 >> p2 >> p3;\n    Circle\
+    \ c = circumscribed_circle(p1, p2, p3);\n    cout << c.p << ' ' << c.r << '\\\
+    n';\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C\"\
+    \n#define ERROR 0.000001\n#include \"../../../src/template/template.hpp\"\n#include\
+    \ \"../../../src/geometry/template.hpp\"\n#include \"../../../src/geometry/point_2d.hpp\"\
+    \n#include \"../../../src/geometry/circle_2d.hpp\"\nint main(void) {\n    Point\
+    \ p1, p2, p3;\n    cin >> p1 >> p2 >> p3;\n    Circle c = circumscribed_circle(p1,\
+    \ p2, p3);\n    cout << c.p << ' ' << c.r << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/geometry/template.hpp
   - src/geometry/point_2d.hpp
+  - src/geometry/circle_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
-  isVerificationFile: false
-  path: src/geometry/circle_2d.hpp
+  isVerificationFile: true
+  path: verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
   requiredBy: []
   timestamp: '2024-02-18 04:18:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aizu_online_judge/cgl/incircle_of_a_triangle.test.cpp
-  - verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
-  - verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
-  - verify/aizu_online_judge/cgl/intersection_circle.test.cpp
-  - verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
-  - verify/aizu_online_judge/cgl/common_tangent.test.cpp
-  - verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
-  - verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
-  - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
-documentation_of: src/geometry/circle_2d.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
 layout: document
 redirect_from:
-- /library/src/geometry/circle_2d.hpp
-- /library/src/geometry/circle_2d.hpp.html
-title: src/geometry/circle_2d.hpp
+- /verify/verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
+- /verify/verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp.html
+title: verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
 ---

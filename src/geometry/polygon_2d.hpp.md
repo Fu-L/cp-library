@@ -44,7 +44,7 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
-    \nusing Real = long double;\nconst Real EPS = 1e-7, PI = acos(Real(-1.0));\nint\
+    \nusing Real = long double;\nconst Real EPS = 1e-8, PI = acos(Real(-1.0));\nint\
     \ sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
     \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
     \ - b) == 0;\n}\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\n\
@@ -186,7 +186,7 @@ data:
   isVerificationFile: false
   path: src/geometry/polygon_2d.hpp
   requiredBy: []
-  timestamp: '2024-02-18 02:29:29+09:00'
+  timestamp: '2024-02-18 04:18:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/cgl/convex_hull.test.cpp

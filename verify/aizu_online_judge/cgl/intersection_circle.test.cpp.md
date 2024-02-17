@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: src/geometry/circle_2d.hpp
+    title: src/geometry/circle_2d.hpp
+  - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: src/geometry/line_and_segment_2d.hpp
   - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: src/geometry/point_2d.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/geometry/polygon_2d.hpp
-    title: src/geometry/polygon_2d.hpp
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: src/geometry/template.hpp
@@ -23,11 +23,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B
-  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/is_convex.test.cpp\"\n#define\
-    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A
+  bundledCode: "#line 1 \"verify/aizu_online_judge/cgl/intersection_circle.test.cpp\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
     \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
     \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
@@ -101,64 +101,97 @@ data:
     \ dist_sp(s1, s2.b), dist_sp(s2, s1.a), dist_sp(s2, s1.b)});\n}\nReal dist_ls(const\
     \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
     \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
-    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 6 \"src/geometry/polygon_2d.hpp\"\
-    \nReal area(const vector<Point>& ps) {\n    Real res = 0.0;\n    int n = ps.size();\n\
-    \    for(int i = 0; i < n; ++i) {\n        res += cross(ps[i], ps[(i + 1) % n]);\n\
-    \    }\n    return abs(res * 0.5);\n}\nbool is_convex(const vector<Point>& ps)\
-    \ {\n    int n = ps.size();\n    for(int i = 0; i < n; ++i) {\n        if(ccw(ps[(i\
-    \ - 1 + n) % n], ps[i], ps[(i + 1) % n]) == -1) return false;\n    }\n    return\
-    \ true;\n}\nint in_polygon(const vector<Point>& ps, const Point& p) {\n    int\
-    \ n = ps.size();\n    int ret = 0;\n    for(int i = 0; i < n; ++i) {\n       \
-    \ Point a = ps[i] - p, b = ps[(i + 1) % n] - p;\n        if(eq(cross(a, b), 0.0)\
-    \ and sign(dot(a, b)) <= 0) return 1;\n        if(a.imag() > b.imag()) swap(a,\
-    \ b);\n        if(sign(a.imag()) <= 0 and sign(b.imag()) == 1 and sign(cross(a,\
-    \ b)) == 1) ret ^= 2;\n    }\n    return ret;\n}\nvector<Point> convex_hull(vector<Point>\
-    \ ps) {\n    sort(ps.begin(), ps.end(), comp_x);\n    ps.erase(unique(ps.begin(),\
-    \ ps.end()), ps.end());\n    int n = ps.size(), k = 0;\n    if(n == 1) return\
-    \ ps;\n    vector<Point> ch(2 * n);\n    for(int i = 0; i < n; ch[k++] = ps[i++])\
-    \ {\n        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k -\
-    \ 1])) == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t\
-    \ = k + 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k\
-    \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
-    \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
-    \ ps) {\n    int n = ps.size(), is = 0, js = 0;\n    for(int i = 1; i < n; ++i)\
-    \ {\n        if(sign(ps[i].imag() - ps[is].imag()) == 1) is = i;\n        if(sign(ps[i].imag()\
-    \ - ps[js].imag()) == -1) js = i;\n    }\n    Real maxdis = norm(ps[is] - ps[js]);\n\
-    \    int i = is, j = js;\n    do {\n        if(sign(cross(ps[(i + 1) % n] - ps[i],\
-    \ ps[(j + 1) % n] - ps[j])) >= 0) {\n            j = (j + 1) % n;\n        } else\
-    \ {\n            i = (i + 1) % n;\n        }\n        if(norm(ps[i] - ps[j]) >\
-    \ maxdis) {\n            maxdis = norm(ps[i] - ps[j]);\n        }\n    } while(i\
-    \ != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point> convex_cut(const\
-    \ vector<Point>& ps, const Line& l) {\n    int n = ps.size();\n    vector<Point>\
-    \ res;\n    for(int i = 0; i < n; ++i) {\n        Point cur = ps[i], nex = ps[(i\
-    \ + 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);\n     \
-    \   if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.push_back(intersection_ll(Line(cur,\
-    \ nex), l)[0]);\n        }\n    }\n    return res;\n}\n#line 6 \"verify/aizu_online_judge/cgl/is_convex.test.cpp\"\
-    \nint main(void) {\n    int n;\n    cin >> n;\n    vector<Point> polygon(n);\n\
-    \    rep(i, 0, n) {\n        cin >> polygon[i];\n    }\n    cout << is_convex(polygon)\
-    \ << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B\"\
+    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 6 \"src/geometry/circle_2d.hpp\"\
+    \nstruct Circle {\n    Point p;\n    Real r;\n    Circle() = default;\n    Circle(const\
+    \ Point& p, const Real& r)\n        : p(p), r(r) {}\n};\nbool is_intersect_cp(const\
+    \ Circle& c, const Point& p) {\n    return eq(abs(p - c.p), c.r);\n}\nbool is_intersect_cl(const\
+    \ Circle& c, const Line& l) {\n    return sign(c.r - dist_lp(l, c.p)) >= 0;\n\
+    }\nint is_intersect_cc(Circle c1, Circle c2) {\n    if(c1.r < c2.r) swap(c1, c2);\n\
+    \    Real d = abs(c1.p - c2.p);\n    int a = sign(d - c1.r - c2.r);\n    if(a\
+    \ >= 0) return a + 3;\n    return sign(d - c1.r + c2.r) + 1;\n}\nvector<Point>\
+    \ intersection_cl(const Circle& c, const Line& l) {\n    Point h = projection(l,\
+    \ c.p);\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    vector<Point> res;\n\
+    \    if(!is_intersect_cl(c, l)) return res;\n    if(eq(dist_lp(l, c.p), c.r))\
+    \ {\n        res.push_back(h);\n    } else {\n        Real b = sqrt(c.r * c.r\
+    \ - norm(h - c.p));\n        res.push_back(h - e * b);\n        res.push_back(h\
+    \ + e * b);\n    }\n    return res;\n}\nvector<Point> intersection_cs(const Circle&\
+    \ c, const Segment& s) {\n    vector<Point> cand = intersection_cl(c, Line(s));\n\
+    \    vector<Point> res;\n    for(const Point& p : cand) {\n        if(ccw(s.a,\
+    \ s.b, p) == 0) {\n            res.push_back(p);\n        }\n    }\n    return\
+    \ res;\n}\nvector<Point> intersection_cc(const Circle& c1, const Circle& c2) {\n\
+    \    Real d = abs(c1.p - c2.p);\n    Real a = acos((c1.r * c1.r + d * d - c2.r\
+    \ * c2.r) / (2 * c1.r * d));\n    Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real()\
+    \ - c1.p.real());\n    vector<Point> res;\n    if(is_intersect_cc(c1, c2) % 4\
+    \ == 0) return res;\n    if(eq(a, 0.0)) {\n        res.push_back(c1.p + rot(Point(c1.r,\
+    \ 0.0), t));\n    } else {\n        res.push_back(c1.p + rot(Point(c1.r, 0.0),\
+    \ t + a));\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t - a));\n    }\n\
+    \    return res;\n}\nvector<Point> tangent_cp(const Circle& c, const Point& p)\
+    \ {\n    return intersection_cc(c, Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));\n\
+    }\nvector<Line> tangent_cc(Circle c1, Circle c2) {\n    vector<Line> res;\n  \
+    \  if(c1.r < c2.r) swap(c1, c2);\n    Real r = abs(c2.p - c1.p);\n    if(eq(r,\
+    \ 0.0)) return res;\n    Point u = (c2.p - c1.p) / r;\n    Point v = rot(u, PI\
+    \ * 0.5);\n    for(Real s : {1.0, -1.0}) {\n        Real h = (c1.r + c2.r * s)\
+    \ / r;\n        if(eq(abs(h), 1.0)) {\n            res.push_back({c1.p + u * c1.r,\
+    \ c1.p + (u + v) * c1.r});\n        } else if(abs(h) < 1.0) {\n            Point\
+    \ uu = u * h, vv = v * sqrt(1.0 - h * h);\n            res.push_back({c1.p + (uu\
+    \ + vv) * c1.r, c2.p - (uu + vv) * c2.r * s});\n            res.push_back({c1.p\
+    \ + (uu - vv) * c1.r, c2.p - (uu - vv) * c2.r * s});\n        }\n    }\n    return\
+    \ res;\n}\nCircle inscribed_circle(const Point& a, const Point& b, const Point&\
+    \ c) {\n    Real A = abs(b - c), B = abs(c - a), C = abs(a - b);\n    Point x\
+    \ = Point((a * A + b * B + c * C) / (A + B + C));\n    Real r = dist_sp(Segment(a,\
+    \ b), x);\n    return Circle(x, r);\n}\nCircle circumscribed_circle(const Point&\
+    \ a, const Point& b, const Point& c) {\n    Point m1((a + b) / 2.0), m2((b + c)\
+    \ / 2.0);\n    Point v((b - a).imag(), (a - b).real()), w((b - c).imag(), (c -\
+    \ b).real());\n    Line s(m1, Point(m1 + v)), t(m2, Point(m2 + w));\n    Point\
+    \ x = intersection_ll(s, t)[0];\n    return Circle(x, abs(a - x));\n}\nCircle\
+    \ appollonius(const Point& p1, const Point& p2, const Real& a, const Real& b)\
+    \ {\n    Point q1 = (p1 * b + p2 * a) / (a + b), q2 = (-p1 * b + p2 * a) / (a\
+    \ - b);\n    return Circle((q1 + q2) * 0.5, abs(q1 - q2) * 0.5);\n}\nReal area_cc(const\
+    \ Circle& c1, const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    if(c1.r\
+    \ + c2.r <= d + EPS) return 0.0;\n    if(d <= abs(c1.r - c2.r) + EPS) {\n    \
+    \    Real r = min(c1.r, c2.r);\n        return r * r * PI;\n    }\n    Real rc\
+    \ = (d * d + c1.r * c1.r - c2.r * c2.r) / (2.0 * d);\n    Real theta = acos(rc\
+    \ / c1.r);\n    Real phi = acos((d - rc) / c2.r);\n    return c1.r * c1.r * theta\
+    \ + c2.r * c2.r * phi - d * c1.r * sin(theta);\n}\nReal area_pc(const vector<Point>&\
+    \ ps, const Circle& c) {\n    auto calc_element = [&](const Point& a, const Point&\
+    \ b, Real r, bool triangle) -> Real {\n        if(triangle) return cross(a, b)\
+    \ / 2;\n        Point tmp = b * Point(a.real(), -a.imag());\n        Real ang\
+    \ = atan2(tmp.imag(), tmp.real());\n        return r * r * ang / 2;\n    };\n\
+    \    auto cross_area = [&](const Circle& c, const Point& ia, const Point& ib)\
+    \ -> Real {\n        Point a = ia - c.p, b = ib - c.p;\n        if(abs(a - b)\
+    \ < EPS) return 0;\n        bool isin_a = (abs(a) < c.r + EPS);\n        bool\
+    \ isin_b = (abs(b) < c.r + EPS);\n        if(isin_a and isin_b) return calc_element(a,\
+    \ b, c.r, true);\n        Circle oc(Point(0, 0), c.r);\n        Segment seg(a,\
+    \ b);\n        auto cr = intersection_cs(oc, seg);\n        if(cr.empty()) return\
+    \ calc_element(a, b, c.r, false);\n        auto s = cr[0], t = cr.back();\n  \
+    \      return calc_element(s, t, c.r, true) + calc_element(a, s, c.r, isin_a)\
+    \ + calc_element(t, b, c.r, isin_b);\n    };\n    int n = ps.size();\n    if(n\
+    \ < 3) return 0.0;\n    Real S = 0;\n    for(int i = 0; i < n; ++i) {\n      \
+    \  S += cross_area(c, ps[i], ps[(i + 1) % n]);\n    }\n    return S;\n}\n#line\
+    \ 5 \"verify/aizu_online_judge/cgl/intersection_circle.test.cpp\"\nint main(void)\
+    \ {\n    Circle c1, c2;\n    cin >> c1.p >> c1.r;\n    cin >> c2.p >> c2.r;\n\
+    \    cout << is_intersect_cc(c1, c2) << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/geometry/template.hpp\"\
-    \n#include \"../../../src/geometry/point_2d.hpp\"\n#include \"../../../src/geometry/polygon_2d.hpp\"\
-    \nint main(void) {\n    int n;\n    cin >> n;\n    vector<Point> polygon(n);\n\
-    \    rep(i, 0, n) {\n        cin >> polygon[i];\n    }\n    cout << is_convex(polygon)\
-    \ << '\\n';\n}"
+    \n#include \"../../../src/geometry/circle_2d.hpp\"\nint main(void) {\n    Circle\
+    \ c1, c2;\n    cin >> c1.p >> c1.r;\n    cin >> c2.p >> c2.r;\n    cout << is_intersect_cc(c1,\
+    \ c2) << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/geometry/template.hpp
+  - src/geometry/circle_2d.hpp
   - src/geometry/point_2d.hpp
-  - src/geometry/polygon_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
   isVerificationFile: true
-  path: verify/aizu_online_judge/cgl/is_convex.test.cpp
+  path: verify/aizu_online_judge/cgl/intersection_circle.test.cpp
   requiredBy: []
   timestamp: '2024-02-18 04:18:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aizu_online_judge/cgl/is_convex.test.cpp
+documentation_of: verify/aizu_online_judge/cgl/intersection_circle.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aizu_online_judge/cgl/is_convex.test.cpp
-- /verify/verify/aizu_online_judge/cgl/is_convex.test.cpp.html
-title: verify/aizu_online_judge/cgl/is_convex.test.cpp
+- /verify/verify/aizu_online_judge/cgl/intersection_circle.test.cpp
+- /verify/verify/aizu_online_judge/cgl/intersection_circle.test.cpp.html
+title: verify/aizu_online_judge/cgl/intersection_circle.test.cpp
 ---
