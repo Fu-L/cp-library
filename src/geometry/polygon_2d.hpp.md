@@ -14,10 +14,19 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/area.test.cpp
+    title: verify/aizu_online_judge/cgl/area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/is_convex.test.cpp
+    title: verify/aizu_online_judge/cgl/is_convex.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+    title: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -155,8 +164,11 @@ data:
   path: src/geometry/polygon_2d.hpp
   requiredBy: []
   timestamp: '2024-02-18 01:37:05+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+  - verify/aizu_online_judge/cgl/is_convex.test.cpp
+  - verify/aizu_online_judge/cgl/area.test.cpp
 documentation_of: src/geometry/polygon_2d.hpp
 layout: document
 redirect_from:

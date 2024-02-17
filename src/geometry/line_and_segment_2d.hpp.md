@@ -14,10 +14,13 @@ data:
   - icon: ':warning:'
     path: src/geometry/circle_2d.hpp
     title: src/geometry/circle_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/polygon_2d.hpp
     title: src/geometry/polygon_2d.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/area.test.cpp
+    title: verify/aizu_online_judge/cgl/area.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/cross_point.test.cpp
     title: verify/aizu_online_judge/cgl/cross_point.test.cpp
@@ -28,8 +31,14 @@ data:
     path: verify/aizu_online_judge/cgl/intersection.test.cpp
     title: verify/aizu_online_judge/cgl/intersection.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/is_convex.test.cpp
+    title: verify/aizu_online_judge/cgl/is_convex.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
     title: verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+    title: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/projection.test.cpp
     title: verify/aizu_online_judge/cgl/projection.test.cpp
@@ -165,10 +174,13 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/cgl/refrection.test.cpp
+  - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+  - verify/aizu_online_judge/cgl/is_convex.test.cpp
   - verify/aizu_online_judge/cgl/intersection.test.cpp
   - verify/aizu_online_judge/cgl/projection.test.cpp
   - verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
   - verify/aizu_online_judge/cgl/cross_point.test.cpp
+  - verify/aizu_online_judge/cgl/area.test.cpp
   - verify/aizu_online_judge/cgl/distance.test.cpp
 documentation_of: src/geometry/line_and_segment_2d.hpp
 layout: document
