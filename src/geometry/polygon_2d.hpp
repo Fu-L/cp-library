@@ -52,10 +52,10 @@ vector<Point> convex_cut(const vector<Point>& ps, const Line& l) {
     int n = ps.size();
     vector<Point> res;
     for(int i = 0; i < n; ++i) {
-        if(!eq(dist(l, ps[i]), 0.0) and !eq(dist(l, ps[i + 1]), 0.0)) {
+        if(!eq(dist_lp(l, ps[i]), 0.0) and !eq(dist_lp(l, ps[i + 1]), 0.0)) {
             Segment s(ps[i], ps[i + 1]);
-            if(eq(dist(l, s), 0.0)) {
-                auto tmp = intersection(l, s);
+            if(eq(dist_ls(l, s), 0.0)) {
+                auto tmp = intersection_ll(l, s);
                 res.push_back(tmp[0]);
             }
         }
