@@ -66,33 +66,34 @@ data:
     \   return eq(dot(a.b - a.a, b.b - b.a), 0.0);\n}\nPoint projection(const Line&\
     \ l, const Point& p) {\n    Real t = dot(p - l.a, l.b - l.a) / norm(l.b - l.a);\n\
     \    return l.a + (l.b - l.a) * t;\n}\nPoint reflection(const Line& l, const Point&\
-    \ p) {\n    return p + (projection(l, p) - p) * 2.0;\n}\nbool is_intersect(const\
+    \ p) {\n    return p + (projection(l, p) - p) * 2.0;\n}\nbool is_intersect_lp(const\
     \ Line& l, const Point& p) {\n    return abs(ccw(l.a, l.b, p)) != 1;\n}\nbool\
-    \ is_intersect(const Segment& s, const Point& p) {\n    return ccw(s.a, s.b, p)\
-    \ == 0;\n}\nbool is_intersect(const Line& l1, const Line& l2) {\n    if(!eq(cross(l1.b\
+    \ is_intersect_sp(const Segment& s, const Point& p) {\n    return ccw(s.a, s.b,\
+    \ p) == 0;\n}\nbool is_intersect_ll(const Line& l1, const Line& l2) {\n    if(!eq(cross(l1.b\
     \ - l1.a, l2.b - l2.a), 0.0)) return true;\n    return eq(cross(l1.b - l1.a, l2.b\
-    \ - l1.a), 0.0);\n}\nbool is_intersect(const Line& l, const Segment& s) {\n  \
-    \  return sign(cross(l.b - l.a, s.a - l.a) * cross(l.b - l.a, s.b - l.a)) <= 0;\n\
-    }\nbool is_intersect(const Segment& s, const Line& l) {\n    return is_intersect(l,\
-    \ s);\n}\nbool is_intersect(const Segment& s1, const Segment& s2) {\n    if(ccw(s1.a,\
+    \ - l1.a), 0.0);\n}\nbool is_intersect_ls(const Line& l, const Segment& s) {\n\
+    \    return sign(cross(l.b - l.a, s.a - l.a) * cross(l.b - l.a, s.b - l.a)) <=\
+    \ 0;\n}\nbool is_intersect_sl(const Segment& s, const Line& l) {\n    return is_intersect_ls(l,\
+    \ s);\n}\nbool is_intersect_ss(const Segment& s1, const Segment& s2) {\n    if(ccw(s1.a,\
     \ s1.b, s2.a) * ccw(s1.a, s1.b, s2.b) > 0) return false;\n    return ccw(s2.a,\
-    \ s2.b, s1.a) * ccw(s2.a, s2.b, s1.b) <= 0;\n}\nvector<Point> intersection(const\
-    \ Line& l1, const Line& l2) {\n    vector<Point> res;\n    if(!is_intersect(l1,\
+    \ s2.b, s1.a) * ccw(s2.a, s2.b, s1.b) <= 0;\n}\nvector<Point> intersection_ll(const\
+    \ Line& l1, const Line& l2) {\n    vector<Point> res;\n    if(!is_intersect_ll(l1,\
     \ l2)) return res;\n    Real a = cross(l1.b - l1.a, l2.b - l2.a);\n    Real b\
     \ = cross(l1.b - l1.a, l1.b - l2.a);\n    if(eq(a, 0.0) and eq(b, 0.0)) {\n  \
     \      res.push_back(l2.a);\n    } else {\n        res.push_back(l2.a + (l2.b\
-    \ - l2.a) * b / a);\n    }\n    return res;\n}\nvector<Point> intersection(const\
-    \ Segment& s1, const Segment& s2) {\n    return is_intersect(s1, s2) ? intersection(Line(s1),\
-    \ Line(s2)) : vector<Point>();\n}\nReal dist(const Line& l, const Point& p) {\n\
-    \    return abs(p - projection(l, p));\n}\nReal dist(const Segment& s, const Point&\
-    \ p) {\n    Point h = projection(s, p);\n    if(is_intersect(s, h)) return abs(h\
-    \ - p);\n    return min(abs(s.a - p), abs(s.b - p));\n}\nReal dist(const Line&\
-    \ l1, const Line& l2) {\n    if(is_intersect(l1, l2)) return 0.0;\n    return\
-    \ dist(l1, l2.a);\n}\nReal dist(const Segment& s1, const Segment& s2) {\n    if(is_intersect(s1,\
-    \ s2)) return 0.0;\n    return min({dist(s1, s2.a), dist(s1, s2.b), dist(s2, s1.a),\
-    \ dist(s2, s1.b)});\n}\nReal dist(const Line& l, const Segment& s) {\n    if(is_intersect(l,\
-    \ s)) return 0.0;\n    return min(dist(l, s.a), dist(l, s.b));\n}\nReal dist(const\
-    \ Segment& s, const Line& l) {\n    return dist(l, s);\n}\n#line 6 \"src/geometry/polygon_2d.hpp\"\
+    \ - l2.a) * b / a);\n    }\n    return res;\n}\nvector<Point> intersection_ss(const\
+    \ Segment& s1, const Segment& s2) {\n    return is_intersect_ss(s1, s2) ? intersection_ll(Line(s1),\
+    \ Line(s2)) : vector<Point>();\n}\nReal dist_lp(const Line& l, const Point& p)\
+    \ {\n    return abs(p - projection(l, p));\n}\nReal dist_sp(const Segment& s,\
+    \ const Point& p) {\n    Point h = projection(s, p);\n    if(is_intersect_sp(s,\
+    \ h)) return abs(h - p);\n    return min(abs(s.a - p), abs(s.b - p));\n}\nReal\
+    \ dist_ll(const Line& l1, const Line& l2) {\n    if(is_intersect_ll(l1, l2)) return\
+    \ 0.0;\n    return dist_lp(l1, l2.a);\n}\nReal dist_ss(const Segment& s1, const\
+    \ Segment& s2) {\n    if(is_intersect_ss(s1, s2)) return 0.0;\n    return min({dist_sp(s1,\
+    \ s2.a), dist_sp(s1, s2.b), dist_sp(s2, s1.a), dist_sp(s2, s1.b)});\n}\nReal dist_ls(const\
+    \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
+    \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
+    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 6 \"src/geometry/polygon_2d.hpp\"\
     \nReal area(const vector<Point>& ps) {\n    Real res = 0.0;\n    int n = ps.size();\n\
     \    for(int i = 0; i < n; ++i) {\n        res += cross(ps[i], ps[(i + 1) % n]);\n\
     \    }\n    return abs(res * 0.5);\n}\nbool is_convex(const vector<Point>& ps)\
@@ -113,9 +114,9 @@ data:
     \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) <= 0) {\n            --k;\n        }\n\
     \    }\n    ch.resize(k - 1);\n    return ch;\n}\nvector<Point> convex_cut(const\
     \ vector<Point>& ps, const Line& l) {\n    int n = ps.size();\n    vector<Point>\
-    \ res;\n    for(int i = 0; i < n; ++i) {\n        if(!eq(dist(l, ps[i]), 0.0)\
-    \ and !eq(dist(l, ps[i + 1]), 0.0)) {\n            Segment s(ps[i], ps[i + 1]);\n\
-    \            if(eq(dist(l, s), 0.0)) {\n                auto tmp = intersection(l,\
+    \ res;\n    for(int i = 0; i < n; ++i) {\n        if(!eq(dist_lp(l, ps[i]), 0.0)\
+    \ and !eq(dist_lp(l, ps[i + 1]), 0.0)) {\n            Segment s(ps[i], ps[i +\
+    \ 1]);\n            if(eq(dist_ls(l, s), 0.0)) {\n                auto tmp = intersection_ll(l,\
     \ s);\n                res.push_back(tmp[0]);\n            }\n        }\n    }\n\
     \    return res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./template.hpp\"\
@@ -140,9 +141,9 @@ data:
     \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) <= 0) {\n            --k;\n        }\n\
     \    }\n    ch.resize(k - 1);\n    return ch;\n}\nvector<Point> convex_cut(const\
     \ vector<Point>& ps, const Line& l) {\n    int n = ps.size();\n    vector<Point>\
-    \ res;\n    for(int i = 0; i < n; ++i) {\n        if(!eq(dist(l, ps[i]), 0.0)\
-    \ and !eq(dist(l, ps[i + 1]), 0.0)) {\n            Segment s(ps[i], ps[i + 1]);\n\
-    \            if(eq(dist(l, s), 0.0)) {\n                auto tmp = intersection(l,\
+    \ res;\n    for(int i = 0; i < n; ++i) {\n        if(!eq(dist_lp(l, ps[i]), 0.0)\
+    \ and !eq(dist_lp(l, ps[i + 1]), 0.0)) {\n            Segment s(ps[i], ps[i +\
+    \ 1]);\n            if(eq(dist_ls(l, s), 0.0)) {\n                auto tmp = intersection_ll(l,\
     \ s);\n                res.push_back(tmp[0]);\n            }\n        }\n    }\n\
     \    return res;\n}"
   dependsOn:
@@ -153,7 +154,7 @@ data:
   isVerificationFile: false
   path: src/geometry/polygon_2d.hpp
   requiredBy: []
-  timestamp: '2024-02-18 00:45:24+09:00'
+  timestamp: '2024-02-18 01:37:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/polygon_2d.hpp

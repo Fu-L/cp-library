@@ -66,149 +66,154 @@ data:
     \   return eq(dot(a.b - a.a, b.b - b.a), 0.0);\n}\nPoint projection(const Line&\
     \ l, const Point& p) {\n    Real t = dot(p - l.a, l.b - l.a) / norm(l.b - l.a);\n\
     \    return l.a + (l.b - l.a) * t;\n}\nPoint reflection(const Line& l, const Point&\
-    \ p) {\n    return p + (projection(l, p) - p) * 2.0;\n}\nbool is_intersect(const\
+    \ p) {\n    return p + (projection(l, p) - p) * 2.0;\n}\nbool is_intersect_lp(const\
     \ Line& l, const Point& p) {\n    return abs(ccw(l.a, l.b, p)) != 1;\n}\nbool\
-    \ is_intersect(const Segment& s, const Point& p) {\n    return ccw(s.a, s.b, p)\
-    \ == 0;\n}\nbool is_intersect(const Line& l1, const Line& l2) {\n    if(!eq(cross(l1.b\
+    \ is_intersect_sp(const Segment& s, const Point& p) {\n    return ccw(s.a, s.b,\
+    \ p) == 0;\n}\nbool is_intersect_ll(const Line& l1, const Line& l2) {\n    if(!eq(cross(l1.b\
     \ - l1.a, l2.b - l2.a), 0.0)) return true;\n    return eq(cross(l1.b - l1.a, l2.b\
-    \ - l1.a), 0.0);\n}\nbool is_intersect(const Line& l, const Segment& s) {\n  \
-    \  return sign(cross(l.b - l.a, s.a - l.a) * cross(l.b - l.a, s.b - l.a)) <= 0;\n\
-    }\nbool is_intersect(const Segment& s, const Line& l) {\n    return is_intersect(l,\
-    \ s);\n}\nbool is_intersect(const Segment& s1, const Segment& s2) {\n    if(ccw(s1.a,\
+    \ - l1.a), 0.0);\n}\nbool is_intersect_ls(const Line& l, const Segment& s) {\n\
+    \    return sign(cross(l.b - l.a, s.a - l.a) * cross(l.b - l.a, s.b - l.a)) <=\
+    \ 0;\n}\nbool is_intersect_sl(const Segment& s, const Line& l) {\n    return is_intersect_ls(l,\
+    \ s);\n}\nbool is_intersect_ss(const Segment& s1, const Segment& s2) {\n    if(ccw(s1.a,\
     \ s1.b, s2.a) * ccw(s1.a, s1.b, s2.b) > 0) return false;\n    return ccw(s2.a,\
-    \ s2.b, s1.a) * ccw(s2.a, s2.b, s1.b) <= 0;\n}\nvector<Point> intersection(const\
-    \ Line& l1, const Line& l2) {\n    vector<Point> res;\n    if(!is_intersect(l1,\
+    \ s2.b, s1.a) * ccw(s2.a, s2.b, s1.b) <= 0;\n}\nvector<Point> intersection_ll(const\
+    \ Line& l1, const Line& l2) {\n    vector<Point> res;\n    if(!is_intersect_ll(l1,\
     \ l2)) return res;\n    Real a = cross(l1.b - l1.a, l2.b - l2.a);\n    Real b\
     \ = cross(l1.b - l1.a, l1.b - l2.a);\n    if(eq(a, 0.0) and eq(b, 0.0)) {\n  \
     \      res.push_back(l2.a);\n    } else {\n        res.push_back(l2.a + (l2.b\
-    \ - l2.a) * b / a);\n    }\n    return res;\n}\nvector<Point> intersection(const\
-    \ Segment& s1, const Segment& s2) {\n    return is_intersect(s1, s2) ? intersection(Line(s1),\
-    \ Line(s2)) : vector<Point>();\n}\nReal dist(const Line& l, const Point& p) {\n\
-    \    return abs(p - projection(l, p));\n}\nReal dist(const Segment& s, const Point&\
-    \ p) {\n    Point h = projection(s, p);\n    if(is_intersect(s, h)) return abs(h\
-    \ - p);\n    return min(abs(s.a - p), abs(s.b - p));\n}\nReal dist(const Line&\
-    \ l1, const Line& l2) {\n    if(is_intersect(l1, l2)) return 0.0;\n    return\
-    \ dist(l1, l2.a);\n}\nReal dist(const Segment& s1, const Segment& s2) {\n    if(is_intersect(s1,\
-    \ s2)) return 0.0;\n    return min({dist(s1, s2.a), dist(s1, s2.b), dist(s2, s1.a),\
-    \ dist(s2, s1.b)});\n}\nReal dist(const Line& l, const Segment& s) {\n    if(is_intersect(l,\
-    \ s)) return 0.0;\n    return min(dist(l, s.a), dist(l, s.b));\n}\nReal dist(const\
-    \ Segment& s, const Line& l) {\n    return dist(l, s);\n}\n#line 6 \"src/geometry/circle_2d.hpp\"\
+    \ - l2.a) * b / a);\n    }\n    return res;\n}\nvector<Point> intersection_ss(const\
+    \ Segment& s1, const Segment& s2) {\n    return is_intersect_ss(s1, s2) ? intersection_ll(Line(s1),\
+    \ Line(s2)) : vector<Point>();\n}\nReal dist_lp(const Line& l, const Point& p)\
+    \ {\n    return abs(p - projection(l, p));\n}\nReal dist_sp(const Segment& s,\
+    \ const Point& p) {\n    Point h = projection(s, p);\n    if(is_intersect_sp(s,\
+    \ h)) return abs(h - p);\n    return min(abs(s.a - p), abs(s.b - p));\n}\nReal\
+    \ dist_ll(const Line& l1, const Line& l2) {\n    if(is_intersect_ll(l1, l2)) return\
+    \ 0.0;\n    return dist_lp(l1, l2.a);\n}\nReal dist_ss(const Segment& s1, const\
+    \ Segment& s2) {\n    if(is_intersect_ss(s1, s2)) return 0.0;\n    return min({dist_sp(s1,\
+    \ s2.a), dist_sp(s1, s2.b), dist_sp(s2, s1.a), dist_sp(s2, s1.b)});\n}\nReal dist_ls(const\
+    \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
+    \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
+    \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 6 \"src/geometry/circle_2d.hpp\"\
     \nstruct Circle {\n    Point p;\n    Real r;\n    Circle() = default;\n    Circle(const\
-    \ Point& p, const Real& r)\n        : p(p), r(r) {}\n};\nbool is_intersect(const\
-    \ Circle& c, const Point& p) {\n    return eq(abs(p - c.p), c.r);\n}\nbool is_intersect(const\
-    \ Circle& c, const Line& l) {\n    return sign(c.r - dist(l, c.p)) >= 0;\n}\n\
-    int inter(Circle c1, Circle c2) {\n    if(c1.r < c2.r) swap(c1, c2);\n    Real\
-    \ d = abs(c1.p - c2.p);\n    int a = sign(d - c1.r - c2.r);\n    if(a >= 0) return\
-    \ a + 3;\n    return sign(d - c1.r + c2.r) + 1;\n}\nvector<Point> intersection(const\
-    \ Circle& c, const Line& l) {\n    Point h = projection(l, c.p);\n    Point e\
-    \ = (l.b - l.a) / abs(l.b - l.a);\n    vector<Point> res;\n    if(!is_intersect(c,\
-    \ l)) return res;\n    if(eq(dist(l, c.p), c.r)) {\n        res.push_back(h);\n\
-    \    } else {\n        Real b = sqrt(c.r * c.r - norm(h - c.p));\n        res.push_back(h\
-    \ + e * b);\n        res.push_back(h - e * b);\n    }\n    return res;\n}\nvector<Point>\
-    \ intersection(const Circle& c1, const Circle& c2) {\n    Real d = abs(c1.p -\
-    \ c2.p);\n    Real a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (2 * c1.r *\
-    \ d));\n    Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real() - c1.p.real());\n\
-    \    vector<Point> res;\n    if(inter(c1, c2) % 4 == 0) return res;\n    if(eq(a,\
-    \ 0.0)) {\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t));\n    } else\
-    \ {\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t + a));\n        res.push_back(c1.p\
-    \ + rot(Point(c1.r, 0.0), t - a));\n    }\n    return res;\n}\nvector<Point> tangent(const\
-    \ Circle& c, const Point& p) {\n    return intersection(c, Circle(p, sqrt(norm(p\
-    \ - c.p) - c.r * c.r)));\n}\nvector<Line> tangent(Circle c1, Circle c2) {\n  \
-    \  vector<Line> res;\n    if(c1.r < c2.r) swap(c1, c2);\n    Real r = abs(c2.p\
-    \ - c1.p);\n    if(eq(r, 0.0)) return res;\n    Point u = (c2.p - c1.p) / r;\n\
-    \    Point v = rot(u, PI * 0.5);\n    for(Real s : {1.0, -1.0}) {\n        Real\
-    \ h = (c1.r + c2.r * s) / r;\n        if(eq(abs(h), 1.0)) {\n            res.push_back({c1.p\
-    \ + u * c1.r, c1.p + (u + v) * c1.r});\n        } else if(abs(h) < 1.0) {\n  \
-    \          Point uu = u * h, vv = v * sqrt(1.0 - h * h);\n            res.push_back({c1.p\
-    \ + (uu + vv) * c1.r, c2.p - (uu + vv) * c2.r * s});\n            res.push_back({c1.p\
+    \ Point& p, const Real& r)\n        : p(p), r(r) {}\n};\nbool is_intersect_cp(const\
+    \ Circle& c, const Point& p) {\n    return eq(abs(p - c.p), c.r);\n}\nbool is_intersect_cl(const\
+    \ Circle& c, const Line& l) {\n    return sign(c.r - dist_lp(l, c.p)) >= 0;\n\
+    }\nint is_intersect_cc(Circle c1, Circle c2) {\n    if(c1.r < c2.r) swap(c1, c2);\n\
+    \    Real d = abs(c1.p - c2.p);\n    int a = sign(d - c1.r - c2.r);\n    if(a\
+    \ >= 0) return a + 3;\n    return sign(d - c1.r + c2.r) + 1;\n}\nvector<Point>\
+    \ intersection_cl(const Circle& c, const Line& l) {\n    Point h = projection(l,\
+    \ c.p);\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    vector<Point> res;\n\
+    \    if(!is_intersect_cl(c, l)) return res;\n    if(eq(dist_lp(l, c.p), c.r))\
+    \ {\n        res.push_back(h);\n    } else {\n        Real b = sqrt(c.r * c.r\
+    \ - norm(h - c.p));\n        res.push_back(h + e * b);\n        res.push_back(h\
+    \ - e * b);\n    }\n    return res;\n}\nvector<Point> intersection_cc(const Circle&\
+    \ c1, const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    Real a = acos((c1.r\
+    \ * c1.r + d * d - c2.r * c2.r) / (2 * c1.r * d));\n    Real t = atan2(c2.p.imag()\
+    \ - c1.p.imag(), c2.p.real() - c1.p.real());\n    vector<Point> res;\n    if(is_intersect_cc(c1,\
+    \ c2) % 4 == 0) return res;\n    if(eq(a, 0.0)) {\n        res.push_back(c1.p\
+    \ + rot(Point(c1.r, 0.0), t));\n    } else {\n        res.push_back(c1.p + rot(Point(c1.r,\
+    \ 0.0), t + a));\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t - a));\n\
+    \    }\n    return res;\n}\nvector<Point> tangent_cp(const Circle& c, const Point&\
+    \ p) {\n    return intersection_cc(c, Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));\n\
+    }\nvector<Line> tangent_cc(Circle c1, Circle c2) {\n    vector<Line> res;\n  \
+    \  if(c1.r < c2.r) swap(c1, c2);\n    Real r = abs(c2.p - c1.p);\n    if(eq(r,\
+    \ 0.0)) return res;\n    Point u = (c2.p - c1.p) / r;\n    Point v = rot(u, PI\
+    \ * 0.5);\n    for(Real s : {1.0, -1.0}) {\n        Real h = (c1.r + c2.r * s)\
+    \ / r;\n        if(eq(abs(h), 1.0)) {\n            res.push_back({c1.p + u * c1.r,\
+    \ c1.p + (u + v) * c1.r});\n        } else if(abs(h) < 1.0) {\n            Point\
+    \ uu = u * h, vv = v * sqrt(1.0 - h * h);\n            res.push_back({c1.p + (uu\
+    \ + vv) * c1.r, c2.p - (uu + vv) * c2.r * s});\n            res.push_back({c1.p\
     \ + (uu - vv) * c1.r, c2.p - (uu - vv) * c2.r * s});\n        }\n    }\n    return\
     \ res;\n}\nCircle inscribed_circle(const Point& a, const Point& b, const Point&\
     \ c) {\n    Real A = abs(b - c), B = abs(c - a), C = abs(a - b);\n    Point x\
-    \ = Point((a * A + b * B + c * C) / (A + B + C));\n    Real r = dist(Segment(a,\
+    \ = Point((a * A + b * B + c * C) / (A + B + C));\n    Real r = dist_sp(Segment(a,\
     \ b), x);\n    return Circle(x, r);\n}\nCircle circumscribed_circle(const Point&\
     \ a, const Point& b, const Point& c) {\n    Point m1((a + b) / 2.0), m2((b + c)\
     \ / 2.0);\n    Point v((b - a).imag(), (a - b).real()), w((b - c).imag(), (c -\
     \ b).real());\n    Line s(m1, Point(m1 + v)), t(m2, Point(m2 + w));\n    Point\
-    \ x = intersection(s, t)[0];\n    return Circle(x, abs(a - x));\n}\nCircle appollonius(const\
-    \ Point& p1, const Point& p2, const Real& a, const Real& b) {\n    Point q1 =\
-    \ (p1 * b + p2 * a) / (a + b), q2 = (-p1 * b + p2 * a) / (a - b);\n    return\
-    \ Circle((q1 + q2) * 0.5, abs(q1 - q2) * 0.5);\n}\nReal area(const Circle& c1,\
-    \ const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    if(c1.r + c2.r <= d\
-    \ + EPS) return 0.0;\n    if(d <= abs(c1.r - c2.r) + EPS) {\n        Real r =\
-    \ min(c1.r, c2.r);\n        return r * r * PI;\n    }\n    Real rc = (d * d +\
-    \ c1.r * c1.r - c2.r * c2.r) / (2.0 * d);\n    Real theta = acos(rc / c1.r);\n\
-    \    Real phi = acos((d - rc) / c2.r);\n    return c1.r * c1.r * theta + c2.r\
-    \ * c2.r * phi - d * c1.r * sin(theta);\n}\nReal area(const vector<Point>& ps,\
-    \ const Circle& c) {\n    int n = ps.size();\n    if(n < 3) return 0.0;\n    auto\
-    \ cross_area = [&](auto& cross_area, const Circle& c, const Point& a, const Point&\
-    \ b) -> Real {\n        Point va = c.p - a, vb = c.p - b;\n        Real f = cross(va,\
-    \ vb), res = 0.0;\n        if(eq(f, 0.0)) return res;\n        if(max(abs(va),\
-    \ abs(vb)) < c.r + EPS) return f;\n        if(dist(Segment(a, b), c.p) > c.r -\
-    \ EPS) return c.r * c.r * arg(vb * conj(va));\n        auto u = intersection(c,\
-    \ Segment(a, b));\n        vector<Point> tot{a, u[0], u[1], b};\n        for(int\
-    \ i = 0; i + 1 < (int)tot.size(); i++) {\n            res += cross_area(cross_area,\
-    \ c, tot[i], tot[i + 1]);\n        }\n        return res;\n    };\n    Real S\
-    \ = 0;\n    for(int i = 0; i < n; i++) {\n        S += cross_area(cross_area,\
-    \ c, ps[i], ps[(i + 1) % n]);\n    }\n    return S * 0.5;\n}\n"
+    \ x = intersection_ll(s, t)[0];\n    return Circle(x, abs(a - x));\n}\nCircle\
+    \ appollonius(const Point& p1, const Point& p2, const Real& a, const Real& b)\
+    \ {\n    Point q1 = (p1 * b + p2 * a) / (a + b), q2 = (-p1 * b + p2 * a) / (a\
+    \ - b);\n    return Circle((q1 + q2) * 0.5, abs(q1 - q2) * 0.5);\n}\nReal area_cc(const\
+    \ Circle& c1, const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    if(c1.r\
+    \ + c2.r <= d + EPS) return 0.0;\n    if(d <= abs(c1.r - c2.r) + EPS) {\n    \
+    \    Real r = min(c1.r, c2.r);\n        return r * r * PI;\n    }\n    Real rc\
+    \ = (d * d + c1.r * c1.r - c2.r * c2.r) / (2.0 * d);\n    Real theta = acos(rc\
+    \ / c1.r);\n    Real phi = acos((d - rc) / c2.r);\n    return c1.r * c1.r * theta\
+    \ + c2.r * c2.r * phi - d * c1.r * sin(theta);\n}\nReal area_pc(const vector<Point>&\
+    \ ps, const Circle& c) {\n    int n = ps.size();\n    if(n < 3) return 0.0;\n\
+    \    auto cross_area = [&](auto& cross_area, const Circle& c, const Point& a,\
+    \ const Point& b) -> Real {\n        Point va = c.p - a, vb = c.p - b;\n     \
+    \   Real f = cross(va, vb), res = 0.0;\n        if(eq(f, 0.0)) return res;\n \
+    \       if(max(abs(va), abs(vb)) < c.r + EPS) return f;\n        if(dist_sp(Segment(a,\
+    \ b), c.p) > c.r - EPS) return c.r * c.r * arg(vb * conj(va));\n        auto u\
+    \ = intersection_cl(c, Segment(a, b));\n        vector<Point> tot{a, u[0], u[1],\
+    \ b};\n        for(int i = 0; i + 1 < (int)tot.size(); i++) {\n            res\
+    \ += cross_area(cross_area, c, tot[i], tot[i + 1]);\n        }\n        return\
+    \ res;\n    };\n    Real S = 0;\n    for(int i = 0; i < n; i++) {\n        S +=\
+    \ cross_area(cross_area, c, ps[i], ps[(i + 1) % n]);\n    }\n    return S * 0.5;\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./template.hpp\"\
     \n#include \"./point_2d.hpp\"\n#include \"./line_and_segment_2d.hpp\"\nstruct\
     \ Circle {\n    Point p;\n    Real r;\n    Circle() = default;\n    Circle(const\
-    \ Point& p, const Real& r)\n        : p(p), r(r) {}\n};\nbool is_intersect(const\
-    \ Circle& c, const Point& p) {\n    return eq(abs(p - c.p), c.r);\n}\nbool is_intersect(const\
-    \ Circle& c, const Line& l) {\n    return sign(c.r - dist(l, c.p)) >= 0;\n}\n\
-    int inter(Circle c1, Circle c2) {\n    if(c1.r < c2.r) swap(c1, c2);\n    Real\
-    \ d = abs(c1.p - c2.p);\n    int a = sign(d - c1.r - c2.r);\n    if(a >= 0) return\
-    \ a + 3;\n    return sign(d - c1.r + c2.r) + 1;\n}\nvector<Point> intersection(const\
-    \ Circle& c, const Line& l) {\n    Point h = projection(l, c.p);\n    Point e\
-    \ = (l.b - l.a) / abs(l.b - l.a);\n    vector<Point> res;\n    if(!is_intersect(c,\
-    \ l)) return res;\n    if(eq(dist(l, c.p), c.r)) {\n        res.push_back(h);\n\
-    \    } else {\n        Real b = sqrt(c.r * c.r - norm(h - c.p));\n        res.push_back(h\
-    \ + e * b);\n        res.push_back(h - e * b);\n    }\n    return res;\n}\nvector<Point>\
-    \ intersection(const Circle& c1, const Circle& c2) {\n    Real d = abs(c1.p -\
-    \ c2.p);\n    Real a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (2 * c1.r *\
-    \ d));\n    Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real() - c1.p.real());\n\
-    \    vector<Point> res;\n    if(inter(c1, c2) % 4 == 0) return res;\n    if(eq(a,\
-    \ 0.0)) {\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t));\n    } else\
-    \ {\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t + a));\n        res.push_back(c1.p\
-    \ + rot(Point(c1.r, 0.0), t - a));\n    }\n    return res;\n}\nvector<Point> tangent(const\
-    \ Circle& c, const Point& p) {\n    return intersection(c, Circle(p, sqrt(norm(p\
-    \ - c.p) - c.r * c.r)));\n}\nvector<Line> tangent(Circle c1, Circle c2) {\n  \
-    \  vector<Line> res;\n    if(c1.r < c2.r) swap(c1, c2);\n    Real r = abs(c2.p\
-    \ - c1.p);\n    if(eq(r, 0.0)) return res;\n    Point u = (c2.p - c1.p) / r;\n\
-    \    Point v = rot(u, PI * 0.5);\n    for(Real s : {1.0, -1.0}) {\n        Real\
-    \ h = (c1.r + c2.r * s) / r;\n        if(eq(abs(h), 1.0)) {\n            res.push_back({c1.p\
-    \ + u * c1.r, c1.p + (u + v) * c1.r});\n        } else if(abs(h) < 1.0) {\n  \
-    \          Point uu = u * h, vv = v * sqrt(1.0 - h * h);\n            res.push_back({c1.p\
-    \ + (uu + vv) * c1.r, c2.p - (uu + vv) * c2.r * s});\n            res.push_back({c1.p\
+    \ Point& p, const Real& r)\n        : p(p), r(r) {}\n};\nbool is_intersect_cp(const\
+    \ Circle& c, const Point& p) {\n    return eq(abs(p - c.p), c.r);\n}\nbool is_intersect_cl(const\
+    \ Circle& c, const Line& l) {\n    return sign(c.r - dist_lp(l, c.p)) >= 0;\n\
+    }\nint is_intersect_cc(Circle c1, Circle c2) {\n    if(c1.r < c2.r) swap(c1, c2);\n\
+    \    Real d = abs(c1.p - c2.p);\n    int a = sign(d - c1.r - c2.r);\n    if(a\
+    \ >= 0) return a + 3;\n    return sign(d - c1.r + c2.r) + 1;\n}\nvector<Point>\
+    \ intersection_cl(const Circle& c, const Line& l) {\n    Point h = projection(l,\
+    \ c.p);\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    vector<Point> res;\n\
+    \    if(!is_intersect_cl(c, l)) return res;\n    if(eq(dist_lp(l, c.p), c.r))\
+    \ {\n        res.push_back(h);\n    } else {\n        Real b = sqrt(c.r * c.r\
+    \ - norm(h - c.p));\n        res.push_back(h + e * b);\n        res.push_back(h\
+    \ - e * b);\n    }\n    return res;\n}\nvector<Point> intersection_cc(const Circle&\
+    \ c1, const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    Real a = acos((c1.r\
+    \ * c1.r + d * d - c2.r * c2.r) / (2 * c1.r * d));\n    Real t = atan2(c2.p.imag()\
+    \ - c1.p.imag(), c2.p.real() - c1.p.real());\n    vector<Point> res;\n    if(is_intersect_cc(c1,\
+    \ c2) % 4 == 0) return res;\n    if(eq(a, 0.0)) {\n        res.push_back(c1.p\
+    \ + rot(Point(c1.r, 0.0), t));\n    } else {\n        res.push_back(c1.p + rot(Point(c1.r,\
+    \ 0.0), t + a));\n        res.push_back(c1.p + rot(Point(c1.r, 0.0), t - a));\n\
+    \    }\n    return res;\n}\nvector<Point> tangent_cp(const Circle& c, const Point&\
+    \ p) {\n    return intersection_cc(c, Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));\n\
+    }\nvector<Line> tangent_cc(Circle c1, Circle c2) {\n    vector<Line> res;\n  \
+    \  if(c1.r < c2.r) swap(c1, c2);\n    Real r = abs(c2.p - c1.p);\n    if(eq(r,\
+    \ 0.0)) return res;\n    Point u = (c2.p - c1.p) / r;\n    Point v = rot(u, PI\
+    \ * 0.5);\n    for(Real s : {1.0, -1.0}) {\n        Real h = (c1.r + c2.r * s)\
+    \ / r;\n        if(eq(abs(h), 1.0)) {\n            res.push_back({c1.p + u * c1.r,\
+    \ c1.p + (u + v) * c1.r});\n        } else if(abs(h) < 1.0) {\n            Point\
+    \ uu = u * h, vv = v * sqrt(1.0 - h * h);\n            res.push_back({c1.p + (uu\
+    \ + vv) * c1.r, c2.p - (uu + vv) * c2.r * s});\n            res.push_back({c1.p\
     \ + (uu - vv) * c1.r, c2.p - (uu - vv) * c2.r * s});\n        }\n    }\n    return\
     \ res;\n}\nCircle inscribed_circle(const Point& a, const Point& b, const Point&\
     \ c) {\n    Real A = abs(b - c), B = abs(c - a), C = abs(a - b);\n    Point x\
-    \ = Point((a * A + b * B + c * C) / (A + B + C));\n    Real r = dist(Segment(a,\
+    \ = Point((a * A + b * B + c * C) / (A + B + C));\n    Real r = dist_sp(Segment(a,\
     \ b), x);\n    return Circle(x, r);\n}\nCircle circumscribed_circle(const Point&\
     \ a, const Point& b, const Point& c) {\n    Point m1((a + b) / 2.0), m2((b + c)\
     \ / 2.0);\n    Point v((b - a).imag(), (a - b).real()), w((b - c).imag(), (c -\
     \ b).real());\n    Line s(m1, Point(m1 + v)), t(m2, Point(m2 + w));\n    Point\
-    \ x = intersection(s, t)[0];\n    return Circle(x, abs(a - x));\n}\nCircle appollonius(const\
-    \ Point& p1, const Point& p2, const Real& a, const Real& b) {\n    Point q1 =\
-    \ (p1 * b + p2 * a) / (a + b), q2 = (-p1 * b + p2 * a) / (a - b);\n    return\
-    \ Circle((q1 + q2) * 0.5, abs(q1 - q2) * 0.5);\n}\nReal area(const Circle& c1,\
-    \ const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    if(c1.r + c2.r <= d\
-    \ + EPS) return 0.0;\n    if(d <= abs(c1.r - c2.r) + EPS) {\n        Real r =\
-    \ min(c1.r, c2.r);\n        return r * r * PI;\n    }\n    Real rc = (d * d +\
-    \ c1.r * c1.r - c2.r * c2.r) / (2.0 * d);\n    Real theta = acos(rc / c1.r);\n\
-    \    Real phi = acos((d - rc) / c2.r);\n    return c1.r * c1.r * theta + c2.r\
-    \ * c2.r * phi - d * c1.r * sin(theta);\n}\nReal area(const vector<Point>& ps,\
-    \ const Circle& c) {\n    int n = ps.size();\n    if(n < 3) return 0.0;\n    auto\
-    \ cross_area = [&](auto& cross_area, const Circle& c, const Point& a, const Point&\
-    \ b) -> Real {\n        Point va = c.p - a, vb = c.p - b;\n        Real f = cross(va,\
-    \ vb), res = 0.0;\n        if(eq(f, 0.0)) return res;\n        if(max(abs(va),\
-    \ abs(vb)) < c.r + EPS) return f;\n        if(dist(Segment(a, b), c.p) > c.r -\
-    \ EPS) return c.r * c.r * arg(vb * conj(va));\n        auto u = intersection(c,\
-    \ Segment(a, b));\n        vector<Point> tot{a, u[0], u[1], b};\n        for(int\
-    \ i = 0; i + 1 < (int)tot.size(); i++) {\n            res += cross_area(cross_area,\
-    \ c, tot[i], tot[i + 1]);\n        }\n        return res;\n    };\n    Real S\
-    \ = 0;\n    for(int i = 0; i < n; i++) {\n        S += cross_area(cross_area,\
-    \ c, ps[i], ps[(i + 1) % n]);\n    }\n    return S * 0.5;\n}"
+    \ x = intersection_ll(s, t)[0];\n    return Circle(x, abs(a - x));\n}\nCircle\
+    \ appollonius(const Point& p1, const Point& p2, const Real& a, const Real& b)\
+    \ {\n    Point q1 = (p1 * b + p2 * a) / (a + b), q2 = (-p1 * b + p2 * a) / (a\
+    \ - b);\n    return Circle((q1 + q2) * 0.5, abs(q1 - q2) * 0.5);\n}\nReal area_cc(const\
+    \ Circle& c1, const Circle& c2) {\n    Real d = abs(c1.p - c2.p);\n    if(c1.r\
+    \ + c2.r <= d + EPS) return 0.0;\n    if(d <= abs(c1.r - c2.r) + EPS) {\n    \
+    \    Real r = min(c1.r, c2.r);\n        return r * r * PI;\n    }\n    Real rc\
+    \ = (d * d + c1.r * c1.r - c2.r * c2.r) / (2.0 * d);\n    Real theta = acos(rc\
+    \ / c1.r);\n    Real phi = acos((d - rc) / c2.r);\n    return c1.r * c1.r * theta\
+    \ + c2.r * c2.r * phi - d * c1.r * sin(theta);\n}\nReal area_pc(const vector<Point>&\
+    \ ps, const Circle& c) {\n    int n = ps.size();\n    if(n < 3) return 0.0;\n\
+    \    auto cross_area = [&](auto& cross_area, const Circle& c, const Point& a,\
+    \ const Point& b) -> Real {\n        Point va = c.p - a, vb = c.p - b;\n     \
+    \   Real f = cross(va, vb), res = 0.0;\n        if(eq(f, 0.0)) return res;\n \
+    \       if(max(abs(va), abs(vb)) < c.r + EPS) return f;\n        if(dist_sp(Segment(a,\
+    \ b), c.p) > c.r - EPS) return c.r * c.r * arg(vb * conj(va));\n        auto u\
+    \ = intersection_cl(c, Segment(a, b));\n        vector<Point> tot{a, u[0], u[1],\
+    \ b};\n        for(int i = 0; i + 1 < (int)tot.size(); i++) {\n            res\
+    \ += cross_area(cross_area, c, tot[i], tot[i + 1]);\n        }\n        return\
+    \ res;\n    };\n    Real S = 0;\n    for(int i = 0; i < n; i++) {\n        S +=\
+    \ cross_area(cross_area, c, ps[i], ps[(i + 1) % n]);\n    }\n    return S * 0.5;\n\
+    }"
   dependsOn:
   - src/template/template.hpp
   - src/geometry/template.hpp
@@ -217,7 +222,7 @@ data:
   isVerificationFile: false
   path: src/geometry/circle_2d.hpp
   requiredBy: []
-  timestamp: '2024-02-18 00:45:24+09:00'
+  timestamp: '2024-02-18 01:37:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/circle_2d.hpp
