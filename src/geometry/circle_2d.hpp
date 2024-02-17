@@ -32,8 +32,18 @@ vector<Point> intersection_cl(const Circle& c, const Line& l) {
         res.push_back(h);
     } else {
         Real b = sqrt(c.r * c.r - norm(h - c.p));
-        res.push_back(h + e * b);
         res.push_back(h - e * b);
+        res.push_back(h + e * b);
+    }
+    return res;
+}
+vector<Point> intersection_cs(const Circle& c, const Segment& s) {
+    vector<Point> cand = intersection_cl(c, Line(s));
+    vector<Point> res;
+    for(const Point& p : cand) {
+        if(ccw(s.a, s.b, p) == 0) {
+            res.push_back(p);
+        }
     }
     return res;
 }
@@ -103,24 +113,30 @@ Real area_cc(const Circle& c1, const Circle& c2) {
     return c1.r * c1.r * theta + c2.r * c2.r * phi - d * c1.r * sin(theta);
 }
 Real area_pc(const vector<Point>& ps, const Circle& c) {
+    auto calc_element = [&](const Point& a, const Point& b, Real r, bool triangle) -> Real {
+        if(triangle) return cross(a, b) / 2;
+        Point tmp = b * Point(a.real(), -a.imag());
+        Real ang = atan2(tmp.imag(), tmp.real());
+        return r * r * ang / 2;
+    };
+    auto cross_area = [&](const Circle& c, const Point& ia, const Point& ib) -> Real {
+        Point a = ia - c.p, b = ib - c.p;
+        if(abs(a - b) < EPS) return 0;
+        bool isin_a = (abs(a) < c.r + EPS);
+        bool isin_b = (abs(b) < c.r + EPS);
+        if(isin_a and isin_b) return calc_element(a, b, c.r, true);
+        Circle oc(Point(0, 0), c.r);
+        Segment seg(a, b);
+        auto cr = intersection_cs(oc, seg);
+        if(cr.empty()) return calc_element(a, b, c.r, false);
+        auto s = cr[0], t = cr.back();
+        return calc_element(s, t, c.r, true) + calc_element(a, s, c.r, isin_a) + calc_element(t, b, c.r, isin_b);
+    };
     int n = ps.size();
     if(n < 3) return 0.0;
-    auto cross_area = [&](auto& cross_area, const Circle& c, const Point& a, const Point& b) -> Real {
-        Point va = c.p - a, vb = c.p - b;
-        Real f = cross(va, vb), res = 0.0;
-        if(eq(f, 0.0)) return res;
-        if(max(abs(va), abs(vb)) < c.r + EPS) return f;
-        if(dist_sp(Segment(a, b), c.p) > c.r - EPS) return c.r * c.r * arg(vb * conj(va));
-        auto u = intersection_cl(c, Segment(a, b));
-        vector<Point> tot{a, u[0], u[1], b};
-        for(int i = 0; i + 1 < (int)tot.size(); i++) {
-            res += cross_area(cross_area, c, tot[i], tot[i + 1]);
-        }
-        return res;
-    };
     Real S = 0;
-    for(int i = 0; i < n; i++) {
-        S += cross_area(cross_area, c, ps[i], ps[(i + 1) % n]);
+    for(int i = 0; i < n; ++i) {
+        S += cross_area(c, ps[i], ps[(i + 1) % n]);
     }
-    return S * 0.5;
+    return S;
 }
