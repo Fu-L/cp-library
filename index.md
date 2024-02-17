@@ -109,8 +109,20 @@ data:
   - name: src/geometry
     pages:
     - icon: ':warning:'
-      path: src/geometry/point.hpp
-      title: Point
+      path: src/geometry/circle_2d.hpp
+      title: src/geometry/circle_2d.hpp
+    - icon: ':warning:'
+      path: src/geometry/line_and_segment_2d.hpp
+      title: src/geometry/line_and_segment_2d.hpp
+    - icon: ':warning:'
+      path: src/geometry/point_2d.hpp
+      title: src/geometry/point_2d.hpp
+    - icon: ':warning:'
+      path: src/geometry/polygon_2d.hpp
+      title: src/geometry/polygon_2d.hpp
+    - icon: ':warning:'
+      path: src/geometry/template.hpp
+      title: src/geometry/template.hpp
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'

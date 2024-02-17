@@ -102,8 +102,20 @@ data:
     path: src/fps/nth_term.hpp
     title: nth_term
   - icon: ':warning:'
-    path: src/geometry/point.hpp
-    title: Point
+    path: src/geometry/circle_2d.hpp
+    title: src/geometry/circle_2d.hpp
+  - icon: ':warning:'
+    path: src/geometry/line_and_segment_2d.hpp
+    title: src/geometry/line_and_segment_2d.hpp
+  - icon: ':warning:'
+    path: src/geometry/point_2d.hpp
+    title: src/geometry/point_2d.hpp
+  - icon: ':warning:'
+    path: src/geometry/polygon_2d.hpp
+    title: src/geometry/polygon_2d.hpp
+  - icon: ':warning:'
+    path: src/geometry/template.hpp
+    title: src/geometry/template.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
@@ -599,7 +611,11 @@ data:
   - src/math/binomial.hpp
   - src/math/extgcd.hpp
   - src/math/pow_mod.hpp
-  - src/geometry/point.hpp
+  - src/geometry/point_2d.hpp
+  - src/geometry/template.hpp
+  - src/geometry/polygon_2d.hpp
+  - src/geometry/circle_2d.hpp
+  - src/geometry/line_and_segment_2d.hpp
   - src/data_structure/lazy_segment_tree.hpp
   - src/data_structure/fenwick_tree.hpp
   - src/data_structure/dynamic_li_chao_tree.hpp
