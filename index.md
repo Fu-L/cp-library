@@ -518,6 +518,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
       title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+  - name: verify/library_checker/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
+      title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - name: verify/library_checker/graph
     pages:
     - icon: ':heavy_check_mark:'

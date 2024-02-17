@@ -87,6 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
     title: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
+    title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -196,6 +199,7 @@ data:
   - verify/aizu_online_judge/cgl/convex_cut.test.cpp
   - verify/aizu_online_judge/cgl/area.test.cpp
   - verify/aizu_online_judge/cgl/distance.test.cpp
+  - verify/library_checker/geometry/sort_points_by_argument.test.cpp
 documentation_of: src/geometry/point_2d.hpp
 layout: document
 redirect_from:

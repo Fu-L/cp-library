@@ -478,6 +478,9 @@ data:
     path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
     title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
+    title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/assignment_problem.test.cpp
     title: verify/library_checker/graph/assignment_problem.test.cpp
   - icon: ':heavy_check_mark:'
@@ -804,6 +807,7 @@ data:
   - verify/library_checker/math/2_sat.test.cpp
   - verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
   - verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+  - verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp
   - verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
