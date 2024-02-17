@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: src/geometry/line_and_segment_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: src/geometry/point_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: src/geometry/template.hpp
   - icon: ':heavy_check_mark:'

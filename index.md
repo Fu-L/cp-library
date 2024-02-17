@@ -111,16 +111,16 @@ data:
     - icon: ':warning:'
       path: src/geometry/circle_2d.hpp
       title: src/geometry/circle_2d.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/line_and_segment_2d.hpp
       title: src/geometry/line_and_segment_2d.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/point_2d.hpp
       title: src/geometry/point_2d.hpp
     - icon: ':warning:'
       path: src/geometry/polygon_2d.hpp
       title: src/geometry/polygon_2d.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/template.hpp
       title: src/geometry/template.hpp
   - name: src/graph
@@ -300,6 +300,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/alds1/string_search.test.cpp
       title: verify/aizu_online_judge/alds1/string_search.test.cpp
+  - name: verify/aizu_online_judge/cgl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+      title: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/projection.test.cpp
+      title: verify/aizu_online_judge/cgl/projection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/cgl/refrection.test.cpp
+      title: verify/aizu_online_judge/cgl/refrection.test.cpp
   - name: verify/aizu_online_judge/dsl
     pages:
     - icon: ':heavy_check_mark:'

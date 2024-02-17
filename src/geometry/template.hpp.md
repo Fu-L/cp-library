@@ -8,19 +8,28 @@ data:
   - icon: ':warning:'
     path: src/geometry/circle_2d.hpp
     title: src/geometry/circle_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: src/geometry/line_and_segment_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: src/geometry/point_2d.hpp
   - icon: ':warning:'
     path: src/geometry/polygon_2d.hpp
     title: src/geometry/polygon_2d.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+    title: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/projection.test.cpp
+    title: verify/aizu_online_judge/cgl/projection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/refrection.test.cpp
+    title: verify/aizu_online_judge/cgl/refrection.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -47,8 +56,11 @@ data:
   - src/geometry/circle_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
   timestamp: '2024-02-18 00:45:24+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aizu_online_judge/cgl/refrection.test.cpp
+  - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - verify/aizu_online_judge/cgl/projection.test.cpp
 documentation_of: src/geometry/template.hpp
 layout: document
 redirect_from:

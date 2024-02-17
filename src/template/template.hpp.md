@@ -104,16 +104,16 @@ data:
   - icon: ':warning:'
     path: src/geometry/circle_2d.hpp
     title: src/geometry/circle_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: src/geometry/line_and_segment_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: src/geometry/point_2d.hpp
   - icon: ':warning:'
     path: src/geometry/polygon_2d.hpp
     title: src/geometry/polygon_2d.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: src/geometry/template.hpp
   - icon: ':heavy_check_mark:'
@@ -273,6 +273,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/alds1/string_search.test.cpp
     title: verify/aizu_online_judge/alds1/string_search.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+    title: verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/projection.test.cpp
+    title: verify/aizu_online_judge/cgl/projection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/cgl/refrection.test.cpp
+    title: verify/aizu_online_judge/cgl/refrection.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
     title: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
@@ -680,6 +689,9 @@ data:
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/articulation_points.test.cpp
+  - verify/aizu_online_judge/cgl/refrection.test.cpp
+  - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - verify/aizu_online_judge/cgl/projection.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/yukicoder/1559.test.cpp
   - verify/yukicoder/186.test.cpp
