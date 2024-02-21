@@ -6,7 +6,7 @@ data:
     title: circle_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
-    title: src/geometry/line_and_segment_2d.hpp
+    title: line_and_segment_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: point_2d
