@@ -3,26 +3,26 @@
 #include "./template.hpp"
 #include "./point_2d.hpp"
 #include "./line_and_segment_2d.hpp"
-Real area(const vector<Point>& ps) {
+Real area(const vector<Point>& polygon) {
     Real res = 0.0;
-    int n = ps.size();
+    int n = polygon.size();
     for(int i = 0; i < n; ++i) {
-        res += cross(ps[i], ps[(i + 1) % n]);
+        res += cross(polygon[i], polygon[(i + 1) % n]);
     }
     return abs(res * 0.5);
 }
-bool is_convex(const vector<Point>& ps) {
-    int n = ps.size();
+bool is_convex(const vector<Point>& polygon) {
+    int n = polygon.size();
     for(int i = 0; i < n; ++i) {
-        if(ccw(ps[(i - 1 + n) % n], ps[i], ps[(i + 1) % n]) == -1) return false;
+        if(ccw(polygon[(i - 1 + n) % n], polygon[i], polygon[(i + 1) % n]) == -1) return false;
     }
     return true;
 }
-int in_polygon(const vector<Point>& ps, const Point& p) {
-    int n = ps.size();
+int in_polygon(const vector<Point>& polygon, const Point& p) {
+    int n = polygon.size();
     int ret = 0;
     for(int i = 0; i < n; ++i) {
-        Point a = ps[i] - p, b = ps[(i + 1) % n] - p;
+        Point a = polygon[i] - p, b = polygon[(i + 1) % n] - p;
         if(eq(cross(a, b), 0.0) and sign(dot(a, b)) <= 0) return 1;
         if(a.imag() > b.imag()) swap(a, b);
         if(sign(a.imag()) <= 0 and sign(b.imag()) == 1 and sign(cross(a, b)) == 1) ret ^= 2;
@@ -48,31 +48,31 @@ vector<Point> convex_hull(vector<Point> ps) {
     ch.resize(k - 1);
     return ch;
 }
-Real convex_diameter(const vector<Point>& ps) {
-    int n = ps.size(), is = 0, js = 0;
+Real convex_diameter(const vector<Point>& polygon) {
+    int n = polygon.size(), is = 0, js = 0;
     for(int i = 1; i < n; ++i) {
-        if(sign(ps[i].imag() - ps[is].imag()) == 1) is = i;
-        if(sign(ps[i].imag() - ps[js].imag()) == -1) js = i;
+        if(sign(polygon[i].imag() - polygon[is].imag()) == 1) is = i;
+        if(sign(polygon[i].imag() - polygon[js].imag()) == -1) js = i;
     }
-    Real maxdis = norm(ps[is] - ps[js]);
+    Real maxdis = norm(polygon[is] - polygon[js]);
     int i = is, j = js;
     do {
-        if(sign(cross(ps[(i + 1) % n] - ps[i], ps[(j + 1) % n] - ps[j])) >= 0) {
+        if(sign(cross(polygon[(i + 1) % n] - polygon[i], polygon[(j + 1) % n] - polygon[j])) >= 0) {
             j = (j + 1) % n;
         } else {
             i = (i + 1) % n;
         }
-        if(norm(ps[i] - ps[j]) > maxdis) {
-            maxdis = norm(ps[i] - ps[j]);
+        if(norm(polygon[i] - polygon[j]) > maxdis) {
+            maxdis = norm(polygon[i] - polygon[j]);
         }
     } while(i != is or j != js);
     return sqrt(maxdis);
 }
-vector<Point> convex_cut(const vector<Point>& ps, const Line& l) {
-    int n = ps.size();
+vector<Point> convex_cut(const vector<Point>& polygon, const Line& l) {
+    int n = polygon.size();
     vector<Point> res;
     for(int i = 0; i < n; ++i) {
-        Point cur = ps[i], nex = ps[(i + 1) % n];
+        Point cur = polygon[i], nex = polygon[(i + 1) % n];
         if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);
         if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {
             res.push_back(intersection_ll(Line(cur, nex), l)[0]);
