@@ -13,7 +13,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/geometry/circle_2d.hpp
-    title: src/geometry/circle_2d.hpp
+    title: circle_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/polygon_2d.hpp
     title: src/geometry/polygon_2d.hpp
