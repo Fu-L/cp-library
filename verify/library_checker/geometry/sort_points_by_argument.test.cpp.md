@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
-    title: src/geometry/point_2d.hpp
+    title: point_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
