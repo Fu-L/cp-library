@@ -103,38 +103,41 @@ data:
     \ Line& l, const Segment& s) {\n    if(is_intersect_ls(l, s)) return 0.0;\n  \
     \  return min(dist_lp(l, s.a), dist_lp(l, s.b));\n}\nReal dist_sl(const Segment&\
     \ s, const Line& l) {\n    return dist_ls(l, s);\n}\n#line 6 \"src/geometry/polygon_2d.hpp\"\
-    \nReal area(const vector<Point>& ps) {\n    Real res = 0.0;\n    int n = ps.size();\n\
-    \    for(int i = 0; i < n; ++i) {\n        res += cross(ps[i], ps[(i + 1) % n]);\n\
-    \    }\n    return abs(res * 0.5);\n}\nbool is_convex(const vector<Point>& ps)\
-    \ {\n    int n = ps.size();\n    for(int i = 0; i < n; ++i) {\n        if(ccw(ps[(i\
-    \ - 1 + n) % n], ps[i], ps[(i + 1) % n]) == -1) return false;\n    }\n    return\
-    \ true;\n}\nint in_polygon(const vector<Point>& ps, const Point& p) {\n    int\
-    \ n = ps.size();\n    int ret = 0;\n    for(int i = 0; i < n; ++i) {\n       \
-    \ Point a = ps[i] - p, b = ps[(i + 1) % n] - p;\n        if(eq(cross(a, b), 0.0)\
-    \ and sign(dot(a, b)) <= 0) return 1;\n        if(a.imag() > b.imag()) swap(a,\
-    \ b);\n        if(sign(a.imag()) <= 0 and sign(b.imag()) == 1 and sign(cross(a,\
-    \ b)) == 1) ret ^= 2;\n    }\n    return ret;\n}\nvector<Point> convex_hull(vector<Point>\
-    \ ps) {\n    sort(ps.begin(), ps.end(), comp_x);\n    ps.erase(unique(ps.begin(),\
-    \ ps.end()), ps.end());\n    int n = ps.size(), k = 0;\n    if(n == 1) return\
-    \ ps;\n    vector<Point> ch(2 * n);\n    for(int i = 0; i < n; ch[k++] = ps[i++])\
-    \ {\n        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k -\
-    \ 1])) == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t\
-    \ = k + 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k\
-    \ - 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
-    \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
-    \ ps) {\n    int n = ps.size(), is = 0, js = 0;\n    for(int i = 1; i < n; ++i)\
-    \ {\n        if(sign(ps[i].imag() - ps[is].imag()) == 1) is = i;\n        if(sign(ps[i].imag()\
-    \ - ps[js].imag()) == -1) js = i;\n    }\n    Real maxdis = norm(ps[is] - ps[js]);\n\
-    \    int i = is, j = js;\n    do {\n        if(sign(cross(ps[(i + 1) % n] - ps[i],\
-    \ ps[(j + 1) % n] - ps[j])) >= 0) {\n            j = (j + 1) % n;\n        } else\
-    \ {\n            i = (i + 1) % n;\n        }\n        if(norm(ps[i] - ps[j]) >\
-    \ maxdis) {\n            maxdis = norm(ps[i] - ps[j]);\n        }\n    } while(i\
-    \ != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point> convex_cut(const\
-    \ vector<Point>& ps, const Line& l) {\n    int n = ps.size();\n    vector<Point>\
-    \ res;\n    for(int i = 0; i < n; ++i) {\n        Point cur = ps[i], nex = ps[(i\
-    \ + 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);\n     \
-    \   if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.push_back(intersection_ll(Line(cur,\
-    \ nex), l)[0]);\n        }\n    }\n    return res;\n}\n#line 7 \"verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp\"\
+    \nReal area(const vector<Point>& polygon) {\n    Real res = 0.0;\n    int n =\
+    \ polygon.size();\n    for(int i = 0; i < n; ++i) {\n        res += cross(polygon[i],\
+    \ polygon[(i + 1) % n]);\n    }\n    return abs(res * 0.5);\n}\nbool is_convex(const\
+    \ vector<Point>& polygon) {\n    int n = polygon.size();\n    for(int i = 0; i\
+    \ < n; ++i) {\n        if(ccw(polygon[(i - 1 + n) % n], polygon[i], polygon[(i\
+    \ + 1) % n]) == -1) return false;\n    }\n    return true;\n}\nint in_polygon(const\
+    \ vector<Point>& polygon, const Point& p) {\n    int n = polygon.size();\n   \
+    \ int ret = 0;\n    for(int i = 0; i < n; ++i) {\n        Point a = polygon[i]\
+    \ - p, b = polygon[(i + 1) % n] - p;\n        if(eq(cross(a, b), 0.0) and sign(dot(a,\
+    \ b)) <= 0) return 1;\n        if(a.imag() > b.imag()) swap(a, b);\n        if(sign(a.imag())\
+    \ <= 0 and sign(b.imag()) == 1 and sign(cross(a, b)) == 1) ret ^= 2;\n    }\n\
+    \    return ret;\n}\nvector<Point> convex_hull(vector<Point> ps) {\n    sort(ps.begin(),\
+    \ ps.end(), comp_x);\n    ps.erase(unique(ps.begin(), ps.end()), ps.end());\n\
+    \    int n = ps.size(), k = 0;\n    if(n == 1) return ps;\n    vector<Point> ch(2\
+    \ * n);\n    for(int i = 0; i < n; ch[k++] = ps[i++]) {\n        while(k >= 2\
+    \ and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n       \
+    \     --k;\n        }\n    }\n    for(int i = n - 2, t = k + 1; i >= 0; ch[k++]\
+    \ = ps[i--]) {\n        while(k >= t and sign(cross(ch[k - 1] - ch[k - 2], ps[i]\
+    \ - ch[k - 1])) == -1) {\n            --k;\n        }\n    }\n    ch.resize(k\
+    \ - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>& polygon)\
+    \ {\n    int n = polygon.size(), is = 0, js = 0;\n    for(int i = 1; i < n; ++i)\
+    \ {\n        if(sign(polygon[i].imag() - polygon[is].imag()) == 1) is = i;\n \
+    \       if(sign(polygon[i].imag() - polygon[js].imag()) == -1) js = i;\n    }\n\
+    \    Real maxdis = norm(polygon[is] - polygon[js]);\n    int i = is, j = js;\n\
+    \    do {\n        if(sign(cross(polygon[(i + 1) % n] - polygon[i], polygon[(j\
+    \ + 1) % n] - polygon[j])) >= 0) {\n            j = (j + 1) % n;\n        } else\
+    \ {\n            i = (i + 1) % n;\n        }\n        if(norm(polygon[i] - polygon[j])\
+    \ > maxdis) {\n            maxdis = norm(polygon[i] - polygon[j]);\n        }\n\
+    \    } while(i != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point>\
+    \ convex_cut(const vector<Point>& polygon, const Line& l) {\n    int n = polygon.size();\n\
+    \    vector<Point> res;\n    for(int i = 0; i < n; ++i) {\n        Point cur =\
+    \ polygon[i], nex = polygon[(i + 1) % n];\n        if(ccw(l.a, l.b, cur) != -1)\
+    \ res.push_back(cur);\n        if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0)\
+    \ {\n            res.push_back(intersection_ll(Line(cur, nex), l)[0]);\n     \
+    \   }\n    }\n    return res;\n}\n#line 7 \"verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp\"\
     \nint main(void) {\n    int n;\n    cin >> n;\n    vector<Point> polygon(n);\n\
     \    rep(i, 0, n) {\n        cin >> polygon[i];\n    }\n    cout << convex_diameter(polygon)\
     \ << '\\n';\n}\n"
@@ -154,7 +157,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
   requiredBy: []
-  timestamp: '2024-02-18 04:18:43+09:00'
+  timestamp: '2024-02-21 16:03:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
