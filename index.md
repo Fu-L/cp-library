@@ -122,7 +122,7 @@ data:
       title: src/geometry/polygon_2d.hpp
     - icon: ':heavy_check_mark:'
       path: src/geometry/template.hpp
-      title: src/geometry/template.hpp
+      title: template
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
