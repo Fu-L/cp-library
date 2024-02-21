@@ -119,7 +119,7 @@ data:
       title: point_2d
     - icon: ':heavy_check_mark:'
       path: src/geometry/polygon_2d.hpp
-      title: src/geometry/polygon_2d.hpp
+      title: polygon_2d
     - icon: ':heavy_check_mark:'
       path: src/geometry/template.hpp
       title: template
