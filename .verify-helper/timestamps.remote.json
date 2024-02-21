@@ -70,6 +70,7 @@
 "verify/library_checker/data_structure/vertex_add_path_sum.test.cpp": "2024-01-16 01:38:58 +0900",
 "verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp": "2024-01-16 01:38:58 +0900",
 "verify/library_checker/data_structure/vertex_set_path_composite.test.cpp": "2024-01-16 01:38:58 +0900",
+"verify/library_checker/geometry/sort_points_by_argument.test.cpp": "2024-02-18 04:26:31 +0900",
 "verify/library_checker/graph/assignment_problem.test.cpp": "2024-02-15 00:10:02 +0900",
 "verify/library_checker/graph/biconnected_components.test.cpp": "2024-01-14 17:33:58 +0900",
 "verify/library_checker/graph/cycle_detection_directed.test.cpp": "2024-01-14 17:33:58 +0900",
