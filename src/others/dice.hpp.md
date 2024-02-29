@@ -35,13 +35,12 @@ data:
     \    }\n    friend bool operator<(const Dice& d1, const Dice& d2) {\n        int\
     \ vd1[] = {d1.top, d1.front, d1.right, d1.left, d1.back, d1.bottom};\n       \
     \ int vd2[] = {d2.top, d2.front, d2.right, d2.left, d2.back, d2.bottom};\n   \
-    \     return vector<int>(vd1, vd1 + 6) < vector<int>(vd2, vd2 + 6);\n    }\n\n\
-    \   private:\n    const vector<int> dx = {1, 0, -1, 0};\n    const vector<int>\
-    \ dy = {0, 1, 0, -1};\n};\n\nvector<Dice> all_rotate() {\n    vector<Dice> res;\n\
-    \    res.reserve(24);\n    Dice d;\n    for(int i = 0; i < 6; ++i) {\n       \
-    \ for(int j = 0; j < 4; ++j) {\n            res.emplace_back(d);\n           \
-    \ d.roll_cw();\n        }\n        if(i & 1) d.roll_front();\n        else d.roll_right();\n\
-    \    }\n    return res;\n}\n"
+    \     return vector<int>(vd1, vd1 + 6) < vector<int>(vd2, vd2 + 6);\n    }\n};\n\
+    \nvector<Dice> all_rotate() {\n    vector<Dice> res;\n    res.reserve(24);\n \
+    \   Dice d;\n    for(int i = 0; i < 6; ++i) {\n        for(int j = 0; j < 4; ++j)\
+    \ {\n            res.emplace_back(d);\n            d.roll_cw();\n        }\n \
+    \       if(i & 1) d.roll_front();\n        else d.roll_right();\n    }\n    return\
+    \ res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#define roll_swap(x,\
     \ a, b, c, d) swap(x.a, x.b), swap(x.b, x.c), swap(x.c, x.d);\nstruct Dice {\n\
     \    int top, front, right, left, back, bottom;\n    Dice(int to = 1, int fr =\
@@ -58,19 +57,18 @@ data:
     \    }\n    friend bool operator<(const Dice& d1, const Dice& d2) {\n        int\
     \ vd1[] = {d1.top, d1.front, d1.right, d1.left, d1.back, d1.bottom};\n       \
     \ int vd2[] = {d2.top, d2.front, d2.right, d2.left, d2.back, d2.bottom};\n   \
-    \     return vector<int>(vd1, vd1 + 6) < vector<int>(vd2, vd2 + 6);\n    }\n\n\
-    \   private:\n    const vector<int> dx = {1, 0, -1, 0};\n    const vector<int>\
-    \ dy = {0, 1, 0, -1};\n};\n\nvector<Dice> all_rotate() {\n    vector<Dice> res;\n\
-    \    res.reserve(24);\n    Dice d;\n    for(int i = 0; i < 6; ++i) {\n       \
-    \ for(int j = 0; j < 4; ++j) {\n            res.emplace_back(d);\n           \
-    \ d.roll_cw();\n        }\n        if(i & 1) d.roll_front();\n        else d.roll_right();\n\
-    \    }\n    return res;\n}"
+    \     return vector<int>(vd1, vd1 + 6) < vector<int>(vd2, vd2 + 6);\n    }\n};\n\
+    \nvector<Dice> all_rotate() {\n    vector<Dice> res;\n    res.reserve(24);\n \
+    \   Dice d;\n    for(int i = 0; i < 6; ++i) {\n        for(int j = 0; j < 4; ++j)\
+    \ {\n            res.emplace_back(d);\n            d.roll_cw();\n        }\n \
+    \       if(i & 1) d.roll_front();\n        else d.roll_right();\n    }\n    return\
+    \ res;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/others/dice.hpp
   requiredBy: []
-  timestamp: '2024-02-29 18:34:20+09:00'
+  timestamp: '2024-02-29 18:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/others/0502.test.cpp
