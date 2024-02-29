@@ -241,7 +241,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/others/dice.hpp
-      title: src/others/dice.hpp
+      title: dice
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'

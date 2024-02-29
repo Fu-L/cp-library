@@ -226,7 +226,7 @@ data:
     title: Matrix
   - icon: ':heavy_check_mark:'
     path: src/others/dice.hpp
-    title: src/others/dice.hpp
+    title: dice
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
