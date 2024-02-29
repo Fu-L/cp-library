@@ -34,10 +34,6 @@ struct Dice {
         int vd2[] = {d2.top, d2.front, d2.right, d2.left, d2.back, d2.bottom};
         return vector<int>(vd1, vd1 + 6) < vector<int>(vd2, vd2 + 6);
     }
-
-   private:
-    const vector<int> dx = {1, 0, -1, 0};
-    const vector<int> dy = {0, 1, 0, -1};
 };
 
 vector<Dice> all_rotate() {
