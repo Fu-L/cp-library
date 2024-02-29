@@ -225,6 +225,9 @@ data:
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':heavy_check_mark:'
+    path: src/others/dice.hpp
+    title: src/others/dice.hpp
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
   - icon: ':heavy_check_mark:'
@@ -408,6 +411,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
     title: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/others/0502.test.cpp
+    title: verify/aizu_online_judge/others/0502.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
@@ -708,6 +714,7 @@ data:
   - src/data_structure/sorted_set.hpp
   - src/data_structure/cumulative_sum_2d.hpp
   - src/data_structure/sparse_table_2d.hpp
+  - src/others/dice.hpp
   - src/string/z_algorithm.hpp
   - src/string/suffix_array.hpp
   - src/string/rolling_hash.hpp
@@ -728,6 +735,7 @@ data:
   timestamp: '2023-12-31 01:05:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aizu_online_judge/others/0502.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers.test.cpp

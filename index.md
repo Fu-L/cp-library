@@ -237,6 +237,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/matrix/matrix.hpp
       title: Matrix
+  - name: src/others
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/others/dice.hpp
+      title: src/others/dice.hpp
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -445,6 +450,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
       title: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
+  - name: verify/aizu_online_judge/others
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/others/0502.test.cpp
+      title: verify/aizu_online_judge/others/0502.test.cpp
   - name: verify/library_checker/convolution
     pages:
     - icon: ':heavy_check_mark:'
