@@ -6,10 +6,10 @@ pair<vector<int>, vector<int>> seive(int n) {
     iota(min_factor.begin(), min_factor.end(), 0);
     min_factor[0] = min_factor[1] = -1;
     vector<int> prime;
-    for(int i = 2; i * i <= n; ++i) {
+    for(long long i = 2; i <= n; ++i) {
         if(min_factor[i] < i) continue;
         prime.push_back(i);
-        for(int j = i * i; j <= n; j += i) {
+        for(long long j = i * i; j <= n; j += i) {
             if(min_factor[j] == j) min_factor[j] = i;
         }
     }
