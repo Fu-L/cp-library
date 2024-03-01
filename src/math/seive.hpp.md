@@ -22,23 +22,24 @@ data:
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/seive.hpp\"\npair<vector<int>,\
     \ vector<int>> seive(int n) {\n    assert(n >= 1);\n    vector<int> min_factor(n\
     \ + 1);\n    iota(min_factor.begin(), min_factor.end(), 0);\n    min_factor[0]\
-    \ = min_factor[1] = -1;\n    vector<int> prime;\n    for(int i = 2; i * i <= n;\
-    \ ++i) {\n        if(min_factor[i] < i) continue;\n        prime.push_back(i);\n\
-    \        for(int j = i * i; j <= n; j += i) {\n            if(min_factor[j] ==\
-    \ j) min_factor[j] = i;\n        }\n    }\n    return {prime, min_factor};\n}\n"
+    \ = min_factor[1] = -1;\n    vector<int> prime;\n    for(long long i = 2; i <=\
+    \ n; ++i) {\n        if(min_factor[i] < i) continue;\n        prime.push_back(i);\n\
+    \        for(long long j = i * i; j <= n; j += i) {\n            if(min_factor[j]\
+    \ == j) min_factor[j] = i;\n        }\n    }\n    return {prime, min_factor};\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\npair<vector<int>, vector<int>>\
     \ seive(int n) {\n    assert(n >= 1);\n    vector<int> min_factor(n + 1);\n  \
     \  iota(min_factor.begin(), min_factor.end(), 0);\n    min_factor[0] = min_factor[1]\
-    \ = -1;\n    vector<int> prime;\n    for(int i = 2; i * i <= n; ++i) {\n     \
-    \   if(min_factor[i] < i) continue;\n        prime.push_back(i);\n        for(int\
-    \ j = i * i; j <= n; j += i) {\n            if(min_factor[j] == j) min_factor[j]\
+    \ = -1;\n    vector<int> prime;\n    for(long long i = 2; i <= n; ++i) {\n   \
+    \     if(min_factor[i] < i) continue;\n        prime.push_back(i);\n        for(long\
+    \ long j = i * i; j <= n; j += i) {\n            if(min_factor[j] == j) min_factor[j]\
     \ = i;\n        }\n    }\n    return {prime, min_factor};\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/seive.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-03-02 01:11:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
