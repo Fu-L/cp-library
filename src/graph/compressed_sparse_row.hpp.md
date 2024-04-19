@@ -71,8 +71,8 @@ data:
   isVerificationFile: false
   path: src/graph/compressed_sparse_row.hpp
   requiredBy:
-  - src/graph/two_sat.hpp
   - src/graph/strongly_connected_components.hpp
+  - src/graph/two_sat.hpp
   timestamp: '2024-01-14 17:33:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
