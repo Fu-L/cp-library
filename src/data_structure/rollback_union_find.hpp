@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 struct RollbackUnionFind {
     RollbackUnionFind(int N)
-        : n(N), inner_snap(0), data(N, -1) {
+        : n(N), data(N, -1), inner_snap(0) {
     }
     int merge(int a, int b) {
         assert(0 <= a and a < n);
@@ -31,23 +31,23 @@ struct RollbackUnionFind {
         return (-data[leader(a)]);
     }
     void undo() {
-        assert(ssize(history) >= 2);
+        assert((int)history.size() >= 2);
         data[history.top().first] = history.top().second;
         history.pop();
         data[history.top().first] = history.top().second;
         history.pop();
     }
     void snapshot() {
-        inner_snap = ssize(history) / 2;
+        inner_snap = (int)history.size() / 2;
     }
     int get_state() {
-        return ssize(history) / 2;
+        return (int)history.size() / 2;
     }
     void rollback(int state = -1) {
         if(state == -1) state = inner_snap;
         state *= 2;
-        assert(state <= ssize(history));
-        while(state < ssize(history)) undo();
+        assert(state <= (int)history.size());
+        while(state < (int)history.size()) undo();
     }
 
    private:
