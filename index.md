@@ -50,7 +50,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/mo.hpp
       title: Mo
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/rollback_union_find.hpp
       title: RollbackUnionFind
     - icon: ':warning:'
@@ -455,6 +455,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aizu_online_judge/others/0502.test.cpp
       title: verify/aizu_online_judge/others/0502.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aizu_online_judge/others/1645.test.cpp
+      title: verify/aizu_online_judge/others/1645.test.cpp
   - name: verify/library_checker/convolution
     pages:
     - icon: ':heavy_check_mark:'

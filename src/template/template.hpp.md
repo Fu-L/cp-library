@@ -47,7 +47,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/mo.hpp
     title: Mo
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/rollback_union_find.hpp
     title: RollbackUnionFind
   - icon: ':warning:'
@@ -415,6 +415,9 @@ data:
     path: verify/aizu_online_judge/others/0502.test.cpp
     title: verify/aizu_online_judge/others/0502.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aizu_online_judge/others/1645.test.cpp
+    title: verify/aizu_online_judge/others/1645.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -744,6 +747,7 @@ data:
   - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp
   - verify/aizu_online_judge/others/0502.test.cpp
+  - verify/aizu_online_judge/others/1645.test.cpp
   - verify/aizu_online_judge/cgl/area.test.cpp
   - verify/aizu_online_judge/cgl/distance.test.cpp
   - verify/aizu_online_judge/cgl/is_convex.test.cpp
