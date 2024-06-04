@@ -17,7 +17,7 @@ Point operator*(const Point& p, const Real& d) {
 Point operator/(const Point& p, const Real& d) {
     return Point(p.real() / d, p.imag() / d);
 }
-Point rot(const Point& p, Real theta) {
+Point rot(const Point& p, const Real& theta) {
     return p * Point(cos(theta), sin(theta));
 }
 Real dot(const Point& p1, const Point& p2) {
@@ -48,11 +48,11 @@ int ccw(const Point& a, Point b, Point c) {
     return 0;
 }
 Real closest_pair(vector<Point> ps) {
-    if((int)ps.size() <= 1) return 1e18;
+    if((int)ps.size() <= 1) return Real(1e18);
     sort(ps.begin(), ps.end(), comp_x);
     vector<Point> memo(ps.size());
     auto func = [&](auto& func, int l, int r) -> Real {
-        if(r - l <= 1) return 1e18;
+        if(r - l <= 1) return Real(1e18);
         int m = (l + r) >> 1;
         Real x = ps[m].real();
         Real res = min(func(func, l, m), func(func, m, r));

@@ -10,14 +10,14 @@ struct TwoSAT {
         graph.add_directed_edge(2 * j + (g ? 0 : 1), 2 * i + (f ? 1 : 0));
     }
     bool satisfiable() {
-        auto id = scc_ids(graph).second;
+        const vector<int> id = scc_ids(graph).second;
         for(int i = 0; i < n; ++i) {
             if(id[2 * i] == id[2 * i + 1]) return false;
             ans[i] = id[2 * i] < id[2 * i + 1];
         }
         return true;
     }
-    vector<bool> answer() {
+    vector<bool> answer() const {
         return ans;
     }
 

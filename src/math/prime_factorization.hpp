@@ -1,9 +1,9 @@
 #pragma once
 #include "../template/template.hpp"
-map<ll, ll> prime_factor(ll n) {
+map<long long, long long> prime_factor(long long n) {
     assert(n >= 1);
-    map<ll, ll> res;
-    for(ll i = 2; i * i <= n; ++i) {
+    map<long long, long long> res;
+    for(long long i = 2; i * i <= n; ++i) {
         while(n % i == 0) {
             ++res[i];
             n /= i;

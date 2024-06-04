@@ -18,7 +18,7 @@ struct HeavyLightDecomposition {
         assert(x >= 0);
         if(x > depth[v]) return -1;
         while(true) {
-            int u = nex[v];
+            const int u = nex[v];
             if(down[v] - x >= down[u]) return rev[down[v] - x];
             x -= down[v] - down[u] + 1;
             v = par[u];
@@ -59,7 +59,7 @@ struct HeavyLightDecomposition {
     vector<int> size, depth, down, up, nex, par, rev;
     void dfs_sz(int cur) {
         size[cur] = 1;
-        for(auto& edge : g[cur]) {
+        for(Edge<T>& edge : g[cur]) {
             if(edge.to == par[cur]) {
                 if(g[cur].size() >= 2 and edge.to == g[cur][0].to) {
                     swap(g[cur][0], g[cur][1]);
@@ -79,7 +79,7 @@ struct HeavyLightDecomposition {
     void dfs_hld(int cur) {
         down[cur] = id++;
         rev[down[cur]] = cur;
-        for(const auto& edge : g[cur]) {
+        for(const Edge<T>& edge : g[cur]) {
             if(edge.to == par[cur]) continue;
             nex[edge.to] = (edge.to == g[cur][0].to ? nex[cur] : edge.to);
             dfs_hld(edge.to);

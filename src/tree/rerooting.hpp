@@ -3,20 +3,20 @@
 #include "../graph/graph_template.hpp"
 template <typename DP, typename T, typename F1, typename F2>
 vector<DP> rerooting(const Graph<T>& g, const F1& f1, const F2& f2, const DP& id) {
-    const int n = (int)g.size();
+    const int n = g.size();
     vector<DP> memo(n, id), dp(n, id);
     auto dfs = [&](auto& dfs, int cur, int par) -> void {
-        for(const auto& e : g[cur]) {
+        for(const Edge<T>& e : g[cur]) {
             if(e.to == par) continue;
-            dfs(dfs, e, cur);
+            dfs(dfs, e.to, cur);
             memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));
         }
     };
     auto efs = [&](auto& efs, int cur, int par, const DP& pval) -> void {
         vector<DP> buf;
-        for(const auto& e : g[cur]) {
+        for(const Edge<T>& e : g[cur]) {
             if(e.to == par) continue;
-            buf.push_back(f2(memo[e.to], e.to, cur));
+            buf.emplace_back(f2(memo[e.to], e.to, cur));
         }
         vector<T> head(buf.size() + 1), tail(buf.size() + 1);
         head[0] = tail[buf.size()] = id;
@@ -26,7 +26,7 @@ vector<DP> rerooting(const Graph<T>& g, const F1& f1, const F2& f2, const DP& id
         }
         dp[cur] = par == -1 ? head.back() : f1(pval, head.back());
         int idx = 0;
-        for(const auto& e : g[cur]) {
+        for(const Edge<T>& e : g[cur]) {
             if(e.to == par) continue;
             efs(efs, e.to, cur, f2(f1(pval, f1(head[idx], tail[idx + 1])), cur, e));
             ++idx;

@@ -7,7 +7,7 @@ vector<T> xor_base(const vector<T>& a) {
         for(const T e : base) {
             v = min(v, v xor e);
         }
-        if(v > 0) base.push_back(v);
+        if(v > 0) base.emplace_back(v);
     }
     return base;
 }

@@ -1,10 +1,10 @@
 #pragma once
 #include "../template/template.hpp"
-constexpr ll pow_mod(ll x, ll n, ll mod) {
+constexpr long long pow_mod(long long x, long long n, const long long mod) {
     assert(n >= 0 and mod >= 1);
     x %= mod;
     if(x < 0) x += mod;
-    ll res = 1;
+    long long res = 1;
     while(n > 0) {
         if(n & 1) res = res * x % mod;
         x = x * x % mod;

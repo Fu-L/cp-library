@@ -155,7 +155,7 @@ vector<mint> convolution_naive(const vector<mint>& a, const vector<mint>& b) {
 }
 template <typename mint>
 vector<mint> convolution(vector<mint> a, vector<mint> b) {
-    int n = (int)a.size(), m = (int)b.size();
+    const int n = (int)a.size(), m = (int)b.size();
     if(n == 0 or m == 0) return {};
     int z = 1;
     while(z < n + m - 1) z *= 2;
@@ -168,7 +168,7 @@ vector<mint> convolution(vector<mint> a, vector<mint> b) {
     for(int i = 0; i < z; ++i) a[i] *= b[i];
     butterfly_inv(a);
     a.resize(n + m - 1);
-    mint iz = mint(z).inv();
+    const mint iz = mint(z).inv();
     for(int i = 0; i < n + m - 1; ++i) a[i] *= iz;
     return a;
 }

@@ -4,7 +4,7 @@ template <typename T>
 struct CumulativeSum2D {
     CumulativeSum2D(int H, int W)
         : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}
-    void add(int i, int j, T x) {
+    void add(int i, int j, const T& x) {
         assert(0 <= i and i < h);
         assert(0 <= j and j < w);
         data[i + 1][j + 1] += x;

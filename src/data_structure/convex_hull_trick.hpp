@@ -4,13 +4,13 @@ template <typename T>
 struct ConvexHullTrick {
     void add(const T& a, const T& b) {
         Linear l(a, b);
-        assert((int)ls.size() == 0 or ls.back().a >= l.a);
+        assert(ls.empty() or ls.back().a >= l.a);
         int len = (int)ls.size();
         while(len >= 2 and check(ls[len - 2], ls[len - 1], l)) {
             --len;
             ls.pop_back();
         }
-        ls.push_back(l);
+        ls.emplace_back(l);
     }
     T operator()(const T& x) {
         assert(x >= x_last);

@@ -3,7 +3,7 @@
 #include "./graph_template.hpp"
 template <typename T>
 vector<int> bipartite(const Graph<T>& g) {
-    const int n = (int)g.size();
+    const int n = g.size();
     vector<int> color(n, -1);
     auto dfs = [&](auto& dfs, int cur, int col) -> bool {
         color[cur] = col;

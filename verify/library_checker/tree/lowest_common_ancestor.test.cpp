@@ -5,13 +5,13 @@
 int main(void) {
     int n, q;
     cin >> n >> q;
-    Graph g(n);
+    Graph<int> g(n);
     rep(i, 1, n) {
         int p;
         cin >> p;
         g.add_edge(i, p);
     }
-    LowestCommonAncestor tree(g, 0);
+    LowestCommonAncestor<int> tree(g, 0);
     while(q--) {
         int u, v;
         cin >> u >> v;

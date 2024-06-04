@@ -2,8 +2,8 @@
 #include "../template/template.hpp"
 #include "./graph_template.hpp"
 template <typename T>
-Edges<T> cycle_detection(const Graph<T>& g, bool directed = true) {
-    int n = g.size();
+Edges<T> cycle_detection(const Graph<T>& g, const bool directed = true) {
+    const int n = g.size();
     for(int i = 0; i < n; ++i) {
         for(const Edge<T>& e : g[i]) {
             if(i == e.to) return {e};
@@ -38,7 +38,7 @@ Edges<T> cycle_detection(const Graph<T>& g, bool directed = true) {
     };
     for(int i = 0; i < n; ++i) {
         if(visited[i]) continue;
-        dfs(dfs, i, i, Edge());
+        dfs(dfs, i, i, Edge<T>());
         if(finish) {
             reverse(begin(cycle), end(cycle));
             return cycle;

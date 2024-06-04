@@ -5,7 +5,7 @@
 int main(void) {
     int n;
     cin >> n;
-    Graph g(n);
+    Graph<int> g(n);
     rep(i, 0, n) {
         int k;
         cin >> k;
@@ -15,7 +15,7 @@ int main(void) {
             g.add_edge(i, c);
         }
     }
-    LowestCommonAncestor tree(g);
+    LowestCommonAncestor<int> tree(g);
     int q;
     cin >> q;
     while(q--) {

@@ -48,9 +48,9 @@ vector<Point> intersection_ll(const Line& l1, const Line& l2) {
     Real a = cross(l1.b - l1.a, l2.b - l2.a);
     Real b = cross(l1.b - l1.a, l1.b - l2.a);
     if(eq(a, 0.0) and eq(b, 0.0)) {
-        res.push_back(l2.a);
+        res.emplace_back(l2.a);
     } else {
-        res.push_back(l2.a + (l2.b - l2.a) * b / a);
+        res.emplace_back(l2.a + (l2.b - l2.a) * b / a);
     }
     return res;
 }
@@ -61,7 +61,7 @@ Real dist_lp(const Line& l, const Point& p) {
     return abs(p - projection(l, p));
 }
 Real dist_sp(const Segment& s, const Point& p) {
-    Point h = projection(s, p);
+    const Point h = projection(s, p);
     if(is_intersect_sp(s, h)) return abs(h - p);
     return min(abs(s.a - p), abs(s.b - p));
 }

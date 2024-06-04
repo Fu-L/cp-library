@@ -8,8 +8,8 @@ struct Mo {
     }
     void insert(int l, int r) {
         assert(0 <= l and l <= r and r <= n);
-        left.push_back(l);
-        right.push_back(r);
+        left.emplace_back(l);
+        right.emplace_back(r);
     }
     template <typename AL, typename AR, typename DL, typename DR, typename OUT>
     void run(const AL& add_left, const AR& add_right, const DL& delete_left, const DR& delete_right, const OUT& out) {

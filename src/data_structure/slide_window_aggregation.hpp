@@ -26,12 +26,12 @@ struct SlideWindowAggregation {
     vector<S> a0, a1, r0, r1;
     S f0, f1;
     void push_s0(const S& x) {
-        a0.push_back(x);
-        r0.push_back(f0 = op(x, f0));
+        a0.emplace_back(x);
+        r0.emplace_back(f0 = op(x, f0));
     }
     void push_s1(const S& x) {
-        a1.push_back(x);
-        r1.push_back(f1 = op(f1, x));
+        a1.emplace_back(x);
+        r1.emplace_back(f1 = op(f1, x));
     }
     void transfer() {
         while(!a1.empty()) {

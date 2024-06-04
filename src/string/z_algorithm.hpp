@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 template <typename T>
 vector<int> z_algorithm(const vector<T>& s) {
-    int n = (int)s.size();
+    const int n = (int)s.size();
     if(n == 0) return {};
     vector<int> z(n);
     z[0] = 0;
@@ -16,7 +16,7 @@ vector<int> z_algorithm(const vector<T>& s) {
     return z;
 }
 vector<int> z_algorithm(const string& s) {
-    int n = (int)s.size();
+    const int n = (int)s.size();
     vector<int> s2(n);
     for(int i = 0; i < n; ++i) {
         s2[i] = s[i];

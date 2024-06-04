@@ -5,21 +5,21 @@
 #include "./line_and_segment_2d.hpp"
 Real area(const vector<Point>& polygon) {
     Real res = 0.0;
-    int n = polygon.size();
+    const int n = (int)polygon.size();
     for(int i = 0; i < n; ++i) {
         res += cross(polygon[i], polygon[(i + 1) % n]);
     }
     return abs(res * 0.5);
 }
 bool is_convex(const vector<Point>& polygon) {
-    int n = polygon.size();
+    const int n = (int)polygon.size();
     for(int i = 0; i < n; ++i) {
         if(ccw(polygon[(i - 1 + n) % n], polygon[i], polygon[(i + 1) % n]) == -1) return false;
     }
     return true;
 }
 int in_polygon(const vector<Point>& polygon, const Point& p) {
-    int n = polygon.size();
+    const int n = (int)polygon.size();
     int ret = 0;
     for(int i = 0; i < n; ++i) {
         Point a = polygon[i] - p, b = polygon[(i + 1) % n] - p;
@@ -32,7 +32,7 @@ int in_polygon(const vector<Point>& polygon, const Point& p) {
 vector<Point> convex_hull(vector<Point> ps) {
     sort(ps.begin(), ps.end(), comp_x);
     ps.erase(unique(ps.begin(), ps.end()), ps.end());
-    int n = ps.size(), k = 0;
+    int n = (int)ps.size(), k = 0;
     if(n == 1) return ps;
     vector<Point> ch(2 * n);
     for(int i = 0; i < n; ch[k++] = ps[i++]) {
@@ -49,7 +49,7 @@ vector<Point> convex_hull(vector<Point> ps) {
     return ch;
 }
 Real convex_diameter(const vector<Point>& polygon) {
-    int n = polygon.size(), is = 0, js = 0;
+    int n = (int)polygon.size(), is = 0, js = 0;
     for(int i = 1; i < n; ++i) {
         if(sign(polygon[i].imag() - polygon[is].imag()) == 1) is = i;
         if(sign(polygon[i].imag() - polygon[js].imag()) == -1) js = i;
@@ -69,13 +69,13 @@ Real convex_diameter(const vector<Point>& polygon) {
     return sqrt(maxdis);
 }
 vector<Point> convex_cut(const vector<Point>& polygon, const Line& l) {
-    int n = polygon.size();
+    const int n = (int)polygon.size();
     vector<Point> res;
     for(int i = 0; i < n; ++i) {
-        Point cur = polygon[i], nex = polygon[(i + 1) % n];
-        if(ccw(l.a, l.b, cur) != -1) res.push_back(cur);
+        const Point cur = polygon[i], nex = polygon[(i + 1) % n];
+        if(ccw(l.a, l.b, cur) != -1) res.emplace_back(cur);
         if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {
-            res.push_back(intersection_ll(Line(cur, nex), l)[0]);
+            res.emplace_back(intersection_ll(Line(cur, nex), l)[0]);
         }
     }
     return res;

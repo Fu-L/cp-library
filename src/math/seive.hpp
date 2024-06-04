@@ -8,7 +8,7 @@ pair<vector<int>, vector<int>> seive(int n) {
     vector<int> prime;
     for(long long i = 2; i <= n; ++i) {
         if(min_factor[i] < i) continue;
-        prime.push_back(i);
+        prime.emplace_back(i);
         for(long long j = i * i; j <= n; j += i) {
             if(min_factor[j] == j) min_factor[j] = i;
         }

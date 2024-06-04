@@ -61,8 +61,8 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
     }
     F& operator/=(const mint& r) {
         const int n = (*this).size();
-        mint inv_r = r.inv();
-        for(int i = 0; i < (int)n; ++i) (*this)[i] *= inv_r;
+        const mint inv_r = r.inv();
+        for(int i = 0; i < n; ++i) (*this)[i] *= inv_r;
         return (*this);
     }
     F& operator%=(const F& g) {
@@ -110,7 +110,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return ret;
     }
     void shrink() {
-        while((*this).size() and (*this).back() == mint(0)) (*this).pop_back();
+        while(!(*this).empty() and (*this).back() == mint(0)) (*this).pop_back();
     }
     F rev() const {
         F ret(*this);
@@ -194,7 +194,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         }
         return ret.pre(deg);
     }
-    F pow(const ll k, int deg = -1) const {
+    F pow(const long long k, int deg = -1) const {
         assert(deg >= -1);
         assert(k >= 0);
         const int n = (*this).size();
@@ -218,7 +218,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return F(deg, mint(0));
     }
     F shift(const mint& c) const {
-        int n = (*this).size();
+        const int n = (*this).size();
         vector<mint> fact(n), ifact(n);
         fact[0] = ifact[0] = mint(1);
         for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;

@@ -9,7 +9,7 @@ pair<T, Edges<T>> kruskal(int n, Edges<T> es) {
     T cost = 0;
     Edges<T> res;
     res.reserve(n - 1);
-    for(const auto& e : es) {
+    for(const Edge<T>& e : es) {
         if(uf.same(e.from, e.to)) continue;
         cost += e.cost;
         uf.merge(e.from, e.to);

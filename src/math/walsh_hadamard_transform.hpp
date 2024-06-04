@@ -1,13 +1,13 @@
 #pragma once
 #include "../template/template.hpp"
 template <typename T>
-void walsh_hadamard_transform(vector<T>& f, bool inv = false) {
-    int n = f.size();
+void walsh_hadamard_transform(vector<T>& f, const bool inv = false) {
+    const int n = f.size();
     assert((n & (n - 1)) == 0);
     for(int i = 1; i < n; i <<= 1) {
         for(int j = 0; j < n; ++j) {
             if((j & i) == 0) {
-                T x = f[j], y = f[j | i];
+                const T x = f[j], y = f[j | i];
                 f[j] = x + y, f[j | i] = x - y;
             }
         }
@@ -16,7 +16,7 @@ void walsh_hadamard_transform(vector<T>& f, bool inv = false) {
         if constexpr(is_integral<T>::value) {
             for(auto& x : f) x /= n;
         } else {
-            T invn = T(1) / T(f.size());
+            const T invn = T(1) / T(f.size());
             for(auto& x : f) x *= invn;
         }
     }

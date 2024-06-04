@@ -13,11 +13,11 @@ struct TwoEdgeConnectedComponents {
         groups.resize(k);
         tree.resize(k);
         for(int i = 0; i < n; ++i) {
-            groups[comp[i]].push_back(i);
+            groups[comp[i]].emplace_back(i);
         }
-        for(const auto& e : low.bridge) {
+        for(const pair<int, int>& e : low.bridge) {
             int u = comp[e.first], v = comp[e.second];
-            tree[u].push_back(v);
+            tree[u].emplace_back(v);
         }
     }
     inline int operator[](const int& i) const {
@@ -32,8 +32,8 @@ struct TwoEdgeConnectedComponents {
     void dfs(const Graph<T>& g, int i, int p) {
         if(p >= 0 and low.ord[p] >= low.low[i]) comp[i] = comp[p];
         else comp[i] = k++;
-        for(const int to : g[i]) {
-            if(comp[to] == -1) dfs(g, to, i);
+        for(const Edge<T>& e : g[i]) {
+            if(comp[e.to] == -1) dfs(g, e.to, i);
         }
     }
 };

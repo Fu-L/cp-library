@@ -1,8 +1,8 @@
 #pragma once
 #include "../template/template.hpp"
-ll euler_phi(ll n) {
-    ll res = max(n, 0ll);
-    for(ll i = 2; i * i <= n; ++i) {
+long long euler_phi(long long n) {
+    long long res = max(n, 0ll);
+    for(long long i = 2; i * i <= n; ++i) {
         if(n % i == 0) {
             res -= res / i;
             while(n % i == 0) n /= i;

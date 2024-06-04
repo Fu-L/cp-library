@@ -61,8 +61,8 @@ struct FormalPowerSeries : vector<mint> {
     }
     F& operator/=(const mint& r) {
         const int n = (*this).size();
-        mint inv_r = r.inv();
-        for(int i = 0; i < (int)n; ++i) (*this)[i] *= inv_r;
+        const mint inv_r = r.inv();
+        for(int i = 0; i < n; ++i) (*this)[i] *= inv_r;
         return (*this);
     }
     F& operator%=(const F& g) {
@@ -110,7 +110,7 @@ struct FormalPowerSeries : vector<mint> {
         return ret;
     }
     void shrink() {
-        while((*this).size() and (*this).back() == mint(0)) (*this).pop_back();
+        while(!(*this).empty() and (*this).back() == mint(0)) (*this).pop_back();
     }
     F rev() const {
         F ret(*this);
@@ -157,7 +157,8 @@ struct FormalPowerSeries : vector<mint> {
         return ret;
     }
     F integral() const {
-        const int n = (*this).size(), mod = mint::mod();
+        const int n = (*this).size();
+        static constexpr int mod = mint::mod();
         F ret(n + 1);
         ret[0] = mint(0);
         if(n > 0) ret[1] = mint(1);
@@ -173,7 +174,7 @@ struct FormalPowerSeries : vector<mint> {
         F g(1);
         g[0] = (*this)[0].inv();
         while((int)g.size() < deg) {
-            int m = g.size();
+            const int m = g.size();
             F f(begin(*this), begin(*this) + min(n, 2 * m));
             F r(g);
             f.resize(2 * m);
@@ -208,13 +209,14 @@ struct FormalPowerSeries : vector<mint> {
         if(deg == -1) deg = n;
         F Inv;
         Inv.reserve(deg + 1);
-        Inv.push_back(mint(0));
-        Inv.push_back(mint(1));
+        Inv.emplace_back(mint(0));
+        Inv.emplace_back(mint(1));
         auto inplace_integral = [&](F& f) -> void {
-            const int n = (int)f.size(), mod = mint::mod();
+            const int n = (int)f.size();
+            static constexpr int mod = mint::mod();
             while((int)Inv.size() <= n) {
-                int i = Inv.size();
-                Inv.push_back((-Inv[mod % i]) * (mod / i));
+                const int i = Inv.size();
+                Inv.emplace_back((-Inv[mod % i]) * (mod / i));
             }
             f.insert(begin(f), mint(0));
             for(int i = 1; i <= n; ++i) f[i] *= Inv[i];
@@ -237,7 +239,7 @@ struct FormalPowerSeries : vector<mint> {
             F z(m);
             for(int i = 0; i < m; ++i) z[i] = y[i] * z1[i];
             butterfly_inv(z);
-            mint si = mint(m).inv();
+            const mint si = mint(m).inv();
             for(int i = 0; i < m; ++i) z[i] *= si;
             fill(begin(z), begin(z) + m / 2, mint(0));
             butterfly(z);
@@ -251,7 +253,7 @@ struct FormalPowerSeries : vector<mint> {
             F x(begin((*this)), begin((*this)) + min<int>((*this).size(), m));
             x.resize(m);
             inplace_diff(x);
-            x.push_back(mint(0));
+            x.emplace_back(mint(0));
             butterfly(x);
             for(int i = 0; i < m; ++i) x[i] *= y[i];
             butterfly_inv(x);
@@ -262,7 +264,7 @@ struct FormalPowerSeries : vector<mint> {
             butterfly(x);
             for(int i = 0; i < 2 * m; ++i) x[i] *= z2[i];
             butterfly_inv(x);
-            mint si2 = mint(m << 1).inv();
+            const mint si2 = mint(m << 1).inv();
             for(int i = 0; i < 2 * m; ++i) x[i] *= si2;
             x.pop_back();
             inplace_integral(x);
@@ -276,7 +278,7 @@ struct FormalPowerSeries : vector<mint> {
         }
         return b.pre(deg);
     }
-    F pow(const ll k, int deg = -1) const {
+    F pow(const long long k, int deg = -1) const {
         assert(deg >= -1);
         assert(k >= 0);
         const int n = (*this).size();
@@ -300,7 +302,7 @@ struct FormalPowerSeries : vector<mint> {
         return F(deg, mint(0));
     }
     F shift(const mint& c) const {
-        int n = (*this).size();
+        const int n = (*this).size();
         vector<mint> fact(n), ifact(n);
         fact[0] = ifact[0] = mint(1);
         for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;

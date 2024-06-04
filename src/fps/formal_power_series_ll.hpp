@@ -89,7 +89,7 @@ struct FormalPowerSeriesLL : vector<T> {
         return ret;
     }
     void shrink() {
-        while((*this).size() and (*this).back() == T(0)) (*this).pop_back();
+        while(!(*this).empty() and (*this).back() == T(0)) (*this).pop_back();
     }
     F rev() const {
         F ret(*this);

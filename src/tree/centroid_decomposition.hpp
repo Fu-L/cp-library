@@ -3,7 +3,7 @@
 #include "../graph/graph_template.hpp"
 template <typename T>
 pair<Graph<int>, int> centroid_decomposition(const Graph<T>& g) {
-    const int n = (int)g.size();
+    const int n = g.size();
     vector<int> sub(n);
     vector<bool> visited(n);
     Graph<int> tree(n);
@@ -15,24 +15,24 @@ pair<Graph<int>, int> centroid_decomposition(const Graph<T>& g) {
         }
         return sub[cur];
     };
-    auto get_centroid = [&](auto& get_size, auto& get_centroid, int cur, int par, int mid) -> int {
+    auto get_centroid = [&](auto& get_centroid, int cur, int par, int mid) -> int {
         for(const Edge<T>& e : g[cur]) {
             if(e.to == par or visited[e.to]) continue;
-            if(sub[e.to] > mid) return get_centroid(get_size, get_centroid, e.to, cur, mid);
+            if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);
         }
         return cur;
     };
-    auto dfs = [&](auto& get_size, auto& get_centroid, auto& dfs, int cur) -> int {
-        int centroid = get_centroid(get_size, get_centroid, cur, -1, get_size(get_size, cur, -1) / 2);
+    auto dfs = [&](auto& dfs, int cur) -> int {
+        const int centroid = get_centroid(get_centroid, cur, -1, get_size(get_size, cur, -1) / 2);
         visited[centroid] = true;
         for(const Edge<T>& e : g[centroid]) {
             if(visited[e.to]) continue;
-            int nex = dfs(get_size, get_centroid, dfs, e.to);
+            const int nex = dfs(dfs, e.to);
             if(centroid != nex) tree.add_directed_edge(centroid, nex);
         }
         visited[centroid] = false;
         return centroid;
     };
-    int root = dfs(get_size, get_centroid, dfs, 0);
+    const int root = dfs(dfs, 0);
     return {tree, root};
 }

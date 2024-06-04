@@ -1,19 +1,19 @@
 #pragma once
 #include "../template/template.hpp"
-template <typename T = int>
+template <typename T>
 struct Edge {
     int from, to;
     T cost;
     int idx;
     Edge()
         : from(-1), to(-1), cost(-1), idx(-1) {}
-    Edge(int from, int to, T cost = 1, int idx = -1)
+    Edge(int from, int to, const T& cost = 1, int idx = -1)
         : from(from), to(to), cost(cost), idx(idx) {}
     operator int() const {
         return to;
     }
 };
-template <typename T = int>
+template <typename T>
 struct Graph {
     Graph(int N)
         : n(N), es(0), g(N) {}
@@ -23,13 +23,13 @@ struct Graph {
     int edge_size() const {
         return es;
     }
-    void add_edge(int from, int to, T cost = 1) {
+    void add_edge(int from, int to, const T& cost = 1) {
         assert(0 <= from and from < n);
         assert(0 <= to and to < n);
         g[from].emplace_back(from, to, cost, es);
         g[to].emplace_back(to, from, cost, es++);
     }
-    void add_directed_edge(int from, int to, T cost = 1) {
+    void add_directed_edge(int from, int to, const T& cost = 1) {
         assert(0 <= from and from < n);
         assert(0 <= to and to < n);
         g[from].emplace_back(from, to, cost, es++);
@@ -47,5 +47,5 @@ struct Graph {
     int n, es;
     vector<vector<Edge<T>>> g;
 };
-template <typename T = int>
+template <typename T>
 using Edges = vector<Edge<T>>;

@@ -7,7 +7,7 @@ struct LowLink {
     vector<pair<int, int>> bridge;
     LowLink(const Graph<T>& g)
         : ord(g.size(), -1), low(g.size(), -1) {
-        for(int i = 0, k = 0; i < (int)g.size(); ++i) {
+        for(int i = 0, k = 0; i < g.size(); ++i) {
             if(ord[i] == -1) k = dfs(g, i, k, -1);
         }
     }
@@ -17,7 +17,8 @@ struct LowLink {
         low[idx] = (ord[idx] = k++);
         int cnt = 0;
         bool arti = false, second = false;
-        for(const int to : g[idx]) {
+        for(const Edge<T>& e : g[idx]) {
+            const int to = e.to;
             if(ord[to] == -1) {
                 ++cnt;
                 k = dfs(g, to, k, idx);
@@ -33,7 +34,7 @@ struct LowLink {
             }
         }
         arti |= (par == -1) and (cnt > 1);
-        if(arti) articulation.push_back(idx);
+        if(arti) articulation.emplace_back(idx);
         return k;
     }
 };

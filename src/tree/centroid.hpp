@@ -3,12 +3,12 @@
 #include "../graph/graph_template.hpp"
 template <typename T>
 vector<int> centroid(const Graph<T>& g) {
-    int n = (int)g.size();
+    const int n = g.size();
     stack<pair<int, int>> st;
     st.emplace(0, -1);
     vector<int> sz(n), par(n);
     while(!st.empty()) {
-        pair<int, int> p = st.top();
+        const pair<int, int> p = st.top();
         if(sz[p.first] == 0) {
             sz[p.first] = 1;
             for(const Edge<T>& e : g[p.first]) {

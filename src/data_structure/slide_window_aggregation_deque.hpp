@@ -37,16 +37,16 @@ struct SlideWindowAggregationDeque {
         return r1.empty() ? e() : r1.back();
     }
     void push0(const S& x) {
-        a0.push_back(x);
-        r0.push_back(op(x, get0()));
+        a0.emplace_back(x);
+        r0.emplace_back(op(x, get0()));
     }
     void push1(const S& x) {
-        a1.push_back(x);
-        r1.push_back(op(get1(), x));
+        a1.emplace_back(x);
+        r1.emplace_back(op(get1(), x));
     }
     void rebalance() {
-        int n = a0.size() + a1.size();
-        int s0 = n / 2 + (a0.empty() ? n % 2 : 0);
+        const int n = a0.size() + a1.size();
+        const int s0 = n / 2 + (a0.empty() ? n % 2 : 0);
         vector<S> a{a0};
         reverse(begin(a), end(a));
         copy(begin(a1), end(a1), back_inserter(a));

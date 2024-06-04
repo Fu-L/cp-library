@@ -54,7 +54,7 @@ struct Matrix {
         A.swap(C);
         return (*this);
     }
-    Matrix& pow(ll t) {
+    Matrix& pow(long long t) {
         assert(h == w);
         assert(t >= 0);
         Matrix B = Matrix::I(h);
@@ -77,8 +77,8 @@ struct Matrix {
     }
     bool operator==(const Matrix& B) const {
         assert(h == B.H() and w == B.W());
-        rep(i, 0, h) {
-            rep(j, 0, w) {
+        for(int i = 0; i < h; ++i) {
+            for(int j = 0; j < w; ++j) {
                 if(A[i][j] != B[i][j]) return false;
             }
         }

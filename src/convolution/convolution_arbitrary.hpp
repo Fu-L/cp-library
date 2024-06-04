@@ -4,14 +4,14 @@
 #include "./convolution.hpp"
 template <typename mint>
 vector<mint> convolution_arbitary(const vector<mint>& a, const vector<mint>& b) {
-    int n = (int)a.size(), m = (int)b.size();
+    const int n = (int)a.size(), m = (int)b.size();
     if(!n or !m) return {};
-    static constexpr ll MOD1 = 754974721;
-    static constexpr ll MOD2 = 167772161;
-    static constexpr ll MOD3 = 469762049;
-    static constexpr ll M1_inv_M2 = 95869806;
-    static constexpr ll M12_inv_M3 = 187290749;
-    static constexpr ll M12_mod = MOD1 * MOD2 % mint::mod();
+    static constexpr long long MOD1 = 754974721;
+    static constexpr long long MOD2 = 167772161;
+    static constexpr long long MOD3 = 469762049;
+    static constexpr long long M1_inv_M2 = 95869806;
+    static constexpr long long M12_inv_M3 = 187290749;
+    static const long long M12_mod = MOD1 * MOD2 % mint::mod();
     using mint1 = StaticModint<(uint32_t)MOD1>;
     using mint2 = StaticModint<(uint32_t)MOD2>;
     using mint3 = StaticModint<(uint32_t)MOD3>;
@@ -29,11 +29,11 @@ vector<mint> convolution_arbitary(const vector<mint>& a, const vector<mint>& b) 
     vector<mint3> z = convolution<mint3>(a3, b3);
     vector<mint> c(n + m - 1);
     for(int i = 0; i < n + m - 1; ++i) {
-        ll v1 = ((ll)y[i].val() - (ll)x[i].val()) * M1_inv_M2 % MOD2;
+        long long v1 = ((long long)y[i].val() - (long long)x[i].val()) * M1_inv_M2 % MOD2;
         if(v1 < 0) v1 += MOD2;
-        ll v2 = ((ll)z[i].val() - ((ll)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3 % MOD3;
+        long long v2 = ((long long)z[i].val() - ((long long)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3 % MOD3;
         if(v2 < 0) v2 += MOD3;
-        c[i] = (ll)x[i].val() + MOD1 * v1 + M12_mod * v2;
+        c[i] = (long long)x[i].val() + MOD1 * v1 + M12_mod * v2;
     }
     return c;
 }

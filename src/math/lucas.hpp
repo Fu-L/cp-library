@@ -13,7 +13,7 @@ struct Lucas {
         if(n < 0 or n < k or k < 0) return 0;
         mint res = 1;
         while(n > 0) {
-            long long n0 = n % mod, k0 = k % mod;
+            const long long n0 = n % mod, k0 = k % mod;
             if(n0 < k0) return 0;
             res *= fact[n0] * ifact[k0] * ifact[n0 - k0];
             n /= mod;

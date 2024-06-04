@@ -4,7 +4,7 @@
 #include "./gauss_elimination.hpp"
 template <typename T>
 Matrix<T> inverse(const Matrix<T>& a) {
-    int n = a.H();
+    const int n = a.H();
     assert(n > 0);
     assert(n == a.W());
     Matrix<T> m(n, 2 * n);

@@ -1,10 +1,10 @@
 #pragma once
 #include "../template/template.hpp"
 #include "../graph/graph_template.hpp"
-template <typename T = int>
+template <typename T>
 struct LowestCommonAncestor {
     LowestCommonAncestor(const Graph<T>& g, int root = 0) {
-        assert(0 <= root and root < (int)g.size());
+        assert(0 <= root and root < g.size());
         init(g, root);
     }
     int depth(int v) const {
@@ -53,7 +53,7 @@ struct LowestCommonAncestor {
     vector<int> dep;
     vector<T> co;
     void init(const Graph<T>& g, int root = 0) {
-        n = (int)g.size();
+        n = g.size();
         int h = 1;
         while((1 << h) < n) ++h;
         par.assign(h, vector<int>(n, -1));
@@ -72,7 +72,7 @@ struct LowestCommonAncestor {
         par[0][v] = p;
         dep[v] = d;
         co[v] = c;
-        for(const auto& e : g[v]) {
+        for(const Edge<T>& e : g[v]) {
             if(e.to == p) continue;
             dfs(g, e.to, v, d + 1, c + e.cost);
         }

@@ -22,13 +22,13 @@ pair<int, T> gauss_elimination(Matrix<T>& a, int pivot_end = -1) {
         if(rank != idx) det = -det, swap(a[rank], a[idx]);
         det *= a[rank][j];
         if(a[rank][j] != T(1)) {
-            T coeff = T(1) / a[rank][j];
+            const T coeff = T(1) / a[rank][j];
             for(int k = j; k < w; ++k) a[rank][k] *= coeff;
         }
         for(int i = 0; i < h; ++i) {
             if(i == rank) continue;
             if(a[i][j] != T(0)) {
-                T coeff = a[i][j] / a[rank][j];
+                const T coeff = a[i][j] / a[rank][j];
                 for(int k = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;
             }
         }

@@ -1,15 +1,15 @@
 #pragma once
 #include "../template/template.hpp"
 #include "../graph/graph_template.hpp"
-template <typename T = int>
+template <typename T>
 pair<T, vector<int>> tree_diameter(const Graph<T>& g) {
-    int n = (int)g.size();
+    const int n = g.size();
     vector<T> depth(n);
     vector<int> par(n);
-    auto dfs = [&](auto& dfs, int v, int p, T d) -> void {
+    auto dfs = [&](auto& dfs, int v, int p, const T& d) -> void {
         depth[v] = d;
         par[v] = p;
-        for(auto& e : g[v]) {
+        for(const Edge<T>& e : g[v]) {
             if(e.to == p) continue;
             dfs(dfs, e.to, v, d + e.cost);
         }
@@ -26,9 +26,9 @@ pair<T, vector<int>> tree_diameter(const Graph<T>& g) {
         }
     }
     vector<int> path;
-    T diameter = depth[s];
+    const T diameter = depth[s];
     while(s != -1) {
-        path.push_back(s);
+        path.emplace_back(s);
         s = par[s];
     }
     return {diameter, path};

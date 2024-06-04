@@ -3,7 +3,7 @@
 #include "../graph/graph_template.hpp"
 template <typename T>
 pair<Graph<int>, int> cartesian_tree(const vector<T>& a) {
-    int n = (int)a.size();
+    const int n = (int)a.size();
     Graph<int> g(n);
     vector<int> p(n, -1), st;
     st.reserve(n);
@@ -15,7 +15,7 @@ pair<Graph<int>, int> cartesian_tree(const vector<T>& a) {
         }
         if(prv != -1) p[prv] = i;
         if(!st.empty()) p[i] = st.back();
-        st.push_back(i);
+        st.emplace_back(i);
     }
     int root = -1;
     for(int i = 0; i < n; ++i) {
