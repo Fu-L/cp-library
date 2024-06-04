@@ -7,7 +7,7 @@ data:
   - icon: ':x:'
     path: src/fps/all_product.hpp
     title: all_product
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':question:'

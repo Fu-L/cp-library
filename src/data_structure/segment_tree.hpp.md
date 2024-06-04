@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_set_range_composite.test.cpp
     title: verify/library_checker/data_structure/point_set_range_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
     title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -114,7 +114,7 @@ data:
   path: src/data_structure/segment_tree.hpp
   requiredBy: []
   timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp

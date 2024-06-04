@@ -5,37 +5,37 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
   - icon: ':x:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_sat.hpp
     title: TwoSAT
   - icon: ':x:'
@@ -93,37 +93,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
     title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
     title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
     title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_directed.test.cpp
     title: verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
     title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
   - icon: ':x:'

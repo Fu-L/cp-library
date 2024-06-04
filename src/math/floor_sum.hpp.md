@@ -6,12 +6,12 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
     title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -39,7 +39,7 @@ data:
   path: src/math/floor_sum.hpp
   requiredBy: []
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/math/sum_of_floor_of_linear.test.cpp
 documentation_of: src/math/floor_sum.hpp

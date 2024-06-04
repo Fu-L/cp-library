@@ -44,7 +44,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segment_tree.hpp
     title: LazySegmentTree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/mo.hpp
     title: Mo
   - icon: ':heavy_check_mark:'
@@ -53,13 +53,13 @@ data:
   - icon: ':warning:'
     path: src/data_structure/segment_set.hpp
     title: SegmentSet
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segment_tree.hpp
     title: SegmentTree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/slide_window_aggregation.hpp
     title: SlideWindowAggregation
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/slide_window_aggregation_deque.hpp
     title: SlideWindowAggregationDeque
   - icon: ':heavy_check_mark:'
@@ -71,7 +71,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table_2d.hpp
     title: SparseTable2D
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
   - icon: ':heavy_check_mark:'
@@ -83,13 +83,13 @@ data:
   - icon: ':x:'
     path: src/fps/all_product.hpp
     title: all_product
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/bostan_mori.hpp
     title: bostan_mori
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':x:'
@@ -107,55 +107,55 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: line_and_segment_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: point_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/polygon_2d.hpp
     title: polygon_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
   - icon: ':x:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: MaxFlow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_sat.hpp
     title: TwoSAT
   - icon: ':heavy_check_mark:'
@@ -173,7 +173,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/extgcd.hpp
     title: extgcd
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/floor_sum.hpp
     title: floor_sum
   - icon: ':x:'
@@ -182,13 +182,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/is_prime.hpp
     title: is_prime
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
   - icon: ':warning:'
     path: src/math/lucas.hpp
     title: Lucas
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':question:'
@@ -212,16 +212,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':heavy_check_mark:'
@@ -429,7 +429,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -444,7 +444,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_set_range_composite.test.cpp
     title: verify/library_checker/data_structure/point_set_range_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -468,7 +468,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_range_frequency.test.cpp
     title: verify/library_checker/data_structure/static_range_frequency.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   - icon: ':heavy_check_mark:'
@@ -477,82 +477,82 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
     title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
     title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
     title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
     title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/assignment_problem.test.cpp
     title: verify/library_checker/graph/assignment_problem.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_directed.test.cpp
     title: verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
     title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/discrete_logarithm.test.cpp
     title: verify/library_checker/math/discrete_logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/find_linear_recurrence.test.cpp
     title: verify/library_checker/math/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/primality_test.test.cpp
     title: verify/library_checker/math/primality_test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
     title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/inverse_matrix.test.cpp
     title: verify/library_checker/matrix/inverse_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/matrix_product.test.cpp
     title: verify/library_checker/matrix/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/pow_of_matrix.test.cpp
     title: verify/library_checker/matrix/pow_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/rank_of_matrix.test.cpp
     title: verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
     title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - icon: ':x:'

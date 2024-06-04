@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/maximum_flow.test.cpp
     title: verify/aizu_online_judge/grl/maximum_flow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -137,7 +137,7 @@ data:
   path: src/graph/max_flow.hpp
   requiredBy: []
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - verify/aizu_online_judge/grl/maximum_flow.test.cpp

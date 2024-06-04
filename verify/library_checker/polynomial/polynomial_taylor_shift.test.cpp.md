@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':question:'

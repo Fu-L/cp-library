@@ -15,10 +15,10 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/find_linear_recurrence.test.cpp
     title: verify/library_checker/math/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':x:'
@@ -44,7 +44,7 @@ data:
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -442,7 +442,7 @@ data:
   path: src/fps/formal_power_series.hpp
   requiredBy: []
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp

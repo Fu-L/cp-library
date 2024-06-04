@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':question:'
@@ -15,12 +15,12 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -103,7 +103,7 @@ data:
   path: src/graph/two_sat.hpp
   requiredBy: []
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/math/2_sat.test.cpp
 documentation_of: src/graph/two_sat.hpp

@@ -14,7 +14,7 @@ data:
   - icon: ':x:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':x:'
@@ -36,10 +36,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/find_linear_recurrence.test.cpp
     title: verify/library_checker/math/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':x:'

@@ -5,37 +5,37 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/inverse_matrix.test.cpp
     title: verify/library_checker/matrix/inverse_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/matrix_product.test.cpp
     title: verify/library_checker/matrix/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/pow_of_matrix.test.cpp
     title: verify/library_checker/matrix/pow_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/rank_of_matrix.test.cpp
     title: verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
     title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -122,7 +122,7 @@ data:
   - src/matrix/gauss_elimination.hpp
   - src/matrix/inverse.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - verify/library_checker/matrix/rank_of_matrix.test.cpp

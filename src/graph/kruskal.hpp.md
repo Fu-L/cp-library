@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
   - icon: ':question:'
@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
     title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -86,7 +86,7 @@ data:
   path: src/graph/kruskal.hpp
   requiredBy: []
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp

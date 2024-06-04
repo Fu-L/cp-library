@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'
@@ -18,9 +18,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
@@ -168,7 +168,7 @@ data:
   path: verify/library_checker/matrix/inverse_matrix.test.cpp
   requiredBy: []
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/inverse_matrix.test.cpp
 layout: document
