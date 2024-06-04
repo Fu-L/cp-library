@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -72,7 +72,7 @@ $$c_k = \sum\limits_{i \oplus j = k} a_i b_j$$
 
 **制約**
 
-- 数列 $a$ と $b$ の長さは等しい
+- 数列 $a$ と $b$ の長さは等しい．
 - 数列 $a$ と $b$ の長さは $2$ の累乗である．
 
 **計算量**

@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/bostan_mori.hpp
     title: bostan_mori
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

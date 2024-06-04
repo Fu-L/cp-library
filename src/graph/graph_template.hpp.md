@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/bipartite.hpp
     title: bipartite
   - icon: ':heavy_check_mark:'
@@ -38,25 +38,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/two_sat.hpp
     title: TwoSAT
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid.hpp
     title: centroid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/heavy_light_decomposition.hpp
     title: HeavyLightDecomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
   - icon: ':heavy_check_mark:'
     path: src/tree/rerooting.hpp
     title: rerooting
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/tree_diameter.hpp
     title: tree_diameter
   _extendedVerifiedWith:
@@ -126,30 +126,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/jump_on_tree.test.cpp
     title: verify/library_checker/tree/jump_on_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -217,7 +217,7 @@ data:
   - src/tree/centroid.hpp
   - src/tree/rerooting.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp

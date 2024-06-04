@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segment_tree.hpp
     title: LazySegmentTree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/heavy_light_decomposition.hpp
     title: HeavyLightDecomposition
   _extendedRequiredBy: []
