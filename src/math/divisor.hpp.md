@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -20,21 +20,22 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/divisor.hpp\"\n\
-    vector<ll> divisor(ll n) {\n    assert(n >= 1);\n    vector<ll> res;\n    for(ll\
+    vector<long long> divisor(long long n) {\n    assert(n >= 1);\n    vector<long\
+    \ long> res;\n    for(long long i = 1; i * i <= n; ++i) {\n        if(n % i ==\
+    \ 0) {\n            res.push_back(i);\n            if(i * i != n) res.emplace_back(n\
+    \ / i);\n        }\n    }\n    sort(res.begin(), res.end());\n    return res;\n\
+    }\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\nvector<long long> divisor(long\
+    \ long n) {\n    assert(n >= 1);\n    vector<long long> res;\n    for(long long\
     \ i = 1; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
-    \            if(i * i != n) res.push_back(n / i);\n        }\n    }\n    sort(res.begin(),\
-    \ res.end());\n    return res;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\nvector<ll> divisor(ll\
-    \ n) {\n    assert(n >= 1);\n    vector<ll> res;\n    for(ll i = 1; i * i <= n;\
-    \ ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n          \
-    \  if(i * i != n) res.push_back(n / i);\n        }\n    }\n    sort(res.begin(),\
+    \            if(i * i != n) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
     \ res.end());\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/divisor.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp

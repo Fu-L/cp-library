@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -83,18 +83,18 @@ data:
     \ < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
     #line 3 \"src/math/walsh_hadamard_transform.hpp\"\ntemplate <typename T>\nvoid\
-    \ walsh_hadamard_transform(vector<T>& f, bool inv = false) {\n    int n = f.size();\n\
-    \    assert((n & (n - 1)) == 0);\n    for(int i = 1; i < n; i <<= 1) {\n     \
-    \   for(int j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n           \
-    \     T x = f[j], y = f[j | i];\n                f[j] = x + y, f[j | i] = x -\
-    \ y;\n            }\n        }\n    }\n    if(inv) {\n        if constexpr(is_integral<T>::value)\
-    \ {\n            for(auto& x : f) x /= n;\n        } else {\n            T invn\
-    \ = T(1) / T(f.size());\n            for(auto& x : f) x *= invn;\n        }\n\
-    \    }\n}\n#line 4 \"src/convolution/xor_convolution.hpp\"\ntemplate <typename\
-    \ T>\nvector<T> xor_convolution(vector<T> a, vector<T> b) {\n    const int n =\
-    \ (int)a.size(), m = (int)b.size();\n    assert(n == m and (n & (n - 1)) == 0);\n\
-    \    walsh_hadamard_transform(a);\n    walsh_hadamard_transform(b);\n    for(int\
-    \ i = 0; i < (int)a.size(); i++) a[i] *= b[i];\n    walsh_hadamard_transform(a,\
+    \ walsh_hadamard_transform(vector<T>& f, const bool inv = false) {\n    const\
+    \ int n = f.size();\n    assert((n & (n - 1)) == 0);\n    for(int i = 1; i < n;\
+    \ i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) ==\
+    \ 0) {\n                const T x = f[j], y = f[j | i];\n                f[j]\
+    \ = x + y, f[j | i] = x - y;\n            }\n        }\n    }\n    if(inv) {\n\
+    \        if constexpr(is_integral<T>::value) {\n            for(auto& x : f) x\
+    \ /= n;\n        } else {\n            const T invn = T(1) / T(f.size());\n  \
+    \          for(auto& x : f) x *= invn;\n        }\n    }\n}\n#line 4 \"src/convolution/xor_convolution.hpp\"\
+    \ntemplate <typename T>\nvector<T> xor_convolution(vector<T> a, vector<T> b) {\n\
+    \    const int n = (int)a.size(), m = (int)b.size();\n    assert(n == m and (n\
+    \ & (n - 1)) == 0);\n    walsh_hadamard_transform(a);\n    walsh_hadamard_transform(b);\n\
+    \    for(int i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    walsh_hadamard_transform(a,\
     \ true);\n    return a;\n}\n#line 5 \"verify/library_checker/convolution/bitwise_xor_convolution.test.cpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
     \    vector<mint> a(1 << n), b(1 << n);\n    rep(i, 0, 1 << n) cin >> a[i];\n\
@@ -115,7 +115,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-01-07 03:22:48+09:00'
+  timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

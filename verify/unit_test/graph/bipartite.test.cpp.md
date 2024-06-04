@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -139,34 +139,33 @@ data:
     \ (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"(\";\n      \
     \          --M;\n            } else {\n                res += \")\";\n       \
     \         --N;\n            }\n        }\n        return res;\n    }\n} rng;\n\
-    #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T = int>\nstruct\
-    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        :\
-    \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, T cost =\
-    \ 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n  \
-    \  operator int() const {\n        return to;\n    }\n};\ntemplate <typename T\
-    \ = int>\nstruct Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n \
-    \   int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
-    \        return es;\n    }\n    void add_edge(int from, int to, T cost = 1) {\n\
-    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
-    \        g[from].emplace_back(from, to, cost, es);\n        g[to].emplace_back(to,\
-    \ from, cost, es++);\n    }\n    void add_directed_edge(int from, int to, T cost\
-    \ = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <= to and\
-    \ to < n);\n        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline\
-    \ vector<Edge<T>>& operator[](const int& k) {\n        assert(0 <= k and k < n);\n\
-    \        return g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const\
-    \ int& k) const {\n        assert(0 <= k and k < n);\n        return g[k];\n \
-    \   }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate\
-    \ <typename T = int>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bipartite.hpp\"\
-    \ntemplate <typename T>\nvector<int> bipartite(const Graph<T>& g) {\n    const\
-    \ int n = (int)g.size();\n    vector<int> color(n, -1);\n    auto dfs = [&](auto&\
-    \ dfs, int cur, int col) -> bool {\n        color[cur] = col;\n        for(const\
-    \ Edge<T>& e : g[cur]) {\n            if(color[e.to] == col) return false;\n \
-    \           if(color[e.to] == -1 and !dfs(dfs, e.to, 1 - col)) return false;\n\
-    \        }\n        return true;\n    };\n    for(int i = 0; i < n; ++i) {\n \
-    \       if(color[i] != -1) continue;\n        if(!dfs(dfs, i, 0)) return {};\n\
-    \    }\n    return color;\n}\n#line 4 \"src/tree/lowest_common_ancestor.hpp\"\n\
-    template <typename T = int>\nstruct LowestCommonAncestor {\n    LowestCommonAncestor(const\
-    \ Graph<T>& g, int root = 0) {\n        assert(0 <= root and root < (int)g.size());\n\
+    #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
+    \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, const T& cost = 1,\
+    \ int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n    operator\
+    \ int() const {\n        return to;\n    }\n};\ntemplate <typename T>\nstruct\
+    \ Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n    int size() const\
+    \ {\n        return n;\n    }\n    int edge_size() const {\n        return es;\n\
+    \    }\n    void add_edge(int from, int to, const T& cost = 1) {\n        assert(0\
+    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
+    \   void add_directed_edge(int from, int to, const T& cost = 1) {\n        assert(0\
+    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
+    \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
+    \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
+    \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
+    #line 4 \"src/graph/bipartite.hpp\"\ntemplate <typename T>\nvector<int> bipartite(const\
+    \ Graph<T>& g) {\n    const int n = g.size();\n    vector<int> color(n, -1);\n\
+    \    auto dfs = [&](auto& dfs, int cur, int col) -> bool {\n        color[cur]\
+    \ = col;\n        for(const Edge<T>& e : g[cur]) {\n            if(color[e.to]\
+    \ == col) return false;\n            if(color[e.to] == -1 and !dfs(dfs, e.to,\
+    \ 1 - col)) return false;\n        }\n        return true;\n    };\n    for(int\
+    \ i = 0; i < n; ++i) {\n        if(color[i] != -1) continue;\n        if(!dfs(dfs,\
+    \ i, 0)) return {};\n    }\n    return color;\n}\n#line 4 \"src/tree/lowest_common_ancestor.hpp\"\
+    \ntemplate <typename T>\nstruct LowestCommonAncestor {\n    LowestCommonAncestor(const\
+    \ Graph<T>& g, int root = 0) {\n        assert(0 <= root and root < g.size());\n\
     \        init(g, root);\n    }\n    int depth(int v) const {\n        assert(0\
     \ <= v and v < n);\n        return dep[v];\n    }\n    T cost(int v) const {\n\
     \        assert(0 <= v and v < n);\n        return co[v];\n    }\n    int parent(int\
@@ -184,15 +183,15 @@ data:
     \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
     \        return co[u] + co[v] - 2 * co[lca(u, v)];\n    }\n\n   private:\n   \
     \ int n;\n    vector<vector<int>> par;\n    vector<int> dep;\n    vector<T> co;\n\
-    \    void init(const Graph<T>& g, int root = 0) {\n        n = (int)g.size();\n\
-    \        int h = 1;\n        while((1 << h) < n) ++h;\n        par.assign(h, vector<int>(n,\
+    \    void init(const Graph<T>& g, int root = 0) {\n        n = g.size();\n   \
+    \     int h = 1;\n        while((1 << h) < n) ++h;\n        par.assign(h, vector<int>(n,\
     \ -1));\n        dep.assign(n, -1);\n        co.assign(n, -1);\n        dfs(g,\
     \ root, -1, 0, 0);\n        for(int i = 0; i + 1 < (int)par.size(); ++i) {\n \
     \           for(int v = 0; v < n; ++v) {\n                if(par[i][v] != -1)\
     \ {\n                    par[i + 1][v] = par[i][par[i][v]];\n                }\n\
     \            }\n        }\n    }\n    void dfs(const Graph<T>& g, int v, int p,\
     \ int d, T c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v] =\
-    \ c;\n        for(const auto& e : g[v]) {\n            if(e.to == p) continue;\n\
+    \ c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
     \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};\n#line\
     \ 7 \"verify/unit_test/graph/bipartite.test.cpp\"\nvoid random_yes() {\n    int\
     \ n = rng(1, 100000);\n    vector<vector<int>> color(2);\n    rep(i, 0, n) {\n\
@@ -263,8 +262,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/graph/bipartite.test.cpp
   requiredBy: []
-  timestamp: '2024-01-14 17:33:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bipartite.test.cpp
 layout: document

@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/inverse_matrix.test.cpp
     title: verify/library_checker/matrix/inverse_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/matrix_product.test.cpp
     title: verify/library_checker/matrix/matrix_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/pow_of_matrix.test.cpp
     title: verify/library_checker/matrix/pow_of_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/rank_of_matrix.test.cpp
     title: verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
     title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -63,21 +63,21 @@ data:
     \ for(int k = 0; k < w; ++k) {\n                for(int j = 0; j < B.w; ++j) {\n\
     \                    C[i][j] += (*this)[i][k] * B[k][j];\n                }\n\
     \            }\n        }\n        A.swap(C);\n        return (*this);\n    }\n\
-    \    Matrix& pow(ll t) {\n        assert(h == w);\n        assert(t >= 0);\n \
-    \       Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t & 1ll)\
-    \ B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n   \
-    \     }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
+    \    Matrix& pow(long long t) {\n        assert(h == w);\n        assert(t >=\
+    \ 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t\
+    \ & 1ll) B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n\
+    \        }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
     \ Matrix& B) const {\n        return (Matrix(*this) += B);\n    }\n    Matrix\
     \ operator-(const Matrix& B) const {\n        return (Matrix(*this) -= B);\n \
     \   }\n    Matrix operator*(const Matrix& B) const {\n        return (Matrix(*this)\
     \ *= B);\n    }\n    bool operator==(const Matrix& B) const {\n        assert(h\
-    \ == B.H() and w == B.W());\n        rep(i, 0, h) {\n            rep(j, 0, w)\
-    \ {\n                if(A[i][j] != B[i][j]) return false;\n            }\n   \
-    \     }\n        return true;\n    }\n    bool operator!=(const Matrix& B) const\
-    \ {\n        assert(h == B.H() and w == B.W());\n        for(int i = 0; i < h;\
-    \ ++i) {\n            for(int j = 0; j < w; ++j) {\n                if(A[i][j]\
-    \ != B[i][j]) return true;\n            }\n        }\n        return false;\n\
-    \    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n"
+    \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
+    \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
+    \ false;\n            }\n        }\n        return true;\n    }\n    bool operator!=(const\
+    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
+    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
+    \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
+    \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct Matrix {\n    Matrix(int h, int w, T val = 0)\n        : h(h), w(w), A(h,\
     \ vector<T>(w, val)) {}\n    int H() const {\n        return h;\n    }\n    int\
@@ -97,39 +97,39 @@ data:
     \ 0));\n        for(int i = 0; i < h; ++i) {\n            for(int k = 0; k < w;\
     \ ++k) {\n                for(int j = 0; j < B.w; ++j) {\n                   \
     \ C[i][j] += (*this)[i][k] * B[k][j];\n                }\n            }\n    \
-    \    }\n        A.swap(C);\n        return (*this);\n    }\n    Matrix& pow(ll\
-    \ t) {\n        assert(h == w);\n        assert(t >= 0);\n        Matrix B = Matrix::I(h);\n\
-    \        while(t > 0) {\n            if(t & 1ll) B *= (*this);\n            (*this)\
-    \ *= (*this);\n            t >>= 1ll;\n        }\n        A.swap(B.A);\n     \
-    \   return (*this);\n    }\n    Matrix operator+(const Matrix& B) const {\n  \
-    \      return (Matrix(*this) += B);\n    }\n    Matrix operator-(const Matrix&\
+    \    }\n        A.swap(C);\n        return (*this);\n    }\n    Matrix& pow(long\
+    \ long t) {\n        assert(h == w);\n        assert(t >= 0);\n        Matrix\
+    \ B = Matrix::I(h);\n        while(t > 0) {\n            if(t & 1ll) B *= (*this);\n\
+    \            (*this) *= (*this);\n            t >>= 1ll;\n        }\n        A.swap(B.A);\n\
+    \        return (*this);\n    }\n    Matrix operator+(const Matrix& B) const {\n\
+    \        return (Matrix(*this) += B);\n    }\n    Matrix operator-(const Matrix&\
     \ B) const {\n        return (Matrix(*this) -= B);\n    }\n    Matrix operator*(const\
     \ Matrix& B) const {\n        return (Matrix(*this) *= B);\n    }\n    bool operator==(const\
-    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        rep(i,\
-    \ 0, h) {\n            rep(j, 0, w) {\n                if(A[i][j] != B[i][j])\
-    \ return false;\n            }\n        }\n        return true;\n    }\n    bool\
-    \ operator!=(const Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n\
-    \        for(int i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j)\
-    \ {\n                if(A[i][j] != B[i][j]) return true;\n            }\n    \
-    \    }\n        return false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>>\
-    \ A;\n};"
+    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
+    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
+    \     if(A[i][j] != B[i][j]) return false;\n            }\n        }\n       \
+    \ return true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
+    \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
+    \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
+    \ true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> A;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/matrix/matrix.hpp
   requiredBy:
-  - src/matrix/inverse.hpp
-  - src/matrix/gauss_elimination.hpp
   - src/matrix/linear_equation.hpp
-  timestamp: '2024-01-07 03:22:48+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - src/matrix/gauss_elimination.hpp
+  - src/matrix/inverse.hpp
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/matrix/matrix_product.test.cpp
+  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - verify/library_checker/matrix/rank_of_matrix.test.cpp
   - verify/library_checker/matrix/inverse_matrix.test.cpp
-  - verify/library_checker/matrix/determinant_of_matric.test.cpp
-  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
+  - verify/library_checker/matrix/matrix_product.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
+  - verify/library_checker/matrix/determinant_of_matric.test.cpp
 documentation_of: src/matrix/matrix.hpp
 layout: document
 title: Matrix

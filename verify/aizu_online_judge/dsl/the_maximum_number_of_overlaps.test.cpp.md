@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/cumulative_sum_2d.hpp
     title: CumulativeSum2D
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -26,18 +26,18 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/data_structure/cumulative_sum_2d.hpp\"\ntemplate <typename T>\n\
     struct CumulativeSum2D {\n    CumulativeSum2D(int H, int W)\n        : h(H), w(W),\
-    \ data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(int i, int j, T x) {\n   \
-    \     assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n        data[i\
-    \ + 1][j + 1] += x;\n    }\n    void init() {\n        for(int i = 1; i < (int)data.size();\
-    \ ++i) {\n            for(int j = 1; j < (int)data[i].size(); ++j) {\n       \
-    \         data[i][j] += data[i][j - 1] + data[i - 1][j] - data[i - 1][j - 1];\n\
-    \            }\n        }\n    }\n    T sum(int li, int lj, int ri, int rj) {\n\
-    \        assert(0 <= li and li <= ri and ri <= h);\n        assert(0 <= lj and\
-    \ lj <= rj and rj <= w);\n        return data[ri][rj] - data[li][rj] - data[ri][lj]\
-    \ + data[li][lj];\n    }\n    T get(int i, int j) {\n        assert(0 <= i and\
-    \ i < h);\n        assert(0 <= j and j < w);\n        return data[i + 1][j + 1]\
-    \ - data[i][j + 1] - data[i + 1][j] + data[i][j];\n    }\n\n   private:\n    int\
-    \ h, w;\n    vector<vector<T>> data;\n};\n#line 4 \"verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp\"\
+    \ data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(int i, int j, const T& x)\
+    \ {\n        assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n  \
+    \      data[i + 1][j + 1] += x;\n    }\n    void init() {\n        for(int i =\
+    \ 1; i < (int)data.size(); ++i) {\n            for(int j = 1; j < (int)data[i].size();\
+    \ ++j) {\n                data[i][j] += data[i][j - 1] + data[i - 1][j] - data[i\
+    \ - 1][j - 1];\n            }\n        }\n    }\n    T sum(int li, int lj, int\
+    \ ri, int rj) {\n        assert(0 <= li and li <= ri and ri <= h);\n        assert(0\
+    \ <= lj and lj <= rj and rj <= w);\n        return data[ri][rj] - data[li][rj]\
+    \ - data[ri][lj] + data[li][lj];\n    }\n    T get(int i, int j) {\n        assert(0\
+    \ <= i and i < h);\n        assert(0 <= j and j < w);\n        return data[i +\
+    \ 1][j + 1] - data[i][j + 1] - data[i + 1][j] + data[i][j];\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> data;\n};\n#line 4 \"verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp\"\
     \nint main(void) {\n    int n;\n    cin >> n;\n    CumulativeSum2D<int> cum(1001,\
     \ 1001);\n    rep(i, 0, n) {\n        int xl, yl, xr, yr;\n        cin >> xl >>\
     \ yl >> xr >> yr;\n        cum.add(xl, yl, 1);\n        cum.add(xl, yr, -1);\n\
@@ -60,7 +60,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 21:47:30+09:00'
+  timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp

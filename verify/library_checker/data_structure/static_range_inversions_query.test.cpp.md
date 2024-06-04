@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/mo.hpp
     title: Mo
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -41,19 +41,19 @@ data:
     \ : n(N), order(Q) {\n        width = max<int>(1, 1.0 * N / max<double>(1.0, sqrt(Q\
     \ * 2.0 / 3.0)));\n        iota(order.begin(), order.end(), 0);\n    }\n    void\
     \ insert(int l, int r) {\n        assert(0 <= l and l <= r and r <= n);\n    \
-    \    left.push_back(l);\n        right.push_back(r);\n    }\n    template <typename\
-    \ AL, typename AR, typename DL, typename DR, typename OUT>\n    void run(const\
-    \ AL& add_left, const AR& add_right, const DL& delete_left, const DR& delete_right,\
-    \ const OUT& out) {\n        assert(left.size() == order.size());\n        sort(order.begin(),\
-    \ order.end(), [&](int i, int j) {\n            int iblock = left[i] / width,\
-    \ jblock = left[j] / width;\n            if(iblock != jblock) return iblock <\
-    \ jblock;\n            if(iblock & 1) return right[i] < right[j];\n          \
-    \  return right[i] > right[j];\n        });\n        int nl = 0, nr = 0;\n   \
-    \     for(int idx : order) {\n            while(nl > left[idx]) add_left(--nl);\n\
-    \            while(nr < right[idx]) add_right(nr++);\n            while(nl < left[idx])\
-    \ delete_left(nl++);\n            while(nr > right[idx]) delete_right(--nr);\n\
-    \            out(idx);\n        }\n    }\n\n   private:\n    int n, width;\n \
-    \   vector<int> left, right, order;\n};\n#line 5 \"verify/library_checker/data_structure/static_range_inversions_query.test.cpp\"\
+    \    left.emplace_back(l);\n        right.emplace_back(r);\n    }\n    template\
+    \ <typename AL, typename AR, typename DL, typename DR, typename OUT>\n    void\
+    \ run(const AL& add_left, const AR& add_right, const DL& delete_left, const DR&\
+    \ delete_right, const OUT& out) {\n        assert(left.size() == order.size());\n\
+    \        sort(order.begin(), order.end(), [&](int i, int j) {\n            int\
+    \ iblock = left[i] / width, jblock = left[j] / width;\n            if(iblock !=\
+    \ jblock) return iblock < jblock;\n            if(iblock & 1) return right[i]\
+    \ < right[j];\n            return right[i] > right[j];\n        });\n        int\
+    \ nl = 0, nr = 0;\n        for(int idx : order) {\n            while(nl > left[idx])\
+    \ add_left(--nl);\n            while(nr < right[idx]) add_right(nr++);\n     \
+    \       while(nl < left[idx]) delete_left(nl++);\n            while(nr > right[idx])\
+    \ delete_right(--nr);\n            out(idx);\n        }\n    }\n\n   private:\n\
+    \    int n, width;\n    vector<int> left, right, order;\n};\n#line 5 \"verify/library_checker/data_structure/static_range_inversions_query.test.cpp\"\
     \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    Mo mo(n, q);\n    vector<int>\
     \ a(n);\n    rep(i, 0, n) cin >> a[i];\n    vector<int> comp = a;\n    sort(comp.begin(),\
     \ comp.end());\n    comp.erase(unique(comp.begin(), comp.end()), comp.end());\n\
@@ -94,8 +94,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
 layout: document

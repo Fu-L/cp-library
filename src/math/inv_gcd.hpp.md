@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/chinese_remainder_theorem.hpp
     title: chinese_remainder_theorem
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -23,26 +23,27 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/inv_gcd.hpp\"\n\
-    constexpr pair<ll, ll> inv_gcd(ll a, ll b) {\n    a %= b;\n    if(a < 0) a +=\
-    \ b;\n    if(a == 0) return {b, 0};\n    ll s = b, t = a, m0 = 0, m1 = 1;\n  \
-    \  while(t) {\n        const ll u = s / t;\n        s -= t * u;\n        m0 -=\
-    \ m1 * u;\n        ll tmp = s;\n        s = t;\n        t = tmp;\n        tmp\
-    \ = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if(m0 < 0) m0 += b /\
-    \ s;\n    return {s, m0};\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr pair<ll, ll>\
-    \ inv_gcd(ll a, ll b) {\n    a %= b;\n    if(a < 0) a += b;\n    if(a == 0) return\
-    \ {b, 0};\n    ll s = b, t = a, m0 = 0, m1 = 1;\n    while(t) {\n        const\
-    \ ll u = s / t;\n        s -= t * u;\n        m0 -= m1 * u;\n        ll tmp =\
-    \ s;\n        s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n\
-    \        m1 = tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}"
+    constexpr pair<long long, long long> inv_gcd(long long a, long long b) {\n   \
+    \ a %= b;\n    if(a < 0) a += b;\n    if(a == 0) return {b, 0};\n    long long\
+    \ s = b, t = a, m0 = 0, m1 = 1;\n    while(t) {\n        const long long u = s\
+    \ / t;\n        s -= t * u;\n        m0 -= m1 * u;\n        long long tmp = s;\n\
+    \        s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n     \
+    \   m1 = tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr pair<long\
+    \ long, long long> inv_gcd(long long a, long long b) {\n    a %= b;\n    if(a\
+    \ < 0) a += b;\n    if(a == 0) return {b, 0};\n    long long s = b, t = a, m0\
+    \ = 0, m1 = 1;\n    while(t) {\n        const long long u = s / t;\n        s\
+    \ -= t * u;\n        m0 -= m1 * u;\n        long long tmp = s;\n        s = t;\n\
+    \        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n  \
+    \  }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/inv_gcd.hpp
   requiredBy:
   - src/math/chinese_remainder_theorem.hpp
-  timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/186.test.cpp
 documentation_of: src/math/inv_gcd.hpp

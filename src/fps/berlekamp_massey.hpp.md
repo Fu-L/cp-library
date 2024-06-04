@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/nth_term.hpp
     title: nth_term
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/math/find_linear_recurrence.test.cpp
     title: verify/library_checker/math/find_linear_recurrence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -56,10 +56,10 @@ data:
   requiredBy:
   - src/fps/nth_term.hpp
   timestamp: '2024-01-16 00:37:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/yukicoder/1559.test.cpp
   - verify/library_checker/math/find_linear_recurrence.test.cpp
+  - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/berlekamp_massey.hpp
 layout: document
 title: berlekamp_massey

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,15 +12,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
     title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -29,56 +29,25 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
-    \ntemplate <typename T = int>\nstruct Edge {\n    int from, to;\n    T cost;\n\
-    \    int idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n\
-    \    Edge(int from, int to, T cost = 1, int idx = -1)\n        : from(from), to(to),\
+    \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
+    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int\
+    \ from, int to, const T& cost = 1, int idx = -1)\n        : from(from), to(to),\
     \ cost(cost), idx(idx) {}\n    operator int() const {\n        return to;\n  \
-    \  }\n};\ntemplate <typename T = int>\nstruct Graph {\n    Graph(int N)\n    \
-    \    : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n    }\n\
-    \    int edge_size() const {\n        return es;\n    }\n    void add_edge(int\
-    \ from, int to, T cost = 1) {\n        assert(0 <= from and from < n);\n     \
-    \   assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
-    \ es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(int\
-    \ from, int to, T cost = 1) {\n        assert(0 <= from and from < n);\n     \
-    \   assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
+    \  }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(int N)\n        : n(N),\
+    \ es(0), g(N) {}\n    int size() const {\n        return n;\n    }\n    int edge_size()\
+    \ const {\n        return es;\n    }\n    void add_edge(int from, int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(int\
+    \ from, int to, const T& cost = 1) {\n        assert(0 <= from and from < n);\n\
+    \        assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
     \ es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k) {\n    \
     \    assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline const\
     \ vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <= k and\
     \ k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
-    \ g;\n};\ntemplate <typename T = int>\nusing Edges = vector<Edge<T>>;\n#line 4\
-    \ \"src/tree/lowest_common_ancestor.hpp\"\ntemplate <typename T = int>\nstruct\
-    \ LowestCommonAncestor {\n    LowestCommonAncestor(const Graph<T>& g, int root\
-    \ = 0) {\n        assert(0 <= root and root < (int)g.size());\n        init(g,\
-    \ root);\n    }\n    int depth(int v) const {\n        assert(0 <= v and v < n);\n\
-    \        return dep[v];\n    }\n    T cost(int v) const {\n        assert(0 <=\
-    \ v and v < n);\n        return co[v];\n    }\n    int parent(int v, int x = 1)\
-    \ const {\n        assert(0 <= v and v < n);\n        assert(x >= 0);\n      \
-    \  if(x > dep[v]) return -1;\n        for(int i = 0; x > 0; ++i) {\n         \
-    \   if(x & 1) v = par[i][v];\n            x >>= 1;\n        }\n        return\
-    \ v;\n    }\n    int lca(int u, int v) const {\n        assert(0 <= u and u <\
-    \ n and 0 <= v and v < n);\n        if(dep[u] > dep[v]) swap(u, v);\n        v\
-    \ = parent(v, dep[v] - dep[u]);\n        if(u == v) return u;\n        for(int\
-    \ i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u] != par[i][v])\
-    \ {\n                u = par[i][u];\n                v = par[i][v];\n        \
-    \    }\n        }\n        return par[0][u];\n    }\n    int dist(int u, int v)\
-    \ const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n        return\
-    \ dep[u] + dep[v] - 2 * dep[lca(u, v)];\n    }\n    T length(int u, int v) const\
-    \ {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n        return co[u]\
-    \ + co[v] - 2 * co[lca(u, v)];\n    }\n\n   private:\n    int n;\n    vector<vector<int>>\
-    \ par;\n    vector<int> dep;\n    vector<T> co;\n    void init(const Graph<T>&\
-    \ g, int root = 0) {\n        n = (int)g.size();\n        int h = 1;\n       \
-    \ while((1 << h) < n) ++h;\n        par.assign(h, vector<int>(n, -1));\n     \
-    \   dep.assign(n, -1);\n        co.assign(n, -1);\n        dfs(g, root, -1, 0,\
-    \ 0);\n        for(int i = 0; i + 1 < (int)par.size(); ++i) {\n            for(int\
-    \ v = 0; v < n; ++v) {\n                if(par[i][v] != -1) {\n              \
-    \      par[i + 1][v] = par[i][par[i][v]];\n                }\n            }\n\
-    \        }\n    }\n    void dfs(const Graph<T>& g, int v, int p, int d, T c) {\n\
-    \        par[0][v] = p;\n        dep[v] = d;\n        co[v] = c;\n        for(const\
-    \ auto& e : g[v]) {\n            if(e.to == p) continue;\n            dfs(g, e.to,\
-    \ v, d + 1, c + e.cost);\n        }\n    }\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
-    \ntemplate <typename T = int>\nstruct LowestCommonAncestor {\n    LowestCommonAncestor(const\
-    \ Graph<T>& g, int root = 0) {\n        assert(0 <= root and root < (int)g.size());\n\
+    \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/tree/lowest_common_ancestor.hpp\"\
+    \ntemplate <typename T>\nstruct LowestCommonAncestor {\n    LowestCommonAncestor(const\
+    \ Graph<T>& g, int root = 0) {\n        assert(0 <= root and root < g.size());\n\
     \        init(g, root);\n    }\n    int depth(int v) const {\n        assert(0\
     \ <= v and v < n);\n        return dep[v];\n    }\n    T cost(int v) const {\n\
     \        assert(0 <= v and v < n);\n        return co[v];\n    }\n    int parent(int\
@@ -96,15 +65,45 @@ data:
     \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
     \        return co[u] + co[v] - 2 * co[lca(u, v)];\n    }\n\n   private:\n   \
     \ int n;\n    vector<vector<int>> par;\n    vector<int> dep;\n    vector<T> co;\n\
-    \    void init(const Graph<T>& g, int root = 0) {\n        n = (int)g.size();\n\
-    \        int h = 1;\n        while((1 << h) < n) ++h;\n        par.assign(h, vector<int>(n,\
+    \    void init(const Graph<T>& g, int root = 0) {\n        n = g.size();\n   \
+    \     int h = 1;\n        while((1 << h) < n) ++h;\n        par.assign(h, vector<int>(n,\
     \ -1));\n        dep.assign(n, -1);\n        co.assign(n, -1);\n        dfs(g,\
     \ root, -1, 0, 0);\n        for(int i = 0; i + 1 < (int)par.size(); ++i) {\n \
     \           for(int v = 0; v < n; ++v) {\n                if(par[i][v] != -1)\
     \ {\n                    par[i + 1][v] = par[i][par[i][v]];\n                }\n\
     \            }\n        }\n    }\n    void dfs(const Graph<T>& g, int v, int p,\
     \ int d, T c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v] =\
-    \ c;\n        for(const auto& e : g[v]) {\n            if(e.to == p) continue;\n\
+    \ c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
+    \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
+    \ntemplate <typename T>\nstruct LowestCommonAncestor {\n    LowestCommonAncestor(const\
+    \ Graph<T>& g, int root = 0) {\n        assert(0 <= root and root < g.size());\n\
+    \        init(g, root);\n    }\n    int depth(int v) const {\n        assert(0\
+    \ <= v and v < n);\n        return dep[v];\n    }\n    T cost(int v) const {\n\
+    \        assert(0 <= v and v < n);\n        return co[v];\n    }\n    int parent(int\
+    \ v, int x = 1) const {\n        assert(0 <= v and v < n);\n        assert(x >=\
+    \ 0);\n        if(x > dep[v]) return -1;\n        for(int i = 0; x > 0; ++i) {\n\
+    \            if(x & 1) v = par[i][v];\n            x >>= 1;\n        }\n     \
+    \   return v;\n    }\n    int lca(int u, int v) const {\n        assert(0 <= u\
+    \ and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v]) swap(u, v);\n\
+    \        v = parent(v, dep[v] - dep[u]);\n        if(u == v) return u;\n     \
+    \   for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
+    \ != par[i][v]) {\n                u = par[i][u];\n                v = par[i][v];\n\
+    \            }\n        }\n        return par[0][u];\n    }\n    int dist(int\
+    \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
+    \        return dep[u] + dep[v] - 2 * dep[lca(u, v)];\n    }\n    T length(int\
+    \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
+    \        return co[u] + co[v] - 2 * co[lca(u, v)];\n    }\n\n   private:\n   \
+    \ int n;\n    vector<vector<int>> par;\n    vector<int> dep;\n    vector<T> co;\n\
+    \    void init(const Graph<T>& g, int root = 0) {\n        n = g.size();\n   \
+    \     int h = 1;\n        while((1 << h) < n) ++h;\n        par.assign(h, vector<int>(n,\
+    \ -1));\n        dep.assign(n, -1);\n        co.assign(n, -1);\n        dfs(g,\
+    \ root, -1, 0, 0);\n        for(int i = 0; i + 1 < (int)par.size(); ++i) {\n \
+    \           for(int v = 0; v < n; ++v) {\n                if(par[i][v] != -1)\
+    \ {\n                    par[i + 1][v] = par[i][par[i][v]];\n                }\n\
+    \            }\n        }\n    }\n    void dfs(const Graph<T>& g, int v, int p,\
+    \ int d, T c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v] =\
+    \ c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
     \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
@@ -112,11 +111,11 @@ data:
   isVerificationFile: false
   path: src/tree/lowest_common_ancestor.hpp
   requiredBy: []
-  timestamp: '2024-01-14 17:33:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/tree/lowest_common_ancestor.hpp
 layout: document

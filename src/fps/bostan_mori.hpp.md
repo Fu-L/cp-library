@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/nth_term.hpp
     title: nth_term
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -27,39 +27,40 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/fps/bostan_mori.hpp\"\
     \ntemplate <template <typename> typename FPS, typename mint>\nmint bostan_mori(const\
-    \ FPS<mint>& a, const FPS<mint>& c, ll k) {\n    assert(k >= 0);\n    if(k < (int)a.size())\
-    \ return a[k];\n    assert(a.size() >= c.size());\n    FPS<mint> q = FPS<mint>{1}\
-    \ - (c << 1);\n    FPS<mint> p = (a * q).pre((int)c.size());\n    while(k > 0)\
-    \ {\n        auto q2 = q;\n        for(int i = 1; i < (int)q2.size(); i += 2)\
-    \ q2[i] = -q2[i];\n        auto s = p * q2;\n        auto t = q * q2;\n      \
-    \  if(k & 1) {\n            for(int i = 1; i < (int)s.size(); i += 2) p[i >> 1]\
-    \ = s[i];\n            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n\
-    \        } else {\n            for(int i = 0; i < (int)s.size(); i += 2) p[i >>\
-    \ 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1]\
-    \ = t[i];\n        }\n        k >>= 1;\n    }\n    return p[0];\n}\n"
+    \ FPS<mint>& a, const FPS<mint>& c, long long k) {\n    assert(k >= 0);\n    if(k\
+    \ < (int)a.size()) return a[k];\n    assert(a.size() >= c.size());\n    FPS<mint>\
+    \ q = FPS<mint>{1} - (c << 1);\n    FPS<mint> p = (a * q).pre((int)c.size());\n\
+    \    while(k > 0) {\n        auto q2 = q;\n        for(int i = 1; i < (int)q2.size();\
+    \ i += 2) q2[i] = -q2[i];\n        const auto s = p * q2;\n        const auto\
+    \ t = q * q2;\n        if(k & 1) {\n            for(int i = 1; i < (int)s.size();\
+    \ i += 2) p[i >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i +=\
+    \ 2) q[i >> 1] = t[i];\n        } else {\n            for(int i = 0; i < (int)s.size();\
+    \ i += 2) p[i >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i +=\
+    \ 2) q[i >> 1] = t[i];\n        }\n        k >>= 1;\n    }\n    return p[0];\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <template <typename>\
     \ typename FPS, typename mint>\nmint bostan_mori(const FPS<mint>& a, const FPS<mint>&\
-    \ c, ll k) {\n    assert(k >= 0);\n    if(k < (int)a.size()) return a[k];\n  \
-    \  assert(a.size() >= c.size());\n    FPS<mint> q = FPS<mint>{1} - (c << 1);\n\
+    \ c, long long k) {\n    assert(k >= 0);\n    if(k < (int)a.size()) return a[k];\n\
+    \    assert(a.size() >= c.size());\n    FPS<mint> q = FPS<mint>{1} - (c << 1);\n\
     \    FPS<mint> p = (a * q).pre((int)c.size());\n    while(k > 0) {\n        auto\
     \ q2 = q;\n        for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];\n\
-    \        auto s = p * q2;\n        auto t = q * q2;\n        if(k & 1) {\n   \
-    \         for(int i = 1; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n      \
-    \      for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n        }\
-    \ else {\n            for(int i = 0; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n\
+    \        const auto s = p * q2;\n        const auto t = q * q2;\n        if(k\
+    \ & 1) {\n            for(int i = 1; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n\
     \            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n   \
-    \     }\n        k >>= 1;\n    }\n    return p[0];\n}"
+    \     } else {\n            for(int i = 0; i < (int)s.size(); i += 2) p[i >> 1]\
+    \ = s[i];\n            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n\
+    \        }\n        k >>= 1;\n    }\n    return p[0];\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/fps/bostan_mori.hpp
   requiredBy:
   - src/fps/nth_term.hpp
-  timestamp: '2024-01-16 00:37:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/yukicoder/1559.test.cpp
   - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/bostan_mori.hpp
 layout: document
 title: bostan_mori

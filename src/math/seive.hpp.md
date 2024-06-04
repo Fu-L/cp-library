@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -23,7 +23,7 @@ data:
     \ vector<int>> seive(int n) {\n    assert(n >= 1);\n    vector<int> min_factor(n\
     \ + 1);\n    iota(min_factor.begin(), min_factor.end(), 0);\n    min_factor[0]\
     \ = min_factor[1] = -1;\n    vector<int> prime;\n    for(long long i = 2; i <=\
-    \ n; ++i) {\n        if(min_factor[i] < i) continue;\n        prime.push_back(i);\n\
+    \ n; ++i) {\n        if(min_factor[i] < i) continue;\n        prime.emplace_back(i);\n\
     \        for(long long j = i * i; j <= n; j += i) {\n            if(min_factor[j]\
     \ == j) min_factor[j] = i;\n        }\n    }\n    return {prime, min_factor};\n\
     }\n"
@@ -31,15 +31,15 @@ data:
     \ seive(int n) {\n    assert(n >= 1);\n    vector<int> min_factor(n + 1);\n  \
     \  iota(min_factor.begin(), min_factor.end(), 0);\n    min_factor[0] = min_factor[1]\
     \ = -1;\n    vector<int> prime;\n    for(long long i = 2; i <= n; ++i) {\n   \
-    \     if(min_factor[i] < i) continue;\n        prime.push_back(i);\n        for(long\
-    \ long j = i * i; j <= n; j += i) {\n            if(min_factor[j] == j) min_factor[j]\
-    \ = i;\n        }\n    }\n    return {prime, min_factor};\n}"
+    \     if(min_factor[i] < i) continue;\n        prime.emplace_back(i);\n      \
+    \  for(long long j = i * i; j <= n; j += i) {\n            if(min_factor[j] ==\
+    \ j) min_factor[j] = i;\n        }\n    }\n    return {prime, min_factor};\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/seive.hpp
   requiredBy: []
-  timestamp: '2024-03-02 01:11:13+09:00'
+  timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp

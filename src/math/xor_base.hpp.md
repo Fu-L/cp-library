@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/184.test.cpp
     title: verify/yukicoder/184.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -22,19 +22,19 @@ data:
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/xor_base.hpp\"\n\
     template <typename T>\nvector<T> xor_base(const vector<T>& a) {\n    vector<T>\
     \ base;\n    for(T v : a) {\n        for(const T e : base) {\n            v =\
-    \ min(v, v xor e);\n        }\n        if(v > 0) base.push_back(v);\n    }\n \
-    \   return base;\n}\n"
+    \ min(v, v xor e);\n        }\n        if(v > 0) base.emplace_back(v);\n    }\n\
+    \    return base;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     vector<T> xor_base(const vector<T>& a) {\n    vector<T> base;\n    for(T v : a)\
     \ {\n        for(const T e : base) {\n            v = min(v, v xor e);\n     \
-    \   }\n        if(v > 0) base.push_back(v);\n    }\n    return base;\n}"
+    \   }\n        if(v > 0) base.emplace_back(v);\n    }\n    return base;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/xor_base.hpp
   requiredBy: []
-  timestamp: '2024-01-06 16:32:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/184.test.cpp
 documentation_of: src/math/xor_base.hpp

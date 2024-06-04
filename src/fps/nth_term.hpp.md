@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/bostan_mori.hpp
     title: bostan_mori
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -38,24 +38,25 @@ data:
     \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
     \        }\n    }\n    c.pop_back();\n    c = c.rev();\n    return c;\n}\n#line\
     \ 3 \"src/fps/bostan_mori.hpp\"\ntemplate <template <typename> typename FPS, typename\
-    \ mint>\nmint bostan_mori(const FPS<mint>& a, const FPS<mint>& c, ll k) {\n  \
-    \  assert(k >= 0);\n    if(k < (int)a.size()) return a[k];\n    assert(a.size()\
+    \ mint>\nmint bostan_mori(const FPS<mint>& a, const FPS<mint>& c, long long k)\
+    \ {\n    assert(k >= 0);\n    if(k < (int)a.size()) return a[k];\n    assert(a.size()\
     \ >= c.size());\n    FPS<mint> q = FPS<mint>{1} - (c << 1);\n    FPS<mint> p =\
     \ (a * q).pre((int)c.size());\n    while(k > 0) {\n        auto q2 = q;\n    \
-    \    for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];\n        auto\
-    \ s = p * q2;\n        auto t = q * q2;\n        if(k & 1) {\n            for(int\
-    \ i = 1; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n            for(int i =\
-    \ 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n        } else {\n        \
-    \    for(int i = 0; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n           \
-    \ for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n        }\n   \
-    \     k >>= 1;\n    }\n    return p[0];\n}\n#line 5 \"src/fps/nth_term.hpp\"\n\
-    template <template <typename> typename FPS, typename mint>\nmint nth_term(const\
-    \ FPS<mint>& s, ll n) {\n    assert(n >= 0);\n    FPS<mint> c = berlekamp_massey(s);\n\
+    \    for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];\n        const\
+    \ auto s = p * q2;\n        const auto t = q * q2;\n        if(k & 1) {\n    \
+    \        for(int i = 1; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n       \
+    \     for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n        } else\
+    \ {\n            for(int i = 0; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n\
+    \            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n   \
+    \     }\n        k >>= 1;\n    }\n    return p[0];\n}\n#line 5 \"src/fps/nth_term.hpp\"\
+    \ntemplate <template <typename> typename FPS, typename mint>\nmint nth_term(const\
+    \ FPS<mint>& s, long long n) {\n    assert(n >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n\
     \    return bostan_mori(s, c, n);\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./berlekamp_massey.hpp\"\
     \n#include \"./bostan_mori.hpp\"\ntemplate <template <typename> typename FPS,\
-    \ typename mint>\nmint nth_term(const FPS<mint>& s, ll n) {\n    assert(n >= 0);\n\
-    \    FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s, c, n);\n}"
+    \ typename mint>\nmint nth_term(const FPS<mint>& s, long long n) {\n    assert(n\
+    \ >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s,\
+    \ c, n);\n}"
   dependsOn:
   - src/template/template.hpp
   - src/fps/berlekamp_massey.hpp
@@ -63,8 +64,8 @@ data:
   isVerificationFile: false
   path: src/fps/nth_term.hpp
   requiredBy: []
-  timestamp: '2024-01-16 00:37:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/nth_term.hpp

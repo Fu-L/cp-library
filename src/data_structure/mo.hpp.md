@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -23,7 +23,7 @@ data:
     \nstruct Mo {\n    Mo(int N, int Q)\n        : n(N), order(Q) {\n        width\
     \ = max<int>(1, 1.0 * N / max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n        iota(order.begin(),\
     \ order.end(), 0);\n    }\n    void insert(int l, int r) {\n        assert(0 <=\
-    \ l and l <= r and r <= n);\n        left.push_back(l);\n        right.push_back(r);\n\
+    \ l and l <= r and r <= n);\n        left.emplace_back(l);\n        right.emplace_back(r);\n\
     \    }\n    template <typename AL, typename AR, typename DL, typename DR, typename\
     \ OUT>\n    void run(const AL& add_left, const AR& add_right, const DL& delete_left,\
     \ const DR& delete_right, const OUT& out) {\n        assert(left.size() == order.size());\n\
@@ -40,8 +40,8 @@ data:
     \ N, int Q)\n        : n(N), order(Q) {\n        width = max<int>(1, 1.0 * N /\
     \ max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n        iota(order.begin(), order.end(),\
     \ 0);\n    }\n    void insert(int l, int r) {\n        assert(0 <= l and l <=\
-    \ r and r <= n);\n        left.push_back(l);\n        right.push_back(r);\n  \
-    \  }\n    template <typename AL, typename AR, typename DL, typename DR, typename\
+    \ r and r <= n);\n        left.emplace_back(l);\n        right.emplace_back(r);\n\
+    \    }\n    template <typename AL, typename AR, typename DL, typename DR, typename\
     \ OUT>\n    void run(const AL& add_left, const AR& add_right, const DL& delete_left,\
     \ const DR& delete_right, const OUT& out) {\n        assert(left.size() == order.size());\n\
     \        sort(order.begin(), order.end(), [&](int i, int j) {\n            int\
@@ -58,8 +58,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/mo.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/static_range_inversions_query.test.cpp
 documentation_of: src/data_structure/mo.hpp

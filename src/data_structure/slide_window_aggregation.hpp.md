@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -27,10 +27,10 @@ data:
     \        if(a0.empty()) transfer();\n        a0.pop_back();\n        r0.pop_back();\n\
     \        f0 = r0.empty() ? e() : r0.back();\n    }\n    S query() {\n        return\
     \ op(f0, f1);\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0,\
-    \ f1;\n    void push_s0(const S& x) {\n        a0.push_back(x);\n        r0.push_back(f0\
-    \ = op(x, f0));\n    }\n    void push_s1(const S& x) {\n        a1.push_back(x);\n\
-    \        r1.push_back(f1 = op(f1, x));\n    }\n    void transfer() {\n       \
-    \ while(!a1.empty()) {\n            push_s0(a1.back());\n            a1.pop_back();\n\
+    \ f1;\n    void push_s0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0\
+    \ = op(x, f0));\n    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n\
+    \        r1.emplace_back(f1 = op(f1, x));\n    }\n    void transfer() {\n    \
+    \    while(!a1.empty()) {\n            push_s0(a1.back());\n            a1.pop_back();\n\
     \        }\n        while(!r1.empty()) r1.pop_back();\n        f1 = e();\n   \
     \ }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
@@ -41,8 +41,8 @@ data:
     \ transfer();\n        a0.pop_back();\n        r0.pop_back();\n        f0 = r0.empty()\
     \ ? e() : r0.back();\n    }\n    S query() {\n        return op(f0, f1);\n   \
     \ }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void push_s0(const\
-    \ S& x) {\n        a0.push_back(x);\n        r0.push_back(f0 = op(x, f0));\n \
-    \   }\n    void push_s1(const S& x) {\n        a1.push_back(x);\n        r1.push_back(f1\
+    \ S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0 = op(x, f0));\n\
+    \    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n        r1.emplace_back(f1\
     \ = op(f1, x));\n    }\n    void transfer() {\n        while(!a1.empty()) {\n\
     \            push_s0(a1.back());\n            a1.pop_back();\n        }\n    \
     \    while(!r1.empty()) r1.pop_back();\n        f1 = e();\n    }\n};"
@@ -51,8 +51,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/slide_window_aggregation.hpp
   requiredBy: []
-  timestamp: '2024-02-15 00:10:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
 documentation_of: src/data_structure/slide_window_aggregation.hpp

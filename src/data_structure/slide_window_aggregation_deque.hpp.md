@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -31,14 +31,14 @@ data:
     \ op(get0(), get1());\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n \
     \   S get0() const {\n        return r0.empty() ? e() : r0.back();\n    }\n  \
     \  S get1() const {\n        return r1.empty() ? e() : r1.back();\n    }\n   \
-    \ void push0(const S& x) {\n        a0.push_back(x);\n        r0.push_back(op(x,\
-    \ get0()));\n    }\n    void push1(const S& x) {\n        a1.push_back(x);\n \
-    \       r1.push_back(op(get1(), x));\n    }\n    void rebalance() {\n        int\
-    \ n = a0.size() + a1.size();\n        int s0 = n / 2 + (a0.empty() ? n % 2 : 0);\n\
-    \        vector<S> a{a0};\n        reverse(begin(a), end(a));\n        copy(begin(a1),\
-    \ end(a1), back_inserter(a));\n        a0.clear(), r0.clear();\n        a1.clear(),\
-    \ r1.clear();\n        for(int i = s0 - 1; i >= 0; --i) push0(a[i]);\n       \
-    \ for(int i = s0; i < n; ++i) push1(a[i]);\n    }\n};\n"
+    \ void push0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(op(x,\
+    \ get0()));\n    }\n    void push1(const S& x) {\n        a1.emplace_back(x);\n\
+    \        r1.emplace_back(op(get1(), x));\n    }\n    void rebalance() {\n    \
+    \    const int n = a0.size() + a1.size();\n        const int s0 = n / 2 + (a0.empty()\
+    \ ? n % 2 : 0);\n        vector<S> a{a0};\n        reverse(begin(a), end(a));\n\
+    \        copy(begin(a1), end(a1), back_inserter(a));\n        a0.clear(), r0.clear();\n\
+    \        a1.clear(), r1.clear();\n        for(int i = s0 - 1; i >= 0; --i) push0(a[i]);\n\
+    \        for(int i = s0; i < n; ++i) push1(a[i]);\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SlideWindowAggregationDeque {\n    void push_front(const\
     \ S& t) {\n        push0(t);\n    }\n    void push_back(const S& t) {\n      \
@@ -51,21 +51,21 @@ data:
     \ op(get0(), get1());\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n \
     \   S get0() const {\n        return r0.empty() ? e() : r0.back();\n    }\n  \
     \  S get1() const {\n        return r1.empty() ? e() : r1.back();\n    }\n   \
-    \ void push0(const S& x) {\n        a0.push_back(x);\n        r0.push_back(op(x,\
-    \ get0()));\n    }\n    void push1(const S& x) {\n        a1.push_back(x);\n \
-    \       r1.push_back(op(get1(), x));\n    }\n    void rebalance() {\n        int\
-    \ n = a0.size() + a1.size();\n        int s0 = n / 2 + (a0.empty() ? n % 2 : 0);\n\
-    \        vector<S> a{a0};\n        reverse(begin(a), end(a));\n        copy(begin(a1),\
-    \ end(a1), back_inserter(a));\n        a0.clear(), r0.clear();\n        a1.clear(),\
-    \ r1.clear();\n        for(int i = s0 - 1; i >= 0; --i) push0(a[i]);\n       \
-    \ for(int i = s0; i < n; ++i) push1(a[i]);\n    }\n};"
+    \ void push0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(op(x,\
+    \ get0()));\n    }\n    void push1(const S& x) {\n        a1.emplace_back(x);\n\
+    \        r1.emplace_back(op(get1(), x));\n    }\n    void rebalance() {\n    \
+    \    const int n = a0.size() + a1.size();\n        const int s0 = n / 2 + (a0.empty()\
+    \ ? n % 2 : 0);\n        vector<S> a{a0};\n        reverse(begin(a), end(a));\n\
+    \        copy(begin(a1), end(a1), back_inserter(a));\n        a0.clear(), r0.clear();\n\
+    \        a1.clear(), r1.clear();\n        for(int i = s0 - 1; i >= 0; --i) push0(a[i]);\n\
+    \        for(int i = s0; i < n; ++i) push1(a[i]);\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/slide_window_aggregation_deque.hpp
   requiredBy: []
-  timestamp: '2024-02-15 00:10:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
 documentation_of: src/data_structure/slide_window_aggregation_deque.hpp

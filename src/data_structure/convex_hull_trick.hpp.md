@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -18,39 +18,39 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/convex_hull_trick.hpp\"\
     \ntemplate <typename T>\nstruct ConvexHullTrick {\n    void add(const T& a, const\
-    \ T& b) {\n        Linear l(a, b);\n        assert((int)ls.size() == 0 or ls.back().a\
-    \ >= l.a);\n        int len = (int)ls.size();\n        while(len >= 2 and check(ls[len\
+    \ T& b) {\n        Linear l(a, b);\n        assert(ls.empty() or ls.back().a >=\
+    \ l.a);\n        int len = (int)ls.size();\n        while(len >= 2 and check(ls[len\
     \ - 2], ls[len - 1], l)) {\n            --len;\n            ls.pop_back();\n \
-    \       }\n        ls.push_back(l);\n    }\n    T operator()(const T& x) {\n \
-    \       assert(x >= x_last);\n        while((int)ls.size() >= 2 and ls[0](x) >=\
-    \ ls[1](x)) {\n            ls.pop_front();\n        }\n        x_last = x;\n \
-    \       return ls[0](x);\n    }\n\n   private:\n    struct Linear {\n        T\
-    \ a, b;\n        Linear(const T& a = 0, const T& b = 0)\n            : a(a), b(b)\
-    \ {}\n        inline T operator()(const T& x) const {\n            return a *\
-    \ x + b;\n        }\n    };\n    inline bool check(const Linear& f1, const Linear&\
-    \ f2, const Linear& f3) const {\n        return (f2.a - f1.a) * (f3.b - f2.b)\
-    \ >= (f2.b - f1.b) * (f3.a - f2.a);\n    }\n    deque<Linear> ls;\n    T x_last\
-    \ = numeric_limits<T>::min();\n};\n"
+    \       }\n        ls.emplace_back(l);\n    }\n    T operator()(const T& x) {\n\
+    \        assert(x >= x_last);\n        while((int)ls.size() >= 2 and ls[0](x)\
+    \ >= ls[1](x)) {\n            ls.pop_front();\n        }\n        x_last = x;\n\
+    \        return ls[0](x);\n    }\n\n   private:\n    struct Linear {\n       \
+    \ T a, b;\n        Linear(const T& a = 0, const T& b = 0)\n            : a(a),\
+    \ b(b) {}\n        inline T operator()(const T& x) const {\n            return\
+    \ a * x + b;\n        }\n    };\n    inline bool check(const Linear& f1, const\
+    \ Linear& f2, const Linear& f3) const {\n        return (f2.a - f1.a) * (f3.b\
+    \ - f2.b) >= (f2.b - f1.b) * (f3.a - f2.a);\n    }\n    deque<Linear> ls;\n  \
+    \  T x_last = numeric_limits<T>::min();\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct ConvexHullTrick {\n    void add(const T& a, const T& b) {\n        Linear\
-    \ l(a, b);\n        assert((int)ls.size() == 0 or ls.back().a >= l.a);\n     \
-    \   int len = (int)ls.size();\n        while(len >= 2 and check(ls[len - 2], ls[len\
-    \ - 1], l)) {\n            --len;\n            ls.pop_back();\n        }\n   \
-    \     ls.push_back(l);\n    }\n    T operator()(const T& x) {\n        assert(x\
-    \ >= x_last);\n        while((int)ls.size() >= 2 and ls[0](x) >= ls[1](x)) {\n\
-    \            ls.pop_front();\n        }\n        x_last = x;\n        return ls[0](x);\n\
-    \    }\n\n   private:\n    struct Linear {\n        T a, b;\n        Linear(const\
-    \ T& a = 0, const T& b = 0)\n            : a(a), b(b) {}\n        inline T operator()(const\
-    \ T& x) const {\n            return a * x + b;\n        }\n    };\n    inline\
-    \ bool check(const Linear& f1, const Linear& f2, const Linear& f3) const {\n \
-    \       return (f2.a - f1.a) * (f3.b - f2.b) >= (f2.b - f1.b) * (f3.a - f2.a);\n\
-    \    }\n    deque<Linear> ls;\n    T x_last = numeric_limits<T>::min();\n};"
+    \ l(a, b);\n        assert(ls.empty() or ls.back().a >= l.a);\n        int len\
+    \ = (int)ls.size();\n        while(len >= 2 and check(ls[len - 2], ls[len - 1],\
+    \ l)) {\n            --len;\n            ls.pop_back();\n        }\n        ls.emplace_back(l);\n\
+    \    }\n    T operator()(const T& x) {\n        assert(x >= x_last);\n       \
+    \ while((int)ls.size() >= 2 and ls[0](x) >= ls[1](x)) {\n            ls.pop_front();\n\
+    \        }\n        x_last = x;\n        return ls[0](x);\n    }\n\n   private:\n\
+    \    struct Linear {\n        T a, b;\n        Linear(const T& a = 0, const T&\
+    \ b = 0)\n            : a(a), b(b) {}\n        inline T operator()(const T& x)\
+    \ const {\n            return a * x + b;\n        }\n    };\n    inline bool check(const\
+    \ Linear& f1, const Linear& f2, const Linear& f3) const {\n        return (f2.a\
+    \ - f1.a) * (f3.b - f2.b) >= (f2.b - f1.b) * (f3.a - f2.a);\n    }\n    deque<Linear>\
+    \ ls;\n    T x_last = numeric_limits<T>::min();\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/convex_hull_trick.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data_structure/convex_hull_trick.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -22,41 +22,41 @@ data:
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/fenwick_tree_2d.hpp\"\
     \ntemplate <typename T>\nstruct FenwickTree2D {\n    FenwickTree2D(int H, int\
     \ W)\n        : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(int\
-    \ i, int j, T z) {\n        assert(0 <= i and i < h);\n        assert(0 <= j and\
-    \ j < w);\n        for(int x = i + 1; x <= h; x += x & -x) {\n            for(int\
-    \ y = j + 1; y <= w; y += y & -y) {\n                data[x - 1][y - 1] += z;\n\
-    \            }\n        }\n    }\n    T sum(int li, int lj, int ri, int rj) {\n\
-    \        assert(0 <= li and li <= ri and ri <= h);\n        assert(0 <= lj and\
-    \ lj <= rj and rj <= w);\n        return sum(ri, rj) - sum(li, rj) - sum(ri, lj)\
+    \ i, int j, const T& z) {\n        assert(0 <= i and i < h);\n        assert(0\
+    \ <= j and j < w);\n        for(int x = i + 1; x <= h; x += x & -x) {\n      \
+    \      for(int y = j + 1; y <= w; y += y & -y) {\n                data[x - 1][y\
+    \ - 1] += z;\n            }\n        }\n    }\n    T sum(int li, int lj, int ri,\
+    \ int rj) {\n        assert(0 <= li and li <= ri and ri <= h);\n        assert(0\
+    \ <= lj and lj <= rj and rj <= w);\n        return sum(ri, rj) - sum(li, rj) -\
+    \ sum(ri, lj) + sum(li, lj);\n    }\n    T get(int i, int j) {\n        assert(0\
+    \ <= i and i < h);\n        assert(0 <= j and j < w);\n        return sum(i +\
+    \ 1, j + 1) - sum(i, j + 1) - sum(i + 1, j) + sum(i, j);\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> data;\n    inline T sum(int i, int j) {\n\
+    \        T s = 0;\n        for(int x = i; x > 0; x -= x & -x) {\n            for(int\
+    \ y = j; y > 0; y -= y & -y) {\n                s += data[x - 1][y - 1];\n   \
+    \         }\n        }\n        return s;\n    }\n};\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
+    struct FenwickTree2D {\n    FenwickTree2D(int H, int W)\n        : h(H), w(W),\
+    \ data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(int i, int j, const T& z)\
+    \ {\n        assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n  \
+    \      for(int x = i + 1; x <= h; x += x & -x) {\n            for(int y = j +\
+    \ 1; y <= w; y += y & -y) {\n                data[x - 1][y - 1] += z;\n      \
+    \      }\n        }\n    }\n    T sum(int li, int lj, int ri, int rj) {\n    \
+    \    assert(0 <= li and li <= ri and ri <= h);\n        assert(0 <= lj and lj\
+    \ <= rj and rj <= w);\n        return sum(ri, rj) - sum(li, rj) - sum(ri, lj)\
     \ + sum(li, lj);\n    }\n    T get(int i, int j) {\n        assert(0 <= i and\
     \ i < h);\n        assert(0 <= j and j < w);\n        return sum(i + 1, j + 1)\
     \ - sum(i, j + 1) - sum(i + 1, j) + sum(i, j);\n    }\n\n   private:\n    int\
     \ h, w;\n    vector<vector<T>> data;\n    inline T sum(int i, int j) {\n     \
     \   T s = 0;\n        for(int x = i; x > 0; x -= x & -x) {\n            for(int\
     \ y = j; y > 0; y -= y & -y) {\n                s += data[x - 1][y - 1];\n   \
-    \         }\n        }\n        return s;\n    }\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
-    struct FenwickTree2D {\n    FenwickTree2D(int H, int W)\n        : h(H), w(W),\
-    \ data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(int i, int j, T z) {\n   \
-    \     assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n        for(int\
-    \ x = i + 1; x <= h; x += x & -x) {\n            for(int y = j + 1; y <= w; y\
-    \ += y & -y) {\n                data[x - 1][y - 1] += z;\n            }\n    \
-    \    }\n    }\n    T sum(int li, int lj, int ri, int rj) {\n        assert(0 <=\
-    \ li and li <= ri and ri <= h);\n        assert(0 <= lj and lj <= rj and rj <=\
-    \ w);\n        return sum(ri, rj) - sum(li, rj) - sum(ri, lj) + sum(li, lj);\n\
-    \    }\n    T get(int i, int j) {\n        assert(0 <= i and i < h);\n       \
-    \ assert(0 <= j and j < w);\n        return sum(i + 1, j + 1) - sum(i, j + 1)\
-    \ - sum(i + 1, j) + sum(i, j);\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>>\
-    \ data;\n    inline T sum(int i, int j) {\n        T s = 0;\n        for(int x\
-    \ = i; x > 0; x -= x & -x) {\n            for(int y = j; y > 0; y -= y & -y) {\n\
-    \                s += data[x - 1][y - 1];\n            }\n        }\n        return\
-    \ s;\n    }\n};"
+    \         }\n        }\n        return s;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/fenwick_tree_2d.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps_2.test.cpp

@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
@@ -91,41 +91,41 @@ data:
     \ u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n        if(m0\
     \ < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
-    #line 3 \"src/math/pow_mod.hpp\"\nconstexpr ll pow_mod(ll x, ll n, ll mod) {\n\
-    \    assert(n >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x += mod;\n  \
-    \  ll res = 1;\n    while(n > 0) {\n        if(n & 1) res = res * x % mod;\n \
-    \       x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line 4\
-    \ \"src/math/primitive_root.hpp\"\nconstexpr int primitive_root(int m) {\n   \
-    \ if(m == 2) return 1;\n    if(m == 167772161) return 3;\n    if(m == 469762049)\
-    \ return 3;\n    if(m == 754974721) return 11;\n    if(m == 998244353) return\
-    \ 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int x =\
-    \ (m - 1) / 2;\n    while(x % 2 == 0) x /= 2;\n    for(int i = 3; (long long)(i)*i\
-    \ <= x; i += 2) {\n        if(x % i == 0) {\n            divs[cnt++] = i;\n  \
-    \          while(x % i == 0) {\n                x /= i;\n            }\n     \
-    \   }\n    }\n    if(x > 1) {\n        divs[cnt++] = x;\n    }\n    for(int g\
-    \ = 2;; ++g) {\n        bool ok = true;\n        for(int i = 0; i < cnt; ++i)\
-    \ {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1) {\n               \
-    \ ok = false;\n                break;\n            }\n        }\n        if(ok)\
-    \ return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\nconstexpr\
-    \ int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n & (1 << res)))\
-    \ ++res;\n    return res;\n}\ntemplate <typename mint, int g = primitive_root(mint::mod())>\n\
-    struct FFT_Info {\n    static constexpr int rank2 = countr_zero(mint::mod() -\
-    \ 1);\n    array<mint, rank2 + 1> root;\n    array<mint, rank2 + 1> iroot;\n \
-    \   array<mint, max(0, rank2 - 2 + 1)> rate2;\n    array<mint, max(0, rank2 -\
-    \ 2 + 1)> irate2;\n    array<mint, max(0, rank2 - 3 + 1)> rate3;\n    array<mint,\
-    \ max(0, rank2 - 3 + 1)> irate3;\n    FFT_Info() {\n        root[rank2] = mint(g).pow((mint::mod()\
-    \ - 1) >> rank2);\n        iroot[rank2] = root[rank2].inv();\n        for(int\
-    \ i = rank2 - 1; i >= 0; --i) {\n            root[i] = root[i + 1] * root[i +\
-    \ 1];\n            iroot[i] = iroot[i + 1] * iroot[i + 1];\n        }\n      \
-    \  {\n            mint prod = 1, iprod = 1;\n            for(int i = 0; i <= rank2\
-    \ - 2; ++i) {\n                rate2[i] = root[i + 2] * prod;\n              \
-    \  irate2[i] = iroot[i + 2] * iprod;\n                prod *= iroot[i + 2];\n\
-    \                iprod *= root[i + 2];\n            }\n        }\n        {\n\
-    \            mint prod = 1, iprod = 1;\n            for(int i = 0; i <= rank2\
-    \ - 3; ++i) {\n                rate3[i] = root[i + 3] * prod;\n              \
-    \  irate3[i] = iroot[i + 3] * iprod;\n                prod *= iroot[i + 3];\n\
-    \                iprod *= root[i + 3];\n            }\n        }\n    }\n};\n\
-    template <typename mint>\nvoid butterfly(vector<mint>& a) {\n    int n = (int)a.size();\n\
+    #line 3 \"src/math/pow_mod.hpp\"\nconstexpr long long pow_mod(long long x, long\
+    \ long n, const long long mod) {\n    assert(n >= 0 and mod >= 1);\n    x %= mod;\n\
+    \    if(x < 0) x += mod;\n    long long res = 1;\n    while(n > 0) {\n       \
+    \ if(n & 1) res = res * x % mod;\n        x = x * x % mod;\n        n >>= 1;\n\
+    \    }\n    return res;\n}\n#line 4 \"src/math/primitive_root.hpp\"\nconstexpr\
+    \ int primitive_root(int m) {\n    if(m == 2) return 1;\n    if(m == 167772161)\
+    \ return 3;\n    if(m == 469762049) return 3;\n    if(m == 754974721) return 11;\n\
+    \    if(m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n\
+    \    int cnt = 1;\n    int x = (m - 1) / 2;\n    while(x % 2 == 0) x /= 2;\n \
+    \   for(int i = 3; (long long)(i)*i <= x; i += 2) {\n        if(x % i == 0) {\n\
+    \            divs[cnt++] = i;\n            while(x % i == 0) {\n             \
+    \   x /= i;\n            }\n        }\n    }\n    if(x > 1) {\n        divs[cnt++]\
+    \ = x;\n    }\n    for(int g = 2;; ++g) {\n        bool ok = true;\n        for(int\
+    \ i = 0; i < cnt; ++i) {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1)\
+    \ {\n                ok = false;\n                break;\n            }\n    \
+    \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\
+    \nconstexpr int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n\
+    \ & (1 << res))) ++res;\n    return res;\n}\ntemplate <typename mint, int g =\
+    \ primitive_root(mint::mod())>\nstruct FFT_Info {\n    static constexpr int rank2\
+    \ = countr_zero(mint::mod() - 1);\n    array<mint, rank2 + 1> root;\n    array<mint,\
+    \ rank2 + 1> iroot;\n    array<mint, max(0, rank2 - 2 + 1)> rate2;\n    array<mint,\
+    \ max(0, rank2 - 2 + 1)> irate2;\n    array<mint, max(0, rank2 - 3 + 1)> rate3;\n\
+    \    array<mint, max(0, rank2 - 3 + 1)> irate3;\n    FFT_Info() {\n        root[rank2]\
+    \ = mint(g).pow((mint::mod() - 1) >> rank2);\n        iroot[rank2] = root[rank2].inv();\n\
+    \        for(int i = rank2 - 1; i >= 0; --i) {\n            root[i] = root[i +\
+    \ 1] * root[i + 1];\n            iroot[i] = iroot[i + 1] * iroot[i + 1];\n   \
+    \     }\n        {\n            mint prod = 1, iprod = 1;\n            for(int\
+    \ i = 0; i <= rank2 - 2; ++i) {\n                rate2[i] = root[i + 2] * prod;\n\
+    \                irate2[i] = iroot[i + 2] * iprod;\n                prod *= iroot[i\
+    \ + 2];\n                iprod *= root[i + 2];\n            }\n        }\n   \
+    \     {\n            mint prod = 1, iprod = 1;\n            for(int i = 0; i <=\
+    \ rank2 - 3; ++i) {\n                rate3[i] = root[i + 3] * prod;\n        \
+    \        irate3[i] = iroot[i + 3] * iprod;\n                prod *= iroot[i +\
+    \ 3];\n                iprod *= root[i + 3];\n            }\n        }\n    }\n\
+    };\ntemplate <typename mint>\nvoid butterfly(vector<mint>& a) {\n    int n = (int)a.size();\n\
     \    int h = __builtin_ctz((unsigned int)n);\n    static const FFT_Info<mint>\
     \ info;\n    int len = 0;\n    while(len < h) {\n        if(h - len == 1) {\n\
     \            int p = 1 << (h - len - 1);\n            mint rot = 1;\n        \
@@ -186,15 +186,15 @@ data:
     \            }\n        }\n    } else {\n        for(int i = 0; i < n; ++i) {\n\
     \            for(int j = 0; j < m; ++j) {\n                res[i + j] += a[i]\
     \ * b[j];\n            }\n        }\n    }\n    return res;\n}\ntemplate <typename\
-    \ mint>\nvector<mint> convolution(vector<mint> a, vector<mint> b) {\n    int n\
-    \ = (int)a.size(), m = (int)b.size();\n    if(n == 0 or m == 0) return {};\n \
-    \   int z = 1;\n    while(z < n + m - 1) z *= 2;\n    assert((mint::mod() - 1)\
+    \ mint>\nvector<mint> convolution(vector<mint> a, vector<mint> b) {\n    const\
+    \ int n = (int)a.size(), m = (int)b.size();\n    if(n == 0 or m == 0) return {};\n\
+    \    int z = 1;\n    while(z < n + m - 1) z *= 2;\n    assert((mint::mod() - 1)\
     \ % z == 0);\n    if(min(n, m) <= 60) return convolution_naive(a, b);\n    a.resize(z);\n\
     \    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n    for(int i = 0; i\
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
-    \   mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i] *= iz;\n\
-    \    return a;\n}\n#line 4 \"src/fps/formal_power_series.hpp\"\ntemplate <typename\
-    \ mint>\nstruct FormalPowerSeries : vector<mint> {\n    using vector<mint>::vector;\n\
+    \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
+    \ *= iz;\n    return a;\n}\n#line 4 \"src/fps/formal_power_series.hpp\"\ntemplate\
+    \ <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using vector<mint>::vector;\n\
     \    using F = FormalPowerSeries;\n    F& operator=(const vector<mint>& g) {\n\
     \        const int n = (*this).size();\n        const int m = g.size();\n    \
     \    if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
@@ -218,7 +218,7 @@ data:
     \       }\n        const int n = (*this).size() - g.size() + 1;\n        (*this)\
     \ = ((*this).rev().pre(n) * g.rev().inv(n)).pre(n).rev();\n        return (*this);\n\
     \    }\n    F& operator/=(const mint& r) {\n        const int n = (*this).size();\n\
-    \        mint inv_r = r.inv();\n        for(int i = 0; i < (int)n; ++i) (*this)[i]\
+    \        const mint inv_r = r.inv();\n        for(int i = 0; i < n; ++i) (*this)[i]\
     \ *= inv_r;\n        return (*this);\n    }\n    F& operator%=(const F& g) {\n\
     \        (*this) -= (*this) / g * g;\n        shrink();\n        return (*this);\n\
     \    }\n    F operator*(const mint& g) const {\n        return F(*this) *= g;\n\
@@ -234,7 +234,7 @@ data:
     \ d, mint(0));\n        return ret;\n    }\n    F operator>>(const int d) const\
     \ {\n        const int n = (*this).size();\n        if(n <= d) return {};\n  \
     \      F ret(*this);\n        ret.erase(ret.begin(), ret.begin() + d);\n     \
-    \   return ret;\n    }\n    void shrink() {\n        while((*this).size() and\
+    \   return ret;\n    }\n    void shrink() {\n        while(!(*this).empty() and\
     \ (*this).back() == mint(0)) (*this).pop_back();\n    }\n    F rev() const {\n\
     \        F ret(*this);\n        reverse(begin(ret), end(ret));\n        return\
     \ ret;\n    }\n    F pre(const int deg) const {\n        assert(deg >= 0);\n \
@@ -254,98 +254,100 @@ data:
     \        }\n    }\n    F diff() const {\n        const int n = (*this).size();\n\
     \        F ret(max(0, n - 1));\n        for(int i = 1; i < n; ++i) ret[i - 1]\
     \ = (*this)[i] * i;\n        return ret;\n    }\n    F integral() const {\n  \
-    \      const int n = (*this).size(), mod = mint::mod();\n        F ret(n + 1);\n\
-    \        ret[0] = mint(0);\n        if(n > 0) ret[1] = mint(1);\n        for(int\
-    \ i = 2; i <= n; ++i) ret[i] = (-ret[mod % i]) * (mod / i);\n        for(int i\
-    \ = 0; i < n; ++i) ret[i + 1] *= (*this)[i];\n        return ret;\n    }\n   \
-    \ F inv(int deg = -1) const {\n        assert(deg >= -1);\n        const int n\
-    \ = (*this).size();\n        assert(n > 0 and (*this)[0] != mint(0));\n      \
-    \  if(deg == -1) deg = n;\n        F g(1);\n        g[0] = (*this)[0].inv();\n\
-    \        while((int)g.size() < deg) {\n            int m = g.size();\n       \
-    \     F f(begin(*this), begin(*this) + min(n, 2 * m));\n            F r(g);\n\
-    \            f.resize(2 * m);\n            r.resize(2 * m);\n            butterfly(f);\n\
-    \            butterfly(r);\n            for(int i = 0; i < 2 * m; ++i) f[i] *=\
-    \ r[i];\n            butterfly_inv(f);\n            f.erase(f.begin(), f.begin()\
-    \ + m);\n            f.resize(2 * m);\n            butterfly(f);\n           \
-    \ for(int i = 0; i < 2 * m; ++i) f[i] *= r[i];\n            butterfly_inv(f);\n\
-    \            mint in = mint(2 * m).inv();\n            in *= -in;\n          \
-    \  for(int i = 0; i < m; ++i) f[i] *= in;\n            g.insert(g.end(), f.begin(),\
-    \ f.begin() + m);\n        }\n        return g.pre(deg);\n    }\n    F log(int\
-    \ deg = -1) const {\n        assert(deg >= -1);\n        const int n = (*this).size();\n\
-    \        assert(n > 0 and (*this)[0] == mint(1));\n        if(deg == -1) deg =\
-    \ n;\n        return ((*this).diff() * (*this).inv(deg)).pre(deg - 1).integral();\n\
-    \    }\n    F exp(int deg = -1) const {\n        assert(deg >= -1);\n        const\
-    \ int n = (*this).size();\n        assert(n == 0 or (*this)[0] == 0);\n      \
-    \  if(deg == -1) deg = n;\n        F Inv;\n        Inv.reserve(deg + 1);\n   \
-    \     Inv.push_back(mint(0));\n        Inv.push_back(mint(1));\n        auto inplace_integral\
-    \ = [&](F& f) -> void {\n            const int n = (int)f.size(), mod = mint::mod();\n\
-    \            while((int)Inv.size() <= n) {\n                int i = Inv.size();\n\
-    \                Inv.push_back((-Inv[mod % i]) * (mod / i));\n            }\n\
-    \            f.insert(begin(f), mint(0));\n            for(int i = 1; i <= n;\
-    \ ++i) f[i] *= Inv[i];\n        };\n        auto inplace_diff = [](F& f) -> void\
-    \ {\n            if(f.empty()) return;\n            f.erase(begin(f));\n     \
-    \       mint coeff = 1;\n            for(int i = 0; i < (int)f.size(); ++i) {\n\
-    \                f[i] *= coeff;\n                ++coeff;\n            }\n   \
-    \     };\n        F b{1, 1 < (int)(*this).size() ? (*this)[1] : 0}, c{1}, z1,\
-    \ z2{1, 1};\n        for(int m = 2; m < deg; m <<= 1) {\n            auto y =\
-    \ b;\n            y.resize(2 * m);\n            butterfly(y);\n            z1\
-    \ = z2;\n            F z(m);\n            for(int i = 0; i < m; ++i) z[i] = y[i]\
-    \ * z1[i];\n            butterfly_inv(z);\n            mint si = mint(m).inv();\n\
-    \            for(int i = 0; i < m; ++i) z[i] *= si;\n            fill(begin(z),\
-    \ begin(z) + m / 2, mint(0));\n            butterfly(z);\n            for(int\
-    \ i = 0; i < m; ++i) z[i] *= -z1[i];\n            butterfly_inv(z);\n        \
-    \    for(int i = 0; i < m; ++i) z[i] *= si;\n            c.insert(end(c), begin(z)\
-    \ + m / 2, end(z));\n            z2 = c;\n            z2.resize(2 * m);\n    \
-    \        butterfly(z2);\n            F x(begin((*this)), begin((*this)) + min<int>((*this).size(),\
-    \ m));\n            x.resize(m);\n            inplace_diff(x);\n            x.push_back(mint(0));\n\
-    \            butterfly(x);\n            for(int i = 0; i < m; ++i) x[i] *= y[i];\n\
-    \            butterfly_inv(x);\n            for(int i = 0; i < m; ++i) x[i] *=\
-    \ si;\n            x -= b.diff();\n            x.resize(2 * m);\n            for(int\
-    \ i = 0; i < m - 1; ++i) x[m + i] = x[i], x[i] = mint(0);\n            butterfly(x);\n\
-    \            for(int i = 0; i < 2 * m; ++i) x[i] *= z2[i];\n            butterfly_inv(x);\n\
-    \            mint si2 = mint(m << 1).inv();\n            for(int i = 0; i < 2\
+    \      const int n = (*this).size();\n        static constexpr int mod = mint::mod();\n\
+    \        F ret(n + 1);\n        ret[0] = mint(0);\n        if(n > 0) ret[1] =\
+    \ mint(1);\n        for(int i = 2; i <= n; ++i) ret[i] = (-ret[mod % i]) * (mod\
+    \ / i);\n        for(int i = 0; i < n; ++i) ret[i + 1] *= (*this)[i];\n      \
+    \  return ret;\n    }\n    F inv(int deg = -1) const {\n        assert(deg >=\
+    \ -1);\n        const int n = (*this).size();\n        assert(n > 0 and (*this)[0]\
+    \ != mint(0));\n        if(deg == -1) deg = n;\n        F g(1);\n        g[0]\
+    \ = (*this)[0].inv();\n        while((int)g.size() < deg) {\n            const\
+    \ int m = g.size();\n            F f(begin(*this), begin(*this) + min(n, 2 * m));\n\
+    \            F r(g);\n            f.resize(2 * m);\n            r.resize(2 * m);\n\
+    \            butterfly(f);\n            butterfly(r);\n            for(int i =\
+    \ 0; i < 2 * m; ++i) f[i] *= r[i];\n            butterfly_inv(f);\n          \
+    \  f.erase(f.begin(), f.begin() + m);\n            f.resize(2 * m);\n        \
+    \    butterfly(f);\n            for(int i = 0; i < 2 * m; ++i) f[i] *= r[i];\n\
+    \            butterfly_inv(f);\n            mint in = mint(2 * m).inv();\n   \
+    \         in *= -in;\n            for(int i = 0; i < m; ++i) f[i] *= in;\n   \
+    \         g.insert(g.end(), f.begin(), f.begin() + m);\n        }\n        return\
+    \ g.pre(deg);\n    }\n    F log(int deg = -1) const {\n        assert(deg >= -1);\n\
+    \        const int n = (*this).size();\n        assert(n > 0 and (*this)[0] ==\
+    \ mint(1));\n        if(deg == -1) deg = n;\n        return ((*this).diff() *\
+    \ (*this).inv(deg)).pre(deg - 1).integral();\n    }\n    F exp(int deg = -1) const\
+    \ {\n        assert(deg >= -1);\n        const int n = (*this).size();\n     \
+    \   assert(n == 0 or (*this)[0] == 0);\n        if(deg == -1) deg = n;\n     \
+    \   F Inv;\n        Inv.reserve(deg + 1);\n        Inv.emplace_back(mint(0));\n\
+    \        Inv.emplace_back(mint(1));\n        auto inplace_integral = [&](F& f)\
+    \ -> void {\n            const int n = (int)f.size();\n            static constexpr\
+    \ int mod = mint::mod();\n            while((int)Inv.size() <= n) {\n        \
+    \        const int i = Inv.size();\n                Inv.emplace_back((-Inv[mod\
+    \ % i]) * (mod / i));\n            }\n            f.insert(begin(f), mint(0));\n\
+    \            for(int i = 1; i <= n; ++i) f[i] *= Inv[i];\n        };\n       \
+    \ auto inplace_diff = [](F& f) -> void {\n            if(f.empty()) return;\n\
+    \            f.erase(begin(f));\n            mint coeff = 1;\n            for(int\
+    \ i = 0; i < (int)f.size(); ++i) {\n                f[i] *= coeff;\n         \
+    \       ++coeff;\n            }\n        };\n        F b{1, 1 < (int)(*this).size()\
+    \ ? (*this)[1] : 0}, c{1}, z1, z2{1, 1};\n        for(int m = 2; m < deg; m <<=\
+    \ 1) {\n            auto y = b;\n            y.resize(2 * m);\n            butterfly(y);\n\
+    \            z1 = z2;\n            F z(m);\n            for(int i = 0; i < m;\
+    \ ++i) z[i] = y[i] * z1[i];\n            butterfly_inv(z);\n            const\
+    \ mint si = mint(m).inv();\n            for(int i = 0; i < m; ++i) z[i] *= si;\n\
+    \            fill(begin(z), begin(z) + m / 2, mint(0));\n            butterfly(z);\n\
+    \            for(int i = 0; i < m; ++i) z[i] *= -z1[i];\n            butterfly_inv(z);\n\
+    \            for(int i = 0; i < m; ++i) z[i] *= si;\n            c.insert(end(c),\
+    \ begin(z) + m / 2, end(z));\n            z2 = c;\n            z2.resize(2 * m);\n\
+    \            butterfly(z2);\n            F x(begin((*this)), begin((*this)) +\
+    \ min<int>((*this).size(), m));\n            x.resize(m);\n            inplace_diff(x);\n\
+    \            x.emplace_back(mint(0));\n            butterfly(x);\n           \
+    \ for(int i = 0; i < m; ++i) x[i] *= y[i];\n            butterfly_inv(x);\n  \
+    \          for(int i = 0; i < m; ++i) x[i] *= si;\n            x -= b.diff();\n\
+    \            x.resize(2 * m);\n            for(int i = 0; i < m - 1; ++i) x[m\
+    \ + i] = x[i], x[i] = mint(0);\n            butterfly(x);\n            for(int\
+    \ i = 0; i < 2 * m; ++i) x[i] *= z2[i];\n            butterfly_inv(x);\n     \
+    \       const mint si2 = mint(m << 1).inv();\n            for(int i = 0; i < 2\
     \ * m; ++i) x[i] *= si2;\n            x.pop_back();\n            inplace_integral(x);\n\
     \            for(int i = m; i < min<int>((*this).size(), 2 * m); ++i) x[i] +=\
     \ (*this)[i];\n            fill(begin(x), begin(x) + m, mint(0));\n          \
     \  butterfly(x);\n            for(int i = 0; i < 2 * m; ++i) x[i] *= y[i];\n \
     \           butterfly_inv(x);\n            for(int i = 0; i < 2 * m; ++i) x[i]\
     \ *= si2;\n            b.insert(end(b), begin(x) + m, end(x));\n        }\n  \
-    \      return b.pre(deg);\n    }\n    F pow(const ll k, int deg = -1) const {\n\
-    \        assert(deg >= -1);\n        assert(k >= 0);\n        const int n = (*this).size();\n\
-    \        if(deg == -1) deg = n;\n        if(k == 0) {\n            F ret(deg);\n\
-    \            if(deg) ret[0] = 1;\n            return ret;\n        }\n       \
-    \ for(int i = 0; i < n; ++i) {\n            if((*this)[i] != mint(0)) {\n    \
-    \            mint rev = mint(1) / (*this)[i];\n                F ret = (((*this\
-    \ * rev) >> i).log(deg) * k).exp(deg);\n                ret *= (*this)[i].pow(k);\n\
-    \                ret = (ret << (i * k)).pre(deg);\n                if((int)ret.size()\
-    \ < deg) ret.resize(deg, mint(0));\n                return ret;\n            }\n\
-    \            if(__int128_t(i + 1) * k >= deg) return F(deg, mint(0));\n      \
-    \  }\n        return F(deg, mint(0));\n    }\n    F shift(const mint& c) const\
-    \ {\n        int n = (*this).size();\n        vector<mint> fact(n), ifact(n);\n\
-    \        fact[0] = ifact[0] = mint(1);\n        for(int i = 1; i < n; ++i) fact[i]\
-    \ = fact[i - 1] * i;\n        ifact[n - 1] = mint(1) / fact[n - 1];\n        for(int\
-    \ i = n - 1; i > 1; --i) ifact[i - 1] = ifact[i] * i;\n        F ret(*this);\n\
-    \        for(int i = 0; i < n; ++i) ret[i] *= fact[i];\n        ret = ret.rev();\n\
-    \        F bs(n, mint(1));\n        for(int i = 1; i < n; ++i) bs[i] = bs[i -\
-    \ 1] * c * ifact[i] * fact[i - 1];\n        ret = (ret * bs).pre(n);\n       \
-    \ ret = ret.rev();\n        for(int i = 0; i < n; ++i) ret[i] *= ifact[i];\n \
-    \       return ret;\n    }\n};\n#line 3 \"src/fps/berlekamp_massey.hpp\"\ntemplate\
-    \ <template <typename> typename FPS, typename mint>\nFPS<mint> berlekamp_massey(const\
-    \ FPS<mint>& s) {\n    const int n = (int)s.size();\n    FPS<mint> b = {mint(-1)},\
-    \ c = {mint(-1)};\n    mint y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n\
-    \        int l = (int)c.size(), m = (int)b.size();\n        mint x = 0;\n    \
-    \    for(int i = 0; i < l; ++i) x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n\
-    \        ++m;\n        if(x == mint(0)) continue;\n        mint freq = x / y;\n\
-    \        if(l < m) {\n            auto tmp = c;\n            c.insert(begin(c),\
-    \ m - l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq\
-    \ * b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
-    \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
-    \        }\n    }\n    c.pop_back();\n    c = c.rev();\n    return c;\n}\n#line\
-    \ 6 \"verify/library_checker/math/find_linear_recurrence.test.cpp\"\nusing mint\
-    \ = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n    FormalPowerSeries<mint>\
-    \ a(n);\n    rep(i, 0, n) cin >> a[i];\n    FormalPowerSeries<mint> c = berlekamp_massey(a);\n\
-    \    int m = c.size();\n    cout << m << '\\n';\n    rep(i, 0, m) {\n        cout\
-    \ << c[i] << \" \\n\"[i + 1 == m];\n    }\n}\n"
+    \      return b.pre(deg);\n    }\n    F pow(const long long k, int deg = -1) const\
+    \ {\n        assert(deg >= -1);\n        assert(k >= 0);\n        const int n\
+    \ = (*this).size();\n        if(deg == -1) deg = n;\n        if(k == 0) {\n  \
+    \          F ret(deg);\n            if(deg) ret[0] = 1;\n            return ret;\n\
+    \        }\n        for(int i = 0; i < n; ++i) {\n            if((*this)[i] !=\
+    \ mint(0)) {\n                mint rev = mint(1) / (*this)[i];\n             \
+    \   F ret = (((*this * rev) >> i).log(deg) * k).exp(deg);\n                ret\
+    \ *= (*this)[i].pow(k);\n                ret = (ret << (i * k)).pre(deg);\n  \
+    \              if((int)ret.size() < deg) ret.resize(deg, mint(0));\n         \
+    \       return ret;\n            }\n            if(__int128_t(i + 1) * k >= deg)\
+    \ return F(deg, mint(0));\n        }\n        return F(deg, mint(0));\n    }\n\
+    \    F shift(const mint& c) const {\n        const int n = (*this).size();\n \
+    \       vector<mint> fact(n), ifact(n);\n        fact[0] = ifact[0] = mint(1);\n\
+    \        for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;\n        ifact[n\
+    \ - 1] = mint(1) / fact[n - 1];\n        for(int i = n - 1; i > 1; --i) ifact[i\
+    \ - 1] = ifact[i] * i;\n        F ret(*this);\n        for(int i = 0; i < n; ++i)\
+    \ ret[i] *= fact[i];\n        ret = ret.rev();\n        F bs(n, mint(1));\n  \
+    \      for(int i = 1; i < n; ++i) bs[i] = bs[i - 1] * c * ifact[i] * fact[i -\
+    \ 1];\n        ret = (ret * bs).pre(n);\n        ret = ret.rev();\n        for(int\
+    \ i = 0; i < n; ++i) ret[i] *= ifact[i];\n        return ret;\n    }\n};\n#line\
+    \ 3 \"src/fps/berlekamp_massey.hpp\"\ntemplate <template <typename> typename FPS,\
+    \ typename mint>\nFPS<mint> berlekamp_massey(const FPS<mint>& s) {\n    const\
+    \ int n = (int)s.size();\n    FPS<mint> b = {mint(-1)}, c = {mint(-1)};\n    mint\
+    \ y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n        int l = (int)c.size(),\
+    \ m = (int)b.size();\n        mint x = 0;\n        for(int i = 0; i < l; ++i)\
+    \ x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n        ++m;\n     \
+    \   if(x == mint(0)) continue;\n        mint freq = x / y;\n        if(l < m)\
+    \ {\n            auto tmp = c;\n            c.insert(begin(c), m - l, mint(0));\n\
+    \            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq * b[m - 1 - i];\n\
+    \            b = tmp;\n            y = x;\n        } else {\n            for(int\
+    \ i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n        }\n    }\n\
+    \    c.pop_back();\n    c = c.rev();\n    return c;\n}\n#line 6 \"verify/library_checker/math/find_linear_recurrence.test.cpp\"\
+    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
+    \    FormalPowerSeries<mint> a(n);\n    rep(i, 0, n) cin >> a[i];\n    FormalPowerSeries<mint>\
+    \ c = berlekamp_massey(a);\n    int m = c.size();\n    cout << m << '\\n';\n \
+    \   rep(i, 0, m) {\n        cout << c[i] << \" \\n\"[i + 1 == m];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/fps/formal_power_series.hpp\"\n#include \"../../../src/fps/berlekamp_massey.hpp\"\
@@ -364,8 +366,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/math/find_linear_recurrence.test.cpp
   requiredBy: []
-  timestamp: '2024-01-16 03:17:32+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-06-04 23:34:08+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/math/find_linear_recurrence.test.cpp
 layout: document
