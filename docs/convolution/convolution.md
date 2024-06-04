@@ -59,7 +59,7 @@ void butterfly_inv(vector<mint>& a)
 
 **制約**
 
-- `mint` の法 $m$ が NTT-friendlyである
+- `mint` の法 $m$ が NTT-friendlyである．
 
 **計算量**
 
