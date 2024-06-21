@@ -113,10 +113,10 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
-  - verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
+  - verify/library_checker/matrix/inverse_matrix.test.cpp
+  - verify/library_checker/matrix/rank_of_matrix.test.cpp
+  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
 documentation_of: src/matrix/gauss_elimination.hpp
 layout: document
 title: gauss_elimination

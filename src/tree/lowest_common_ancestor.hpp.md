@@ -114,9 +114,9 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
+  - verify/library_checker/tree/lowest_common_ancestor.test.cpp
 documentation_of: src/tree/lowest_common_ancestor.hpp
 layout: document
 title: LowestCommonAncestor

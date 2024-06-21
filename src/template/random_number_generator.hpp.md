@@ -250,9 +250,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - verify/unit_test/tree/centroid.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
-  - verify/unit_test/tree/centroid.test.cpp
 documentation_of: src/template/random_number_generator.hpp
 layout: document
 title: RandomNumberGenerator

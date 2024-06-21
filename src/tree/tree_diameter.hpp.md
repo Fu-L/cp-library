@@ -75,8 +75,8 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+  - verify/library_checker/tree/tree_diameter.test.cpp
 documentation_of: src/tree/tree_diameter.hpp
 layout: document
 title: tree_diameter

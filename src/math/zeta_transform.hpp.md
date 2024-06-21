@@ -52,8 +52,8 @@ data:
   isVerificationFile: false
   path: src/math/zeta_transform.hpp
   requiredBy:
-  - src/convolution/and_convolution.hpp
   - src/convolution/or_convolution.hpp
+  - src/convolution/and_convolution.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

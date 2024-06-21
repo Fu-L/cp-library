@@ -251,6 +251,9 @@ data:
       path: src/string/suffix_array.hpp
       title: suffix_array
     - icon: ':heavy_check_mark:'
+      path: src/string/wildcard_pattern_matching.hpp
+      title: wildcard_pattern_matching
+    - icon: ':heavy_check_mark:'
       path: src/string/z_algorithm.hpp
       title: z_algorithm
   - name: src/template
@@ -642,6 +645,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/suffix_array.test.cpp
       title: verify/library_checker/string/suffix_array.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
+      title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/z_algorithm.test.cpp
       title: verify/library_checker/string/z_algorithm.test.cpp

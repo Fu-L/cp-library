@@ -149,8 +149,8 @@ data:
   timestamp: '2024-02-15 01:51:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
 documentation_of: src/data_structure/fenwick_tree_on_wavelet_matrix.hpp
 layout: document
 title: FenwickTreeonWaveletMatrix

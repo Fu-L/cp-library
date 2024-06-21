@@ -5,6 +5,9 @@ data:
     path: src/convolution/convolution.hpp
     title: convolution
   - icon: ':heavy_check_mark:'
+    path: src/convolution/convolution_ll.hpp
+    title: convolution_ll
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
   - icon: ':heavy_check_mark:'
@@ -16,17 +19,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/fps/formal_power_series_arbitrary.hpp
-    title: FormalPowerSeriesArbitrary
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-    title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/yukicoder/1559.test.cpp
-    title: verify/yukicoder/1559.test.cpp
+    path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
+    title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -192,93 +189,90 @@ data:
     \    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n    for(int i = 0; i\
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
     \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
-    \ *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_arbitrary.hpp\"\
-    \ntemplate <typename mint>\nvector<mint> convolution_arbitary(const vector<mint>&\
-    \ a, const vector<mint>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n\
-    \    if(!n or !m) return {};\n    static constexpr long long MOD1 = 754974721;\n\
-    \    static constexpr long long MOD2 = 167772161;\n    static constexpr long long\
-    \ MOD3 = 469762049;\n    static constexpr long long M1_inv_M2 = 95869806;\n  \
-    \  static constexpr long long M12_inv_M3 = 187290749;\n    static const long long\
-    \ M12_mod = MOD1 * MOD2 % mint::mod();\n    using mint1 = StaticModint<(uint32_t)MOD1>;\n\
-    \    using mint2 = StaticModint<(uint32_t)MOD2>;\n    using mint3 = StaticModint<(uint32_t)MOD3>;\n\
+    \ *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_ll.hpp\"\nvector<long\
+    \ long> convolution_ll(const vector<long long>& a, const vector<long long>& b)\
+    \ {\n    const int n = (int)a.size(), m = (int)b.size();\n    if(!n or !m) return\
+    \ {};\n    static constexpr unsigned long long MOD1 = 754974721;\n    static constexpr\
+    \ unsigned long long MOD2 = 167772161;\n    static constexpr unsigned long long\
+    \ MOD3 = 469762049;\n    static constexpr unsigned long long M2M3 = MOD2 * MOD3;\n\
+    \    static constexpr unsigned long long M1M3 = MOD1 * MOD3;\n    static constexpr\
+    \ unsigned long long M1M2 = MOD1 * MOD2;\n    static constexpr unsigned long long\
+    \ M1M2M3 = MOD1 * MOD2 * MOD3;\n    static constexpr unsigned long long i1 = 190329765;\n\
+    \    static constexpr unsigned long long i2 = 58587104;\n    static constexpr\
+    \ unsigned long long i3 = 187290749;\n    static constexpr int MAX_AB_BIT = 24;\n\
+    \    assert(n + m - 1 <= (1 << MAX_AB_BIT));\n    using mint1 = StaticModint<MOD1>;\n\
+    \    using mint2 = StaticModint<MOD2>;\n    using mint3 = StaticModint<MOD3>;\n\
     \    vector<mint1> a1(n), b1(m);\n    vector<mint2> a2(n), b2(m);\n    vector<mint3>\
-    \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int\
-    \ i = 0; i < n; ++i) a2[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i]\
-    \ = a[i].val();\n    for(int i = 0; i < m; ++i) b1[i] = b[i].val();\n    for(int\
-    \ i = 0; i < m; ++i) b2[i] = b[i].val();\n    for(int i = 0; i < m; ++i) b3[i]\
-    \ = b[i].val();\n    vector<mint1> x = convolution<mint1>(a1, b1);\n    vector<mint2>\
-    \ y = convolution<mint2>(a2, b2);\n    vector<mint3> z = convolution<mint3>(a3,\
-    \ b3);\n    vector<mint> c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i)\
-    \ {\n        long long v1 = ((long long)y[i].val() - (long long)x[i].val()) *\
-    \ M1_inv_M2 % MOD2;\n        if(v1 < 0) v1 += MOD2;\n        long long v2 = ((long\
-    \ long)z[i].val() - ((long long)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3 %\
-    \ MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (long long)x[i].val()\
-    \ + MOD1 * v1 + M12_mod * v2;\n    }\n    return c;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/static_modint.hpp\"\
-    \n#include \"./convolution.hpp\"\ntemplate <typename mint>\nvector<mint> convolution_arbitary(const\
-    \ vector<mint>& a, const vector<mint>& b) {\n    const int n = (int)a.size(),\
-    \ m = (int)b.size();\n    if(!n or !m) return {};\n    static constexpr long long\
-    \ MOD1 = 754974721;\n    static constexpr long long MOD2 = 167772161;\n    static\
-    \ constexpr long long MOD3 = 469762049;\n    static constexpr long long M1_inv_M2\
-    \ = 95869806;\n    static constexpr long long M12_inv_M3 = 187290749;\n    static\
-    \ const long long M12_mod = MOD1 * MOD2 % mint::mod();\n    using mint1 = StaticModint<(uint32_t)MOD1>;\n\
-    \    using mint2 = StaticModint<(uint32_t)MOD2>;\n    using mint3 = StaticModint<(uint32_t)MOD3>;\n\
-    \    vector<mint1> a1(n), b1(m);\n    vector<mint2> a2(n), b2(m);\n    vector<mint3>\
-    \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i].val();\n    for(int\
-    \ i = 0; i < n; ++i) a2[i] = a[i].val();\n    for(int i = 0; i < n; ++i) a3[i]\
-    \ = a[i].val();\n    for(int i = 0; i < m; ++i) b1[i] = b[i].val();\n    for(int\
-    \ i = 0; i < m; ++i) b2[i] = b[i].val();\n    for(int i = 0; i < m; ++i) b3[i]\
-    \ = b[i].val();\n    vector<mint1> x = convolution<mint1>(a1, b1);\n    vector<mint2>\
-    \ y = convolution<mint2>(a2, b2);\n    vector<mint3> z = convolution<mint3>(a3,\
-    \ b3);\n    vector<mint> c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i)\
-    \ {\n        long long v1 = ((long long)y[i].val() - (long long)x[i].val()) *\
-    \ M1_inv_M2 % MOD2;\n        if(v1 < 0) v1 += MOD2;\n        long long v2 = ((long\
-    \ long)z[i].val() - ((long long)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3 %\
-    \ MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (long long)x[i].val()\
-    \ + MOD1 * v1 + M12_mod * v2;\n    }\n    return c;\n}"
+    \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i];\n    for(int i =\
+    \ 0; i < n; ++i) a2[i] = a[i];\n    for(int i = 0; i < n; ++i) a3[i] = a[i];\n\
+    \    for(int i = 0; i < m; ++i) b1[i] = b[i];\n    for(int i = 0; i < m; ++i)\
+    \ b2[i] = b[i];\n    for(int i = 0; i < m; ++i) b3[i] = b[i];\n    vector<mint1>\
+    \ c1 = convolution<mint1>(a1, b1);\n    vector<mint2> c2 = convolution<mint2>(a2,\
+    \ b2);\n    vector<mint3> c3 = convolution<mint3>(a3, b3);\n    vector<long long>\
+    \ c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i) {\n        unsigned long\
+    \ long x = 0;\n        x += (c1[i].val() * i1) % MOD1 * M2M3;\n        x += (c2[i].val()\
+    \ * i2) % MOD2 * M1M3;\n        x += (c3[i].val() * i3) % MOD3 * M1M2;\n     \
+    \   long long diff = c1[i].val() - ((long long)x % (long long)MOD1 + (long long)MOD1)\
+    \ % (long long)MOD1;\n        if(diff < 0) diff += MOD1;\n        static constexpr\
+    \ unsigned long long offset[5] = {0, 0, M1M2M3, 2 * M1M2M3, 3 * M1M2M3};\n   \
+    \     x -= offset[diff % 5];\n        c[i] = x;\n    }\n    return c;\n}\n#line\
+    \ 4 \"src/string/wildcard_pattern_matching.hpp\"\nvector<bool> wildcard_pattrn_matching(const\
+    \ string& t, const string& p) {\n    int n = (int)t.size(), m = (int)p.size();\n\
+    \    if(n < m) return {};\n    vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m),\
+    \ p3(m);\n    for(int i = 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n\
+    \        t1[i] = t[i] - 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i]\
+    \ = t2[i] * t1[i];\n    }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] ==\
+    \ '*') continue;\n        p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 -\
+    \ i] = p1[m - 1 - i] * p1[m - 1 - i];\n        p3[m - 1 - i] = p2[m - 1 - i] *\
+    \ p1[m - 1 - i];\n    }\n    vector<long long> c31 = convolution_ll(t3, p1), c22\
+    \ = convolution_ll(t2, p2), c13 = convolution_ll(t1, p3);\n    vector<bool> res(n\
+    \ - m + 1);\n    for(int i = 0; i < n - m + 1; ++i) {\n        if(c31[i + m -\
+    \ 1] - 2 * c22[i + m - 1] + c13[i + m - 1] == 0) {\n            res[i] = true;\n\
+    \        }\n    }\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_ll.hpp\"\
+    \nvector<bool> wildcard_pattrn_matching(const string& t, const string& p) {\n\
+    \    int n = (int)t.size(), m = (int)p.size();\n    if(n < m) return {};\n   \
+    \ vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m), p3(m);\n    for(int i =\
+    \ 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n        t1[i] = t[i] -\
+    \ 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] = t2[i] * t1[i];\n \
+    \   }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] == '*') continue;\n \
+    \       p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 - i] = p1[m - 1 - i]\
+    \ * p1[m - 1 - i];\n        p3[m - 1 - i] = p2[m - 1 - i] * p1[m - 1 - i];\n \
+    \   }\n    vector<long long> c31 = convolution_ll(t3, p1), c22 = convolution_ll(t2,\
+    \ p2), c13 = convolution_ll(t1, p3);\n    vector<bool> res(n - m + 1);\n    for(int\
+    \ i = 0; i < n - m + 1; ++i) {\n        if(c31[i + m - 1] - 2 * c22[i + m - 1]\
+    \ + c13[i + m - 1] == 0) {\n            res[i] = true;\n        }\n    }\n   \
+    \ return res;\n}"
   dependsOn:
   - src/template/template.hpp
+  - src/convolution/convolution_ll.hpp
   - src/template/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: false
-  path: src/convolution/convolution_arbitrary.hpp
-  requiredBy:
-  - src/fps/formal_power_series_arbitrary.hpp
-  timestamp: '2024-06-04 23:34:08+09:00'
+  path: src/string/wildcard_pattern_matching.hpp
+  requiredBy: []
+  timestamp: '2024-06-21 10:07:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yukicoder/1559.test.cpp
-  - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-documentation_of: src/convolution/convolution_arbitrary.hpp
+  - verify/library_checker/string/wildcard_pattern_matching.test.cpp
+documentation_of: src/string/wildcard_pattern_matching.hpp
 layout: document
-title: convolution_arbitrary
+title: wildcard_pattern_matching
 ---
 
-## convolution_arbitrary
+## wildcard_pattern_matching
 
 ```cpp
-vector<mint> convolution_arbitrary(vector<mint> a, vector<mint> b)
+vector<bool> wildcard_pattern_matching(string t, string p)
 ```
 
-任意 $\mathrm{mod}$ 畳み込みを行います．<br>
-数列 $a_0, a_1, \cdots, a_{N - 1}$ と数列 $b_0, b_1, \cdots, b_{M - 1}$ から，長さ $N + M - 1$ の数列
-
-$$c_i = \sum_{j = 0}^i a_j b_{i - j}$$
-
-を計算します．
-
-$a$ または $b$ が空配列の場合は空配列を返します．
-
-**制約**
-
-`mint` の法を $m$ として，
-
-- $2 \leq m \leq 2 \cdot 10^9$
+ワイルドカード `*` を含むテキスト文字列 `t` とパターン文字列 `p` のパターンマッチングを行います．<br>
+`t` と `p` の長さをそれぞれ $n$ と $m$ として，長さ $n - m + 1$ の `bool` 型の配列 `wpm` を返します．<br>
+$n < m$ の場合には空の配列を返します．<br>
+`t[i : i + m] = p[0 : m]` が成立するとき `wpm[i] = 1` であり，そうでないとき `wpm[i] = 0` です．
 
 **計算量**
 
-$n = N + M$ として，
-
-- $O(n \log n + \log m)$
+- $O((n + m) \log (n + m))$

@@ -444,15 +444,15 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
+  - verify/library_checker/math/find_linear_recurrence.test.cpp
+  - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/library_checker/polynomial/division_of_polynomial.test.cpp
+  - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
-  - verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
-  - verify/library_checker/polynomial/division_of_polynomial.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
-  - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - verify/library_checker/math/find_linear_recurrence.test.cpp
+  - verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
+  - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
 documentation_of: src/fps/formal_power_series.hpp
 layout: document
 title: FormalPowerSeries

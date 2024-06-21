@@ -75,9 +75,9 @@ data:
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/library_checker/data_structure/unionfind.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
 documentation_of: src/data_structure/union_find.hpp
 layout: document
 title: UnionFind

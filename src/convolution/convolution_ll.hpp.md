@@ -20,7 +20,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
+  - icon: ':heavy_check_mark:'
+    path: src/string/wildcard_pattern_matching.hpp
+    title: wildcard_pattern_matching
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
+    title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
@@ -257,11 +263,13 @@ data:
   path: src/convolution/convolution_ll.hpp
   requiredBy:
   - src/fps/formal_power_series_ll.hpp
+  - src/string/wildcard_pattern_matching.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - verify/library_checker/string/wildcard_pattern_matching.test.cpp
 documentation_of: src/convolution/convolution_ll.hpp
 layout: document
 title: convolution_ll
