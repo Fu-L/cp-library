@@ -105,6 +105,7 @@
 "verify/library_checker/string/number_of_substrings.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/number_of_substrings_2.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/suffix_array.test.cpp": "2024-06-04 23:34:08 +0900",
+"verify/library_checker/string/wildcard_pattern_matching.test.cpp": "2024-06-21 10:07:30 +0900",
 "verify/library_checker/string/z_algorithm.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/tree/cartesian_tree.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp": "2024-06-04 23:34:08 +0900",
