@@ -18,6 +18,7 @@ struct TwoEdgeConnectedComponents {
         for(const pair<int, int>& e : low.bridge) {
             int u = comp[e.first], v = comp[e.second];
             tree[u].emplace_back(v);
+            tree[v].emplace_back(u);
         }
     }
     inline int operator[](const int& i) const {
