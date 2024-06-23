@@ -70,13 +70,13 @@ data:
     \        tree.resize(k);\n        for(int i = 0; i < n; ++i) {\n            groups[comp[i]].emplace_back(i);\n\
     \        }\n        for(const pair<int, int>& e : low.bridge) {\n            int\
     \ u = comp[e.first], v = comp[e.second];\n            tree[u].emplace_back(v);\n\
-    \        }\n    }\n    inline int operator[](const int& i) const {\n        assert(0\
-    \ <= i and i < n);\n        return comp[i];\n    }\n\n   private:\n    int n,\
-    \ k;\n    LowLink<T> low;\n    vector<int> comp;\n    void dfs(const Graph<T>&\
-    \ g, int i, int p) {\n        if(p >= 0 and low.ord[p] >= low.low[i]) comp[i]\
-    \ = comp[p];\n        else comp[i] = k++;\n        for(const Edge<T>& e : g[i])\
-    \ {\n            if(comp[e.to] == -1) dfs(g, e.to, i);\n        }\n    }\n};\n\
-    #line 5 \"verify/library_checker/graph/two_edge_connected_components.test.cpp\"\
+    \            tree[v].emplace_back(u);\n        }\n    }\n    inline int operator[](const\
+    \ int& i) const {\n        assert(0 <= i and i < n);\n        return comp[i];\n\
+    \    }\n\n   private:\n    int n, k;\n    LowLink<T> low;\n    vector<int> comp;\n\
+    \    void dfs(const Graph<T>& g, int i, int p) {\n        if(p >= 0 and low.ord[p]\
+    \ >= low.low[i]) comp[i] = comp[p];\n        else comp[i] = k++;\n        for(const\
+    \ Edge<T>& e : g[i]) {\n            if(comp[e.to] == -1) dfs(g, e.to, i);\n  \
+    \      }\n    }\n};\n#line 5 \"verify/library_checker/graph/two_edge_connected_components.test.cpp\"\
     \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Graph<int> g(n);\n\
     \    rep(i, 0, m) {\n        int a, b;\n        cin >> a >> b;\n        g.add_edge(a,\
     \ b);\n    }\n    TwoEdgeConnectedComponents<int> low(g);\n    int k = low.groups.size();\n\
@@ -100,7 +100,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/two_edge_connected_components.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-06-24 02:26:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/two_edge_connected_components.test.cpp
