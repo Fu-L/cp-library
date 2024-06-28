@@ -245,6 +245,9 @@ data:
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/string/aho_corasick.hpp
+      title: AhoCorasick
+    - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: manacher
     - icon: ':heavy_check_mark:'
@@ -253,6 +256,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/suffix_array.hpp
       title: suffix_array
+    - icon: ':heavy_check_mark:'
+      path: src/string/trie.hpp
+      title: Trie
     - icon: ':heavy_check_mark:'
       path: src/string/wildcard_pattern_matching.hpp
       title: wildcard_pattern_matching
@@ -705,6 +711,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/186.test.cpp
       title: verify/yukicoder/186.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yukicoder/430.test.cpp
+      title: verify/yukicoder/430.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/649.test.cpp
       title: verify/yukicoder/649.test.cpp

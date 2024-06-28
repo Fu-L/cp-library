@@ -228,6 +228,9 @@ data:
     path: src/others/dice.hpp
     title: dice
   - icon: ':heavy_check_mark:'
+    path: src/string/aho_corasick.hpp
+    title: AhoCorasick
+  - icon: ':heavy_check_mark:'
     path: src/string/manacher.hpp
     title: manacher
   - icon: ':heavy_check_mark:'
@@ -236,6 +239,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/suffix_array.hpp
     title: suffix_array
+  - icon: ':heavy_check_mark:'
+    path: src/string/trie.hpp
+    title: Trie
   - icon: ':heavy_check_mark:'
     path: src/string/wildcard_pattern_matching.hpp
     title: wildcard_pattern_matching
@@ -637,6 +643,9 @@ data:
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/430.test.cpp
+    title: verify/yukicoder/430.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
   _isVerificationFailed: false
@@ -747,6 +756,8 @@ data:
   - src/string/rolling_hash.hpp
   - src/string/z_algorithm.hpp
   - src/string/suffix_array.hpp
+  - src/string/aho_corasick.hpp
+  - src/string/trie.hpp
   - src/string/wildcard_pattern_matching.hpp
   - src/string/manacher.hpp
   timestamp: '2023-12-31 01:05:09+09:00'
@@ -754,6 +765,7 @@ data:
   verifiedWith:
   - verify/yukicoder/649.test.cpp
   - verify/yukicoder/184.test.cpp
+  - verify/yukicoder/430.test.cpp
   - verify/yukicoder/186.test.cpp
   - verify/yukicoder/1559.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
