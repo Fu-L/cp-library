@@ -139,7 +139,9 @@ void insert(string s, int x)
 
 **計算量**
 
-- $O(|s|)$
+$s$ の長さを $n$ として，
+
+- $O(n)$
 
 ## build
 ```cpp
@@ -155,7 +157,7 @@ void build(bool heavy = true)
 
 **計算量**
 
-- $O(\sum|s|)$
+- $O(\sum n)$
 
 ## match
 
@@ -171,4 +173,6 @@ vector<int> match(string s, bool heavy = true)
 
 **計算量**
 
-- $O(|s|)$
+$s$ の長さを $n$ として，
+
+- $O(n)$

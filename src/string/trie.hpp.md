@@ -128,7 +128,9 @@ void insert(string s, int x)
 
 **計算量**
 
-- $O(|s|)$
+$s$ の長さを $n$ として，
+
+- $O(n)$
 
 ## find
 ```cpp
@@ -140,7 +142,9 @@ int find(string s)
 
 **計算量**
 
-- $O(|s|)$
+$s$ の長さを $n$ として，
+
+- $O(n)$
 
 ## move
 ```cpp
@@ -187,7 +191,9 @@ vector<int> idxs(int pos)
 
 **計算量**
 
-- $O(|\mathrm{idxs}|)$
+返り値の配列の長さを $m$ として，
+
+- $O(m)$
 
 ## count
 ```cpp
