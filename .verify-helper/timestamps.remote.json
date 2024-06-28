@@ -102,6 +102,7 @@
 "verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp": "2024-06-04 23:34:08 +0900",
+"verify/library_checker/string/enumerate_palindromes.test.cpp": "2024-06-28 15:21:29 +0900",
 "verify/library_checker/string/number_of_substrings.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/number_of_substrings_2.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/suffix_array.test.cpp": "2024-06-04 23:34:08 +0900",
