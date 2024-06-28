@@ -228,6 +228,9 @@ data:
     path: src/others/dice.hpp
     title: dice
   - icon: ':heavy_check_mark:'
+    path: src/string/manacher.hpp
+    title: manacher
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
   - icon: ':heavy_check_mark:'
@@ -580,6 +583,9 @@ data:
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/string/enumerate_palindromes.test.cpp
+    title: verify/library_checker/string/enumerate_palindromes.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
   - icon: ':heavy_check_mark:'
@@ -742,6 +748,7 @@ data:
   - src/string/z_algorithm.hpp
   - src/string/suffix_array.hpp
   - src/string/wildcard_pattern_matching.hpp
+  - src/string/manacher.hpp
   timestamp: '2023-12-31 01:05:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -862,6 +869,7 @@ data:
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp
+  - verify/library_checker/string/enumerate_palindromes.test.cpp
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/library_checker/string/number_of_substrings_2.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp

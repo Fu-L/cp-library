@@ -245,6 +245,9 @@ data:
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/string/manacher.hpp
+      title: manacher
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: RollingHash
     - icon: ':heavy_check_mark:'
@@ -636,6 +639,9 @@ data:
       title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - name: verify/library_checker/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/string/enumerate_palindromes.test.cpp
+      title: verify/library_checker/string/enumerate_palindromes.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/number_of_substrings.test.cpp
       title: verify/library_checker/string/number_of_substrings.test.cpp
