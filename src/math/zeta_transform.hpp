@@ -21,7 +21,7 @@ void subset_zeta_transform(vector<T>& f, const bool inv = false) {
     for(int i = 1; i < n; i <<= 1) {
         for(int j = 0; j < n; ++j) {
             if((j & i) == 0) {
-                f[j | i] += f[j];
+                f[j | i] += sign * f[j];
             }
         }
     }
