@@ -91,8 +91,8 @@ data:
     \ bool inv = false) {\n    const int n = (int)f.size();\n    assert((n & (n -\
     \ 1)) == 0);\n    const int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i\
     \ <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) == 0)\
-    \ {\n                f[j | i] += f[j];\n            }\n        }\n    }\n}\n#line\
-    \ 4 \"src/convolution/and_convolution.hpp\"\ntemplate <typename T>\nvector<T>\
+    \ {\n                f[j | i] += sign * f[j];\n            }\n        }\n    }\n\
+    }\n#line 4 \"src/convolution/and_convolution.hpp\"\ntemplate <typename T>\nvector<T>\
     \ and_convolution(vector<T> a, vector<T> b) {\n    const int n = (int)a.size(),\
     \ m = (int)b.size();\n    assert(n == m and (n & (n - 1)) == 0);\n    superset_zeta_transform(a);\n\
     \    superset_zeta_transform(b);\n    for(int i = 0; i < (int)a.size(); ++i) a[i]\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-07-02 09:51:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/bitwise_and_convolution.test.cpp

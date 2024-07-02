@@ -35,7 +35,7 @@ data:
     \ = false) {\n    const int n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n\
     \    const int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i <<= 1) {\n  \
     \      for(int j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n        \
-    \        f[j | i] += f[j];\n            }\n        }\n    }\n}\n"
+    \        f[j | i] += sign * f[j];\n            }\n        }\n    }\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     void superset_zeta_transform(vector<T>& f, const bool inv = false) {\n    const\
     \ int n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n    const int sign\
@@ -45,8 +45,8 @@ data:
     \ subset_zeta_transform(vector<T>& f, const bool inv = false) {\n    const int\
     \ n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n    const int sign = inv\
     \ ? -1 : 1;\n    for(int i = 1; i < n; i <<= 1) {\n        for(int j = 0; j <\
-    \ n; ++j) {\n            if((j & i) == 0) {\n                f[j | i] += f[j];\n\
-    \            }\n        }\n    }\n}"
+    \ n; ++j) {\n            if((j & i) == 0) {\n                f[j | i] += sign\
+    \ * f[j];\n            }\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
@@ -54,7 +54,7 @@ data:
   requiredBy:
   - src/convolution/or_convolution.hpp
   - src/convolution/and_convolution.hpp
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-07-02 09:51:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
