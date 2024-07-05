@@ -3,8 +3,6 @@
 #include "../../../src/template/static_modint.hpp"
 using mint = modint998244353;
 #include "../../../src/graph/graph_template.hpp"
-#include "../../../src/matrix/matrix.hpp"
-#include "../../../src/matrix/gauss_elimination.hpp"
 #include "../../../src/matrix/counting_spanning_tree_undirected.hpp"
 int main(void) {
     int n, m;
