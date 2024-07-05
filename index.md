@@ -225,10 +225,10 @@ data:
       title: zeta_transform
   - name: src/matrix
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/matrix/counting_spanning_tree_directed.hpp
       title: counting_spanning_tree_directed
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/matrix/counting_spanning_tree_undirected.hpp
       title: counting_spanning_tree_undirected
     - icon: ':heavy_check_mark:'
@@ -608,10 +608,10 @@ data:
       title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
   - name: verify/library_checker/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
       title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
       title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
     - icon: ':heavy_check_mark:'

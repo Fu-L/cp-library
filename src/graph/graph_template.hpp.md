@@ -39,6 +39,12 @@ data:
     path: src/graph/two_sat.hpp
     title: TwoSAT
   - icon: ':heavy_check_mark:'
+    path: src/matrix/counting_spanning_tree_directed.hpp
+    title: counting_spanning_tree_directed
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/counting_spanning_tree_undirected.hpp
+    title: counting_spanning_tree_undirected
+  - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
   - icon: ':heavy_check_mark:'
@@ -126,6 +132,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/math/2_sat.test.cpp
     title: verify/library_checker/math/2_sat.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
@@ -216,6 +228,8 @@ data:
   - src/graph/cycle_detection.hpp
   - src/graph/low_link.hpp
   - src/graph/strongly_connected_components.hpp
+  - src/matrix/counting_spanning_tree_undirected.hpp
+  - src/matrix/counting_spanning_tree_directed.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -248,6 +262,8 @@ data:
   - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/cycle_detection_undirected.test.cpp
   - verify/library_checker/graph/cycle_detection_directed.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

@@ -6,6 +6,12 @@ data:
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/matrix/counting_spanning_tree_directed.hpp
+    title: counting_spanning_tree_directed
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/counting_spanning_tree_undirected.hpp
+    title: counting_spanning_tree_undirected
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
   - icon: ':heavy_check_mark:'
@@ -15,6 +21,12 @@ data:
     path: src/matrix/linear_equation.hpp
     title: linear_equation
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
@@ -118,8 +130,10 @@ data:
   isVerificationFile: false
   path: src/matrix/matrix.hpp
   requiredBy:
+  - src/matrix/counting_spanning_tree_undirected.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/gauss_elimination.hpp
+  - src/matrix/counting_spanning_tree_directed.hpp
   - src/matrix/inverse.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -127,8 +141,10 @@ data:
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
   - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/matrix_product.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/matrix/rank_of_matrix.test.cpp
   - verify/library_checker/matrix/system_of_linear_equations.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
 documentation_of: src/matrix/matrix.hpp
 layout: document

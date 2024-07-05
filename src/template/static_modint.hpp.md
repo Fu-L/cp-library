@@ -58,6 +58,12 @@ data:
     path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
   - icon: ':heavy_check_mark:'
@@ -261,8 +267,10 @@ data:
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
   - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/matrix_product.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/matrix/rank_of_matrix.test.cpp
   - verify/library_checker/matrix/system_of_linear_equations.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
 documentation_of: src/template/static_modint.hpp

@@ -213,6 +213,12 @@ data:
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':heavy_check_mark:'
+    path: src/matrix/counting_spanning_tree_directed.hpp
+    title: counting_spanning_tree_directed
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/counting_spanning_tree_undirected.hpp
+    title: counting_spanning_tree_undirected
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
   - icon: ':heavy_check_mark:'
@@ -550,6 +556,12 @@ data:
     path: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
     title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant_of_matric.test.cpp
     title: verify/library_checker/matrix/determinant_of_matric.test.cpp
   - icon: ':heavy_check_mark:'
@@ -741,9 +753,11 @@ data:
   - src/convolution/convolution.hpp
   - src/convolution/and_convolution.hpp
   - src/convolution/convolution_arbitrary.hpp
+  - src/matrix/counting_spanning_tree_undirected.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/gauss_elimination.hpp
   - src/matrix/matrix.hpp
+  - src/matrix/counting_spanning_tree_directed.hpp
   - src/matrix/inverse.hpp
   - src/template/dynamic_modint.hpp
   - src/template/static_modint.hpp
@@ -876,8 +890,10 @@ data:
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
   - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/matrix_product.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/matrix/rank_of_matrix.test.cpp
   - verify/library_checker/matrix/system_of_linear_equations.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/matrix/pow_of_matrix.test.cpp
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - verify/library_checker/string/z_algorithm.test.cpp
