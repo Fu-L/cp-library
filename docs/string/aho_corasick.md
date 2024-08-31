@@ -9,10 +9,12 @@ documentation_of: ../../src/string/aho_corasick.hpp
 
 ## コンストラクタ
 ```cpp
-AhoCorasick<size_t X = 26, char margin = 'a'> aho()
+AhoCorasick<size_t X = 26, char margin = 'a', bool heavy = true> aho()
 ```
 
 - 文字の種類数が $X$ で最小の文字が $\mathrm{margin}$ であるような空のデータ構造 `aho` を作ります．
+- `heavy` が `true` であるとき， `match` では各パターン文字列を区別して回数を数えます．
+- `heavy` が `false` であるとき， `match` では全パターン文字列にマッチした回数の合計を数えます．
 
 **計算量**
 
@@ -35,7 +37,7 @@ $s$ の長さを $n$ として，
 
 ## build
 ```cpp
-void build(bool heavy = true)
+void build()
 ```
 
 追加されたパターン文字列集合をもとにオートマトンを構築します．
@@ -52,10 +54,11 @@ void build(bool heavy = true)
 ## match
 
 ```cpp
-vector<int> match(string s, bool heavy = true)
+unordered_map<int, long long> match(string s)
 ```
 
-テキスト文字列 $s$ が各パターン文字列とマッチした回数を返します．
+テキスト文字列 $s$ が各パターン文字列とマッチした回数を返します．<br>
+`heavy` が `true` のときは `unordered_map` を返しますが， `false` のときは `long long` を返すので注意してください．
 
 **制約**
 
