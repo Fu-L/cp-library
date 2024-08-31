@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../../../src/template/template.hpp"
 #include "../../../src/graph/graph_template.hpp"
-#include "../../../src/tree/heavy_light_decomposition.hpp"
+#include "../../../src/tree/lowest_common_ancestor.hpp"
 int main(void) {
     int n, q;
     cin >> n >> q;
@@ -11,21 +11,21 @@ int main(void) {
         cin >> u >> v;
         g.add_edge(u, v);
     }
-    HeavyLightDecomposition<int> hld(g);
+    LowestCommonAncestor<int> tree(g);
     while(q--) {
         int s, t, i;
         cin >> s >> t >> i;
-        int dist = hld.dist(s, t);
+        int dist = tree.dist(s, t);
         if(i > dist) {
             cout << -1 << '\n';
             continue;
         }
-        int l = hld.lca(s, t);
-        int d1 = hld.dist(s, l);
+        int l = tree.lca(s, t);
+        int d1 = tree.dist(s, l);
         if(i <= d1) {
-            cout << hld.la(s, i) << '\n';
+            cout << tree.la(s, i) << '\n';
         } else {
-            cout << hld.la(t, dist - i) << '\n';
+            cout << tree.la(t, dist - i) << '\n';
         }
     }
 }

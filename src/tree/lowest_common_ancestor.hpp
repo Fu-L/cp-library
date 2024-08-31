@@ -15,7 +15,11 @@ struct LowestCommonAncestor {
         assert(0 <= v and v < n);
         return co[v];
     }
-    int parent(int v, int x = 1) const {
+    int parent(int v) const {
+        assert(0 <= v and v < n);
+        return par[0][v];
+    }
+    int la(int v, int x) const {
         assert(0 <= v and v < n);
         assert(x >= 0);
         if(x > dep[v]) return -1;
@@ -28,7 +32,7 @@ struct LowestCommonAncestor {
     int lca(int u, int v) const {
         assert(0 <= u and u < n and 0 <= v and v < n);
         if(dep[u] > dep[v]) swap(u, v);
-        v = parent(v, dep[v] - dep[u]);
+        v = la(v, dep[v] - dep[u]);
         if(u == v) return u;
         for(int i = (int)par.size() - 1; i >= 0; --i) {
             if(par[i][u] != par[i][v]) {
@@ -68,7 +72,7 @@ struct LowestCommonAncestor {
             }
         }
     }
-    void dfs(const Graph<T>& g, int v, int p, int d, T c) {
+    void dfs(const Graph<T>& g, int v, int p, int d, const T& c) {
         par[0][v] = p;
         dep[v] = d;
         co[v] = c;

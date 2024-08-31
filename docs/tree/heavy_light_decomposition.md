@@ -45,10 +45,44 @@ pair<int, int> hld.idx(int i)
 
 - $O(1)$
 
+## depth
+
+```cpp
+int tree.depth(int v)
+```
+
+辺の重みが $1$ であると仮定したときの頂点 $v$ の深さを返します．
+
+**制約**
+
+- $0 \leq v < n$
+
+**計算量**
+
+- $O(1)$
+
+## parent
+
+```cpp
+int tree.parent(int v)
+```
+
+頂点 $v$ の親頂点のラベルを返します．
+
+$v$ が根であるときは $-1$ を返します．
+
+**制約**
+
+- $0 \leq v < n$
+
+**計算量**
+
+- $O(1)$
+
 ## la
 
 ```cpp
-int hld.la(int v, int x = 1)
+int hld.la(int v, int x)
 ```
 
 頂点 $v$ から根方向に $x$ 個進んだ頂点のラベルを返します．
@@ -62,7 +96,7 @@ $x$ が頂点 $v$ の深さよりも大きいときは $-1$ を返します．
 
 **計算量**
 
-- $O(\log n)$
+- $O(\log x)$
 
 ## lca
 
@@ -96,7 +130,7 @@ int hld.dist(int u, int v)
 
 **計算量**
 
-- $O(1)$
+- $O(\log n)$
 
 ## path_query
 

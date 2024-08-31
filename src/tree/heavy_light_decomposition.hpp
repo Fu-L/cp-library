@@ -4,7 +4,7 @@
 template <typename T>
 struct HeavyLightDecomposition {
     HeavyLightDecomposition(Graph<T>& _g, int root = 0)
-        : g(_g), n(g.size()), id(0), size(n, 0), depth(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, root), rev(n, 0) {
+        : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, root), rev(n, 0) {
         assert(0 <= root and root < n);
         dfs_sz(root);
         dfs_hld(root);
@@ -13,10 +13,18 @@ struct HeavyLightDecomposition {
         assert(0 <= i and i < n);
         return make_pair(down[i], up[i]);
     }
-    int la(int v, int x = 1) const {
+    int depth(int v) const {
+        assert(0 <= v and v < n);
+        return dep[v];
+    }
+    int parent(int v) const {
+        assert(0 <= v and v < n);
+        return par[v];
+    }
+    int la(int v, int x) const {
         assert(0 <= v and v < n);
         assert(x >= 0);
-        if(x > depth[v]) return -1;
+        if(x > dep[v]) return -1;
         while(true) {
             const int u = nex[v];
             if(down[v] - x >= down[u]) return rev[down[v] - x];
@@ -31,12 +39,12 @@ struct HeavyLightDecomposition {
             if(down[u] < down[v]) swap(u, v);
             u = par[nex[u]];
         }
-        return depth[u] < depth[v] ? u : v;
+        return dep[u] < dep[v] ? u : v;
     }
     int dist(int u, int v) const {
         assert(0 <= u and u < n);
         assert(0 <= v and v < n);
-        return depth[u] + depth[v] - depth[lca(u, v)] * 2;
+        return dep[u] + dep[v] - dep[lca(u, v)] * 2;
     }
     template <typename F>
     void path_query(int u, int v, bool vertex, const F& f) {
@@ -56,9 +64,9 @@ struct HeavyLightDecomposition {
    private:
     Graph<T>& g;
     int n, id;
-    vector<int> size, depth, down, up, nex, par, rev;
+    vector<int> sz, dep, down, up, nex, par, rev;
     void dfs_sz(int cur) {
-        size[cur] = 1;
+        sz[cur] = 1;
         for(Edge<T>& edge : g[cur]) {
             if(edge.to == par[cur]) {
                 if(g[cur].size() >= 2 and edge.to == g[cur][0].to) {
@@ -67,11 +75,11 @@ struct HeavyLightDecomposition {
                     continue;
                 }
             }
-            depth[edge.to] = depth[cur] + 1;
+            dep[edge.to] = dep[cur] + 1;
             par[edge.to] = cur;
             dfs_sz(edge.to);
-            size[cur] += size[edge.to];
-            if(size[edge.to] > size[g[cur][0].to]) {
+            sz[cur] += sz[edge.to];
+            if(sz[edge.to] > sz[g[cur][0].to]) {
                 swap(edge, g[cur][0]);
             }
         }
