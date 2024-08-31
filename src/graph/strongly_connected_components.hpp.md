@@ -113,8 +113,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - verify/library_checker/math/2_sat.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
+  - verify/library_checker/math/2_sat.test.cpp
 documentation_of: src/graph/strongly_connected_components.hpp
 layout: document
 title: strongly_connected_components

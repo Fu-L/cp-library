@@ -13,6 +13,9 @@ data:
     path: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
     title: verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/jump_on_tree_2.test.cpp
+    title: verify/library_checker/tree/jump_on_tree_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,13 +54,14 @@ data:
     \        init(g, root);\n    }\n    int depth(int v) const {\n        assert(0\
     \ <= v and v < n);\n        return dep[v];\n    }\n    T cost(int v) const {\n\
     \        assert(0 <= v and v < n);\n        return co[v];\n    }\n    int parent(int\
-    \ v, int x = 1) const {\n        assert(0 <= v and v < n);\n        assert(x >=\
-    \ 0);\n        if(x > dep[v]) return -1;\n        for(int i = 0; x > 0; ++i) {\n\
-    \            if(x & 1) v = par[i][v];\n            x >>= 1;\n        }\n     \
-    \   return v;\n    }\n    int lca(int u, int v) const {\n        assert(0 <= u\
-    \ and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v]) swap(u, v);\n\
-    \        v = parent(v, dep[v] - dep[u]);\n        if(u == v) return u;\n     \
-    \   for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
+    \ v) const {\n        assert(0 <= v and v < n);\n        return par[0][v];\n \
+    \   }\n    int la(int v, int x) const {\n        assert(0 <= v and v < n);\n \
+    \       assert(x >= 0);\n        if(x > dep[v]) return -1;\n        for(int i\
+    \ = 0; x > 0; ++i) {\n            if(x & 1) v = par[i][v];\n            x >>=\
+    \ 1;\n        }\n        return v;\n    }\n    int lca(int u, int v) const {\n\
+    \        assert(0 <= u and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v])\
+    \ swap(u, v);\n        v = la(v, dep[v] - dep[u]);\n        if(u == v) return\
+    \ u;\n        for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
     \ != par[i][v]) {\n                u = par[i][u];\n                v = par[i][v];\n\
     \            }\n        }\n        return par[0][u];\n    }\n    int dist(int\
     \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
@@ -72,8 +76,8 @@ data:
     \           for(int v = 0; v < n; ++v) {\n                if(par[i][v] != -1)\
     \ {\n                    par[i + 1][v] = par[i][par[i][v]];\n                }\n\
     \            }\n        }\n    }\n    void dfs(const Graph<T>& g, int v, int p,\
-    \ int d, T c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v] =\
-    \ c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
+    \ int d, const T& c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v]\
+    \ = c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
     \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
     \ntemplate <typename T>\nstruct LowestCommonAncestor {\n    LowestCommonAncestor(const\
@@ -81,13 +85,14 @@ data:
     \        init(g, root);\n    }\n    int depth(int v) const {\n        assert(0\
     \ <= v and v < n);\n        return dep[v];\n    }\n    T cost(int v) const {\n\
     \        assert(0 <= v and v < n);\n        return co[v];\n    }\n    int parent(int\
-    \ v, int x = 1) const {\n        assert(0 <= v and v < n);\n        assert(x >=\
-    \ 0);\n        if(x > dep[v]) return -1;\n        for(int i = 0; x > 0; ++i) {\n\
-    \            if(x & 1) v = par[i][v];\n            x >>= 1;\n        }\n     \
-    \   return v;\n    }\n    int lca(int u, int v) const {\n        assert(0 <= u\
-    \ and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v]) swap(u, v);\n\
-    \        v = parent(v, dep[v] - dep[u]);\n        if(u == v) return u;\n     \
-    \   for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
+    \ v) const {\n        assert(0 <= v and v < n);\n        return par[0][v];\n \
+    \   }\n    int la(int v, int x) const {\n        assert(0 <= v and v < n);\n \
+    \       assert(x >= 0);\n        if(x > dep[v]) return -1;\n        for(int i\
+    \ = 0; x > 0; ++i) {\n            if(x & 1) v = par[i][v];\n            x >>=\
+    \ 1;\n        }\n        return v;\n    }\n    int lca(int u, int v) const {\n\
+    \        assert(0 <= u and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v])\
+    \ swap(u, v);\n        v = la(v, dep[v] - dep[u]);\n        if(u == v) return\
+    \ u;\n        for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
     \ != par[i][v]) {\n                u = par[i][u];\n                v = par[i][v];\n\
     \            }\n        }\n        return par[0][u];\n    }\n    int dist(int\
     \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
@@ -102,8 +107,8 @@ data:
     \           for(int v = 0; v < n; ++v) {\n                if(par[i][v] != -1)\
     \ {\n                    par[i + 1][v] = par[i][par[i][v]];\n                }\n\
     \            }\n        }\n    }\n    void dfs(const Graph<T>& g, int v, int p,\
-    \ int d, T c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v] =\
-    \ c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
+    \ int d, const T& c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v]\
+    \ = c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
     \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
@@ -111,12 +116,13 @@ data:
   isVerificationFile: false
   path: src/tree/lowest_common_ancestor.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:21:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/tree/jump_on_tree_2.test.cpp
 documentation_of: src/tree/lowest_common_ancestor.hpp
 layout: document
 title: LowestCommonAncestor
@@ -157,7 +163,7 @@ LowestCommonAncestor<T> tree(Graph<T> g, int root = 0)
 int tree.depth(int v)
 ```
 
-辺の重みが $1$ であると仮定したときの根付き木 `tree` における頂点 `v` の深さを返します．
+辺の重みが $1$ であると仮定したときの根付き木 `tree` における頂点 $v$ の深さを返します．
 
 **制約**
 
@@ -173,7 +179,7 @@ int tree.depth(int v)
 T tree.cost(int v)
 ```
 
-根付き木 `tree` における根 `root` と頂点 `v` の距離を返します．
+根付き木 `tree` における根 `root` と頂点 $v$ の距離を返します．
 
 **制約**
 
@@ -186,12 +192,30 @@ T tree.cost(int v)
 ## parent
 
 ```cpp
-int tree.parent(int v, int x = 1)
+int tree.parent(int v)
 ```
 
-頂点 `v` から根方向に $x$ 個進んだ頂点のラベルを返します．
+頂点 $v$ の親頂点のラベルを返します．
 
-$x$ が 頂点 `v` の深さよりも大きいときは $-1$ を返します．
+$v$ が根であるときは $-1$ を返します．
+
+**制約**
+
+- $0 \leq v < n$
+
+**計算量**
+
+- $O(1)$
+
+## la
+
+```cpp
+int tree.la(int v, int x)
+```
+
+頂点 $v$ から根方向に $x$ 個進んだ頂点のラベルを返します．
+
+$x$ が 頂点 $v$ の深さよりも大きいときは $-1$ を返します．
 
 **制約**
 
@@ -200,7 +224,7 @@ $x$ が 頂点 `v` の深さよりも大きいときは $-1$ を返します．
 
 **計算量**
 
-- $O(\log n)$
+- $O(\log x)$
 
 ## lca
 
@@ -208,7 +232,7 @@ $x$ が 頂点 `v` の深さよりも大きいときは $-1$ を返します．
 int tree.lca(int u, int v)
 ```
 
-根付き木 `tree` における頂点 `u` と `v` の最小共通祖先を返します．
+根付き木 `tree` における頂点 $u$ と $v$ の最小共通祖先を返します．
 
 **制約**
 
@@ -225,7 +249,7 @@ int tree.lca(int u, int v)
 int tree.dist(int u, int v)
 ```
 
-辺の重みが $1$ であると仮定したときの根付き木 `tree` における頂点 `u` と `v` の間の距離を返します．
+辺の重みが $1$ であると仮定したときの根付き木 `tree` における頂点 $u$ と $v$ の間の距離を返します．
 
 **制約**
 
@@ -242,7 +266,7 @@ int tree.dist(int u, int v)
 T tree.length(int u, int v)
 ```
 
-根付き木 `tree` における頂点 `u` と `v` の間の距離を返します．
+根付き木 `tree` における頂点 $u$ と $v$ の間の距離を返します．
 
 **制約**
 

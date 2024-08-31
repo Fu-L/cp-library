@@ -130,22 +130,22 @@ data:
   isVerificationFile: false
   path: src/matrix/matrix.hpp
   requiredBy:
-  - src/matrix/counting_spanning_tree_undirected.hpp
+  - src/matrix/inverse.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/gauss_elimination.hpp
   - src/matrix/counting_spanning_tree_directed.hpp
-  - src/matrix/inverse.hpp
+  - src/matrix/counting_spanning_tree_undirected.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/determinant_of_matric.test.cpp
+  - verify/library_checker/matrix/rank_of_matrix.test.cpp
+  - verify/library_checker/matrix/pow_of_matrix.test.cpp
+  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
+  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/matrix/inverse_matrix.test.cpp
   - verify/library_checker/matrix/matrix_product.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-  - verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
   - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
-  - verify/library_checker/matrix/pow_of_matrix.test.cpp
 documentation_of: src/matrix/matrix.hpp
 layout: document
 title: Matrix

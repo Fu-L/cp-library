@@ -17,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/lca
+    PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
     links:
-    - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"verify/library_checker/tree/lowest_common_ancestor.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#line 2 \"src/template/template.hpp\"\
+    - https://judge.yosupo.jp/problem/jump_on_tree
+  bundledCode: "#line 1 \"verify/library_checker/tree/jump_on_tree_2.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
     \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
@@ -74,32 +74,42 @@ data:
     \ int d, const T& c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v]\
     \ = c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
     \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};\n#line\
-    \ 5 \"verify/library_checker/tree/lowest_common_ancestor.test.cpp\"\nint main(void)\
-    \ {\n    int n, q;\n    cin >> n >> q;\n    Graph<int> g(n);\n    rep(i, 1, n)\
-    \ {\n        int p;\n        cin >> p;\n        g.add_edge(i, p);\n    }\n   \
-    \ LowestCommonAncestor<int> tree(g, 0);\n    while(q--) {\n        int u, v;\n\
-    \        cin >> u >> v;\n        cout << tree.lca(u, v) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/graph/graph_template.hpp\"\n#include \"../../../src/tree/lowest_common_ancestor.hpp\"\
-    \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    Graph<int> g(n);\n\
-    \    rep(i, 1, n) {\n        int p;\n        cin >> p;\n        g.add_edge(i,\
-    \ p);\n    }\n    LowestCommonAncestor<int> tree(g, 0);\n    while(q--) {\n  \
-    \      int u, v;\n        cin >> u >> v;\n        cout << tree.lca(u, v) << '\\\
-    n';\n    }\n}"
+    \ 5 \"verify/library_checker/tree/jump_on_tree_2.test.cpp\"\nint main(void) {\n\
+    \    int n, q;\n    cin >> n >> q;\n    Graph<int> g(n);\n    rep(i, 0, n - 1)\
+    \ {\n        int u, v;\n        cin >> u >> v;\n        g.add_edge(u, v);\n  \
+    \  }\n    LowestCommonAncestor<int> tree(g);\n    while(q--) {\n        int s,\
+    \ t, i;\n        cin >> s >> t >> i;\n        int dist = tree.dist(s, t);\n  \
+    \      if(i > dist) {\n            cout << -1 << '\\n';\n            continue;\n\
+    \        }\n        int l = tree.lca(s, t);\n        int d1 = tree.dist(s, l);\n\
+    \        if(i <= d1) {\n            cout << tree.la(s, i) << '\\n';\n        }\
+    \ else {\n            cout << tree.la(t, dist - i) << '\\n';\n        }\n    }\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#include\
+    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
+    \n#include \"../../../src/tree/lowest_common_ancestor.hpp\"\nint main(void) {\n\
+    \    int n, q;\n    cin >> n >> q;\n    Graph<int> g(n);\n    rep(i, 0, n - 1)\
+    \ {\n        int u, v;\n        cin >> u >> v;\n        g.add_edge(u, v);\n  \
+    \  }\n    LowestCommonAncestor<int> tree(g);\n    while(q--) {\n        int s,\
+    \ t, i;\n        cin >> s >> t >> i;\n        int dist = tree.dist(s, t);\n  \
+    \      if(i > dist) {\n            cout << -1 << '\\n';\n            continue;\n\
+    \        }\n        int l = tree.lca(s, t);\n        int d1 = tree.dist(s, l);\n\
+    \        if(i <= d1) {\n            cout << tree.la(s, i) << '\\n';\n        }\
+    \ else {\n            cout << tree.la(t, dist - i) << '\\n';\n        }\n    }\n\
+    }"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   - src/tree/lowest_common_ancestor.hpp
   isVerificationFile: true
-  path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  path: verify/library_checker/tree/jump_on_tree_2.test.cpp
   requiredBy: []
   timestamp: '2024-08-31 17:21:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/tree/lowest_common_ancestor.test.cpp
+documentation_of: verify/library_checker/tree/jump_on_tree_2.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/tree/lowest_common_ancestor.test.cpp
-- /verify/verify/library_checker/tree/lowest_common_ancestor.test.cpp.html
-title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
+- /verify/verify/library_checker/tree/jump_on_tree_2.test.cpp
+- /verify/verify/library_checker/tree/jump_on_tree_2.test.cpp.html
+title: verify/library_checker/tree/jump_on_tree_2.test.cpp
 ---

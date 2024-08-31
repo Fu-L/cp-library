@@ -687,6 +687,9 @@ data:
       path: verify/library_checker/tree/jump_on_tree.test.cpp
       title: verify/library_checker/tree/jump_on_tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/jump_on_tree_2.test.cpp
+      title: verify/library_checker/tree/jump_on_tree_2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'

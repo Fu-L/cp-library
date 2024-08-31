@@ -169,13 +169,14 @@ data:
     \        init(g, root);\n    }\n    int depth(int v) const {\n        assert(0\
     \ <= v and v < n);\n        return dep[v];\n    }\n    T cost(int v) const {\n\
     \        assert(0 <= v and v < n);\n        return co[v];\n    }\n    int parent(int\
-    \ v, int x = 1) const {\n        assert(0 <= v and v < n);\n        assert(x >=\
-    \ 0);\n        if(x > dep[v]) return -1;\n        for(int i = 0; x > 0; ++i) {\n\
-    \            if(x & 1) v = par[i][v];\n            x >>= 1;\n        }\n     \
-    \   return v;\n    }\n    int lca(int u, int v) const {\n        assert(0 <= u\
-    \ and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v]) swap(u, v);\n\
-    \        v = parent(v, dep[v] - dep[u]);\n        if(u == v) return u;\n     \
-    \   for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
+    \ v) const {\n        assert(0 <= v and v < n);\n        return par[0][v];\n \
+    \   }\n    int la(int v, int x) const {\n        assert(0 <= v and v < n);\n \
+    \       assert(x >= 0);\n        if(x > dep[v]) return -1;\n        for(int i\
+    \ = 0; x > 0; ++i) {\n            if(x & 1) v = par[i][v];\n            x >>=\
+    \ 1;\n        }\n        return v;\n    }\n    int lca(int u, int v) const {\n\
+    \        assert(0 <= u and u < n and 0 <= v and v < n);\n        if(dep[u] > dep[v])\
+    \ swap(u, v);\n        v = la(v, dep[v] - dep[u]);\n        if(u == v) return\
+    \ u;\n        for(int i = (int)par.size() - 1; i >= 0; --i) {\n            if(par[i][u]\
     \ != par[i][v]) {\n                u = par[i][u];\n                v = par[i][v];\n\
     \            }\n        }\n        return par[0][u];\n    }\n    int dist(int\
     \ u, int v) const {\n        assert(0 <= u and u < n and 0 <= v and v < n);\n\
@@ -190,8 +191,8 @@ data:
     \           for(int v = 0; v < n; ++v) {\n                if(par[i][v] != -1)\
     \ {\n                    par[i + 1][v] = par[i][par[i][v]];\n                }\n\
     \            }\n        }\n    }\n    void dfs(const Graph<T>& g, int v, int p,\
-    \ int d, T c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v] =\
-    \ c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
+    \ int d, const T& c) {\n        par[0][v] = p;\n        dep[v] = d;\n        co[v]\
+    \ = c;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
     \            dfs(g, e.to, v, d + 1, c + e.cost);\n        }\n    }\n};\n#line\
     \ 7 \"verify/unit_test/graph/bipartite.test.cpp\"\nvoid random_yes() {\n    int\
     \ n = rng(1, 100000);\n    vector<vector<int>> color(2);\n    rep(i, 0, n) {\n\
@@ -262,7 +263,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/graph/bipartite.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:21:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bipartite.test.cpp

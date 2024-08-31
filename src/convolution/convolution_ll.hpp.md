@@ -262,8 +262,8 @@ data:
   isVerificationFile: false
   path: src/convolution/convolution_ll.hpp
   requiredBy:
-  - src/fps/formal_power_series_ll.hpp
   - src/string/wildcard_pattern_matching.hpp
+  - src/fps/formal_power_series_ll.hpp
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
