@@ -7,6 +7,7 @@ mint bostan_mori(const FPS<mint>& a, const FPS<mint>& c, long long k) {
     assert(a.size() >= c.size());
     FPS<mint> q = FPS<mint>{1} - (c << 1);
     FPS<mint> p = (a * q).pre((int)c.size());
+    if(p.empty()) return 0;
     while(k > 0) {
         auto q2 = q;
         for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];
