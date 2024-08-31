@@ -1,14 +1,14 @@
 #pragma once
 #include "../template/template.hpp"
 #include "./trie.hpp"
-template <size_t X = 26, char margin = 'a'>
+template <size_t X = 26, char margin = 'a', bool heavy = true>
 struct AhoCorasick : Trie<X + 1, margin> {
     using TRIE = Trie<X + 1, margin>;
     using TRIE::next;
     using TRIE::st;
     using TRIE::TRIE;
     vector<int> cnt;
-    void build(bool heavy = true) {
+    void build() {
         int n = (int)st.size();
         cnt.resize(n);
         for(int i = 0; i < n; ++i) {
@@ -47,15 +47,19 @@ struct AhoCorasick : Trie<X + 1, margin> {
             }
         }
     }
-    vector<int> match(const string& s, bool heavy = true) {
-        vector<int> res(heavy ? TRIE::size() : 1);
+    conditional_t<heavy, unordered_map<int, long long>, long long> match(const string& s) {
+        unordered_map<int, int> pos_cnt;
         int pos = 0;
         for(const auto& c : s) {
             pos = next(pos, c - margin);
-            if(heavy) {
-                for(const auto& x : st[pos].idxs) ++res[x];
+            ++pos_cnt[pos];
+        }
+        conditional_t<heavy, unordered_map<int, long long>, long long> res{};
+        for(const auto& [key, val] : pos_cnt) {
+            if constexpr(heavy) {
+                for(const auto& x : st[key].idxs) res[x] += val;
             } else {
-                res[0] += cnt[pos];
+                res += 1ll * cnt[key] * val;
             }
         }
         return res;

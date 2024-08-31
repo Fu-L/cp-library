@@ -5,17 +5,17 @@ int main(void) {
     string S;
     int M;
     cin >> S >> M;
-    AhoCorasick<26, 'A'> aho;
+    AhoCorasick<26, 'A', true> aho;
     for(int i = 0; i < M; i++) {
         string T;
         cin >> T;
         aho.insert(T, i);
     }
     aho.build();
-    vector<int> cnt = aho.match(S);
+    unordered_map<int, ll> cnt = aho.match(S);
     int ans = 0;
-    rep(i, 0, (int)cnt.size()) {
-        ans += cnt[i];
+    for(const auto& it : cnt) {
+        ans += it.second;
     }
     cout << ans << '\n';
 }
