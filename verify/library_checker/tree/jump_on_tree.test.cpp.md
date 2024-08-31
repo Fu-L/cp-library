@@ -46,7 +46,7 @@ data:
     \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/tree/heavy_light_decomposition.hpp\"\
     \ntemplate <typename T>\nstruct HeavyLightDecomposition {\n    HeavyLightDecomposition(Graph<T>&\
     \ _g, int root = 0)\n        : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0),\
-    \ down(n, -1), up(n, -1), nex(n, root), par(n, root), rev(n, 0) {\n        assert(0\
+    \ down(n, -1), up(n, -1), nex(n, root), par(n, -1), rev(n, 0) {\n        assert(0\
     \ <= root and root < n);\n        dfs_sz(root);\n        dfs_hld(root);\n    }\n\
     \    pair<int, int> idx(int i) const {\n        assert(0 <= i and i < n);\n  \
     \      return make_pair(down[i], up[i]);\n    }\n    int depth(int v) const {\n\
@@ -118,7 +118,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/jump_on_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-08-31 17:21:07+09:00'
+  timestamp: '2024-08-31 17:34:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/jump_on_tree.test.cpp
