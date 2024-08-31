@@ -4,7 +4,7 @@
 template <typename T>
 struct HeavyLightDecomposition {
     HeavyLightDecomposition(Graph<T>& _g, int root = 0)
-        : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, root), rev(n, 0) {
+        : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, -1), rev(n, 0) {
         assert(0 <= root and root < n);
         dfs_sz(root);
         dfs_hld(root);
