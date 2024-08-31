@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
     links:
     - https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
-  bundledCode: "#line 1 \"verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -92,7 +92,7 @@ data:
     \ * ifac[n - r] * ifac[r];\n    }\n    mint homo(int n, int r) {\n        if(n\
     \ < 0 or r < 0) return 0;\n        if(r == 0) return 1;\n        return comb(n\
     \ + r - 1, r);\n    }\n    mint operator()(int n, int r) {\n        return comb(n,\
-    \ r);\n    }\n\n   private:\n    vector<mint> fac, ifac;\n};\n#line 5 \"verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp\"\
+    \ r);\n    }\n\n   private:\n    vector<mint> fac, ifac;\n};\n#line 5 \"verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp\"\
     \nusing mint = modint;\nint main(void) {\n    int t, m;\n    cin >> t >> m;\n\
     \    mint::set_mod(m);\n    Binomial<mint> binom(min(m - 1, 10000005));\n    while(t--)\
     \ {\n        int n, k;\n        cin >> n >> k;\n        cout << binom(n, k) <<\
@@ -108,15 +108,15 @@ data:
   - src/template/dynamic_modint.hpp
   - src/math/binomial.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
+  path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
+documentation_of: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
-- /verify/verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp.html
-title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
+- /verify/verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
+- /verify/verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp.html
+title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
 ---

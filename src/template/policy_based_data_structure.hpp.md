@@ -10,8 +10,8 @@ data:
     title: log_mod
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/discrete_logarithm.test.cpp
-    title: verify/library_checker/math/discrete_logarithm.test.cpp
+    path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
+    title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
@@ -50,7 +50,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/649.test.cpp
-  - verify/library_checker/math/discrete_logarithm.test.cpp
+  - verify/library_checker/number_theory/discrete_logarithm.test.cpp
 documentation_of: src/template/policy_based_data_structure.hpp
 layout: document
 title: policy_based_data_structure

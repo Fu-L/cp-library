@@ -26,7 +26,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/two_sat
     links:
     - https://judge.yosupo.jp/problem/two_sat
-  bundledCode: "#line 1 \"verify/library_checker/math/2_sat.test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"verify/library_checker/other/2_sat.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/two_sat\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
@@ -86,7 +86,7 @@ data:
     \ 1]) return false;\n            ans[i] = id[2 * i] < id[2 * i + 1];\n       \
     \ }\n        return true;\n    }\n    vector<bool> answer() const {\n        return\
     \ ans;\n    }\n\n   private:\n    int n;\n    vector<bool> ans;\n    Graph<int>\
-    \ graph;\n};\n#line 4 \"verify/library_checker/math/2_sat.test.cpp\"\nint main(void)\
+    \ graph;\n};\n#line 4 \"verify/library_checker/other/2_sat.test.cpp\"\nint main(void)\
     \ {\n    string p, cnf;\n    int n, m;\n    cin >> p >> cnf >> n >> m;\n    TwoSAT\
     \ ts(n);\n    rep(i, 0, m) {\n        int a, b, z;\n        cin >> a >> b >> z;\n\
     \        bool f = a > 0, g = b > 0;\n        a = abs(a) - 1;\n        b = abs(b)\
@@ -114,15 +114,15 @@ data:
   - src/graph/strongly_connected_components.hpp
   - src/graph/compressed_sparse_row.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/2_sat.test.cpp
+  path: verify/library_checker/other/2_sat.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/2_sat.test.cpp
+documentation_of: verify/library_checker/other/2_sat.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/2_sat.test.cpp
-- /verify/verify/library_checker/math/2_sat.test.cpp.html
-title: verify/library_checker/math/2_sat.test.cpp
+- /verify/verify/library_checker/other/2_sat.test.cpp
+- /verify/verify/library_checker/other/2_sat.test.cpp.html
+title: verify/library_checker/other/2_sat.test.cpp
 ---

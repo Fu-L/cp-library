@@ -5,8 +5,8 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_undirected.hpp
-    title: counting_spanning_tree_undirected
+    path: src/matrix/counting_spanning_tree_directed.hpp
+    title: counting_spanning_tree_directed
   - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/counting_spanning_tree_undirected
+    PROBLEM: https://judge.yosupo.jp/problem/counting_spanning_tree_directed
     links:
-    - https://judge.yosupo.jp/problem/counting_spanning_tree_undirected
-  bundledCode: "#line 1 \"verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/counting_spanning_tree_undirected\"\
+    - https://judge.yosupo.jp/problem/counting_spanning_tree_directed
+  bundledCode: "#line 1 \"verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/counting_spanning_tree_directed\"\
     \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
     \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
@@ -88,7 +88,7 @@ data:
     \ u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n        if(m0\
     \ < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
-    #line 4 \"verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp\"\
+    #line 4 \"verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp\"\
     \nusing mint = modint998244353;\n#line 3 \"src/graph/graph_template.hpp\"\ntemplate\
     \ <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int idx;\n\
     \    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from,\
@@ -155,42 +155,46 @@ data:
     \            if(i == rank) continue;\n            if(a[i][j] != T(0)) {\n    \
     \            const T coeff = a[i][j] / a[rank][j];\n                for(int k\
     \ = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;\n            }\n        }\n\
-    \        ++rank;\n    }\n    return {rank, det};\n}\n#line 6 \"src/matrix/counting_spanning_tree_undirected.hpp\"\
-    \ntemplate <typename T, typename U>\nT counting_spanning_tree_undirected(const\
-    \ Graph<U>& g) {\n    const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int\
-    \ i = 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const\
-    \ auto& e : g[i]) {\n            --mat[i][e.to];\n        }\n    }\n    Matrix<T>\
-    \ lap(n - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n        for(int j\
-    \ = 0; j < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n\
-    \    return gauss_elimination(lap).second;\n}\n#line 7 \"verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp\"\
-    \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Graph<int> g(n);\n\
-    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add_edge(u,\
-    \ v);\n    }\n    cout << counting_spanning_tree_undirected<mint>(g) << '\\n';\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/counting_spanning_tree_undirected\"\
+    \        ++rank;\n    }\n    return {rank, det};\n}\n#line 6 \"src/matrix/counting_spanning_tree_directed.hpp\"\
+    \ntemplate <typename T, typename U>\nT counting_spanning_tree_directed(const Graph<U>&\
+    \ g, int r) {\n    const int n = g.size();\n    assert(0 <= r and r < n);\n  \
+    \  Matrix<T> mat(n, n);\n    for(int i = 0; i < n; ++i) {\n        for(const auto&\
+    \ e : g[i]) {\n            --mat[i][e.to];\n            ++mat[e.to][e.to];\n \
+    \       }\n    }\n    Matrix<T> lap(n - 1, n - 1);\n    int h = 0, w = 0;\n  \
+    \  for(int i = 0; i < n; ++i) {\n        if(i == r) {\n            h = 1;\n  \
+    \          continue;\n        }\n        for(int j = 0; j < n; ++j) {\n      \
+    \      if(j == r) {\n                w = 1;\n                continue;\n     \
+    \       }\n            lap[i - h][j - w] = mat[i][j];\n        }\n        w =\
+    \ 0;\n    }\n    return gauss_elimination(lap).second;\n}\n#line 7 \"verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp\"\
+    \nint main(void) {\n    int n, m, r;\n    cin >> n >> m >> r;\n    Graph<int>\
+    \ g(n);\n    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n     \
+    \   g.add_directed_edge(u, v);\n    }\n    cout << counting_spanning_tree_directed<mint>(g,\
+    \ r) << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/counting_spanning_tree_directed\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \nusing mint = modint998244353;\n#include \"../../../src/graph/graph_template.hpp\"\
-    \n#include \"../../../src/matrix/counting_spanning_tree_undirected.hpp\"\nint\
-    \ main(void) {\n    int n, m;\n    cin >> n >> m;\n    Graph<int> g(n);\n    rep(i,\
-    \ 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add_edge(u, v);\n\
-    \    }\n    cout << counting_spanning_tree_undirected<mint>(g) << '\\n';\n}"
+    \n#include \"../../../src/matrix/counting_spanning_tree_directed.hpp\"\nint main(void)\
+    \ {\n    int n, m, r;\n    cin >> n >> m >> r;\n    Graph<int> g(n);\n    rep(i,\
+    \ 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add_directed_edge(u,\
+    \ v);\n    }\n    cout << counting_spanning_tree_directed<mint>(g, r) << '\\n';\n\
+    }"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
   - src/graph/graph_template.hpp
-  - src/matrix/counting_spanning_tree_undirected.hpp
+  - src/matrix/counting_spanning_tree_directed.hpp
   - src/matrix/matrix.hpp
   - src/matrix/gauss_elimination.hpp
   isVerificationFile: true
-  path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+  path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   requiredBy: []
-  timestamp: '2024-07-05 09:41:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+documentation_of: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
-- /verify/verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp.html
-title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+- /verify/verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+- /verify/verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp.html
+title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
 ---

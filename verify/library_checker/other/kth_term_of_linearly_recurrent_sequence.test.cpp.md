@@ -32,7 +32,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
     links:
     - https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
-  bundledCode: "#line 1 \"verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
     \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -344,7 +344,7 @@ data:
     \ 1] = t[i];\n        } else {\n            for(int i = 0; i < (int)s.size();\
     \ i += 2) p[i >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i +=\
     \ 2) q[i >> 1] = t[i];\n        }\n        k >>= 1;\n    }\n    return p[0];\n\
-    }\n#line 6 \"verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp\"\
+    }\n#line 6 \"verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    ll d, k;\n    cin >> d\
     \ >> k;\n    FormalPowerSeries<mint> a(d), c(d);\n    rep(i, 0, d) cin >> a[i];\n\
     \    rep(i, 0, d) cin >> c[i];\n    cout << bostan_mori(a, c, k) << '\\n';\n}\n"
@@ -363,15 +363,15 @@ data:
   - src/math/pow_mod.hpp
   - src/fps/bostan_mori.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-08-31 17:38:14+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+documentation_of: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-- /verify/verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp.html
-title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+- /verify/verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+- /verify/verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp.html
+title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 ---

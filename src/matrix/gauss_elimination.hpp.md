@@ -22,23 +22,23 @@ data:
     title: linear_equation
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/determinant_of_matric.test.cpp
-    title: verify/library_checker/matrix/determinant_of_matric.test.cpp
+    path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
+    title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/inverse_matrix.test.cpp
-    title: verify/library_checker/matrix/inverse_matrix.test.cpp
+    path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
+    title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/rank_of_matrix.test.cpp
-    title: verify/library_checker/matrix/rank_of_matrix.test.cpp
+    path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+    title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
-    title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
+    path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+    title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -127,12 +127,12 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/matrix/determinant_of_matric.test.cpp
-  - verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-  - verify/library_checker/matrix/inverse_matrix.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+  - verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
+  - verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+  - verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+  - verify/library_checker/linear_algebra/inverse_matrix.test.cpp
 documentation_of: src/matrix/gauss_elimination.hpp
 layout: document
 title: gauss_elimination

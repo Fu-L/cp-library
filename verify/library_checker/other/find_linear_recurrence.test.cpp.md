@@ -32,7 +32,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
     links:
     - https://judge.yosupo.jp/problem/find_linear_recurrence
-  bundledCode: "#line 1 \"verify/library_checker/math/find_linear_recurrence.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/other/find_linear_recurrence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -343,7 +343,7 @@ data:
     \            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq * b[m - 1 - i];\n\
     \            b = tmp;\n            y = x;\n        } else {\n            for(int\
     \ i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n        }\n    }\n\
-    \    c.pop_back();\n    c = c.rev();\n    return c;\n}\n#line 6 \"verify/library_checker/math/find_linear_recurrence.test.cpp\"\
+    \    c.pop_back();\n    c = c.rev();\n    return c;\n}\n#line 6 \"verify/library_checker/other/find_linear_recurrence.test.cpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
     \    FormalPowerSeries<mint> a(n);\n    rep(i, 0, n) cin >> a[i];\n    FormalPowerSeries<mint>\
     \ c = berlekamp_massey(a);\n    int m = c.size();\n    cout << m << '\\n';\n \
@@ -364,15 +364,15 @@ data:
   - src/math/pow_mod.hpp
   - src/fps/berlekamp_massey.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/find_linear_recurrence.test.cpp
+  path: verify/library_checker/other/find_linear_recurrence.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/find_linear_recurrence.test.cpp
+documentation_of: verify/library_checker/other/find_linear_recurrence.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/find_linear_recurrence.test.cpp
-- /verify/verify/library_checker/math/find_linear_recurrence.test.cpp.html
-title: verify/library_checker/math/find_linear_recurrence.test.cpp
+- /verify/verify/library_checker/other/find_linear_recurrence.test.cpp
+- /verify/verify/library_checker/other/find_linear_recurrence.test.cpp.html
+title: verify/library_checker/other/find_linear_recurrence.test.cpp
 ---

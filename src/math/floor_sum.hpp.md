@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
-    title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+    path: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
+    title: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -41,7 +41,7 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+  - verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
 documentation_of: src/math/floor_sum.hpp
 layout: document
 title: floor_sum

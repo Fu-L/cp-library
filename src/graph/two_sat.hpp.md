@@ -16,8 +16,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/2_sat.test.cpp
-    title: verify/library_checker/math/2_sat.test.cpp
+    path: verify/library_checker/other/2_sat.test.cpp
+    title: verify/library_checker/other/2_sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -105,7 +105,7 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/math/2_sat.test.cpp
+  - verify/library_checker/other/2_sat.test.cpp
 documentation_of: src/graph/two_sat.hpp
 layout: document
 title: TwoSAT

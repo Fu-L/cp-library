@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
     links:
     - https://judge.yosupo.jp/problem/discrete_logarithm_mod
-  bundledCode: "#line 1 \"verify/library_checker/math/discrete_logarithm.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/number_theory/discrete_logarithm.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -39,7 +39,7 @@ data:
     \    for(long long s = 0, e = b; s < h; ht[e] = ++s) {\n        (e *= a) %= n;\n\
     \    }\n    for(long long s = 0, e = t; s < n;) {\n        (e *= gs) %= n;\n \
     \       s += h;\n        if(ht.find(e) != ht.end()) return c + s - ht[e];\n  \
-    \  }\n    return -1;\n}\n#line 4 \"verify/library_checker/math/discrete_logarithm.test.cpp\"\
+    \  }\n    return -1;\n}\n#line 4 \"verify/library_checker/number_theory/discrete_logarithm.test.cpp\"\
     \nint main(void) {\n    int t;\n    cin >> t;\n    while(t--) {\n        ll x,\
     \ y, m;\n        cin >> x >> y >> m;\n        cout << log_mod(x, y, m) << '\\\
     n';\n    }\n}\n"
@@ -53,15 +53,15 @@ data:
   - src/math/log_mod.hpp
   - src/template/policy_based_data_structure.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/discrete_logarithm.test.cpp
+  path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/discrete_logarithm.test.cpp
+documentation_of: verify/library_checker/number_theory/discrete_logarithm.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/discrete_logarithm.test.cpp
-- /verify/verify/library_checker/math/discrete_logarithm.test.cpp.html
-title: verify/library_checker/math/discrete_logarithm.test.cpp
+- /verify/verify/library_checker/number_theory/discrete_logarithm.test.cpp
+- /verify/verify/library_checker/number_theory/discrete_logarithm.test.cpp.html
+title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
 ---

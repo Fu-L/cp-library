@@ -16,8 +16,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -128,7 +128,7 @@ data:
   timestamp: '2024-07-05 09:41:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
 documentation_of: src/matrix/counting_spanning_tree_directed.hpp
 layout: document
 title: counting_spanning_tree_directed

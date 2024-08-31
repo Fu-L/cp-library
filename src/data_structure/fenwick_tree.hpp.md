@@ -16,11 +16,11 @@ data:
     path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
-    title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+    path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
+    title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-    title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+    path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+    title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -61,10 +61,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
+  - verify/library_checker/tree/vertex_add_path_sum.test.cpp
+  - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   - verify/library_checker/data_structure/point_add_range_sum.test.cpp
-  - verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
   - verify/library_checker/data_structure/static_range_inversions_query.test.cpp
-  - verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
 documentation_of: src/data_structure/fenwick_tree.hpp
 layout: document
 title: FenwickTree

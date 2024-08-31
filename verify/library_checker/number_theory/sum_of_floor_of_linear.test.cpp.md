@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
     links:
     - https://judge.yosupo.jp/problem/sum_of_floor_of_linear
-  bundledCode: "#line 1 \"verify/library_checker/math/sum_of_floor_of_linear.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/sum_of_floor_of_linear\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -30,7 +30,7 @@ data:
     \ m;\n    const long long y = (a * n + b) / m;\n    if(y == 0) return res;\n \
     \   const long long x = y * m - b;\n    res += (n - (x + a - 1) / a) * y;\n  \
     \  res += floor_sum(y, a, m, (a - x % a) % a);\n    return res;\n}\n#line 4 \"\
-    verify/library_checker/math/sum_of_floor_of_linear.test.cpp\"\nint main(void)\
+    verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp\"\nint main(void)\
     \ {\n    int t;\n    cin >> t;\n    while(t--) {\n        ll n, m, a, b;\n   \
     \     cin >> n >> m >> a >> b;\n        cout << floor_sum(n, m, a, b) << '\\n';\n\
     \    }\n}\n"
@@ -43,15 +43,15 @@ data:
   - src/template/template.hpp
   - src/math/floor_sum.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+  path: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+documentation_of: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/sum_of_floor_of_linear.test.cpp
-- /verify/verify/library_checker/math/sum_of_floor_of_linear.test.cpp.html
-title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
+- /verify/verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
+- /verify/verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp.html
+title: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
 ---

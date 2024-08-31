@@ -22,8 +22,8 @@ data:
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/2_sat.test.cpp
-    title: verify/library_checker/math/2_sat.test.cpp
+    path: verify/library_checker/other/2_sat.test.cpp
+    title: verify/library_checker/other/2_sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -114,7 +114,7 @@ data:
   verifiedWith:
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
-  - verify/library_checker/math/2_sat.test.cpp
+  - verify/library_checker/other/2_sat.test.cpp
 documentation_of: src/graph/strongly_connected_components.hpp
 layout: document
 title: strongly_connected_components

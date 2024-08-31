@@ -540,15 +540,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/unionfind.test.cpp
       title: verify/library_checker/data_structure/unionfind.test.cpp
+  - name: verify/library_checker/enumerative_combinatrics
+    pages:
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
-      title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+      path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
+      title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-      title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+      path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+      title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-      title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+      path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+      title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - name: verify/library_checker/geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -583,55 +585,48 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/two_edge_connected_components.test.cpp
       title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - name: verify/library_checker/math
+  - name: verify/library_checker/linear_algebra
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/2_sat.test.cpp
-      title: verify/library_checker/math/2_sat.test.cpp
+      path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
+      title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
-      title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
+      path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
+      title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/discrete_logarithm.test.cpp
-      title: verify/library_checker/math/discrete_logarithm.test.cpp
+      path: verify/library_checker/linear_algebra/matrix_product.test.cpp
+      title: verify/library_checker/linear_algebra/matrix_product.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/find_linear_recurrence.test.cpp
-      title: verify/library_checker/math/find_linear_recurrence.test.cpp
+      path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
+      title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-      title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+      path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+      title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/primality_test.test.cpp
-      title: verify/library_checker/math/primality_test.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
-      title: verify/library_checker/math/sum_of_floor_of_linear.test.cpp
-  - name: verify/library_checker/matrix
+      path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+      title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+  - name: verify/library_checker/number_theory
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-      title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+      path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
+      title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
-      title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+      path: verify/library_checker/number_theory/primality_test.test.cpp
+      title: verify/library_checker/number_theory/primality_test.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/determinant_of_matric.test.cpp
-      title: verify/library_checker/matrix/determinant_of_matric.test.cpp
+      path: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
+      title: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
+  - name: verify/library_checker/other
+    pages:
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/inverse_matrix.test.cpp
-      title: verify/library_checker/matrix/inverse_matrix.test.cpp
+      path: verify/library_checker/other/2_sat.test.cpp
+      title: verify/library_checker/other/2_sat.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/matrix_product.test.cpp
-      title: verify/library_checker/matrix/matrix_product.test.cpp
+      path: verify/library_checker/other/find_linear_recurrence.test.cpp
+      title: verify/library_checker/other/find_linear_recurrence.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/pow_of_matrix.test.cpp
-      title: verify/library_checker/matrix/pow_of_matrix.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/rank_of_matrix.test.cpp
-      title: verify/library_checker/matrix/rank_of_matrix.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
-      title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
+      path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+      title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - name: verify/library_checker/polynomial
     pages:
     - icon: ':heavy_check_mark:'
@@ -695,6 +690,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/tree_diameter.test.cpp
       title: verify/library_checker/tree/tree_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
+      title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+      title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
+      title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - name: verify/unit_test/convolution
     pages:
     - icon: ':heavy_check_mark:'

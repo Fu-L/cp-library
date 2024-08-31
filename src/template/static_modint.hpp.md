@@ -49,38 +49,35 @@ data:
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-    title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/find_linear_recurrence.test.cpp
-    title: verify/library_checker/math/find_linear_recurrence.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-    title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+    path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
+    title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
+    path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
+    title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    path: verify/library_checker/linear_algebra/matrix_product.test.cpp
+    title: verify/library_checker/linear_algebra/matrix_product.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/determinant_of_matric.test.cpp
-    title: verify/library_checker/matrix/determinant_of_matric.test.cpp
+    path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
+    title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/inverse_matrix.test.cpp
-    title: verify/library_checker/matrix/inverse_matrix.test.cpp
+    path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+    title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/matrix_product.test.cpp
-    title: verify/library_checker/matrix/matrix_product.test.cpp
+    path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+    title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/pow_of_matrix.test.cpp
-    title: verify/library_checker/matrix/pow_of_matrix.test.cpp
+    path: verify/library_checker/other/find_linear_recurrence.test.cpp
+    title: verify/library_checker/other/find_linear_recurrence.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/rank_of_matrix.test.cpp
-    title: verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/system_of_linear_equations.test.cpp
-    title: verify/library_checker/matrix/system_of_linear_equations.test.cpp
+    path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
@@ -108,6 +105,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
+    title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
@@ -244,6 +244,7 @@ data:
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
@@ -257,22 +258,21 @@ data:
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
-  - verify/library_checker/math/find_linear_recurrence.test.cpp
-  - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+  - verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
+  - verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+  - verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
+  - verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+  - verify/library_checker/linear_algebra/inverse_matrix.test.cpp
+  - verify/library_checker/linear_algebra/matrix_product.test.cpp
+  - verify/library_checker/other/find_linear_recurrence.test.cpp
+  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp
-  - verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - verify/library_checker/data_structure/range_affine_point_get.test.cpp
-  - verify/library_checker/matrix/determinant_of_matric.test.cpp
-  - verify/library_checker/matrix/rank_of_matrix.test.cpp
-  - verify/library_checker/matrix/pow_of_matrix.test.cpp
-  - verify/library_checker/matrix/system_of_linear_equations.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-  - verify/library_checker/matrix/inverse_matrix.test.cpp
-  - verify/library_checker/matrix/matrix_product.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
 documentation_of: src/template/static_modint.hpp
 layout: document
 title: StaticModint

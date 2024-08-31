@@ -10,8 +10,8 @@ data:
     title: nth_term
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/find_linear_recurrence.test.cpp
-    title: verify/library_checker/math/find_linear_recurrence.test.cpp
+    path: verify/library_checker/other/find_linear_recurrence.test.cpp
+    title: verify/library_checker/other/find_linear_recurrence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
@@ -59,7 +59,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
-  - verify/library_checker/math/find_linear_recurrence.test.cpp
+  - verify/library_checker/other/find_linear_recurrence.test.cpp
 documentation_of: src/fps/berlekamp_massey.hpp
 layout: document
 title: berlekamp_massey

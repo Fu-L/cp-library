@@ -26,7 +26,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
     links:
     - https://judge.yosupo.jp/problem/vertex_set_path_composite
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/vertex_set_path_composite.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/tree/vertex_set_path_composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
     \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -190,7 +190,7 @@ data:
     \ * k], data[2 * k + 1]);\n    }\n    inline unsigned int bit_ceil(unsigned int\
     \ n) {\n        unsigned int res = 1;\n        while(res < n) res *= 2;\n    \
     \    return res;\n    }\n    inline int countr_zero(unsigned int n) {\n      \
-    \  return __builtin_ctz(n);\n    }\n};\n#line 7 \"verify/library_checker/data_structure/vertex_set_path_composite.test.cpp\"\
+    \  return __builtin_ctz(n);\n    }\n};\n#line 7 \"verify/library_checker/tree/vertex_set_path_composite.test.cpp\"\
     \nusing mint = modint998244353;\nstruct S {\n    mint a, b;\n};\nS op1(S x, S\
     \ y) {\n    return {x.a * y.a, x.b * y.a + y.b};\n}\nS op2(S x, S y) {\n    return\
     \ {x.a * y.a, y.b * x.a + x.b};\n}\nS e() {\n    return {1, 0};\n}\nint main(void)\
@@ -241,15 +241,15 @@ data:
   - src/tree/heavy_light_decomposition.hpp
   - src/data_structure/segment_tree.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+  path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-08-31 17:34:28+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+documentation_of: verify/library_checker/tree/vertex_set_path_composite.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-- /verify/verify/library_checker/data_structure/vertex_set_path_composite.test.cpp.html
-title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+- /verify/verify/library_checker/tree/vertex_set_path_composite.test.cpp
+- /verify/verify/library_checker/tree/vertex_set_path_composite.test.cpp.html
+title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
 ---

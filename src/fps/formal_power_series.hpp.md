@@ -16,11 +16,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/find_linear_recurrence.test.cpp
-    title: verify/library_checker/math/find_linear_recurrence.test.cpp
+    path: verify/library_checker/other/find_linear_recurrence.test.cpp
+    title: verify/library_checker/other/find_linear_recurrence.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-    title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+    path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
@@ -451,8 +451,8 @@ data:
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/division_of_polynomial.test.cpp
-  - verify/library_checker/math/find_linear_recurrence.test.cpp
-  - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/library_checker/other/find_linear_recurrence.test.cpp
+  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: src/fps/formal_power_series.hpp
 layout: document
 title: FormalPowerSeries

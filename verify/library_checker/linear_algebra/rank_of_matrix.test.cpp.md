@@ -20,44 +20,44 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/matrix_det
+    PROBLEM: https://judge.yosupo.jp/problem/matrix_rank
     links:
-    - https://judge.yosupo.jp/problem/matrix_det
-  bundledCode: "#line 1 \"verify/library_checker/matrix/determinant_of_matric.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#line 2 \"src/template/template.hpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
-    \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
-    \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
-    \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
-    \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
-    \ mint raw(uint32_t v) {\n        mint a;\n        a._v = v;\n        return a;\n\
-    \    }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class\
-    \ T>\n    constexpr StaticModint(const T& v) {\n        static_assert(is_integral_v<T>);\n\
-    \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
-    \            if(x < 0) x += m;\n            _v = uint32_t(x);\n        } else\
-    \ _v = uint32_t(v % m);\n    }\n    constexpr uint32_t val() const {\n       \
-    \ return _v;\n    }\n    constexpr mint& operator++() {\n        return *this\
-    \ += 1;\n    }\n    constexpr mint& operator--() {\n        return *this -= 1;\n\
-    \    }\n    constexpr mint operator++(int) {\n        mint res = *this;\n    \
-    \    ++*this;\n        return res;\n    }\n    constexpr mint operator--(int)\
-    \ {\n        mint res = *this;\n        --*this;\n        return res;\n    }\n\
-    \    constexpr mint& operator+=(mint rhs) {\n        if(_v >= m - rhs._v) _v -=\
-    \ m;\n        _v += rhs._v;\n        return *this;\n    }\n    constexpr mint&\
-    \ operator-=(mint rhs) {\n        if(_v < rhs._v) _v += m;\n        _v -= rhs._v;\n\
-    \        return *this;\n    }\n    constexpr mint& operator*=(mint rhs) {\n  \
-    \      return *this = *this * rhs;\n    }\n    constexpr mint& operator/=(mint\
-    \ rhs) {\n        return *this *= rhs.inv();\n    }\n    constexpr mint operator+()\
-    \ const {\n        return *this;\n    }\n    constexpr mint operator-() const\
-    \ {\n        return mint{} - *this;\n    }\n    constexpr mint pow(long long n)\
-    \ const {\n        assert(0 <= n);\n        if(n == 0) return 1;\n        mint\
-    \ x = *this, r = 1;\n        while(1) {\n            if(n & 1) r *= x;\n     \
-    \       n >>= 1;\n            if(n == 0) return r;\n            x *= x;\n    \
-    \    }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime) {\n\
-    \            assert(_v);\n            return pow(m - 2);\n        } else {\n \
-    \           auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n  \
-    \          return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
+    - https://judge.yosupo.jp/problem/matrix_rank
+  bundledCode: "#line 1 \"verify/library_checker/linear_algebra/rank_of_matrix.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_rank\"\n#line 2 \"\
+    src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i\
+    \ = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
+    \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
+    \       return m;\n    }\n    static constexpr mint raw(uint32_t v) {\n      \
+    \  mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
+    \        : _v(0) {}\n    template <class T>\n    constexpr StaticModint(const\
+    \ T& v) {\n        static_assert(is_integral_v<T>);\n        if constexpr(is_signed_v<T>)\
+    \ {\n            int64_t x = int64_t(v % int64_t(m));\n            if(x < 0) x\
+    \ += m;\n            _v = uint32_t(x);\n        } else _v = uint32_t(v % m);\n\
+    \    }\n    constexpr uint32_t val() const {\n        return _v;\n    }\n    constexpr\
+    \ mint& operator++() {\n        return *this += 1;\n    }\n    constexpr mint&\
+    \ operator--() {\n        return *this -= 1;\n    }\n    constexpr mint operator++(int)\
+    \ {\n        mint res = *this;\n        ++*this;\n        return res;\n    }\n\
+    \    constexpr mint operator--(int) {\n        mint res = *this;\n        --*this;\n\
+    \        return res;\n    }\n    constexpr mint& operator+=(mint rhs) {\n    \
+    \    if(_v >= m - rhs._v) _v -= m;\n        _v += rhs._v;\n        return *this;\n\
+    \    }\n    constexpr mint& operator-=(mint rhs) {\n        if(_v < rhs._v) _v\
+    \ += m;\n        _v -= rhs._v;\n        return *this;\n    }\n    constexpr mint&\
+    \ operator*=(mint rhs) {\n        return *this = *this * rhs;\n    }\n    constexpr\
+    \ mint& operator/=(mint rhs) {\n        return *this *= rhs.inv();\n    }\n  \
+    \  constexpr mint operator+() const {\n        return *this;\n    }\n    constexpr\
+    \ mint operator-() const {\n        return mint{} - *this;\n    }\n    constexpr\
+    \ mint pow(long long n) const {\n        assert(0 <= n);\n        if(n == 0) return\
+    \ 1;\n        mint x = *this, r = 1;\n        while(1) {\n            if(n & 1)\
+    \ r *= x;\n            n >>= 1;\n            if(n == 0) return r;\n          \
+    \  x *= x;\n        }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime)\
+    \ {\n            assert(_v);\n            return pow(m - 2);\n        } else {\n\
+    \            auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n \
+    \           return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
     \ lhs, mint rhs) {\n        return lhs += rhs;\n    }\n    friend constexpr mint\
     \ operator-(mint lhs, mint rhs) {\n        return lhs -= rhs;\n    }\n    friend\
     \ constexpr mint operator*(mint lhs, mint rhs) {\n        return uint64_t(lhs._v)\
@@ -131,33 +131,33 @@ data:
     \       if(a[i][j] != T(0)) {\n                const T coeff = a[i][j] / a[rank][j];\n\
     \                for(int k = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;\n \
     \           }\n        }\n        ++rank;\n    }\n    return {rank, det};\n}\n\
-    #line 6 \"verify/library_checker/matrix/determinant_of_matric.test.cpp\"\nusing\
-    \ mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n    Matrix<mint>\
-    \ a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cin >> a[i][j];\n\
-    \        }\n    }\n    auto [rank, det] = gauss_elimination(a);\n    cout << det\
-    \ << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#include\
-    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
-    \n#include \"../../../src/matrix/matrix.hpp\"\n#include \"../../../src/matrix/gauss_elimination.hpp\"\
-    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    cin >> n;\n\
-    \    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n     \
+    #line 5 \"verify/library_checker/linear_algebra/rank_of_matrix.test.cpp\"\nusing\
+    \ mint = modint998244353;\nint main(void) {\n    int n, m;\n    cin >> n >> m;\n\
+    \    Matrix<mint> a(n, m);\n    rep(i, 0, n) {\n        rep(j, 0, m) {\n     \
     \       cin >> a[i][j];\n        }\n    }\n    auto [rank, det] = gauss_elimination(a);\n\
-    \    cout << det << '\\n';\n}"
+    \    cout << rank << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_rank\"\n#include\
+    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/matrix/gauss_elimination.hpp\"\nusing mint = modint998244353;\n\
+    int main(void) {\n    int n, m;\n    cin >> n >> m;\n    Matrix<mint> a(n, m);\n\
+    \    rep(i, 0, n) {\n        rep(j, 0, m) {\n            cin >> a[i][j];\n   \
+    \     }\n    }\n    auto [rank, det] = gauss_elimination(a);\n    cout << rank\
+    \ << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
-  - src/matrix/matrix.hpp
   - src/matrix/gauss_elimination.hpp
+  - src/matrix/matrix.hpp
   isVerificationFile: true
-  path: verify/library_checker/matrix/determinant_of_matric.test.cpp
+  path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/matrix/determinant_of_matric.test.cpp
+documentation_of: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/matrix/determinant_of_matric.test.cpp
-- /verify/verify/library_checker/matrix/determinant_of_matric.test.cpp.html
-title: verify/library_checker/matrix/determinant_of_matric.test.cpp
+- /verify/verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+- /verify/verify/library_checker/linear_algebra/rank_of_matrix.test.cpp.html
+title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
 ---

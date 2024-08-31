@@ -100,14 +100,11 @@ data:
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
-    title: verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-    title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-    title: verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
@@ -130,14 +127,8 @@ data:
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/2_sat.test.cpp
-    title: verify/library_checker/math/2_sat.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
-    title: verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+    path: verify/library_checker/other/2_sat.test.cpp
+    title: verify/library_checker/other/2_sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
@@ -156,6 +147,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
+    title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+    title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
+    title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
@@ -250,11 +250,16 @@ data:
   - verify/unit_test/tree/centroid.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/tree/vertex_set_path_composite.test.cpp
+  - verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - verify/library_checker/tree/jump_on_tree.test.cpp
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/library_checker/tree/jump_on_tree_2.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
+  - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   - verify/library_checker/tree/cartesian_tree.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
@@ -262,12 +267,7 @@ data:
   - verify/library_checker/graph/cycle_detection_undirected.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
   - verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - verify/library_checker/math/2_sat.test.cpp
-  - verify/library_checker/data_structure/vertex_set_path_composite.test.cpp
-  - verify/library_checker/data_structure/vertex_add_path_sum.test.cpp
-  - verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_directed.test.cpp
-  - verify/library_checker/matrix/counting_spanning_tree_undirected.test.cpp
+  - verify/library_checker/other/2_sat.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

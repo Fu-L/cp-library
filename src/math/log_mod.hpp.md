@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/discrete_logarithm.test.cpp
-    title: verify/library_checker/math/discrete_logarithm.test.cpp
+    path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
+    title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,7 +55,7 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/math/discrete_logarithm.test.cpp
+  - verify/library_checker/number_theory/discrete_logarithm.test.cpp
 documentation_of: src/math/log_mod.hpp
 layout: document
 title: log_mod

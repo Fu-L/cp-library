@@ -17,9 +17,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/primality_test
     links:
     - https://judge.yosupo.jp/problem/primality_test
-  bundledCode: "#line 1 \"verify/library_checker/math/primality_test.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\n#line 2 \"\
-    src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+  bundledCode: "#line 1 \"verify/library_checker/number_theory/primality_test.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\n#line 2\
+    \ \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i\
     \ = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
     \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
@@ -36,7 +36,7 @@ data:
     \ 0) continue;\n        long long t = d;\n        long long y = pow_mod_128(base,\
     \ t, n);\n        while(t != n - 1 and y != e and y != rev) {\n            y =\
     \ (__int128_t)y * y % n;\n            t *= 2;\n        }\n        if(y != rev\
-    \ and t % 2 == 0) return false;\n    }\n    return true;\n}\n#line 4 \"verify/library_checker/math/primality_test.test.cpp\"\
+    \ and t % 2 == 0) return false;\n    }\n    return true;\n}\n#line 4 \"verify/library_checker/number_theory/primality_test.test.cpp\"\
     \nint main(void) {\n    int q;\n    cin >> q;\n    while(q--) {\n        ll n;\n\
     \        cin >> n;\n        if(miller_rabin(n)) {\n            cout << \"Yes\"\
     \ << '\\n';\n        } else {\n            cout << \"No\" << '\\n';\n        }\n\
@@ -51,15 +51,15 @@ data:
   - src/template/template.hpp
   - src/math/miller_rabin.hpp
   isVerificationFile: true
-  path: verify/library_checker/math/primality_test.test.cpp
+  path: verify/library_checker/number_theory/primality_test.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/math/primality_test.test.cpp
+documentation_of: verify/library_checker/number_theory/primality_test.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/math/primality_test.test.cpp
-- /verify/verify/library_checker/math/primality_test.test.cpp.html
-title: verify/library_checker/math/primality_test.test.cpp
+- /verify/verify/library_checker/number_theory/primality_test.test.cpp
+- /verify/verify/library_checker/number_theory/primality_test.test.cpp.html
+title: verify/library_checker/number_theory/primality_test.test.cpp
 ---

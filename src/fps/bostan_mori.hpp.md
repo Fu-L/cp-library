@@ -10,8 +10,8 @@ data:
     title: nth_term
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-    title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+    path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
@@ -61,7 +61,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
-  - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: src/fps/bostan_mori.hpp
 layout: document
 title: bostan_mori

@@ -23,7 +23,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
     links:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/tree/vertex_add_subtree_sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
@@ -103,18 +103,18 @@ data:
     \    }\n\n   private:\n    int n;\n    vector<T> data;\n    inline T sum(int r)\
     \ const {\n        T s = 0;\n        while(r > 0) {\n            s += data[r -\
     \ 1];\n            r -= r & -r;\n        }\n        return s;\n    }\n};\n#line\
-    \ 6 \"verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp\"\n\
-    int main(void) {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n  \
-    \  rep(i, 0, n) {\n        cin >> a[i];\n    }\n    Graph<int> g(n);\n    rep(i,\
-    \ 1, n) {\n        int p;\n        cin >> p;\n        g.add_edge(i, p);\n    }\n\
-    \    HeavyLightDecomposition<int> hld(g);\n    FenwickTree<ll> fw(n);\n    rep(i,\
-    \ 0, n) {\n        fw.add(hld.idx(i).first, a[i]);\n    }\n    while(q--) {\n\
-    \        int t;\n        cin >> t;\n        if(t == 0) {\n            ll p, x;\n\
-    \            cin >> p >> x;\n            fw.add(hld.idx(p).first, x);\n      \
-    \  } else {\n            int u;\n            cin >> u;\n            ll ans = 0;\n\
-    \            auto query = [&](int u, int v) -> void {\n                ans +=\
-    \ fw.sum(u, v);\n            };\n            hld.subtree_query(u, true, query);\n\
-    \            cout << ans << '\\n';\n        }\n    }\n}\n"
+    \ 6 \"verify/library_checker/tree/vertex_add_subtree_sum.test.cpp\"\nint main(void)\
+    \ {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    rep(i, 0, n)\
+    \ {\n        cin >> a[i];\n    }\n    Graph<int> g(n);\n    rep(i, 1, n) {\n \
+    \       int p;\n        cin >> p;\n        g.add_edge(i, p);\n    }\n    HeavyLightDecomposition<int>\
+    \ hld(g);\n    FenwickTree<ll> fw(n);\n    rep(i, 0, n) {\n        fw.add(hld.idx(i).first,\
+    \ a[i]);\n    }\n    while(q--) {\n        int t;\n        cin >> t;\n       \
+    \ if(t == 0) {\n            ll p, x;\n            cin >> p >> x;\n           \
+    \ fw.add(hld.idx(p).first, x);\n        } else {\n            int u;\n       \
+    \     cin >> u;\n            ll ans = 0;\n            auto query = [&](int u,\
+    \ int v) -> void {\n                ans += fw.sum(u, v);\n            };\n   \
+    \         hld.subtree_query(u, true, query);\n            cout << ans << '\\n';\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
     \n#include \"../../../src/tree/heavy_light_decomposition.hpp\"\n#include \"../../../src/data_structure/fenwick_tree.hpp\"\
@@ -135,15 +135,15 @@ data:
   - src/tree/heavy_light_decomposition.hpp
   - src/data_structure/fenwick_tree.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+  path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-31 17:34:28+09:00'
+  timestamp: '2024-08-31 17:49:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+documentation_of: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
-- /verify/verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp.html
-title: verify/library_checker/data_structure/vertex_add_subtree_sum.test.cpp
+- /verify/verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+- /verify/verify/library_checker/tree/vertex_add_subtree_sum.test.cpp.html
+title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
 ---

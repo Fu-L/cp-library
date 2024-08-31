@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
-    title: verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
+    path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
+    title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -137,7 +137,7 @@ data:
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/math/binomial_coefficient_prime_mod.test.cpp
+  - verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
 documentation_of: src/template/dynamic_modint.hpp
 layout: document
 title: DynamicModint

@@ -37,11 +37,11 @@ data:
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/find_linear_recurrence.test.cpp
-    title: verify/library_checker/math/find_linear_recurrence.test.cpp
+    path: verify/library_checker/other/find_linear_recurrence.test.cpp
+    title: verify/library_checker/other/find_linear_recurrence.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
-    title: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+    path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
@@ -306,8 +306,8 @@ data:
   - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
-  - verify/library_checker/math/find_linear_recurrence.test.cpp
-  - verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/library_checker/other/find_linear_recurrence.test.cpp
+  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: src/convolution/convolution.hpp
 layout: document
 title: convolution
