@@ -4,7 +4,7 @@
 template <typename T>
 struct HeavyLightDecomposition {
     HeavyLightDecomposition(Graph<T>& _g, int root = 0)
-        : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, -1), rev(n, 0) {
+        : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, -1), rev(n, 0), co(n, 0) {
         assert(0 <= root and root < n);
         dfs_sz(root);
         dfs_hld(root);
@@ -16,6 +16,10 @@ struct HeavyLightDecomposition {
     int depth(int v) const {
         assert(0 <= v and v < n);
         return dep[v];
+    }
+    T cost(int v) const {
+        assert(0 <= v and v < n);
+        return co[v];
     }
     int parent(int v) const {
         assert(0 <= v and v < n);
@@ -46,6 +50,11 @@ struct HeavyLightDecomposition {
         assert(0 <= v and v < n);
         return dep[u] + dep[v] - dep[lca(u, v)] * 2;
     }
+    T length(int u, int v) const {
+        assert(0 <= u and u < n);
+        assert(0 <= v and v < n);
+        return co[u] + co[v] - co[lca(u, v)] * 2;
+    }
     template <typename F>
     void path_query(int u, int v, bool vertex, const F& f) {
         assert(0 <= u and u < n);
@@ -65,6 +74,7 @@ struct HeavyLightDecomposition {
     Graph<T>& g;
     int n, id;
     vector<int> sz, dep, down, up, nex, par, rev;
+    vector<T> co;
     void dfs_sz(int cur) {
         sz[cur] = 1;
         for(Edge<T>& edge : g[cur]) {
@@ -76,6 +86,7 @@ struct HeavyLightDecomposition {
                 }
             }
             dep[edge.to] = dep[cur] + 1;
+            co[edge.to] = co[cur] + edge.cost;
             par[edge.to] = cur;
             dfs_sz(edge.to);
             sz[cur] += sz[edge.to];

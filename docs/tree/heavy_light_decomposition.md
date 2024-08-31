@@ -61,6 +61,22 @@ int tree.depth(int v)
 
 - $O(1)$
 
+## cost
+
+```cpp
+int tree.cost(int v)
+```
+
+根 `root` と頂点 $v$ の距離を返します．
+
+**制約**
+
+- $0 \leq v < n$
+
+**計算量**
+
+- $O(1)$
+
 ## parent
 
 ```cpp
@@ -121,7 +137,24 @@ int hld.lca(int u, int v)
 int hld.dist(int u, int v)
 ```
 
-頂点 $u$ と $v$ の木上の距離を返します．
+辺の重みが $1$ であると仮定したときの木における頂点 $u$ と $v$ の間の距離を返します．
+
+**制約**
+
+- $0 \leq u < n$
+- $0 \leq v < n$
+
+**計算量**
+
+- $O(\log n)$
+
+## length
+
+```cpp
+T tree.length(int u, int v)
+```
+
+木における頂点 $u$ と $v$ の間の距離を返します．
 
 **制約**
 
