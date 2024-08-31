@@ -41,17 +41,18 @@ data:
     \ mint>\nmint bostan_mori(const FPS<mint>& a, const FPS<mint>& c, long long k)\
     \ {\n    assert(k >= 0);\n    if(k < (int)a.size()) return a[k];\n    assert(a.size()\
     \ >= c.size());\n    FPS<mint> q = FPS<mint>{1} - (c << 1);\n    FPS<mint> p =\
-    \ (a * q).pre((int)c.size());\n    while(k > 0) {\n        auto q2 = q;\n    \
-    \    for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];\n        const\
-    \ auto s = p * q2;\n        const auto t = q * q2;\n        if(k & 1) {\n    \
-    \        for(int i = 1; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n       \
-    \     for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n        } else\
-    \ {\n            for(int i = 0; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n\
-    \            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n   \
-    \     }\n        k >>= 1;\n    }\n    return p[0];\n}\n#line 5 \"src/fps/nth_term.hpp\"\
-    \ntemplate <template <typename> typename FPS, typename mint>\nmint nth_term(const\
-    \ FPS<mint>& s, long long n) {\n    assert(n >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n\
-    \    return bostan_mori(s, c, n);\n}\n"
+    \ (a * q).pre((int)c.size());\n    if(p.empty()) return 0;\n    while(k > 0) {\n\
+    \        auto q2 = q;\n        for(int i = 1; i < (int)q2.size(); i += 2) q2[i]\
+    \ = -q2[i];\n        const auto s = p * q2;\n        const auto t = q * q2;\n\
+    \        if(k & 1) {\n            for(int i = 1; i < (int)s.size(); i += 2) p[i\
+    \ >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i += 2) q[i >>\
+    \ 1] = t[i];\n        } else {\n            for(int i = 0; i < (int)s.size();\
+    \ i += 2) p[i >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i +=\
+    \ 2) q[i >> 1] = t[i];\n        }\n        k >>= 1;\n    }\n    return p[0];\n\
+    }\n#line 5 \"src/fps/nth_term.hpp\"\ntemplate <template <typename> typename FPS,\
+    \ typename mint>\nmint nth_term(const FPS<mint>& s, long long n) {\n    assert(n\
+    \ >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s,\
+    \ c, n);\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./berlekamp_massey.hpp\"\
     \n#include \"./bostan_mori.hpp\"\ntemplate <template <typename> typename FPS,\
     \ typename mint>\nmint nth_term(const FPS<mint>& s, long long n) {\n    assert(n\
@@ -64,7 +65,7 @@ data:
   isVerificationFile: false
   path: src/fps/nth_term.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:38:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/1559.test.cpp

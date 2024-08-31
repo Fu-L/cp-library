@@ -336,14 +336,15 @@ data:
     \ mint>\nmint bostan_mori(const FPS<mint>& a, const FPS<mint>& c, long long k)\
     \ {\n    assert(k >= 0);\n    if(k < (int)a.size()) return a[k];\n    assert(a.size()\
     \ >= c.size());\n    FPS<mint> q = FPS<mint>{1} - (c << 1);\n    FPS<mint> p =\
-    \ (a * q).pre((int)c.size());\n    while(k > 0) {\n        auto q2 = q;\n    \
-    \    for(int i = 1; i < (int)q2.size(); i += 2) q2[i] = -q2[i];\n        const\
-    \ auto s = p * q2;\n        const auto t = q * q2;\n        if(k & 1) {\n    \
-    \        for(int i = 1; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n       \
-    \     for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n        } else\
-    \ {\n            for(int i = 0; i < (int)s.size(); i += 2) p[i >> 1] = s[i];\n\
-    \            for(int i = 0; i < (int)t.size(); i += 2) q[i >> 1] = t[i];\n   \
-    \     }\n        k >>= 1;\n    }\n    return p[0];\n}\n#line 6 \"verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp\"\
+    \ (a * q).pre((int)c.size());\n    if(p.empty()) return 0;\n    while(k > 0) {\n\
+    \        auto q2 = q;\n        for(int i = 1; i < (int)q2.size(); i += 2) q2[i]\
+    \ = -q2[i];\n        const auto s = p * q2;\n        const auto t = q * q2;\n\
+    \        if(k & 1) {\n            for(int i = 1; i < (int)s.size(); i += 2) p[i\
+    \ >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i += 2) q[i >>\
+    \ 1] = t[i];\n        } else {\n            for(int i = 0; i < (int)s.size();\
+    \ i += 2) p[i >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i +=\
+    \ 2) q[i >> 1] = t[i];\n        }\n        k >>= 1;\n    }\n    return p[0];\n\
+    }\n#line 6 \"verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    ll d, k;\n    cin >> d\
     \ >> k;\n    FormalPowerSeries<mint> a(d), c(d);\n    rep(i, 0, d) cin >> a[i];\n\
     \    rep(i, 0, d) cin >> c[i];\n    cout << bostan_mori(a, c, k) << '\\n';\n}\n"
@@ -364,7 +365,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-08-31 17:38:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/math/kth_term_of_linearly_recurrent_sequence.test.cpp
