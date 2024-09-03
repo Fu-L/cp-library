@@ -79,6 +79,7 @@
 "verify/library_checker/graph/cycle_detection_directed.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/graph/cycle_detection_undirected.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/graph/matching_on_bipartite_graph.test.cpp": "2024-06-04 23:34:08 +0900",
+"verify/library_checker/graph/matching_on_general_graph.test.cpp": "2024-09-03 17:58:47 +0900",
 "verify/library_checker/graph/minimum_spanning_tree.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/graph/shortest_path.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/graph/strongly_connected_components.test.cpp": "2024-06-04 23:34:08 +0900",
