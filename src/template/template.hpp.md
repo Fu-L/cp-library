@@ -131,7 +131,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -143,6 +143,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: MaxFlow
+  - icon: ':x:'
+    path: src/graph/max_matching.hpp
+    title: max_matching
   - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
@@ -525,6 +528,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/graph/matching_on_general_graph.test.cpp
+    title: verify/library_checker/graph/matching_on_general_graph.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
@@ -666,9 +672,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -716,6 +722,7 @@ data:
   - src/graph/dijkstra.hpp
   - src/graph/strongly_connected_components.hpp
   - src/graph/two_edge_connected_components.hpp
+  - src/graph/max_matching.hpp
   - src/graph/max_flow.hpp
   - src/graph/bipartite.hpp
   - src/graph/low_link.hpp
@@ -781,7 +788,7 @@ data:
   - src/matrix/counting_spanning_tree_directed.hpp
   - src/matrix/counting_spanning_tree_undirected.hpp
   timestamp: '2023-12-31 01:05:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yukicoder/649.test.cpp
   - verify/yukicoder/1559.test.cpp
@@ -873,6 +880,7 @@ data:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
+  - verify/library_checker/graph/matching_on_general_graph.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp

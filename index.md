@@ -140,7 +140,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: dijkstra
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/graph_template.hpp
       title: Graph
     - icon: ':heavy_check_mark:'
@@ -152,6 +152,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: MaxFlow
+    - icon: ':x:'
+      path: src/graph/max_matching.hpp
+      title: max_matching
     - icon: ':heavy_check_mark:'
       path: src/graph/min_cost_flow.hpp
       title: MinCostFlow
@@ -285,7 +288,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template/static_modint.hpp
       title: StaticModint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/template.hpp
       title: template
   - name: src/tree
@@ -576,6 +579,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
       title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/graph/matching_on_general_graph.test.cpp
+      title: verify/library_checker/graph/matching_on_general_graph.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
       title: verify/library_checker/graph/minimum_spanning_tree.test.cpp

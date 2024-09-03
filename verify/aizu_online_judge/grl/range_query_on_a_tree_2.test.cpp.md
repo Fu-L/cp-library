@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segment_tree.hpp
     title: LazySegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'
