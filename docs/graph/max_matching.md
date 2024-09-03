@@ -14,6 +14,10 @@ $n$ 頂点無向グラフの辺集合 `es` からグラフの最大マッチン�
 
 注: `#include "graph/max_matching.hpp"` を `#include "template/template.hpp"` の上に書かないとCompile Errorが起こります．
 
+**制約**
+
+- 辺の重みが $1$ である．
+
 **計算量**
 
 頂点数，辺数をそれぞれ $V, E$ として，
