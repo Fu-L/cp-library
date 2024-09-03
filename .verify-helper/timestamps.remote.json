@@ -69,6 +69,7 @@
 "verify/library_checker/data_structure/static_range_inversions_query.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/data_structure/static_rmq.test.cpp": "2024-01-03 04:25:42 +0900",
 "verify/library_checker/data_structure/unionfind.test.cpp": "2024-01-03 04:25:42 +0900",
+"verify/library_checker/data_structure/unionfind_with_potential.test.cpp": "2024-09-03 14:02:30 +0900",
 "verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp": "2024-08-31 17:49:54 +0900",
 "verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp": "2024-08-31 17:49:54 +0900",
 "verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp": "2024-08-31 17:49:54 +0900",
