@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_general_graph.test.cpp
     title: verify/library_checker/graph/matching_on_general_graph.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/graph/max_matching.hpp\"\n#include <boost/graph/adjacency_list.hpp>\n\
@@ -68,7 +68,7 @@ data:
   path: src/graph/max_matching.hpp
   requiredBy: []
   timestamp: '2024-09-03 17:58:47+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/matching_on_general_graph.test.cpp
 documentation_of: src/graph/max_matching.hpp

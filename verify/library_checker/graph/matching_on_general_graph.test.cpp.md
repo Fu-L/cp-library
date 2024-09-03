@@ -1,21 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/max_matching.hpp
     title: max_matching
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/general_matching
+    links:
+    - https://judge.yosupo.jp/problem/general_matching
   bundledCode: "#line 1 \"verify/library_checker/graph/matching_on_general_graph.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/general_matching\"\n#line\
     \ 2 \"src/graph/max_matching.hpp\"\n#include <boost/graph/adjacency_list.hpp>\n\
@@ -71,7 +75,7 @@ data:
   path: verify/library_checker/graph/matching_on_general_graph.test.cpp
   requiredBy: []
   timestamp: '2024-09-03 17:58:47+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/matching_on_general_graph.test.cpp
 layout: document

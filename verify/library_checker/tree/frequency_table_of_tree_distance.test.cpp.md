@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'

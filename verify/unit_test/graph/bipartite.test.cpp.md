@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'
