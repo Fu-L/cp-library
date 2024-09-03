@@ -496,6 +496,9 @@ data:
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+    title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -905,6 +908,7 @@ data:
   - verify/library_checker/data_structure/static_rmq.test.cpp
   - verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp
 documentation_of: src/template/template.hpp
 layout: document

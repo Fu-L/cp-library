@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
     title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+    title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -63,6 +66,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+  - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
 documentation_of: src/data_structure/weighted_union_find.hpp
 layout: document
 title: WeightedUnionFind

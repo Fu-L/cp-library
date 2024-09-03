@@ -49,6 +49,9 @@ data:
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+    title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -273,6 +276,7 @@ data:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - verify/library_checker/data_structure/range_affine_point_get.test.cpp
+  - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
 documentation_of: src/template/static_modint.hpp
 layout: document
 title: StaticModint

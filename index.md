@@ -540,6 +540,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/unionfind.test.cpp
       title: verify/library_checker/data_structure/unionfind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+      title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   - name: verify/library_checker/enumerative_combinatrics
     pages:
     - icon: ':heavy_check_mark:'
