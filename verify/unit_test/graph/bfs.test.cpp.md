@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/graph/bfs.hpp
-    title: src/graph/bfs.hpp
+    title: bfs
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra

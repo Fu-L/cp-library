@@ -127,10 +127,10 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/graph/bfs.hpp
-      title: src/graph/bfs.hpp
+      title: bfs
     - icon: ':heavy_check_mark:'
       path: src/graph/bfs01.hpp
-      title: src/graph/bfs01.hpp
+      title: bfs01
     - icon: ':heavy_check_mark:'
       path: src/graph/biconnected_components.hpp
       title: BiconnectedComponents

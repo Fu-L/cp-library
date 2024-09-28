@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/graph/bfs01.hpp
-    title: src/graph/bfs01.hpp
+    title: bfs01
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
@@ -155,13 +155,13 @@ data:
     \ operator[](const int& k) const {\n        assert(0 <= k and k < n);\n      \
     \  return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
     \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bfs01.hpp\"\
-    \nvector<pair<int, int>> bfs01(const Graph<int>& g, const int s = 0) {\n    const\
-    \ int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<int, int>>\
-    \ d(n, {numeric_limits<int>::max(), -1});\n    vector<int> visited(n);\n    deque<int>\
-    \ deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
+    \ntemplate <typename T>\nvector<pair<T, int>> bfs01(const Graph<T>& g, const int\
+    \ s = 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T,\
+    \ int>> d(n, {numeric_limits<T>::max(), -1});\n    vector<int> visited(n);\n \
+    \   deque<int> deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
     \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
-    \ continue;\n        visited[cur] = 1;\n        for(const Edge<int>& e : g[cur])\
-    \ {\n            if(d[e.to].first != numeric_limits<int>::max() and d[e.to].first\
+    \ continue;\n        visited[cur] = 1;\n        for(const Edge<T>& e : g[cur])\
+    \ {\n            if(d[e.to].first != numeric_limits<T>::max() and d[e.to].first\
     \ <= d[cur].first + e.cost) continue;\n            d[e.to] = {d[cur].first + e.cost,\
     \ cur};\n            if(e.cost == 0) {\n                deq.emplace_front(e.to);\n\
     \            } else {\n                deq.emplace_back(e.to);\n            }\n\
@@ -217,7 +217,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/graph/bfs01.test.cpp
   requiredBy: []
-  timestamp: '2024-09-28 15:28:56+09:00'
+  timestamp: '2024-09-28 15:39:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bfs01.test.cpp

@@ -40,25 +40,25 @@ data:
     \ vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <= k and\
     \ k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
     \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bfs01.hpp\"\
-    \nvector<pair<int, int>> bfs01(const Graph<int>& g, const int s = 0) {\n    const\
-    \ int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<int, int>>\
-    \ d(n, {numeric_limits<int>::max(), -1});\n    vector<int> visited(n);\n    deque<int>\
-    \ deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
+    \ntemplate <typename T>\nvector<pair<T, int>> bfs01(const Graph<T>& g, const int\
+    \ s = 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T,\
+    \ int>> d(n, {numeric_limits<T>::max(), -1});\n    vector<int> visited(n);\n \
+    \   deque<int> deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
     \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
-    \ continue;\n        visited[cur] = 1;\n        for(const Edge<int>& e : g[cur])\
-    \ {\n            if(d[e.to].first != numeric_limits<int>::max() and d[e.to].first\
+    \ continue;\n        visited[cur] = 1;\n        for(const Edge<T>& e : g[cur])\
+    \ {\n            if(d[e.to].first != numeric_limits<T>::max() and d[e.to].first\
     \ <= d[cur].first + e.cost) continue;\n            d[e.to] = {d[cur].first + e.cost,\
     \ cur};\n            if(e.cost == 0) {\n                deq.emplace_front(e.to);\n\
     \            } else {\n                deq.emplace_back(e.to);\n            }\n\
     \        }\n    }\n    return d;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
-    \nvector<pair<int, int>> bfs01(const Graph<int>& g, const int s = 0) {\n    const\
-    \ int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<int, int>>\
-    \ d(n, {numeric_limits<int>::max(), -1});\n    vector<int> visited(n);\n    deque<int>\
-    \ deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
+    \ntemplate <typename T>\nvector<pair<T, int>> bfs01(const Graph<T>& g, const int\
+    \ s = 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T,\
+    \ int>> d(n, {numeric_limits<T>::max(), -1});\n    vector<int> visited(n);\n \
+    \   deque<int> deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
     \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
-    \ continue;\n        visited[cur] = 1;\n        for(const Edge<int>& e : g[cur])\
-    \ {\n            if(d[e.to].first != numeric_limits<int>::max() and d[e.to].first\
+    \ continue;\n        visited[cur] = 1;\n        for(const Edge<T>& e : g[cur])\
+    \ {\n            if(d[e.to].first != numeric_limits<T>::max() and d[e.to].first\
     \ <= d[cur].first + e.cost) continue;\n            d[e.to] = {d[cur].first + e.cost,\
     \ cur};\n            if(e.cost == 0) {\n                deq.emplace_front(e.to);\n\
     \            } else {\n                deq.emplace_back(e.to);\n            }\n\
@@ -69,14 +69,33 @@ data:
   isVerificationFile: false
   path: src/graph/bfs01.hpp
   requiredBy: []
-  timestamp: '2024-09-28 15:28:56+09:00'
+  timestamp: '2024-09-28 15:39:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/graph/bfs01.test.cpp
 documentation_of: src/graph/bfs01.hpp
 layout: document
-redirect_from:
-- /library/src/graph/bfs01.hpp
-- /library/src/graph/bfs01.hpp.html
-title: src/graph/bfs01.hpp
+title: bfs01
 ---
+
+## bfs
+
+```cpp
+vector<pair<T, int>> bfs01(Graph<T> g, int s = 0)
+```
+
+重みが $0$ と $w$ の2値であるような $n$ 頂点のグラフ `g` 上で頂点 `s` を始点とした最短経路探索を行います．<br>
+
+返り値は長さ $n$ の `pair` 型の配列です．<br>
+`pair` 型の第一要素は頂点 `s` から頂点 `i` までの最短距離を，第二要素は頂点 `i` にたどり着く直前にいた頂点番号を保持しています．
+
+もし頂点 `i` に到達できない場合， `pair` 型の第一要素は `numeric_limits<T>::max()` で，第二要素は $-1$ です．
+
+**制約**
+
+- $0 \leq s < n$
+- 辺の重みが $0$ か $w$ かのいずれかである ( `assert` 等で検知されません)．
+
+**計算量**
+
+- $O(E + V)$
