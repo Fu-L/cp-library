@@ -5,11 +5,11 @@ struct RandomNumberGenerator {
     RandomNumberGenerator()
         : mt(chrono::steady_clock::now().time_since_epoch().count()) {}
     inline ll operator()(const ll lower, const ll upper) {
-        assert((ll)-1e18 <= lower and lower <= upper and upper <= (ll)1e18);
+        assert(lower <= upper);
         return num(lower, upper);
     }
     inline ll num(const ll lower, const ll upper) {
-        assert((ll)-1e18 <= lower and lower <= upper and upper <= (ll)1e18);
+        assert(lower <= upper);
         uniform_int_distribution<ll> dist(lower, upper);
         return dist(mt);
     }
@@ -18,8 +18,8 @@ struct RandomNumberGenerator {
         return dist(mt);
     }
     inline vector<ll> vec(const int n, const ll lower, const ll upper, const bool dup = true) {
-        assert(1 <= n and n <= (int)2e5);
-        assert((ll)-1e18 <= lower and lower <= upper and upper <= (ll)1e18);
+        assert(1 <= n and n <= (int)1e8);
+        assert(lower <= upper);
         vector<ll> res(n);
         if(dup) {
             for(int i = 0; i < n; ++i) res[i] = num(lower, upper);
@@ -46,13 +46,13 @@ struct RandomNumberGenerator {
         return res;
     }
     inline vector<long double> rvec(const int n, const long double lower, const long double upper) {
-        assert(1 <= n and n <= (int)2e5);
+        assert(1 <= n and n <= (int)1e8);
         vector<long double> res(n);
         for(int i = 0; i < n; ++i) res[i] = rnum(lower, upper);
         return res;
     }
     inline vector<int> perm(const int n, const bool one = true) {
-        assert(1 <= n and n <= (int)1e6);
+        assert(1 <= n and n <= (int)1e8);
         vector<int> res(n);
         for(int i = 0; i < n; ++i) res[i] = i + one;
         for(int i = n - 1; i > 0; --i) {
@@ -61,7 +61,7 @@ struct RandomNumberGenerator {
         return res;
     }
     inline pair<vector<int>, vector<int>> tree(const int n, const bool one = true) {
-        assert(1 <= n and n <= (int)2e5);
+        assert(1 <= n and n <= (int)1e8);
         if(n == 1) return {{}, {}};
         if(n == 2) return {{0 + one}, {1 + one}};
         vector<int> u(n - 1), v(n - 1);
@@ -96,20 +96,20 @@ struct RandomNumberGenerator {
         return {u, v};
     }
     inline tuple<vector<int>, vector<int>, vector<int>> weighted_tree(const int n, const int lower, const int upper, const bool one = true) {
-        assert(1 <= n and n <= (int)2e5);
-        assert((int)-1e9 <= lower and lower <= upper and upper <= (int)1e9);
+        assert(1 <= n and n <= (int)1e8);
+        assert(lower <= upper);
         auto [u, v] = tree(n, one);
         vector<int> w(n - 1);
         for(int i = 0; i < n - 1; ++i) w[i] = num(lower, upper);
         return {u, v, w};
     }
     inline pair<vector<int>, vector<int>> graph(const int n, const int m, const bool one = true) {
-        assert(1 <= n and n <= (int)2e5);
-        assert(1 <= m and m <= min((int)2e5, n * (n - 1) / 2));
+        assert(1 <= n and n <= (int)1e8);
+        assert(1 <= m and m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));
         vector<int> u, v;
         u.reserve(m);
         v.reserve(m);
-        if(n * (n - 1) / 2 >= 2e6) {
+        if(1ll * n * (n - 1) / 2 >= 2e6) {
             set<pair<int, int>> edge;
             while((int)edge.size() < m) {
                 int a = num(0, n - 1);
@@ -138,22 +138,22 @@ struct RandomNumberGenerator {
         return {u, v};
     }
     inline tuple<vector<int>, vector<int>, vector<int>> weighted_graph(const int n, const int m, const int lower, const int upper, const bool one = true) {
-        assert(1 <= n and n <= (int)2e5);
-        assert(1 <= m and m <= min((int)2e5, n * (n - 1) / 2));
-        assert((int)-1e9 <= lower and lower <= upper and upper <= (int)1e9);
+        assert(1 <= n and n <= (int)1e8);
+        assert(1 <= m and m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));
+        assert(lower <= upper);
         auto [u, v] = graph(n, m, one);
         vector<int> w(m);
         for(int i = 0; i < m; ++i) w[i] = num(lower, upper);
         return {u, v, w};
     }
     inline pair<vector<int>, vector<int>> connected_graph(const int n, const int m, const bool one = true) {
-        assert(1 <= n and n <= (int)2e5);
-        assert(n - 1 <= m and m <= min((int)2e5, n * (n - 1) / 2));
+        assert(1 <= n and n <= (int)1e8);
+        assert(n - 1 <= m and m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));
         vector<int> u, v;
         u.reserve(m);
         v.reserve(m);
         auto [ut, vt] = tree(n, false);
-        if(n * (n - 1) / 2 >= 2e6) {
+        if(1ll * n * (n - 1) / 2 >= 2e6) {
             set<pair<int, int>> edge;
             for(int i = 0; i < n - 1; ++i) {
                 edge.insert({min(ut[i], vt[i]), max(ut[i], vt[i])});
@@ -191,15 +191,16 @@ struct RandomNumberGenerator {
         return {u, v};
     }
     inline tuple<vector<int>, vector<int>, vector<int>> weighted_connected_graph(const int n, const int m, const int lower, const int upper, const bool one = true) {
-        assert(1 <= n and n <= (int)2e5);
-        assert(n - 1 <= m and m <= min((int)2e5, n * (n - 1) / 2));
-        assert((int)-1e9 <= lower and lower <= upper and upper <= (int)1e9);
+        assert(1 <= n and n <= (int)1e8);
+        assert(n - 1 <= m and m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));
+        assert(lower <= upper);
         auto [u, v] = connected_graph(n, m, one);
         vector<int> w(m);
         for(int i = 0; i < m; ++i) w[i] = num(lower, upper);
         return {u, v, w};
     }
     inline string parenthesis(int n) {
+        assert(1 <= n and n <= 1e8);
         string res = "";
         int N = n, M = n;
         for(int i = 0; i < 2 * n; ++i) {
