@@ -155,8 +155,8 @@ data:
   timestamp: '2024-02-14 23:59:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/range_kth_smallest.test.cpp
   - verify/library_checker/data_structure/static_range_frequency.test.cpp
+  - verify/library_checker/data_structure/range_kth_smallest.test.cpp
 documentation_of: src/data_structure/wavelet_matrix.hpp
 layout: document
 title: WaveletMatrix

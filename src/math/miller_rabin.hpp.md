@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/primality_test.test.cpp
     title: verify/library_checker/number_theory/primality_test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/math/lucas.test.cpp
+    title: verify/unit_test/math/lucas.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,6 +58,7 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/math/lucas.test.cpp
   - verify/library_checker/number_theory/primality_test.test.cpp
 documentation_of: src/math/miller_rabin.hpp
 layout: document

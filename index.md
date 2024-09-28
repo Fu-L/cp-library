@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/convolution_ll.hpp
       title: convolution_ll
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/convolution/or_convolution.hpp
       title: or_convolution
     - icon: ':heavy_check_mark:'
@@ -126,6 +126,12 @@ data:
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/graph/bfs.hpp
+      title: src/graph/bfs.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/bfs01.hpp
+      title: src/graph/bfs01.hpp
+    - icon: ':heavy_check_mark:'
       path: src/graph/biconnected_components.hpp
       title: BiconnectedComponents
     - icon: ':heavy_check_mark:'
@@ -199,7 +205,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/log_mod.hpp
       title: log_mod
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/math/lucas.hpp
       title: Lucas
     - icon: ':heavy_check_mark:'
@@ -713,6 +719,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/convolution/convolution_ll.test.cpp
       title: verify/unit_test/convolution/convolution_ll.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/convolution/or_convolution.test.cpp
+      title: verify/unit_test/convolution/or_convolution.test.cpp
   - name: verify/unit_test/data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -721,8 +730,19 @@ data:
   - name: verify/unit_test/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/bfs.test.cpp
+      title: verify/unit_test/graph/bfs.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/bfs01.test.cpp
+      title: verify/unit_test/graph/bfs01.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/unit_test/graph/bipartite.test.cpp
       title: verify/unit_test/graph/bipartite.test.cpp
+  - name: verify/unit_test/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/math/lucas.test.cpp
+      title: verify/unit_test/math/lucas.test.cpp
   - name: verify/unit_test/tree
     pages:
     - icon: ':heavy_check_mark:'

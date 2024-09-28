@@ -8,10 +8,13 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/convolution/or_convolution.test.cpp
+    title: verify/unit_test/convolution/or_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -48,8 +51,9 @@ data:
   path: src/convolution/or_convolution.hpp
   requiredBy: []
   timestamp: '2024-07-02 09:51:07+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/unit_test/convolution/or_convolution.test.cpp
 documentation_of: src/convolution/or_convolution.hpp
 layout: document
 title: or_convolution

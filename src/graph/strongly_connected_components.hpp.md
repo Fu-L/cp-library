@@ -112,9 +112,9 @@ data:
   timestamp: '2024-06-04 23:34:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
   - verify/library_checker/graph/strongly_connected_components.test.cpp
   - verify/library_checker/other/2_sat.test.cpp
+  - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
 documentation_of: src/graph/strongly_connected_components.hpp
 layout: document
 title: strongly_connected_components

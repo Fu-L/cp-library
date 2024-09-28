@@ -7,23 +7,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/graph/strongly_connected_components.hpp
-    title: strongly_connected_components
-  - icon: ':heavy_check_mark:'
-    path: src/graph/two_sat.hpp
-    title: TwoSAT
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-    title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/graph/strongly_connected_components.test.cpp
-    title: verify/library_checker/graph/strongly_connected_components.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/other/2_sat.test.cpp
-    title: verify/library_checker/other/2_sat.test.cpp
+    path: verify/unit_test/graph/bfs01.test.cpp
+    title: verify/unit_test/graph/bfs01.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -51,42 +39,44 @@ data:
     \    assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline const\
     \ vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <= k and\
     \ k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
-    \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/compressed_sparse_row.hpp\"\
-    \ntemplate <typename T>\nstruct CompressedSparseRow {\n    vector<int> start,\
-    \ elist;\n    CompressedSparseRow(const Graph<T>& g)\n        : start(g.size()\
-    \ + 1), elist(g.edge_size()) {\n        const int n = g.size();\n        for(int\
-    \ i = 0; i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n \
-    \           int counter = start[i];\n            for(const Edge<T>& e : g[i])\
-    \ {\n                elist[counter++] = e.to;\n            }\n        }\n    }\n\
-    };\n"
+    \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bfs01.hpp\"\
+    \nvector<pair<int, int>> bfs01(const Graph<int>& g, const int s = 0) {\n    const\
+    \ int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<int, int>>\
+    \ d(n, {numeric_limits<int>::max(), -1});\n    vector<int> visited(n);\n    deque<int>\
+    \ deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
+    \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
+    \ continue;\n        visited[cur] = 1;\n        for(const Edge<int>& e : g[cur])\
+    \ {\n            if(d[e.to].first != numeric_limits<int>::max() and d[e.to].first\
+    \ <= d[cur].first + e.cost) continue;\n            d[e.to] = {d[cur].first + e.cost,\
+    \ cur};\n            if(e.cost == 0) {\n                deq.emplace_front(e.to);\n\
+    \            } else {\n                deq.emplace_back(e.to);\n            }\n\
+    \        }\n    }\n    return d;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
-    \ntemplate <typename T>\nstruct CompressedSparseRow {\n    vector<int> start,\
-    \ elist;\n    CompressedSparseRow(const Graph<T>& g)\n        : start(g.size()\
-    \ + 1), elist(g.edge_size()) {\n        const int n = g.size();\n        for(int\
-    \ i = 0; i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n \
-    \           int counter = start[i];\n            for(const Edge<T>& e : g[i])\
-    \ {\n                elist[counter++] = e.to;\n            }\n        }\n    }\n\
-    };"
+    \nvector<pair<int, int>> bfs01(const Graph<int>& g, const int s = 0) {\n    const\
+    \ int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<int, int>>\
+    \ d(n, {numeric_limits<int>::max(), -1});\n    vector<int> visited(n);\n    deque<int>\
+    \ deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
+    \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
+    \ continue;\n        visited[cur] = 1;\n        for(const Edge<int>& e : g[cur])\
+    \ {\n            if(d[e.to].first != numeric_limits<int>::max() and d[e.to].first\
+    \ <= d[cur].first + e.cost) continue;\n            d[e.to] = {d[cur].first + e.cost,\
+    \ cur};\n            if(e.cost == 0) {\n                deq.emplace_front(e.to);\n\
+    \            } else {\n                deq.emplace_back(e.to);\n            }\n\
+    \        }\n    }\n    return d;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
-  path: src/graph/compressed_sparse_row.hpp
-  requiredBy:
-  - src/graph/strongly_connected_components.hpp
-  - src/graph/two_sat.hpp
-  timestamp: '2024-06-04 23:34:08+09:00'
+  path: src/graph/bfs01.hpp
+  requiredBy: []
+  timestamp: '2024-09-28 15:28:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/graph/strongly_connected_components.test.cpp
-  - verify/library_checker/other/2_sat.test.cpp
-  - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-documentation_of: src/graph/compressed_sparse_row.hpp
+  - verify/unit_test/graph/bfs01.test.cpp
+documentation_of: src/graph/bfs01.hpp
 layout: document
-title: CompressedSparseRow
+redirect_from:
+- /library/src/graph/bfs01.hpp
+- /library/src/graph/bfs01.hpp.html
+title: src/graph/bfs01.hpp
 ---
-
-# CompressedSparseRow
-
-`vector<vector<int>>` などをアーキテクチャ的に高速化するための構造体です．<br>
-基本的には内部的にしか使用しないと思うので，把握する必要はありません．

@@ -2,8 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/sparse_table_2d.hpp
-    title: SparseTable2D
+    path: src/math/lucas.hpp
+    title: Lucas
+  - icon: ':heavy_check_mark:'
+    path: src/math/miller_rabin.hpp
+    title: miller_rabin
+  - icon: ':heavy_check_mark:'
+    path: src/template/dynamic_modint.hpp
+    title: DynamicModint
   - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
@@ -20,8 +26,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
+  bundledCode: "#line 1 \"verify/unit_test/math/lucas.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
     \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
@@ -131,68 +137,118 @@ data:
     \ * (N - M) * (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"\
     (\";\n                --M;\n            } else {\n                res += \")\"\
     ;\n                --N;\n            }\n        }\n        return res;\n    }\n\
-    } rng;\n#line 3 \"src/data_structure/sparse_table_2d.hpp\"\ntemplate <typename\
-    \ S, auto op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const vector<vector<S>>&\
-    \ v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {\n\
-    \        rep(i, 2, (int)LOG.size()) LOG[i] = LOG[i / 2] + 1;\n        table =\
-    \ vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
-    \ + 1, vector<vector<S>>(h, vector<S>(w, e()))));\n        for(int i = 0; i <\
-    \ h; ++i) {\n            for(int j = 0; j < w; ++j) {\n                table[0][0][i][j]\
-    \ = v[i][j];\n            }\n        }\n        for(int i = 0; i <= LOG[h]; ++i)\
-    \ {\n            for(int j = 0; j <= LOG[w]; ++j) {\n                for(int x\
-    \ = 0; x < h; ++x) {\n                    for(int y = 0; y < w; ++y) {\n     \
-    \                   if(i < LOG[h]) table[i + 1][j][x][y] = op(table[i][j][x][y],\
-    \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
-    \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
-    \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S query(int lx, int rx,\
-    \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
-    \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
-    \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
-    \ - ly];\n        return op(op(table[kx][ky][lx][ly], table[kx][ky][rx - (1 <<\
-    \ kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx - (1 << kx)][ry\
-    \ - (1 << ky)]));\n    }\n\n   private:\n    int h, w;\n    vector<vector<vector<vector<S>>>>\
-    \ table;\n    vector<int> LOG;\n};\n#line 5 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
-    \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
-    }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
-    \ a(h, vector<int>(w));\n    rep(i, 0, h) {\n        rep(j, 0, w) {\n        \
-    \    a[i][j] = rng(0, (int)1e9);\n        }\n    }\n    SparseTable2D<int, op,\
-    \ e> st(a);\n    int query_num = 1000;\n    while(query_num--) {\n        int\
-    \ xl = rng(0, h), xr = rng(xl, h);\n        int yl = rng(0, w), yr = rng(yl, w);\n\
-    \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
-    \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
-    \       }\n        assert(st.query(xl, xr, yl, yr) == expected);\n    }\n}\nint\
-    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
-    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
-    \ << '\\n';\n}\n"
+    } rng;\n#line 3 \"src/template/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit\
+    \ Barrett(unsigned int m)\n        : _m(m), im((unsigned long long)(-1) / m +\
+    \ 1) {}\n    inline unsigned int umod() const {\n        return _m;\n    }\n \
+    \   inline unsigned int mul(unsigned int a, unsigned int b) const {\n        unsigned\
+    \ long long z = a;\n        z *= b;\n        unsigned long long x = (unsigned\
+    \ long long)(((unsigned __int128)(z)*im) >> 64);\n        unsigned int v = (unsigned\
+    \ int)(z - x * _m);\n        if(_m <= v) v += _m;\n        return v;\n    }\n\n\
+    \   private:\n    unsigned int _m;\n    unsigned long long im;\n};\ntemplate <int\
+    \ id>\nstruct DynamicModint {\n    using mint = DynamicModint;\n    static int\
+    \ mod() {\n        return (int)bt.umod();\n    }\n    static void set_mod(int\
+    \ m) {\n        assert(1 <= m);\n        bt = Barrett(m);\n    }\n    static mint\
+    \ raw(int v) {\n        mint a;\n        a._v = v;\n        return a;\n    }\n\
+    \    DynamicModint()\n        : _v(0) {}\n    template <class T>\n    DynamicModint(const\
+    \ T& v) {\n        static_assert(is_integral_v<T>);\n        if(is_signed_v<T>)\
+    \ {\n            long long x = (long long)(v % (long long)(umod()));\n       \
+    \     if(x < 0) x += umod();\n            _v = (unsigned int)(x);\n        } else\
+    \ _v = (unsigned int)(v % umod());\n    }\n    unsigned int val() const {\n  \
+    \      return _v;\n    }\n    mint& operator++() {\n        ++_v;\n        if(_v\
+    \ == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--() {\n\
+    \        if(_v == 0) _v = umod();\n        --_v;\n        return *this;\n    }\n\
+    \    mint operator++(int) {\n        mint res = *this;\n        ++*this;\n   \
+    \     return res;\n    }\n    mint operator--(int) {\n        mint res = *this;\n\
+    \        --*this;\n        return res;\n    }\n    mint& operator+=(const mint&\
+    \ rhs) {\n        _v += rhs._v;\n        if(_v >= umod()) _v -= umod();\n    \
+    \    return *this;\n    }\n    mint& operator-=(const mint& rhs) {\n        _v\
+    \ += mod() - rhs._v;\n        if(_v >= umod()) _v -= umod();\n        return *this;\n\
+    \    }\n    mint& operator*=(const mint& rhs) {\n        _v = bt.mul(_v, rhs._v);\n\
+    \        return *this;\n    }\n    mint& operator/=(const mint& rhs) {\n     \
+    \   return *this *= rhs.inv();\n    }\n    mint operator+() const {\n        return\
+    \ *this;\n    }\n    mint operator-() const {\n        return mint() - *this;\n\
+    \    }\n    mint pow(long long n) const {\n        assert(0 <= n);\n        if(n\
+    \ == 0) return 1;\n        mint x = *this, r = 1;\n        while(1) {\n      \
+    \      if(n & 1) r *= x;\n            n >>= 1;\n            if(n == 0) return\
+    \ r;\n            x *= x;\n        }\n    }\n    mint inv() const {\n        auto\
+    \ eg = inv_gcd(_v, mod());\n        assert(eg.first == 1);\n        return eg.second;\n\
+    \    }\n    friend mint operator+(const mint& lhs, const mint& rhs) {\n      \
+    \  return mint(lhs) += rhs;\n    }\n    friend mint operator-(const mint& lhs,\
+    \ const mint& rhs) {\n        return mint(lhs) -= rhs;\n    }\n    friend mint\
+    \ operator*(const mint& lhs, const mint& rhs) {\n        return mint(lhs) *= rhs;\n\
+    \    }\n    friend mint operator/(const mint& lhs, const mint& rhs) {\n      \
+    \  return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const mint& lhs,\
+    \ const mint& rhs) {\n        return lhs._v == rhs._v;\n    }\n    friend bool\
+    \ operator!=(const mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n\
+    \    }\n    friend istream& operator>>(istream& in, mint& x) {\n        long long\
+    \ a;\n        in >> a;\n        x = a;\n        return in;\n    }\n    friend\
+    \ ostream& operator<<(ostream& out, const mint& x) {\n        return out << x.val();\n\
+    \    }\n\n   private:\n    unsigned int _v = 0;\n    static Barrett bt;\n    inline\
+    \ static unsigned int umod() {\n        return bt.umod();\n    }\n    inline static\
+    \ pair<long long, long long> inv_gcd(long long a, long long b) {\n        if(a\
+    \ == 0) return {b, 0};\n        long long s = b, t = a, m0 = 0, m1 = 1;\n    \
+    \    while(t) {\n            const long long u = s / t;\n            s -= t *\
+    \ u;\n            m0 -= m1 * u;\n            swap(s, t);\n            swap(m0,\
+    \ m1);\n        }\n        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n\
+    \    }\n};\ntemplate <int id>\nBarrett DynamicModint<id>::bt(998244353);\nusing\
+    \ modint = DynamicModint<-1>;\n#line 3 \"src/math/lucas.hpp\"\ntemplate <typename\
+    \ mint>\nstruct Lucas {\n    Lucas()\n        : mod(mint::mod()), fact(mint::mod()),\
+    \ ifact(mint::mod()) {\n        fact[0] = 1;\n        for(int i = 1; i < mod;\
+    \ ++i) fact[i] = fact[i - 1] * i;\n        ifact[mod - 1] = fact[mod - 1].inv();\n\
+    \        for(int i = mod - 1; i >= 1; --i) ifact[i - 1] = ifact[i] * i;\n    }\n\
+    \    mint operator()(long long n, long long k) {\n        if(n < 0 or n < k or\
+    \ k < 0) return 0;\n        mint res = 1;\n        while(n > 0) {\n          \
+    \  const long long n0 = n % mod, k0 = k % mod;\n            if(n0 < k0) return\
+    \ 0;\n            res *= fact[n0] * ifact[k0] * ifact[n0 - k0];\n            n\
+    \ /= mod;\n            k /= mod;\n        }\n        return res;\n    }\n\n  \
+    \ private:\n    int mod;\n    vector<mint> fact, ifact;\n};\n#line 3 \"src/math/miller_rabin.hpp\"\
+    \nconstexpr __int128_t pow_mod_128(__int128_t x, __int128_t n, const __int128_t\
+    \ mod) {\n    assert(n >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x +=\
+    \ mod;\n    __int128_t res = 1;\n    while(n > 0) {\n        if(n & 1) res = res\
+    \ * x % mod;\n        x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n\
+    }\nconstexpr bool miller_rabin(long long n) {\n    if(n <= 2) return n == 2;\n\
+    \    if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2, 325,\
+    \ 9375, 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n    while(d\
+    \ % 2 == 0) d /= 2;\n    long long e = 1, rev = n - 1;\n    for(const long long\
+    \ base : bases) {\n        if(base % n == 0) continue;\n        long long t =\
+    \ d;\n        long long y = pow_mod_128(base, t, n);\n        while(t != n - 1\
+    \ and y != e and y != rev) {\n            y = (__int128_t)y * y % n;\n       \
+    \     t *= 2;\n        }\n        if(y != rev and t % 2 == 0) return false;\n\
+    \    }\n    return true;\n}\n#line 7 \"verify/unit_test/math/lucas.test.cpp\"\n\
+    using mint = modint;\nvoid test() {\n    static Lucas<mint> binom;\n    int n\
+    \ = rng(1, 5000000), k = rng(0, k);\n    mint ans = 1;\n    rep(i, 1, k + 1) {\n\
+    \        ans *= (n - i) / i;\n    }\n    assert(binom(n, k).val() == ans.val());\n\
+    }\nint main(void) {\n    int p = 1;\n    while(!miller_rabin(p)) {\n        p\
+    \ = rng(2, 1e8);\n    }\n    mint::set_mod(p);\n    constexpr int test_num = 1000;\n\
+    \    rep(_, 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >>\
+    \ a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/data_structure/sparse_table_2d.hpp\"\nint op(int a, int b) {\n  \
-    \  return min(a, b);\n}\nint e() {\n    return (int)1e9;\n}\nvoid test() {\n \
-    \   int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>> a(h, vector<int>(w));\n\
-    \    rep(i, 0, h) {\n        rep(j, 0, w) {\n            a[i][j] = rng(0, (int)1e9);\n\
-    \        }\n    }\n    SparseTable2D<int, op, e> st(a);\n    int query_num = 1000;\n\
-    \    while(query_num--) {\n        int xl = rng(0, h), xr = rng(xl, h);\n    \
-    \    int yl = rng(0, w), yr = rng(yl, w);\n        int expected = 1e9;\n     \
-    \   rep(i, xl, xr) {\n            rep(j, yl, yr) {\n                expected =\
-    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.query(xl,\
-    \ xr, yl, yr) == expected);\n    }\n}\nint main(void) {\n    constexpr int test_num\
-    \ = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int a, b;\n \
-    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    ../../../src/template/dynamic_modint.hpp\"\n#include \"../../../src/math/lucas.hpp\"\
+    \n#include \"../../../src/math/miller_rabin.hpp\"\nusing mint = modint;\nvoid\
+    \ test() {\n    static Lucas<mint> binom;\n    int n = rng(1, 5000000), k = rng(0,\
+    \ k);\n    mint ans = 1;\n    rep(i, 1, k + 1) {\n        ans *= (n - i) / i;\n\
+    \    }\n    assert(binom(n, k).val() == ans.val());\n}\nint main(void) {\n   \
+    \ int p = 1;\n    while(!miller_rabin(p)) {\n        p = rng(2, 1e8);\n    }\n\
+    \    mint::set_mod(p);\n    constexpr int test_num = 1000;\n    rep(_, 0, test_num)\
+    \ {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a\
+    \ + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
-  - src/data_structure/sparse_table_2d.hpp
+  - src/template/dynamic_modint.hpp
+  - src/math/lucas.hpp
+  - src/math/miller_rabin.hpp
   isVerificationFile: true
-  path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  path: verify/unit_test/math/lucas.test.cpp
   requiredBy: []
   timestamp: '2024-09-28 15:28:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+documentation_of: verify/unit_test/math/lucas.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp
-- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp.html
-title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+- /verify/verify/unit_test/math/lucas.test.cpp
+- /verify/verify/unit_test/math/lucas.test.cpp.html
+title: verify/unit_test/math/lucas.test.cpp
 ---

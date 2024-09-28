@@ -2,8 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/sparse_table_2d.hpp
-    title: SparseTable2D
+    path: src/convolution/or_convolution.hpp
+    title: or_convolution
+  - icon: ':heavy_check_mark:'
+    path: src/math/zeta_transform.hpp
+    title: zeta_transform
   - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
@@ -20,8 +23,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
+  bundledCode: "#line 1 \"verify/unit_test/convolution/or_convolution.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
     \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
@@ -131,68 +134,56 @@ data:
     \ * (N - M) * (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"\
     (\";\n                --M;\n            } else {\n                res += \")\"\
     ;\n                --N;\n            }\n        }\n        return res;\n    }\n\
-    } rng;\n#line 3 \"src/data_structure/sparse_table_2d.hpp\"\ntemplate <typename\
-    \ S, auto op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const vector<vector<S>>&\
-    \ v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {\n\
-    \        rep(i, 2, (int)LOG.size()) LOG[i] = LOG[i / 2] + 1;\n        table =\
-    \ vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
-    \ + 1, vector<vector<S>>(h, vector<S>(w, e()))));\n        for(int i = 0; i <\
-    \ h; ++i) {\n            for(int j = 0; j < w; ++j) {\n                table[0][0][i][j]\
-    \ = v[i][j];\n            }\n        }\n        for(int i = 0; i <= LOG[h]; ++i)\
-    \ {\n            for(int j = 0; j <= LOG[w]; ++j) {\n                for(int x\
-    \ = 0; x < h; ++x) {\n                    for(int y = 0; y < w; ++y) {\n     \
-    \                   if(i < LOG[h]) table[i + 1][j][x][y] = op(table[i][j][x][y],\
-    \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
-    \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
-    \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S query(int lx, int rx,\
-    \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
-    \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
-    \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
-    \ - ly];\n        return op(op(table[kx][ky][lx][ly], table[kx][ky][rx - (1 <<\
-    \ kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx - (1 << kx)][ry\
-    \ - (1 << ky)]));\n    }\n\n   private:\n    int h, w;\n    vector<vector<vector<vector<S>>>>\
-    \ table;\n    vector<int> LOG;\n};\n#line 5 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
-    \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
-    }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
-    \ a(h, vector<int>(w));\n    rep(i, 0, h) {\n        rep(j, 0, w) {\n        \
-    \    a[i][j] = rng(0, (int)1e9);\n        }\n    }\n    SparseTable2D<int, op,\
-    \ e> st(a);\n    int query_num = 1000;\n    while(query_num--) {\n        int\
-    \ xl = rng(0, h), xr = rng(xl, h);\n        int yl = rng(0, w), yr = rng(yl, w);\n\
-    \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
-    \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
-    \       }\n        assert(st.query(xl, xr, yl, yr) == expected);\n    }\n}\nint\
-    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
-    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
-    \ << '\\n';\n}\n"
+    } rng;\n#line 3 \"src/math/zeta_transform.hpp\"\ntemplate <typename T>\nvoid superset_zeta_transform(vector<T>&\
+    \ f, const bool inv = false) {\n    const int n = (int)f.size();\n    assert((n\
+    \ & (n - 1)) == 0);\n    const int sign = inv ? -1 : 1;\n    for(int i = 1; i\
+    \ < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i)\
+    \ == 0) {\n                f[j] += sign * f[j | i];\n            }\n        }\n\
+    \    }\n}\ntemplate <typename T>\nvoid subset_zeta_transform(vector<T>& f, const\
+    \ bool inv = false) {\n    const int n = (int)f.size();\n    assert((n & (n -\
+    \ 1)) == 0);\n    const int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i\
+    \ <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) == 0)\
+    \ {\n                f[j | i] += sign * f[j];\n            }\n        }\n    }\n\
+    }\n#line 4 \"src/convolution/or_convolution.hpp\"\ntemplate <typename T>\nvector<T>\
+    \ or_convolution(vector<T> a, vector<T> b) {\n    const int n = (int)a.size(),\
+    \ m = (int)b.size();\n    assert(n == m and (n & (n - 1)) == 0);\n    subset_zeta_transform(a);\n\
+    \    subset_zeta_transform(b);\n    for(int i = 0; i < (int)a.size(); ++i) a[i]\
+    \ *= b[i];\n    subset_zeta_transform(a, true);\n    return a;\n}\n#line 5 \"\
+    verify/unit_test/convolution/or_convolution.test.cpp\"\nvoid test() {\n    int\
+    \ n = 1 << rng(0, 12);\n    vector<ll> a(n), b(n);\n    rep(i, 0, n) a[i] = rng(-1000000,\
+    \ 1000000);\n    rep(i, 0, n) b[i] = rng(-1000000, 1000000);\n    vector<ll> c\
+    \ = or_convolution(a, b);\n    if(!n) {\n        assert(c.empty());\n        return;\n\
+    \    }\n    vector<ll> expected(n);\n    rep(i, 0, n) {\n        rep(j, 0, n)\
+    \ {\n            expected[i | j] += a[i] * b[j];\n        }\n    }\n    rep(i,\
+    \ 0, n) {\n        assert(c[i] == expected[i]);\n    }\n}\nint main(void) {\n\
+    \    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test();\n\
+    \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/data_structure/sparse_table_2d.hpp\"\nint op(int a, int b) {\n  \
-    \  return min(a, b);\n}\nint e() {\n    return (int)1e9;\n}\nvoid test() {\n \
-    \   int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>> a(h, vector<int>(w));\n\
-    \    rep(i, 0, h) {\n        rep(j, 0, w) {\n            a[i][j] = rng(0, (int)1e9);\n\
-    \        }\n    }\n    SparseTable2D<int, op, e> st(a);\n    int query_num = 1000;\n\
-    \    while(query_num--) {\n        int xl = rng(0, h), xr = rng(xl, h);\n    \
-    \    int yl = rng(0, w), yr = rng(yl, w);\n        int expected = 1e9;\n     \
-    \   rep(i, xl, xr) {\n            rep(j, yl, yr) {\n                expected =\
-    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.query(xl,\
-    \ xr, yl, yr) == expected);\n    }\n}\nint main(void) {\n    constexpr int test_num\
-    \ = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int a, b;\n \
-    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    ../../../src/convolution/or_convolution.hpp\"\nvoid test() {\n    int n = 1 <<\
+    \ rng(0, 12);\n    vector<ll> a(n), b(n);\n    rep(i, 0, n) a[i] = rng(-1000000,\
+    \ 1000000);\n    rep(i, 0, n) b[i] = rng(-1000000, 1000000);\n    vector<ll> c\
+    \ = or_convolution(a, b);\n    if(!n) {\n        assert(c.empty());\n        return;\n\
+    \    }\n    vector<ll> expected(n);\n    rep(i, 0, n) {\n        rep(j, 0, n)\
+    \ {\n            expected[i | j] += a[i] * b[j];\n        }\n    }\n    rep(i,\
+    \ 0, n) {\n        assert(c[i] == expected[i]);\n    }\n}\nint main(void) {\n\
+    \    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test();\n\
+    \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
-  - src/data_structure/sparse_table_2d.hpp
+  - src/convolution/or_convolution.hpp
+  - src/math/zeta_transform.hpp
   isVerificationFile: true
-  path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  path: verify/unit_test/convolution/or_convolution.test.cpp
   requiredBy: []
   timestamp: '2024-09-28 15:28:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+documentation_of: verify/unit_test/convolution/or_convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp
-- /verify/verify/unit_test/data_structure/sparse_table_2d.test.cpp.html
-title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+- /verify/verify/unit_test/convolution/or_convolution.test.cpp
+- /verify/verify/unit_test/convolution/or_convolution.test.cpp.html
+title: verify/unit_test/convolution/or_convolution.test.cpp
 ---

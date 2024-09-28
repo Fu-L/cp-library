@@ -268,8 +268,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/convolution/convolution_ll.test.cpp
-  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
 documentation_of: src/convolution/convolution_ll.hpp
 layout: document
 title: convolution_ll

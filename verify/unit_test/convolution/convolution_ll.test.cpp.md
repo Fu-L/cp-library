@@ -41,21 +41,19 @@ data:
     \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/random_number_generator.hpp\"\
     \nstruct RandomNumberGenerator {\n    mt19937_64 mt;\n    RandomNumberGenerator()\n\
     \        : mt(chrono::steady_clock::now().time_since_epoch().count()) {}\n   \
-    \ inline ll operator()(const ll lower, const ll upper) {\n        assert((ll)-1e18\
-    \ <= lower and lower <= upper and upper <= (ll)1e18);\n        return num(lower,\
-    \ upper);\n    }\n    inline ll num(const ll lower, const ll upper) {\n      \
-    \  assert((ll)-1e18 <= lower and lower <= upper and upper <= (ll)1e18);\n    \
-    \    uniform_int_distribution<ll> dist(lower, upper);\n        return dist(mt);\n\
-    \    }\n    inline long double rnum(const long double lower, const long double\
-    \ upper) {\n        uniform_real_distribution<long double> dist(lower, upper);\n\
-    \        return dist(mt);\n    }\n    inline vector<ll> vec(const int n, const\
-    \ ll lower, const ll upper, const bool dup = true) {\n        assert(1 <= n and\
-    \ n <= (int)2e5);\n        assert((ll)-1e18 <= lower and lower <= upper and upper\
-    \ <= (ll)1e18);\n        vector<ll> res(n);\n        if(dup) {\n            for(int\
-    \ i = 0; i < n; ++i) res[i] = num(lower, upper);\n        } else {\n         \
-    \   assert(upper - lower + 1 >= n);\n            if(upper - lower + 1 >= 2 * n)\
-    \ {\n                set<ll> used;\n                while((int)used.size() < n)\
-    \ {\n                    ll a = num(lower, upper);\n                    used.insert(a);\n\
+    \ inline ll operator()(const ll lower, const ll upper) {\n        assert(lower\
+    \ <= upper);\n        return num(lower, upper);\n    }\n    inline ll num(const\
+    \ ll lower, const ll upper) {\n        assert(lower <= upper);\n        uniform_int_distribution<ll>\
+    \ dist(lower, upper);\n        return dist(mt);\n    }\n    inline long double\
+    \ rnum(const long double lower, const long double upper) {\n        uniform_real_distribution<long\
+    \ double> dist(lower, upper);\n        return dist(mt);\n    }\n    inline vector<ll>\
+    \ vec(const int n, const ll lower, const ll upper, const bool dup = true) {\n\
+    \        assert(1 <= n and n <= (int)1e8);\n        assert(lower <= upper);\n\
+    \        vector<ll> res(n);\n        if(dup) {\n            for(int i = 0; i <\
+    \ n; ++i) res[i] = num(lower, upper);\n        } else {\n            assert(upper\
+    \ - lower + 1 >= n);\n            if(upper - lower + 1 >= 2 * n) {\n         \
+    \       set<ll> used;\n                while((int)used.size() < n) {\n       \
+    \             ll a = num(lower, upper);\n                    used.insert(a);\n\
     \                }\n                int i = 0;\n                for(ll a : used)\
     \ {\n                    res[i] = a;\n                    ++i;\n             \
     \   }\n            } else {\n                vector<int> p = perm(upper - lower\
@@ -63,14 +61,14 @@ data:
     \     res[i] = p[i] + lower;\n                }\n            }\n        }\n  \
     \      return res;\n    }\n    inline vector<long double> rvec(const int n, const\
     \ long double lower, const long double upper) {\n        assert(1 <= n and n <=\
-    \ (int)2e5);\n        vector<long double> res(n);\n        for(int i = 0; i <\
+    \ (int)1e8);\n        vector<long double> res(n);\n        for(int i = 0; i <\
     \ n; ++i) res[i] = rnum(lower, upper);\n        return res;\n    }\n    inline\
     \ vector<int> perm(const int n, const bool one = true) {\n        assert(1 <=\
-    \ n and n <= (int)1e6);\n        vector<int> res(n);\n        for(int i = 0; i\
+    \ n and n <= (int)1e8);\n        vector<int> res(n);\n        for(int i = 0; i\
     \ < n; ++i) res[i] = i + one;\n        for(int i = n - 1; i > 0; --i) {\n    \
     \        swap(res[i], res[num(0, i)]);\n        }\n        return res;\n    }\n\
     \    inline pair<vector<int>, vector<int>> tree(const int n, const bool one =\
-    \ true) {\n        assert(1 <= n and n <= (int)2e5);\n        if(n == 1) return\
+    \ true) {\n        assert(1 <= n and n <= (int)1e8);\n        if(n == 1) return\
     \ {{}, {}};\n        if(n == 2) return {{0 + one}, {1 + one}};\n        vector<int>\
     \ u(n - 1), v(n - 1);\n        vector<ll> pruefer = vec(n - 2, 0, n - 1);\n  \
     \      set<int> st;\n        vector<int> cnt(n);\n        for(int i = 0; i < n;\
@@ -85,41 +83,41 @@ data:
     \        add(a);\n        int b = *st.begin();\n        u[n - 2] = a + one;\n\
     \        v[n - 2] = b + one;\n        return {u, v};\n    }\n    inline tuple<vector<int>,\
     \ vector<int>, vector<int>> weighted_tree(const int n, const int lower, const\
-    \ int upper, const bool one = true) {\n        assert(1 <= n and n <= (int)2e5);\n\
-    \        assert((int)-1e9 <= lower and lower <= upper and upper <= (int)1e9);\n\
-    \        auto [u, v] = tree(n, one);\n        vector<int> w(n - 1);\n        for(int\
-    \ i = 0; i < n - 1; ++i) w[i] = num(lower, upper);\n        return {u, v, w};\n\
-    \    }\n    inline pair<vector<int>, vector<int>> graph(const int n, const int\
-    \ m, const bool one = true) {\n        assert(1 <= n and n <= (int)2e5);\n   \
-    \     assert(1 <= m and m <= min((int)2e5, n * (n - 1) / 2));\n        vector<int>\
-    \ u, v;\n        u.reserve(m);\n        v.reserve(m);\n        if(n * (n - 1)\
-    \ / 2 >= 2e6) {\n            set<pair<int, int>> edge;\n            while((int)edge.size()\
-    \ < m) {\n                int a = num(0, n - 1);\n                int b = num(0,\
-    \ n - 1);\n                if(a >= b) continue;\n                edge.insert({a,\
-    \ b});\n            }\n            for(auto& [a, b] : edge) {\n              \
-    \  u.push_back(a + one);\n                v.push_back(b + one);\n            }\n\
-    \        } else {\n            vector<pair<int, int>> edge;\n            edge.reserve(n\
-    \ * (n - 1) / 2);\n            for(int i = 0; i < n; ++i) {\n                for(int\
-    \ j = i + 1; j < n; ++j) {\n                    edge.push_back({i, j});\n    \
-    \            }\n            }\n            vector<int> p = perm(n * (n - 1) /\
-    \ 2, false);\n            for(int i = 0; i < m; ++i) {\n                u.push_back(edge[p[i]].first\
+    \ int upper, const bool one = true) {\n        assert(1 <= n and n <= (int)1e8);\n\
+    \        assert(lower <= upper);\n        auto [u, v] = tree(n, one);\n      \
+    \  vector<int> w(n - 1);\n        for(int i = 0; i < n - 1; ++i) w[i] = num(lower,\
+    \ upper);\n        return {u, v, w};\n    }\n    inline pair<vector<int>, vector<int>>\
+    \ graph(const int n, const int m, const bool one = true) {\n        assert(1 <=\
+    \ n and n <= (int)1e8);\n        assert(1 <= m and m <= (int)min((ll)1e8, 1ll\
+    \ * n * (n - 1) / 2));\n        vector<int> u, v;\n        u.reserve(m);\n   \
+    \     v.reserve(m);\n        if(1ll * n * (n - 1) / 2 >= 2e6) {\n            set<pair<int,\
+    \ int>> edge;\n            while((int)edge.size() < m) {\n                int\
+    \ a = num(0, n - 1);\n                int b = num(0, n - 1);\n               \
+    \ if(a >= b) continue;\n                edge.insert({a, b});\n            }\n\
+    \            for(auto& [a, b] : edge) {\n                u.push_back(a + one);\n\
+    \                v.push_back(b + one);\n            }\n        } else {\n    \
+    \        vector<pair<int, int>> edge;\n            edge.reserve(n * (n - 1) /\
+    \ 2);\n            for(int i = 0; i < n; ++i) {\n                for(int j = i\
+    \ + 1; j < n; ++j) {\n                    edge.push_back({i, j});\n          \
+    \      }\n            }\n            vector<int> p = perm(n * (n - 1) / 2, false);\n\
+    \            for(int i = 0; i < m; ++i) {\n                u.push_back(edge[p[i]].first\
     \ + one);\n                v.push_back(edge[p[i]].second + one);\n           \
     \ }\n        }\n        return {u, v};\n    }\n    inline tuple<vector<int>, vector<int>,\
     \ vector<int>> weighted_graph(const int n, const int m, const int lower, const\
-    \ int upper, const bool one = true) {\n        assert(1 <= n and n <= (int)2e5);\n\
-    \        assert(1 <= m and m <= min((int)2e5, n * (n - 1) / 2));\n        assert((int)-1e9\
-    \ <= lower and lower <= upper and upper <= (int)1e9);\n        auto [u, v] = graph(n,\
-    \ m, one);\n        vector<int> w(m);\n        for(int i = 0; i < m; ++i) w[i]\
-    \ = num(lower, upper);\n        return {u, v, w};\n    }\n    inline pair<vector<int>,\
-    \ vector<int>> connected_graph(const int n, const int m, const bool one = true)\
-    \ {\n        assert(1 <= n and n <= (int)2e5);\n        assert(n - 1 <= m and\
-    \ m <= min((int)2e5, n * (n - 1) / 2));\n        vector<int> u, v;\n        u.reserve(m);\n\
-    \        v.reserve(m);\n        auto [ut, vt] = tree(n, false);\n        if(n\
-    \ * (n - 1) / 2 >= 2e6) {\n            set<pair<int, int>> edge;\n           \
-    \ for(int i = 0; i < n - 1; ++i) {\n                edge.insert({min(ut[i], vt[i]),\
-    \ max(ut[i], vt[i])});\n            }\n            while((int)edge.size() < m)\
-    \ {\n                int a = num(0, n - 1);\n                int b = num(0, n\
-    \ - 1);\n                if(a >= b) continue;\n                edge.insert({a,\
+    \ int upper, const bool one = true) {\n        assert(1 <= n and n <= (int)1e8);\n\
+    \        assert(1 <= m and m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));\n \
+    \       assert(lower <= upper);\n        auto [u, v] = graph(n, m, one);\n   \
+    \     vector<int> w(m);\n        for(int i = 0; i < m; ++i) w[i] = num(lower,\
+    \ upper);\n        return {u, v, w};\n    }\n    inline pair<vector<int>, vector<int>>\
+    \ connected_graph(const int n, const int m, const bool one = true) {\n       \
+    \ assert(1 <= n and n <= (int)1e8);\n        assert(n - 1 <= m and m <= (int)min((ll)1e8,\
+    \ 1ll * n * (n - 1) / 2));\n        vector<int> u, v;\n        u.reserve(m);\n\
+    \        v.reserve(m);\n        auto [ut, vt] = tree(n, false);\n        if(1ll\
+    \ * n * (n - 1) / 2 >= 2e6) {\n            set<pair<int, int>> edge;\n       \
+    \     for(int i = 0; i < n - 1; ++i) {\n                edge.insert({min(ut[i],\
+    \ vt[i]), max(ut[i], vt[i])});\n            }\n            while((int)edge.size()\
+    \ < m) {\n                int a = num(0, n - 1);\n                int b = num(0,\
+    \ n - 1);\n                if(a >= b) continue;\n                edge.insert({a,\
     \ b});\n            }\n            for(auto& [a, b] : edge) {\n              \
     \  u.push_back(a + one);\n                v.push_back(b + one);\n            }\n\
     \        } else {\n            set<pair<int, int>> used;\n            for(int\
@@ -135,21 +133,21 @@ data:
     \ + one);\n            }\n        }\n        return {u, v};\n    }\n    inline\
     \ tuple<vector<int>, vector<int>, vector<int>> weighted_connected_graph(const\
     \ int n, const int m, const int lower, const int upper, const bool one = true)\
-    \ {\n        assert(1 <= n and n <= (int)2e5);\n        assert(n - 1 <= m and\
-    \ m <= min((int)2e5, n * (n - 1) / 2));\n        assert((int)-1e9 <= lower and\
-    \ lower <= upper and upper <= (int)1e9);\n        auto [u, v] = connected_graph(n,\
-    \ m, one);\n        vector<int> w(m);\n        for(int i = 0; i < m; ++i) w[i]\
-    \ = num(lower, upper);\n        return {u, v, w};\n    }\n    inline string parenthesis(int\
-    \ n) {\n        string res = \"\";\n        int N = n, M = n;\n        for(int\
-    \ i = 0; i < 2 * n; ++i) {\n            if(rnum(0.0l, 1.0l) > 1.0l * (N - M) *\
-    \ (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"(\";\n      \
-    \          --M;\n            } else {\n                res += \")\";\n       \
-    \         --N;\n            }\n        }\n        return res;\n    }\n} rng;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
-    \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
-    \       return m;\n    }\n    static constexpr mint raw(uint32_t v) {\n      \
-    \  mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
-    \        : _v(0) {}\n    template <class T>\n    constexpr StaticModint(const\
+    \ {\n        assert(1 <= n and n <= (int)1e8);\n        assert(n - 1 <= m and\
+    \ m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));\n        assert(lower <= upper);\n\
+    \        auto [u, v] = connected_graph(n, m, one);\n        vector<int> w(m);\n\
+    \        for(int i = 0; i < m; ++i) w[i] = num(lower, upper);\n        return\
+    \ {u, v, w};\n    }\n    inline string parenthesis(int n) {\n        assert(1\
+    \ <= n and n <= 1e8);\n        string res = \"\";\n        int N = n, M = n;\n\
+    \        for(int i = 0; i < 2 * n; ++i) {\n            if(rnum(0.0l, 1.0l) > 1.0l\
+    \ * (N - M) * (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"\
+    (\";\n                --M;\n            } else {\n                res += \")\"\
+    ;\n                --N;\n            }\n        }\n        return res;\n    }\n\
+    } rng;\n#line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct\
+    \ StaticModint {\n    using mint = StaticModint;\n    static constexpr uint32_t\
+    \ mod() {\n        return m;\n    }\n    static constexpr mint raw(uint32_t v)\
+    \ {\n        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr\
+    \ StaticModint()\n        : _v(0) {}\n    template <class T>\n    constexpr StaticModint(const\
     \ T& v) {\n        static_assert(is_integral_v<T>);\n        if constexpr(is_signed_v<T>)\
     \ {\n            int64_t x = int64_t(v % int64_t(m));\n            if(x < 0) x\
     \ += m;\n            _v = uint32_t(x);\n        } else _v = uint32_t(v % m);\n\
@@ -361,7 +359,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-09-28 15:28:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp
