@@ -191,7 +191,7 @@ data:
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
     \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
     \ *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_arbitrary.hpp\"\
-    \ntemplate <typename mint>\nvector<mint> convolution_arbitary(const vector<mint>&\
+    \ntemplate <typename mint>\nvector<mint> convolution_arbitrary(const vector<mint>&\
     \ a, const vector<mint>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n\
     \    if(!n or !m) return {};\n    static constexpr long long MOD1 = 754974721;\n\
     \    static constexpr long long MOD2 = 167772161;\n    static constexpr long long\
@@ -214,15 +214,15 @@ data:
     \ + MOD1 * v1 + M12_mod * v2;\n    }\n    return c;\n}\n#line 5 \"verify/library_checker/convolution/convolution_mod_1000000007.test.cpp\"\
     \nusing mint = modint1000000007;\nint main(void) {\n    int n, m;\n    cin >>\
     \ n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, 0, n) cin >> a[i];\n    rep(i,\
-    \ 0, m) cin >> b[i];\n    vector<mint> c = convolution_arbitary(a, b);\n    rep(i,\
+    \ 0, m) cin >> b[i];\n    vector<mint> c = convolution_arbitrary(a, b);\n    rep(i,\
     \ 0, n + m - 1) cout << c[i] << \" \\n\"[i + 1 == n + m - 1];\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
     \n#include \"../../../src/convolution/convolution_arbitrary.hpp\"\nusing mint\
     \ = modint1000000007;\nint main(void) {\n    int n, m;\n    cin >> n >> m;\n \
     \   vector<mint> a(n), b(m);\n    rep(i, 0, n) cin >> a[i];\n    rep(i, 0, m)\
-    \ cin >> b[i];\n    vector<mint> c = convolution_arbitary(a, b);\n    rep(i, 0,\
-    \ n + m - 1) cout << c[i] << \" \\n\"[i + 1 == n + m - 1];\n}"
+    \ cin >> b[i];\n    vector<mint> c = convolution_arbitrary(a, b);\n    rep(i,\
+    \ 0, n + m - 1) cout << c[i] << \" \\n\"[i + 1 == n + m - 1];\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
@@ -233,7 +233,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-10-06 00:24:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp

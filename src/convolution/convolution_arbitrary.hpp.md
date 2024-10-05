@@ -193,7 +193,7 @@ data:
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
     \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
     \ *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_arbitrary.hpp\"\
-    \ntemplate <typename mint>\nvector<mint> convolution_arbitary(const vector<mint>&\
+    \ntemplate <typename mint>\nvector<mint> convolution_arbitrary(const vector<mint>&\
     \ a, const vector<mint>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n\
     \    if(!n or !m) return {};\n    static constexpr long long MOD1 = 754974721;\n\
     \    static constexpr long long MOD2 = 167772161;\n    static constexpr long long\
@@ -215,7 +215,7 @@ data:
     \ MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (long long)x[i].val()\
     \ + MOD1 * v1 + M12_mod * v2;\n    }\n    return c;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/static_modint.hpp\"\
-    \n#include \"./convolution.hpp\"\ntemplate <typename mint>\nvector<mint> convolution_arbitary(const\
+    \n#include \"./convolution.hpp\"\ntemplate <typename mint>\nvector<mint> convolution_arbitrary(const\
     \ vector<mint>& a, const vector<mint>& b) {\n    const int n = (int)a.size(),\
     \ m = (int)b.size();\n    if(!n or !m) return {};\n    static constexpr long long\
     \ MOD1 = 754974721;\n    static constexpr long long MOD2 = 167772161;\n    static\
@@ -246,7 +246,7 @@ data:
   path: src/convolution/convolution_arbitrary.hpp
   requiredBy:
   - src/fps/formal_power_series_arbitrary.hpp
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-10-06 00:24:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp

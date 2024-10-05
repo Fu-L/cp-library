@@ -190,7 +190,7 @@ data:
     \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
     \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
     \ *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_arbitrary.hpp\"\
-    \ntemplate <typename mint>\nvector<mint> convolution_arbitary(const vector<mint>&\
+    \ntemplate <typename mint>\nvector<mint> convolution_arbitrary(const vector<mint>&\
     \ a, const vector<mint>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n\
     \    if(!n or !m) return {};\n    static constexpr long long MOD1 = 754974721;\n\
     \    static constexpr long long MOD2 = 167772161;\n    static constexpr long long\
@@ -228,7 +228,7 @@ data:
     \ -= g[i];\n        return (*this);\n    }\n    F& operator-=(const mint& r) {\n\
     \        if((*this).empty()) (*this).resize(1);\n        (*this)[0] -= r;\n  \
     \      return (*this);\n    }\n    F& operator*=(const F& g) {\n        (*this)\
-    \ = convolution_arbitary((*this), g);\n        return (*this);\n    }\n    F&\
+    \ = convolution_arbitrary((*this), g);\n        return (*this);\n    }\n    F&\
     \ operator*=(const mint& r) {\n        const int n = (*this).size();\n       \
     \ for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n    }\n\
     \    F& operator/=(const F& g) {\n        if((*this).size() < g.size()) {\n  \
@@ -326,7 +326,7 @@ data:
     \ -= g[i];\n        return (*this);\n    }\n    F& operator-=(const mint& r) {\n\
     \        if((*this).empty()) (*this).resize(1);\n        (*this)[0] -= r;\n  \
     \      return (*this);\n    }\n    F& operator*=(const F& g) {\n        (*this)\
-    \ = convolution_arbitary((*this), g);\n        return (*this);\n    }\n    F&\
+    \ = convolution_arbitrary((*this), g);\n        return (*this);\n    }\n    F&\
     \ operator*=(const mint& r) {\n        const int n = (*this).size();\n       \
     \ for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n    }\n\
     \    F& operator/=(const F& g) {\n        if((*this).size() < g.size()) {\n  \
@@ -416,7 +416,7 @@ data:
   isVerificationFile: false
   path: src/fps/formal_power_series_arbitrary.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-10-06 00:24:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/1559.test.cpp
