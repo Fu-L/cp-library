@@ -3,7 +3,7 @@
 #include "../template/static_modint.hpp"
 #include "./convolution.hpp"
 template <typename mint>
-vector<mint> convolution_arbitary(const vector<mint>& a, const vector<mint>& b) {
+vector<mint> convolution_arbitrary(const vector<mint>& a, const vector<mint>& b) {
     const int n = (int)a.size(), m = (int)b.size();
     if(!n or !m) return {};
     static constexpr long long MOD1 = 754974721;

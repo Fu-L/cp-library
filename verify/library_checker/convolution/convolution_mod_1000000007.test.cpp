@@ -9,6 +9,6 @@ int main(void) {
     vector<mint> a(n), b(m);
     rep(i, 0, n) cin >> a[i];
     rep(i, 0, m) cin >> b[i];
-    vector<mint> c = convolution_arbitary(a, b);
+    vector<mint> c = convolution_arbitrary(a, b);
     rep(i, 0, n + m - 1) cout << c[i] << " \n"[i + 1 == n + m - 1];
 }

@@ -42,7 +42,7 @@ struct FormalPowerSeriesArbitrary : vector<mint> {
         return (*this);
     }
     F& operator*=(const F& g) {
-        (*this) = convolution_arbitary((*this), g);
+        (*this) = convolution_arbitrary((*this), g);
         return (*this);
     }
     F& operator*=(const mint& r) {
