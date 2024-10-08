@@ -60,8 +60,8 @@ data:
   timestamp: '2024-07-02 09:51:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+  - verify/unit_test/convolution/or_convolution.test.cpp
 documentation_of: src/math/zeta_transform.hpp
 layout: document
 title: zeta_transform

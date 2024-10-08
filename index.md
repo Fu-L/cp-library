@@ -51,6 +51,9 @@ data:
       path: src/data_structure/mo.hpp
       title: Mo
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/rectangle_sum.hpp
+      title: RectangleSum
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/rollback_union_find.hpp
       title: RollbackUnionFind
     - icon: ':warning:'

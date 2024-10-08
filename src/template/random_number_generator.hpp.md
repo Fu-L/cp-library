@@ -259,14 +259,14 @@ data:
   timestamp: '2024-09-28 15:28:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  - verify/unit_test/graph/bipartite.test.cpp
-  - verify/unit_test/graph/bfs01.test.cpp
-  - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/math/lucas.test.cpp
-  - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
+  - verify/unit_test/graph/bfs.test.cpp
+  - verify/unit_test/graph/bfs01.test.cpp
+  - verify/unit_test/tree/centroid.test.cpp
 documentation_of: src/template/random_number_generator.hpp
 layout: document
 title: RandomNumberGenerator
