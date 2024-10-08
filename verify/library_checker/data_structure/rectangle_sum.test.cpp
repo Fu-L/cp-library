@@ -1,22 +1,20 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
 #include "../../../src/template/template.hpp"
-#include "../../../src/data_structure/fenwick_tree_on_wavelet_matrix.hpp"
+#include "../../../src/data_structure/rectangle_sum.hpp"
 int main(void) {
     int n, q;
     cin >> n >> q;
-    FenwickTreeonWaveletMatrix<int, ll> wm;
-    vector<int> x(n), y(n), w(n);
+    RectangleSum<int, ll> rs;
     rep(i, 0, n) {
-        cin >> x[i] >> y[i] >> w[i];
-        wm.add_point(x[i], y[i]);
+        int x, y;
+        ll w;
+        cin >> x >> y >> w;
+        rs.add_point(x, y, w);
     }
-    wm.build();
-    rep(i, 0, n) {
-        wm.add(x[i], y[i], w[i]);
-    }
+    rs.build();
     while(q--) {
         int l, d, r, u;
         cin >> l >> d >> r >> u;
-        cout << wm.sum(l, d, r, u) << '\n';
+        cout << rs.sum(l, d, r, u) << '\n';
     }
 }
