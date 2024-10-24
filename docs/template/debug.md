@@ -28,5 +28,5 @@ debug(hoge, fuga, piyo)
 int n = 5; debug(n);
 ```
 
-`modint` 型のデバッグに対応させるために，内部で `template/StaticModint.hpp` と `template/DynamicModint.hpp` をインクルードしています．<br>
+`modint` 型のデバッグに対応させるために，内部で `template/static_modint.hpp` と `template/dynamic_modint.hpp` をインクルードしています．<br>
 `#include "template/debug.hpp"` をすると自動で `modint` 型が使えるようになりますが `make b` の際に内部インクルードが削除されるので， `main.cpp` 内でも `modint` をインクルードすることを忘れないようにしてください．
