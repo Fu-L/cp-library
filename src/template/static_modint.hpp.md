@@ -20,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/wildcard_pattern_matching.hpp
     title: wildcard_pattern_matching
+  - icon: ':heavy_check_mark:'
+    path: src/template/debug.hpp
+    title: debug
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
@@ -114,6 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/template/debug.test.cpp
+    title: verify/unit_test/template/debug.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
@@ -239,6 +245,7 @@ data:
   requiredBy:
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/convolution_ll.hpp
+  - src/template/debug.hpp
   - src/string/wildcard_pattern_matching.hpp
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series_ll.hpp
@@ -276,6 +283,7 @@ data:
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/unit_test/template/debug.test.cpp
   - verify/yukicoder/1559.test.cpp
 documentation_of: src/template/static_modint.hpp
 layout: document

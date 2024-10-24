@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/template/debug.hpp
+    title: debug
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
@@ -12,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/template/debug.test.cpp
+    title: verify/unit_test/template/debug.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -136,12 +142,14 @@ data:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/template/dynamic_modint.hpp
-  requiredBy: []
+  requiredBy:
+  - src/template/debug.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
   - verify/unit_test/math/lucas.test.cpp
+  - verify/unit_test/template/debug.test.cpp
 documentation_of: src/template/dynamic_modint.hpp
 layout: document
 title: DynamicModint

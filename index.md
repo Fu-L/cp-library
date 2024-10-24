@@ -286,6 +286,9 @@ data:
   - name: src/template
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/template/debug.hpp
+      title: debug
+    - icon: ':heavy_check_mark:'
       path: src/template/dynamic_modint.hpp
       title: DynamicModint
     - icon: ':heavy_check_mark:'
@@ -746,6 +749,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/math/lucas.test.cpp
       title: verify/unit_test/math/lucas.test.cpp
+  - name: verify/unit_test/template
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/template/debug.test.cpp
+      title: verify/unit_test/template/debug.test.cpp
   - name: verify/unit_test/tree
     pages:
     - icon: ':heavy_check_mark:'

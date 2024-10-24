@@ -267,6 +267,9 @@ data:
     path: src/string/z_algorithm.hpp
     title: z_algorithm
   - icon: ':heavy_check_mark:'
+    path: src/template/debug.hpp
+    title: debug
+  - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':heavy_check_mark:'
@@ -676,6 +679,9 @@ data:
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/template/debug.test.cpp
+    title: verify/unit_test/template/debug.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   - icon: ':heavy_check_mark:'
@@ -764,6 +770,7 @@ data:
   - src/convolution/xor_convolution.hpp
   - src/convolution/and_convolution.hpp
   - src/convolution/convolution_ll.hpp
+  - src/template/debug.hpp
   - src/template/dynamic_modint.hpp
   - src/template/static_modint.hpp
   - src/template/random_number_generator.hpp
@@ -887,6 +894,7 @@ data:
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp
