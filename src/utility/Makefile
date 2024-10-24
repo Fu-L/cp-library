@@ -11,7 +11,7 @@ gen: gen.cpp
 judge: judge.cpp
 	g++ -std=gnu++20 -Wall -Wextra -O2 -o judge judge.cpp
 
-.PHONY: clean in out t et j re b
+.PHONY: clean in out t et j re b s
 clean:
 	rm a.out debug tle gen judge bundled.cpp test/random*
 
@@ -34,5 +34,13 @@ re:
 	g++ -std=gnu++20 -Wall -Wextra -O2 -o judge judge.cpp && oj t/r ./judge
 
 b:
-	oj-bundle -I ../../cp-library main.cpp | grep -v -e '^#line ' -e '^#pragma once' > bundled.cpp
+	grep -v 'debug' main.cpp > bundle_tmp.cpp
+	oj-bundle -I ../../../cp-library/src bundle_tmp.cpp | grep -v -e '^#line ' -e '^#pragma once' > bundled.cpp
+	rm bundle_tmp.cpp
 	code bundled.cpp
+
+s:
+	grep -v 'debug' main.cpp > bundle_tmp.cpp
+	oj-bundle -I ../../../cp-library/src bundle_tmp.cpp | grep -v -e '^#line ' -e '^#pragma once' > bundled.cpp
+	rm bundle_tmp.cpp
+	acc s -s -- -w 0 -l 5001 --no-open
