@@ -13,12 +13,12 @@ documentation_of: ../../src/string/rolling_hash.hpp
 
 ## コンストラクタ
 ```cpp
-RollingHash rh(string s, ll BASE = 0)
+RollingHash rh(string s, ull BASE = 0)
 ```
 
 - 長さ $n$ の文字列 `s` に対するローリングハッシュ，`rh` を構築します．
 
-- 法は $2^{61} - 1$ です．`BASE` を指定しないときや負の値を指定したとき，基数は乱数となります．
+- 法は $2^{61} - 1$ です．`BASE` を指定しないときや $0$ を指定したとき，基数は乱数となります．
 
 **計算量**
 
