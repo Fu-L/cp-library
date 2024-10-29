@@ -1,7 +1,7 @@
 {
 "verify/aizu_online_judge/alds1/prime_numbers.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp": "2024-06-04 23:34:08 +0900",
-"verify/aizu_online_judge/alds1/string_search.test.cpp": "2024-06-04 23:34:08 +0900",
+"verify/aizu_online_judge/alds1/string_search.test.cpp": "2024-10-30 00:12:36 +0900",
 "verify/aizu_online_judge/cgl/area.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp": "2024-06-04 23:34:08 +0900",
@@ -104,7 +104,7 @@
 "verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/enumerate_palindromes.test.cpp": "2024-06-28 15:21:29 +0900",
-"verify/library_checker/string/number_of_substrings.test.cpp": "2024-06-04 23:34:08 +0900",
+"verify/library_checker/string/number_of_substrings.test.cpp": "2024-10-30 00:12:36 +0900",
 "verify/library_checker/string/number_of_substrings_2.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/suffix_array.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/string/wildcard_pattern_matching.test.cpp": "2024-06-21 10:07:30 +0900",
