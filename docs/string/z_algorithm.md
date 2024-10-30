@@ -6,7 +6,8 @@ documentation_of: ../../src/string/z_algorithm.hpp
 ## z_algorithm
 
 ```cpp
-vector<int> z_algorithm(string s)
+(1) vector<int> z_algorithm(string s)
+(2) vector<int> z_algorithm(vector<T> s)
 ```
 
 `s` の長さを $n$ として，長さ $n$ の配列 `z` を返します．<br>

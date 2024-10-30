@@ -6,7 +6,8 @@ documentation_of: ../../src/string/suffix_array.hpp
 ## suffix_array
 
 ```cpp
-vector<int> suffix_array(string s)
+(1) vector<int> suffix_array(string s)
+(2) vector<int> suffix_array(vector<T> s, bool compress = true)
 ```
 
 長さ $n$ の文字列 `s` のSuffix Array `sa` を返します．
@@ -14,14 +15,18 @@ vector<int> suffix_array(string s)
 `sa` は， $(0, 1, ..., n - 1)$ の順列であって，各 $i = 0, 1, ..., n - 2$ について<br>
 `s[sa[i], n) < s[sa[i + 1], n)` を満たすものです．
 
+(2)を呼んだ際， `compress` が真のときは `s` に対して座標圧縮を行います．
+
 **計算量**
 
-- $O(n \log n)$
+- (1) $O(n)$
+- (2) `compress` が真のとき$O(n \log n)$， `compress` が偽のとき `s` の最大値を $m$ として$O(n + m)$
 
 ## lcp_array
 
 ```cpp
-vector<int> lcp_array(string s, vector<int> sa)
+(1) vector<int> lcp_array(string s, vector<int> sa)
+(2) vector<int> lcp_array(vector<T> s, vector<int> sa)
 ```
 
 `s` のLCP Array `lcp` を返します．
