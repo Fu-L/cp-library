@@ -33,7 +33,7 @@ data:
     \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
     \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
     \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S query(int lx, int rx,\
+    \               }\n            }\n        }\n    }\n    S prod(int lx, int rx,\
     \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
     \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
     \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
@@ -55,7 +55,7 @@ data:
     \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
     \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
     \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S query(int lx, int rx,\
+    \               }\n            }\n        }\n    }\n    S prod(int lx, int rx,\
     \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
     \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
     \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
@@ -68,7 +68,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/sparse_table_2d.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-10-30 22:43:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
@@ -131,10 +131,10 @@ SparseTable2D<int, op, e> st(v);
 
 - $O(nm \log (nm))$
 
-## query
+## prod
 
 ```cpp
-S st.query(int lx, int rx, int ly, int ry)
+S st.prod(int lx, int rx, int ly, int ry)
 ```
 
 `op(a[lx][ly], a[lx][ly + 1], ..., a[lx][ry - 1], a[lx + 1][ly], ..., a[rx - 1][ry - 1])` を，冪等モノイドの性質を満たしていると仮定して返します．<br>

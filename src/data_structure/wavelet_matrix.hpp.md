@@ -56,13 +56,13 @@ data:
     \            for(int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n      \
     \      swap(cur, nxt);\n        }\n        return;\n    }\n    void set(int i,\
     \ const T& x) {\n        assert(0 <= i and i < n);\n        assert(x >= 0);\n\
-    \        a[i] = x;\n    }\n    T access(u32 k) const {\n        assert(int(k)\
-    \ < n);\n        T ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n    \
-    \        u32 f = bv[h].get(k);\n            ret |= f ? T(1) << h : 0;\n      \
-    \      k = f ? bv[h].rank1(k) + bv[h].zeros : bv[h].rank0(k);\n        }\n   \
-    \     return ret;\n    }\n    T kth_smallest(u32 l, u32 r, u32 k) const {\n  \
-    \      assert(l <= r and int(r) <= n);\n        assert(k < r - l);\n        T\
-    \ res = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            u32 l0 = bv[h].rank0(l),\
+    \        a[i] = x;\n    }\n    T get(u32 k) const {\n        assert(int(k) < n);\n\
+    \        T ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            u32\
+    \ f = bv[h].get(k);\n            ret |= f ? T(1) << h : 0;\n            k = f\
+    \ ? bv[h].rank1(k) + bv[h].zeros : bv[h].rank0(k);\n        }\n        return\
+    \ ret;\n    }\n    T kth_smallest(u32 l, u32 r, u32 k) const {\n        assert(l\
+    \ <= r and int(r) <= n);\n        assert(k < r - l);\n        T res = 0;\n   \
+    \     for(int h = lg - 1; h >= 0; --h) {\n            u32 l0 = bv[h].rank0(l),\
     \ r0 = bv[h].rank0(r);\n            if(k < r0 - l0)\n                l = l0, r\
     \ = r0;\n            else {\n                k -= r0 - l0;\n                res\
     \ |= (T)1 << h;\n                l += bv[h].zeros - l0;\n                r +=\
@@ -118,13 +118,13 @@ data:
     \            for(int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n      \
     \      swap(cur, nxt);\n        }\n        return;\n    }\n    void set(int i,\
     \ const T& x) {\n        assert(0 <= i and i < n);\n        assert(x >= 0);\n\
-    \        a[i] = x;\n    }\n    T access(u32 k) const {\n        assert(int(k)\
-    \ < n);\n        T ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n    \
-    \        u32 f = bv[h].get(k);\n            ret |= f ? T(1) << h : 0;\n      \
-    \      k = f ? bv[h].rank1(k) + bv[h].zeros : bv[h].rank0(k);\n        }\n   \
-    \     return ret;\n    }\n    T kth_smallest(u32 l, u32 r, u32 k) const {\n  \
-    \      assert(l <= r and int(r) <= n);\n        assert(k < r - l);\n        T\
-    \ res = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            u32 l0 = bv[h].rank0(l),\
+    \        a[i] = x;\n    }\n    T get(u32 k) const {\n        assert(int(k) < n);\n\
+    \        T ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            u32\
+    \ f = bv[h].get(k);\n            ret |= f ? T(1) << h : 0;\n            k = f\
+    \ ? bv[h].rank1(k) + bv[h].zeros : bv[h].rank0(k);\n        }\n        return\
+    \ ret;\n    }\n    T kth_smallest(u32 l, u32 r, u32 k) const {\n        assert(l\
+    \ <= r and int(r) <= n);\n        assert(k < r - l);\n        T res = 0;\n   \
+    \     for(int h = lg - 1; h >= 0; --h) {\n            u32 l0 = bv[h].rank0(l),\
     \ r0 = bv[h].rank0(r);\n            if(k < r0 - l0)\n                l = l0, r\
     \ = r0;\n            else {\n                k -= r0 - l0;\n                res\
     \ |= (T)1 << h;\n                l += bv[h].zeros - l0;\n                r +=\
@@ -152,7 +152,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/wavelet_matrix.hpp
   requiredBy: []
-  timestamp: '2024-02-14 23:59:21+09:00'
+  timestamp: '2024-10-30 22:43:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_range_frequency.test.cpp
@@ -211,10 +211,10 @@ void wm.build()
 
 - $O(n \log n)$
 
-## access
+## get
 
 ```cpp
-T wm.access(int i)
+T wm.get(int i)
 ```
 
 `wm[i]` を返します．

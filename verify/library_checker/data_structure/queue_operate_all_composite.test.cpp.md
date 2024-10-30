@@ -85,8 +85,8 @@ data:
     \ {\n            push_s0(x);\n            transfer();\n        } else {\n    \
     \        push_s1(x);\n        }\n    }\n    void pop() {\n        if(a0.empty())\
     \ transfer();\n        a0.pop_back();\n        r0.pop_back();\n        f0 = r0.empty()\
-    \ ? e() : r0.back();\n    }\n    S query() {\n        return op(f0, f1);\n   \
-    \ }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void push_s0(const\
+    \ ? e() : r0.back();\n    }\n    S prod() {\n        return op(f0, f1);\n    }\n\
+    \n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void push_s0(const\
     \ S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0 = op(x, f0));\n\
     \    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n        r1.emplace_back(f1\
     \ = op(f1, x));\n    }\n    void transfer() {\n        while(!a1.empty()) {\n\
@@ -99,7 +99,7 @@ data:
     \    cin >> q;\n    while(q--) {\n        int t;\n        cin >> t;\n        if(t\
     \ == 0) {\n            mint a, b;\n            cin >> a >> b;\n            swag.push({a,\
     \ b});\n        } else if(t == 1) {\n            swag.pop();\n        } else {\n\
-    \            mint x;\n            cin >> x;\n            S res = swag.query();\n\
+    \            mint x;\n            cin >> x;\n            S res = swag.prod();\n\
     \            cout << res.a * x + res.b << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
@@ -110,7 +110,7 @@ data:
     \ cin >> q;\n    while(q--) {\n        int t;\n        cin >> t;\n        if(t\
     \ == 0) {\n            mint a, b;\n            cin >> a >> b;\n            swag.push({a,\
     \ b});\n        } else if(t == 1) {\n            swag.pop();\n        } else {\n\
-    \            mint x;\n            cin >> x;\n            S res = swag.query();\n\
+    \            mint x;\n            cin >> x;\n            S res = swag.prod();\n\
     \            cout << res.a * x + res.b << '\\n';\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-10-30 22:43:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp

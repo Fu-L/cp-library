@@ -87,7 +87,7 @@ data:
     \ : a1.back();\n    }\n    void pop_front() {\n        if(a0.empty()) rebalance();\n\
     \        assert(!a0.empty());\n        a0.pop_back(), r0.pop_back();\n    }\n\
     \    void pop_back() {\n        if(a1.empty()) rebalance();\n        assert(!a1.empty());\n\
-    \        a1.pop_back(), r1.pop_back();\n    }\n    S query() {\n        return\
+    \        a1.pop_back(), r1.pop_back();\n    }\n    S prod() {\n        return\
     \ op(get0(), get1());\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n \
     \   S get0() const {\n        return r0.empty() ? e() : r0.back();\n    }\n  \
     \  S get1() const {\n        return r1.empty() ? e() : r1.back();\n    }\n   \
@@ -108,7 +108,7 @@ data:
     \ a, b;\n            cin >> a >> b;\n            swag.push_back({a, b});\n   \
     \     } else if(t == 2) {\n            swag.pop_front();\n        } else if(t\
     \ == 3) {\n            swag.pop_back();\n        } else {\n            mint x;\n\
-    \            cin >> x;\n            S res = swag.query();\n            cout <<\
+    \            cin >> x;\n            S res = swag.prod();\n            cout <<\
     \ res.a * x + res.b << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/deque_operate_all_composite\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
@@ -122,7 +122,7 @@ data:
     \ a, b;\n            cin >> a >> b;\n            swag.push_back({a, b});\n   \
     \     } else if(t == 2) {\n            swag.pop_front();\n        } else if(t\
     \ == 3) {\n            swag.pop_back();\n        } else {\n            mint x;\n\
-    \            cin >> x;\n            S res = swag.query();\n            cout <<\
+    \            cin >> x;\n            S res = swag.prod();\n            cout <<\
     \ res.a * x + res.b << '\\n';\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
@@ -131,7 +131,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-10-30 22:43:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp

@@ -145,7 +145,7 @@ data:
     \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
     \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
     \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S query(int lx, int rx,\
+    \               }\n            }\n        }\n    }\n    S prod(int lx, int rx,\
     \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
     \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
     \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
@@ -161,7 +161,7 @@ data:
     \ xl = rng(0, h), xr = rng(xl, h);\n        int yl = rng(0, w), yr = rng(yl, w);\n\
     \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
     \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
-    \       }\n        assert(st.query(xl, xr, yl, yr) == expected);\n    }\n}\nint\
+    \       }\n        assert(st.prod(xl, xr, yl, yr) == expected);\n    }\n}\nint\
     \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
     \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
     \ << '\\n';\n}\n"
@@ -175,7 +175,7 @@ data:
     \    while(query_num--) {\n        int xl = rng(0, h), xr = rng(xl, h);\n    \
     \    int yl = rng(0, w), yr = rng(yl, w);\n        int expected = 1e9;\n     \
     \   rep(i, xl, xr) {\n            rep(j, yl, yr) {\n                expected =\
-    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.query(xl,\
+    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.prod(xl,\
     \ xr, yl, yr) == expected);\n    }\n}\nint main(void) {\n    constexpr int test_num\
     \ = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int a, b;\n \
     \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
@@ -186,7 +186,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   requiredBy: []
-  timestamp: '2024-09-28 15:28:56+09:00'
+  timestamp: '2024-10-30 22:43:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp

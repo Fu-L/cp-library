@@ -32,8 +32,8 @@ data:
     \ add(int p, T x) {\n        assert(0 <= p and p < n);\n        ++p;\n       \
     \ while(p <= n) {\n            data[p - 1] += x;\n            p += p & -p;\n \
     \       }\n    }\n    T sum(int l, int r) const {\n        assert(0 <= l and l\
-    \ <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T operator[](int\
-    \ x) const {\n        assert(0 <= x and x < n);\n        return sum(x + 1) - sum(x);\n\
+    \ <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T get(int x)\
+    \ const {\n        assert(0 <= x and x < n);\n        return sum(x + 1) - sum(x);\n\
     \    }\n\n   private:\n    int n;\n    vector<T> data;\n    inline T sum(int r)\
     \ const {\n        T s = 0;\n        while(r > 0) {\n            s += data[r -\
     \ 1];\n            r -= r & -r;\n        }\n        return s;\n    }\n};\n#line\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-10-30 22:43:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
