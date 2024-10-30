@@ -24,7 +24,7 @@ struct SlideWindowAggregationDeque {
         assert(!a1.empty());
         a1.pop_back(), r1.pop_back();
     }
-    S query() {
+    S prod() {
         return op(get0(), get1());
     }
 

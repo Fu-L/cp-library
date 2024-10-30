@@ -86,7 +86,7 @@ struct WaveletMatrix {
         assert(x >= 0);
         a[i] = x;
     }
-    T access(u32 k) const {
+    T get(u32 k) const {
         assert(int(k) < n);
         T ret = 0;
         for(int h = lg - 1; h >= 0; --h) {

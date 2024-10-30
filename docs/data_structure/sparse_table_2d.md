@@ -57,10 +57,10 @@ SparseTable2D<int, op, e> st(v);
 
 - $O(nm \log (nm))$
 
-## query
+## prod
 
 ```cpp
-S st.query(int lx, int rx, int ly, int ry)
+S st.prod(int lx, int rx, int ly, int ry)
 ```
 
 `op(a[lx][ly], a[lx][ly + 1], ..., a[lx][ry - 1], a[lx + 1][ly], ..., a[rx - 1][ry - 1])` を，冪等モノイドの性質を満たしていると仮定して返します．<br>

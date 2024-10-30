@@ -22,7 +22,7 @@ struct SparseTable2D {
             }
         }
     }
-    S query(int lx, int rx, int ly, int ry) const {
+    S prod(int lx, int rx, int ly, int ry) const {
         assert(0 <= lx and lx <= rx and rx <= h);
         assert(0 <= ly and ly <= ry and ry <= w);
         if(lx == rx or ly == ry) return e();

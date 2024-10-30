@@ -14,7 +14,7 @@ struct SparseTable {
             }
         }
     }
-    S query(int l, int r) const {
+    S prod(int l, int r) const {
         assert(0 <= l and l <= r and r <= n);
         if(l == r) return e();
         int b = 31 - __builtin_clz(r - l);

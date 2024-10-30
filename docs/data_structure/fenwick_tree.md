@@ -60,10 +60,10 @@ T fw.sum(int l, int r)
 
 - $O(\log n)$
 
-## operator []
+## get
 
 ```cpp
-T fw[int x]
+T fw.get(int x)
 ```
 
 `a[x]` を返します．

@@ -16,7 +16,7 @@ struct FenwickTree {
         assert(0 <= l and l <= r and r <= n);
         return sum(r) - sum(l);
     }
-    T operator[](int x) const {
+    T get(int x) const {
         assert(0 <= x and x < n);
         return sum(x + 1) - sum(x);
     }

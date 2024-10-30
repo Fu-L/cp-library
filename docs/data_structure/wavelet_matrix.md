@@ -52,10 +52,10 @@ void wm.build()
 
 - $O(n \log n)$
 
-## access
+## get
 
 ```cpp
-T wm.access(int i)
+T wm.get(int i)
 ```
 
 `wm[i]` を返します．

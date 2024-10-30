@@ -57,10 +57,10 @@ SparseTable<int, op, e> st(v);
 
 - $O(n \log n)$
 
-## query
+## prod
 
 ```cpp
-S st.query(int l, int r)
+S st.prod(int l, int r)
 ```
 
 `op(a[l], a[l + 1], ..., a[r - 1])` を，冪等モノイドの性質を満たしていると仮定して返します．<br>

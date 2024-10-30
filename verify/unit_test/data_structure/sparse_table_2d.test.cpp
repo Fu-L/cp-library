@@ -27,7 +27,7 @@ void test() {
                 expected = min(expected, a[i][j]);
             }
         }
-        assert(st.query(xl, xr, yl, yr) == expected);
+        assert(st.prod(xl, xr, yl, yr) == expected);
     }
 }
 int main(void) {

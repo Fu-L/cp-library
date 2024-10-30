@@ -18,6 +18,6 @@ int main(void) {
     while(q--) {
         int l, r;
         cin >> l >> r;
-        cout << st.query(l, r) << '\n';
+        cout << st.prod(l, r) << '\n';
     }
 }

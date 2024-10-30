@@ -80,10 +80,10 @@ void swag.pop()
 
 - 償却 $O(1)$
 
-## query
+## prod
 
 ```cpp
-S swag.query()
+S swag.prod()
 ```
 
 `op(swag[0], ..., swag[|swag| - 1])` を，モノイドの性質を満たしていると仮定して計算します．

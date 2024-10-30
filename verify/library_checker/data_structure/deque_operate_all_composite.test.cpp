@@ -34,7 +34,7 @@ int main(void) {
         } else {
             mint x;
             cin >> x;
-            S res = swag.query();
+            S res = swag.prod();
             cout << res.a * x + res.b << '\n';
         }
     }
