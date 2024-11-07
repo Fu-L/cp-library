@@ -25,6 +25,9 @@ data:
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/math/eratosthenes_seive.test.cpp
+    title: verify/unit_test/math/eratosthenes_seive.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
   - icon: ':heavy_check_mark:'
@@ -263,6 +266,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/math/lucas.test.cpp
+  - verify/unit_test/math/eratosthenes_seive.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp

@@ -180,6 +180,9 @@ data:
     path: src/math/divisor.hpp
     title: divisor
   - icon: ':heavy_check_mark:'
+    path: src/math/eratosthenes_seive.hpp.hpp
+    title: src/math/eratosthenes_seive.hpp.hpp
+  - icon: ':heavy_check_mark:'
     path: src/math/euler_phi.hpp
     title: euler_phi
   - icon: ':heavy_check_mark:'
@@ -204,17 +207,17 @@ data:
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':heavy_check_mark:'
+    path: src/math/moebius.hpp
+    title: moebius
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
   - icon: ':heavy_check_mark:'
-    path: src/math/prime_factorization.hpp
-    title: prime_factor
+    path: src/math/prime_factors.hpp
+    title: prime_factors
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
-    path: src/math/seive.hpp
-    title: seive
   - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
@@ -682,6 +685,9 @@ data:
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/math/eratosthenes_seive.test.cpp
+    title: verify/unit_test/math/eratosthenes_seive.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
   - icon: ':heavy_check_mark:'
@@ -732,14 +738,15 @@ data:
   - src/math/extgcd.hpp
   - src/math/floor_sum.hpp
   - src/math/xor_base.hpp
-  - src/math/prime_factorization.hpp
-  - src/math/seive.hpp
+  - src/math/moebius.hpp
   - src/math/binomial.hpp
   - src/math/inv_gcd.hpp
   - src/math/primitive_root.hpp
   - src/math/lucas.hpp
+  - src/math/eratosthenes_seive.hpp.hpp
   - src/math/pow_mod.hpp
   - src/math/walsh_hadamard_transform.hpp
+  - src/math/prime_factors.hpp
   - src/math/log_mod.hpp
   - src/math/euler_phi.hpp
   - src/math/zeta_transform.hpp
@@ -902,6 +909,7 @@ data:
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
   - verify/unit_test/math/lucas.test.cpp
+  - verify/unit_test/math/eratosthenes_seive.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp

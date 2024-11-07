@@ -191,6 +191,9 @@ data:
       path: src/math/divisor.hpp
       title: divisor
     - icon: ':heavy_check_mark:'
+      path: src/math/eratosthenes_seive.hpp.hpp
+      title: src/math/eratosthenes_seive.hpp.hpp
+    - icon: ':heavy_check_mark:'
       path: src/math/euler_phi.hpp
       title: euler_phi
     - icon: ':heavy_check_mark:'
@@ -215,17 +218,17 @@ data:
       path: src/math/miller_rabin.hpp
       title: miller_rabin
     - icon: ':heavy_check_mark:'
+      path: src/math/moebius.hpp
+      title: moebius
+    - icon: ':heavy_check_mark:'
       path: src/math/pow_mod.hpp
       title: pow_mod
     - icon: ':heavy_check_mark:'
-      path: src/math/prime_factorization.hpp
-      title: prime_factor
+      path: src/math/prime_factors.hpp
+      title: prime_factors
     - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: primitive_root
-    - icon: ':heavy_check_mark:'
-      path: src/math/seive.hpp
-      title: seive
     - icon: ':heavy_check_mark:'
       path: src/math/walsh_hadamard_transform.hpp
       title: walsh_hadamard_transform
@@ -752,6 +755,9 @@ data:
       title: verify/unit_test/graph/bipartite.test.cpp
   - name: verify/unit_test/math
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/math/eratosthenes_seive.test.cpp
+      title: verify/unit_test/math/eratosthenes_seive.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/math/lucas.test.cpp
       title: verify/unit_test/math/lucas.test.cpp

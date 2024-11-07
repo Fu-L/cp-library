@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/prime_factorization.hpp
-    title: prime_factor
+    path: src/math/prime_factors.hpp
+    title: prime_factors
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
@@ -24,28 +24,29 @@ data:
     \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
     \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/math/prime_factorization.hpp\"\nmap<long long, long long> prime_factor(long\
-    \ long n) {\n    assert(n >= 1);\n    map<long long, long long> res;\n    for(long\
-    \ long i = 2; i * i <= n; ++i) {\n        while(n % i == 0) {\n            ++res[i];\n\
-    \            n /= i;\n        }\n    }\n    if(n != 1) {\n        res[n] = 1;\n\
-    \    }\n    return res;\n}\n#line 4 \"verify/aizu_online_judge/ntl/prime_factorize.test.cpp\"\
-    \nint main(void) {\n    ll n;\n    cin >> n;\n    map<ll, ll> mp = prime_factor(n);\n\
-    \    cout << n << ':';\n    for(auto it : mp) {\n        for(int i = 0; i < it.second;\
-    \ ++i) {\n            cout << ' ' << it.first;\n        }\n    }\n    cout <<\
-    \ '\\n';\n}\n"
+    #line 3 \"src/math/prime_factors.hpp\"\nvector<pair<long long, int>> prime_factors(long\
+    \ long n) {\n    assert(n >= 1);\n    vector<pair<long long, int>> res;\n    for(long\
+    \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.emplace_back(i,\
+    \ 0);\n            while(n % i == 0) {\n                n /= i;\n            \
+    \    ++res.back().second;\n            }\n        }\n    }\n    if(n >= 2) res.emplace_back(n,\
+    \ 1);\n    return res;\n}\n#line 4 \"verify/aizu_online_judge/ntl/prime_factorize.test.cpp\"\
+    \nint main(void) {\n    ll n;\n    cin >> n;\n    vector<pair<ll, int>> p = prime_factors(n);\n\
+    \    cout << n << ':';\n    for(const auto& it : p) {\n        for(int i = 0;\
+    \ i < it.second; ++i) {\n            cout << ' ' << it.first;\n        }\n   \
+    \ }\n    cout << '\\n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/math/prime_factorization.hpp\"\
-    \nint main(void) {\n    ll n;\n    cin >> n;\n    map<ll, ll> mp = prime_factor(n);\n\
-    \    cout << n << ':';\n    for(auto it : mp) {\n        for(int i = 0; i < it.second;\
-    \ ++i) {\n            cout << ' ' << it.first;\n        }\n    }\n    cout <<\
-    \ '\\n';\n}"
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/math/prime_factors.hpp\"\
+    \nint main(void) {\n    ll n;\n    cin >> n;\n    vector<pair<ll, int>> p = prime_factors(n);\n\
+    \    cout << n << ':';\n    for(const auto& it : p) {\n        for(int i = 0;\
+    \ i < it.second; ++i) {\n            cout << ' ' << it.first;\n        }\n   \
+    \ }\n    cout << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/math/prime_factorization.hpp
+  - src/math/prime_factors.hpp
   isVerificationFile: true
   path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-07 20:55:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
