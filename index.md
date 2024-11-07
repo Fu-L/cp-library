@@ -191,8 +191,8 @@ data:
       path: src/math/divisor.hpp
       title: divisor
     - icon: ':heavy_check_mark:'
-      path: src/math/eratosthenes_seive.hpp.hpp
-      title: src/math/eratosthenes_seive.hpp.hpp
+      path: src/math/eratosthenes_seive.hpp
+      title: EratosthenesSeive
     - icon: ':heavy_check_mark:'
       path: src/math/euler_phi.hpp
       title: euler_phi

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/eratosthenes_seive.hpp.hpp
-    title: src/math/eratosthenes_seive.hpp.hpp
+    path: src/math/eratosthenes_seive.hpp
+    title: EratosthenesSeive
   - icon: ':heavy_check_mark:'
     path: src/math/euler_phi.hpp
     title: euler_phi
@@ -143,7 +143,7 @@ data:
     \ * (N - M) * (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"\
     (\";\n                --M;\n            } else {\n                res += \")\"\
     ;\n                --N;\n            }\n        }\n        return res;\n    }\n\
-    } rng;\n#line 3 \"src/math/eratosthenes_seive.hpp.hpp\"\nstruct EratosthenesSeive\
+    } rng;\n#line 3 \"src/math/eratosthenes_seive.hpp\"\nstruct EratosthenesSeive\
     \ {\n    vector<int> primes, min_factor, moebius, euler;\n    EratosthenesSeive(const\
     \ int n)\n        : primes(), min_factor(n + 1), moebius(n + 1, 1), euler(n +\
     \ 1) {\n        assert(n >= 1);\n        iota(min_factor.begin(), min_factor.end(),\
@@ -186,7 +186,7 @@ data:
     \ << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/math/eratosthenes_seive.hpp.hpp\"\n#include \"../../../src/math/is_prime.hpp\"\
+    ../../../src/math/eratosthenes_seive.hpp\"\n#include \"../../../src/math/is_prime.hpp\"\
     \n#include \"../../../src/math/euler_phi.hpp\"\n#include \"../../../src/math/moebius.hpp\"\
     \nvoid test() {\n    EratosthenesSeive seive(10000000);\n    rep(i, 0, 10000)\
     \ {\n        int n = rng(1, 10000000);\n        if(is_prime(n)) {\n          \
@@ -203,7 +203,7 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
-  - src/math/eratosthenes_seive.hpp.hpp
+  - src/math/eratosthenes_seive.hpp
   - src/math/is_prime.hpp
   - src/math/euler_phi.hpp
   - src/math/moebius.hpp
@@ -211,7 +211,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/math/eratosthenes_seive.test.cpp
   requiredBy: []
-  timestamp: '2024-11-07 20:55:54+09:00'
+  timestamp: '2024-11-07 21:02:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/math/eratosthenes_seive.test.cpp

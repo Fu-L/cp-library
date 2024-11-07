@@ -22,7 +22,7 @@ data:
     \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/eratosthenes_seive.hpp.hpp\"\
+    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/eratosthenes_seive.hpp\"\
     \nstruct EratosthenesSeive {\n    vector<int> primes, min_factor, moebius, euler;\n\
     \    EratosthenesSeive(const int n)\n        : primes(), min_factor(n + 1), moebius(n\
     \ + 1, 1), euler(n + 1) {\n        assert(n >= 1);\n        iota(min_factor.begin(),\
@@ -49,17 +49,56 @@ data:
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
-  path: src/math/eratosthenes_seive.hpp.hpp
+  path: src/math/eratosthenes_seive.hpp
   requiredBy: []
-  timestamp: '2024-11-07 20:55:54+09:00'
+  timestamp: '2024-11-07 21:02:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/math/eratosthenes_seive.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
-documentation_of: src/math/eratosthenes_seive.hpp.hpp
+documentation_of: src/math/eratosthenes_seive.hpp
 layout: document
-redirect_from:
-- /library/src/math/eratosthenes_seive.hpp.hpp
-- /library/src/math/eratosthenes_seive.hpp.hpp.html
-title: src/math/eratosthenes_seive.hpp.hpp
+title: EratosthenesSeive
 ---
+
+# EratosthenesSeive
+
+```cpp
+EratosthenesSeive seive(int n)
+```
+
+$n$ 以下の正の整数に対してエラトステネスの篩を行います．
+
+## メンバ変数
+
+```cpp
+(1) vector<int> seive.primes
+(2) vector<int> seive.min_factor
+(3) vector<int> seive.moebius
+(4) vector<int> seive.euler
+```
+
+- (1): $n$ 以下の素数が昇順に格納されています．
+- (2): `seive.min_factor[i]` に $i$ の素因数の最小値が格納された，長さ $n + 1$ の配列です．<br>
+便宜上 `min_factor[0] = min_factor[1] = -1` としています．<br>
+$i$ が素数であることと `min_factor[i] = i` であることは同値です．<br>
+また以下のようにして，前計算 $O(n \log \log n)$ クエリ $O(\log n)$ で $n$ を素因数分解できます．
+
+```cpp
+vector<int> prime_factor;
+while(n > 1) {
+    prime_factor.push_back(min_factor[n])
+    n /= min_factor[n];
+}
+```
+
+- (3): `seive.moebius[i]` に $\mu(i)$ が格納された，長さ $n + 1$ の配列です．
+- (4): `seive.euler[i]` に $\phi(i)$ が格納された，長さ $n + 1$ の配列です．
+
+**制約**
+
+- $1 \leq n$
+
+**計算量**
+
+- $O(n \log \log n)$

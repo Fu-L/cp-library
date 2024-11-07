@@ -180,8 +180,8 @@ data:
     path: src/math/divisor.hpp
     title: divisor
   - icon: ':heavy_check_mark:'
-    path: src/math/eratosthenes_seive.hpp.hpp
-    title: src/math/eratosthenes_seive.hpp.hpp
+    path: src/math/eratosthenes_seive.hpp
+    title: EratosthenesSeive
   - icon: ':heavy_check_mark:'
     path: src/math/euler_phi.hpp
     title: euler_phi
@@ -737,13 +737,13 @@ data:
   - src/math/is_prime.hpp
   - src/math/extgcd.hpp
   - src/math/floor_sum.hpp
+  - src/math/eratosthenes_seive.hpp
   - src/math/xor_base.hpp
   - src/math/moebius.hpp
   - src/math/binomial.hpp
   - src/math/inv_gcd.hpp
   - src/math/primitive_root.hpp
   - src/math/lucas.hpp
-  - src/math/eratosthenes_seive.hpp.hpp
   - src/math/pow_mod.hpp
   - src/math/walsh_hadamard_transform.hpp
   - src/math/prime_factors.hpp
