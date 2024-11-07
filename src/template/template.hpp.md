@@ -273,6 +273,9 @@ data:
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':heavy_check_mark:'
+    path: src/template/modint_2_61m1.hpp
+    title: Modint_2_61m1
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
@@ -773,6 +776,7 @@ data:
   - src/template/debug.hpp
   - src/template/dynamic_modint.hpp
   - src/template/static_modint.hpp
+  - src/template/modint_2_61m1.hpp
   - src/template/random_number_generator.hpp
   - src/others/dice.hpp
   - src/geometry/template.hpp

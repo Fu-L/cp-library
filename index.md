@@ -292,6 +292,9 @@ data:
       path: src/template/dynamic_modint.hpp
       title: DynamicModint
     - icon: ':heavy_check_mark:'
+      path: src/template/modint_2_61m1.hpp
+      title: Modint_2_61m1
+    - icon: ':heavy_check_mark:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
     - icon: ':heavy_check_mark:'
