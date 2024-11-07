@@ -332,7 +332,7 @@ mint x
 ## mod
 
 ```cpp
-int mint::mod()
+unsigned int mint::mod()
 ```
 
 $\mathrm{mod}$ を返します．
@@ -344,7 +344,7 @@ $\mathrm{mod}$ を返します．
 ## val
 
 ```cpp
-int x.val()
+unsigned int x.val()
 ```
 
 $x$ に格納されている値を `int` 型で返します．
