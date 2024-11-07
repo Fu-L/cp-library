@@ -26,7 +26,7 @@ RollingHash rh(string s, ull BASE = 0)
 
 ## get
 ```cpp
-ll rh.get(int lower, int upper)
+ull rh.get(int lower, int upper)
 ```
 
 部分文字列 `s[lower, upper)` のハッシュ値を返します．
@@ -42,7 +42,7 @@ ll rh.get(int lower, int upper)
 ## get_hash
 
 ```cpp
-ll rh.get_hash(string t)
+ull rh.get_hash(string t)
 ```
 
 長さ $m$ の文字列 `t` のハッシュ値を返します．

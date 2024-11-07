@@ -6,7 +6,7 @@ int main(void) {
     cin >> t >> p;
     int n = t.size(), m = p.size();
     RollingHash rh(t);
-    ll ha = rh.get_hash(p);
+    unsigned long long ha = rh.get_hash(p);
     rep(i, 0, n - m + 1) {
         if(rh.get(i, i + m) == ha) {
             cout << i << '\n';
