@@ -249,6 +249,9 @@ data:
     path: src/string/aho_corasick.hpp
     title: AhoCorasick
   - icon: ':heavy_check_mark:'
+    path: src/string/dynamic_rolling_hash.hpp
+    title: DynamicRollingHash
+  - icon: ':heavy_check_mark:'
     path: src/string/manacher.hpp
     title: manacher
   - icon: ':heavy_check_mark:'
@@ -682,6 +685,9 @@ data:
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+    title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
   - icon: ':heavy_check_mark:'
@@ -784,6 +790,7 @@ data:
   - src/geometry/circle_2d.hpp
   - src/geometry/polygon_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
+  - src/string/dynamic_rolling_hash.hpp
   - src/string/aho_corasick.hpp
   - src/string/manacher.hpp
   - src/string/z_algorithm.hpp
@@ -899,6 +906,7 @@ data:
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/template/debug.test.cpp
+  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp

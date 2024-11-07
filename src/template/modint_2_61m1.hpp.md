@@ -6,6 +6,9 @@ data:
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/string/dynamic_rolling_hash.hpp
+    title: DynamicRollingHash
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
   _extendedVerifiedWith:
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+    title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -109,11 +115,13 @@ data:
   isVerificationFile: false
   path: src/template/modint_2_61m1.hpp
   requiredBy:
+  - src/string/dynamic_rolling_hash.hpp
   - src/string/rolling_hash.hpp
   timestamp: '2024-11-07 13:53:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/number_of_substrings.test.cpp
+  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
 documentation_of: src/template/modint_2_61m1.hpp
 layout: document

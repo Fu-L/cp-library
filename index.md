@@ -266,6 +266,9 @@ data:
       path: src/string/aho_corasick.hpp
       title: AhoCorasick
     - icon: ':heavy_check_mark:'
+      path: src/string/dynamic_rolling_hash.hpp
+      title: DynamicRollingHash
+    - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: manacher
     - icon: ':heavy_check_mark:'
@@ -752,6 +755,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/math/lucas.test.cpp
       title: verify/unit_test/math/lucas.test.cpp
+  - name: verify/unit_test/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+      title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - name: verify/unit_test/template
     pages:
     - icon: ':heavy_check_mark:'

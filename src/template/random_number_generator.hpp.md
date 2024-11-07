@@ -28,6 +28,9 @@ data:
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+    title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   _isVerificationFailed: false
@@ -263,6 +266,7 @@ data:
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp
