@@ -1,7 +1,7 @@
 #pragma once
 #include "../template/template.hpp"
 struct UnionFind {
-    UnionFind(int N)
+    UnionFind(const int N)
         : n(N), data(N, -1) {}
     int merge(const int a, const int b) {
         assert(0 <= a and a < n);

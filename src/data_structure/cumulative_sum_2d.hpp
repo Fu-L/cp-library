@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 template <typename T>
 struct CumulativeSum2D {
-    CumulativeSum2D(int H, int W)
+    CumulativeSum2D(const int H, const int W)
         : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}
     void add(const int i, const int j, const T& x) {
         assert(0 <= i and i < h);

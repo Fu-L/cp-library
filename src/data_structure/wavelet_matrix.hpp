@@ -118,7 +118,7 @@ struct WaveletMatrix {
         assert(0 <= k and k < r - l);
         return kth_smallest(l, r, r - l - k - 1);
     }
-    int range_freq(int l, int r, const T upper) const {
+    int range_freq(int l, int r, const T& upper) const {
         assert(0 <= l and l <= r and r <= n);
         if(upper >= (T(1) << lg)) return r - l;
         int ret = 0;
@@ -136,17 +136,17 @@ struct WaveletMatrix {
         }
         return ret;
     }
-    int range_freq(const int l, const int r, const T lower, const T upper) const {
+    int range_freq(const int l, const int r, const T& lower, const T& upper) const {
         assert(0 <= l and l <= r and r <= n);
         assert(lower <= upper);
         return range_freq(l, r, upper) - range_freq(l, r, lower);
     }
-    T prev_value(const int l, const int r, const T upper) const {
+    T prev_value(const int l, const int r, const T& upper) const {
         assert(0 <= l and l <= r and r <= n);
         const int cnt = range_freq(l, r, upper);
         return cnt == 0 ? T(-1) : kth_smallest(l, r, cnt - 1);
     }
-    T next_value(const int l, const int r, const T lower) const {
+    T next_value(const int l, const int r, const T& lower) const {
         assert(0 <= l and l <= r and r <= n);
         const int cnt = range_freq(l, r, lower);
         return cnt == r - l ? T(-1) : kth_smallest(l, r, cnt);

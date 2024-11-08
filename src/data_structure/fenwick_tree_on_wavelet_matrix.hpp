@@ -54,7 +54,7 @@ struct FenwickTreeonWaveletMatrix {
             N = size;
             data.assign(N + 1, 0);
         }
-        __attribute__((target("bmi"))) void add(u32 k, const T x) {
+        __attribute__((target("bmi"))) void add(u32 k, const T& x) {
             for(++k; k <= N; k += _blsi_u32(k)) data[k] += x;
         }
         __attribute__((target("bmi"))) T sum(u32 k) const {
@@ -105,7 +105,7 @@ struct FenwickTreeonWaveletMatrix {
 
    public:
     FenwickTreeonWaveletMatrix() {}
-    void add_point(const S x, const S y) {
+    void add_point(const S& x, const S& y) {
         ps.emplace_back(x, y);
         ys.emplace_back(y);
     }
@@ -130,7 +130,7 @@ struct FenwickTreeonWaveletMatrix {
             swap(cur, nxt);
         }
     }
-    void add(const S x, const S y, const T val) {
+    void add(const S& x, const S& y, const T& val) {
         int i = lower_bound(begin(ps), end(ps), P{x, y}) - begin(ps);
         for(int h = lg - 1; h >= 0; --h) {
             const int i0 = bv[h].rank0(i);
@@ -139,7 +139,7 @@ struct FenwickTreeonWaveletMatrix {
             bit[h].add(i, val);
         }
     }
-    T sum(const S l, const S d, const S r, const S u) const {
+    T sum(const S& l, const S& d, const S& r, const S& u) const {
         assert(l <= r and d <= u);
         const int left = xid(l), right = xid(r);
         return sum(left, right, yid(u)) - sum(left, right, yid(d));

@@ -2,9 +2,9 @@
 #include "../template/template.hpp"
 template <typename T>
 struct FenwickTree {
-    FenwickTree(int N)
+    FenwickTree(const int N)
         : n(N), data(N) {}
-    void add(int p, const T x) {
+    void add(int p, const T& x) {
         assert(0 <= p and p < n);
         ++p;
         while(p <= n) {
