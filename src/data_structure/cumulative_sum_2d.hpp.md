@@ -22,38 +22,39 @@ data:
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/cumulative_sum_2d.hpp\"\
     \ntemplate <typename T>\nstruct CumulativeSum2D {\n    CumulativeSum2D(int H,\
     \ int W)\n        : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}\n    void\
-    \ add(int i, int j, const T& x) {\n        assert(0 <= i and i < h);\n       \
-    \ assert(0 <= j and j < w);\n        data[i + 1][j + 1] += x;\n    }\n    void\
-    \ init() {\n        for(int i = 1; i < (int)data.size(); ++i) {\n            for(int\
-    \ j = 1; j < (int)data[i].size(); ++j) {\n                data[i][j] += data[i][j\
-    \ - 1] + data[i - 1][j] - data[i - 1][j - 1];\n            }\n        }\n    }\n\
-    \    T sum(int li, int lj, int ri, int rj) {\n        assert(0 <= li and li <=\
-    \ ri and ri <= h);\n        assert(0 <= lj and lj <= rj and rj <= w);\n      \
-    \  return data[ri][rj] - data[li][rj] - data[ri][lj] + data[li][lj];\n    }\n\
-    \    T get(int i, int j) {\n        assert(0 <= i and i < h);\n        assert(0\
-    \ <= j and j < w);\n        return data[i + 1][j + 1] - data[i][j + 1] - data[i\
-    \ + 1][j] + data[i][j];\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>>\
-    \ data;\n};\n"
+    \ add(const int i, const int j, const T& x) {\n        assert(0 <= i and i < h);\n\
+    \        assert(0 <= j and j < w);\n        data[i + 1][j + 1] += x;\n    }\n\
+    \    void init() {\n        for(int i = 1; i < (int)data.size(); ++i) {\n    \
+    \        for(int j = 1; j < (int)data[i].size(); ++j) {\n                data[i][j]\
+    \ += data[i][j - 1] + data[i - 1][j] - data[i - 1][j - 1];\n            }\n  \
+    \      }\n    }\n    T sum(const int li, const int lj, const int ri, const int\
+    \ rj) const {\n        assert(0 <= li and li <= ri and ri <= h);\n        assert(0\
+    \ <= lj and lj <= rj and rj <= w);\n        return data[ri][rj] - data[li][rj]\
+    \ - data[ri][lj] + data[li][lj];\n    }\n    T get(const int i, const int j) const\
+    \ {\n        assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n  \
+    \      return data[i + 1][j + 1] - data[i][j + 1] - data[i + 1][j] + data[i][j];\n\
+    \    }\n\n   private:\n    int h, w;\n    vector<vector<T>> data;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct CumulativeSum2D {\n    CumulativeSum2D(int H, int W)\n        : h(H), w(W),\
-    \ data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(int i, int j, const T& x)\
-    \ {\n        assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n  \
-    \      data[i + 1][j + 1] += x;\n    }\n    void init() {\n        for(int i =\
-    \ 1; i < (int)data.size(); ++i) {\n            for(int j = 1; j < (int)data[i].size();\
-    \ ++j) {\n                data[i][j] += data[i][j - 1] + data[i - 1][j] - data[i\
-    \ - 1][j - 1];\n            }\n        }\n    }\n    T sum(int li, int lj, int\
-    \ ri, int rj) {\n        assert(0 <= li and li <= ri and ri <= h);\n        assert(0\
-    \ <= lj and lj <= rj and rj <= w);\n        return data[ri][rj] - data[li][rj]\
-    \ - data[ri][lj] + data[li][lj];\n    }\n    T get(int i, int j) {\n        assert(0\
-    \ <= i and i < h);\n        assert(0 <= j and j < w);\n        return data[i +\
-    \ 1][j + 1] - data[i][j + 1] - data[i + 1][j] + data[i][j];\n    }\n\n   private:\n\
-    \    int h, w;\n    vector<vector<T>> data;\n};"
+    \ data(H + 1, vector<T>(W + 1, 0)) {}\n    void add(const int i, const int j,\
+    \ const T& x) {\n        assert(0 <= i and i < h);\n        assert(0 <= j and\
+    \ j < w);\n        data[i + 1][j + 1] += x;\n    }\n    void init() {\n      \
+    \  for(int i = 1; i < (int)data.size(); ++i) {\n            for(int j = 1; j <\
+    \ (int)data[i].size(); ++j) {\n                data[i][j] += data[i][j - 1] +\
+    \ data[i - 1][j] - data[i - 1][j - 1];\n            }\n        }\n    }\n    T\
+    \ sum(const int li, const int lj, const int ri, const int rj) const {\n      \
+    \  assert(0 <= li and li <= ri and ri <= h);\n        assert(0 <= lj and lj <=\
+    \ rj and rj <= w);\n        return data[ri][rj] - data[li][rj] - data[ri][lj]\
+    \ + data[li][lj];\n    }\n    T get(const int i, const int j) const {\n      \
+    \  assert(0 <= i and i < h);\n        assert(0 <= j and j < w);\n        return\
+    \ data[i + 1][j + 1] - data[i][j + 1] - data[i + 1][j] + data[i][j];\n    }\n\n\
+    \   private:\n    int h, w;\n    vector<vector<T>> data;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/cumulative_sum_2d.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp

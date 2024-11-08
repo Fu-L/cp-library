@@ -20,45 +20,47 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/mo.hpp\"\
-    \nstruct Mo {\n    Mo(int N, int Q)\n        : n(N), order(Q) {\n        width\
-    \ = max<int>(1, 1.0 * N / max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n        iota(order.begin(),\
-    \ order.end(), 0);\n    }\n    void insert(int l, int r) {\n        assert(0 <=\
-    \ l and l <= r and r <= n);\n        left.emplace_back(l);\n        right.emplace_back(r);\n\
-    \    }\n    template <typename AL, typename AR, typename DL, typename DR, typename\
-    \ OUT>\n    void run(const AL& add_left, const AR& add_right, const DL& delete_left,\
-    \ const DR& delete_right, const OUT& out) {\n        assert(left.size() == order.size());\n\
-    \        sort(order.begin(), order.end(), [&](int i, int j) {\n            int\
-    \ iblock = left[i] / width, jblock = left[j] / width;\n            if(iblock !=\
-    \ jblock) return iblock < jblock;\n            if(iblock & 1) return right[i]\
-    \ < right[j];\n            return right[i] > right[j];\n        });\n        int\
-    \ nl = 0, nr = 0;\n        for(int idx : order) {\n            while(nl > left[idx])\
+    \nstruct Mo {\n    Mo(const int N, const int Q)\n        : n(N), order(Q) {\n\
+    \        width = max<int>(1, 1.0 * N / max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n\
+    \        iota(order.begin(), order.end(), 0);\n    }\n    void insert(const int\
+    \ l, const int r) {\n        assert(0 <= l and l <= r and r <= n);\n        left.emplace_back(l);\n\
+    \        right.emplace_back(r);\n    }\n    template <typename AL, typename AR,\
+    \ typename DL, typename DR, typename OUT>\n    void run(const AL& add_left, const\
+    \ AR& add_right, const DL& delete_left, const DR& delete_right, const OUT& out)\
+    \ {\n        assert(left.size() == order.size());\n        sort(order.begin(),\
+    \ order.end(), [&](const int i, const int j) {\n            const int iblock =\
+    \ left[i] / width, jblock = left[j] / width;\n            if(iblock != jblock)\
+    \ return iblock < jblock;\n            if(iblock & 1) return right[i] < right[j];\n\
+    \            return right[i] > right[j];\n        });\n        int nl = 0, nr\
+    \ = 0;\n        for(const int idx : order) {\n            while(nl > left[idx])\
     \ add_left(--nl);\n            while(nr < right[idx]) add_right(nr++);\n     \
     \       while(nl < left[idx]) delete_left(nl++);\n            while(nr > right[idx])\
     \ delete_right(--nr);\n            out(idx);\n        }\n    }\n\n   private:\n\
     \    int n, width;\n    vector<int> left, right, order;\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\nstruct Mo {\n    Mo(int\
-    \ N, int Q)\n        : n(N), order(Q) {\n        width = max<int>(1, 1.0 * N /\
-    \ max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n        iota(order.begin(), order.end(),\
-    \ 0);\n    }\n    void insert(int l, int r) {\n        assert(0 <= l and l <=\
-    \ r and r <= n);\n        left.emplace_back(l);\n        right.emplace_back(r);\n\
-    \    }\n    template <typename AL, typename AR, typename DL, typename DR, typename\
-    \ OUT>\n    void run(const AL& add_left, const AR& add_right, const DL& delete_left,\
-    \ const DR& delete_right, const OUT& out) {\n        assert(left.size() == order.size());\n\
-    \        sort(order.begin(), order.end(), [&](int i, int j) {\n            int\
-    \ iblock = left[i] / width, jblock = left[j] / width;\n            if(iblock !=\
-    \ jblock) return iblock < jblock;\n            if(iblock & 1) return right[i]\
-    \ < right[j];\n            return right[i] > right[j];\n        });\n        int\
-    \ nl = 0, nr = 0;\n        for(int idx : order) {\n            while(nl > left[idx])\
-    \ add_left(--nl);\n            while(nr < right[idx]) add_right(nr++);\n     \
-    \       while(nl < left[idx]) delete_left(nl++);\n            while(nr > right[idx])\
-    \ delete_right(--nr);\n            out(idx);\n        }\n    }\n\n   private:\n\
-    \    int n, width;\n    vector<int> left, right, order;\n};"
+  code: "#pragma once\n#include \"../template/template.hpp\"\nstruct Mo {\n    Mo(const\
+    \ int N, const int Q)\n        : n(N), order(Q) {\n        width = max<int>(1,\
+    \ 1.0 * N / max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n        iota(order.begin(),\
+    \ order.end(), 0);\n    }\n    void insert(const int l, const int r) {\n     \
+    \   assert(0 <= l and l <= r and r <= n);\n        left.emplace_back(l);\n   \
+    \     right.emplace_back(r);\n    }\n    template <typename AL, typename AR, typename\
+    \ DL, typename DR, typename OUT>\n    void run(const AL& add_left, const AR& add_right,\
+    \ const DL& delete_left, const DR& delete_right, const OUT& out) {\n        assert(left.size()\
+    \ == order.size());\n        sort(order.begin(), order.end(), [&](const int i,\
+    \ const int j) {\n            const int iblock = left[i] / width, jblock = left[j]\
+    \ / width;\n            if(iblock != jblock) return iblock < jblock;\n       \
+    \     if(iblock & 1) return right[i] < right[j];\n            return right[i]\
+    \ > right[j];\n        });\n        int nl = 0, nr = 0;\n        for(const int\
+    \ idx : order) {\n            while(nl > left[idx]) add_left(--nl);\n        \
+    \    while(nr < right[idx]) add_right(nr++);\n            while(nl < left[idx])\
+    \ delete_left(nl++);\n            while(nr > right[idx]) delete_right(--nr);\n\
+    \            out(idx);\n        }\n    }\n\n   private:\n    int n, width;\n \
+    \   vector<int> left, right, order;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/mo.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_range_inversions_query.test.cpp

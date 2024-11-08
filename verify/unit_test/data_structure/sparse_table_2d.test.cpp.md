@@ -134,8 +134,8 @@ data:
     } rng;\n#line 3 \"src/data_structure/sparse_table_2d.hpp\"\ntemplate <typename\
     \ S, auto op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const vector<vector<S>>&\
     \ v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {\n\
-    \        rep(i, 2, (int)LOG.size()) LOG[i] = LOG[i / 2] + 1;\n        table =\
-    \ vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
+    \        for(int i = 2; i < (int)LOG.size(); ++i) LOG[i] = LOG[i / 2] + 1;\n \
+    \       table = vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
     \ + 1, vector<vector<S>>(h, vector<S>(w, e()))));\n        for(int i = 0; i <\
     \ h; ++i) {\n            for(int j = 0; j < w; ++j) {\n                table[0][0][i][j]\
     \ = v[i][j];\n            }\n        }\n        for(int i = 0; i <= LOG[h]; ++i)\
@@ -145,13 +145,13 @@ data:
     \ (x + (1 << i) < h) ? table[i][j][x + (1 << i)][y] : e());\n                \
     \        if(j < LOG[w]) table[i][j + 1][x][y] = op(table[i][j][x][y], (y + (1\
     \ << j) < w) ? table[i][j][x][y + (1 << j)] : e());\n                    }\n \
-    \               }\n            }\n        }\n    }\n    S prod(int lx, int rx,\
-    \ int ly, int ry) const {\n        assert(0 <= lx and lx <= rx and rx <= h);\n\
-    \        assert(0 <= ly and ly <= ry and ry <= w);\n        if(lx == rx or ly\
-    \ == ry) return e();\n        int kx = LOG[rx - lx];\n        int ky = LOG[ry\
-    \ - ly];\n        return op(op(table[kx][ky][lx][ly], table[kx][ky][rx - (1 <<\
-    \ kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx - (1 << kx)][ry\
-    \ - (1 << ky)]));\n    }\n\n   private:\n    int h, w;\n    vector<vector<vector<vector<S>>>>\
+    \               }\n            }\n        }\n    }\n    S prod(const int lx, const\
+    \ int rx, const int ly, const int ry) const {\n        assert(0 <= lx and lx <=\
+    \ rx and rx <= h);\n        assert(0 <= ly and ly <= ry and ry <= w);\n      \
+    \  if(lx == rx or ly == ry) return e();\n        const int kx = LOG[rx - lx];\n\
+    \        const int ky = LOG[ry - ly];\n        return op(op(table[kx][ky][lx][ly],\
+    \ table[kx][ky][rx - (1 << kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx\
+    \ - (1 << kx)][ry - (1 << ky)]));\n    }\n\n   private:\n    int h, w;\n    vector<vector<vector<vector<S>>>>\
     \ table;\n    vector<int> LOG;\n};\n#line 5 \"verify/unit_test/data_structure/sparse_table_2d.test.cpp\"\
     \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
     }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
@@ -186,7 +186,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   requiredBy: []
-  timestamp: '2024-10-30 22:43:34+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp

@@ -29,39 +29,40 @@ data:
     \ T& x) {\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n        if(!contains(x))\
     \ update(x, 1);\n    }\n    void erase(const T& x) {\n        assert(0 <= x and\
     \ x < (T(1) << MAX_LOG));\n        if(contains(x)) update(x, -1);\n    }\n   \
-    \ bool contains(const T& x) {\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
+    \ bool contains(const T& x) const {\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
     \        Node* cur = root;\n        for(int i = MAX_LOG - 1; i >= 0; --i) {\n\
-    \            if(!cur) break;\n            int nex = (x >> i) & 1;\n          \
-    \  cur = cur->child[nex];\n        }\n        return cur and cur->cnt;\n    }\n\
-    \    int size() {\n        return root->cnt;\n    }\n    T min(const T& x = 0)\
-    \ {\n        assert(root->cnt > 0);\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
-    \        return kth_element(0, x);\n    }\n    T max(const T& x = 0) {\n     \
-    \   assert(root->cnt > 0);\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
-    \        return kth_element(root->cnt - 1, x);\n    }\n    T kth_element(int k,\
-    \ const T& x = 0) {\n        assert(0 <= k and k < root->cnt);\n        assert(0\
-    \ <= x and x < (T(1) << MAX_LOG));\n        T res = 0;\n        Node* cur = root;\n\
-    \        for(int i = MAX_LOG - 1; i >= 0; --i) {\n            int nex = (x >>\
-    \ i) & 1;\n            int cnt = (cur->child[nex] ? cur->child[nex]->cnt : 0);\n\
-    \            if(cnt <= k) {\n                k -= cnt;\n                res +=\
-    \ T(1) << i;\n                cur = cur->child[nex ^ 1];\n            } else {\n\
-    \                cur = cur->child[nex];\n            }\n        }\n        return\
-    \ res;\n    }\n    int lower_bound(const T& val, const T& x = 0) {\n        assert(0\
-    \ <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) <<\
-    \ MAX_LOG));\n        int res = 0;\n        Node* cur = root;\n        for(int\
-    \ i = MAX_LOG - 1; i >= 0; --i) {\n            if(!cur) break;\n            int\
-    \ xi = (x >> i) & 1, vi = (val >> i) & 1;\n            int nex = xi xor vi;\n\
+    \            if(!cur) break;\n            const int nex = (x >> i) & 1;\n    \
+    \        cur = cur->child[nex];\n        }\n        return cur and cur->cnt;\n\
+    \    }\n    int size() const {\n        return root->cnt;\n    }\n    T min(const\
+    \ T& x = 0) const {\n        assert(root->cnt > 0);\n        assert(0 <= x and\
+    \ x < (T(1) << MAX_LOG));\n        return kth_element(0, x);\n    }\n    T max(const\
+    \ T& x = 0) const {\n        assert(root->cnt > 0);\n        assert(0 <= x and\
+    \ x < (T(1) << MAX_LOG));\n        return kth_element(root->cnt - 1, x);\n   \
+    \ }\n    T kth_element(int k, const T& x = 0) const {\n        assert(0 <= k and\
+    \ k < root->cnt);\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n       \
+    \ T res = 0;\n        Node* cur = root;\n        for(int i = MAX_LOG - 1; i >=\
+    \ 0; --i) {\n            const int nex = (x >> i) & 1;\n            const int\
+    \ cnt = (cur->child[nex] ? cur->child[nex]->cnt : 0);\n            if(cnt <= k)\
+    \ {\n                k -= cnt;\n                res += T(1) << i;\n          \
+    \      cur = cur->child[nex ^ 1];\n            } else {\n                cur =\
+    \ cur->child[nex];\n            }\n        }\n        return res;\n    }\n   \
+    \ int lower_bound(const T& val, const T& x = 0) const {\n        assert(0 <= val\
+    \ and val < (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
+    \        int res = 0;\n        Node* cur = root;\n        for(int i = MAX_LOG\
+    \ - 1; i >= 0; --i) {\n            if(!cur) break;\n            const int xi =\
+    \ (x >> i) & 1, vi = (val >> i) & 1;\n            const int nex = xi xor vi;\n\
     \            if(vi and cur->child[xi]) {\n                res += cur->child[xi]->cnt;\n\
     \            }\n            cur = cur->child[nex];\n        }\n        return\
-    \ res;\n    }\n    int upper_bound(const T& val, const T& x = 0) {\n        assert(0\
-    \ <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) <<\
-    \ MAX_LOG));\n        return lower_bound(val + 1, x);\n    }\n\n   private:\n\
-    \    struct Node {\n        Node* child[2] = {};\n        int cnt = 0;\n     \
-    \   Node() {}\n    };\n    Node* root;\n    void update(const T& x, const int\
-    \ delta) {\n        Node* cur = root;\n        cur->cnt += delta;\n        for(int\
-    \ i = MAX_LOG - 1; i >= 0; --i) {\n            int nex = (x >> i) & 1;\n     \
-    \       if(!cur->child[nex]) {\n                cur->child[nex] = new Node;\n\
-    \            }\n            cur = cur->child[nex];\n            cur->cnt += delta;\n\
-    \        }\n    }\n};\n#line 4 \"verify/library_checker/data_structure/set_xor_min.test.cpp\"\
+    \ res;\n    }\n    int upper_bound(const T& val, const T& x = 0) const {\n   \
+    \     assert(0 <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and\
+    \ x < (T(1) << MAX_LOG));\n        return lower_bound(val + 1, x);\n    }\n\n\
+    \   private:\n    struct Node {\n        Node* child[2] = {};\n        int cnt\
+    \ = 0;\n        Node() {}\n    };\n    Node* root;\n    void update(const T& x,\
+    \ const int delta) {\n        Node* cur = root;\n        cur->cnt += delta;\n\
+    \        for(int i = MAX_LOG - 1; i >= 0; --i) {\n            const int nex =\
+    \ (x >> i) & 1;\n            if(!cur->child[nex]) {\n                cur->child[nex]\
+    \ = new Node;\n            }\n            cur = cur->child[nex];\n           \
+    \ cur->cnt += delta;\n        }\n    }\n};\n#line 4 \"verify/library_checker/data_structure/set_xor_min.test.cpp\"\
     \nint main(void) {\n    int q;\n    cin >> q;\n    BinaryTrie<int, 30> trie;\n\
     \    while(q--) {\n        int t, x;\n        cin >> t >> x;\n        if(t ==\
     \ 0) {\n            trie.insert(x);\n        } else if(t == 1) {\n           \
@@ -80,7 +81,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/set_xor_min.test.cpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/set_xor_min.test.cpp

@@ -39,32 +39,33 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\
     \ntemplate <typename T>\nstruct FenwickTree {\n    FenwickTree(int N)\n      \
-    \  : n(N), data(N) {}\n    void add(int p, T x) {\n        assert(0 <= p and p\
-    \ < n);\n        ++p;\n        while(p <= n) {\n            data[p - 1] += x;\n\
-    \            p += p & -p;\n        }\n    }\n    T sum(int l, int r) const {\n\
-    \        assert(0 <= l and l <= r and r <= n);\n        return sum(r) - sum(l);\n\
-    \    }\n    T get(int x) const {\n        assert(0 <= x and x < n);\n        return\
-    \ sum(x + 1) - sum(x);\n    }\n\n   private:\n    int n;\n    vector<T> data;\n\
-    \    inline T sum(int r) const {\n        T s = 0;\n        while(r > 0) {\n \
-    \           s += data[r - 1];\n            r -= r & -r;\n        }\n        return\
-    \ s;\n    }\n};\n"
+    \  : n(N), data(N) {}\n    void add(int p, const T x) {\n        assert(0 <= p\
+    \ and p < n);\n        ++p;\n        while(p <= n) {\n            data[p - 1]\
+    \ += x;\n            p += p & -p;\n        }\n    }\n    T sum(const int l, const\
+    \ int r) const {\n        assert(0 <= l and l <= r and r <= n);\n        return\
+    \ sum(r) - sum(l);\n    }\n    T get(const int x) const {\n        assert(0 <=\
+    \ x and x < n);\n        return sum(x + 1) - sum(x);\n    }\n\n   private:\n \
+    \   int n;\n    vector<T> data;\n    inline T sum(int r) const {\n        T s\
+    \ = 0;\n        while(r > 0) {\n            s += data[r - 1];\n            r -=\
+    \ r & -r;\n        }\n        return s;\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct FenwickTree {\n    FenwickTree(int N)\n        : n(N), data(N) {}\n   \
-    \ void add(int p, T x) {\n        assert(0 <= p and p < n);\n        ++p;\n  \
-    \      while(p <= n) {\n            data[p - 1] += x;\n            p += p & -p;\n\
-    \        }\n    }\n    T sum(int l, int r) const {\n        assert(0 <= l and\
-    \ l <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T get(int x)\
-    \ const {\n        assert(0 <= x and x < n);\n        return sum(x + 1) - sum(x);\n\
-    \    }\n\n   private:\n    int n;\n    vector<T> data;\n    inline T sum(int r)\
-    \ const {\n        T s = 0;\n        while(r > 0) {\n            s += data[r -\
-    \ 1];\n            r -= r & -r;\n        }\n        return s;\n    }\n};"
+    \ void add(int p, const T x) {\n        assert(0 <= p and p < n);\n        ++p;\n\
+    \        while(p <= n) {\n            data[p - 1] += x;\n            p += p &\
+    \ -p;\n        }\n    }\n    T sum(const int l, const int r) const {\n       \
+    \ assert(0 <= l and l <= r and r <= n);\n        return sum(r) - sum(l);\n   \
+    \ }\n    T get(const int x) const {\n        assert(0 <= x and x < n);\n     \
+    \   return sum(x + 1) - sum(x);\n    }\n\n   private:\n    int n;\n    vector<T>\
+    \ data;\n    inline T sum(int r) const {\n        T s = 0;\n        while(r >\
+    \ 0) {\n            s += data[r - 1];\n            r -= r & -r;\n        }\n \
+    \       return s;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/fenwick_tree.hpp
   requiredBy:
   - src/string/dynamic_rolling_hash.hpp
-  timestamp: '2024-10-30 22:43:34+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/point_add_range_sum.test.cpp

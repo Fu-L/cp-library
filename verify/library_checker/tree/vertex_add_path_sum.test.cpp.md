@@ -101,25 +101,25 @@ data:
     \        res.emplace_back(down[nex[v]], down[v]);\n        return res;\n    }\n\
     };\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\ntemplate <typename T>\nstruct\
     \ FenwickTree {\n    FenwickTree(int N)\n        : n(N), data(N) {}\n    void\
-    \ add(int p, T x) {\n        assert(0 <= p and p < n);\n        ++p;\n       \
-    \ while(p <= n) {\n            data[p - 1] += x;\n            p += p & -p;\n \
-    \       }\n    }\n    T sum(int l, int r) const {\n        assert(0 <= l and l\
-    \ <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T get(int x)\
-    \ const {\n        assert(0 <= x and x < n);\n        return sum(x + 1) - sum(x);\n\
-    \    }\n\n   private:\n    int n;\n    vector<T> data;\n    inline T sum(int r)\
-    \ const {\n        T s = 0;\n        while(r > 0) {\n            s += data[r -\
-    \ 1];\n            r -= r & -r;\n        }\n        return s;\n    }\n};\n#line\
-    \ 6 \"verify/library_checker/tree/vertex_add_path_sum.test.cpp\"\nint main(void)\
-    \ {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    rep(i, 0, n)\
-    \ {\n        cin >> a[i];\n    }\n    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n\
-    \        int u, v;\n        cin >> u >> v;\n        g.add_edge(u, v);\n    }\n\
-    \    HeavyLightDecomposition<int> hld(g);\n    FenwickTree<ll> fw(n);\n    rep(i,\
-    \ 0, n) {\n        fw.add(hld.idx(i).first, a[i]);\n    }\n    while(q--) {\n\
-    \        int t;\n        cin >> t;\n        if(t == 0) {\n            ll p, x;\n\
-    \            cin >> p >> x;\n            fw.add(hld.idx(p).first, x);\n      \
-    \  } else {\n            ll u, v;\n            cin >> u >> v;\n            ll\
-    \ ans = 0;\n            auto query = [&](int u, int v) -> void {\n           \
-    \     ans += fw.sum(min(u, v), max(u, v));\n            };\n            hld.path_query(u,\
+    \ add(int p, const T x) {\n        assert(0 <= p and p < n);\n        ++p;\n \
+    \       while(p <= n) {\n            data[p - 1] += x;\n            p += p & -p;\n\
+    \        }\n    }\n    T sum(const int l, const int r) const {\n        assert(0\
+    \ <= l and l <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T\
+    \ get(const int x) const {\n        assert(0 <= x and x < n);\n        return\
+    \ sum(x + 1) - sum(x);\n    }\n\n   private:\n    int n;\n    vector<T> data;\n\
+    \    inline T sum(int r) const {\n        T s = 0;\n        while(r > 0) {\n \
+    \           s += data[r - 1];\n            r -= r & -r;\n        }\n        return\
+    \ s;\n    }\n};\n#line 6 \"verify/library_checker/tree/vertex_add_path_sum.test.cpp\"\
+    \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n\
+    \    rep(i, 0, n) {\n        cin >> a[i];\n    }\n    Graph<int> g(n);\n    rep(i,\
+    \ 0, n - 1) {\n        int u, v;\n        cin >> u >> v;\n        g.add_edge(u,\
+    \ v);\n    }\n    HeavyLightDecomposition<int> hld(g);\n    FenwickTree<ll> fw(n);\n\
+    \    rep(i, 0, n) {\n        fw.add(hld.idx(i).first, a[i]);\n    }\n    while(q--)\
+    \ {\n        int t;\n        cin >> t;\n        if(t == 0) {\n            ll p,\
+    \ x;\n            cin >> p >> x;\n            fw.add(hld.idx(p).first, x);\n \
+    \       } else {\n            ll u, v;\n            cin >> u >> v;\n         \
+    \   ll ans = 0;\n            auto query = [&](int u, int v) -> void {\n      \
+    \          ans += fw.sum(min(u, v), max(u, v));\n            };\n            hld.path_query(u,\
     \ v, true, query);\n            cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     #include \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
@@ -143,7 +143,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-11-08 23:56:53+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/vertex_add_path_sum.test.cpp

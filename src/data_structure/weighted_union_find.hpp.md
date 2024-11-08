@@ -23,46 +23,48 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/weighted_union_find.hpp\"\
-    \ntemplate <typename T>\nstruct WeightedUnionFind {\n    WeightedUnionFind(int\
-    \ N)\n        : n(N), data(N, -1), ws(N, T()) {}\n    bool merge(int a, int b,\
-    \ T w) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
-    \        w += weight(b) - weight(a);\n        int x = leader(a), y = leader(b);\n\
-    \        if(x == y) return w == T();\n        if(-data[x] > -data[y]) swap(x,\
-    \ y), w = -w;\n        data[y] += data[x];\n        data[x] = y;\n        ws[x]\
-    \ = w;\n        return true;\n    }\n    bool same(int a, int b) {\n        assert(0\
-    \ <= a and a < n);\n        assert(0 <= b and b < n);\n        return leader(a)\
-    \ == leader(b);\n    }\n    int leader(int a) {\n        assert(0 <= a and a <\
-    \ n);\n        if(data[a] < 0) return a;\n        int r = leader(data[a]);\n \
-    \       ws[a] += ws[data[a]];\n        return data[a] = r;\n    }\n    int size(int\
-    \ a) {\n        assert(0 <= a and a < n);\n        return -data[leader(a)];\n\
-    \    }\n    T weight(int a) {\n        assert(0 <= a and a < n);\n        leader(a);\n\
-    \        return ws[a];\n    }\n    T diff(int a, int b) {\n        assert(0 <=\
-    \ a and a < n);\n        assert(0 <= b and b < n);\n        return weight(a) -\
-    \ weight(b);\n    }\n\n   private:\n    int n;\n    vector<int> data;\n    vector<T>\
-    \ ws;\n};\n"
+    \ntemplate <typename T>\nstruct WeightedUnionFind {\n    WeightedUnionFind(const\
+    \ int N)\n        : n(N), data(N, -1), ws(N, T()) {}\n    bool merge(const int\
+    \ a, const int b, T w) {\n        assert(0 <= a and a < n);\n        assert(0\
+    \ <= b and b < n);\n        w += weight(b) - weight(a);\n        int x = leader(a),\
+    \ y = leader(b);\n        if(x == y) return w == T();\n        if(-data[x] > -data[y])\
+    \ swap(x, y), w = -w;\n        data[y] += data[x];\n        data[x] = y;\n   \
+    \     ws[x] = w;\n        return true;\n    }\n    bool same(const int a, const\
+    \ int b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
+    \        return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n\
+    \        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n      \
+    \  const int r = leader(data[a]);\n        ws[a] += ws[data[a]];\n        return\
+    \ data[a] = r;\n    }\n    int size(const int a) {\n        assert(0 <= a and\
+    \ a < n);\n        return -data[leader(a)];\n    }\n    T weight(const int a)\
+    \ {\n        assert(0 <= a and a < n);\n        leader(a);\n        return ws[a];\n\
+    \    }\n    T diff(const int a, const int b) {\n        assert(0 <= a and a <\
+    \ n);\n        assert(0 <= b and b < n);\n        return weight(a) - weight(b);\n\
+    \    }\n\n   private:\n    int n;\n    vector<int> data;\n    vector<T> ws;\n\
+    };\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
-    struct WeightedUnionFind {\n    WeightedUnionFind(int N)\n        : n(N), data(N,\
-    \ -1), ws(N, T()) {}\n    bool merge(int a, int b, T w) {\n        assert(0 <=\
-    \ a and a < n);\n        assert(0 <= b and b < n);\n        w += weight(b) - weight(a);\n\
-    \        int x = leader(a), y = leader(b);\n        if(x == y) return w == T();\n\
-    \        if(-data[x] > -data[y]) swap(x, y), w = -w;\n        data[y] += data[x];\n\
-    \        data[x] = y;\n        ws[x] = w;\n        return true;\n    }\n    bool\
-    \ same(int a, int b) {\n        assert(0 <= a and a < n);\n        assert(0 <=\
-    \ b and b < n);\n        return leader(a) == leader(b);\n    }\n    int leader(int\
-    \ a) {\n        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n\
-    \        int r = leader(data[a]);\n        ws[a] += ws[data[a]];\n        return\
-    \ data[a] = r;\n    }\n    int size(int a) {\n        assert(0 <= a and a < n);\n\
-    \        return -data[leader(a)];\n    }\n    T weight(int a) {\n        assert(0\
-    \ <= a and a < n);\n        leader(a);\n        return ws[a];\n    }\n    T diff(int\
-    \ a, int b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b\
-    \ < n);\n        return weight(a) - weight(b);\n    }\n\n   private:\n    int\
-    \ n;\n    vector<int> data;\n    vector<T> ws;\n};"
+    struct WeightedUnionFind {\n    WeightedUnionFind(const int N)\n        : n(N),\
+    \ data(N, -1), ws(N, T()) {}\n    bool merge(const int a, const int b, T w) {\n\
+    \        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n      \
+    \  w += weight(b) - weight(a);\n        int x = leader(a), y = leader(b);\n  \
+    \      if(x == y) return w == T();\n        if(-data[x] > -data[y]) swap(x, y),\
+    \ w = -w;\n        data[y] += data[x];\n        data[x] = y;\n        ws[x] =\
+    \ w;\n        return true;\n    }\n    bool same(const int a, const int b) {\n\
+    \        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n      \
+    \  return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n    \
+    \    assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n        const\
+    \ int r = leader(data[a]);\n        ws[a] += ws[data[a]];\n        return data[a]\
+    \ = r;\n    }\n    int size(const int a) {\n        assert(0 <= a and a < n);\n\
+    \        return -data[leader(a)];\n    }\n    T weight(const int a) {\n      \
+    \  assert(0 <= a and a < n);\n        leader(a);\n        return ws[a];\n    }\n\
+    \    T diff(const int a, const int b) {\n        assert(0 <= a and a < n);\n \
+    \       assert(0 <= b and b < n);\n        return weight(a) - weight(b);\n   \
+    \ }\n\n   private:\n    int n;\n    vector<int> data;\n    vector<T> ws;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/weighted_union_find.hpp
   requiredBy: []
-  timestamp: '2024-01-03 22:10:13+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/unionfind_with_potential.test.cpp

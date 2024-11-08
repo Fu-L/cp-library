@@ -25,33 +25,34 @@ data:
     \ S& x) {\n        if(a0.empty()) {\n            push_s0(x);\n            transfer();\n\
     \        } else {\n            push_s1(x);\n        }\n    }\n    void pop() {\n\
     \        if(a0.empty()) transfer();\n        a0.pop_back();\n        r0.pop_back();\n\
-    \        f0 = r0.empty() ? e() : r0.back();\n    }\n    S prod() {\n        return\
-    \ op(f0, f1);\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0,\
-    \ f1;\n    void push_s0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0\
-    \ = op(x, f0));\n    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n\
-    \        r1.emplace_back(f1 = op(f1, x));\n    }\n    void transfer() {\n    \
-    \    while(!a1.empty()) {\n            push_s0(a1.back());\n            a1.pop_back();\n\
-    \        }\n        while(!r1.empty()) r1.pop_back();\n        f1 = e();\n   \
-    \ }\n};\n"
+    \        f0 = r0.empty() ? e() : r0.back();\n    }\n    S prod() const {\n   \
+    \     return op(f0, f1);\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n\
+    \    S f0, f1;\n    void push_s0(const S& x) {\n        a0.emplace_back(x);\n\
+    \        r0.emplace_back(f0 = op(x, f0));\n    }\n    void push_s1(const S& x)\
+    \ {\n        a1.emplace_back(x);\n        r1.emplace_back(f1 = op(f1, x));\n \
+    \   }\n    void transfer() {\n        while(!a1.empty()) {\n            push_s0(a1.back());\n\
+    \            a1.pop_back();\n        }\n        while(!r1.empty()) r1.pop_back();\n\
+    \        f1 = e();\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SlideWindowAggregation {\n    SlideWindowAggregation()\n\
     \        : f0(e()), f1(e()) {}\n    void push(const S& x) {\n        if(a0.empty())\
     \ {\n            push_s0(x);\n            transfer();\n        } else {\n    \
     \        push_s1(x);\n        }\n    }\n    void pop() {\n        if(a0.empty())\
     \ transfer();\n        a0.pop_back();\n        r0.pop_back();\n        f0 = r0.empty()\
-    \ ? e() : r0.back();\n    }\n    S prod() {\n        return op(f0, f1);\n    }\n\
-    \n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void push_s0(const\
-    \ S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0 = op(x, f0));\n\
-    \    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n        r1.emplace_back(f1\
-    \ = op(f1, x));\n    }\n    void transfer() {\n        while(!a1.empty()) {\n\
-    \            push_s0(a1.back());\n            a1.pop_back();\n        }\n    \
-    \    while(!r1.empty()) r1.pop_back();\n        f1 = e();\n    }\n};"
+    \ ? e() : r0.back();\n    }\n    S prod() const {\n        return op(f0, f1);\n\
+    \    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void\
+    \ push_s0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0\
+    \ = op(x, f0));\n    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n\
+    \        r1.emplace_back(f1 = op(f1, x));\n    }\n    void transfer() {\n    \
+    \    while(!a1.empty()) {\n            push_s0(a1.back());\n            a1.pop_back();\n\
+    \        }\n        while(!r1.empty()) r1.pop_back();\n        f1 = e();\n   \
+    \ }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/slide_window_aggregation.hpp
   requiredBy: []
-  timestamp: '2024-10-30 22:43:34+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp

@@ -20,53 +20,54 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/rollback_union_find.hpp\"\
-    \nstruct RollbackUnionFind {\n    RollbackUnionFind(int N)\n        : n(N), data(N,\
-    \ -1), inner_snap(0) {\n    }\n    int merge(int a, int b) {\n        assert(0\
-    \ <= a and a < n);\n        assert(0 <= b and b < n);\n        int x = leader(a),\
-    \ y = leader(b);\n        history.emplace(x, data[x]);\n        history.emplace(y,\
-    \ data[y]);\n        if(x == y) return x;\n        if(-data[x] < -data[y]) swap(x,\
-    \ y);\n        data[x] += data[y];\n        data[y] = x;\n        return x;\n\
-    \    }\n    bool same(int a, int b) {\n        assert(0 <= a and a < n);\n   \
-    \     assert(0 <= b and b < n);\n        return leader(a) == leader(b);\n    }\n\
-    \    int leader(int a) {\n        assert(0 <= a and a < n);\n        if(data[a]\
-    \ < 0) return a;\n        return leader(data[a]);\n    }\n    int size(int a)\
-    \ {\n        assert(0 <= a and a < n);\n        return (-data[leader(a)]);\n \
-    \   }\n    void undo() {\n        assert((int)history.size() >= 2);\n        data[history.top().first]\
+    \nstruct RollbackUnionFind {\n    RollbackUnionFind(const int N)\n        : n(N),\
+    \ data(N, -1), inner_snap(0) {\n    }\n    int merge(const int a, const int b)\
+    \ {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n  \
+    \      int x = leader(a), y = leader(b);\n        history.emplace(x, data[x]);\n\
+    \        history.emplace(y, data[y]);\n        if(x == y) return x;\n        if(-data[x]\
+    \ < -data[y]) swap(x, y);\n        data[x] += data[y];\n        data[y] = x;\n\
+    \        return x;\n    }\n    bool same(const int a, const int b) const {\n \
+    \       assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n       \
+    \ return leader(a) == leader(b);\n    }\n    int leader(const int a) const {\n\
+    \        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n      \
+    \  return leader(data[a]);\n    }\n    int size(const int a) const {\n       \
+    \ assert(0 <= a and a < n);\n        return (-data[leader(a)]);\n    }\n    void\
+    \ undo() {\n        assert((int)history.size() >= 2);\n        data[history.top().first]\
     \ = history.top().second;\n        history.pop();\n        data[history.top().first]\
     \ = history.top().second;\n        history.pop();\n    }\n    void snapshot()\
     \ {\n        inner_snap = (int)history.size() / 2;\n    }\n    int get_state()\
-    \ {\n        return (int)history.size() / 2;\n    }\n    void rollback(int state\
-    \ = -1) {\n        if(state == -1) state = inner_snap;\n        state *= 2;\n\
-    \        assert(state <= (int)history.size());\n        while(state < (int)history.size())\
+    \ const {\n        return (int)history.size() / 2;\n    }\n    void rollback(int\
+    \ state = -1) {\n        if(state == -1) state = inner_snap;\n        state *=\
+    \ 2;\n        assert(state <= (int)history.size());\n        while(state < (int)history.size())\
     \ undo();\n    }\n\n   private:\n    int n;\n    vector<int> data;\n    stack<pair<int,\
     \ int>> history;\n    int inner_snap;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nstruct RollbackUnionFind\
-    \ {\n    RollbackUnionFind(int N)\n        : n(N), data(N, -1), inner_snap(0)\
-    \ {\n    }\n    int merge(int a, int b) {\n        assert(0 <= a and a < n);\n\
-    \        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
+    \ {\n    RollbackUnionFind(const int N)\n        : n(N), data(N, -1), inner_snap(0)\
+    \ {\n    }\n    int merge(const int a, const int b) {\n        assert(0 <= a and\
+    \ a < n);\n        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
     \        history.emplace(x, data[x]);\n        history.emplace(y, data[y]);\n\
     \        if(x == y) return x;\n        if(-data[x] < -data[y]) swap(x, y);\n \
     \       data[x] += data[y];\n        data[y] = x;\n        return x;\n    }\n\
-    \    bool same(int a, int b) {\n        assert(0 <= a and a < n);\n        assert(0\
-    \ <= b and b < n);\n        return leader(a) == leader(b);\n    }\n    int leader(int\
-    \ a) {\n        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n\
-    \        return leader(data[a]);\n    }\n    int size(int a) {\n        assert(0\
-    \ <= a and a < n);\n        return (-data[leader(a)]);\n    }\n    void undo()\
-    \ {\n        assert((int)history.size() >= 2);\n        data[history.top().first]\
-    \ = history.top().second;\n        history.pop();\n        data[history.top().first]\
-    \ = history.top().second;\n        history.pop();\n    }\n    void snapshot()\
-    \ {\n        inner_snap = (int)history.size() / 2;\n    }\n    int get_state()\
-    \ {\n        return (int)history.size() / 2;\n    }\n    void rollback(int state\
-    \ = -1) {\n        if(state == -1) state = inner_snap;\n        state *= 2;\n\
-    \        assert(state <= (int)history.size());\n        while(state < (int)history.size())\
-    \ undo();\n    }\n\n   private:\n    int n;\n    vector<int> data;\n    stack<pair<int,\
-    \ int>> history;\n    int inner_snap;\n};"
+    \    bool same(const int a, const int b) const {\n        assert(0 <= a and a\
+    \ < n);\n        assert(0 <= b and b < n);\n        return leader(a) == leader(b);\n\
+    \    }\n    int leader(const int a) const {\n        assert(0 <= a and a < n);\n\
+    \        if(data[a] < 0) return a;\n        return leader(data[a]);\n    }\n \
+    \   int size(const int a) const {\n        assert(0 <= a and a < n);\n       \
+    \ return (-data[leader(a)]);\n    }\n    void undo() {\n        assert((int)history.size()\
+    \ >= 2);\n        data[history.top().first] = history.top().second;\n        history.pop();\n\
+    \        data[history.top().first] = history.top().second;\n        history.pop();\n\
+    \    }\n    void snapshot() {\n        inner_snap = (int)history.size() / 2;\n\
+    \    }\n    int get_state() const {\n        return (int)history.size() / 2;\n\
+    \    }\n    void rollback(int state = -1) {\n        if(state == -1) state = inner_snap;\n\
+    \        state *= 2;\n        assert(state <= (int)history.size());\n        while(state\
+    \ < (int)history.size()) undo();\n    }\n\n   private:\n    int n;\n    vector<int>\
+    \ data;\n    stack<pair<int, int>> history;\n    int inner_snap;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/rollback_union_find.hpp
   requiredBy: []
-  timestamp: '2024-04-21 23:28:22+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/others/1645.test.cpp

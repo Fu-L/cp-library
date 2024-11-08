@@ -101,7 +101,7 @@ data:
     \        res.emplace_back(down[nex[v]], down[v]);\n        return res;\n    }\n\
     };\n#line 3 \"src/data_structure/lazy_segment_tree.hpp\"\ntemplate <typename S,\
     \ auto op, auto e, typename F, auto mapping, auto composition, auto id>\nstruct\
-    \ LazySegmentTree {\n    LazySegmentTree(int N)\n        : LazySegmentTree(vector<S>(N,\
+    \ LazySegmentTree {\n    LazySegmentTree(const int N)\n        : LazySegmentTree(vector<S>(N,\
     \ e())) {}\n    LazySegmentTree(const vector<S>& v)\n        : n((int)v.size())\
     \ {\n        size = bit_ceil((unsigned int)n);\n        log = countr_zero((unsigned\
     \ int)size);\n        data = vector<S>(2 * size, e());\n        lazy = vector<F>(size,\
@@ -120,50 +120,51 @@ data:
     \ >> i);\n        }\n        S sml = e(), smr = e();\n        while(l < r) {\n\
     \            if(l & 1) sml = op(sml, data[l++]);\n            if(r & 1) smr =\
     \ op(data[--r], smr);\n            l >>= 1;\n            r >>= 1;\n        }\n\
-    \        return op(sml, smr);\n    }\n    S all_prod() {\n        return data[1];\n\
-    \    }\n    void apply(int l, int r, const F& f) {\n        assert(0 <= l and\
-    \ l <= r and r <= n);\n        if(l == r) return;\n        l += size;\n      \
-    \  r += size;\n        for(int i = log; i >= 1; --i) {\n            if(((l >>\
-    \ i) << i) != l) push(l >> i);\n            if(((r >> i) << i) != r) push((r -\
-    \ 1) >> i);\n        }\n        {\n            int l2 = l, r2 = r;\n         \
-    \   while(l < r) {\n                if(l & 1) all_apply(l++, f);\n           \
-    \     if(r & 1) all_apply(--r, f);\n                l >>= 1;\n               \
-    \ r >>= 1;\n            }\n            l = l2;\n            r = r2;\n        }\n\
-    \        for(int i = 1; i <= log; ++i) {\n            if(((l >> i) << i) != l)\
-    \ update(l >> i);\n            if(((r >> i) << i) != r) update((r - 1) >> i);\n\
-    \        }\n    }\n\n    template <bool (*g)(S)>\n    int max_right(int l) {\n\
-    \        return max_right(l, [](const S& x) { return g(x); });\n    }\n    template\
-    \ <class G>\n    int max_right(int l, const G& g) {\n        assert(0 <= l and\
-    \ l <= n);\n        assert(g(e()));\n        if(l == n) return n;\n        l +=\
-    \ size;\n        for(int i = log; i >= 1; --i) push(l >> i);\n        S sm = e();\n\
-    \        do {\n            while(l % 2 == 0) l >>= 1;\n            if(!g(op(sm,\
-    \ data[l]))) {\n                while(l < size) {\n                    push(l);\n\
-    \                    l = 2 * l;\n                    if(g(op(sm, data[l]))) {\n\
-    \                        sm = op(sm, data[l]);\n                        ++l;\n\
-    \                    }\n                }\n                return l - size;\n\
-    \            }\n            sm = op(sm, data[l]);\n            ++l;\n        }\
-    \ while((l & -l) != l);\n        return n;\n    }\n\n    template <bool (*g)(S)>\n\
-    \    int min_left(int r) {\n        return min_left(r, [](const S& x) { return\
-    \ g(x); });\n    }\n    template <class G>\n    int min_left(int r, const G& g)\
-    \ {\n        assert(0 <= r and r <= n);\n        assert(g(e()));\n        if(r\
-    \ == 0) return 0;\n        r += size;\n        for(int i = log; i >= 1; --i) push((r\
-    \ - 1) >> i);\n        S sm = e();\n        do {\n            --r;\n         \
-    \   while(r > 1 and (r % 2)) r >>= 1;\n            if(!g(op(data[r], sm))) {\n\
-    \                while(r < size) {\n                    push(r);\n           \
-    \         r = 2 * r + 1;\n                    if(g(op(data[r], sm))) {\n     \
-    \                   sm = op(data[r], sm);\n                        --r;\n    \
-    \                }\n                }\n                return r + 1 - size;\n\
-    \            }\n            sm = op(data[r], sm);\n        } while((r & -r) !=\
-    \ r);\n        return 0;\n    }\n\n   private:\n    int n, size, log;\n    vector<S>\
-    \ data;\n    vector<F> lazy;\n    inline void update(int k) {\n        data[k]\
-    \ = op(data[2 * k], data[2 * k + 1]);\n    }\n    inline void all_apply(int k,\
-    \ F f) {\n        data[k] = mapping(f, data[k]);\n        if(k < size) {\n   \
-    \         lazy[k] = composition(f, lazy[k]);\n        }\n    }\n    inline void\
-    \ push(int k) {\n        all_apply(2 * k, lazy[k]);\n        all_apply(2 * k +\
-    \ 1, lazy[k]);\n        lazy[k] = id();\n    }\n    inline unsigned int bit_ceil(unsigned\
-    \ int n) {\n        unsigned int res = 1;\n        while(res < n) res *= 2;\n\
-    \        return res;\n    }\n    inline int countr_zero(unsigned int n) {\n  \
-    \      return __builtin_ctz(n);\n    }\n};\n#line 6 \"verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp\"\
+    \        return op(sml, smr);\n    }\n    S all_prod() const {\n        return\
+    \ data[1];\n    }\n    void apply(int l, int r, const F& f) {\n        assert(0\
+    \ <= l and l <= r and r <= n);\n        if(l == r) return;\n        l += size;\n\
+    \        r += size;\n        for(int i = log; i >= 1; --i) {\n            if(((l\
+    \ >> i) << i) != l) push(l >> i);\n            if(((r >> i) << i) != r) push((r\
+    \ - 1) >> i);\n        }\n        {\n            int l2 = l, r2 = r;\n       \
+    \     while(l < r) {\n                if(l & 1) all_apply(l++, f);\n         \
+    \       if(r & 1) all_apply(--r, f);\n                l >>= 1;\n             \
+    \   r >>= 1;\n            }\n            l = l2;\n            r = r2;\n      \
+    \  }\n        for(int i = 1; i <= log; ++i) {\n            if(((l >> i) << i)\
+    \ != l) update(l >> i);\n            if(((r >> i) << i) != r) update((r - 1) >>\
+    \ i);\n        }\n    }\n\n    template <bool (*g)(S)>\n    int max_right(const\
+    \ int l) {\n        return max_right(l, [](const S& x) { return g(x); });\n  \
+    \  }\n    template <class G>\n    int max_right(int l, const G& g) {\n       \
+    \ assert(0 <= l and l <= n);\n        assert(g(e()));\n        if(l == n) return\
+    \ n;\n        l += size;\n        for(int i = log; i >= 1; --i) push(l >> i);\n\
+    \        S sm = e();\n        do {\n            while(l % 2 == 0) l >>= 1;\n \
+    \           if(!g(op(sm, data[l]))) {\n                while(l < size) {\n   \
+    \                 push(l);\n                    l = 2 * l;\n                 \
+    \   if(g(op(sm, data[l]))) {\n                        sm = op(sm, data[l]);\n\
+    \                        ++l;\n                    }\n                }\n    \
+    \            return l - size;\n            }\n            sm = op(sm, data[l]);\n\
+    \            ++l;\n        } while((l & -l) != l);\n        return n;\n    }\n\
+    \n    template <bool (*g)(S)>\n    int min_left(const int r) {\n        return\
+    \ min_left(r, [](const S& x) { return g(x); });\n    }\n    template <class G>\n\
+    \    int min_left(int r, const G& g) {\n        assert(0 <= r and r <= n);\n \
+    \       assert(g(e()));\n        if(r == 0) return 0;\n        r += size;\n  \
+    \      for(int i = log; i >= 1; --i) push((r - 1) >> i);\n        S sm = e();\n\
+    \        do {\n            --r;\n            while(r > 1 and (r % 2)) r >>= 1;\n\
+    \            if(!g(op(data[r], sm))) {\n                while(r < size) {\n  \
+    \                  push(r);\n                    r = 2 * r + 1;\n            \
+    \        if(g(op(data[r], sm))) {\n                        sm = op(data[r], sm);\n\
+    \                        --r;\n                    }\n                }\n    \
+    \            return r + 1 - size;\n            }\n            sm = op(data[r],\
+    \ sm);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n   private:\n\
+    \    int n, size, log;\n    vector<S> data;\n    vector<F> lazy;\n    inline void\
+    \ update(const int k) {\n        data[k] = op(data[2 * k], data[2 * k + 1]);\n\
+    \    }\n    inline void all_apply(const int k, const F& f) {\n        data[k]\
+    \ = mapping(f, data[k]);\n        if(k < size) {\n            lazy[k] = composition(f,\
+    \ lazy[k]);\n        }\n    }\n    inline void push(const int k) {\n        all_apply(2\
+    \ * k, lazy[k]);\n        all_apply(2 * k + 1, lazy[k]);\n        lazy[k] = id();\n\
+    \    }\n    inline unsigned int bit_ceil(const unsigned int n) const {\n     \
+    \   unsigned int res = 1;\n        while(res < n) res *= 2;\n        return res;\n\
+    \    }\n    inline int countr_zero(const unsigned int n) const {\n        return\
+    \ __builtin_ctz(n);\n    }\n};\n#line 6 \"verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp\"\
     \nstruct S {\n    long long value;\n    long long size;\n};\nusing F = long long;\n\
     S op(const S& a, const S& b) {\n    return {a.value + b.value, a.size + b.size};\n\
     }\nS e() {\n    return {0, 0};\n}\nS mapping(const F& f, const S& x) {\n    return\
@@ -209,7 +210,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
   requiredBy: []
-  timestamp: '2024-11-08 23:56:53+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp

@@ -66,33 +66,34 @@ data:
     \ constexpr u64 modulo(const u128& x) {\n        const u64 val = (x >> 61) + (x\
     \ & m);\n        return val >= m ? val - m : val;\n    }\n};\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\
     \ntemplate <typename T>\nstruct FenwickTree {\n    FenwickTree(int N)\n      \
-    \  : n(N), data(N) {}\n    void add(int p, T x) {\n        assert(0 <= p and p\
-    \ < n);\n        ++p;\n        while(p <= n) {\n            data[p - 1] += x;\n\
-    \            p += p & -p;\n        }\n    }\n    T sum(int l, int r) const {\n\
-    \        assert(0 <= l and l <= r and r <= n);\n        return sum(r) - sum(l);\n\
-    \    }\n    T get(int x) const {\n        assert(0 <= x and x < n);\n        return\
-    \ sum(x + 1) - sum(x);\n    }\n\n   private:\n    int n;\n    vector<T> data;\n\
-    \    inline T sum(int r) const {\n        T s = 0;\n        while(r > 0) {\n \
-    \           s += data[r - 1];\n            r -= r & -r;\n        }\n        return\
-    \ s;\n    }\n};\n#line 5 \"src/string/dynamic_rolling_hash.hpp\"\nstruct DynamicRollingHash\
-    \ {\n    using mint = Modint_2_61m1;\n    DynamicRollingHash(const string& s,\
-    \ unsigned long long BASE = 0)\n        : len((int)s.size()), pow(len + 1), inv_pow(len\
-    \ + 1), hash(len) {\n        if(BASE == 0) {\n            mt19937 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
-    \            uniform_int_distribution<unsigned long long> dist(1ull << 10, 1ull\
-    \ << 60);\n            BASE = dist(mt);\n        }\n        base = BASE;\n   \
-    \     pow[0] = 1;\n        for(int i = 0; i < len; ++i) {\n            pow[i +\
-    \ 1] = pow[i] * base;\n        }\n        inv = base.inv();\n        inv_pow[0]\
-    \ = 1;\n        for(int i = 0; i < len; ++i) {\n            inv_pow[i + 1] = inv_pow[i]\
-    \ * inv;\n        }\n        for(int i = 0; i < len; ++i) {\n            hash.add(i,\
-    \ pow[i] * s[i]);\n        }\n    }\n    unsigned long long get(const int lower,\
-    \ const int upper) const {\n        assert(0 <= lower and lower <= upper and upper\
-    \ <= len);\n        return (hash.sum(lower, upper) * inv_pow[lower]).val();\n\
-    \    }\n    unsigned long long get_hash(const string& t) const {\n        mint\
-    \ res = 0;\n        for(int i = 0; i < (int)t.size(); ++i) {\n            res\
-    \ += pow[i] * t[i];\n        }\n        return res.val();\n    }\n    void set(const\
-    \ int idx, const char c) {\n        assert(0 <= idx and idx < len);\n        hash.add(idx,\
-    \ pow[idx] * c - hash.get(idx));\n    }\n\n   private:\n    int len;\n    mint\
-    \ base, inv;\n    vector<mint> pow, inv_pow;\n    FenwickTree<mint> hash;\n};\n"
+    \  : n(N), data(N) {}\n    void add(int p, const T x) {\n        assert(0 <= p\
+    \ and p < n);\n        ++p;\n        while(p <= n) {\n            data[p - 1]\
+    \ += x;\n            p += p & -p;\n        }\n    }\n    T sum(const int l, const\
+    \ int r) const {\n        assert(0 <= l and l <= r and r <= n);\n        return\
+    \ sum(r) - sum(l);\n    }\n    T get(const int x) const {\n        assert(0 <=\
+    \ x and x < n);\n        return sum(x + 1) - sum(x);\n    }\n\n   private:\n \
+    \   int n;\n    vector<T> data;\n    inline T sum(int r) const {\n        T s\
+    \ = 0;\n        while(r > 0) {\n            s += data[r - 1];\n            r -=\
+    \ r & -r;\n        }\n        return s;\n    }\n};\n#line 5 \"src/string/dynamic_rolling_hash.hpp\"\
+    \nstruct DynamicRollingHash {\n    using mint = Modint_2_61m1;\n    DynamicRollingHash(const\
+    \ string& s, unsigned long long BASE = 0)\n        : len((int)s.size()), pow(len\
+    \ + 1), inv_pow(len + 1), hash(len) {\n        if(BASE == 0) {\n            mt19937\
+    \ mt(chrono::steady_clock::now().time_since_epoch().count());\n            uniform_int_distribution<unsigned\
+    \ long long> dist(1ull << 10, 1ull << 60);\n            BASE = dist(mt);\n   \
+    \     }\n        base = BASE;\n        pow[0] = 1;\n        for(int i = 0; i <\
+    \ len; ++i) {\n            pow[i + 1] = pow[i] * base;\n        }\n        inv\
+    \ = base.inv();\n        inv_pow[0] = 1;\n        for(int i = 0; i < len; ++i)\
+    \ {\n            inv_pow[i + 1] = inv_pow[i] * inv;\n        }\n        for(int\
+    \ i = 0; i < len; ++i) {\n            hash.add(i, pow[i] * s[i]);\n        }\n\
+    \    }\n    unsigned long long get(const int lower, const int upper) const {\n\
+    \        assert(0 <= lower and lower <= upper and upper <= len);\n        return\
+    \ (hash.sum(lower, upper) * inv_pow[lower]).val();\n    }\n    unsigned long long\
+    \ get_hash(const string& t) const {\n        mint res = 0;\n        for(int i\
+    \ = 0; i < (int)t.size(); ++i) {\n            res += pow[i] * t[i];\n        }\n\
+    \        return res.val();\n    }\n    void set(const int idx, const char c) {\n\
+    \        assert(0 <= idx and idx < len);\n        hash.add(idx, pow[idx] * c -\
+    \ hash.get(idx));\n    }\n\n   private:\n    int len;\n    mint base, inv;\n \
+    \   vector<mint> pow, inv_pow;\n    FenwickTree<mint> hash;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/modint_2_61m1.hpp\"\
     \n#include \"../data_structure/fenwick_tree.hpp\"\nstruct DynamicRollingHash {\n\
     \    using mint = Modint_2_61m1;\n    DynamicRollingHash(const string& s, unsigned\
@@ -120,7 +121,7 @@ data:
   isVerificationFile: false
   path: src/string/dynamic_rolling_hash.hpp
   requiredBy: []
-  timestamp: '2024-11-07 15:03:11+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/string/dynamic_rolling_hash.test.cpp

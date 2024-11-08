@@ -26,27 +26,27 @@ data:
     \ ++i) {\n            table.push_back(vector<S>(n, e()));\n            for(int\
     \ j = 0; j + (1 << i) <= n; ++j) {\n                table[i][j] = op(table[i -\
     \ 1][j], table[i - 1][j + (1 << (i - 1))]);\n            }\n        }\n    }\n\
-    \    S prod(int l, int r) const {\n        assert(0 <= l and l <= r and r <= n);\n\
-    \        if(l == r) return e();\n        int b = 31 - __builtin_clz(r - l);\n\
-    \        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n\
-    \    int n;\n    vector<vector<S>> table;\n};\n"
+    \    S prod(const int l, const int r) const {\n        assert(0 <= l and l <=\
+    \ r and r <= n);\n        if(l == r) return e();\n        const int b = 31 - __builtin_clz(r\
+    \ - l);\n        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n  \
+    \ private:\n    int n;\n    vector<vector<S>> table;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SparseTable {\n    SparseTable(const vector<S>& v)\n\
     \        : n((int)v.size()) {\n        int b = 1;\n        while((1 << b) <= n)\
     \ ++b;\n        table.push_back(v);\n        for(int i = 1; i < b; ++i) {\n  \
     \          table.push_back(vector<S>(n, e()));\n            for(int j = 0; j +\
     \ (1 << i) <= n; ++j) {\n                table[i][j] = op(table[i - 1][j], table[i\
-    \ - 1][j + (1 << (i - 1))]);\n            }\n        }\n    }\n    S prod(int\
-    \ l, int r) const {\n        assert(0 <= l and l <= r and r <= n);\n        if(l\
-    \ == r) return e();\n        int b = 31 - __builtin_clz(r - l);\n        return\
-    \ op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n    int n;\n\
-    \    vector<vector<S>> table;\n};"
+    \ - 1][j + (1 << (i - 1))]);\n            }\n        }\n    }\n    S prod(const\
+    \ int l, const int r) const {\n        assert(0 <= l and l <= r and r <= n);\n\
+    \        if(l == r) return e();\n        const int b = 31 - __builtin_clz(r -\
+    \ l);\n        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n\
+    \    int n;\n    vector<vector<S>> table;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/sparse_table.hpp
   requiredBy: []
-  timestamp: '2024-10-30 22:43:34+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_rmq.test.cpp

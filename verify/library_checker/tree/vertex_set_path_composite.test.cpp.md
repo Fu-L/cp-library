@@ -155,7 +155,7 @@ data:
     \ return {{down[u] + 1, down[v]}};\n        auto res = descend(u, par[nex[v]]);\n\
     \        res.emplace_back(down[nex[v]], down[v]);\n        return res;\n    }\n\
     };\n#line 3 \"src/data_structure/segment_tree.hpp\"\ntemplate <typename S, auto\
-    \ op, auto e>\nstruct SegmentTree {\n    SegmentTree(int N)\n        : SegmentTree(vector<S>(N,\
+    \ op, auto e>\nstruct SegmentTree {\n    SegmentTree(const int N)\n        : SegmentTree(vector<S>(N,\
     \ e())) {}\n    SegmentTree(const vector<S>& v)\n        : n((int)v.size()) {\n\
     \        size = bit_ceil((unsigned int)n);\n        log = countr_zero((unsigned\
     \ int)size);\n        data = vector<S>(2 * size, e());\n        for(int i = 0;\
@@ -163,15 +163,15 @@ data:
     \ i = size - 1; i >= 1; --i) {\n            update(i);\n        }\n    }\n   \
     \ void set(int p, const S& x) {\n        assert(0 <= p and p < n);\n        p\
     \ += size;\n        data[p] = x;\n        for(int i = 1; i <= log; ++i) {\n  \
-    \          update(p >> i);\n        }\n    }\n    S get(int p) const {\n     \
-    \   assert(0 <= p and p < n);\n        return data[p + size];\n    }\n    S prod(int\
-    \ l, int r) const {\n        assert(0 <= l and l <= r and r <= n);\n        S\
-    \ sml = e(), smr = e();\n        l += size;\n        r += size;\n        while(l\
-    \ < r) {\n            if(l & 1) sml = op(sml, data[l++]);\n            if(r &\
-    \ 1) smr = op(data[--r], smr);\n            l >>= 1;\n            r >>= 1;\n \
-    \       }\n        return op(sml, smr);\n    }\n    S all_prod() const {\n   \
-    \     return data[1];\n    }\n\n    template <bool (*f)(S)>\n    int max_right(int\
-    \ l) const {\n        return max_right(l, [](const S& x) { return f(x); });\n\
+    \          update(p >> i);\n        }\n    }\n    S get(const int p) const {\n\
+    \        assert(0 <= p and p < n);\n        return data[p + size];\n    }\n  \
+    \  S prod(int l, int r) const {\n        assert(0 <= l and l <= r and r <= n);\n\
+    \        S sml = e(), smr = e();\n        l += size;\n        r += size;\n   \
+    \     while(l < r) {\n            if(l & 1) sml = op(sml, data[l++]);\n      \
+    \      if(r & 1) smr = op(data[--r], smr);\n            l >>= 1;\n           \
+    \ r >>= 1;\n        }\n        return op(sml, smr);\n    }\n    S all_prod() const\
+    \ {\n        return data[1];\n    }\n\n    template <bool (*f)(S)>\n    int max_right(const\
+    \ int l) const {\n        return max_right(l, [](const S& x) { return f(x); });\n\
     \    }\n    template <class F>\n    int max_right(int l, const F& f) const {\n\
     \        assert(0 <= l and l <= n);\n        assert(f(e()));\n        if(l ==\
     \ n) return n;\n        l += size;\n        S sm = e();\n        do {\n      \
@@ -181,22 +181,23 @@ data:
     \                        ++l;\n                    }\n                }\n    \
     \            return l - size;\n            }\n            sm = op(sm, data[l]);\n\
     \            ++l;\n        } while((l & -l) != l);\n        return n;\n    }\n\
-    \n    template <bool (*f)(S)>\n    int min_left(int r) const {\n        return\
-    \ min_left(r, [](const S& x) { return f(x); });\n    }\n    template <class F>\n\
-    \    int min_left(int r, const F& f) const {\n        assert(0 <= r and r <= n);\n\
-    \        assert(f(e()));\n        if(r == 0) return 0;\n        r += size;\n \
-    \       S sm = e();\n        do {\n            --r;\n            while(r > 1 and\
-    \ (r % 2)) r >>= 1;\n            if(!f(op(data[r], sm))) {\n                while(r\
-    \ < size) {\n                    r = 2 * r + 1;\n                    if(f(op(data[r],\
-    \ sm))) {\n                        sm = op(data[r], sm);\n                   \
-    \     --r;\n                    }\n                }\n                return r\
-    \ + 1 - size;\n            }\n            sm = op(data[r], sm);\n        } while((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n   private:\n    int n, size, log;\n\
-    \    vector<S> data;\n    inline void update(int k) {\n        data[k] = op(data[2\
-    \ * k], data[2 * k + 1]);\n    }\n    inline unsigned int bit_ceil(unsigned int\
-    \ n) {\n        unsigned int res = 1;\n        while(res < n) res *= 2;\n    \
-    \    return res;\n    }\n    inline int countr_zero(unsigned int n) {\n      \
-    \  return __builtin_ctz(n);\n    }\n};\n#line 7 \"verify/library_checker/tree/vertex_set_path_composite.test.cpp\"\
+    \n    template <bool (*f)(S)>\n    int min_left(const int r) const {\n       \
+    \ return min_left(r, [](const S& x) { return f(x); });\n    }\n    template <class\
+    \ F>\n    int min_left(int r, const F& f) const {\n        assert(0 <= r and r\
+    \ <= n);\n        assert(f(e()));\n        if(r == 0) return 0;\n        r +=\
+    \ size;\n        S sm = e();\n        do {\n            --r;\n            while(r\
+    \ > 1 and (r % 2)) r >>= 1;\n            if(!f(op(data[r], sm))) {\n         \
+    \       while(r < size) {\n                    r = 2 * r + 1;\n              \
+    \      if(f(op(data[r], sm))) {\n                        sm = op(data[r], sm);\n\
+    \                        --r;\n                    }\n                }\n    \
+    \            return r + 1 - size;\n            }\n            sm = op(data[r],\
+    \ sm);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n   private:\n\
+    \    int n, size, log;\n    vector<S> data;\n    inline void update(const int\
+    \ k) {\n        data[k] = op(data[2 * k], data[2 * k + 1]);\n    }\n    inline\
+    \ unsigned int bit_ceil(const unsigned int n) const {\n        unsigned int res\
+    \ = 1;\n        while(res < n) res *= 2;\n        return res;\n    }\n    inline\
+    \ int countr_zero(const unsigned int n) const {\n        return __builtin_ctz(n);\n\
+    \    }\n};\n#line 7 \"verify/library_checker/tree/vertex_set_path_composite.test.cpp\"\
     \nusing mint = modint998244353;\nstruct S {\n    mint a, b;\n};\nS op1(S x, S\
     \ y) {\n    return {x.a * y.a, x.b * y.a + y.b};\n}\nS op2(S x, S y) {\n    return\
     \ {x.a * y.a, y.b * x.a + x.b};\n}\nS e() {\n    return {1, 0};\n}\nint main(void)\
@@ -249,7 +250,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-11-08 23:56:53+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/vertex_set_path_composite.test.cpp

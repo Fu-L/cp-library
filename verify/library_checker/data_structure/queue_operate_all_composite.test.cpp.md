@@ -85,14 +85,14 @@ data:
     \ {\n            push_s0(x);\n            transfer();\n        } else {\n    \
     \        push_s1(x);\n        }\n    }\n    void pop() {\n        if(a0.empty())\
     \ transfer();\n        a0.pop_back();\n        r0.pop_back();\n        f0 = r0.empty()\
-    \ ? e() : r0.back();\n    }\n    S prod() {\n        return op(f0, f1);\n    }\n\
-    \n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void push_s0(const\
-    \ S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0 = op(x, f0));\n\
-    \    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n        r1.emplace_back(f1\
-    \ = op(f1, x));\n    }\n    void transfer() {\n        while(!a1.empty()) {\n\
-    \            push_s0(a1.back());\n            a1.pop_back();\n        }\n    \
-    \    while(!r1.empty()) r1.pop_back();\n        f1 = e();\n    }\n};\n#line 5\
-    \ \"verify/library_checker/data_structure/queue_operate_all_composite.test.cpp\"\
+    \ ? e() : r0.back();\n    }\n    S prod() const {\n        return op(f0, f1);\n\
+    \    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void\
+    \ push_s0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0\
+    \ = op(x, f0));\n    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n\
+    \        r1.emplace_back(f1 = op(f1, x));\n    }\n    void transfer() {\n    \
+    \    while(!a1.empty()) {\n            push_s0(a1.back());\n            a1.pop_back();\n\
+    \        }\n        while(!r1.empty()) r1.pop_back();\n        f1 = e();\n   \
+    \ }\n};\n#line 5 \"verify/library_checker/data_structure/queue_operate_all_composite.test.cpp\"\
     \nusing mint = modint998244353;\nstruct S {\n    mint a, b;\n};\nS op(S x, S y)\
     \ {\n    return {x.a * y.a, x.b * y.a + y.b};\n}\nS e() {\n    return {1, 0};\n\
     }\nint main(void) {\n    SlideWindowAggregation<S, op, e> swag;\n    int q;\n\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-10-30 22:43:34+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp

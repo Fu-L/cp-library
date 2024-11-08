@@ -27,7 +27,7 @@ data:
     \ ? a0.front() : a1.back();\n    }\n    void pop_front() {\n        if(a0.empty())\
     \ rebalance();\n        assert(!a0.empty());\n        a0.pop_back(), r0.pop_back();\n\
     \    }\n    void pop_back() {\n        if(a1.empty()) rebalance();\n        assert(!a1.empty());\n\
-    \        a1.pop_back(), r1.pop_back();\n    }\n    S prod() {\n        return\
+    \        a1.pop_back(), r1.pop_back();\n    }\n    S prod() const {\n        return\
     \ op(get0(), get1());\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n \
     \   S get0() const {\n        return r0.empty() ? e() : r0.back();\n    }\n  \
     \  S get1() const {\n        return r1.empty() ? e() : r1.back();\n    }\n   \
@@ -47,7 +47,7 @@ data:
     \ : a1.back();\n    }\n    void pop_front() {\n        if(a0.empty()) rebalance();\n\
     \        assert(!a0.empty());\n        a0.pop_back(), r0.pop_back();\n    }\n\
     \    void pop_back() {\n        if(a1.empty()) rebalance();\n        assert(!a1.empty());\n\
-    \        a1.pop_back(), r1.pop_back();\n    }\n    S prod() {\n        return\
+    \        a1.pop_back(), r1.pop_back();\n    }\n    S prod() const {\n        return\
     \ op(get0(), get1());\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n \
     \   S get0() const {\n        return r0.empty() ? e() : r0.back();\n    }\n  \
     \  S get1() const {\n        return r1.empty() ? e() : r1.back();\n    }\n   \
@@ -64,7 +64,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/slide_window_aggregation_deque.hpp
   requiredBy: []
-  timestamp: '2024-10-30 22:43:34+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp

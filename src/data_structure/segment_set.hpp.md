@@ -20,50 +20,50 @@ data:
     \ntemplate <typename T>\nstruct SegmentSet {\n    SegmentSet() = default;\n  \
     \  using const_iterator = typename map<T, T>::const_iterator;\n    const_iterator\
     \ begin() const {\n        return st.begin();\n    }\n    const_iterator end()\
-    \ const {\n        return st.end();\n    }\n    const_iterator find(T x) const\
-    \ {\n        auto it = st.upper_bound(x);\n        if(it == st.begin() or (--it)->second\
-    \ <= x) return st.end();\n        return it;\n    }\n    const_iterator lower_bound(T\
-    \ x) const {\n        auto it = st.lower_bound(x);\n        if(it == st.begin()\
-    \ or prev(it)->second <= x) return it;\n        return prev(it);\n    }\n    void\
-    \ insert(T l, T r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
+    \ const {\n        return st.end();\n    }\n    const_iterator find(const T x)\
+    \ const {\n        auto it = st.upper_bound(x);\n        if(it == st.begin() or\
+    \ (--it)->second <= x) return st.end();\n        return it;\n    }\n    const_iterator\
+    \ lower_bound(const T x) const {\n        auto it = st.lower_bound(x);\n     \
+    \   if(it == st.begin() or prev(it)->second <= x) return it;\n        return prev(it);\n\
+    \    }\n    void insert(T l, T r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
     \        if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L != R)\
     \ {\n            l = min(l, L->first);\n            r = max(r, prev(R)->second);\n\
-    \            st.erase(L, R);\n        }\n        st[l] = r;\n    }\n    void erase(T\
-    \ l, T r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n    \
-    \    if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L == R) return;\n\
-    \        T nl = min(l, L->first), nr = max(r, prev(R)->second);\n        st.erase(L,\
-    \ R);\n        if(nl < l) st[nl] = l;\n        if(r < nr) st[r] = nr;\n    }\n\
-    \    T next(T x) const {\n        auto it = this->lower_bound(x);\n        if(it\
-    \ == this->end()) return numeric_limits<T>::max();\n        return max<T>(x, it->first);\n\
-    \    }\n    size_t size() const {\n        return st.size();\n    }\n\n   private:\n\
-    \    map<T, T> st;\n};\n"
+    \            st.erase(L, R);\n        }\n        st[l] = r;\n    }\n    void erase(const\
+    \ T l, const T r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
+    \        if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L == R)\
+    \ return;\n        const T nl = min(l, L->first), nr = max(r, prev(R)->second);\n\
+    \        st.erase(L, R);\n        if(nl < l) st[nl] = l;\n        if(r < nr) st[r]\
+    \ = nr;\n    }\n    T next(const T x) const {\n        auto it = this->lower_bound(x);\n\
+    \        if(it == this->end()) return numeric_limits<T>::max();\n        return\
+    \ max<T>(x, it->first);\n    }\n    size_t size() const {\n        return st.size();\n\
+    \    }\n\n   private:\n    map<T, T> st;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct SegmentSet {\n    SegmentSet() = default;\n    using const_iterator = typename\
     \ map<T, T>::const_iterator;\n    const_iterator begin() const {\n        return\
     \ st.begin();\n    }\n    const_iterator end() const {\n        return st.end();\n\
-    \    }\n    const_iterator find(T x) const {\n        auto it = st.upper_bound(x);\n\
+    \    }\n    const_iterator find(const T x) const {\n        auto it = st.upper_bound(x);\n\
     \        if(it == st.begin() or (--it)->second <= x) return st.end();\n      \
-    \  return it;\n    }\n    const_iterator lower_bound(T x) const {\n        auto\
-    \ it = st.lower_bound(x);\n        if(it == st.begin() or prev(it)->second <=\
-    \ x) return it;\n        return prev(it);\n    }\n    void insert(T l, T r) {\n\
-    \        auto L = st.upper_bound(l), R = st.upper_bound(r);\n        if(L != st.begin()\
-    \ and l <= prev(L)->second) --L;\n        if(L != R) {\n            l = min(l,\
-    \ L->first);\n            r = max(r, prev(R)->second);\n            st.erase(L,\
-    \ R);\n        }\n        st[l] = r;\n    }\n    void erase(T l, T r) {\n    \
-    \    auto L = st.upper_bound(l), R = st.upper_bound(r);\n        if(L != st.begin()\
-    \ and l <= prev(L)->second) --L;\n        if(L == R) return;\n        T nl = min(l,\
-    \ L->first), nr = max(r, prev(R)->second);\n        st.erase(L, R);\n        if(nl\
-    \ < l) st[nl] = l;\n        if(r < nr) st[r] = nr;\n    }\n    T next(T x) const\
-    \ {\n        auto it = this->lower_bound(x);\n        if(it == this->end()) return\
-    \ numeric_limits<T>::max();\n        return max<T>(x, it->first);\n    }\n   \
-    \ size_t size() const {\n        return st.size();\n    }\n\n   private:\n   \
-    \ map<T, T> st;\n};"
+    \  return it;\n    }\n    const_iterator lower_bound(const T x) const {\n    \
+    \    auto it = st.lower_bound(x);\n        if(it == st.begin() or prev(it)->second\
+    \ <= x) return it;\n        return prev(it);\n    }\n    void insert(T l, T r)\
+    \ {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n        if(L\
+    \ != st.begin() and l <= prev(L)->second) --L;\n        if(L != R) {\n       \
+    \     l = min(l, L->first);\n            r = max(r, prev(R)->second);\n      \
+    \      st.erase(L, R);\n        }\n        st[l] = r;\n    }\n    void erase(const\
+    \ T l, const T r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
+    \        if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L == R)\
+    \ return;\n        const T nl = min(l, L->first), nr = max(r, prev(R)->second);\n\
+    \        st.erase(L, R);\n        if(nl < l) st[nl] = l;\n        if(r < nr) st[r]\
+    \ = nr;\n    }\n    T next(const T x) const {\n        auto it = this->lower_bound(x);\n\
+    \        if(it == this->end()) return numeric_limits<T>::max();\n        return\
+    \ max<T>(x, it->first);\n    }\n    size_t size() const {\n        return st.size();\n\
+    \    }\n\n   private:\n    map<T, T> st;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/segment_set.hpp
   requiredBy: []
-  timestamp: '2024-01-03 04:25:42+09:00'
+  timestamp: '2024-11-09 00:13:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data_structure/segment_set.hpp
