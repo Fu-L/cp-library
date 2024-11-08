@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -53,7 +53,7 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
-    \nusing Real = long double;\nconst Real EPS = Real(1e-8), PI = acos(Real(-1.0));\n\
+    \nusing Real = long double;\nconstexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\n\
     int sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
     \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
     \ - b) == 0;\n}\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\n\
@@ -76,16 +76,16 @@ data:
     \ c)) == -1) return -1;\n    if(sign(dot(b, c)) == -1) return +2;\n    if(norm(b)\
     \ < norm(c)) return -2;\n    return 0;\n}\nReal closest_pair(vector<Point> ps)\
     \ {\n    if((int)ps.size() <= 1) return Real(1e18);\n    sort(ps.begin(), ps.end(),\
-    \ comp_x);\n    vector<Point> memo(ps.size());\n    auto func = [&](auto& func,\
-    \ int l, int r) -> Real {\n        if(r - l <= 1) return Real(1e18);\n       \
-    \ int m = (l + r) >> 1;\n        Real x = ps[m].real();\n        Real res = min(func(func,\
-    \ l, m), func(func, m, r));\n        inplace_merge(ps.begin() + l, ps.begin()\
-    \ + m, ps.begin() + r, comp_y);\n        int cnt = 0;\n        for(int i = l;\
-    \ i < r; ++i) {\n            if(abs(ps[i].real() - x) >= res) continue;\n    \
-    \        for(int j = 0; j < cnt; ++j) {\n                Point d = ps[i] - memo[cnt\
-    \ - j - 1];\n                if(d.imag() >= res) break;\n                res =\
-    \ min(res, abs(d));\n            }\n            memo[cnt++] = ps[i];\n       \
-    \ }\n        return res;\n    };\n    return func(func, 0, (int)ps.size());\n\
+    \ comp_x);\n    vector<Point> memo(ps.size());\n    auto func = [&](const auto&\
+    \ func, const int l, const int r) -> Real {\n        if(r - l <= 1) return Real(1e18);\n\
+    \        const int m = (l + r) >> 1;\n        const Real x = ps[m].real();\n \
+    \       Real res = min(func(func, l, m), func(func, m, r));\n        inplace_merge(ps.begin()\
+    \ + l, ps.begin() + m, ps.begin() + r, comp_y);\n        int cnt = 0;\n      \
+    \  for(int i = l; i < r; ++i) {\n            if(abs(ps[i].real() - x) >= res)\
+    \ continue;\n            for(int j = 0; j < cnt; ++j) {\n                const\
+    \ Point d = ps[i] - memo[cnt - j - 1];\n                if(d.imag() >= res) break;\n\
+    \                res = min(res, abs(d));\n            }\n            memo[cnt++]\
+    \ = ps[i];\n        }\n        return res;\n    };\n    return func(func, 0, (int)ps.size());\n\
     }\n#line 5 \"src/geometry/line_and_segment_2d.hpp\"\nstruct Line {\n    Point\
     \ a, b;\n    Line() = default;\n    Line(const Point& a, const Point& b)\n   \
     \     : a(a), b(b) {}\n};\nusing Segment = Line;\nbool is_parallel(const Line&\
@@ -270,7 +270,7 @@ data:
   isVerificationFile: false
   path: src/geometry/circle_2d.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 00:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp

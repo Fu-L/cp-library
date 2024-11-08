@@ -16,10 +16,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/prime_factors.hpp
     title: prime_factors
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

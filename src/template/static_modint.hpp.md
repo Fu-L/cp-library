@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -117,7 +117,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
     title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -129,9 +129,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -256,7 +256,7 @@ data:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series_ll.hpp
   timestamp: '2024-01-03 04:25:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

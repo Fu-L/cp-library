@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -101,14 +101,15 @@ data:
     \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
-    \nusing Real = long double;\nconst Real EPS = Real(1e-8), PI = acos(Real(-1.0));\n\
+    \nusing Real = long double;\nconstexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\n\
     int sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
     \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
     \ - b) == 0;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nusing Real = long double;\n\
-    const Real EPS = Real(1e-8), PI = acos(Real(-1.0));\nint sign(const Real& r) {\n\
-    \    if(r <= -EPS) return -1;\n    if(r >= +EPS) return +1;\n    return 0;\n}\n\
-    bool eq(const Real& a, const Real& b) {\n    return sign(a - b) == 0;\n}"
+    constexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\nint\
+    \ sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
+    \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
+    \ - b) == 0;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
@@ -118,7 +119,7 @@ data:
   - src/geometry/circle_2d.hpp
   - src/geometry/polygon_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 00:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp

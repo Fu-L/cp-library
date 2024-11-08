@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -33,37 +33,38 @@ data:
     \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
     \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/geometry/template.hpp\"\nusing Real = long double;\nconst Real EPS\
-    \ = Real(1e-8), PI = acos(Real(-1.0));\nint sign(const Real& r) {\n    if(r <=\
-    \ -EPS) return -1;\n    if(r >= +EPS) return +1;\n    return 0;\n}\nbool eq(const\
-    \ Real& a, const Real& b) {\n    return sign(a - b) == 0;\n}\n#line 4 \"src/geometry/point_2d.hpp\"\
-    \nusing Point = complex<Real>;\nistream& operator>>(istream& is, Point& p) {\n\
-    \    Real a, b;\n    is >> a >> b;\n    p = Point(a, b);\n    return is;\n}\n\
-    ostream& operator<<(ostream& os, const Point& p) {\n    return os << p.real()\
-    \ << \" \" << p.imag();\n}\nPoint operator*(const Point& p, const Real& d) {\n\
-    \    return Point(p.real() * d, p.imag() * d);\n}\nPoint operator/(const Point&\
-    \ p, const Real& d) {\n    return Point(p.real() / d, p.imag() / d);\n}\nPoint\
-    \ rot(const Point& p, const Real& theta) {\n    return p * Point(cos(theta), sin(theta));\n\
-    }\nReal dot(const Point& p1, const Point& p2) {\n    return (conj(p1) * p2).real();\n\
-    }\nReal cross(const Point& p1, const Point& p2) {\n    return (conj(p1) * p2).imag();\n\
-    }\nReal dist(const Point& p1, const Point& p2) {\n    return abs(p1 - p2);\n}\n\
-    bool comp_x(const Point& p1, const Point& p2) {\n    return eq(p1.real(), p2.real())\
-    \ ? p1.imag() < p2.imag() : p1.real() < p2.real();\n}\nbool comp_y(const Point&\
-    \ p1, const Point& p2) {\n    return eq(p1.imag(), p2.imag()) ? p1.real() < p2.real()\
-    \ : p1.imag() < p2.imag();\n}\nbool comp_arg(const Point& p1, const Point& p2)\
-    \ {\n    return arg(p1) < arg(p2);\n}\nint ccw(const Point& a, Point b, Point\
-    \ c) {\n    b -= a;\n    c -= a;\n    if(sign(cross(b, c)) == 1) return 1;\n \
-    \   if(sign(cross(b, c)) == -1) return -1;\n    if(sign(dot(b, c)) == -1) return\
-    \ +2;\n    if(norm(b) < norm(c)) return -2;\n    return 0;\n}\nReal closest_pair(vector<Point>\
-    \ ps) {\n    if((int)ps.size() <= 1) return Real(1e18);\n    sort(ps.begin(),\
-    \ ps.end(), comp_x);\n    vector<Point> memo(ps.size());\n    auto func = [&](auto&\
-    \ func, int l, int r) -> Real {\n        if(r - l <= 1) return Real(1e18);\n \
-    \       int m = (l + r) >> 1;\n        Real x = ps[m].real();\n        Real res\
-    \ = min(func(func, l, m), func(func, m, r));\n        inplace_merge(ps.begin()\
+    #line 3 \"src/geometry/template.hpp\"\nusing Real = long double;\nconstexpr Real\
+    \ EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\nint sign(const Real&\
+    \ r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return +1;\n    return\
+    \ 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a - b) == 0;\n\
+    }\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\nistream&\
+    \ operator>>(istream& is, Point& p) {\n    Real a, b;\n    is >> a >> b;\n   \
+    \ p = Point(a, b);\n    return is;\n}\nostream& operator<<(ostream& os, const\
+    \ Point& p) {\n    return os << p.real() << \" \" << p.imag();\n}\nPoint operator*(const\
+    \ Point& p, const Real& d) {\n    return Point(p.real() * d, p.imag() * d);\n\
+    }\nPoint operator/(const Point& p, const Real& d) {\n    return Point(p.real()\
+    \ / d, p.imag() / d);\n}\nPoint rot(const Point& p, const Real& theta) {\n   \
+    \ return p * Point(cos(theta), sin(theta));\n}\nReal dot(const Point& p1, const\
+    \ Point& p2) {\n    return (conj(p1) * p2).real();\n}\nReal cross(const Point&\
+    \ p1, const Point& p2) {\n    return (conj(p1) * p2).imag();\n}\nReal dist(const\
+    \ Point& p1, const Point& p2) {\n    return abs(p1 - p2);\n}\nbool comp_x(const\
+    \ Point& p1, const Point& p2) {\n    return eq(p1.real(), p2.real()) ? p1.imag()\
+    \ < p2.imag() : p1.real() < p2.real();\n}\nbool comp_y(const Point& p1, const\
+    \ Point& p2) {\n    return eq(p1.imag(), p2.imag()) ? p1.real() < p2.real() :\
+    \ p1.imag() < p2.imag();\n}\nbool comp_arg(const Point& p1, const Point& p2) {\n\
+    \    return arg(p1) < arg(p2);\n}\nint ccw(const Point& a, Point b, Point c) {\n\
+    \    b -= a;\n    c -= a;\n    if(sign(cross(b, c)) == 1) return 1;\n    if(sign(cross(b,\
+    \ c)) == -1) return -1;\n    if(sign(dot(b, c)) == -1) return +2;\n    if(norm(b)\
+    \ < norm(c)) return -2;\n    return 0;\n}\nReal closest_pair(vector<Point> ps)\
+    \ {\n    if((int)ps.size() <= 1) return Real(1e18);\n    sort(ps.begin(), ps.end(),\
+    \ comp_x);\n    vector<Point> memo(ps.size());\n    auto func = [&](const auto&\
+    \ func, const int l, const int r) -> Real {\n        if(r - l <= 1) return Real(1e18);\n\
+    \        const int m = (l + r) >> 1;\n        const Real x = ps[m].real();\n \
+    \       Real res = min(func(func, l, m), func(func, m, r));\n        inplace_merge(ps.begin()\
     \ + l, ps.begin() + m, ps.begin() + r, comp_y);\n        int cnt = 0;\n      \
     \  for(int i = l; i < r; ++i) {\n            if(abs(ps[i].real() - x) >= res)\
-    \ continue;\n            for(int j = 0; j < cnt; ++j) {\n                Point\
-    \ d = ps[i] - memo[cnt - j - 1];\n                if(d.imag() >= res) break;\n\
+    \ continue;\n            for(int j = 0; j < cnt; ++j) {\n                const\
+    \ Point d = ps[i] - memo[cnt - j - 1];\n                if(d.imag() >= res) break;\n\
     \                res = min(res, abs(d));\n            }\n            memo[cnt++]\
     \ = ps[i];\n        }\n        return res;\n    };\n    return func(func, 0, (int)ps.size());\n\
     }\n#line 5 \"src/geometry/line_and_segment_2d.hpp\"\nstruct Line {\n    Point\
@@ -115,22 +116,22 @@ data:
     \ <= 0 and sign(b.imag()) == 1 and sign(cross(a, b)) == 1) ret ^= 2;\n    }\n\
     \    return ret;\n}\nvector<Point> convex_hull(vector<Point> ps) {\n    sort(ps.begin(),\
     \ ps.end(), comp_x);\n    ps.erase(unique(ps.begin(), ps.end()), ps.end());\n\
-    \    int n = (int)ps.size(), k = 0;\n    if(n == 1) return ps;\n    vector<Point>\
-    \ ch(2 * n);\n    for(int i = 0; i < n; ch[k++] = ps[i++]) {\n        while(k\
-    \ >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n  \
-    \          --k;\n        }\n    }\n    for(int i = n - 2, t = k + 1; i >= 0; ch[k++]\
-    \ = ps[i--]) {\n        while(k >= t and sign(cross(ch[k - 1] - ch[k - 2], ps[i]\
-    \ - ch[k - 1])) == -1) {\n            --k;\n        }\n    }\n    ch.resize(k\
-    \ - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>& polygon)\
-    \ {\n    int n = (int)polygon.size(), is = 0, js = 0;\n    for(int i = 1; i <\
-    \ n; ++i) {\n        if(sign(polygon[i].imag() - polygon[is].imag()) == 1) is\
-    \ = i;\n        if(sign(polygon[i].imag() - polygon[js].imag()) == -1) js = i;\n\
-    \    }\n    Real maxdis = norm(polygon[is] - polygon[js]);\n    int i = is, j\
-    \ = js;\n    do {\n        if(sign(cross(polygon[(i + 1) % n] - polygon[i], polygon[(j\
-    \ + 1) % n] - polygon[j])) >= 0) {\n            j = (j + 1) % n;\n        } else\
-    \ {\n            i = (i + 1) % n;\n        }\n        if(norm(polygon[i] - polygon[j])\
-    \ > maxdis) {\n            maxdis = norm(polygon[i] - polygon[j]);\n        }\n\
-    \    } while(i != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point>\
+    \    const int n = (int)ps.size();\n    if(n == 1) return ps;\n    vector<Point>\
+    \ ch(2 * n);\n    int k = 0;\n    for(int i = 0; i < n; ch[k++] = ps[i++]) {\n\
+    \        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k - 1]))\
+    \ == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t = k +\
+    \ 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k -\
+    \ 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
+    \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
+    \ polygon) {\n    const int n = (int)polygon.size();\n    int is = 0, js = 0;\n\
+    \    for(int i = 1; i < n; ++i) {\n        if(sign(polygon[i].imag() - polygon[is].imag())\
+    \ == 1) is = i;\n        if(sign(polygon[i].imag() - polygon[js].imag()) == -1)\
+    \ js = i;\n    }\n    Real maxdis = norm(polygon[is] - polygon[js]);\n    int\
+    \ i = is, j = js;\n    do {\n        if(sign(cross(polygon[(i + 1) % n] - polygon[i],\
+    \ polygon[(j + 1) % n] - polygon[j])) >= 0) {\n            j = (j + 1) % n;\n\
+    \        } else {\n            i = (i + 1) % n;\n        }\n        if(norm(polygon[i]\
+    \ - polygon[j]) > maxdis) {\n            maxdis = norm(polygon[i] - polygon[j]);\n\
+    \        }\n    } while(i != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point>\
     \ convex_cut(const vector<Point>& polygon, const Line& l) {\n    const int n =\
     \ (int)polygon.size();\n    vector<Point> res;\n    for(int i = 0; i < n; ++i)\
     \ {\n        const Point cur = polygon[i], nex = polygon[(i + 1) % n];\n     \
@@ -155,7 +156,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/cgl/is_convex.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 00:54:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/cgl/is_convex.test.cpp

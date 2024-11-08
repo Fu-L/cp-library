@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/suffix_array.hpp
     title: suffix_array
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

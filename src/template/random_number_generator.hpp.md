@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -15,13 +15,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bfs.test.cpp
     title: verify/unit_test/graph/bfs.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -33,12 +33,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -263,7 +263,7 @@ data:
   path: src/template/random_number_generator.hpp
   requiredBy: []
   timestamp: '2024-09-28 15:28:56+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/math/lucas.test.cpp
   - verify/unit_test/math/eratosthenes_seive.test.cpp
