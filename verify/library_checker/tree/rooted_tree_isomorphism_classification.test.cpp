@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification"
 #include "../../../src/template/template.hpp"
 #include "../../../src/graph/graph_template.hpp"
-#include "../../../src/tree/rooted_hash_tree.hpp"
+#include "../../../src/tree/rooted_tree_hash.hpp"
 int main(void) {
     int n;
     cin >> n;
