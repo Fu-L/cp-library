@@ -116,6 +116,7 @@
 "verify/library_checker/tree/jump_on_tree.test.cpp": "2024-08-31 23:00:19 +0900",
 "verify/library_checker/tree/jump_on_tree_2.test.cpp": "2024-08-31 17:21:07 +0900",
 "verify/library_checker/tree/lowest_common_ancestor.test.cpp": "2024-08-31 17:21:07 +0900",
+"verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp": "2024-11-08 23:44:33 +0900",
 "verify/library_checker/tree/tree_diameter.test.cpp": "2024-06-04 23:34:08 +0900",
 "verify/library_checker/tree/vertex_add_path_sum.test.cpp": "2024-10-30 22:43:34 +0900",
 "verify/library_checker/tree/vertex_add_subtree_sum.test.cpp": "2024-10-30 22:43:34 +0900",
