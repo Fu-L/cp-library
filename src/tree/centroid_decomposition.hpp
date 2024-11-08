@@ -7,7 +7,7 @@ pair<Graph<int>, int> centroid_decomposition(const Graph<T>& g) {
     vector<int> sub(n);
     vector<bool> visited(n);
     Graph<int> tree(n);
-    auto get_size = [&](auto& get_size, int cur, int par) -> int {
+    auto get_size = [&](auto& get_size, const int cur, const int par) -> int {
         sub[cur] = 1;
         for(const Edge<T>& e : g[cur]) {
             if(e.to == par or visited[e.to]) continue;
@@ -15,14 +15,14 @@ pair<Graph<int>, int> centroid_decomposition(const Graph<T>& g) {
         }
         return sub[cur];
     };
-    auto get_centroid = [&](auto& get_centroid, int cur, int par, int mid) -> int {
+    auto get_centroid = [&](auto& get_centroid, const int cur, const int par, const int mid) -> int {
         for(const Edge<T>& e : g[cur]) {
             if(e.to == par or visited[e.to]) continue;
             if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);
         }
         return cur;
     };
-    auto dfs = [&](auto& dfs, int cur) -> int {
+    auto dfs = [&](auto& dfs, const int cur) -> int {
         const int centroid = get_centroid(get_centroid, cur, -1, get_size(get_size, cur, -1) / 2);
         visited[centroid] = true;
         for(const Edge<T>& e : g[centroid]) {

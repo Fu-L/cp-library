@@ -3,19 +3,19 @@
 #include "../graph/graph_template.hpp"
 template <typename T>
 struct LowestCommonAncestor {
-    LowestCommonAncestor(const Graph<T>& g, int root = 0) {
+    LowestCommonAncestor(const Graph<T>& g, const int root = 0) {
         assert(0 <= root and root < g.size());
         init(g, root);
     }
-    int depth(int v) const {
+    int depth(const int v) const {
         assert(0 <= v and v < n);
         return dep[v];
     }
-    T cost(int v) const {
+    T cost(const int v) const {
         assert(0 <= v and v < n);
         return co[v];
     }
-    int parent(int v) const {
+    int parent(const int v) const {
         assert(0 <= v and v < n);
         return par[0][v];
     }
@@ -42,11 +42,11 @@ struct LowestCommonAncestor {
         }
         return par[0][u];
     }
-    int dist(int u, int v) const {
+    int dist(const int u, const int v) const {
         assert(0 <= u and u < n and 0 <= v and v < n);
         return dep[u] + dep[v] - 2 * dep[lca(u, v)];
     }
-    T length(int u, int v) const {
+    T length(const int u, const int v) const {
         assert(0 <= u and u < n and 0 <= v and v < n);
         return co[u] + co[v] - 2 * co[lca(u, v)];
     }
@@ -56,7 +56,7 @@ struct LowestCommonAncestor {
     vector<vector<int>> par;
     vector<int> dep;
     vector<T> co;
-    void init(const Graph<T>& g, int root = 0) {
+    void init(const Graph<T>& g, const int root = 0) {
         n = g.size();
         int h = 1;
         while((1 << h) < n) ++h;
@@ -72,7 +72,7 @@ struct LowestCommonAncestor {
             }
         }
     }
-    void dfs(const Graph<T>& g, int v, int p, int d, const T& c) {
+    void dfs(const Graph<T>& g, const int v, const int p, const int d, const T& c) {
         par[0][v] = p;
         dep[v] = d;
         co[v] = c;

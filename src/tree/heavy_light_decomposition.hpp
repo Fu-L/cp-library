@@ -3,25 +3,25 @@
 #include "../graph/graph_template.hpp"
 template <typename T>
 struct HeavyLightDecomposition {
-    HeavyLightDecomposition(Graph<T>& _g, int root = 0)
+    HeavyLightDecomposition(Graph<T>& _g, const int root = 0)
         : g(_g), n(g.size()), id(0), sz(n, 0), dep(n, 0), down(n, -1), up(n, -1), nex(n, root), par(n, -1), rev(n, 0), co(n, 0) {
         assert(0 <= root and root < n);
         dfs_sz(root);
         dfs_hld(root);
     }
-    pair<int, int> idx(int i) const {
+    pair<int, int> idx(const int i) const {
         assert(0 <= i and i < n);
         return make_pair(down[i], up[i]);
     }
-    int depth(int v) const {
+    int depth(const int v) const {
         assert(0 <= v and v < n);
         return dep[v];
     }
-    T cost(int v) const {
+    T cost(const int v) const {
         assert(0 <= v and v < n);
         return co[v];
     }
-    int parent(int v) const {
+    int parent(const int v) const {
         assert(0 <= v and v < n);
         return par[v];
     }
@@ -45,27 +45,27 @@ struct HeavyLightDecomposition {
         }
         return dep[u] < dep[v] ? u : v;
     }
-    int dist(int u, int v) const {
+    int dist(const int u, const int v) const {
         assert(0 <= u and u < n);
         assert(0 <= v and v < n);
         return dep[u] + dep[v] - dep[lca(u, v)] * 2;
     }
-    T length(int u, int v) const {
+    T length(const int u, const int v) const {
         assert(0 <= u and u < n);
         assert(0 <= v and v < n);
         return co[u] + co[v] - co[lca(u, v)] * 2;
     }
     template <typename F>
-    void path_query(int u, int v, bool vertex, const F& f) {
+    void path_query(const int u, const int v, const bool vertex, const F& f) {
         assert(0 <= u and u < n);
         assert(0 <= v and v < n);
-        int l = lca(u, v);
+        const int l = lca(u, v);
         for(auto&& [a, b] : ascend(u, l)) f(a + 1, b);
         if(vertex) f(down[l], down[l] + 1);
         for(auto&& [a, b] : descend(l, v)) f(a, b + 1);
     }
     template <typename F>
-    void subtree_query(int v, bool vertex, const F& f) {
+    void subtree_query(const int v, const bool vertex, const F& f) {
         assert(0 <= v and v < n);
         f(down[v] + int(!vertex), up[v]);
     }
@@ -75,7 +75,7 @@ struct HeavyLightDecomposition {
     int n, id;
     vector<int> sz, dep, down, up, nex, par, rev;
     vector<T> co;
-    void dfs_sz(int cur) {
+    void dfs_sz(const int cur) {
         sz[cur] = 1;
         for(Edge<T>& edge : g[cur]) {
             if(edge.to == par[cur]) {
@@ -95,7 +95,7 @@ struct HeavyLightDecomposition {
             }
         }
     }
-    void dfs_hld(int cur) {
+    void dfs_hld(const int cur) {
         down[cur] = id++;
         rev[down[cur]] = cur;
         for(const Edge<T>& edge : g[cur]) {
@@ -114,7 +114,7 @@ struct HeavyLightDecomposition {
         if(u != v) res.emplace_back(down[u], down[v] + 1);
         return res;
     }
-    vector<pair<int, int>> descend(int u, int v) const {
+    vector<pair<int, int>> descend(const int u, const int v) const {
         if(u == v) return {};
         if(nex[u] == nex[v]) return {{down[u] + 1, down[v]}};
         auto res = descend(u, par[nex[v]]);
