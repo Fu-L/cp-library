@@ -315,6 +315,9 @@ data:
     path: src/tree/rerooting.hpp
     title: rerooting
   - icon: ':heavy_check_mark:'
+    path: src/tree/rooted_hash_tree.hpp
+    title: src/tree/rooted_hash_tree.hpp
+  - icon: ':heavy_check_mark:'
     path: src/tree/tree_diameter.hpp
     title: tree_diameter
   _extendedVerifiedWith:
@@ -670,6 +673,9 @@ data:
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
+    title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
@@ -843,6 +849,7 @@ data:
   - src/tree/centroid.hpp
   - src/tree/rerooting.hpp
   - src/tree/lowest_common_ancestor.hpp
+  - src/tree/rooted_hash_tree.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/tree/tree_diameter.hpp
   - src/tree/centroid_decomposition.hpp
@@ -918,6 +925,7 @@ data:
   - verify/library_checker/tree/jump_on_tree.test.cpp
   - verify/library_checker/tree/jump_on_tree_2.test.cpp
   - verify/library_checker/tree/vertex_add_path_sum.test.cpp
+  - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   - verify/library_checker/tree/cartesian_tree.test.cpp

@@ -342,6 +342,9 @@ data:
       path: src/tree/rerooting.hpp
       title: rerooting
     - icon: ':heavy_check_mark:'
+      path: src/tree/rooted_hash_tree.hpp
+      title: src/tree/rooted_hash_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: src/tree/tree_diameter.hpp
       title: tree_diameter
   verificationCategories:
@@ -732,6 +735,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
+      title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/tree_diameter.test.cpp
       title: verify/library_checker/tree/tree_diameter.test.cpp

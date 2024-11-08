@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
+  - icon: ':heavy_check_mark:'
+    path: src/tree/rooted_hash_tree.hpp
+    title: src/tree/rooted_hash_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/alds1/string_search.test.cpp
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
+    title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
@@ -117,10 +123,12 @@ data:
   requiredBy:
   - src/string/dynamic_rolling_hash.hpp
   - src/string/rolling_hash.hpp
+  - src/tree/rooted_hash_tree.hpp
   timestamp: '2024-11-07 13:53:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/number_of_substrings.test.cpp
+  - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
 documentation_of: src/template/modint_2_61m1.hpp

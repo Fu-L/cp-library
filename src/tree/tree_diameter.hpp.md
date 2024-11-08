@@ -82,7 +82,7 @@ layout: document
 title: tree_diameter
 ---
 
-# tree_diameter
+## tree_diameter
 
 ```cpp
 pair<T, vector<int>> tree_diameter(Graph<T> g)
