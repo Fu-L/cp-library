@@ -290,7 +290,7 @@ struct FormalPowerSeries : vector<mint> {
         }
         for(int i = 0; i < n; ++i) {
             if((*this)[i] != mint(0)) {
-                mint rev = mint(1) / (*this)[i];
+                const mint rev = mint(1) / (*this)[i];
                 F ret = (((*this * rev) >> i).log(deg) * k).exp(deg);
                 ret *= (*this)[i].pow(k);
                 ret = (ret << (i * k)).pre(deg);

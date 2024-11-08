@@ -12,9 +12,9 @@ FPS<mint> berlekamp_massey(const FPS<mint>& s) {
         b.emplace_back(0);
         ++m;
         if(x == mint(0)) continue;
-        mint freq = x / y;
+        const mint freq = x / y;
         if(l < m) {
-            auto tmp = c;
+            const auto tmp = c;
             c.insert(begin(c), m - l, mint(0));
             for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq * b[m - 1 - i];
             b = tmp;
