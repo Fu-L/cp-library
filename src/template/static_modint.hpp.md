@@ -37,6 +37,12 @@ data:
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/convolution/gcd_convolution.test.cpp
+    title: verify/library_checker/convolution/gcd_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/convolution/lcm_convolution.test.cpp
+    title: verify/library_checker/convolution/lcm_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -262,6 +268,8 @@ data:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   - verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+  - verify/library_checker/convolution/gcd_convolution.test.cpp
+  - verify/library_checker/convolution/lcm_convolution.test.cpp
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp

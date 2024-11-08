@@ -15,6 +15,12 @@ data:
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
   - icon: ':heavy_check_mark:'
+    path: src/convolution/gcd_convolution.hpp
+    title: gcd_convolution
+  - icon: ':heavy_check_mark:'
+    path: src/convolution/lcm_convolution.hpp
+    title: lcm_convolution
+  - icon: ':heavy_check_mark:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
   - icon: ':heavy_check_mark:'
@@ -179,6 +185,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/divisor.hpp
     title: divisor
+  - icon: ':heavy_check_mark:'
+    path: src/math/divisor_multiple_transform.hpp
+    title: Divisor/MultipleTransform
   - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
@@ -472,6 +481,12 @@ data:
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/convolution/gcd_convolution.test.cpp
+    title: verify/library_checker/convolution/gcd_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/convolution/lcm_convolution.test.cpp
+    title: verify/library_checker/convolution/lcm_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -740,6 +755,7 @@ data:
   - src/math/eratosthenes_seive.hpp
   - src/math/xor_base.hpp
   - src/math/moebius.hpp
+  - src/math/divisor_multiple_transform.hpp
   - src/math/binomial.hpp
   - src/math/inv_gcd.hpp
   - src/math/primitive_root.hpp
@@ -782,7 +798,9 @@ data:
   - src/data_structure/weighted_union_find.hpp
   - src/convolution/convolution.hpp
   - src/convolution/convolution_arbitrary.hpp
+  - src/convolution/lcm_convolution.hpp
   - src/convolution/or_convolution.hpp
+  - src/convolution/gcd_convolution.hpp
   - src/convolution/xor_convolution.hpp
   - src/convolution/and_convolution.hpp
   - src/convolution/convolution_ll.hpp
@@ -864,6 +882,8 @@ data:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   - verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
+  - verify/library_checker/convolution/gcd_convolution.test.cpp
+  - verify/library_checker/convolution/lcm_convolution.test.cpp
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp
