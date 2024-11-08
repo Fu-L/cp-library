@@ -13,7 +13,7 @@ vector<ll> rooted_tree_hash(const Graph<T>& g, const int root = 0) {
         hash.emplace_back(dist(mt));
     }
     vector<ll> res(n);
-    auto dfs = [&](auto& dfs, const int cur, const int par) -> int {
+    auto dfs = [&](const auto& dfs, const int cur, const int par) -> int {
         int depth = 0;
         for(const auto& e : g[cur]) {
             if(e.to == par) continue;
