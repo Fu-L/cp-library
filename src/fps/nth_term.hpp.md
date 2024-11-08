@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/bostan_mori.hpp
     title: bostan_mori
   - icon: ':question:'

@@ -25,10 +25,10 @@ data:
     \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
     \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/euler_phi.hpp\"\
-    \nlong long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n    for(long\
-    \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res -=\
-    \ res / i;\n            while(n % i == 0) n /= i;\n        }\n    }\n    if(n\
-    \ > 1) res -= res / n;\n    return res;\n}\n#line 4 \"verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp\"\
+    \nconstexpr long long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n\
+    \    for(long long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n     \
+    \       res -= res / i;\n            while(n % i == 0) n /= i;\n        }\n  \
+    \  }\n    if(n > 1) res -= res / n;\n    return res;\n}\n#line 4 \"verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp\"\
     \nint main(void) {\n    ll n;\n    cin >> n;\n    cout << euler_phi(n) << '\\\
     n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
@@ -41,7 +41,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp

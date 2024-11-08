@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: src/math/lucas.hpp
     title: Lucas
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':question:'
@@ -197,28 +197,27 @@ data:
     \        fact[0] = 1;\n        for(int i = 1; i < mod; ++i) fact[i] = fact[i -\
     \ 1] * i;\n        ifact[mod - 1] = fact[mod - 1].inv();\n        for(int i =\
     \ mod - 1; i >= 1; --i) ifact[i - 1] = ifact[i] * i;\n    }\n    mint operator()(long\
-    \ long n, long long k) {\n        if(n < 0 or n < k or k < 0) return 0;\n    \
-    \    mint res = 1;\n        while(n > 0) {\n            const long long n0 = n\
-    \ % mod, k0 = k % mod;\n            if(n0 < k0) return 0;\n            res *=\
-    \ fact[n0] * ifact[k0] * ifact[n0 - k0];\n            n /= mod;\n            k\
-    \ /= mod;\n        }\n        return res;\n    }\n\n   private:\n    int mod;\n\
+    \ long n, long long k) const {\n        if(n < 0 or n < k or k < 0) return 0;\n\
+    \        mint res = 1;\n        while(n > 0) {\n            const long long n0\
+    \ = n % mod, k0 = k % mod;\n            if(n0 < k0) return 0;\n            res\
+    \ *= fact[n0] * ifact[k0] * ifact[n0 - k0];\n            n /= mod;\n         \
+    \   k /= mod;\n        }\n        return res;\n    }\n\n   private:\n    int mod;\n\
     \    vector<mint> fact, ifact;\n};\n#line 3 \"src/math/miller_rabin.hpp\"\nconstexpr\
     \ __int128_t pow_mod_128(__int128_t x, __int128_t n, const __int128_t mod) {\n\
     \    assert(n >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x += mod;\n  \
     \  __int128_t res = 1;\n    while(n > 0) {\n        if(n & 1) res = res * x %\
     \ mod;\n        x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n}\n\
-    constexpr bool miller_rabin(long long n) {\n    if(n <= 2) return n == 2;\n  \
-    \  if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2, 325, 9375,\
-    \ 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n    while(d\
-    \ % 2 == 0) d /= 2;\n    long long e = 1, rev = n - 1;\n    for(const long long\
-    \ base : bases) {\n        if(base % n == 0) continue;\n        long long t =\
-    \ d;\n        long long y = pow_mod_128(base, t, n);\n        while(t != n - 1\
-    \ and y != e and y != rev) {\n            y = (__int128_t)y * y % n;\n       \
-    \     t *= 2;\n        }\n        if(y != rev and t % 2 == 0) return false;\n\
-    \    }\n    return true;\n}\n#line 7 \"verify/unit_test/math/lucas.test.cpp\"\n\
-    using mint = modint;\nvoid test() {\n    static Lucas<mint> binom;\n    int n\
-    \ = rng(1, 5000000), k = rng(0, k);\n    mint ans = 1;\n    rep(i, 1, k + 1) {\n\
-    \        ans *= (n - i) / i;\n    }\n    assert(binom(n, k).val() == ans.val());\n\
+    constexpr bool miller_rabin(const long long n) {\n    if(n <= 2) return n == 2;\n\
+    \    if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2, 325,\
+    \ 9375, 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n    while(d\
+    \ % 2 == 0) d /= 2;\n    for(const long long base : bases) {\n        if(base\
+    \ % n == 0) continue;\n        long long t = d;\n        long long y = pow_mod_128(base,\
+    \ t, n);\n        while(t != n - 1 and y != 1 and y != n - 1) {\n            y\
+    \ = (__int128_t)y * y % n;\n            t *= 2;\n        }\n        if(y != n\
+    \ - 1 and t % 2 == 0) return false;\n    }\n    return true;\n}\n#line 7 \"verify/unit_test/math/lucas.test.cpp\"\
+    \nusing mint = modint;\nvoid test() {\n    static Lucas<mint> binom;\n    int\
+    \ n = rng(1, 5000000), k = rng(0, k);\n    mint ans = 1;\n    rep(i, 1, k + 1)\
+    \ {\n        ans *= (n - i) / i;\n    }\n    assert(binom(n, k).val() == ans.val());\n\
     }\nint main(void) {\n    int p = 1;\n    while(!miller_rabin(p)) {\n        p\
     \ = rng(2, 1e8);\n    }\n    mint::set_mod(p);\n    constexpr int test_num = 1000;\n\
     \    rep(_, 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >>\
@@ -243,7 +242,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/math/lucas.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/math/lucas.test.cpp

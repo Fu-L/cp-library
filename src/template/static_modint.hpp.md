@@ -66,28 +66,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
     title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/matrix_product.test.cpp
     title: verify/library_checker/linear_algebra/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/find_linear_recurrence.test.cpp
     title: verify/library_checker/other/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':x:'

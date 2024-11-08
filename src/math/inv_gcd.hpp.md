@@ -23,26 +23,27 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/inv_gcd.hpp\"\
-    \nconstexpr pair<long long, long long> inv_gcd(long long a, long long b) {\n \
-    \   a %= b;\n    if(a < 0) a += b;\n    if(a == 0) return {b, 0};\n    long long\
-    \ s = b, t = a, m0 = 0, m1 = 1;\n    while(t) {\n        const long long u = s\
-    \ / t;\n        s -= t * u;\n        m0 -= m1 * u;\n        long long tmp = s;\n\
-    \        s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n     \
-    \   m1 = tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n"
+    \nconstexpr pair<long long, long long> inv_gcd(long long a, const long long b)\
+    \ {\n    a %= b;\n    if(a < 0) a += b;\n    if(a == 0) return {b, 0};\n    long\
+    \ long s = b, t = a, m0 = 0, m1 = 1;\n    while(t) {\n        const long long\
+    \ u = s / t;\n        s -= t * u;\n        m0 -= m1 * u;\n        long long tmp\
+    \ = s;\n        s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n\
+    \        m1 = tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr pair<long\
-    \ long, long long> inv_gcd(long long a, long long b) {\n    a %= b;\n    if(a\
-    \ < 0) a += b;\n    if(a == 0) return {b, 0};\n    long long s = b, t = a, m0\
-    \ = 0, m1 = 1;\n    while(t) {\n        const long long u = s / t;\n        s\
-    \ -= t * u;\n        m0 -= m1 * u;\n        long long tmp = s;\n        s = t;\n\
-    \        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n  \
-    \  }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}"
+    \ long, long long> inv_gcd(long long a, const long long b) {\n    a %= b;\n  \
+    \  if(a < 0) a += b;\n    if(a == 0) return {b, 0};\n    long long s = b, t =\
+    \ a, m0 = 0, m1 = 1;\n    while(t) {\n        const long long u = s / t;\n   \
+    \     s -= t * u;\n        m0 -= m1 * u;\n        long long tmp = s;\n       \
+    \ s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 =\
+    \ tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/inv_gcd.hpp
   requiredBy:
   - src/math/chinese_remainder_theorem.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/186.test.cpp

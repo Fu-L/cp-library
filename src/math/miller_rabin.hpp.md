@@ -6,7 +6,7 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/primality_test.test.cpp
     title: verify/library_checker/number_theory/primality_test.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: verify/unit_test/math/lucas.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -27,36 +27,35 @@ data:
     \ mod) {\n    assert(n >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x +=\
     \ mod;\n    __int128_t res = 1;\n    while(n > 0) {\n        if(n & 1) res = res\
     \ * x % mod;\n        x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n\
-    }\nconstexpr bool miller_rabin(long long n) {\n    if(n <= 2) return n == 2;\n\
-    \    if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2, 325,\
-    \ 9375, 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n    while(d\
-    \ % 2 == 0) d /= 2;\n    long long e = 1, rev = n - 1;\n    for(const long long\
-    \ base : bases) {\n        if(base % n == 0) continue;\n        long long t =\
-    \ d;\n        long long y = pow_mod_128(base, t, n);\n        while(t != n - 1\
-    \ and y != e and y != rev) {\n            y = (__int128_t)y * y % n;\n       \
-    \     t *= 2;\n        }\n        if(y != rev and t % 2 == 0) return false;\n\
-    \    }\n    return true;\n}\n"
+    }\nconstexpr bool miller_rabin(const long long n) {\n    if(n <= 2) return n ==\
+    \ 2;\n    if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2,\
+    \ 325, 9375, 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n\
+    \    while(d % 2 == 0) d /= 2;\n    for(const long long base : bases) {\n    \
+    \    if(base % n == 0) continue;\n        long long t = d;\n        long long\
+    \ y = pow_mod_128(base, t, n);\n        while(t != n - 1 and y != 1 and y != n\
+    \ - 1) {\n            y = (__int128_t)y * y % n;\n            t *= 2;\n      \
+    \  }\n        if(y != n - 1 and t % 2 == 0) return false;\n    }\n    return true;\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr __int128_t\
     \ pow_mod_128(__int128_t x, __int128_t n, const __int128_t mod) {\n    assert(n\
     \ >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x += mod;\n    __int128_t\
     \ res = 1;\n    while(n > 0) {\n        if(n & 1) res = res * x % mod;\n     \
     \   x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n}\nconstexpr bool\
-    \ miller_rabin(long long n) {\n    if(n <= 2) return n == 2;\n    if(n % 2 ==\
-    \ 0) return false;\n    constexpr long long bases[7] = {2, 325, 9375, 28178, 450775,\
-    \ 9780504, 1795265022};\n    long long d = n - 1;\n    while(d % 2 == 0) d /=\
-    \ 2;\n    long long e = 1, rev = n - 1;\n    for(const long long base : bases)\
-    \ {\n        if(base % n == 0) continue;\n        long long t = d;\n        long\
-    \ long y = pow_mod_128(base, t, n);\n        while(t != n - 1 and y != e and y\
-    \ != rev) {\n            y = (__int128_t)y * y % n;\n            t *= 2;\n   \
-    \     }\n        if(y != rev and t % 2 == 0) return false;\n    }\n    return\
-    \ true;\n}"
+    \ miller_rabin(const long long n) {\n    if(n <= 2) return n == 2;\n    if(n %\
+    \ 2 == 0) return false;\n    constexpr long long bases[7] = {2, 325, 9375, 28178,\
+    \ 450775, 9780504, 1795265022};\n    long long d = n - 1;\n    while(d % 2 ==\
+    \ 0) d /= 2;\n    for(const long long base : bases) {\n        if(base % n ==\
+    \ 0) continue;\n        long long t = d;\n        long long y = pow_mod_128(base,\
+    \ t, n);\n        while(t != n - 1 and y != 1 and y != n - 1) {\n            y\
+    \ = (__int128_t)y * y % n;\n            t *= 2;\n        }\n        if(y != n\
+    \ - 1 and t % 2 == 0) return false;\n    }\n    return true;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/miller_rabin.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-11-09 02:03:28+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number_theory/primality_test.test.cpp
   - verify/unit_test/math/lucas.test.cpp

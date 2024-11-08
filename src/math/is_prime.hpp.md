@@ -23,18 +23,19 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/is_prime.hpp\"\
-    \nconstexpr bool is_prime(long long n) {\n    if(n <= 1) return false;\n    for(long\
-    \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) return false;\n    }\n\
-    \    return true;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr bool is_prime(long\
-    \ long n) {\n    if(n <= 1) return false;\n    for(long long i = 2; i * i <= n;\
-    \ ++i) {\n        if(n % i == 0) return false;\n    }\n    return true;\n}"
+    \nconstexpr bool is_prime(const long long n) {\n    if(n <= 1) return false;\n\
+    \    for(long long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) return false;\n\
+    \    }\n    return true;\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr bool is_prime(const\
+    \ long long n) {\n    if(n <= 1) return false;\n    for(long long i = 2; i * i\
+    \ <= n; ++i) {\n        if(n % i == 0) return false;\n    }\n    return true;\n\
+    }"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/is_prime.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/math/eratosthenes_seive.test.cpp

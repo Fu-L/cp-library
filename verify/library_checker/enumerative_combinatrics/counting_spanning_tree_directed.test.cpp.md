@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'

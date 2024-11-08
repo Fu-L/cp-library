@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primality_test
@@ -29,16 +29,16 @@ data:
     \ mod) {\n    assert(n >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x +=\
     \ mod;\n    __int128_t res = 1;\n    while(n > 0) {\n        if(n & 1) res = res\
     \ * x % mod;\n        x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n\
-    }\nconstexpr bool miller_rabin(long long n) {\n    if(n <= 2) return n == 2;\n\
-    \    if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2, 325,\
-    \ 9375, 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n    while(d\
-    \ % 2 == 0) d /= 2;\n    long long e = 1, rev = n - 1;\n    for(const long long\
-    \ base : bases) {\n        if(base % n == 0) continue;\n        long long t =\
-    \ d;\n        long long y = pow_mod_128(base, t, n);\n        while(t != n - 1\
-    \ and y != e and y != rev) {\n            y = (__int128_t)y * y % n;\n       \
-    \     t *= 2;\n        }\n        if(y != rev and t % 2 == 0) return false;\n\
-    \    }\n    return true;\n}\n#line 4 \"verify/library_checker/number_theory/primality_test.test.cpp\"\
-    \nint main(void) {\n    int q;\n    cin >> q;\n    while(q--) {\n        ll n;\n\
+    }\nconstexpr bool miller_rabin(const long long n) {\n    if(n <= 2) return n ==\
+    \ 2;\n    if(n % 2 == 0) return false;\n    constexpr long long bases[7] = {2,\
+    \ 325, 9375, 28178, 450775, 9780504, 1795265022};\n    long long d = n - 1;\n\
+    \    while(d % 2 == 0) d /= 2;\n    for(const long long base : bases) {\n    \
+    \    if(base % n == 0) continue;\n        long long t = d;\n        long long\
+    \ y = pow_mod_128(base, t, n);\n        while(t != n - 1 and y != 1 and y != n\
+    \ - 1) {\n            y = (__int128_t)y * y % n;\n            t *= 2;\n      \
+    \  }\n        if(y != n - 1 and t % 2 == 0) return false;\n    }\n    return true;\n\
+    }\n#line 4 \"verify/library_checker/number_theory/primality_test.test.cpp\"\n\
+    int main(void) {\n    int q;\n    cin >> q;\n    while(q--) {\n        ll n;\n\
     \        cin >> n;\n        if(miller_rabin(n)) {\n            cout << \"Yes\"\
     \ << '\\n';\n        } else {\n            cout << \"No\" << '\\n';\n        }\n\
     \    }\n}\n"
@@ -54,8 +54,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number_theory/primality_test.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-11-09 02:03:28+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number_theory/primality_test.test.cpp
 layout: document

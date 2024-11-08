@@ -20,20 +20,21 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 2 \"src/math/extgcd.hpp\"\
-    \nlong long extgcd(long long a, long long b, long long& x, long long& y) {\n \
-    \   long long d = a;\n    if(b != 0) {\n        d = extgcd(b, a % b, y, x);\n\
-    \        y -= (a / b) * x;\n    } else {\n        x = 1;\n        y = 0;\n   \
-    \ }\n    return d;\n}\n"
-  code: "#include \"../template/template.hpp\"\nlong long extgcd(long long a, long\
-    \ long b, long long& x, long long& y) {\n    long long d = a;\n    if(b != 0)\
-    \ {\n        d = extgcd(b, a % b, y, x);\n        y -= (a / b) * x;\n    } else\
-    \ {\n        x = 1;\n        y = 0;\n    }\n    return d;\n}"
+    \nconstexpr long long extgcd(const long long a, const long long b, long long&\
+    \ x, long long& y) {\n    long long d = a;\n    if(b != 0) {\n        d = extgcd(b,\
+    \ a % b, y, x);\n        y -= (a / b) * x;\n    } else {\n        x = 1;\n   \
+    \     y = 0;\n    }\n    return d;\n}\n"
+  code: "#include \"../template/template.hpp\"\nconstexpr long long extgcd(const long\
+    \ long a, const long long b, long long& x, long long& y) {\n    long long d =\
+    \ a;\n    if(b != 0) {\n        d = extgcd(b, a % b, y, x);\n        y -= (a /\
+    \ b) * x;\n    } else {\n        x = 1;\n        y = 0;\n    }\n    return d;\n\
+    }"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/extgcd.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/ntl/extended_euclid_algorithm.test.cpp

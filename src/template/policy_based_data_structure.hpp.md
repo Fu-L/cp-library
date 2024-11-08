@@ -5,11 +5,11 @@ data:
   - icon: ':x:'
     path: src/data_structure/sorted_set.hpp
     title: SortedSet
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
     title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: verify/yukicoder/649.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/template/policy_based_data_structure.hpp"
@@ -47,7 +47,7 @@ data:
   - src/math/log_mod.hpp
   - src/data_structure/sorted_set.hpp
   timestamp: '2024-01-01 14:30:01+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number_theory/discrete_logarithm.test.cpp
   - verify/yukicoder/649.test.cpp

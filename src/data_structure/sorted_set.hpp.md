@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/policy_based_data_structure.hpp
     title: policy_based_data_structure
   - icon: ':question:'

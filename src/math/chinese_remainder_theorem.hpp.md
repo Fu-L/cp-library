@@ -23,24 +23,24 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/inv_gcd.hpp\"\
-    \nconstexpr pair<long long, long long> inv_gcd(long long a, long long b) {\n \
-    \   a %= b;\n    if(a < 0) a += b;\n    if(a == 0) return {b, 0};\n    long long\
-    \ s = b, t = a, m0 = 0, m1 = 1;\n    while(t) {\n        const long long u = s\
-    \ / t;\n        s -= t * u;\n        m0 -= m1 * u;\n        long long tmp = s;\n\
-    \        s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n     \
-    \   m1 = tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n#line\
-    \ 4 \"src/math/chinese_remainder_theorem.hpp\"\npair<long long, long long> chinese_remainder_theorem(const\
-    \ vector<long long>& r, const vector<long long>& m) {\n    assert(r.size() ==\
-    \ m.size());\n    const int n = (int)r.size();\n    long long r0 = 0, m0 = 1;\n\
-    \    for(int i = 0; i < n; ++i) {\n        assert(m[i] >= 1);\n        long long\
-    \ r1 = r[i] % m[i], m1 = m[i];\n        if(r1 < 0) r1 += m[i];\n        if(m0\
-    \ < m1) {\n            swap(r0, r1);\n            swap(m0, m1);\n        }\n \
-    \       if(m0 % m1 == 0) {\n            if(r0 % m1 != r1) return {0, 0};\n   \
-    \         continue;\n        }\n        const auto [g, im] = inv_gcd(m0, m1);\n\
-    \        const long long u1 = m1 / g;\n        if((r1 - r0) % g) return {0, 0};\n\
-    \        const long long x = (r1 - r0) / g % u1 * im % u1;\n        r0 += x *\
-    \ m0;\n        m0 *= u1;\n        if(r0 < 0) r0 += m0;\n    }\n    return {r0,\
-    \ m0};\n}\n"
+    \nconstexpr pair<long long, long long> inv_gcd(long long a, const long long b)\
+    \ {\n    a %= b;\n    if(a < 0) a += b;\n    if(a == 0) return {b, 0};\n    long\
+    \ long s = b, t = a, m0 = 0, m1 = 1;\n    while(t) {\n        const long long\
+    \ u = s / t;\n        s -= t * u;\n        m0 -= m1 * u;\n        long long tmp\
+    \ = s;\n        s = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n\
+    \        m1 = tmp;\n    }\n    if(m0 < 0) m0 += b / s;\n    return {s, m0};\n\
+    }\n#line 4 \"src/math/chinese_remainder_theorem.hpp\"\npair<long long, long long>\
+    \ chinese_remainder_theorem(const vector<long long>& r, const vector<long long>&\
+    \ m) {\n    assert(r.size() == m.size());\n    const int n = (int)r.size();\n\
+    \    long long r0 = 0, m0 = 1;\n    for(int i = 0; i < n; ++i) {\n        assert(m[i]\
+    \ >= 1);\n        long long r1 = r[i] % m[i], m1 = m[i];\n        if(r1 < 0) r1\
+    \ += m[i];\n        if(m0 < m1) {\n            swap(r0, r1);\n            swap(m0,\
+    \ m1);\n        }\n        if(m0 % m1 == 0) {\n            if(r0 % m1 != r1) return\
+    \ {0, 0};\n            continue;\n        }\n        const auto [g, im] = inv_gcd(m0,\
+    \ m1);\n        const long long u1 = m1 / g;\n        if((r1 - r0) % g) return\
+    \ {0, 0};\n        const long long x = (r1 - r0) / g % u1 * im % u1;\n       \
+    \ r0 += x * m0;\n        m0 *= u1;\n        if(r0 < 0) r0 += m0;\n    }\n    return\
+    \ {r0, m0};\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./inv_gcd.hpp\"\
     \npair<long long, long long> chinese_remainder_theorem(const vector<long long>&\
     \ r, const vector<long long>& m) {\n    assert(r.size() == m.size());\n    const\
@@ -59,7 +59,7 @@ data:
   isVerificationFile: false
   path: src/math/chinese_remainder_theorem.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/186.test.cpp

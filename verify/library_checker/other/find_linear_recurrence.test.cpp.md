@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':question:'
@@ -24,9 +24,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
@@ -97,7 +97,7 @@ data:
     \    if(x < 0) x += mod;\n    long long res = 1;\n    while(n > 0) {\n       \
     \ if(n & 1) res = res * x % mod;\n        x = x * x % mod;\n        n >>= 1;\n\
     \    }\n    return res;\n}\n#line 4 \"src/math/primitive_root.hpp\"\nconstexpr\
-    \ int primitive_root(int m) {\n    if(m == 2) return 1;\n    if(m == 167772161)\
+    \ int primitive_root(const int m) {\n    if(m == 2) return 1;\n    if(m == 167772161)\
     \ return 3;\n    if(m == 469762049) return 3;\n    if(m == 754974721) return 11;\n\
     \    if(m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n\
     \    int cnt = 1;\n    int x = (m - 1) / 2;\n    while(x % 2 == 0) x /= 2;\n \
@@ -367,8 +367,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/other/find_linear_recurrence.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-11-09 02:03:28+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/other/find_linear_recurrence.test.cpp
 layout: document

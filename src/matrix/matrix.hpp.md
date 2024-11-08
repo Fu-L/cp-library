@@ -11,13 +11,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
   _extendedVerifiedWith:
@@ -27,27 +27,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
     title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/matrix_product.test.cpp
     title: verify/library_checker/linear_algebra/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -136,7 +136,7 @@ data:
   - src/matrix/inverse.hpp
   - src/matrix/counting_spanning_tree_directed.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

@@ -23,21 +23,21 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/euler_phi.hpp\"\
-    \nlong long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n    for(long\
-    \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res -=\
-    \ res / i;\n            while(n % i == 0) n /= i;\n        }\n    }\n    if(n\
-    \ > 1) res -= res / n;\n    return res;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\nlong long euler_phi(long\
-    \ long n) {\n    long long res = max(n, 0ll);\n    for(long long i = 2; i * i\
-    \ <= n; ++i) {\n        if(n % i == 0) {\n            res -= res / i;\n      \
-    \      while(n % i == 0) n /= i;\n        }\n    }\n    if(n > 1) res -= res /\
-    \ n;\n    return res;\n}"
+    \nconstexpr long long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n\
+    \    for(long long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n     \
+    \       res -= res / i;\n            while(n % i == 0) n /= i;\n        }\n  \
+    \  }\n    if(n > 1) res -= res / n;\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr long long\
+    \ euler_phi(long long n) {\n    long long res = max(n, 0ll);\n    for(long long\
+    \ i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res -= res\
+    \ / i;\n            while(n % i == 0) n /= i;\n        }\n    }\n    if(n > 1)\
+    \ res -= res / n;\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/euler_phi.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/math/eratosthenes_seive.test.cpp

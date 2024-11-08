@@ -29,22 +29,22 @@ data:
     \   while(n % i == 0) {\n                n /= i;\n                ++res.back().second;\n\
     \            }\n        }\n    }\n    if(n >= 2) res.emplace_back(n, 1);\n   \
     \ return res;\n}\n#line 4 \"src/math/moebius.hpp\"\nint moebius(const long long\
-    \ n) {\n    assert(n >= 1);\n    if(n == 1) return 1;\n    vector<pair<long long,\
-    \ int>> p = prime_factors(n);\n    int res = 1;\n    for(const auto& it : p) {\n\
-    \        if(it.second >= 2) return 0;\n        res = -res;\n    }\n    return\
-    \ res;\n}\n"
+    \ n) {\n    assert(n >= 1);\n    if(n == 1) return 1;\n    const vector<pair<long\
+    \ long, int>> p = prime_factors(n);\n    int res = 1;\n    for(const auto& it\
+    \ : p) {\n        if(it.second >= 2) return 0;\n        res = -res;\n    }\n \
+    \   return res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./prime_factors.hpp\"\
     \nint moebius(const long long n) {\n    assert(n >= 1);\n    if(n == 1) return\
-    \ 1;\n    vector<pair<long long, int>> p = prime_factors(n);\n    int res = 1;\n\
-    \    for(const auto& it : p) {\n        if(it.second >= 2) return 0;\n       \
-    \ res = -res;\n    }\n    return res;\n}"
+    \ 1;\n    const vector<pair<long long, int>> p = prime_factors(n);\n    int res\
+    \ = 1;\n    for(const auto& it : p) {\n        if(it.second >= 2) return 0;\n\
+    \        res = -res;\n    }\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/math/prime_factors.hpp
   isVerificationFile: false
   path: src/math/moebius.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/math/eratosthenes_seive.test.cpp

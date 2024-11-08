@@ -24,33 +24,33 @@ data:
     \ fac(n + 1), ifac(n + 1) {\n        fac[0] = 1;\n        for(int i = 1; i <=\
     \ n; ++i) fac[i] = fac[i - 1] * i;\n        ifac[n] = fac[n].inv();\n        for(int\
     \ i = n; i >= 1; --i) ifac[i - 1] = ifac[i] * i;\n    }\n    mint fact(int n)\
-    \ {\n        if(n < 0) return 0;\n        return fac[n];\n    }\n    mint perm(int\
-    \ n, int r) {\n        if(n < 0 or n < r or r < 0) return 0;\n        return fac[n]\
-    \ * ifac[n - r];\n    }\n    mint comb(int n, int r) {\n        if(n < 0 or n\
-    \ < r or r < 0) return 0;\n        return fac[n] * ifac[n - r] * ifac[r];\n  \
-    \  }\n    mint homo(int n, int r) {\n        if(n < 0 or r < 0) return 0;\n  \
-    \      if(r == 0) return 1;\n        return comb(n + r - 1, r);\n    }\n    mint\
-    \ operator()(int n, int r) {\n        return comb(n, r);\n    }\n\n   private:\n\
-    \    vector<mint> fac, ifac;\n};\n"
+    \ const {\n        if(n < 0) return 0;\n        return fac[n];\n    }\n    mint\
+    \ perm(int n, int r) const {\n        if(n < 0 or n < r or r < 0) return 0;\n\
+    \        return fac[n] * ifac[n - r];\n    }\n    mint comb(int n, int r) const\
+    \ {\n        if(n < 0 or n < r or r < 0) return 0;\n        return fac[n] * ifac[n\
+    \ - r] * ifac[r];\n    }\n    mint homo(int n, int r) const {\n        if(n <\
+    \ 0 or r < 0) return 0;\n        if(r == 0) return 1;\n        return comb(n +\
+    \ r - 1, r);\n    }\n    mint operator()(int n, int r) const {\n        return\
+    \ comb(n, r);\n    }\n\n   private:\n    vector<mint> fac, ifac;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename mint>\n\
     struct Binomial {\n    Binomial(int n)\n        : fac(n + 1), ifac(n + 1) {\n\
     \        fac[0] = 1;\n        for(int i = 1; i <= n; ++i) fac[i] = fac[i - 1]\
     \ * i;\n        ifac[n] = fac[n].inv();\n        for(int i = n; i >= 1; --i) ifac[i\
-    \ - 1] = ifac[i] * i;\n    }\n    mint fact(int n) {\n        if(n < 0) return\
-    \ 0;\n        return fac[n];\n    }\n    mint perm(int n, int r) {\n        if(n\
-    \ < 0 or n < r or r < 0) return 0;\n        return fac[n] * ifac[n - r];\n   \
-    \ }\n    mint comb(int n, int r) {\n        if(n < 0 or n < r or r < 0) return\
-    \ 0;\n        return fac[n] * ifac[n - r] * ifac[r];\n    }\n    mint homo(int\
-    \ n, int r) {\n        if(n < 0 or r < 0) return 0;\n        if(r == 0) return\
-    \ 1;\n        return comb(n + r - 1, r);\n    }\n    mint operator()(int n, int\
-    \ r) {\n        return comb(n, r);\n    }\n\n   private:\n    vector<mint> fac,\
-    \ ifac;\n};"
+    \ - 1] = ifac[i] * i;\n    }\n    mint fact(int n) const {\n        if(n < 0)\
+    \ return 0;\n        return fac[n];\n    }\n    mint perm(int n, int r) const\
+    \ {\n        if(n < 0 or n < r or r < 0) return 0;\n        return fac[n] * ifac[n\
+    \ - r];\n    }\n    mint comb(int n, int r) const {\n        if(n < 0 or n < r\
+    \ or r < 0) return 0;\n        return fac[n] * ifac[n - r] * ifac[r];\n    }\n\
+    \    mint homo(int n, int r) const {\n        if(n < 0 or r < 0) return 0;\n \
+    \       if(r == 0) return 1;\n        return comb(n + r - 1, r);\n    }\n    mint\
+    \ operator()(int n, int r) const {\n        return comb(n, r);\n    }\n\n   private:\n\
+    \    vector<mint> fac, ifac;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/binomial.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp

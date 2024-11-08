@@ -20,14 +20,14 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/divisor.hpp\"\
-    \nvector<long long> divisor(long long n) {\n    assert(n >= 1);\n    vector<long\
+    \nvector<long long> divisor(const long long n) {\n    assert(n >= 1);\n    vector<long\
     \ long> res;\n    for(long long i = 1; i * i <= n; ++i) {\n        if(n % i ==\
     \ 0) {\n            res.push_back(i);\n            if(i * i != n) res.emplace_back(n\
     \ / i);\n        }\n    }\n    sort(res.begin(), res.end());\n    return res;\n\
     }\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\nvector<long long> divisor(long\
-    \ long n) {\n    assert(n >= 1);\n    vector<long long> res;\n    for(long long\
-    \ i = 1; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
+  code: "#pragma once\n#include \"../template/template.hpp\"\nvector<long long> divisor(const\
+    \ long long n) {\n    assert(n >= 1);\n    vector<long long> res;\n    for(long\
+    \ long i = 1; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
     \            if(i * i != n) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
     \ res.end());\n    return res;\n}"
   dependsOn:
@@ -35,7 +35,7 @@ data:
   isVerificationFile: false
   path: src/math/divisor.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp

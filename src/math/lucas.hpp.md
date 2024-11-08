@@ -24,29 +24,29 @@ data:
     \ fact(mint::mod()), ifact(mint::mod()) {\n        fact[0] = 1;\n        for(int\
     \ i = 1; i < mod; ++i) fact[i] = fact[i - 1] * i;\n        ifact[mod - 1] = fact[mod\
     \ - 1].inv();\n        for(int i = mod - 1; i >= 1; --i) ifact[i - 1] = ifact[i]\
-    \ * i;\n    }\n    mint operator()(long long n, long long k) {\n        if(n <\
-    \ 0 or n < k or k < 0) return 0;\n        mint res = 1;\n        while(n > 0)\
-    \ {\n            const long long n0 = n % mod, k0 = k % mod;\n            if(n0\
-    \ < k0) return 0;\n            res *= fact[n0] * ifact[k0] * ifact[n0 - k0];\n\
-    \            n /= mod;\n            k /= mod;\n        }\n        return res;\n\
-    \    }\n\n   private:\n    int mod;\n    vector<mint> fact, ifact;\n};\n"
+    \ * i;\n    }\n    mint operator()(long long n, long long k) const {\n       \
+    \ if(n < 0 or n < k or k < 0) return 0;\n        mint res = 1;\n        while(n\
+    \ > 0) {\n            const long long n0 = n % mod, k0 = k % mod;\n          \
+    \  if(n0 < k0) return 0;\n            res *= fact[n0] * ifact[k0] * ifact[n0 -\
+    \ k0];\n            n /= mod;\n            k /= mod;\n        }\n        return\
+    \ res;\n    }\n\n   private:\n    int mod;\n    vector<mint> fact, ifact;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename mint>\n\
     struct Lucas {\n    Lucas()\n        : mod(mint::mod()), fact(mint::mod()), ifact(mint::mod())\
     \ {\n        fact[0] = 1;\n        for(int i = 1; i < mod; ++i) fact[i] = fact[i\
     \ - 1] * i;\n        ifact[mod - 1] = fact[mod - 1].inv();\n        for(int i\
     \ = mod - 1; i >= 1; --i) ifact[i - 1] = ifact[i] * i;\n    }\n    mint operator()(long\
-    \ long n, long long k) {\n        if(n < 0 or n < k or k < 0) return 0;\n    \
-    \    mint res = 1;\n        while(n > 0) {\n            const long long n0 = n\
-    \ % mod, k0 = k % mod;\n            if(n0 < k0) return 0;\n            res *=\
-    \ fact[n0] * ifact[k0] * ifact[n0 - k0];\n            n /= mod;\n            k\
-    \ /= mod;\n        }\n        return res;\n    }\n\n   private:\n    int mod;\n\
+    \ long n, long long k) const {\n        if(n < 0 or n < k or k < 0) return 0;\n\
+    \        mint res = 1;\n        while(n > 0) {\n            const long long n0\
+    \ = n % mod, k0 = k % mod;\n            if(n0 < k0) return 0;\n            res\
+    \ *= fact[n0] * ifact[k0] * ifact[n0 - k0];\n            n /= mod;\n         \
+    \   k /= mod;\n        }\n        return res;\n    }\n\n   private:\n    int mod;\n\
     \    vector<mint> fact, ifact;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/lucas.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/math/lucas.test.cpp

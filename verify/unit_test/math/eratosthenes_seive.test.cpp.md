@@ -155,29 +155,29 @@ data:
     \ = i;\n                if((j / i) % i == 0) moebius[j] = 0;\n               \
     \ else moebius[j] = -moebius[j];\n                euler[j] = euler[j] / i * (i\
     \ - 1);\n            }\n        }\n    }\n};\n#line 3 \"src/math/is_prime.hpp\"\
-    \nconstexpr bool is_prime(long long n) {\n    if(n <= 1) return false;\n    for(long\
-    \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) return false;\n    }\n\
-    \    return true;\n}\n#line 3 \"src/math/euler_phi.hpp\"\nlong long euler_phi(long\
-    \ long n) {\n    long long res = max(n, 0ll);\n    for(long long i = 2; i * i\
-    \ <= n; ++i) {\n        if(n % i == 0) {\n            res -= res / i;\n      \
-    \      while(n % i == 0) n /= i;\n        }\n    }\n    if(n > 1) res -= res /\
-    \ n;\n    return res;\n}\n#line 3 \"src/math/prime_factors.hpp\"\nvector<pair<long\
-    \ long, int>> prime_factors(long long n) {\n    assert(n >= 1);\n    vector<pair<long\
-    \ long, int>> res;\n    for(long long i = 2; i * i <= n; ++i) {\n        if(n\
-    \ % i == 0) {\n            res.emplace_back(i, 0);\n            while(n % i ==\
-    \ 0) {\n                n /= i;\n                ++res.back().second;\n      \
-    \      }\n        }\n    }\n    if(n >= 2) res.emplace_back(n, 1);\n    return\
-    \ res;\n}\n#line 4 \"src/math/moebius.hpp\"\nint moebius(const long long n) {\n\
-    \    assert(n >= 1);\n    if(n == 1) return 1;\n    vector<pair<long long, int>>\
-    \ p = prime_factors(n);\n    int res = 1;\n    for(const auto& it : p) {\n   \
-    \     if(it.second >= 2) return 0;\n        res = -res;\n    }\n    return res;\n\
-    }\n#line 8 \"verify/unit_test/math/eratosthenes_seive.test.cpp\"\nvoid test()\
-    \ {\n    EratosthenesSeive seive(10000000);\n    rep(i, 0, 10000) {\n        int\
-    \ n = rng(1, 10000000);\n        if(is_prime(n)) {\n            assert(seive.min_factor[n]\
-    \ == n);\n        } else {\n            assert(seive.min_factor[n] != n);\n  \
-    \      }\n        if(is_prime(i)) {\n            assert(seive.min_factor[i] ==\
-    \ i);\n        } else {\n            assert(seive.min_factor[i] != i);\n     \
-    \   }\n        assert(euler_phi(n) == seive.euler[n]);\n        assert(moebius(n)\
+    \nconstexpr bool is_prime(const long long n) {\n    if(n <= 1) return false;\n\
+    \    for(long long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) return false;\n\
+    \    }\n    return true;\n}\n#line 3 \"src/math/euler_phi.hpp\"\nconstexpr long\
+    \ long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n    for(long\
+    \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res -=\
+    \ res / i;\n            while(n % i == 0) n /= i;\n        }\n    }\n    if(n\
+    \ > 1) res -= res / n;\n    return res;\n}\n#line 3 \"src/math/prime_factors.hpp\"\
+    \nvector<pair<long long, int>> prime_factors(long long n) {\n    assert(n >= 1);\n\
+    \    vector<pair<long long, int>> res;\n    for(long long i = 2; i * i <= n; ++i)\
+    \ {\n        if(n % i == 0) {\n            res.emplace_back(i, 0);\n         \
+    \   while(n % i == 0) {\n                n /= i;\n                ++res.back().second;\n\
+    \            }\n        }\n    }\n    if(n >= 2) res.emplace_back(n, 1);\n   \
+    \ return res;\n}\n#line 4 \"src/math/moebius.hpp\"\nint moebius(const long long\
+    \ n) {\n    assert(n >= 1);\n    if(n == 1) return 1;\n    const vector<pair<long\
+    \ long, int>> p = prime_factors(n);\n    int res = 1;\n    for(const auto& it\
+    \ : p) {\n        if(it.second >= 2) return 0;\n        res = -res;\n    }\n \
+    \   return res;\n}\n#line 8 \"verify/unit_test/math/eratosthenes_seive.test.cpp\"\
+    \nvoid test() {\n    EratosthenesSeive seive(10000000);\n    rep(i, 0, 10000)\
+    \ {\n        int n = rng(1, 10000000);\n        if(is_prime(n)) {\n          \
+    \  assert(seive.min_factor[n] == n);\n        } else {\n            assert(seive.min_factor[n]\
+    \ != n);\n        }\n        if(is_prime(i)) {\n            assert(seive.min_factor[i]\
+    \ == i);\n        } else {\n            assert(seive.min_factor[i] != i);\n  \
+    \      }\n        assert(euler_phi(n) == seive.euler[n]);\n        assert(moebius(n)\
     \ == seive.moebius[n]);\n    }\n    rep(i, 1, 100) {\n        if(is_prime(i))\
     \ {\n            assert(seive.min_factor[i] == i);\n        } else {\n       \
     \     assert(seive.min_factor[i] != i);\n        }\n        assert(euler_phi(i)\
@@ -211,7 +211,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/math/eratosthenes_seive.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/math/eratosthenes_seive.test.cpp

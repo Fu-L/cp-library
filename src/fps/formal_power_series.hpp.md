@@ -15,10 +15,10 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/find_linear_recurrence.test.cpp
     title: verify/library_checker/other/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - icon: ':x:'
@@ -44,7 +44,7 @@ data:
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -57,8 +57,8 @@ data:
     \    assert(n >= 0 and mod >= 1);\n    x %= mod;\n    if(x < 0) x += mod;\n  \
     \  long long res = 1;\n    while(n > 0) {\n        if(n & 1) res = res * x % mod;\n\
     \        x = x * x % mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line\
-    \ 4 \"src/math/primitive_root.hpp\"\nconstexpr int primitive_root(int m) {\n \
-    \   if(m == 2) return 1;\n    if(m == 167772161) return 3;\n    if(m == 469762049)\
+    \ 4 \"src/math/primitive_root.hpp\"\nconstexpr int primitive_root(const int m)\
+    \ {\n    if(m == 2) return 1;\n    if(m == 167772161) return 3;\n    if(m == 469762049)\
     \ return 3;\n    if(m == 754974721) return 11;\n    if(m == 998244353) return\
     \ 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int x =\
     \ (m - 1) / 2;\n    while(x % 2 == 0) x /= 2;\n    for(int i = 3; (long long)(i)*i\
@@ -441,8 +441,8 @@ data:
   isVerificationFile: false
   path: src/fps/formal_power_series.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-11-09 02:03:28+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/other/find_linear_recurrence.test.cpp
