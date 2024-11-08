@@ -1,7 +1,7 @@
 #pragma once
 #include "../template/template.hpp"
 using Real = long double;
-const Real EPS = Real(1e-8), PI = acos(Real(-1.0));
+constexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;
 int sign(const Real& r) {
     if(r <= -EPS) return -1;
     if(r >= +EPS) return +1;

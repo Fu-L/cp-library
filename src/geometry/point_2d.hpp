@@ -51,17 +51,17 @@ Real closest_pair(vector<Point> ps) {
     if((int)ps.size() <= 1) return Real(1e18);
     sort(ps.begin(), ps.end(), comp_x);
     vector<Point> memo(ps.size());
-    auto func = [&](auto& func, int l, int r) -> Real {
+    auto func = [&](const auto& func, const int l, const int r) -> Real {
         if(r - l <= 1) return Real(1e18);
-        int m = (l + r) >> 1;
-        Real x = ps[m].real();
+        const int m = (l + r) >> 1;
+        const Real x = ps[m].real();
         Real res = min(func(func, l, m), func(func, m, r));
         inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin() + r, comp_y);
         int cnt = 0;
         for(int i = l; i < r; ++i) {
             if(abs(ps[i].real() - x) >= res) continue;
             for(int j = 0; j < cnt; ++j) {
-                Point d = ps[i] - memo[cnt - j - 1];
+                const Point d = ps[i] - memo[cnt - j - 1];
                 if(d.imag() >= res) break;
                 res = min(res, abs(d));
             }
