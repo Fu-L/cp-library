@@ -5,7 +5,7 @@
 #include "../template/template.hpp"
 #include "../graph/graph_template.hpp"
 template <typename T>
-Edges<T> max_matching(int n, const Edges<T>& es) {
+Edges<T> max_matching(const int n, const Edges<T>& es) {
     using namespace boost;
     using G = adjacency_list<vecS, vecS, undirectedS>;
     using V = graph_traits<G>::vertex_descriptor;

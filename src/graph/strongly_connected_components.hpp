@@ -5,11 +5,11 @@
 template <typename T>
 pair<int, vector<int>> scc_ids(const Graph<T>& g) {
     const int n = g.size();
-    CompressedSparseRow<T> g_csr(g);
+    const CompressedSparseRow<T> g_csr(g);
     int now_ord = 0, group_num = 0;
     vector<int> visited, low(n), ord(n, -1), ids(n);
     visited.reserve(n);
-    auto dfs = [&](auto& dfs, int v) -> void {
+    auto dfs = [&](const auto& dfs, const int v) -> void {
         low[v] = ord[v] = now_ord++;
         visited.emplace_back(v);
         for(int i = g_csr.start[v]; i < g_csr.start[v + 1]; ++i) {

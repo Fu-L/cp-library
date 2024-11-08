@@ -13,7 +13,7 @@ struct LowLink {
     }
 
    private:
-    int dfs(const Graph<T>& g, int idx, int k, int par) {
+    int dfs(const Graph<T>& g, const int idx, int k, const int par) {
         low[idx] = (ord[idx] = k++);
         int cnt = 0;
         bool arti = false, second = false;

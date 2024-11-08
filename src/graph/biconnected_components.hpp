@@ -17,7 +17,7 @@ struct BiconnectedComponents {
     LowLink<T> lowlink;
     vector<int> used;
     vector<pair<int, int>> tmp;
-    void dfs(const Graph<T>& g, int idx, int par) {
+    void dfs(const Graph<T>& g, const int idx, const int par) {
         used[idx] = true;
         for(const Edge<T>& e : g[idx]) {
             const int to = e.to;
@@ -30,7 +30,7 @@ struct BiconnectedComponents {
                 if(lowlink.low[to] >= lowlink.ord[idx]) {
                     bc.emplace_back();
                     while(true) {
-                        pair<int, int> ed = tmp.back();
+                        const pair<int, int> ed = tmp.back();
                         bc.back().emplace_back(ed);
                         tmp.pop_back();
                         if(ed.first == min(idx, to) and ed.second == max(idx, to)) break;

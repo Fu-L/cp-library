@@ -6,8 +6,8 @@ vector<int> topological_sort(const Graph<T>& g) {
     const int n = g.size();
     vector<int> deg(n);
     for(int i = 0; i < n; ++i) {
-        for(const auto& to : g[i]) {
-            ++deg[to];
+        for(const auto& e : g[i]) {
+            ++deg[e.to];
         }
     }
     stack<int> st;

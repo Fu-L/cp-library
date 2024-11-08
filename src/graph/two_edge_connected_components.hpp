@@ -30,7 +30,7 @@ struct TwoEdgeConnectedComponents {
     int n, k;
     LowLink<T> low;
     vector<int> comp;
-    void dfs(const Graph<T>& g, int i, int p) {
+    void dfs(const Graph<T>& g, const int i, const int p) {
         if(p >= 0 and low.ord[p] >= low.low[i]) comp[i] = comp[p];
         else comp[i] = k++;
         for(const Edge<T>& e : g[i]) {

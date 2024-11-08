@@ -12,7 +12,7 @@ Edges<T> cycle_detection(const Graph<T>& g, const bool directed = true) {
     Edges<T> cycle;
     vector<int> pre(n, -1), visited(n, 0);
     int finish = 0;
-    auto dfs = [&](auto& dfs, int cur, int pval, const Edge<T>& par) -> int {
+    auto dfs = [&](const auto& dfs, const int cur, const int pval, const Edge<T>& par) -> int {
         pre[cur] = pval;
         visited[cur] = 1;
         for(const Edge<T>& e : g[cur]) {
@@ -23,7 +23,7 @@ Edges<T> cycle_detection(const Graph<T>& g, const bool directed = true) {
                 return e.to;
             }
             if(visited[e.to]) continue;
-            int nx = dfs(dfs, e.to, pval, e);
+            const int nx = dfs(dfs, e.to, pval, e);
             if(nx != -1) {
                 cycle.emplace_back(e);
                 if(cur == nx) {

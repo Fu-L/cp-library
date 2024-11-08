@@ -4,7 +4,7 @@ template <typename Cap>
 struct MaxFlow {
     MaxFlow(int N)
         : n(N), g(N) {}
-    int add_edge(int from, int to, const Cap& cap) {
+    int add_edge(const int from, const int to, const Cap& cap) {
         assert(0 <= from and from < n);
         assert(0 <= to and to < n);
         assert(0 <= cap);
@@ -21,7 +21,7 @@ struct MaxFlow {
         int from, to;
         Cap cap, flow;
     };
-    edge get_edge(int i) const {
+    edge get_edge(const int i) const {
         const int m = (int)pos.size();
         assert(0 <= i and i < m);
         const auto _e = g[pos[i].first][pos[i].second];
@@ -36,8 +36,8 @@ struct MaxFlow {
         }
         return result;
     }
-    void change_edge(int i, const Cap& new_cap, const Cap& new_flow) {
-        int m = (int)pos.size();
+    void change_edge(const int i, const Cap& new_cap, const Cap& new_flow) {
+        const int m = (int)pos.size();
         assert(0 <= i and i < m);
         assert(0 <= new_flow and new_flow <= new_cap);
         auto& _e = g[pos[i].first][pos[i].second];
@@ -45,10 +45,10 @@ struct MaxFlow {
         _e.cap = new_cap - new_flow;
         _re.cap = new_flow;
     }
-    Cap flow(int s, int t) {
+    Cap flow(const int s, const int t) {
         return flow(s, t, numeric_limits<Cap>::max());
     }
-    Cap flow(int s, int t, const Cap& flow_limit) {
+    Cap flow(const int s, const int t, const Cap& flow_limit) {
         assert(0 <= s and s < n);
         assert(0 <= t and t < n);
         assert(s != t);
@@ -70,7 +70,7 @@ struct MaxFlow {
                 }
             }
         };
-        auto dfs = [&](auto& dfs, int v, const Cap& up) -> Cap {
+        auto dfs = [&](const auto& dfs, const int v, const Cap& up) -> Cap {
             if(v == s) return up;
             Cap res = 0;
             const int level_v = level[v];
@@ -98,7 +98,7 @@ struct MaxFlow {
         }
         return flow;
     }
-    vector<bool> min_cut(int s) const {
+    vector<bool> min_cut(const int s) const {
         vector<bool> visited(n);
         queue<int> que;
         que.emplace(s);

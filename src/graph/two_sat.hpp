@@ -5,7 +5,7 @@
 struct TwoSAT {
     TwoSAT(int N)
         : n(N), ans(N), graph(2 * N) {}
-    void add_clause(int i, bool f, int j, bool g) {
+    void add_clause(const int i, const bool f, const int j, const bool g) {
         graph.add_directed_edge(2 * i + (f ? 0 : 1), 2 * j + (g ? 1 : 0));
         graph.add_directed_edge(2 * j + (g ? 0 : 1), 2 * i + (f ? 1 : 0));
     }

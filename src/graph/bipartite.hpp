@@ -5,7 +5,7 @@ template <typename T>
 vector<int> bipartite(const Graph<T>& g) {
     const int n = g.size();
     vector<int> color(n, -1);
-    auto dfs = [&](auto& dfs, int cur, int col) -> bool {
+    auto dfs = [&](const auto& dfs, const int cur, const int col) -> bool {
         color[cur] = col;
         for(const Edge<T>& e : g[cur]) {
             if(color[e.to] == col) return false;

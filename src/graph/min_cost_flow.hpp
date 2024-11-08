@@ -5,7 +5,7 @@ template <class E>
 struct csr {
     vector<int> start;
     vector<E> elist;
-    explicit csr(int n, const vector<pair<int, E>>& edges)
+    explicit csr(const int n, const vector<pair<int, E>>& edges)
         : start(n + 1), elist(edges.size()) {
         for(const auto& e : edges) {
             ++start[e.first + 1];
@@ -23,7 +23,7 @@ template <class T>
 struct simple_queue {
     vector<T> payload;
     int pos = 0;
-    void reserve(int n) {
+    void reserve(const int n) {
         payload.reserve(n);
     }
     int size() const {
@@ -35,7 +35,7 @@ struct simple_queue {
     void push(const T& t) {
         payload.emplace_back(t);
     }
-    T& front() {
+    T& front() const {
         return payload[pos];
     }
     void clear() {
@@ -51,9 +51,9 @@ template <class Cap, class Cost>
 struct MinCostFlow {
    public:
     MinCostFlow() {}
-    explicit MinCostFlow(int n)
+    explicit MinCostFlow(const int n)
         : _n(n) {}
-    int add_edge(int from, int to, const Cap& cap, const Cost& cost) {
+    int add_edge(const int from, const int to, const Cap& cap, const Cost& cost) {
         assert(0 <= from and from < _n);
         assert(0 <= to and to < _n);
         assert(0 <= cap);
@@ -67,24 +67,24 @@ struct MinCostFlow {
         Cap cap, flow;
         Cost cost;
     };
-    edge get_edge(int i) {
+    edge get_edge(const int i) const {
         const int m = (int)_edges.size();
         assert(0 <= i and i < m);
         return _edges[i];
     }
-    vector<edge> edges() {
+    vector<edge> edges() const {
         return _edges;
     }
-    pair<Cap, Cost> flow(int s, int t) {
+    pair<Cap, Cost> flow(const int s, const int t) {
         return flow(s, t, numeric_limits<Cap>::max());
     }
-    pair<Cap, Cost> flow(int s, int t, const Cap& flow_limit) {
+    pair<Cap, Cost> flow(const int s, const int t, const Cap& flow_limit) {
         return slope(s, t, flow_limit).back();
     }
-    vector<pair<Cap, Cost>> slope(int s, int t) {
+    vector<pair<Cap, Cost>> slope(const int s, const int t) {
         return slope(s, t, numeric_limits<Cap>::max());
     }
-    vector<pair<Cap, Cost>> slope(int s, int t, const Cap& flow_limit) {
+    vector<pair<Cap, Cost>> slope(const int s, const int t, const Cap& flow_limit) {
         assert(0 <= s and s < _n);
         assert(0 <= t and t < _n);
         assert(s != t);
@@ -127,14 +127,14 @@ struct MinCostFlow {
         Cap cap;
         Cost cost;
     };
-    vector<pair<Cap, Cost>> slope(internal::csr<_edge>& g, int s, int t, const Cap& flow_limit) {
+    vector<pair<Cap, Cost>> slope(internal::csr<_edge>& g, const int s, const int t, const Cap& flow_limit) {
         vector<pair<Cost, Cost>> dual_dist(_n);
         vector<int> prev_e(_n);
         vector<bool> vis(_n);
         struct Q {
             Cost key;
             int to;
-            inline bool operator<(Q r) const {
+            inline bool operator<(const Q& r) const {
                 return key > r.key;
             }
         };
