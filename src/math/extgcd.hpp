@@ -1,5 +1,5 @@
 #include "../template/template.hpp"
-long long extgcd(long long a, long long b, long long& x, long long& y) {
+constexpr long long extgcd(const long long a, const long long b, long long& x, long long& y) {
     long long d = a;
     if(b != 0) {
         d = extgcd(b, a % b, y, x);

@@ -1,7 +1,7 @@
 #pragma once
 #include "../template/template.hpp"
 #include "../template/policy_based_data_structure.hpp"
-long long log_mod(long long a, long long b, long long mod) {
+long long log_mod(const long long a, long long b, const long long mod) {
     assert(mod >= 1);
     long long g = 1;
     for(long long i = mod; i; i /= 2) (g *= a) %= mod;
@@ -14,7 +14,8 @@ long long log_mod(long long a, long long b, long long mod) {
     if(b % g) return -1;
     t /= g;
     b /= g;
-    long long n = mod / g, h = 0, gs = 1;
+    const long long n = mod / g;
+    long long h = 0, gs = 1;
     for(; h * h < n; ++h) (gs *= a) %= n;
     gp_hash_table<long long, long long> ht;
     for(long long s = 0, e = b; s < h; ht[e] = ++s) {

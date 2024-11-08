@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-constexpr pair<long long, long long> inv_gcd(long long a, long long b) {
+constexpr pair<long long, long long> inv_gcd(long long a, const long long b) {
     a %= b;
     if(a < 0) a += b;
     if(a == 0) return {b, 0};

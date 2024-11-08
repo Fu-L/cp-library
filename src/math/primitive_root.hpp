@@ -1,7 +1,7 @@
 #pragma once
 #include "../template/template.hpp"
 #include "./pow_mod.hpp"
-constexpr int primitive_root(int m) {
+constexpr int primitive_root(const int m) {
     if(m == 2) return 1;
     if(m == 167772161) return 3;
     if(m == 469762049) return 3;

@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-vector<long long> divisor(long long n) {
+vector<long long> divisor(const long long n) {
     assert(n >= 1);
     vector<long long> res;
     for(long long i = 1; i * i <= n; ++i) {

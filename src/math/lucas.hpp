@@ -9,7 +9,7 @@ struct Lucas {
         ifact[mod - 1] = fact[mod - 1].inv();
         for(int i = mod - 1; i >= 1; --i) ifact[i - 1] = ifact[i] * i;
     }
-    mint operator()(long long n, long long k) {
+    mint operator()(long long n, long long k) const {
         if(n < 0 or n < k or k < 0) return 0;
         mint res = 1;
         while(n > 0) {

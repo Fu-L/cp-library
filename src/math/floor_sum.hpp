@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-long long floor_sum(long long n, long long m, long long a, long long b) {
+constexpr long long floor_sum(const long long n, const long long m, long long a, long long b) {
     long long res = 0;
     if(a >= m) res += (n - 1) * n * (a / m) / 2, a %= m;
     if(b >= m) res += n * (b / m), b %= m;
