@@ -43,16 +43,16 @@ data:
     \ Edges = vector<Edge<T>>;\n#line 4 \"src/tree/centroid_decomposition.hpp\"\n\
     template <typename T>\npair<Graph<int>, int> centroid_decomposition(const Graph<T>&\
     \ g) {\n    const int n = g.size();\n    vector<int> sub(n);\n    vector<bool>\
-    \ visited(n);\n    Graph<int> tree(n);\n    auto get_size = [&](auto& get_size,\
+    \ visited(n);\n    Graph<int> tree(n);\n    auto get_size = [&](const auto& get_size,\
     \ const int cur, const int par) -> int {\n        sub[cur] = 1;\n        for(const\
     \ Edge<T>& e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n\
     \            sub[cur] += get_size(get_size, e.to, cur);\n        }\n        return\
-    \ sub[cur];\n    };\n    auto get_centroid = [&](auto& get_centroid, const int\
-    \ cur, const int par, const int mid) -> int {\n        for(const Edge<T>& e :\
-    \ g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n        \
-    \    if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);\n\
-    \        }\n        return cur;\n    };\n    auto dfs = [&](auto& dfs, const int\
-    \ cur) -> int {\n        const int centroid = get_centroid(get_centroid, cur,\
+    \ sub[cur];\n    };\n    auto get_centroid = [&](const auto& get_centroid, const\
+    \ int cur, const int par, const int mid) -> int {\n        for(const Edge<T>&\
+    \ e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n    \
+    \        if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);\n\
+    \        }\n        return cur;\n    };\n    auto dfs = [&](const auto& dfs, const\
+    \ int cur) -> int {\n        const int centroid = get_centroid(get_centroid, cur,\
     \ -1, get_size(get_size, cur, -1) / 2);\n        visited[centroid] = true;\n \
     \       for(const Edge<T>& e : g[centroid]) {\n            if(visited[e.to]) continue;\n\
     \            const int nex = dfs(dfs, e.to);\n            if(centroid != nex)\
@@ -62,16 +62,16 @@ data:
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
     \ntemplate <typename T>\npair<Graph<int>, int> centroid_decomposition(const Graph<T>&\
     \ g) {\n    const int n = g.size();\n    vector<int> sub(n);\n    vector<bool>\
-    \ visited(n);\n    Graph<int> tree(n);\n    auto get_size = [&](auto& get_size,\
+    \ visited(n);\n    Graph<int> tree(n);\n    auto get_size = [&](const auto& get_size,\
     \ const int cur, const int par) -> int {\n        sub[cur] = 1;\n        for(const\
     \ Edge<T>& e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n\
     \            sub[cur] += get_size(get_size, e.to, cur);\n        }\n        return\
-    \ sub[cur];\n    };\n    auto get_centroid = [&](auto& get_centroid, const int\
-    \ cur, const int par, const int mid) -> int {\n        for(const Edge<T>& e :\
-    \ g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n        \
-    \    if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);\n\
-    \        }\n        return cur;\n    };\n    auto dfs = [&](auto& dfs, const int\
-    \ cur) -> int {\n        const int centroid = get_centroid(get_centroid, cur,\
+    \ sub[cur];\n    };\n    auto get_centroid = [&](const auto& get_centroid, const\
+    \ int cur, const int par, const int mid) -> int {\n        for(const Edge<T>&\
+    \ e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n    \
+    \        if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);\n\
+    \        }\n        return cur;\n    };\n    auto dfs = [&](const auto& dfs, const\
+    \ int cur) -> int {\n        const int centroid = get_centroid(get_centroid, cur,\
     \ -1, get_size(get_size, cur, -1) / 2);\n        visited[centroid] = true;\n \
     \       for(const Edge<T>& e : g[centroid]) {\n            if(visited[e.to]) continue;\n\
     \            const int nex = dfs(dfs, e.to);\n            if(centroid != nex)\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: src/tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:42:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp

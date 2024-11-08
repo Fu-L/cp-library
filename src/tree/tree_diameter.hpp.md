@@ -46,26 +46,26 @@ data:
     \ Edges = vector<Edge<T>>;\n#line 4 \"src/tree/tree_diameter.hpp\"\ntemplate <typename\
     \ T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g) {\n    const int n\
     \ = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n    auto dfs\
-    \ = [&](auto& dfs, const int v, const int p, const T& d) -> void {\n        depth[v]\
-    \ = d;\n        par[v] = p;\n        for(const Edge<T>& e : g[v]) {\n        \
-    \    if(e.to == p) continue;\n            dfs(dfs, e.to, v, d + e.cost);\n   \
-    \     }\n    };\n    int s = 0;\n    for(int i = 0; i < 2; ++i) {\n        dfs(dfs,\
-    \ s, -1, 0);\n        T ma = -1;\n        for(int j = 0; j < n; ++j) {\n     \
-    \       if(depth[j] > ma) {\n                ma = depth[j];\n                s\
-    \ = j;\n            }\n        }\n    }\n    vector<int> path;\n    const T diameter\
-    \ = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n        s\
-    \ = par[s];\n    }\n    return {diameter, path};\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
-    \ntemplate <typename T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g)\
-    \ {\n    const int n = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n\
-    \    auto dfs = [&](auto& dfs, const int v, const int p, const T& d) -> void {\n\
-    \        depth[v] = d;\n        par[v] = p;\n        for(const Edge<T>& e : g[v])\
+    \ = [&](const auto& dfs, const int v, const int p, const T& d) -> void {\n   \
+    \     depth[v] = d;\n        par[v] = p;\n        for(const Edge<T>& e : g[v])\
     \ {\n            if(e.to == p) continue;\n            dfs(dfs, e.to, v, d + e.cost);\n\
     \        }\n    };\n    int s = 0;\n    for(int i = 0; i < 2; ++i) {\n       \
     \ dfs(dfs, s, -1, 0);\n        T ma = -1;\n        for(int j = 0; j < n; ++j)\
     \ {\n            if(depth[j] > ma) {\n                ma = depth[j];\n       \
     \         s = j;\n            }\n        }\n    }\n    vector<int> path;\n   \
     \ const T diameter = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n\
+    \        s = par[s];\n    }\n    return {diameter, path};\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
+    \ntemplate <typename T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g)\
+    \ {\n    const int n = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n\
+    \    auto dfs = [&](const auto& dfs, const int v, const int p, const T& d) ->\
+    \ void {\n        depth[v] = d;\n        par[v] = p;\n        for(const Edge<T>&\
+    \ e : g[v]) {\n            if(e.to == p) continue;\n            dfs(dfs, e.to,\
+    \ v, d + e.cost);\n        }\n    };\n    int s = 0;\n    for(int i = 0; i < 2;\
+    \ ++i) {\n        dfs(dfs, s, -1, 0);\n        T ma = -1;\n        for(int j =\
+    \ 0; j < n; ++j) {\n            if(depth[j] > ma) {\n                ma = depth[j];\n\
+    \                s = j;\n            }\n        }\n    }\n    vector<int> path;\n\
+    \    const T diameter = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n\
     \        s = par[s];\n    }\n    return {diameter, path};\n}"
   dependsOn:
   - src/template/template.hpp
@@ -73,7 +73,7 @@ data:
   isVerificationFile: false
   path: src/tree/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:42:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/tree_diameter.test.cpp

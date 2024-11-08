@@ -89,8 +89,8 @@ data:
     \    static vector<Modint_2_61m1> hash;\n    while((int)hash.size() < n) {\n \
     \       static uniform_int_distribution<unsigned long long> dist(0, Modint_2_61m1::mod()\
     \ - 1);\n        hash.emplace_back(dist(mt));\n    }\n    vector<ll> res(n);\n\
-    \    auto dfs = [&](auto& dfs, const int cur, const int par) -> int {\n      \
-    \  int depth = 0;\n        for(const auto& e : g[cur]) {\n            if(e.to\
+    \    auto dfs = [&](const auto& dfs, const int cur, const int par) -> int {\n\
+    \        int depth = 0;\n        for(const auto& e : g[cur]) {\n            if(e.to\
     \ == par) continue;\n            depth = max(depth, dfs(dfs, e.to, cur) + 1);\n\
     \        }\n        Modint_2_61m1 h = 1, r = hash[depth];\n        for(const auto&\
     \ e : g[cur]) {\n            if(e.to == par) continue;\n            h *= (r +\
@@ -103,8 +103,8 @@ data:
     \    static vector<Modint_2_61m1> hash;\n    while((int)hash.size() < n) {\n \
     \       static uniform_int_distribution<unsigned long long> dist(0, Modint_2_61m1::mod()\
     \ - 1);\n        hash.emplace_back(dist(mt));\n    }\n    vector<ll> res(n);\n\
-    \    auto dfs = [&](auto& dfs, const int cur, const int par) -> int {\n      \
-    \  int depth = 0;\n        for(const auto& e : g[cur]) {\n            if(e.to\
+    \    auto dfs = [&](const auto& dfs, const int cur, const int par) -> int {\n\
+    \        int depth = 0;\n        for(const auto& e : g[cur]) {\n            if(e.to\
     \ == par) continue;\n            depth = max(depth, dfs(dfs, e.to, cur) + 1);\n\
     \        }\n        Modint_2_61m1 h = 1, r = hash[depth];\n        for(const auto&\
     \ e : g[cur]) {\n            if(e.to == par) continue;\n            h *= (r +\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: false
   path: src/tree/rooted_hash_tree.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:42:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
