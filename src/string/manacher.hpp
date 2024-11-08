@@ -7,7 +7,7 @@ vector<int> manacher(T s) {
     for(int i = n - 1; i >= 0; --i) {
         s[2 * i] = s[i];
     }
-    auto d = *min_element(s.begin(), s.end());
+    const auto d = *min_element(s.begin(), s.end());
     for(int i = 0; i < n - 1; ++i) {
         s[2 * i + 1] = d;
     }
@@ -24,7 +24,7 @@ vector<int> manacher(T s) {
         i += k, j -= k;
     }
     for(int i = 0; i < n; ++i) {
-        if(((i ^ res[i]) & 1) == 0) res[i]--;
+        if(((i ^ res[i]) & 1) == 0) --res[i];
     }
     return res;
 }

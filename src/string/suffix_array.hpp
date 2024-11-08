@@ -104,10 +104,10 @@ vector<int> suffix_array(const vector<T>& s, const bool compress = true) {
         return sa;
     };
     if(compress) {
-        int n = (int)s.size();
+        const int n = (int)s.size();
         vector<int> idx(n);
         iota(idx.begin(), idx.end(), 0);
-        sort(idx.begin(), idx.end(), [&](int l, int r) { return s[l] < s[r]; });
+        sort(idx.begin(), idx.end(), [&](const int l, const int r) { return s[l] < s[r]; });
         vector<int> s2(n);
         int upper = 0;
         for(int i = 0; i < n; ++i) {
@@ -119,7 +119,7 @@ vector<int> suffix_array(const vector<T>& s, const bool compress = true) {
     return sa_is(sa_is, s, *max_element(s.begin(), s.end()));
 }
 vector<int> suffix_array(const string& s) {
-    int n = (int)s.size();
+    const int n = (int)s.size();
     vector<int> s2(n);
     for(int i = 0; i < n; ++i) {
         s2[i] = s[i];
@@ -128,7 +128,7 @@ vector<int> suffix_array(const string& s) {
 }
 template <typename T>
 vector<int> lcp_array(const vector<T>& s, const vector<int>& sa) {
-    int n = (int)s.size();
+    const int n = (int)s.size();
     assert(n >= 1);
     vector<int> rnk(n);
     for(int i = 0; i < n; ++i) {
@@ -139,7 +139,7 @@ vector<int> lcp_array(const vector<T>& s, const vector<int>& sa) {
     for(int i = 0; i < n; ++i) {
         if(h > 0) --h;
         if(rnk[i] == 0) continue;
-        int j = sa[rnk[i] - 1];
+        const int j = sa[rnk[i] - 1];
         for(; j + h < n and i + h < n; ++h) {
             if(s[j + h] != s[i + h]) break;
         }
@@ -148,7 +148,7 @@ vector<int> lcp_array(const vector<T>& s, const vector<int>& sa) {
     return lcp;
 }
 vector<int> lcp_array(const string& s, const vector<int>& sa) {
-    int n = (int)s.size();
+    const int n = (int)s.size();
     vector<int> s2(n);
     for(int i = 0; i < n; ++i) {
         s2[i] = s[i];

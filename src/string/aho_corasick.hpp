@@ -9,7 +9,7 @@ struct AhoCorasick : Trie<X + 1, margin> {
     using TRIE::TRIE;
     vector<int> cnt;
     void build() {
-        int n = (int)st.size();
+        const int n = (int)st.size();
         cnt.resize(n);
         for(int i = 0; i < n; ++i) {
             if(heavy) sort(st[i].idxs.begin(), st[i].idxs.end());
@@ -64,7 +64,7 @@ struct AhoCorasick : Trie<X + 1, margin> {
         }
         return res;
     }
-    int count(int pos) {
+    int count(const int pos) const {
         return cnt[pos];
     }
 };
