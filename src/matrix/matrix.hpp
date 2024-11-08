@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 template <typename T>
 struct Matrix {
-    Matrix(int h, int w, T val = 0)
+    Matrix(const int h, const int w, const T& val = 0)
         : h(h), w(w), A(h, vector<T>(w, val)) {}
     int H() const {
         return h;
@@ -10,15 +10,15 @@ struct Matrix {
     int W() const {
         return w;
     }
-    const vector<T>& operator[](int i) const {
+    const vector<T>& operator[](const int i) const {
         assert(0 <= i and i < h);
         return A[i];
     }
-    vector<T>& operator[](int i) {
+    vector<T>& operator[](const int i) {
         assert(0 <= i and i < h);
         return A[i];
     }
-    static Matrix I(int n) {
+    static Matrix I(const int n) {
         Matrix mat(n, n);
         for(int i = 0; i < n; ++i) mat[i][i] = 1;
         return mat;

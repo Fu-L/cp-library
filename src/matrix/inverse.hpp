@@ -4,9 +4,9 @@
 #include "./gauss_elimination.hpp"
 template <typename T>
 Matrix<T> inverse(const Matrix<T>& a) {
+    assert(a.H() > 0);
+    assert(a.H() == a.W());
     const int n = a.H();
-    assert(n > 0);
-    assert(n == a.W());
     Matrix<T> m(n, 2 * n);
     for(int i = 0; i < n; ++i) {
         for(int j = 0; j < n; ++j) {
@@ -14,8 +14,7 @@ Matrix<T> inverse(const Matrix<T>& a) {
         }
         m[i][n + i] = 1;
     }
-    auto [rank, det] = gauss_elimination(m, n);
-    if(rank != n) {
+    if(gauss_elimination(m, n).first != n) {
         Matrix<T> res(0, 0);
         return res;
     }

@@ -3,7 +3,7 @@
 #include "./matrix.hpp"
 #include "./gauss_elimination.hpp"
 template <typename T>
-vector<vector<T>> linear_equation(Matrix<T> a, Matrix<T> b) {
+vector<vector<T>> linear_equation(const Matrix<T>& a, const Matrix<T>& b) {
     assert(a.H() == b.H() and b.W() == 1);
     const int h = a.H(), w = a.W();
     Matrix<T> A(h, w + 1);
@@ -13,8 +13,7 @@ vector<vector<T>> linear_equation(Matrix<T> a, Matrix<T> b) {
         }
         A[i][w] = b[i][0];
     }
-    auto p = gauss_elimination(A, w);
-    const int rank = p.first;
+    const int rank = gauss_elimination(A, w).first;
     for(int i = rank; i < h; ++i) {
         if(A[i][w] != 0) return vector<vector<T>>{};
     }

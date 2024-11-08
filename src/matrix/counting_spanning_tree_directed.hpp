@@ -4,7 +4,7 @@
 #include "./matrix.hpp"
 #include "./gauss_elimination.hpp"
 template <typename T, typename U>
-T counting_spanning_tree_directed(const Graph<U>& g, int r) {
+T counting_spanning_tree_directed(const Graph<U>& g, const int r) {
     const int n = g.size();
     assert(0 <= r and r < n);
     Matrix<T> mat(n, n);
