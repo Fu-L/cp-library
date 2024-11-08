@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
   - icon: ':x:'
@@ -21,10 +21,10 @@ data:
     path: src/matrix/linear_equation.hpp
     title: linear_equation
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - icon: ':x:'
@@ -41,7 +41,7 @@ data:
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -125,7 +125,7 @@ data:
   - src/matrix/inverse.hpp
   - src/matrix/counting_spanning_tree_directed.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

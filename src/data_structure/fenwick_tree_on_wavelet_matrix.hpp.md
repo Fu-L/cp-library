@@ -6,12 +6,12 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -40,8 +40,8 @@ data:
     \ data;\n        FenwickTree() = default;\n        FenwickTree(const int size)\
     \ {\n            init(size);\n        }\n        void init(const int size) {\n\
     \            N = size;\n            data.assign(N + 1, 0);\n        }\n      \
-    \  __attribute__((target(\"bmi\"))) void add(u32 k, const T x) {\n           \
-    \ for(++k; k <= N; k += _blsi_u32(k)) data[k] += x;\n        }\n        __attribute__((target(\"\
+    \  __attribute__((target(\"bmi\"))) void add(u32 k, const T& x) {\n          \
+    \  for(++k; k <= N; k += _blsi_u32(k)) data[k] += x;\n        }\n        __attribute__((target(\"\
     bmi\"))) T sum(u32 k) const {\n            T ret = T();\n            for(; k;\
     \ k = _blsr_u32(k)) ret += data[k];\n            return ret;\n        }\n    \
     \    __attribute__((target(\"bmi\"))) T sum(int l, int r) const {\n          \
@@ -61,9 +61,9 @@ data:
     \             l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n\
     \            } else {\n                l = l0, r = r0;\n            }\n      \
     \  }\n        return res;\n    }\n\n   public:\n    FenwickTreeonWaveletMatrix()\
-    \ {}\n    void add_point(const S x, const S y) {\n        ps.emplace_back(x, y);\n\
-    \        ys.emplace_back(y);\n    }\n    __attribute__((optimize(\"O3\"))) void\
-    \ build() {\n        sort(begin(ps), end(ps));\n        ps.erase(unique(begin(ps),\
+    \ {}\n    void add_point(const S& x, const S& y) {\n        ps.emplace_back(x,\
+    \ y);\n        ys.emplace_back(y);\n    }\n    __attribute__((optimize(\"O3\"\
+    ))) void build() {\n        sort(begin(ps), end(ps));\n        ps.erase(unique(begin(ps),\
     \ end(ps)), end(ps));\n        n = ps.size();\n        sort(begin(ys), end(ys));\n\
     \        ys.erase(unique(begin(ys), end(ys)), end(ys));\n        vector<u32> cur(n),\
     \ nxt(n);\n        for(int i = 0; i < n; ++i) cur[i] = yid(ps[i].second);\n  \
@@ -73,14 +73,14 @@ data:
     \     }\n            bv[h].build();\n            array<decltype(begin(nxt)), 2>\
     \ it{begin(nxt), begin(nxt) + bv[h].zeros};\n            for(int i = 0; i < n;\
     \ ++i) *it[bv[h].get(i)]++ = cur[i];\n            swap(cur, nxt);\n        }\n\
-    \    }\n    void add(const S x, const S y, const T val) {\n        int i = lower_bound(begin(ps),\
-    \ end(ps), P{x, y}) - begin(ps);\n        for(int h = lg - 1; h >= 0; --h) {\n\
-    \            const int i0 = bv[h].rank0(i);\n            if(bv[h].get(i)) i +=\
-    \ bv[h].zeros - i0;\n            else i = i0;\n            bit[h].add(i, val);\n\
-    \        }\n    }\n    T sum(const S l, const S d, const S r, const S u) const\
-    \ {\n        assert(l <= r and d <= u);\n        const int left = xid(l), right\
-    \ = xid(r);\n        return sum(left, right, yid(u)) - sum(left, right, yid(d));\n\
-    \    }\n};\n"
+    \    }\n    void add(const S& x, const S& y, const T& val) {\n        int i =\
+    \ lower_bound(begin(ps), end(ps), P{x, y}) - begin(ps);\n        for(int h = lg\
+    \ - 1; h >= 0; --h) {\n            const int i0 = bv[h].rank0(i);\n          \
+    \  if(bv[h].get(i)) i += bv[h].zeros - i0;\n            else i = i0;\n       \
+    \     bit[h].add(i, val);\n        }\n    }\n    T sum(const S& l, const S& d,\
+    \ const S& r, const S& u) const {\n        assert(l <= r and d <= u);\n      \
+    \  const int left = xid(l), right = xid(r);\n        return sum(left, right, yid(u))\
+    \ - sum(left, right, yid(d));\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include <immintrin.h>\n\
     struct BitVector {\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using\
     \ u64 = uint64_t;\n    static constexpr u32 w = 64;\n    vector<u64> block;\n\
@@ -102,7 +102,7 @@ data:
     \ = default;\n        FenwickTree(const int size) {\n            init(size);\n\
     \        }\n        void init(const int size) {\n            N = size;\n     \
     \       data.assign(N + 1, 0);\n        }\n        __attribute__((target(\"bmi\"\
-    ))) void add(u32 k, const T x) {\n            for(++k; k <= N; k += _blsi_u32(k))\
+    ))) void add(u32 k, const T& x) {\n            for(++k; k <= N; k += _blsi_u32(k))\
     \ data[k] += x;\n        }\n        __attribute__((target(\"bmi\"))) T sum(u32\
     \ k) const {\n            T ret = T();\n            for(; k; k = _blsr_u32(k))\
     \ ret += data[k];\n            return ret;\n        }\n        __attribute__((target(\"\
@@ -123,7 +123,7 @@ data:
     \ - l0;\n                r += bv[h].zeros - r0;\n            } else {\n      \
     \          l = l0, r = r0;\n            }\n        }\n        return res;\n  \
     \  }\n\n   public:\n    FenwickTreeonWaveletMatrix() {}\n    void add_point(const\
-    \ S x, const S y) {\n        ps.emplace_back(x, y);\n        ys.emplace_back(y);\n\
+    \ S& x, const S& y) {\n        ps.emplace_back(x, y);\n        ys.emplace_back(y);\n\
     \    }\n    __attribute__((optimize(\"O3\"))) void build() {\n        sort(begin(ps),\
     \ end(ps));\n        ps.erase(unique(begin(ps), end(ps)), end(ps));\n        n\
     \ = ps.size();\n        sort(begin(ys), end(ys));\n        ys.erase(unique(begin(ys),\
@@ -134,21 +134,21 @@ data:
     \         if((cur[i] >> h) & 1) bv[h].set(i);\n            }\n            bv[h].build();\n\
     \            array<decltype(begin(nxt)), 2> it{begin(nxt), begin(nxt) + bv[h].zeros};\n\
     \            for(int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n      \
-    \      swap(cur, nxt);\n        }\n    }\n    void add(const S x, const S y, const\
-    \ T val) {\n        int i = lower_bound(begin(ps), end(ps), P{x, y}) - begin(ps);\n\
-    \        for(int h = lg - 1; h >= 0; --h) {\n            const int i0 = bv[h].rank0(i);\n\
-    \            if(bv[h].get(i)) i += bv[h].zeros - i0;\n            else i = i0;\n\
-    \            bit[h].add(i, val);\n        }\n    }\n    T sum(const S l, const\
-    \ S d, const S r, const S u) const {\n        assert(l <= r and d <= u);\n   \
-    \     const int left = xid(l), right = xid(r);\n        return sum(left, right,\
-    \ yid(u)) - sum(left, right, yid(d));\n    }\n};"
+    \      swap(cur, nxt);\n        }\n    }\n    void add(const S& x, const S& y,\
+    \ const T& val) {\n        int i = lower_bound(begin(ps), end(ps), P{x, y}) -\
+    \ begin(ps);\n        for(int h = lg - 1; h >= 0; --h) {\n            const int\
+    \ i0 = bv[h].rank0(i);\n            if(bv[h].get(i)) i += bv[h].zeros - i0;\n\
+    \            else i = i0;\n            bit[h].add(i, val);\n        }\n    }\n\
+    \    T sum(const S& l, const S& d, const S& r, const S& u) const {\n        assert(l\
+    \ <= r and d <= u);\n        const int left = xid(l), right = xid(r);\n      \
+    \  return sum(left, right, yid(u)) - sum(left, right, yid(d));\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/fenwick_tree_on_wavelet_matrix.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-11-09 01:50:04+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
 documentation_of: src/data_structure/fenwick_tree_on_wavelet_matrix.hpp

@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
     title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
     title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -65,7 +65,7 @@ data:
   path: src/data_structure/weighted_union_find.hpp
   requiredBy: []
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp

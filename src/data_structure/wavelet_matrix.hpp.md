@@ -6,15 +6,15 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
     title: verify/library_checker/data_structure/range_kth_smallest.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_range_frequency.test.cpp
     title: verify/library_checker/data_structure/static_range_frequency.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -71,22 +71,22 @@ data:
     \ res;\n    }\n    T kth_largest(const int l, const int r, const int k) const\
     \ {\n        assert(0 <= l and l <= r and r <= n);\n        assert(0 <= k and\
     \ k < r - l);\n        return kth_smallest(l, r, r - l - k - 1);\n    }\n    int\
-    \ range_freq(int l, int r, const T upper) const {\n        assert(0 <= l and l\
-    \ <= r and r <= n);\n        if(upper >= (T(1) << lg)) return r - l;\n       \
-    \ int ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            const\
+    \ range_freq(int l, int r, const T& upper) const {\n        assert(0 <= l and\
+    \ l <= r and r <= n);\n        if(upper >= (T(1) << lg)) return r - l;\n     \
+    \   int ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            const\
     \ bool f = (upper >> h) & 1;\n            const u32 l0 = bv[h].rank0(l), r0 =\
     \ bv[h].rank0(r);\n            if(f) {\n                ret += r0 - l0;\n    \
     \            l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n\
     \            } else {\n                l = l0;\n                r = r0;\n    \
     \        }\n        }\n        return ret;\n    }\n    int range_freq(const int\
-    \ l, const int r, const T lower, const T upper) const {\n        assert(0 <= l\
-    \ and l <= r and r <= n);\n        assert(lower <= upper);\n        return range_freq(l,\
+    \ l, const int r, const T& lower, const T& upper) const {\n        assert(0 <=\
+    \ l and l <= r and r <= n);\n        assert(lower <= upper);\n        return range_freq(l,\
     \ r, upper) - range_freq(l, r, lower);\n    }\n    T prev_value(const int l, const\
-    \ int r, const T upper) const {\n        assert(0 <= l and l <= r and r <= n);\n\
+    \ int r, const T& upper) const {\n        assert(0 <= l and l <= r and r <= n);\n\
     \        const int cnt = range_freq(l, r, upper);\n        return cnt == 0 ? T(-1)\
     \ : kth_smallest(l, r, cnt - 1);\n    }\n    T next_value(const int l, const int\
-    \ r, const T lower) const {\n        assert(0 <= l and l <= r and r <= n);\n \
-    \       const int cnt = range_freq(l, r, lower);\n        return cnt == r - l\
+    \ r, const T& lower) const {\n        assert(0 <= l and l <= r and r <= n);\n\
+    \        const int cnt = range_freq(l, r, lower);\n        return cnt == r - l\
     \ ? T(-1) : kth_smallest(l, r, cnt);\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include <immintrin.h>\n\
     struct BitVector {\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using\
@@ -136,30 +136,30 @@ data:
     \ res;\n    }\n    T kth_largest(const int l, const int r, const int k) const\
     \ {\n        assert(0 <= l and l <= r and r <= n);\n        assert(0 <= k and\
     \ k < r - l);\n        return kth_smallest(l, r, r - l - k - 1);\n    }\n    int\
-    \ range_freq(int l, int r, const T upper) const {\n        assert(0 <= l and l\
-    \ <= r and r <= n);\n        if(upper >= (T(1) << lg)) return r - l;\n       \
-    \ int ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            const\
+    \ range_freq(int l, int r, const T& upper) const {\n        assert(0 <= l and\
+    \ l <= r and r <= n);\n        if(upper >= (T(1) << lg)) return r - l;\n     \
+    \   int ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            const\
     \ bool f = (upper >> h) & 1;\n            const u32 l0 = bv[h].rank0(l), r0 =\
     \ bv[h].rank0(r);\n            if(f) {\n                ret += r0 - l0;\n    \
     \            l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n\
     \            } else {\n                l = l0;\n                r = r0;\n    \
     \        }\n        }\n        return ret;\n    }\n    int range_freq(const int\
-    \ l, const int r, const T lower, const T upper) const {\n        assert(0 <= l\
-    \ and l <= r and r <= n);\n        assert(lower <= upper);\n        return range_freq(l,\
+    \ l, const int r, const T& lower, const T& upper) const {\n        assert(0 <=\
+    \ l and l <= r and r <= n);\n        assert(lower <= upper);\n        return range_freq(l,\
     \ r, upper) - range_freq(l, r, lower);\n    }\n    T prev_value(const int l, const\
-    \ int r, const T upper) const {\n        assert(0 <= l and l <= r and r <= n);\n\
+    \ int r, const T& upper) const {\n        assert(0 <= l and l <= r and r <= n);\n\
     \        const int cnt = range_freq(l, r, upper);\n        return cnt == 0 ? T(-1)\
     \ : kth_smallest(l, r, cnt - 1);\n    }\n    T next_value(const int l, const int\
-    \ r, const T lower) const {\n        assert(0 <= l and l <= r and r <= n);\n \
-    \       const int cnt = range_freq(l, r, lower);\n        return cnt == r - l\
+    \ r, const T& lower) const {\n        assert(0 <= l and l <= r and r <= n);\n\
+    \        const int cnt = range_freq(l, r, lower);\n        return cnt == r - l\
     \ ? T(-1) : kth_smallest(l, r, cnt);\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/wavelet_matrix.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-11-09 01:50:04+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_range_frequency.test.cpp
   - verify/library_checker/data_structure/range_kth_smallest.test.cpp

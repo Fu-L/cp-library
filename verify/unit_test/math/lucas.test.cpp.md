@@ -7,7 +7,7 @@ data:
   - icon: ':x:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':x:'

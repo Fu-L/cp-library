@@ -5,23 +5,23 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
     title: verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/gcd_convolution.test.cpp
     title: verify/library_checker/convolution/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/lcm_convolution.test.cpp
     title: verify/library_checker/convolution/lcm_convolution.test.cpp
   - icon: ':x:'

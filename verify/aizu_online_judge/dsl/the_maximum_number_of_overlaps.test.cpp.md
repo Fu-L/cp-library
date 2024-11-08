@@ -25,12 +25,12 @@ data:
     \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
     \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/cumulative_sum_2d.hpp\"\
-    \ntemplate <typename T>\nstruct CumulativeSum2D {\n    CumulativeSum2D(int H,\
-    \ int W)\n        : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}\n    void\
-    \ add(const int i, const int j, const T& x) {\n        assert(0 <= i and i < h);\n\
-    \        assert(0 <= j and j < w);\n        data[i + 1][j + 1] += x;\n    }\n\
-    \    void init() {\n        for(int i = 1; i < (int)data.size(); ++i) {\n    \
-    \        for(int j = 1; j < (int)data[i].size(); ++j) {\n                data[i][j]\
+    \ntemplate <typename T>\nstruct CumulativeSum2D {\n    CumulativeSum2D(const int\
+    \ H, const int W)\n        : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}\n\
+    \    void add(const int i, const int j, const T& x) {\n        assert(0 <= i and\
+    \ i < h);\n        assert(0 <= j and j < w);\n        data[i + 1][j + 1] += x;\n\
+    \    }\n    void init() {\n        for(int i = 1; i < (int)data.size(); ++i) {\n\
+    \            for(int j = 1; j < (int)data[i].size(); ++j) {\n                data[i][j]\
     \ += data[i][j - 1] + data[i - 1][j] - data[i - 1][j - 1];\n            }\n  \
     \      }\n    }\n    T sum(const int li, const int lj, const int ri, const int\
     \ rj) const {\n        assert(0 <= li and li <= ri and ri <= h);\n        assert(0\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 01:50:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/dsl/the_maximum_number_of_overlaps.test.cpp

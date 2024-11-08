@@ -4,10 +4,10 @@ data:
   - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':question:'

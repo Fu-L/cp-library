@@ -49,21 +49,22 @@ data:
     \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
     \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
     \ Edges = vector<Edge<T>>;\n#line 3 \"src/data_structure/union_find.hpp\"\nstruct\
-    \ UnionFind {\n    UnionFind(int N)\n        : n(N), data(N, -1) {}\n    int merge(const\
-    \ int a, const int b) {\n        assert(0 <= a and a < n);\n        assert(0 <=\
-    \ b and b < n);\n        int x = leader(a), y = leader(b);\n        if(x == y)\
-    \ return x;\n        if(-data[x] < -data[y]) swap(x, y);\n        data[x] += data[y];\n\
-    \        data[y] = x;\n        return x;\n    }\n    bool same(const int a, const\
-    \ int b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
-    \        return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n\
-    \        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n      \
-    \  return data[a] = leader(data[a]);\n    }\n    int size(const int a) {\n   \
-    \     assert(0 <= a and a < n);\n        return -data[leader(a)];\n    }\n   \
-    \ vector<vector<int>> groups() {\n        vector<int> leader_buf(n), group_size(n);\n\
-    \        for(int i = 0; i < n; ++i) {\n            leader_buf[i] = leader(i);\n\
-    \            ++group_size[leader_buf[i]];\n        }\n        vector<vector<int>>\
-    \ result(n);\n        for(int i = 0; i < n; ++i) {\n            result[i].reserve(group_size[i]);\n\
-    \        }\n        for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
+    \ UnionFind {\n    UnionFind(const int N)\n        : n(N), data(N, -1) {}\n  \
+    \  int merge(const int a, const int b) {\n        assert(0 <= a and a < n);\n\
+    \        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
+    \        if(x == y) return x;\n        if(-data[x] < -data[y]) swap(x, y);\n \
+    \       data[x] += data[y];\n        data[y] = x;\n        return x;\n    }\n\
+    \    bool same(const int a, const int b) {\n        assert(0 <= a and a < n);\n\
+    \        assert(0 <= b and b < n);\n        return leader(a) == leader(b);\n \
+    \   }\n    int leader(const int a) {\n        assert(0 <= a and a < n);\n    \
+    \    if(data[a] < 0) return a;\n        return data[a] = leader(data[a]);\n  \
+    \  }\n    int size(const int a) {\n        assert(0 <= a and a < n);\n       \
+    \ return -data[leader(a)];\n    }\n    vector<vector<int>> groups() {\n      \
+    \  vector<int> leader_buf(n), group_size(n);\n        for(int i = 0; i < n; ++i)\
+    \ {\n            leader_buf[i] = leader(i);\n            ++group_size[leader_buf[i]];\n\
+    \        }\n        vector<vector<int>> result(n);\n        for(int i = 0; i <\
+    \ n; ++i) {\n            result[i].reserve(group_size[i]);\n        }\n      \
+    \  for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
     \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
     \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
     \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n#line 5 \"src/graph/kruskal.hpp\"\
@@ -93,7 +94,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 01:50:04+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/graph/minimum_spanning_tree.test.cpp

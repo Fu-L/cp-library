@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/euler_phi.hpp
     title: euler_phi
   - icon: ':question:'
@@ -13,7 +13,7 @@ data:
   - icon: ':x:'
     path: src/math/moebius.hpp
     title: moebius
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/prime_factors.hpp
     title: prime_factors
   - icon: ':x:'

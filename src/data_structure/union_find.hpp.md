@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
     title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
   - icon: ':x:'
@@ -29,9 +29,9 @@ data:
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/union_find.hpp\"\
-    \nstruct UnionFind {\n    UnionFind(int N)\n        : n(N), data(N, -1) {}\n \
-    \   int merge(const int a, const int b) {\n        assert(0 <= a and a < n);\n\
-    \        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
+    \nstruct UnionFind {\n    UnionFind(const int N)\n        : n(N), data(N, -1)\
+    \ {}\n    int merge(const int a, const int b) {\n        assert(0 <= a and a <\
+    \ n);\n        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
     \        if(x == y) return x;\n        if(-data[x] < -data[y]) swap(x, y);\n \
     \       data[x] += data[y];\n        data[y] = x;\n        return x;\n    }\n\
     \    bool same(const int a, const int b) {\n        assert(0 <= a and a < n);\n\
@@ -49,10 +49,10 @@ data:
     \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
     \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nstruct UnionFind {\n\
-    \    UnionFind(int N)\n        : n(N), data(N, -1) {}\n    int merge(const int\
-    \ a, const int b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b\
-    \ and b < n);\n        int x = leader(a), y = leader(b);\n        if(x == y) return\
-    \ x;\n        if(-data[x] < -data[y]) swap(x, y);\n        data[x] += data[y];\n\
+    \    UnionFind(const int N)\n        : n(N), data(N, -1) {}\n    int merge(const\
+    \ int a, const int b) {\n        assert(0 <= a and a < n);\n        assert(0 <=\
+    \ b and b < n);\n        int x = leader(a), y = leader(b);\n        if(x == y)\
+    \ return x;\n        if(-data[x] < -data[y]) swap(x, y);\n        data[x] += data[y];\n\
     \        data[y] = x;\n        return x;\n    }\n    bool same(const int a, const\
     \ int b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
     \        return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n\
@@ -73,7 +73,7 @@ data:
   path: src/data_structure/union_find.hpp
   requiredBy:
   - src/graph/kruskal.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 01:50:04+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/unionfind.test.cpp

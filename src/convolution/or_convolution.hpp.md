@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':question:'

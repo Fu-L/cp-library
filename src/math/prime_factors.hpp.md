@@ -9,7 +9,7 @@ data:
     path: src/math/moebius.hpp
     title: moebius
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
     title: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: verify/unit_test/math/eratosthenes_seive.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -46,7 +46,7 @@ data:
   requiredBy:
   - src/math/moebius.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/math/eratosthenes_seive.test.cpp
   - verify/aizu_online_judge/ntl/prime_factorize.test.cpp

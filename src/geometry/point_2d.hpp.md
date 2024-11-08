@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
   - icon: ':question:'
@@ -87,12 +87,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
     title: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
     title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -176,7 +176,7 @@ data:
   - src/geometry/polygon_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - verify/aizu_online_judge/cgl/cross_point.test.cpp

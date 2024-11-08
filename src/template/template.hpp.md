@@ -2,31 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
   - icon: ':x:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
   - icon: ':x:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/xor_convolution.hpp
     title: xor_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/binary_trie.hpp
     title: BinaryTrie
   - icon: ':warning:'
@@ -35,7 +35,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/cumulative_sum_2d.hpp
     title: CumulativeSum2D
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/dynamic_li_chao_tree.hpp
     title: DynamicLiChaoTree
   - icon: ':question:'
@@ -44,37 +44,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree_2d.hpp
     title: FenwickTree2D
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree_on_wavelet_matrix.hpp
     title: FenwickTreeonWaveletMatrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segment_tree.hpp
     title: LazySegmentTree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/mo.hpp
     title: Mo
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/rectangle_sum.hpp
     title: RectangleSum
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/rollback_union_find.hpp
     title: RollbackUnionFind
   - icon: ':warning:'
     path: src/data_structure/segment_set.hpp
     title: SegmentSet
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/data_structure/segment_tree.hpp
     title: SegmentTree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/slide_window_aggregation.hpp
     title: SlideWindowAggregation
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/slide_window_aggregation_deque.hpp
     title: SlideWindowAggregationDeque
   - icon: ':x:'
     path: src/data_structure/sorted_set.hpp
     title: SortedSet
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table.hpp
     title: SparseTable
   - icon: ':x:'
@@ -83,10 +83,10 @@ data:
   - icon: ':question:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/wavelet_matrix.hpp
     title: WaveletMatrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
   - icon: ':x:'
@@ -116,13 +116,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: line_and_segment_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: point_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/polygon_2d.hpp
     title: polygon_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
   - icon: ':x:'
@@ -176,25 +176,25 @@ data:
   - icon: ':x:'
     path: src/graph/two_sat.hpp
     title: TwoSAT
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
   - icon: ':x:'
     path: src/math/chinese_remainder_theorem.hpp
     title: chinese_remainder_theorem
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor.hpp
     title: divisor
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
   - icon: ':question:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/euler_phi.hpp
     title: euler_phi
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/extgcd.hpp
     title: extgcd
   - icon: ':x:'
@@ -218,31 +218,31 @@ data:
   - icon: ':x:'
     path: src/math/moebius.hpp
     title: moebius
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/prime_factors.hpp
     title: prime_factors
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
   - icon: ':x:'
     path: src/math/xor_base.hpp
     title: xor_base
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
   - icon: ':x:'
@@ -251,10 +251,10 @@ data:
   - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/others/dice.hpp
     title: dice
   - icon: ':x:'
@@ -284,7 +284,7 @@ data:
   - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':question:'
@@ -293,7 +293,7 @@ data:
   - icon: ':x:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':x:'
@@ -450,106 +450,106 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
     title: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
     title: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/extended_euclid_algorithm.test.cpp
     title: verify/aizu_online_judge/ntl/extended_euclid_algorithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/power.test.cpp
     title: verify/aizu_online_judge/ntl/power.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
     title: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/others/0502.test.cpp
     title: verify/aizu_online_judge/others/0502.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/others/1645.test.cpp
     title: verify/aizu_online_judge/others/1645.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution.test.cpp
     title: verify/library_checker/convolution/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/gcd_convolution.test.cpp
     title: verify/library_checker/convolution/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/lcm_convolution.test.cpp
     title: verify/library_checker/convolution/lcm_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_range_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_range_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_set_range_composite.test.cpp
     title: verify/library_checker/data_structure/point_set_range_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_affine_point_get.test.cpp
     title: verify/library_checker/data_structure/range_affine_point_get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
     title: verify/library_checker/data_structure/range_kth_smallest.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/set_xor_min.test.cpp
     title: verify/library_checker/data_structure/set_xor_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_range_frequency.test.cpp
     title: verify/library_checker/data_structure/static_range_frequency.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rmq.test.cpp
     title: verify/library_checker/data_structure/static_rmq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
     title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
     title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - icon: ':x:'
