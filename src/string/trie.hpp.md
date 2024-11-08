@@ -24,57 +24,69 @@ data:
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/string/trie.hpp\"\
     \ntemplate <size_t X = 26, char margin = 'a'>\nstruct Trie {\n    struct Node\
-    \ {\n        array<int, X> nxt;\n        vector<int> idxs;\n        int idx;\n\
-    \        int count;\n        char key;\n        Node(char c)\n            : idx(-1),\
-    \ count(0), key(c) {\n            fill(nxt.begin(), nxt.end(), -1);\n        }\n\
-    \    };\n    vector<Node> st;\n    Trie(char c = '$') {\n        st.emplace_back(c);\n\
-    \    }\n    inline int& next(int i, int j) {\n        return st[i].nxt[j];\n \
-    \   }\n    void insert(const string& s, int x) {\n        int pos = 0;\n     \
+    \ {\n        array<int, X> nxt;\n        vector<int> idxs;\n        int idx, count,\
+    \ parent;\n        char key;\n        Node(const char c, const int par)\n    \
+    \        : idx(-1), count(0), parent(par), key(c) {\n            fill(nxt.begin(),\
+    \ nxt.end(), -1);\n        }\n    };\n    vector<Node> st;\n    Trie(const char\
+    \ c = '$', const int p = -1) {\n        st.emplace_back(c, p);\n    }\n    inline\
+    \ int& next(const int i, const int j) {\n        assert(0 <= i and i < (int)st.size());\n\
+    \        assert(0 <= j and j < (int)X);\n        return st[i].nxt[j];\n    }\n\
+    \    void insert(const string& s, const int x) {\n        int pos = 0;\n     \
     \   for(int i = 0; i < (int)s.size(); ++i) {\n            ++st[pos].count;\n \
-    \           int k = s[i] - margin;\n            if(~next(pos, k)) {\n        \
-    \        pos = next(pos, k);\n                continue;\n            }\n     \
-    \       int npos = st.size();\n            next(pos, k) = npos;\n            st.emplace_back(s[i]);\n\
-    \            pos = npos;\n        }\n        ++st[pos].count;\n        st[pos].idx\
-    \ = x;\n        st[pos].idxs.emplace_back(x);\n    }\n    int find(const string&\
-    \ s) {\n        int pos = 0;\n        for(int i = 0; i < (int)s.size(); ++i) {\n\
-    \            int k = s[i] - margin;\n            if(next(pos, k) < 0) return -1;\n\
-    \            pos = next(pos, k);\n        }\n        return pos;\n    }\n    int\
-    \ move(int pos, char c) {\n        assert(pos < (int)st.size());\n        return\
-    \ pos < 0 ? -1 : next(pos, c - margin);\n    }\n    int size() const {\n     \
-    \   return st.size();\n    }\n    int idx(int pos) {\n        return pos < 0 ?\
-    \ -1 : st[pos].idx;\n    }\n    int count(int pos) {\n        return pos < 0 ?\
-    \ 0 : st[pos].count;\n    }\n    vector<int> idxs(int pos) {\n        return pos\
-    \ < 0 ? vector<int>() : st[pos].idxs;\n    }\n};\n"
+    \           const int k = s[i] - margin;\n            if(~next(pos, k)) {\n  \
+    \              pos = next(pos, k);\n                continue;\n            }\n\
+    \            const int npos = st.size();\n            next(pos, k) = npos;\n \
+    \           st.emplace_back(s[i], pos);\n            pos = npos;\n        }\n\
+    \        ++st[pos].count;\n        st[pos].idx = x;\n        st[pos].idxs.emplace_back(x);\n\
+    \    }\n    int find(const string& s) {\n        int pos = 0;\n        for(int\
+    \ i = 0; i < (int)s.size(); ++i) {\n            const int k = s[i] - margin;\n\
+    \            if(next(pos, k) < 0) return -1;\n            pos = next(pos, k);\n\
+    \        }\n        return pos;\n    }\n    int move(const int pos, const char\
+    \ c) {\n        assert(0 <= pos and pos < (int)st.size());\n        return next(pos,\
+    \ c - margin);\n    }\n    int size() const {\n        return st.size();\n   \
+    \ }\n    int idx(const int pos) const {\n        assert(0 <= pos and pos < (int)st.size());\n\
+    \        return st[pos].idx;\n    }\n    int count(const int pos) const {\n  \
+    \      assert(0 <= pos and pos < (int)st.size());\n        return st[pos].count;\n\
+    \    }\n    int par(const int pos) const {\n        assert(0 <= pos and pos <\
+    \ (int)st.size());\n        return st[pos].parent;\n    }\n    vector<int> idxs(const\
+    \ int pos) const {\n        assert(0 <= pos and pos < (int)st.size());\n     \
+    \   return st[pos].idxs;\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <size_t X =\
     \ 26, char margin = 'a'>\nstruct Trie {\n    struct Node {\n        array<int,\
-    \ X> nxt;\n        vector<int> idxs;\n        int idx;\n        int count;\n \
-    \       char key;\n        Node(char c)\n            : idx(-1), count(0), key(c)\
-    \ {\n            fill(nxt.begin(), nxt.end(), -1);\n        }\n    };\n    vector<Node>\
-    \ st;\n    Trie(char c = '$') {\n        st.emplace_back(c);\n    }\n    inline\
-    \ int& next(int i, int j) {\n        return st[i].nxt[j];\n    }\n    void insert(const\
-    \ string& s, int x) {\n        int pos = 0;\n        for(int i = 0; i < (int)s.size();\
-    \ ++i) {\n            ++st[pos].count;\n            int k = s[i] - margin;\n \
-    \           if(~next(pos, k)) {\n                pos = next(pos, k);\n       \
-    \         continue;\n            }\n            int npos = st.size();\n      \
-    \      next(pos, k) = npos;\n            st.emplace_back(s[i]);\n            pos\
-    \ = npos;\n        }\n        ++st[pos].count;\n        st[pos].idx = x;\n   \
-    \     st[pos].idxs.emplace_back(x);\n    }\n    int find(const string& s) {\n\
-    \        int pos = 0;\n        for(int i = 0; i < (int)s.size(); ++i) {\n    \
-    \        int k = s[i] - margin;\n            if(next(pos, k) < 0) return -1;\n\
-    \            pos = next(pos, k);\n        }\n        return pos;\n    }\n    int\
-    \ move(int pos, char c) {\n        assert(pos < (int)st.size());\n        return\
-    \ pos < 0 ? -1 : next(pos, c - margin);\n    }\n    int size() const {\n     \
-    \   return st.size();\n    }\n    int idx(int pos) {\n        return pos < 0 ?\
-    \ -1 : st[pos].idx;\n    }\n    int count(int pos) {\n        return pos < 0 ?\
-    \ 0 : st[pos].count;\n    }\n    vector<int> idxs(int pos) {\n        return pos\
-    \ < 0 ? vector<int>() : st[pos].idxs;\n    }\n};"
+    \ X> nxt;\n        vector<int> idxs;\n        int idx, count, parent;\n      \
+    \  char key;\n        Node(const char c, const int par)\n            : idx(-1),\
+    \ count(0), parent(par), key(c) {\n            fill(nxt.begin(), nxt.end(), -1);\n\
+    \        }\n    };\n    vector<Node> st;\n    Trie(const char c = '$', const int\
+    \ p = -1) {\n        st.emplace_back(c, p);\n    }\n    inline int& next(const\
+    \ int i, const int j) {\n        assert(0 <= i and i < (int)st.size());\n    \
+    \    assert(0 <= j and j < (int)X);\n        return st[i].nxt[j];\n    }\n   \
+    \ void insert(const string& s, const int x) {\n        int pos = 0;\n        for(int\
+    \ i = 0; i < (int)s.size(); ++i) {\n            ++st[pos].count;\n           \
+    \ const int k = s[i] - margin;\n            if(~next(pos, k)) {\n            \
+    \    pos = next(pos, k);\n                continue;\n            }\n         \
+    \   const int npos = st.size();\n            next(pos, k) = npos;\n          \
+    \  st.emplace_back(s[i], pos);\n            pos = npos;\n        }\n        ++st[pos].count;\n\
+    \        st[pos].idx = x;\n        st[pos].idxs.emplace_back(x);\n    }\n    int\
+    \ find(const string& s) {\n        int pos = 0;\n        for(int i = 0; i < (int)s.size();\
+    \ ++i) {\n            const int k = s[i] - margin;\n            if(next(pos, k)\
+    \ < 0) return -1;\n            pos = next(pos, k);\n        }\n        return\
+    \ pos;\n    }\n    int move(const int pos, const char c) {\n        assert(0 <=\
+    \ pos and pos < (int)st.size());\n        return next(pos, c - margin);\n    }\n\
+    \    int size() const {\n        return st.size();\n    }\n    int idx(const int\
+    \ pos) const {\n        assert(0 <= pos and pos < (int)st.size());\n        return\
+    \ st[pos].idx;\n    }\n    int count(const int pos) const {\n        assert(0\
+    \ <= pos and pos < (int)st.size());\n        return st[pos].count;\n    }\n  \
+    \  int par(const int pos) const {\n        assert(0 <= pos and pos < (int)st.size());\n\
+    \        return st[pos].parent;\n    }\n    vector<int> idxs(const int pos) const\
+    \ {\n        assert(0 <= pos and pos < (int)st.size());\n        return st[pos].idxs;\n\
+    \    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/string/trie.hpp
   requiredBy:
   - src/string/aho_corasick.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:46:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/430.test.cpp
@@ -89,12 +101,14 @@ title: Trie
 
 ## コンストラクタ
 ```cpp
-Trie<size_t X = 26, char margin = 'a'> trie(char c = '$')
+Trie<size_t X = 26, char margin = 'a'> trie(char c = '$', int p = -1)
 ```
 
 - 文字の種類数が $X$ で最小の文字が $\mathrm{margin}$ であるような空の木 `trie` を作ります．
 
-- $c$ は根ノードの文字です．
+- `c` は根ノードの文字です．
+
+- `p` は親ノードの番号です．
 
 **計算量**
 
@@ -151,8 +165,11 @@ $s$ の長さを $n$ として，
 int move(int pos, char c)
 ```
 
-ノード $\mathrm{pos}$ からのびる文字 $c$ のノード番号を返します．<br>
-そのようなノードがない場合は $-1$ を返します．
+ノード $\mathrm{pos}$ からのびる文字 $c$ のノード番号を返します．
+
+**制約**
+
+- $\mathrm{pos}$ に存在しないノードを指定しない．
 
 **計算量**
 
@@ -174,8 +191,11 @@ int size()
 int idx(int pos)
 ```
 
-ノード $\mathrm{pos}$ がある文字列の最後の文字に対応するノードである場合，その文字列の識別子を返します (2つ以上ある場合，最新のものを返します)．<br>
-そうでない場合は $-1$ を返します．
+ノード $\mathrm{pos}$ がある文字列の最後の文字に対応するノードである場合，その文字列の識別子を返します (2つ以上ある場合，最新のものを返します)．
+
+**制約**
+
+- $\mathrm{pos}$ に存在しないノードを指定しない．
 
 **計算量**
 
@@ -186,8 +206,11 @@ int idx(int pos)
 vector<int> idxs(int pos)
 ```
 
-ノード $\mathrm{pos}$ がある文字列の最後の文字に対応するノードである場合，その文字列の識別子をすべて返します．<br>
-そうでない場合は $-1$ を返します．
+ノード $\mathrm{pos}$ がある文字列の最後の文字に対応するノードである場合，その文字列の識別子をすべて返します．
+
+**制約**
+
+- $\mathrm{pos}$ に存在しないノードを指定しない．
 
 **計算量**
 
@@ -201,6 +224,25 @@ int count(int pos)
 ```
 
 ノード $\mathrm{pos}$ 以下に格納されている文字列の個数を返します．
+
+**制約**
+
+- $\mathrm{pos}$ に存在しないノードを指定しない．
+
+**計算量**
+
+- $O(1)$
+
+## par
+```cpp
+int par(int pos)
+```
+
+ノード $\mathrm{pos}$ の親ノードの番号を返します．
+
+**制約**
+
+- $\mathrm{pos}$ に存在しないノードを指定しない．
 
 **計算量**
 

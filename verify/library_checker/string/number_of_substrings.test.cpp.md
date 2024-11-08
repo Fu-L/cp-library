@@ -141,26 +141,26 @@ data:
     \ = rec_upper;\n            }\n            const auto rec_sa = sa_is(sa_is, rec_s,\
     \ rec_upper);\n            for(int i = 0; i < m; ++i) {\n                sorted_lms[i]\
     \ = lms[rec_sa[i]];\n            }\n            induce(sorted_lms);\n        }\n\
-    \        return sa;\n    };\n    if(compress) {\n        int n = (int)s.size();\n\
+    \        return sa;\n    };\n    if(compress) {\n        const int n = (int)s.size();\n\
     \        vector<int> idx(n);\n        iota(idx.begin(), idx.end(), 0);\n     \
-    \   sort(idx.begin(), idx.end(), [&](int l, int r) { return s[l] < s[r]; });\n\
-    \        vector<int> s2(n);\n        int upper = 0;\n        for(int i = 0; i\
-    \ < n; ++i) {\n            if(i and s[idx[i - 1]] != s[idx[i]]) ++upper;\n   \
-    \         s2[idx[i]] = upper;\n        }\n        return sa_is(sa_is, s2, upper);\n\
+    \   sort(idx.begin(), idx.end(), [&](const int l, const int r) { return s[l] <\
+    \ s[r]; });\n        vector<int> s2(n);\n        int upper = 0;\n        for(int\
+    \ i = 0; i < n; ++i) {\n            if(i and s[idx[i - 1]] != s[idx[i]]) ++upper;\n\
+    \            s2[idx[i]] = upper;\n        }\n        return sa_is(sa_is, s2, upper);\n\
     \    }\n    return sa_is(sa_is, s, *max_element(s.begin(), s.end()));\n}\nvector<int>\
-    \ suffix_array(const string& s) {\n    int n = (int)s.size();\n    vector<int>\
+    \ suffix_array(const string& s) {\n    const int n = (int)s.size();\n    vector<int>\
     \ s2(n);\n    for(int i = 0; i < n; ++i) {\n        s2[i] = s[i];\n    }\n   \
     \ return suffix_array(s2, false);\n}\ntemplate <typename T>\nvector<int> lcp_array(const\
-    \ vector<T>& s, const vector<int>& sa) {\n    int n = (int)s.size();\n    assert(n\
-    \ >= 1);\n    vector<int> rnk(n);\n    for(int i = 0; i < n; ++i) {\n        rnk[sa[i]]\
-    \ = i;\n    }\n    vector<int> lcp(n - 1);\n    int h = 0;\n    for(int i = 0;\
-    \ i < n; ++i) {\n        if(h > 0) --h;\n        if(rnk[i] == 0) continue;\n \
-    \       int j = sa[rnk[i] - 1];\n        for(; j + h < n and i + h < n; ++h) {\n\
-    \            if(s[j + h] != s[i + h]) break;\n        }\n        lcp[rnk[i] -\
-    \ 1] = h;\n    }\n    return lcp;\n}\nvector<int> lcp_array(const string& s, const\
-    \ vector<int>& sa) {\n    int n = (int)s.size();\n    vector<int> s2(n);\n   \
-    \ for(int i = 0; i < n; ++i) {\n        s2[i] = s[i];\n    }\n    return lcp_array(s2,\
-    \ sa);\n}\n#line 5 \"verify/library_checker/string/number_of_substrings.test.cpp\"\
+    \ vector<T>& s, const vector<int>& sa) {\n    const int n = (int)s.size();\n \
+    \   assert(n >= 1);\n    vector<int> rnk(n);\n    for(int i = 0; i < n; ++i) {\n\
+    \        rnk[sa[i]] = i;\n    }\n    vector<int> lcp(n - 1);\n    int h = 0;\n\
+    \    for(int i = 0; i < n; ++i) {\n        if(h > 0) --h;\n        if(rnk[i] ==\
+    \ 0) continue;\n        const int j = sa[rnk[i] - 1];\n        for(; j + h < n\
+    \ and i + h < n; ++h) {\n            if(s[j + h] != s[i + h]) break;\n       \
+    \ }\n        lcp[rnk[i] - 1] = h;\n    }\n    return lcp;\n}\nvector<int> lcp_array(const\
+    \ string& s, const vector<int>& sa) {\n    const int n = (int)s.size();\n    vector<int>\
+    \ s2(n);\n    for(int i = 0; i < n; ++i) {\n        s2[i] = s[i];\n    }\n   \
+    \ return lcp_array(s2, sa);\n}\n#line 5 \"verify/library_checker/string/number_of_substrings.test.cpp\"\
     \nint main(void) {\n    string s;\n    cin >> s;\n    ll n = s.size();\n    RollingHash\
     \ rh(s);\n    ll ans = n * (n + 1) / 2;\n    vector<int> sa = suffix_array(s);\n\
     \    rep(i, 0, n - 1) {\n        ans -= rh.lcp(rh, rh, sa[i], sa[i + 1]);\n  \
@@ -180,7 +180,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/string/number_of_substrings.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:46:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/string/number_of_substrings.test.cpp

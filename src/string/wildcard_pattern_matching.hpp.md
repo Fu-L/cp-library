@@ -219,28 +219,28 @@ data:
     \ M1M2M3, 2 * M1M2M3, 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i]\
     \ = x;\n    }\n    return c;\n}\n#line 4 \"src/string/wildcard_pattern_matching.hpp\"\
     \nvector<bool> wildcard_pattrn_matching(const string& t, const string& p) {\n\
-    \    int n = (int)t.size(), m = (int)p.size();\n    if(n < m) return {};\n   \
-    \ vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m), p3(m);\n    for(int i =\
-    \ 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n        t1[i] = t[i] -\
-    \ 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] = t2[i] * t1[i];\n \
-    \   }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] == '*') continue;\n \
-    \       p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 - i] = p1[m - 1 - i]\
+    \    const int n = (int)t.size(), m = (int)p.size();\n    if(n < m) return {};\n\
+    \    vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m), p3(m);\n    for(int\
+    \ i = 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n        t1[i] = t[i]\
+    \ - 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] = t2[i] * t1[i];\n\
+    \    }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] == '*') continue;\n\
+    \        p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 - i] = p1[m - 1 - i]\
     \ * p1[m - 1 - i];\n        p3[m - 1 - i] = p2[m - 1 - i] * p1[m - 1 - i];\n \
-    \   }\n    vector<long long> c31 = convolution_ll(t3, p1), c22 = convolution_ll(t2,\
+    \   }\n    const vector<long long> c31 = convolution_ll(t3, p1), c22 = convolution_ll(t2,\
     \ p2), c13 = convolution_ll(t1, p3);\n    vector<bool> res(n - m + 1);\n    for(int\
     \ i = 0; i < n - m + 1; ++i) {\n        if(c31[i + m - 1] - 2 * c22[i + m - 1]\
     \ + c13[i + m - 1] == 0) {\n            res[i] = true;\n        }\n    }\n   \
     \ return res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../convolution/convolution_ll.hpp\"\
     \nvector<bool> wildcard_pattrn_matching(const string& t, const string& p) {\n\
-    \    int n = (int)t.size(), m = (int)p.size();\n    if(n < m) return {};\n   \
-    \ vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m), p3(m);\n    for(int i =\
-    \ 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n        t1[i] = t[i] -\
-    \ 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] = t2[i] * t1[i];\n \
-    \   }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] == '*') continue;\n \
-    \       p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 - i] = p1[m - 1 - i]\
+    \    const int n = (int)t.size(), m = (int)p.size();\n    if(n < m) return {};\n\
+    \    vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m), p3(m);\n    for(int\
+    \ i = 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n        t1[i] = t[i]\
+    \ - 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] = t2[i] * t1[i];\n\
+    \    }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] == '*') continue;\n\
+    \        p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 - i] = p1[m - 1 - i]\
     \ * p1[m - 1 - i];\n        p3[m - 1 - i] = p2[m - 1 - i] * p1[m - 1 - i];\n \
-    \   }\n    vector<long long> c31 = convolution_ll(t3, p1), c22 = convolution_ll(t2,\
+    \   }\n    const vector<long long> c31 = convolution_ll(t3, p1), c22 = convolution_ll(t2,\
     \ p2), c13 = convolution_ll(t1, p3);\n    vector<bool> res(n - m + 1);\n    for(int\
     \ i = 0; i < n - m + 1; ++i) {\n        if(c31[i + m - 1] - 2 * c22[i + m - 1]\
     \ + c13[i + m - 1] == 0) {\n            res[i] = true;\n        }\n    }\n   \
@@ -255,7 +255,7 @@ data:
   isVerificationFile: false
   path: src/string/wildcard_pattern_matching.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:16:49+09:00'
+  timestamp: '2024-11-09 02:46:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
