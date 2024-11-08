@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
     title: verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -27,33 +27,34 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
     \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int\
-    \ from, int to, const T& cost = 1, int idx = -1)\n        : from(from), to(to),\
-    \ cost(cost), idx(idx) {}\n    operator int() const {\n        return to;\n  \
-    \  }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(int N)\n        : n(N),\
-    \ es(0), g(N) {}\n    int size() const {\n        return n;\n    }\n    int edge_size()\
-    \ const {\n        return es;\n    }\n    void add_edge(int from, int to, const\
-    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
-    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
-    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(int\
-    \ from, int to, const T& cost = 1) {\n        assert(0 <= from and from < n);\n\
-    \        assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
-    \ es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k) {\n    \
-    \    assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline const\
-    \ vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <= k and\
-    \ k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
-    \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/tree/tree_diameter.hpp\"\
-    \ntemplate <typename T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g)\
-    \ {\n    const int n = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n\
-    \    auto dfs = [&](auto& dfs, const int v, const int p, const T& d) -> void {\n\
-    \        depth[v] = d;\n        par[v] = p;\n        for(const Edge<T>& e : g[v])\
-    \ {\n            if(e.to == p) continue;\n            dfs(dfs, e.to, v, d + e.cost);\n\
-    \        }\n    };\n    int s = 0;\n    for(int i = 0; i < 2; ++i) {\n       \
-    \ dfs(dfs, s, -1, 0);\n        T ma = -1;\n        for(int j = 0; j < n; ++j)\
-    \ {\n            if(depth[j] > ma) {\n                ma = depth[j];\n       \
-    \         s = j;\n            }\n        }\n    }\n    vector<int> path;\n   \
-    \ const T diameter = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n\
-    \        s = par[s];\n    }\n    return {diameter, path};\n}\n"
+    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const\
+    \ int from, const int to, const T& cost = 1, const int idx = -1)\n        : from(from),\
+    \ to(to), cost(cost), idx(idx) {}\n    operator int() const {\n        return\
+    \ to;\n    }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(const int N)\n\
+    \        : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n \
+    \   }\n    int edge_size() const {\n        return es;\n    }\n    void add_edge(const\
+    \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
+    \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
+    \   void add_directed_edge(const int from, const int to, const T& cost = 1) {\n\
+    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
+    \        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline vector<Edge<T>>&\
+    \ operator[](const int& k) {\n        assert(0 <= k and k < n);\n        return\
+    \ g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const int& k) const\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
+    \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
+    \ Edges = vector<Edge<T>>;\n#line 4 \"src/tree/tree_diameter.hpp\"\ntemplate <typename\
+    \ T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g) {\n    const int n\
+    \ = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n    auto dfs\
+    \ = [&](auto& dfs, const int v, const int p, const T& d) -> void {\n        depth[v]\
+    \ = d;\n        par[v] = p;\n        for(const Edge<T>& e : g[v]) {\n        \
+    \    if(e.to == p) continue;\n            dfs(dfs, e.to, v, d + e.cost);\n   \
+    \     }\n    };\n    int s = 0;\n    for(int i = 0; i < 2; ++i) {\n        dfs(dfs,\
+    \ s, -1, 0);\n        T ma = -1;\n        for(int j = 0; j < n; ++j) {\n     \
+    \       if(depth[j] > ma) {\n                ma = depth[j];\n                s\
+    \ = j;\n            }\n        }\n    }\n    vector<int> path;\n    const T diameter\
+    \ = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n        s\
+    \ = par[s];\n    }\n    return {diameter, path};\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
     \ntemplate <typename T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g)\
     \ {\n    const int n = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n\
@@ -72,8 +73,8 @@ data:
   isVerificationFile: false
   path: src/tree/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2024-11-08 23:56:53+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 00:36:45+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/tree/tree_diameter.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp

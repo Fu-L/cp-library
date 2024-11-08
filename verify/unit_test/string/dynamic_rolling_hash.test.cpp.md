@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
   - icon: ':heavy_check_mark:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

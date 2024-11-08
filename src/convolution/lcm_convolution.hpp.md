@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

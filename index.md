@@ -41,7 +41,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/dynamic_li_chao_tree.hpp
       title: DynamicLiChaoTree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/data_structure/fenwick_tree.hpp
       title: FenwickTree
     - icon: ':heavy_check_mark:'
@@ -65,7 +65,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/segment_set.hpp
       title: SegmentSet
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/data_structure/segment_tree.hpp
       title: SegmentTree
     - icon: ':heavy_check_mark:'
@@ -134,16 +134,16 @@ data:
       title: template
   - name: src/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/graph/bfs.hpp
       title: bfs
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/graph/bfs01.hpp
       title: bfs01
     - icon: ':heavy_check_mark:'
       path: src/graph/biconnected_components.hpp
       title: BiconnectedComponents
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/graph/bipartite.hpp
       title: bipartite
     - icon: ':heavy_check_mark:'
@@ -152,10 +152,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/cycle_detection.hpp
       title: cycle_detection
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/dijkstra.hpp
       title: dijkstra
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/graph_template.hpp
       title: Graph
     - icon: ':heavy_check_mark:'
@@ -306,19 +306,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template/dynamic_modint.hpp
       title: DynamicModint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/modint_2_61m1.hpp
       title: Modint_2_61m1
     - icon: ':heavy_check_mark:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/random_number_generator.hpp
       title: RandomNumberGenerator
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/static_modint.hpp
       title: StaticModint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/template.hpp
       title: template
   - name: src/tree
@@ -326,25 +326,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: cartesian_tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/tree/centroid.hpp
       title: centroid
     - icon: ':heavy_check_mark:'
       path: src/tree/centroid_decomposition.hpp
       title: centroid_decomposition
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/tree/heavy_light_decomposition.hpp
       title: HeavyLightDecomposition
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/tree/lowest_common_ancestor.hpp
       title: LowestCommonAncestor
     - icon: ':heavy_check_mark:'
       path: src/tree/rerooting.hpp
       title: rerooting
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/tree/rooted_hash_tree.hpp
       title: src/tree/rooted_hash_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/tree/tree_diameter.hpp
       title: tree_diameter
   verificationCategories:
@@ -735,19 +735,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
       title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/tree/tree_diameter.test.cpp
       title: verify/library_checker/tree/tree_diameter.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
       title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
       title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
       title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - name: verify/unit_test/convolution
@@ -765,13 +765,13 @@ data:
       title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - name: verify/unit_test/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/unit_test/graph/bfs.test.cpp
       title: verify/unit_test/graph/bfs.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/unit_test/graph/bfs01.test.cpp
       title: verify/unit_test/graph/bfs01.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/unit_test/graph/bipartite.test.cpp
       title: verify/unit_test/graph/bipartite.test.cpp
   - name: verify/unit_test/math
@@ -794,7 +794,7 @@ data:
       title: verify/unit_test/template/debug.test.cpp
   - name: verify/unit_test/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/unit_test/tree/centroid.test.cpp
       title: verify/unit_test/tree/centroid.test.cpp
   - name: verify/yukicoder

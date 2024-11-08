@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/bfs01.hpp
     title: bfs01
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -139,43 +139,43 @@ data:
     ;\n                --N;\n            }\n        }\n        return res;\n    }\n\
     } rng;\n#line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct\
     \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        :\
-    \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, const T&\
-    \ cost = 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
-    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
-    \ T>\nstruct Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n    int\
-    \ size() const {\n        return n;\n    }\n    int edge_size() const {\n    \
-    \    return es;\n    }\n    void add_edge(int from, int to, const T& cost = 1)\
-    \ {\n        assert(0 <= from and from < n);\n        assert(0 <= to and to <\
-    \ n);\n        g[from].emplace_back(from, to, cost, es);\n        g[to].emplace_back(to,\
-    \ from, cost, es++);\n    }\n    void add_directed_edge(int from, int to, const\
-    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
-    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es++);\n    }\n\
-    \    inline vector<Edge<T>>& operator[](const int& k) {\n        assert(0 <= k\
-    \ and k < n);\n        return g[k];\n    }\n    inline const vector<Edge<T>>&\
-    \ operator[](const int& k) const {\n        assert(0 <= k and k < n);\n      \
-    \  return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
-    \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bfs01.hpp\"\
-    \ntemplate <typename T>\nvector<pair<T, int>> bfs01(const Graph<T>& g, const int\
-    \ s = 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T,\
-    \ int>> d(n, {numeric_limits<T>::max(), -1});\n    vector<int> visited(n);\n \
-    \   deque<int> deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
-    \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
-    \ continue;\n        visited[cur] = 1;\n        for(const Edge<T>& e : g[cur])\
-    \ {\n            if(d[e.to].first != numeric_limits<T>::max() and d[e.to].first\
-    \ <= d[cur].first + e.cost) continue;\n            d[e.to] = {d[cur].first + e.cost,\
-    \ cur};\n            if(e.cost == 0) {\n                deq.emplace_front(e.to);\n\
-    \            } else {\n                deq.emplace_back(e.to);\n            }\n\
-    \        }\n    }\n    return d;\n}\n#line 4 \"src/graph/dijkstra.hpp\"\ntemplate\
-    \ <typename T>\nvector<pair<T, int>> dijkstra(const Graph<T>& g, const int s =\
-    \ 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T,\
-    \ int>> d(n, {numeric_limits<T>::max(), -1});\n    priority_queue<pair<T, int>,\
-    \ vector<pair<T, int>>, greater<pair<T, int>>> pq;\n    d[s] = {0, -1};\n    pq.emplace(0,\
-    \ s);\n    while(!pq.empty()) {\n        const auto [dist, cur] = pq.top();\n\
-    \        pq.pop();\n        if(d[cur].first < dist) continue;\n        for(const\
-    \ Edge<T>& e : g[cur]) {\n            if(d[e.to].first > d[cur].first + e.cost)\
-    \ {\n                d[e.to] = {d[cur].first + e.cost, cur};\n               \
-    \ pq.emplace(d[e.to].first, e.to);\n            }\n        }\n    }\n    return\
-    \ d;\n}\n#line 7 \"verify/unit_test/graph/bfs01.test.cpp\"\nvoid undirected()\
+    \ from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to,\
+    \ const T& cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost),\
+    \ idx(idx) {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate\
+    \ <typename T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0),\
+    \ g(N) {}\n    int size() const {\n        return n;\n    }\n    int edge_size()\
+    \ const {\n        return es;\n    }\n    void add_edge(const int from, const\
+    \ int to, const T& cost = 1) {\n        assert(0 <= from and from < n);\n    \
+    \    assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
+    \ es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
+    \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
+    \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
+    \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
+    \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
+    \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
+    #line 4 \"src/graph/bfs01.hpp\"\ntemplate <typename T>\nvector<pair<T, int>> bfs01(const\
+    \ Graph<T>& g, const int s = 0) {\n    const int n = g.size();\n    assert(0 <=\
+    \ s and s < n);\n    vector<pair<T, int>> d(n, {numeric_limits<T>::max(), -1});\n\
+    \    vector<int> visited(n);\n    deque<int> deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n\
+    \    while(!deq.empty()) {\n        const int cur = deq.front();\n        deq.pop_front();\n\
+    \        if(visited[cur]) continue;\n        visited[cur] = 1;\n        for(const\
+    \ Edge<T>& e : g[cur]) {\n            if(d[e.to].first != numeric_limits<T>::max()\
+    \ and d[e.to].first <= d[cur].first + e.cost) continue;\n            d[e.to] =\
+    \ {d[cur].first + e.cost, cur};\n            if(e.cost == 0) {\n             \
+    \   deq.emplace_front(e.to);\n            } else {\n                deq.emplace_back(e.to);\n\
+    \            }\n        }\n    }\n    return d;\n}\n#line 4 \"src/graph/dijkstra.hpp\"\
+    \ntemplate <typename T>\nvector<pair<T, int>> dijkstra(const Graph<T>& g, const\
+    \ int s = 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n \
+    \   vector<pair<T, int>> d(n, {numeric_limits<T>::max(), -1});\n    priority_queue<pair<T,\
+    \ int>, vector<pair<T, int>>, greater<pair<T, int>>> pq;\n    d[s] = {0, -1};\n\
+    \    pq.emplace(0, s);\n    while(!pq.empty()) {\n        const auto [dist, cur]\
+    \ = pq.top();\n        pq.pop();\n        if(d[cur].first < dist) continue;\n\
+    \        for(const Edge<T>& e : g[cur]) {\n            if(d[e.to].first > d[cur].first\
+    \ + e.cost) {\n                d[e.to] = {d[cur].first + e.cost, cur};\n     \
+    \           pq.emplace(d[e.to].first, e.to);\n            }\n        }\n    }\n\
+    \    return d;\n}\n#line 7 \"verify/unit_test/graph/bfs01.test.cpp\"\nvoid undirected()\
     \ {\n    int n = rng(1, 200000), m = rng(1, min(200000ll, 1ll * n * (n - 1) /\
     \ 2));\n    auto [u, v, w] = rng.weighted_graph(n, m, 0, 1, false);\n    int weight\
     \ = rng(1, 1000);\n    Graph<int> g(n);\n    rep(i, 0, m) {\n        g.add_edge(u[i],\
@@ -217,8 +217,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/graph/bfs01.test.cpp
   requiredBy: []
-  timestamp: '2024-09-28 15:39:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 00:36:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bfs01.test.cpp
 layout: document

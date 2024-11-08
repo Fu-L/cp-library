@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/rooted_hash_tree.hpp
     title: src/tree/rooted_hash_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
@@ -32,16 +32,17 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
     \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
-    \ to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, const T& cost = 1,\
-    \ int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n    operator\
-    \ int() const {\n        return to;\n    }\n};\ntemplate <typename T>\nstruct\
-    \ Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n    int size() const\
-    \ {\n        return n;\n    }\n    int edge_size() const {\n        return es;\n\
-    \    }\n    void add_edge(int from, int to, const T& cost = 1) {\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(int from, int to, const T& cost = 1) {\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to, const T&\
+    \ cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
+    \ T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0), g(N) {}\n\
+    \    int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(const int from, const int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
+    \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
+    \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
     \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
     \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
     \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
@@ -123,8 +124,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   requiredBy: []
-  timestamp: '2024-11-08 23:44:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 00:36:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
 layout: document

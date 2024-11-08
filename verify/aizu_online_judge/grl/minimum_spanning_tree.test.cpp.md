@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -32,16 +32,17 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
     \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
-    \ to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, const T& cost = 1,\
-    \ int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n    operator\
-    \ int() const {\n        return to;\n    }\n};\ntemplate <typename T>\nstruct\
-    \ Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n    int size() const\
-    \ {\n        return n;\n    }\n    int edge_size() const {\n        return es;\n\
-    \    }\n    void add_edge(int from, int to, const T& cost = 1) {\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(int from, int to, const T& cost = 1) {\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to, const T&\
+    \ cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
+    \ T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0), g(N) {}\n\
+    \    int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(const int from, const int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
+    \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
+    \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
     \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
     \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
     \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
@@ -66,8 +67,8 @@ data:
     \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
     \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
     \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n#line 5 \"src/graph/kruskal.hpp\"\
-    \ntemplate <typename T>\npair<T, Edges<T>> kruskal(int n, Edges<T> es) {\n   \
-    \ sort(es.begin(), es.end(), [&](const Edge<T>& a, const Edge<T>& b) { return\
+    \ntemplate <typename T>\npair<T, Edges<T>> kruskal(const int n, Edges<T> es) {\n\
+    \    sort(es.begin(), es.end(), [&](const Edge<T>& a, const Edge<T>& b) { return\
     \ a.cost < b.cost; });\n    UnionFind uf(n);\n    T cost = 0;\n    Edges<T> res;\n\
     \    res.reserve(n - 1);\n    for(const Edge<T>& e : es) {\n        if(uf.same(e.from,\
     \ e.to)) continue;\n        cost += e.cost;\n        uf.merge(e.from, e.to);\n\
@@ -89,7 +90,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 00:13:43+09:00'
+  timestamp: '2024-11-09 00:36:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp

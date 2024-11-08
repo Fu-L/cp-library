@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/slide_window_aggregation_deque.hpp
     title: SlideWindowAggregationDeque
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

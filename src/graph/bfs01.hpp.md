@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -24,26 +24,27 @@ data:
     \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
     \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
     \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(int\
-    \ from, int to, const T& cost = 1, int idx = -1)\n        : from(from), to(to),\
-    \ cost(cost), idx(idx) {}\n    operator int() const {\n        return to;\n  \
-    \  }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(int N)\n        : n(N),\
-    \ es(0), g(N) {}\n    int size() const {\n        return n;\n    }\n    int edge_size()\
-    \ const {\n        return es;\n    }\n    void add_edge(int from, int to, const\
-    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
-    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
-    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(int\
-    \ from, int to, const T& cost = 1) {\n        assert(0 <= from and from < n);\n\
-    \        assert(0 <= to and to < n);\n        g[from].emplace_back(from, to, cost,\
-    \ es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k) {\n    \
-    \    assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline const\
-    \ vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <= k and\
-    \ k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n    vector<vector<Edge<T>>>\
-    \ g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bfs01.hpp\"\
-    \ntemplate <typename T>\nvector<pair<T, int>> bfs01(const Graph<T>& g, const int\
-    \ s = 0) {\n    const int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T,\
-    \ int>> d(n, {numeric_limits<T>::max(), -1});\n    vector<int> visited(n);\n \
-    \   deque<int> deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
+    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const\
+    \ int from, const int to, const T& cost = 1, const int idx = -1)\n        : from(from),\
+    \ to(to), cost(cost), idx(idx) {}\n    operator int() const {\n        return\
+    \ to;\n    }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(const int N)\n\
+    \        : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n \
+    \   }\n    int edge_size() const {\n        return es;\n    }\n    void add_edge(const\
+    \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
+    \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
+    \   void add_directed_edge(const int from, const int to, const T& cost = 1) {\n\
+    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
+    \        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline vector<Edge<T>>&\
+    \ operator[](const int& k) {\n        assert(0 <= k and k < n);\n        return\
+    \ g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const int& k) const\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
+    \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
+    \ Edges = vector<Edge<T>>;\n#line 4 \"src/graph/bfs01.hpp\"\ntemplate <typename\
+    \ T>\nvector<pair<T, int>> bfs01(const Graph<T>& g, const int s = 0) {\n    const\
+    \ int n = g.size();\n    assert(0 <= s and s < n);\n    vector<pair<T, int>> d(n,\
+    \ {numeric_limits<T>::max(), -1});\n    vector<int> visited(n);\n    deque<int>\
+    \ deq;\n    d[s] = {0, -1};\n    deq.emplace_back(s);\n    while(!deq.empty())\
     \ {\n        const int cur = deq.front();\n        deq.pop_front();\n        if(visited[cur])\
     \ continue;\n        visited[cur] = 1;\n        for(const Edge<T>& e : g[cur])\
     \ {\n            if(d[e.to].first != numeric_limits<T>::max() and d[e.to].first\
@@ -69,8 +70,8 @@ data:
   isVerificationFile: false
   path: src/graph/bfs01.hpp
   requiredBy: []
-  timestamp: '2024-09-28 15:39:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 00:36:45+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/graph/bfs01.test.cpp
 documentation_of: src/graph/bfs01.hpp

@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -29,16 +29,17 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
     \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
-    \ to(-1), cost(-1), idx(-1) {}\n    Edge(int from, int to, const T& cost = 1,\
-    \ int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n    operator\
-    \ int() const {\n        return to;\n    }\n};\ntemplate <typename T>\nstruct\
-    \ Graph {\n    Graph(int N)\n        : n(N), es(0), g(N) {}\n    int size() const\
-    \ {\n        return n;\n    }\n    int edge_size() const {\n        return es;\n\
-    \    }\n    void add_edge(int from, int to, const T& cost = 1) {\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(int from, int to, const T& cost = 1) {\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to, const T&\
+    \ cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
+    \ T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0), g(N) {}\n\
+    \    int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(const int from, const int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
+    \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
+    \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
     \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
     \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
     \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
@@ -49,19 +50,19 @@ data:
     \  for(int i = 0; i < n; ++i) {\n        for(const Edge<T>& e : g[i]) {\n    \
     \        if(i == e.to) return {e};\n        }\n    }\n    Edges<T> cycle;\n  \
     \  vector<int> pre(n, -1), visited(n, 0);\n    int finish = 0;\n    auto dfs =\
-    \ [&](auto& dfs, int cur, int pval, const Edge<T>& par) -> int {\n        pre[cur]\
-    \ = pval;\n        visited[cur] = 1;\n        for(const Edge<T>& e : g[cur]) {\n\
-    \            if(finish) return -1;\n            if(!directed and e.idx == par.idx)\
-    \ continue;\n            if(pre[e.to] == pre[cur]) {\n                cycle.emplace_back(e);\n\
-    \                return e.to;\n            }\n            if(visited[e.to]) continue;\n\
-    \            int nx = dfs(dfs, e.to, pval, e);\n            if(nx != -1) {\n \
-    \               cycle.emplace_back(e);\n                if(cur == nx) {\n    \
-    \                finish = 1;\n                    return -1;\n               \
-    \ }\n                return nx;\n            }\n        }\n        pre[cur] =\
-    \ -1;\n        return -1;\n    };\n    for(int i = 0; i < n; ++i) {\n        if(visited[i])\
-    \ continue;\n        dfs(dfs, i, i, Edge<T>());\n        if(finish) {\n      \
-    \      reverse(begin(cycle), end(cycle));\n            return cycle;\n       \
-    \ }\n    }\n    return {};\n}\n#line 5 \"verify/library_checker/graph/cycle_detection_undirected.test.cpp\"\
+    \ [&](const auto& dfs, const int cur, const int pval, const Edge<T>& par) -> int\
+    \ {\n        pre[cur] = pval;\n        visited[cur] = 1;\n        for(const Edge<T>&\
+    \ e : g[cur]) {\n            if(finish) return -1;\n            if(!directed and\
+    \ e.idx == par.idx) continue;\n            if(pre[e.to] == pre[cur]) {\n     \
+    \           cycle.emplace_back(e);\n                return e.to;\n           \
+    \ }\n            if(visited[e.to]) continue;\n            const int nx = dfs(dfs,\
+    \ e.to, pval, e);\n            if(nx != -1) {\n                cycle.emplace_back(e);\n\
+    \                if(cur == nx) {\n                    finish = 1;\n          \
+    \          return -1;\n                }\n                return nx;\n       \
+    \     }\n        }\n        pre[cur] = -1;\n        return -1;\n    };\n    for(int\
+    \ i = 0; i < n; ++i) {\n        if(visited[i]) continue;\n        dfs(dfs, i,\
+    \ i, Edge<T>());\n        if(finish) {\n            reverse(begin(cycle), end(cycle));\n\
+    \            return cycle;\n        }\n    }\n    return {};\n}\n#line 5 \"verify/library_checker/graph/cycle_detection_undirected.test.cpp\"\
     \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Graph<int> g(n);\n\
     \    rep(i, 0, m) {\n        int a, b;\n        cin >> a >> b;\n        g.add_edge(a,\
     \ b);\n    }\n    Edges<int> cycle = cycle_detection(g, false);\n    if(cycle.empty())\
@@ -86,7 +87,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 00:36:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/cycle_detection_undirected.test.cpp
