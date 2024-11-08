@@ -1,15 +1,15 @@
 #pragma once
 #include "./template.hpp"
 struct Barrett {
-    explicit Barrett(unsigned int m)
+    explicit Barrett(const unsigned int m)
         : _m(m), im((unsigned long long)(-1) / m + 1) {}
     inline unsigned int umod() const {
         return _m;
     }
-    inline unsigned int mul(unsigned int a, unsigned int b) const {
+    inline unsigned int mul(const unsigned int a, const unsigned int b) const {
         unsigned long long z = a;
         z *= b;
-        unsigned long long x = (unsigned long long)(((unsigned __int128)(z)*im) >> 64);
+        const unsigned long long x = (unsigned long long)(((unsigned __int128)(z)*im) >> 64);
         unsigned int v = (unsigned int)(z - x * _m);
         if(_m <= v) v += _m;
         return v;
@@ -25,11 +25,11 @@ struct DynamicModint {
     static int mod() {
         return (int)bt.umod();
     }
-    static void set_mod(int m) {
+    static void set_mod(const int m) {
         assert(1 <= m);
         bt = Barrett(m);
     }
-    static mint raw(int v) {
+    static mint raw(const int v) {
         mint a;
         a._v = v;
         return a;
@@ -103,7 +103,7 @@ struct DynamicModint {
         }
     }
     mint inv() const {
-        auto eg = inv_gcd(_v, mod());
+        const auto eg = inv_gcd(_v, mod());
         assert(eg.first == 1);
         return eg.second;
     }
@@ -141,7 +141,7 @@ struct DynamicModint {
     inline static unsigned int umod() {
         return bt.umod();
     }
-    inline static pair<long long, long long> inv_gcd(long long a, long long b) {
+    inline static pair<long long, long long> inv_gcd(const long long a, const long long b) {
         if(a == 0) return {b, 0};
         long long s = b, t = a, m0 = 0, m1 = 1;
         while(t) {

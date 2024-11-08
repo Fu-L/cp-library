@@ -6,7 +6,7 @@ struct StaticModint {
     static constexpr uint32_t mod() {
         return m;
     }
-    static constexpr mint raw(uint32_t v) {
+    static constexpr mint raw(const uint32_t v) {
         mint a;
         a._v = v;
         return a;
@@ -79,7 +79,7 @@ struct StaticModint {
             assert(_v);
             return pow(m - 2);
         } else {
-            auto eg = inv_gcd(_v, m);
+            const auto eg = inv_gcd(_v, m);
             assert(eg.first == 1);
             return eg.second;
         }
@@ -131,7 +131,7 @@ struct StaticModint {
         }
         return 1;
     }();
-    static constexpr pair<int32_t, int32_t> inv_gcd(int32_t a, int32_t b) {
+    static constexpr pair<int32_t, int32_t> inv_gcd(const int32_t a, const int32_t b) {
         if(a == 0) return {b, 0};
         int32_t s = b, t = a, m0 = 0, m1 = 1;
         while(t) {
