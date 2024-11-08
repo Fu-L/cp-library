@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sorted_set.hpp
     title: SortedSet
   - icon: ':heavy_check_mark:'
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
     title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/template/policy_based_data_structure.hpp"
@@ -47,7 +47,7 @@ data:
   - src/math/log_mod.hpp
   - src/data_structure/sorted_set.hpp
   timestamp: '2024-01-01 14:30:01+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number_theory/discrete_logarithm.test.cpp
   - verify/yukicoder/649.test.cpp

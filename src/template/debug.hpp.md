@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -210,7 +210,7 @@ data:
   path: src/template/debug.hpp
   requiredBy: []
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
 documentation_of: src/template/debug.hpp

@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
   - icon: ':heavy_check_mark:'
@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
     title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -125,7 +125,7 @@ data:
   - src/string/rolling_hash.hpp
   - src/tree/rooted_hash_tree.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp

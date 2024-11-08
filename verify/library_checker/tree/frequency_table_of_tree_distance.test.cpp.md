@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'

@@ -5,13 +5,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
   - icon: ':heavy_check_mark:'
@@ -20,7 +20,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
   - icon: ':heavy_check_mark:'
@@ -38,7 +38,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/dynamic_li_chao_tree.hpp
     title: DynamicLiChaoTree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
   - icon: ':heavy_check_mark:'
@@ -62,7 +62,7 @@ data:
   - icon: ':warning:'
     path: src/data_structure/segment_set.hpp
     title: SegmentSet
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segment_tree.hpp
     title: SegmentTree
   - icon: ':heavy_check_mark:'
@@ -71,13 +71,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/slide_window_aggregation_deque.hpp
     title: SlideWindowAggregationDeque
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sorted_set.hpp
     title: SortedSet
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_table_2d.hpp
     title: SparseTable2D
   - icon: ':heavy_check_mark:'
@@ -92,22 +92,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/fps/all_product.hpp
     title: all_product
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/bostan_mori.hpp
     title: bostan_mori
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: FormalPowerSeriesArbitrary
   - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/nth_term.hpp
     title: nth_term
   - icon: ':heavy_check_mark:'
@@ -125,16 +125,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/bfs.hpp
     title: bfs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/bfs01.hpp
     title: bfs01
   - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/bipartite.hpp
     title: bipartite
   - icon: ':heavy_check_mark:'
@@ -143,10 +143,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -179,7 +179,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/chinese_remainder_theorem.hpp
     title: chinese_remainder_theorem
   - icon: ':heavy_check_mark:'
@@ -188,10 +188,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/euler_phi.hpp
     title: euler_phi
   - icon: ':heavy_check_mark:'
@@ -200,40 +200,40 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/floor_sum.hpp
     title: floor_sum
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/inv_gcd.hpp
     title: inv_gcd
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/is_prime.hpp
     title: is_prime
   - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/lucas.hpp
     title: Lucas
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/moebius.hpp
     title: moebius
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/prime_factors.hpp
     title: prime_factors
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/xor_base.hpp
     title: xor_base
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':heavy_check_mark:'
@@ -257,10 +257,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/others/dice.hpp
     title: dice
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/aho_corasick.hpp
     title: AhoCorasick
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
   - icon: ':heavy_check_mark:'
@@ -272,7 +272,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/suffix_array.hpp
     title: suffix_array
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/trie.hpp
     title: Trie
   - icon: ':heavy_check_mark:'
@@ -281,34 +281,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/z_algorithm.hpp
     title: z_algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid.hpp
     title: centroid
   - icon: ':heavy_check_mark:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/heavy_light_decomposition.hpp
     title: HeavyLightDecomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
   - icon: ':heavy_check_mark:'
@@ -681,63 +681,63 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
     title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bfs.test.cpp
     title: verify/unit_test/graph/bfs.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/eratosthenes_seive.test.cpp
     title: verify/unit_test/math/eratosthenes_seive.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/184.test.cpp
     title: verify/yukicoder/184.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/186.test.cpp
     title: verify/yukicoder/186.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/430.test.cpp
     title: verify/yukicoder/430.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -863,7 +863,7 @@ data:
   - src/fps/formal_power_series_ll.hpp
   - src/fps/berlekamp_massey.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number_theory/discrete_logarithm.test.cpp
   - verify/library_checker/number_theory/primality_test.test.cpp

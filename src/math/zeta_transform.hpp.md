@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -58,7 +58,7 @@ data:
   - src/convolution/or_convolution.hpp
   - src/convolution/and_convolution.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp

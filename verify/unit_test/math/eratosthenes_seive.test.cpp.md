@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/euler_phi.hpp
     title: euler_phi
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/is_prime.hpp
     title: is_prime
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/moebius.hpp
     title: moebius
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/prime_factors.hpp
     title: prime_factors
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -212,7 +212,7 @@ data:
   path: verify/unit_test/math/eratosthenes_seive.test.cpp
   requiredBy: []
   timestamp: '2024-11-09 02:03:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/math/eratosthenes_seive.test.cpp
 layout: document
