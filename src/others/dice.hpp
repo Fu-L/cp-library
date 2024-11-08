@@ -3,7 +3,7 @@
 #define roll_swap(x, a, b, c, d) swap(x.a, x.b), swap(x.b, x.c), swap(x.c, x.d);
 struct Dice {
     int top, front, right, left, back, bottom;
-    Dice(int to = 1, int fr = 2, int ri = 3, int le = 4, int ba = 5, int bo = 6)
+    Dice(const int to = 1, const int fr = 2, const int ri = 3, const int le = 4, const int ba = 5, const int bo = 6)
         : top(to), front(fr), right(ri), left(le), back(ba), bottom(bo) {}
     void roll_right() {
         roll_swap((*this), top, left, bottom, right);
@@ -23,7 +23,7 @@ struct Dice {
     void roll_ccw() {
         roll_swap((*this), back, right, front, left);
     }
-    void roll(int dir) {
+    void roll(const int dir) {
         if(dir == 0) (*this).roll_front();
         if(dir == 1) (*this).roll_right();
         if(dir == 2) (*this).roll_back();
