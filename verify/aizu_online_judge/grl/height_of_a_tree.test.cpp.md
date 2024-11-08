@@ -47,21 +47,22 @@ data:
     #line 4 \"src/tree/rerooting.hpp\"\ntemplate <typename DP, typename T, typename\
     \ F1, typename F2>\nvector<DP> rerooting(const Graph<T>& g, const F1& f1, const\
     \ F2& f2, const DP& id) {\n    const int n = g.size();\n    vector<DP> memo(n,\
-    \ id), dp(n, id);\n    auto dfs = [&](auto& dfs, int cur, int par) -> void {\n\
-    \        for(const Edge<T>& e : g[cur]) {\n            if(e.to == par) continue;\n\
-    \            dfs(dfs, e.to, cur);\n            memo[cur] = f1(memo[cur], f2(memo[e.to],\
-    \ e.to, cur));\n        }\n    };\n    auto efs = [&](auto& efs, int cur, int\
-    \ par, const DP& pval) -> void {\n        vector<DP> buf;\n        for(const Edge<T>&\
-    \ e : g[cur]) {\n            if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
-    \ e.to, cur));\n        }\n        vector<T> head(buf.size() + 1), tail(buf.size()\
-    \ + 1);\n        head[0] = tail[buf.size()] = id;\n        for(int i = 0; i <\
-    \ (int)buf.size(); ++i) head[i + 1] = f1(head[i], buf[i]);\n        for(int i\
-    \ = (int)buf.size() - 1; i >= 0; --i) {\n            tail[i] = f1(tail[i + 1],\
-    \ buf[i]);\n        }\n        dp[cur] = par == -1 ? head.back() : f1(pval, head.back());\n\
-    \        int idx = 0;\n        for(const Edge<T>& e : g[cur]) {\n            if(e.to\
-    \ == par) continue;\n            efs(efs, e.to, cur, f2(f1(pval, f1(head[idx],\
-    \ tail[idx + 1])), cur, e));\n            ++idx;\n        }\n    };\n    dfs(dfs,\
-    \ 0, -1);\n    efs(efs, 0, -1, id);\n    return dp;\n}\n#line 5 \"verify/aizu_online_judge/grl/height_of_a_tree.test.cpp\"\
+    \ id), dp(n, id);\n    auto dfs = [&](auto& dfs, const int cur, const int par)\
+    \ -> void {\n        for(const Edge<T>& e : g[cur]) {\n            if(e.to ==\
+    \ par) continue;\n            dfs(dfs, e.to, cur);\n            memo[cur] = f1(memo[cur],\
+    \ f2(memo[e.to], e.to, cur));\n        }\n    };\n    auto efs = [&](auto& efs,\
+    \ const int cur, const int par, const DP& pval) -> void {\n        vector<DP>\
+    \ buf;\n        for(const Edge<T>& e : g[cur]) {\n            if(e.to == par)\
+    \ continue;\n            buf.emplace_back(f2(memo[e.to], e.to, cur));\n      \
+    \  }\n        vector<T> head(buf.size() + 1), tail(buf.size() + 1);\n        head[0]\
+    \ = tail[buf.size()] = id;\n        for(int i = 0; i < (int)buf.size(); ++i) head[i\
+    \ + 1] = f1(head[i], buf[i]);\n        for(int i = (int)buf.size() - 1; i >= 0;\
+    \ --i) {\n            tail[i] = f1(tail[i + 1], buf[i]);\n        }\n        dp[cur]\
+    \ = par == -1 ? head.back() : f1(pval, head.back());\n        int idx = 0;\n \
+    \       for(const Edge<T>& e : g[cur]) {\n            if(e.to == par) continue;\n\
+    \            efs(efs, e.to, cur, f2(f1(pval, f1(head[idx], tail[idx + 1])), cur,\
+    \ e));\n            ++idx;\n        }\n    };\n    dfs(dfs, 0, -1);\n    efs(efs,\
+    \ 0, -1, id);\n    return dp;\n}\n#line 5 \"verify/aizu_online_judge/grl/height_of_a_tree.test.cpp\"\
     \nint main(void) {\n    int n;\n    cin >> n;\n    Graph<int> g(n);\n    map<pair<int,\
     \ int>, int> mp;\n    rep(i, 0, n - 1) {\n        int a, b, c;\n        cin >>\
     \ a >> b >> c;\n        g.add_edge(a, b, c);\n        mp[{a, b}] = c;\n      \
@@ -87,7 +88,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-08 23:56:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/height_of_a_tree.test.cpp

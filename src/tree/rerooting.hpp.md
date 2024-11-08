@@ -43,12 +43,12 @@ data:
     \ntemplate <typename DP, typename T, typename F1, typename F2>\nvector<DP> rerooting(const\
     \ Graph<T>& g, const F1& f1, const F2& f2, const DP& id) {\n    const int n =\
     \ g.size();\n    vector<DP> memo(n, id), dp(n, id);\n    auto dfs = [&](auto&\
-    \ dfs, int cur, int par) -> void {\n        for(const Edge<T>& e : g[cur]) {\n\
-    \            if(e.to == par) continue;\n            dfs(dfs, e.to, cur);\n   \
-    \         memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));\n        }\n \
-    \   };\n    auto efs = [&](auto& efs, int cur, int par, const DP& pval) -> void\
-    \ {\n        vector<DP> buf;\n        for(const Edge<T>& e : g[cur]) {\n     \
-    \       if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
+    \ dfs, const int cur, const int par) -> void {\n        for(const Edge<T>& e :\
+    \ g[cur]) {\n            if(e.to == par) continue;\n            dfs(dfs, e.to,\
+    \ cur);\n            memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));\n \
+    \       }\n    };\n    auto efs = [&](auto& efs, const int cur, const int par,\
+    \ const DP& pval) -> void {\n        vector<DP> buf;\n        for(const Edge<T>&\
+    \ e : g[cur]) {\n            if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
     \ e.to, cur));\n        }\n        vector<T> head(buf.size() + 1), tail(buf.size()\
     \ + 1);\n        head[0] = tail[buf.size()] = id;\n        for(int i = 0; i <\
     \ (int)buf.size(); ++i) head[i + 1] = f1(head[i], buf[i]);\n        for(int i\
@@ -62,12 +62,12 @@ data:
     \ntemplate <typename DP, typename T, typename F1, typename F2>\nvector<DP> rerooting(const\
     \ Graph<T>& g, const F1& f1, const F2& f2, const DP& id) {\n    const int n =\
     \ g.size();\n    vector<DP> memo(n, id), dp(n, id);\n    auto dfs = [&](auto&\
-    \ dfs, int cur, int par) -> void {\n        for(const Edge<T>& e : g[cur]) {\n\
-    \            if(e.to == par) continue;\n            dfs(dfs, e.to, cur);\n   \
-    \         memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));\n        }\n \
-    \   };\n    auto efs = [&](auto& efs, int cur, int par, const DP& pval) -> void\
-    \ {\n        vector<DP> buf;\n        for(const Edge<T>& e : g[cur]) {\n     \
-    \       if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
+    \ dfs, const int cur, const int par) -> void {\n        for(const Edge<T>& e :\
+    \ g[cur]) {\n            if(e.to == par) continue;\n            dfs(dfs, e.to,\
+    \ cur);\n            memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));\n \
+    \       }\n    };\n    auto efs = [&](auto& efs, const int cur, const int par,\
+    \ const DP& pval) -> void {\n        vector<DP> buf;\n        for(const Edge<T>&\
+    \ e : g[cur]) {\n            if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
     \ e.to, cur));\n        }\n        vector<T> head(buf.size() + 1), tail(buf.size()\
     \ + 1);\n        head[0] = tail[buf.size()] = id;\n        for(int i = 0; i <\
     \ (int)buf.size(); ++i) head[i + 1] = f1(head[i], buf[i]);\n        for(int i\
@@ -83,7 +83,7 @@ data:
   isVerificationFile: false
   path: src/tree/rerooting.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-08 23:56:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp

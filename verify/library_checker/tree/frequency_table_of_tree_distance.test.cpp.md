@@ -65,48 +65,49 @@ data:
     #line 4 \"src/tree/centroid_decomposition.hpp\"\ntemplate <typename T>\npair<Graph<int>,\
     \ int> centroid_decomposition(const Graph<T>& g) {\n    const int n = g.size();\n\
     \    vector<int> sub(n);\n    vector<bool> visited(n);\n    Graph<int> tree(n);\n\
-    \    auto get_size = [&](auto& get_size, int cur, int par) -> int {\n        sub[cur]\
-    \ = 1;\n        for(const Edge<T>& e : g[cur]) {\n            if(e.to == par or\
-    \ visited[e.to]) continue;\n            sub[cur] += get_size(get_size, e.to, cur);\n\
-    \        }\n        return sub[cur];\n    };\n    auto get_centroid = [&](auto&\
-    \ get_centroid, int cur, int par, int mid) -> int {\n        for(const Edge<T>&\
-    \ e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n    \
-    \        if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);\n\
-    \        }\n        return cur;\n    };\n    auto dfs = [&](auto& dfs, int cur)\
-    \ -> int {\n        const int centroid = get_centroid(get_centroid, cur, -1, get_size(get_size,\
-    \ cur, -1) / 2);\n        visited[centroid] = true;\n        for(const Edge<T>&\
-    \ e : g[centroid]) {\n            if(visited[e.to]) continue;\n            const\
-    \ int nex = dfs(dfs, e.to);\n            if(centroid != nex) tree.add_directed_edge(centroid,\
-    \ nex);\n        }\n        visited[centroid] = false;\n        return centroid;\n\
-    \    };\n    const int root = dfs(dfs, 0);\n    return {tree, root};\n}\n#line\
-    \ 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
-    \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
-    \       return m;\n    }\n    static constexpr mint raw(uint32_t v) {\n      \
-    \  mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
-    \        : _v(0) {}\n    template <class T>\n    constexpr StaticModint(const\
-    \ T& v) {\n        static_assert(is_integral_v<T>);\n        if constexpr(is_signed_v<T>)\
-    \ {\n            int64_t x = int64_t(v % int64_t(m));\n            if(x < 0) x\
-    \ += m;\n            _v = uint32_t(x);\n        } else _v = uint32_t(v % m);\n\
-    \    }\n    constexpr uint32_t val() const {\n        return _v;\n    }\n    constexpr\
-    \ mint& operator++() {\n        return *this += 1;\n    }\n    constexpr mint&\
-    \ operator--() {\n        return *this -= 1;\n    }\n    constexpr mint operator++(int)\
-    \ {\n        mint res = *this;\n        ++*this;\n        return res;\n    }\n\
-    \    constexpr mint operator--(int) {\n        mint res = *this;\n        --*this;\n\
-    \        return res;\n    }\n    constexpr mint& operator+=(mint rhs) {\n    \
-    \    if(_v >= m - rhs._v) _v -= m;\n        _v += rhs._v;\n        return *this;\n\
-    \    }\n    constexpr mint& operator-=(mint rhs) {\n        if(_v < rhs._v) _v\
-    \ += m;\n        _v -= rhs._v;\n        return *this;\n    }\n    constexpr mint&\
-    \ operator*=(mint rhs) {\n        return *this = *this * rhs;\n    }\n    constexpr\
-    \ mint& operator/=(mint rhs) {\n        return *this *= rhs.inv();\n    }\n  \
-    \  constexpr mint operator+() const {\n        return *this;\n    }\n    constexpr\
-    \ mint operator-() const {\n        return mint{} - *this;\n    }\n    constexpr\
-    \ mint pow(long long n) const {\n        assert(0 <= n);\n        if(n == 0) return\
-    \ 1;\n        mint x = *this, r = 1;\n        while(1) {\n            if(n & 1)\
-    \ r *= x;\n            n >>= 1;\n            if(n == 0) return r;\n          \
-    \  x *= x;\n        }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime)\
-    \ {\n            assert(_v);\n            return pow(m - 2);\n        } else {\n\
-    \            auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n \
-    \           return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
+    \    auto get_size = [&](auto& get_size, const int cur, const int par) -> int\
+    \ {\n        sub[cur] = 1;\n        for(const Edge<T>& e : g[cur]) {\n       \
+    \     if(e.to == par or visited[e.to]) continue;\n            sub[cur] += get_size(get_size,\
+    \ e.to, cur);\n        }\n        return sub[cur];\n    };\n    auto get_centroid\
+    \ = [&](auto& get_centroid, const int cur, const int par, const int mid) -> int\
+    \ {\n        for(const Edge<T>& e : g[cur]) {\n            if(e.to == par or visited[e.to])\
+    \ continue;\n            if(sub[e.to] > mid) return get_centroid(get_centroid,\
+    \ e.to, cur, mid);\n        }\n        return cur;\n    };\n    auto dfs = [&](auto&\
+    \ dfs, const int cur) -> int {\n        const int centroid = get_centroid(get_centroid,\
+    \ cur, -1, get_size(get_size, cur, -1) / 2);\n        visited[centroid] = true;\n\
+    \        for(const Edge<T>& e : g[centroid]) {\n            if(visited[e.to])\
+    \ continue;\n            const int nex = dfs(dfs, e.to);\n            if(centroid\
+    \ != nex) tree.add_directed_edge(centroid, nex);\n        }\n        visited[centroid]\
+    \ = false;\n        return centroid;\n    };\n    const int root = dfs(dfs, 0);\n\
+    \    return {tree, root};\n}\n#line 3 \"src/template/static_modint.hpp\"\ntemplate\
+    \ <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n    static\
+    \ constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr mint\
+    \ raw(uint32_t v) {\n        mint a;\n        a._v = v;\n        return a;\n \
+    \   }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class T>\n\
+    \    constexpr StaticModint(const T& v) {\n        static_assert(is_integral_v<T>);\n\
+    \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
+    \            if(x < 0) x += m;\n            _v = uint32_t(x);\n        } else\
+    \ _v = uint32_t(v % m);\n    }\n    constexpr uint32_t val() const {\n       \
+    \ return _v;\n    }\n    constexpr mint& operator++() {\n        return *this\
+    \ += 1;\n    }\n    constexpr mint& operator--() {\n        return *this -= 1;\n\
+    \    }\n    constexpr mint operator++(int) {\n        mint res = *this;\n    \
+    \    ++*this;\n        return res;\n    }\n    constexpr mint operator--(int)\
+    \ {\n        mint res = *this;\n        --*this;\n        return res;\n    }\n\
+    \    constexpr mint& operator+=(mint rhs) {\n        if(_v >= m - rhs._v) _v -=\
+    \ m;\n        _v += rhs._v;\n        return *this;\n    }\n    constexpr mint&\
+    \ operator-=(mint rhs) {\n        if(_v < rhs._v) _v += m;\n        _v -= rhs._v;\n\
+    \        return *this;\n    }\n    constexpr mint& operator*=(mint rhs) {\n  \
+    \      return *this = *this * rhs;\n    }\n    constexpr mint& operator/=(mint\
+    \ rhs) {\n        return *this *= rhs.inv();\n    }\n    constexpr mint operator+()\
+    \ const {\n        return *this;\n    }\n    constexpr mint operator-() const\
+    \ {\n        return mint{} - *this;\n    }\n    constexpr mint pow(long long n)\
+    \ const {\n        assert(0 <= n);\n        if(n == 0) return 1;\n        mint\
+    \ x = *this, r = 1;\n        while(1) {\n            if(n & 1) r *= x;\n     \
+    \       n >>= 1;\n            if(n == 0) return r;\n            x *= x;\n    \
+    \    }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime) {\n\
+    \            assert(_v);\n            return pow(m - 2);\n        } else {\n \
+    \           auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n  \
+    \          return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
     \ lhs, mint rhs) {\n        return lhs += rhs;\n    }\n    friend constexpr mint\
     \ operator-(mint lhs, mint rhs) {\n        return lhs -= rhs;\n    }\n    friend\
     \ constexpr mint operator*(mint lhs, mint rhs) {\n        return uint64_t(lhs._v)\
@@ -364,7 +365,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-08 23:56:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
