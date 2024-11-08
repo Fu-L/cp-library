@@ -4,7 +4,7 @@ template <typename T>
 struct FenwickTree {
     FenwickTree(int N)
         : n(N), data(N) {}
-    void add(int p, T x) {
+    void add(int p, const T x) {
         assert(0 <= p and p < n);
         ++p;
         while(p <= n) {
@@ -12,11 +12,11 @@ struct FenwickTree {
             p += p & -p;
         }
     }
-    T sum(int l, int r) const {
+    T sum(const int l, const int r) const {
         assert(0 <= l and l <= r and r <= n);
         return sum(r) - sum(l);
     }
-    T get(int x) const {
+    T get(const int x) const {
         assert(0 <= x and x < n);
         return sum(x + 1) - sum(x);
     }

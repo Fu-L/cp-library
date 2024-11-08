@@ -2,9 +2,9 @@
 #include "../template/template.hpp"
 template <typename T>
 struct FenwickTree2D {
-    FenwickTree2D(int H, int W)
+    FenwickTree2D(const int H, const int W)
         : h(H), w(W), data(H + 1, vector<T>(W + 1, 0)) {}
-    void add(int i, int j, const T& z) {
+    void add(const int i, const int j, const T& z) {
         assert(0 <= i and i < h);
         assert(0 <= j and j < w);
         for(int x = i + 1; x <= h; x += x & -x) {
@@ -13,12 +13,12 @@ struct FenwickTree2D {
             }
         }
     }
-    T sum(int li, int lj, int ri, int rj) {
+    T sum(const int li, const int lj, const int ri, const int rj) const {
         assert(0 <= li and li <= ri and ri <= h);
         assert(0 <= lj and lj <= rj and rj <= w);
         return sum(ri, rj) - sum(li, rj) - sum(ri, lj) + sum(li, lj);
     }
-    T get(int i, int j) {
+    T get(const int i, const int j) const {
         assert(0 <= i and i < h);
         assert(0 <= j and j < w);
         return sum(i + 1, j + 1) - sum(i, j + 1) - sum(i + 1, j) + sum(i, j);
@@ -27,7 +27,7 @@ struct FenwickTree2D {
    private:
     int h, w;
     vector<vector<T>> data;
-    inline T sum(int i, int j) {
+    inline T sum(const int i, const int j) const {
         T s = 0;
         for(int x = i; x > 0; x -= x & -x) {
             for(int y = j; y > 0; y -= y & -y) {

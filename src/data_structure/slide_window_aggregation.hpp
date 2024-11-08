@@ -18,7 +18,7 @@ struct SlideWindowAggregation {
         r0.pop_back();
         f0 = r0.empty() ? e() : r0.back();
     }
-    S prod() {
+    S prod() const {
         return op(f0, f1);
     }
 

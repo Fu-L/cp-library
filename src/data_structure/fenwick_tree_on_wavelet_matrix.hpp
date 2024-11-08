@@ -9,17 +9,17 @@ struct BitVector {
     vector<u64> block;
     vector<u32> count;
     u32 n, zeros;
-    inline u32 get(u32 i) const {
+    inline u32 get(const u32 i) const {
         return u32(block[i / w] >> (i % w)) & 1u;
     }
-    inline void set(u32 i) {
+    inline void set(const u32 i) {
         block[i / w] |= 1LL << (i % w);
     }
     BitVector() {}
-    BitVector(int _n) {
+    BitVector(const int _n) {
         init(_n);
     }
-    __attribute__((optimize("O3,unroll-loops"))) void init(int _n) {
+    __attribute__((optimize("O3,unroll-loops"))) void init(const int _n) {
         n = zeros = _n;
         block.resize(n / w + 1, 0);
         count.resize(block.size(), 0);
@@ -30,10 +30,10 @@ struct BitVector {
         }
         zeros = rank0(n);
     }
-    inline u32 rank0(u32 i) const {
+    inline u32 rank0(const u32 i) const {
         return i - rank1(i);
     }
-    __attribute__((target("bmi2,popcnt"))) inline u32 rank1(u32 i) const {
+    __attribute__((target("bmi2,popcnt"))) inline u32 rank1(const u32 i) const {
         return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i % w));
     }
 };
@@ -47,14 +47,14 @@ struct FenwickTreeonWaveletMatrix {
         u32 N;
         vector<T> data;
         FenwickTree() = default;
-        FenwickTree(int size) {
+        FenwickTree(const int size) {
             init(size);
         }
-        void init(int size) {
+        void init(const int size) {
             N = size;
             data.assign(N + 1, 0);
         }
-        __attribute__((target("bmi"))) void add(u32 k, T x) {
+        __attribute__((target("bmi"))) void add(u32 k, const T x) {
             for(++k; k <= N; k += _blsi_u32(k)) data[k] += x;
         }
         __attribute__((target("bmi"))) T sum(u32 k) const {
@@ -88,10 +88,10 @@ struct FenwickTreeonWaveletMatrix {
     inline int yid(const S& y) const {
         return lower_bound(begin(ys), end(ys), y) - begin(ys);
     }
-    T sum(int l, int r, u32 upper) const {
+    T sum(int l, int r, const u32 upper) const {
         T res = 0;
         for(int h = lg; h--;) {
-            int l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
+            const int l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
             if((upper >> h) & 1) {
                 res += bit[h].sum(l0, r0);
                 l += bv[h].zeros - l0;
@@ -105,7 +105,7 @@ struct FenwickTreeonWaveletMatrix {
 
    public:
     FenwickTreeonWaveletMatrix() {}
-    void add_point(S x, S y) {
+    void add_point(const S x, const S y) {
         ps.emplace_back(x, y);
         ys.emplace_back(y);
     }
@@ -130,18 +130,18 @@ struct FenwickTreeonWaveletMatrix {
             swap(cur, nxt);
         }
     }
-    void add(S x, S y, T val) {
+    void add(const S x, const S y, const T val) {
         int i = lower_bound(begin(ps), end(ps), P{x, y}) - begin(ps);
         for(int h = lg - 1; h >= 0; --h) {
-            int i0 = bv[h].rank0(i);
+            const int i0 = bv[h].rank0(i);
             if(bv[h].get(i)) i += bv[h].zeros - i0;
             else i = i0;
             bit[h].add(i, val);
         }
     }
-    T sum(S l, S d, S r, S u) const {
+    T sum(const S l, const S d, const S r, const S u) const {
         assert(l <= r and d <= u);
-        int left = xid(l), right = xid(r);
+        const int left = xid(l), right = xid(r);
         return sum(left, right, yid(u)) - sum(left, right, yid(d));
     }
 };

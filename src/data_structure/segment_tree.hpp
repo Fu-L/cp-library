@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 template <typename S, auto op, auto e>
 struct SegmentTree {
-    SegmentTree(int N)
+    SegmentTree(const int N)
         : SegmentTree(vector<S>(N, e())) {}
     SegmentTree(const vector<S>& v)
         : n((int)v.size()) {
@@ -24,7 +24,7 @@ struct SegmentTree {
             update(p >> i);
         }
     }
-    S get(int p) const {
+    S get(const int p) const {
         assert(0 <= p and p < n);
         return data[p + size];
     }
@@ -46,7 +46,7 @@ struct SegmentTree {
     }
 
     template <bool (*f)(S)>
-    int max_right(int l) const {
+    int max_right(const int l) const {
         return max_right(l, [](const S& x) { return f(x); });
     }
     template <class F>
@@ -75,7 +75,7 @@ struct SegmentTree {
     }
 
     template <bool (*f)(S)>
-    int min_left(int r) const {
+    int min_left(const int r) const {
         return min_left(r, [](const S& x) { return f(x); });
     }
     template <class F>
@@ -106,15 +106,15 @@ struct SegmentTree {
    private:
     int n, size, log;
     vector<S> data;
-    inline void update(int k) {
+    inline void update(const int k) {
         data[k] = op(data[2 * k], data[2 * k + 1]);
     }
-    inline unsigned int bit_ceil(unsigned int n) {
+    inline unsigned int bit_ceil(const unsigned int n) const {
         unsigned int res = 1;
         while(res < n) res *= 2;
         return res;
     }
-    inline int countr_zero(unsigned int n) {
+    inline int countr_zero(const unsigned int n) const {
         return __builtin_ctz(n);
     }
 };

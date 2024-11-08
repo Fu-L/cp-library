@@ -14,10 +14,10 @@ struct SparseTable {
             }
         }
     }
-    S prod(int l, int r) const {
+    S prod(const int l, const int r) const {
         assert(0 <= l and l <= r and r <= n);
         if(l == r) return e();
-        int b = 31 - __builtin_clz(r - l);
+        const int b = 31 - __builtin_clz(r - l);
         return op(table[b][l], table[b][r - (1 << b)]);
     }
 

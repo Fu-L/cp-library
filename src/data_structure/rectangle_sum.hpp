@@ -9,17 +9,17 @@ struct BitVector {
     vector<u64> block;
     vector<u32> count;
     u32 n, zeros;
-    inline u32 get(u32 i) const {
+    inline u32 get(const u32 i) const {
         return u32(block[i / w] >> (i % w)) & 1u;
     }
-    inline void set(u32 i) {
+    inline void set(const u32 i) {
         block[i / w] |= 1LL << (i % w);
     }
     BitVector() {}
-    BitVector(int _n) {
+    BitVector(const int _n) {
         init(_n);
     }
-    __attribute__((optimize("O3,unroll-loops"))) void init(int _n) {
+    __attribute__((optimize("O3,unroll-loops"))) void init(const int _n) {
         n = zeros = _n;
         block.resize(n / w + 1, 0);
         count.resize(block.size(), 0);
@@ -30,10 +30,10 @@ struct BitVector {
         }
         zeros = rank0(n);
     }
-    inline u32 rank0(u32 i) const {
+    inline u32 rank0(const u32 i) const {
         return i - rank1(i);
     }
-    __attribute__((target("bmi2,popcnt"))) inline u32 rank1(u32 i) const {
+    __attribute__((target("bmi2,popcnt"))) inline u32 rank1(const u32 i) const {
         return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i % w));
     }
 };
@@ -67,7 +67,7 @@ struct RectangleSum {
         for(int _i = 0; _i < n; ++_i) {
             int i = _i;
             for(int h = lg - 1; h >= 0; --h) {
-                int i0 = bv[h].rank0(i);
+                const int i0 = bv[h].rank0(i);
                 if(bv[h].get(i)) i += bv[h].zeros - i0;
                 else i = i0;
                 s[h][i + 1] += ps[_i].second;
@@ -81,7 +81,7 @@ struct RectangleSum {
     }
     T sum(const S& l, const S& d, const S& r, const S& u) const {
         assert(l <= r and d <= u);
-        int left = xid(l), right = xid(r);
+        const int left = xid(l), right = xid(r);
         return range_sum(left, right, yid(u)) - range_sum(left, right, yid(d));
     }
 
@@ -101,10 +101,10 @@ struct RectangleSum {
     inline int yid(const S& y) const {
         return lower_bound(begin(ys), end(ys), y) - begin(ys);
     }
-    T range_sum(int l, int r, int upper) const {
+    T range_sum(int l, int r, const int upper) const {
         T ret = 0;
         for(int h = lg - 1; h >= 0; --h) {
-            u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
+            const u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
             if((upper >> h) & 1) {
                 ret += s[h][r0] - s[h][l0];
                 l += bv[h].zeros - l0;

@@ -4,7 +4,7 @@ template <typename S, auto op, auto e>
 struct SparseTable2D {
     SparseTable2D(const vector<vector<S>>& v)
         : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {
-        rep(i, 2, (int)LOG.size()) LOG[i] = LOG[i / 2] + 1;
+        for(int i = 2; i < (int)LOG.size(); ++i) LOG[i] = LOG[i / 2] + 1;
         table = vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w] + 1, vector<vector<S>>(h, vector<S>(w, e()))));
         for(int i = 0; i < h; ++i) {
             for(int j = 0; j < w; ++j) {
@@ -22,12 +22,12 @@ struct SparseTable2D {
             }
         }
     }
-    S prod(int lx, int rx, int ly, int ry) const {
+    S prod(const int lx, const int rx, const int ly, const int ry) const {
         assert(0 <= lx and lx <= rx and rx <= h);
         assert(0 <= ly and ly <= ry and ry <= w);
         if(lx == rx or ly == ry) return e();
-        int kx = LOG[rx - lx];
-        int ky = LOG[ry - ly];
+        const int kx = LOG[rx - lx];
+        const int ky = LOG[ry - ly];
         return op(op(table[kx][ky][lx][ly], table[kx][ky][rx - (1 << kx)][ly]), op(table[kx][ky][lx][ry - (1 << ky)], table[kx][ky][rx - (1 << kx)][ry - (1 << ky)]));
     }
 

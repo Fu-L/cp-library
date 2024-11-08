@@ -2,7 +2,7 @@
 #include "../template/template.hpp"
 template <typename S, auto op, auto e, typename F, auto mapping, auto composition, auto id>
 struct LazySegmentTree {
-    LazySegmentTree(int N)
+    LazySegmentTree(const int N)
         : LazySegmentTree(vector<S>(N, e())) {}
     LazySegmentTree(const vector<S>& v)
         : n((int)v.size()) {
@@ -54,7 +54,7 @@ struct LazySegmentTree {
         }
         return op(sml, smr);
     }
-    S all_prod() {
+    S all_prod() const {
         return data[1];
     }
     void apply(int l, int r, const F& f) {
@@ -84,7 +84,7 @@ struct LazySegmentTree {
     }
 
     template <bool (*g)(S)>
-    int max_right(int l) {
+    int max_right(const int l) {
         return max_right(l, [](const S& x) { return g(x); });
     }
     template <class G>
@@ -115,7 +115,7 @@ struct LazySegmentTree {
     }
 
     template <bool (*g)(S)>
-    int min_left(int r) {
+    int min_left(const int r) {
         return min_left(r, [](const S& x) { return g(x); });
     }
     template <class G>
@@ -149,26 +149,26 @@ struct LazySegmentTree {
     int n, size, log;
     vector<S> data;
     vector<F> lazy;
-    inline void update(int k) {
+    inline void update(const int k) {
         data[k] = op(data[2 * k], data[2 * k + 1]);
     }
-    inline void all_apply(int k, F f) {
+    inline void all_apply(const int k, const F& f) {
         data[k] = mapping(f, data[k]);
         if(k < size) {
             lazy[k] = composition(f, lazy[k]);
         }
     }
-    inline void push(int k) {
+    inline void push(const int k) {
         all_apply(2 * k, lazy[k]);
         all_apply(2 * k + 1, lazy[k]);
         lazy[k] = id();
     }
-    inline unsigned int bit_ceil(unsigned int n) {
+    inline unsigned int bit_ceil(const unsigned int n) const {
         unsigned int res = 1;
         while(res < n) res *= 2;
         return res;
     }
-    inline int countr_zero(unsigned int n) {
+    inline int countr_zero(const unsigned int n) const {
         return __builtin_ctz(n);
     }
 };
