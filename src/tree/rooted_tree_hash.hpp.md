@@ -82,7 +82,7 @@ data:
     \ g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const int& k) const\
     \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
     \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
-    \ Edges = vector<Edge<T>>;\n#line 5 \"src/tree/rooted_hash_tree.hpp\"\ntemplate\
+    \ Edges = vector<Edge<T>>;\n#line 5 \"src/tree/rooted_tree_hash.hpp\"\ntemplate\
     \ <typename T>\nvector<ll> rooted_tree_hash(const Graph<T>& g, const int root\
     \ = 0) {\n    const int n = g.size();\n    assert(0 <= root and root < n);\n \
     \   static mt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
@@ -115,16 +115,31 @@ data:
   - src/template/modint_2_61m1.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
-  path: src/tree/rooted_hash_tree.hpp
+  path: src/tree/rooted_tree_hash.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:42:16+09:00'
+  timestamp: '2024-11-09 02:52:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-documentation_of: src/tree/rooted_hash_tree.hpp
+documentation_of: src/tree/rooted_tree_hash.hpp
 layout: document
-redirect_from:
-- /library/src/tree/rooted_hash_tree.hpp
-- /library/src/tree/rooted_hash_tree.hpp.html
-title: src/tree/rooted_hash_tree.hpp
+title: rooted_tree_hash
 ---
+
+## rooted_tree_hash
+
+```cpp
+vector<ll> rooted_tree_hash(Graph<T> g, int root = 0)
+```
+
+`root` を根とする $n$ 頂点の木 `g` を与えると，根付き木のハッシュ値を計算します．<br>
+長さ $n$ の配列 `h` を返し， `h[i]` には `i` を根とする部分木のハッシュ値が格納されています．
+
+**制約**
+
+- `g` は木
+- $0 \leq \mathrm{root} < n$
+
+**計算量**
+
+- $O(n)$

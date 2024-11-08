@@ -11,8 +11,8 @@ data:
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'
-    path: src/tree/rooted_hash_tree.hpp
-    title: src/tree/rooted_hash_tree.hpp
+    path: src/tree/rooted_tree_hash.hpp
+    title: rooted_tree_hash
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -87,7 +87,7 @@ data:
     \ out, const mint& x) {\n        return out << x.val();\n    }\n\n   private:\n\
     \    static constexpr u64 m = (1ull << 61) - 1;\n    u64 _v = 0;\n    inline static\
     \ constexpr u64 modulo(const u128& x) {\n        const u64 val = (x >> 61) + (x\
-    \ & m);\n        return val >= m ? val - m : val;\n    }\n};\n#line 5 \"src/tree/rooted_hash_tree.hpp\"\
+    \ & m);\n        return val >= m ? val - m : val;\n    }\n};\n#line 5 \"src/tree/rooted_tree_hash.hpp\"\
     \ntemplate <typename T>\nvector<ll> rooted_tree_hash(const Graph<T>& g, const\
     \ int root = 0) {\n    const int n = g.size();\n    assert(0 <= root and root\
     \ < n);\n    static mt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
@@ -110,7 +110,7 @@ data:
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
     \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
-    \n#include \"../../../src/tree/rooted_hash_tree.hpp\"\nint main(void) {\n    int\
+    \n#include \"../../../src/tree/rooted_tree_hash.hpp\"\nint main(void) {\n    int\
     \ n;\n    cin >> n;\n    Graph<int> g(n);\n    rep(i, 1, n) {\n        int p;\n\
     \        cin >> p;\n        g.add_edge(i, p);\n    }\n    vector<ll> h = rooted_tree_hash(g,\
     \ 0);\n    unordered_map<ll, int> mp;\n    int idx = 0;\n    rep(i, 0, n) {\n\
@@ -120,12 +120,12 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
-  - src/tree/rooted_hash_tree.hpp
+  - src/tree/rooted_tree_hash.hpp
   - src/template/modint_2_61m1.hpp
   isVerificationFile: true
   path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 02:42:16+09:00'
+  timestamp: '2024-11-09 02:52:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp

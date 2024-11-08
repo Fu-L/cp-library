@@ -342,8 +342,8 @@ data:
       path: src/tree/rerooting.hpp
       title: rerooting
     - icon: ':heavy_check_mark:'
-      path: src/tree/rooted_hash_tree.hpp
-      title: src/tree/rooted_hash_tree.hpp
+      path: src/tree/rooted_tree_hash.hpp
+      title: rooted_tree_hash
     - icon: ':heavy_check_mark:'
       path: src/tree/tree_diameter.hpp
       title: tree_diameter

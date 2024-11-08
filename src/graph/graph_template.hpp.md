@@ -72,8 +72,8 @@ data:
     path: src/tree/rerooting.hpp
     title: rerooting
   - icon: ':heavy_check_mark:'
-    path: src/tree/rooted_hash_tree.hpp
-    title: src/tree/rooted_hash_tree.hpp
+    path: src/tree/rooted_tree_hash.hpp
+    title: rooted_tree_hash
   - icon: ':heavy_check_mark:'
     path: src/tree/tree_diameter.hpp
     title: tree_diameter
@@ -258,7 +258,7 @@ data:
   - src/tree/centroid.hpp
   - src/tree/rerooting.hpp
   - src/tree/lowest_common_ancestor.hpp
-  - src/tree/rooted_hash_tree.hpp
+  - src/tree/rooted_tree_hash.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/tree/tree_diameter.hpp
   - src/tree/centroid_decomposition.hpp
