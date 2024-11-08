@@ -3,7 +3,7 @@ title: rerooting
 documentation_of: ../../src/tree/rerooting.hpp
 ---
 
-# rerooting
+## rerooting
 
 ```cpp
 vector<DP> rerooting(Graph<T> g, auto F1 f1, auto F2 f2, DP id)
