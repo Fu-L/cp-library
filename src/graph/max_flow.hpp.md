@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,20 +12,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/maximum_flow.test.cpp
     title: verify/aizu_online_judge/grl/maximum_flow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/max_flow.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/max_flow.hpp\"\
     \ntemplate <typename Cap>\nstruct MaxFlow {\n    MaxFlow(int N)\n        : n(N),\
     \ g(N) {}\n    int add_edge(const int from, const int to, const Cap& cap) {\n\
     \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
@@ -139,8 +139,8 @@ data:
   isVerificationFile: false
   path: src/graph/max_flow.hpp
   requiredBy: []
-  timestamp: '2024-11-09 00:36:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
   - verify/aizu_online_judge/grl/bipartite_matching.test.cpp

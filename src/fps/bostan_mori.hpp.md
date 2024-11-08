@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/nth_term.hpp
     title: nth_term
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/fps/bostan_mori.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/fps/bostan_mori.hpp\"\
     \ntemplate <template <typename> typename FPS, typename mint>\nmint bostan_mori(const\
     \ FPS<mint>& a, const FPS<mint>& c, long long k) {\n    assert(k >= 0);\n    if(k\
     \ < (int)a.size()) return a[k];\n    assert(a.size() >= c.size());\n    FPS<mint>\
@@ -57,8 +57,8 @@ data:
   path: src/fps/bostan_mori.hpp
   requiredBy:
   - src/fps/nth_term.hpp
-  timestamp: '2024-08-31 17:38:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/yukicoder/1559.test.cpp

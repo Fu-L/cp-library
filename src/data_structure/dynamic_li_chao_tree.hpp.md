@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/dynamic_li_chao_tree.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/dynamic_li_chao_tree.hpp\"\
     \ntemplate <typename T, T x_low, T x_high>\nstruct DynamicLiChaoTree {\n    DynamicLiChaoTree()\n\
     \        : root{nullptr} {}\n    void add_line(const T& a, const T& b) {\n   \
     \     Line x(a, b);\n        root = add_line(root, x, x_low, x_high, x.get(x_low),\
@@ -105,8 +105,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/dynamic_li_chao_tree.hpp
   requiredBy: []
-  timestamp: '2024-02-15 00:10:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp

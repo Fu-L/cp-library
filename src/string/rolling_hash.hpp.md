@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,20 +12,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/alds1/string_search.test.cpp
     title: verify/aizu_online_judge/alds1/string_search.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/modint_2_61m1.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/modint_2_61m1.hpp\"\
     \nstruct Modint_2_61m1 {\n    using mint = Modint_2_61m1;\n    using u64 = uint64_t;\n\
     \    using u128 = __uint128_t;\n    static constexpr u64 mod() {\n        return\
     \ m;\n    }\n    static constexpr mint raw(const u64 v) {\n        mint a;\n \
@@ -120,8 +120,8 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2024-11-07 13:53:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp

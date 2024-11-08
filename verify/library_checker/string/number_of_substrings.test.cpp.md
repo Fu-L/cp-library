@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/suffix_array.hpp
     title: suffix_array
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/number_of_substrings
@@ -26,42 +26,43 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/string/number_of_substrings.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_substrings\"\n#line\
     \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i\
-    \ = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
-    \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using\
-    \ mint = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
-    \    static constexpr u64 mod() {\n        return m;\n    }\n    static constexpr\
-    \ mint raw(const u64 v) {\n        mint a;\n        a._v = v;\n        return\
-    \ a;\n    }\n    constexpr Modint_2_61m1()\n        : _v(0) {}\n    template <class\
-    \ T>\n    constexpr Modint_2_61m1(const T& v) {\n        static_assert(is_integral_v<T>);\n\
-    \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
-    \            if(x < 0) x += m;\n            _v = u64(x);\n        } else _v =\
-    \ u64(v % m);\n    }\n    constexpr u64 val() const {\n        return _v;\n  \
-    \  }\n    constexpr mint& operator++() {\n        return *this += 1;\n    }\n\
-    \    constexpr mint& operator--() {\n        return *this -= 1;\n    }\n    constexpr\
-    \ mint operator++(int) {\n        mint res = *this;\n        ++*this;\n      \
-    \  return res;\n    }\n    constexpr mint operator--(int) {\n        mint res\
-    \ = *this;\n        --*this;\n        return res;\n    }\n    constexpr mint&\
-    \ operator+=(mint rhs) {\n        if(_v >= m - rhs._v) _v -= m;\n        _v +=\
-    \ rhs._v;\n        return *this;\n    }\n    constexpr mint& operator-=(mint rhs)\
-    \ {\n        if(_v < rhs._v) _v += m;\n        _v -= rhs._v;\n        return *this;\n\
-    \    }\n    constexpr mint& operator*=(mint rhs) {\n        return *this = *this\
-    \ * rhs;\n    }\n    constexpr mint& operator/=(mint rhs) {\n        return *this\
-    \ *= rhs.inv();\n    }\n    constexpr mint operator+() const {\n        return\
-    \ *this;\n    }\n    constexpr mint operator-() const {\n        return mint{}\
-    \ - *this;\n    }\n    constexpr mint pow(u64 n) const {\n        if(n == 0) return\
-    \ 1;\n        mint x = *this, r = 1;\n        while(1) {\n            if(n & 1)\
-    \ r *= x;\n            n >>= 1;\n            if(n == 0) return r;\n          \
-    \  x *= x;\n        }\n    }\n    constexpr mint inv() const {\n        assert(_v);\n\
-    \        return pow(m - 2);\n    }\n    friend constexpr mint operator+(mint lhs,\
-    \ mint rhs) {\n        return lhs += rhs;\n    }\n    friend constexpr mint operator-(mint\
-    \ lhs, mint rhs) {\n        return lhs -= rhs;\n    }\n    friend constexpr mint\
-    \ operator*(mint lhs, mint rhs) {\n        return raw(modulo(u128(lhs._v) * rhs._v));\n\
-    \    }\n    friend constexpr mint operator/(mint lhs, mint rhs) {\n        return\
-    \ lhs /= rhs;\n    }\n    friend constexpr bool operator==(mint lhs, mint rhs)\
-    \ {\n        return lhs._v == rhs._v;\n    }\n    friend constexpr bool operator!=(mint\
+    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
+    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
+    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
+    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
+    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/modint_2_61m1.hpp\"\
+    \nstruct Modint_2_61m1 {\n    using mint = Modint_2_61m1;\n    using u64 = uint64_t;\n\
+    \    using u128 = __uint128_t;\n    static constexpr u64 mod() {\n        return\
+    \ m;\n    }\n    static constexpr mint raw(const u64 v) {\n        mint a;\n \
+    \       a._v = v;\n        return a;\n    }\n    constexpr Modint_2_61m1()\n \
+    \       : _v(0) {}\n    template <class T>\n    constexpr Modint_2_61m1(const\
+    \ T& v) {\n        static_assert(is_integral_v<T>);\n        if constexpr(is_signed_v<T>)\
+    \ {\n            int64_t x = int64_t(v % int64_t(m));\n            if(x < 0) x\
+    \ += m;\n            _v = u64(x);\n        } else _v = u64(v % m);\n    }\n  \
+    \  constexpr u64 val() const {\n        return _v;\n    }\n    constexpr mint&\
+    \ operator++() {\n        return *this += 1;\n    }\n    constexpr mint& operator--()\
+    \ {\n        return *this -= 1;\n    }\n    constexpr mint operator++(int) {\n\
+    \        mint res = *this;\n        ++*this;\n        return res;\n    }\n   \
+    \ constexpr mint operator--(int) {\n        mint res = *this;\n        --*this;\n\
+    \        return res;\n    }\n    constexpr mint& operator+=(mint rhs) {\n    \
+    \    if(_v >= m - rhs._v) _v -= m;\n        _v += rhs._v;\n        return *this;\n\
+    \    }\n    constexpr mint& operator-=(mint rhs) {\n        if(_v < rhs._v) _v\
+    \ += m;\n        _v -= rhs._v;\n        return *this;\n    }\n    constexpr mint&\
+    \ operator*=(mint rhs) {\n        return *this = *this * rhs;\n    }\n    constexpr\
+    \ mint& operator/=(mint rhs) {\n        return *this *= rhs.inv();\n    }\n  \
+    \  constexpr mint operator+() const {\n        return *this;\n    }\n    constexpr\
+    \ mint operator-() const {\n        return mint{} - *this;\n    }\n    constexpr\
+    \ mint pow(u64 n) const {\n        if(n == 0) return 1;\n        mint x = *this,\
+    \ r = 1;\n        while(1) {\n            if(n & 1) r *= x;\n            n >>=\
+    \ 1;\n            if(n == 0) return r;\n            x *= x;\n        }\n    }\n\
+    \    constexpr mint inv() const {\n        assert(_v);\n        return pow(m -\
+    \ 2);\n    }\n    friend constexpr mint operator+(mint lhs, mint rhs) {\n    \
+    \    return lhs += rhs;\n    }\n    friend constexpr mint operator-(mint lhs,\
+    \ mint rhs) {\n        return lhs -= rhs;\n    }\n    friend constexpr mint operator*(mint\
+    \ lhs, mint rhs) {\n        return raw(modulo(u128(lhs._v) * rhs._v));\n    }\n\
+    \    friend constexpr mint operator/(mint lhs, mint rhs) {\n        return lhs\
+    \ /= rhs;\n    }\n    friend constexpr bool operator==(mint lhs, mint rhs) {\n\
+    \        return lhs._v == rhs._v;\n    }\n    friend constexpr bool operator!=(mint\
     \ lhs, mint rhs) {\n        return lhs._v != rhs._v;\n    }\n    friend istream&\
     \ operator>>(istream& in, mint& x) {\n        long long a;\n        in >> a;\n\
     \        x = a;\n        return in;\n    }\n    friend ostream& operator<<(ostream&\
@@ -179,8 +180,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/string/number_of_substrings.test.cpp
   requiredBy: []
-  timestamp: '2024-11-07 13:53:41+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/string/number_of_substrings.test.cpp
 layout: document

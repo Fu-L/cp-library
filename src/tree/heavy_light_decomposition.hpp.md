@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -15,29 +15,29 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
     title: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/jump_on_tree.test.cpp
     title: verify/library_checker/tree/jump_on_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
     title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
     \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
     \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const\
     \ int from, const int to, const T& cost = 1, const int idx = -1)\n        : from(from),\
@@ -167,8 +167,8 @@ data:
   isVerificationFile: false
   path: src/tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2024-11-09 00:36:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - verify/library_checker/tree/jump_on_tree.test.cpp

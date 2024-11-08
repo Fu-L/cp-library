@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/eratosthenes_seive.hpp
     title: EratosthenesSeive
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/convolution/gcd_convolution.test.cpp
     title: verify/library_checker/convolution/gcd_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/eratosthenes_seive.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/eratosthenes_seive.hpp\"\
     \nstruct EratosthenesSeive {\n    vector<int> primes, min_factor, moebius, euler;\n\
     \    EratosthenesSeive(const int n)\n        : primes(), min_factor(n + 1), moebius(n\
     \ + 1, 1), euler(n + 1) {\n        assert(n >= 1);\n        iota(min_factor.begin(),\
@@ -70,8 +70,8 @@ data:
   isVerificationFile: false
   path: src/convolution/gcd_convolution.hpp
   requiredBy: []
-  timestamp: '2024-11-08 15:52:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/convolution/gcd_convolution.test.cpp
 documentation_of: src/convolution/gcd_convolution.hpp

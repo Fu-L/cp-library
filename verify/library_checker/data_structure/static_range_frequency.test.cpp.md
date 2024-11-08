@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/wavelet_matrix.hpp
     title: WaveletMatrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
@@ -20,40 +20,41 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/data_structure/static_range_frequency.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
-    \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
-    \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/data_structure/wavelet_matrix.hpp\"\n#include <immintrin.h>\nstruct\
-    \ BitVector {\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using\
-    \ u64 = uint64_t;\n    static constexpr u32 w = 64;\n    vector<u64> block;\n\
-    \    vector<u32> count;\n    u32 n, zeros;\n    inline u32 get(const u32 i) const\
-    \ {\n        return u32(block[i / w] >> (i % w)) & 1u;\n    }\n    inline void\
-    \ set(const u32 i) {\n        block[i / w] |= 1LL << (i % w);\n    }\n    BitVector()\
-    \ {}\n    BitVector(const int _n) {\n        init(_n);\n    }\n    __attribute__((optimize(\"\
-    O3,unroll-loops\"))) void init(const int _n) {\n        n = zeros = _n;\n    \
-    \    block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n   \
-    \ }\n    __attribute__((target(\"popcnt\"))) void build() {\n        for(u32 i\
-    \ = 1; i < block.size(); ++i) {\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
-    \ - 1]);\n        }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const\
-    \ u32 i) const {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"\
-    bmi2,popcnt\"))) inline u32 rank1(const u32 i) const {\n        return count[i\
-    \ / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i % w));\n    }\n};\ntemplate\
-    \ <typename T>\nstruct WaveletMatrix {\n   private:\n    using u32 = uint32_t;\n\
-    \    using i64 = int64_t;\n    using u64 = uint64_t;\n    int n, lg;\n    vector<T>\
-    \ a;\n    vector<BitVector> bv;\n    inline pair<u32, u32> succ0(const int l,\
-    \ const int r, const int h) const {\n        return make_pair(bv[h].rank0(l),\
-    \ bv[h].rank0(r));\n    }\n    inline pair<u32, u32> succ1(const int l, const\
-    \ int r, const int h) const {\n        const u32 l0 = bv[h].rank0(l);\n      \
-    \  const u32 r0 = bv[h].rank0(r);\n        const u32 zeros = bv[h].zeros;\n  \
-    \      return make_pair(l + zeros - l0, r + zeros - r0);\n    }\n\n   public:\n\
-    \    WaveletMatrix(const u32 _n)\n        : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const\
-    \ vector<T>& _a)\n        : n(_a.size()), a(_a) {\n        if(n == 0) {\n    \
-    \        a.push_back(0);\n            n = 1;\n        }\n        build();\n  \
-    \  }\n    __attribute__((optimize(\"O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a),\
-    \ end(a)), 1)) + 1;\n        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n\
-    \        for(int h = lg - 1; h >= 0; --h) {\n            for(int i = 0; i < n;\
-    \ ++i)\n                if((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/wavelet_matrix.hpp\"\
+    \n#include <immintrin.h>\nstruct BitVector {\n    using u32 = uint32_t;\n    using\
+    \ i64 = int64_t;\n    using u64 = uint64_t;\n    static constexpr u32 w = 64;\n\
+    \    vector<u64> block;\n    vector<u32> count;\n    u32 n, zeros;\n    inline\
+    \ u32 get(const u32 i) const {\n        return u32(block[i / w] >> (i % w)) &\
+    \ 1u;\n    }\n    inline void set(const u32 i) {\n        block[i / w] |= 1LL\
+    \ << (i % w);\n    }\n    BitVector() {}\n    BitVector(const int _n) {\n    \
+    \    init(_n);\n    }\n    __attribute__((optimize(\"O3,unroll-loops\"))) void\
+    \ init(const int _n) {\n        n = zeros = _n;\n        block.resize(n / w +\
+    \ 1, 0);\n        count.resize(block.size(), 0);\n    }\n    __attribute__((target(\"\
+    popcnt\"))) void build() {\n        for(u32 i = 1; i < block.size(); ++i) {\n\
+    \            count[i] = count[i - 1] + _mm_popcnt_u64(block[i - 1]);\n       \
+    \ }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const u32 i) const\
+    \ {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"bmi2,popcnt\"\
+    ))) inline u32 rank1(const u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
+    \ / w], i % w));\n    }\n};\ntemplate <typename T>\nstruct WaveletMatrix {\n \
+    \  private:\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64\
+    \ = uint64_t;\n    int n, lg;\n    vector<T> a;\n    vector<BitVector> bv;\n \
+    \   inline pair<u32, u32> succ0(const int l, const int r, const int h) const {\n\
+    \        return make_pair(bv[h].rank0(l), bv[h].rank0(r));\n    }\n    inline\
+    \ pair<u32, u32> succ1(const int l, const int r, const int h) const {\n      \
+    \  const u32 l0 = bv[h].rank0(l);\n        const u32 r0 = bv[h].rank0(r);\n  \
+    \      const u32 zeros = bv[h].zeros;\n        return make_pair(l + zeros - l0,\
+    \ r + zeros - r0);\n    }\n\n   public:\n    WaveletMatrix(const u32 _n)\n   \
+    \     : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const vector<T>& _a)\n\
+    \        : n(_a.size()), a(_a) {\n        if(n == 0) {\n            a.push_back(0);\n\
+    \            n = 1;\n        }\n        build();\n    }\n    __attribute__((optimize(\"\
+    O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a), end(a)),\
+    \ 1)) + 1;\n        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n  \
+    \      for(int h = lg - 1; h >= 0; --h) {\n            for(int i = 0; i < n; ++i)\n\
+    \                if((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
     \            array<decltype(begin(nxt)), 2> it{begin(nxt), begin(nxt) + bv[h].zeros};\n\
     \            for(int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n      \
     \      swap(cur, nxt);\n        }\n        return;\n    }\n    void set(const\
@@ -107,8 +108,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_range_frequency.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 00:13:43+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_range_frequency.test.cpp
 layout: document

@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/sparse_table_2d.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/sparse_table_2d.hpp\"\
     \ntemplate <typename S, auto op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const\
     \ vector<vector<S>>& v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h,\
     \ w) + 1) {\n        for(int i = 2; i < (int)LOG.size(); ++i) LOG[i] = LOG[i /\
@@ -68,8 +68,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/sparse_table_2d.hpp
   requiredBy: []
-  timestamp: '2024-11-09 00:13:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
 documentation_of: src/data_structure/sparse_table_2d.hpp

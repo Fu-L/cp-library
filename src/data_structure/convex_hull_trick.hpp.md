@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,11 +12,11 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/convex_hull_trick.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/convex_hull_trick.hpp\"\
     \ntemplate <typename T>\nstruct ConvexHullTrick {\n    void add(const T& a, const\
     \ T& b) {\n        Linear l(a, b);\n        assert(ls.empty() or ls.back().a >=\
     \ l.a);\n        int len = (int)ls.size();\n        while(len >= 2 and check(ls[len\
@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/convex_hull_trick.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
+  timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data_structure/convex_hull_trick.hpp

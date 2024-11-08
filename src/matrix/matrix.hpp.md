@@ -1,62 +1,62 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
     title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/linear_algebra/matrix_product.test.cpp
     title: verify/library_checker/linear_algebra/matrix_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/matrix/matrix.hpp\"\n\
-    template <typename T>\nstruct Matrix {\n    Matrix(int h, int w, T val = 0)\n\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/matrix/matrix.hpp\"\
+    \ntemplate <typename T>\nstruct Matrix {\n    Matrix(int h, int w, T val = 0)\n\
     \        : h(h), w(w), A(h, vector<T>(w, val)) {}\n    int H() const {\n     \
     \   return h;\n    }\n    int W() const {\n        return w;\n    }\n    const\
     \ vector<T>& operator[](int i) const {\n        assert(0 <= i and i < h);\n  \
@@ -135,8 +135,8 @@ data:
   - src/matrix/gauss_elimination.hpp
   - src/matrix/inverse.hpp
   - src/matrix/counting_spanning_tree_directed.hpp
-  timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

@@ -1,52 +1,52 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs.test.cpp
     title: verify/unit_test/graph/bfs.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/math/eratosthenes_seive.test.cpp
     title: verify/unit_test/math/eratosthenes_seive.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/random_number_generator.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/random_number_generator.hpp\"\
     \nstruct RandomNumberGenerator {\n    mt19937_64 mt;\n    RandomNumberGenerator()\n\
     \        : mt(chrono::steady_clock::now().time_since_epoch().count()) {}\n   \
     \ inline ll operator()(const ll lower, const ll upper) {\n        assert(lower\
@@ -262,8 +262,8 @@ data:
   isVerificationFile: false
   path: src/template/random_number_generator.hpp
   requiredBy: []
-  timestamp: '2024-09-28 15:28:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/math/lucas.test.cpp
   - verify/unit_test/math/eratosthenes_seive.test.cpp

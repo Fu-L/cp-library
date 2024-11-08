@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
     title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
     \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
     \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
-    \ mint raw(uint32_t v) {\n        mint a;\n        a._v = v;\n        return a;\n\
-    \    }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class\
+    \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
+    \ a;\n    }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class\
     \ T>\n    constexpr StaticModint(const T& v) {\n        static_assert(is_integral_v<T>);\n\
     \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
     \            if(x < 0) x += m;\n            _v = uint32_t(x);\n        } else\
@@ -61,8 +61,8 @@ data:
     \       n >>= 1;\n            if(n == 0) return r;\n            x *= x;\n    \
     \    }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime) {\n\
     \            assert(_v);\n            return pow(m - 2);\n        } else {\n \
-    \           auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n  \
-    \          return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
+    \           const auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n\
+    \            return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
     \ lhs, mint rhs) {\n        return lhs += rhs;\n    }\n    friend constexpr mint\
     \ operator-(mint lhs, mint rhs) {\n        return lhs -= rhs;\n    }\n    friend\
     \ constexpr mint operator*(mint lhs, mint rhs) {\n        return uint64_t(lhs._v)\
@@ -81,11 +81,11 @@ data:
     \       while(t != m - 1 && y != 1 && y != m - 1) {\n                y *= y;\n\
     \                t <<= 1;\n            }\n            if(y != m - 1 && t % 2 ==\
     \ 0) return 0;\n        }\n        return 1;\n    }();\n    static constexpr pair<int32_t,\
-    \ int32_t> inv_gcd(int32_t a, int32_t b) {\n        if(a == 0) return {b, 0};\n\
-    \        int32_t s = b, t = a, m0 = 0, m1 = 1;\n        while(t) {\n         \
-    \   const int32_t u = s / t;\n            s -= t * u;\n            m0 -= m1 *\
-    \ u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n        if(m0\
-    \ < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
+    \ int32_t> inv_gcd(const int32_t a, const int32_t b) {\n        if(a == 0) return\
+    \ {b, 0};\n        int32_t s = b, t = a, m0 = 0, m1 = 1;\n        while(t) {\n\
+    \            const int32_t u = s / t;\n            s -= t * u;\n            m0\
+    \ -= m1 * u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n\
+    \        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
     #line 3 \"src/math/pow_mod.hpp\"\nconstexpr long long pow_mod(long long x, long\
     \ long n, const long long mod) {\n    assert(n >= 0 and mod >= 1);\n    x %= mod;\n\
@@ -253,8 +253,8 @@ data:
   isVerificationFile: false
   path: src/string/wildcard_pattern_matching.hpp
   requiredBy: []
-  timestamp: '2024-06-21 10:07:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
 documentation_of: src/string/wildcard_pattern_matching.hpp

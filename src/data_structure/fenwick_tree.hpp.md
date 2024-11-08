@@ -1,43 +1,43 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
     title: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/point_add_range_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_range_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\
     \ntemplate <typename T>\nstruct FenwickTree {\n    FenwickTree(int N)\n      \
     \  : n(N), data(N) {}\n    void add(int p, const T x) {\n        assert(0 <= p\
     \ and p < n);\n        ++p;\n        while(p <= n) {\n            data[p - 1]\
@@ -65,8 +65,8 @@ data:
   path: src/data_structure/fenwick_tree.hpp
   requiredBy:
   - src/string/dynamic_rolling_hash.hpp
-  timestamp: '2024-11-09 00:13:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/point_add_range_sum.test.cpp
   - verify/library_checker/data_structure/static_range_inversions_query.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/dynamic_li_chao_tree.hpp
     title: DynamicLiChaoTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/segment_add_get_min
@@ -20,14 +20,14 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/data_structure/segment_add_get_min.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/segment_add_get_min\"\n#line\
     \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i\
-    \ = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
-    \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/data_structure/dynamic_li_chao_tree.hpp\"\ntemplate <typename T,\
-    \ T x_low, T x_high>\nstruct DynamicLiChaoTree {\n    DynamicLiChaoTree()\n  \
-    \      : root{nullptr} {}\n    void add_line(const T& a, const T& b) {\n     \
-    \   Line x(a, b);\n        root = add_line(root, x, x_low, x_high, x.get(x_low),\
+    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
+    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
+    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
+    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
+    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/dynamic_li_chao_tree.hpp\"\
+    \ntemplate <typename T, T x_low, T x_high>\nstruct DynamicLiChaoTree {\n    DynamicLiChaoTree()\n\
+    \        : root{nullptr} {}\n    void add_line(const T& a, const T& b) {\n   \
+    \     Line x(a, b);\n        root = add_line(root, x, x_low, x_high, x.get(x_low),\
     \ x.get(x_high));\n    }\n    void add_segment(const T& l, const T& r, const T&\
     \ a, const T& b) {\n        Line x(a, b);\n        root = add_segment(root, x,\
     \ l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));\n    }\n    T operator()(const\
@@ -89,8 +89,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2024-02-15 00:10:02+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segment_add_get_min.test.cpp
 layout: document

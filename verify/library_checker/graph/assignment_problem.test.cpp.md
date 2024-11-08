@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/assignment
@@ -20,39 +20,39 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/graph/assignment_problem.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/assignment\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
-    \ P = pair<ll, ll>;\n#define rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i,\
-    \ a, b) for(ll i = a; i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/min_cost_flow.hpp\"\
-    \nnamespace internal {\ntemplate <class E>\nstruct csr {\n    vector<int> start;\n\
-    \    vector<E> elist;\n    explicit csr(const int n, const vector<pair<int, E>>&\
-    \ edges)\n        : start(n + 1), elist(edges.size()) {\n        for(const auto&\
-    \ e : edges) {\n            ++start[e.first + 1];\n        }\n        for(int\
-    \ i = 1; i <= n; ++i) {\n            start[i] += start[i - 1];\n        }\n  \
-    \      auto counter = start;\n        for(const auto& e : edges) {\n         \
-    \   elist[counter[e.first]++] = e.second;\n        }\n    }\n};\ntemplate <class\
-    \ T>\nstruct simple_queue {\n    vector<T> payload;\n    int pos = 0;\n    void\
-    \ reserve(const int n) {\n        payload.reserve(n);\n    }\n    int size() const\
-    \ {\n        return (int)payload.size() - pos;\n    }\n    bool empty() const\
-    \ {\n        return pos == (int)payload.size();\n    }\n    void push(const T&\
-    \ t) {\n        payload.emplace_back(t);\n    }\n    T& front() const {\n    \
-    \    return payload[pos];\n    }\n    void clear() {\n        payload.clear();\n\
-    \        pos = 0;\n    }\n    void pop() {\n        ++pos;\n    }\n};\n}  // namespace\
-    \ internal\ntemplate <class Cap, class Cost>\nstruct MinCostFlow {\n   public:\n\
-    \    MinCostFlow() {}\n    explicit MinCostFlow(const int n)\n        : _n(n)\
-    \ {}\n    int add_edge(const int from, const int to, const Cap& cap, const Cost&\
-    \ cost) {\n        assert(0 <= from and from < _n);\n        assert(0 <= to and\
-    \ to < _n);\n        assert(0 <= cap);\n        assert(0 <= cost);\n        const\
-    \ int m = (int)_edges.size();\n        _edges.push_back({from, to, cap, Cap(0),\
-    \ cost});\n        return m;\n    }\n    struct edge {\n        int from, to;\n\
-    \        Cap cap, flow;\n        Cost cost;\n    };\n    edge get_edge(const int\
-    \ i) const {\n        const int m = (int)_edges.size();\n        assert(0 <= i\
-    \ and i < m);\n        return _edges[i];\n    }\n    vector<edge> edges() const\
-    \ {\n        return _edges;\n    }\n    pair<Cap, Cost> flow(const int s, const\
-    \ int t) {\n        return flow(s, t, numeric_limits<Cap>::max());\n    }\n  \
-    \  pair<Cap, Cost> flow(const int s, const int t, const Cap& flow_limit) {\n \
-    \       return slope(s, t, flow_limit).back();\n    }\n    vector<pair<Cap, Cost>>\
-    \ slope(const int s, const int t) {\n        return slope(s, t, numeric_limits<Cap>::max());\n\
+    \ P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i = (a);\
+    \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/graph/min_cost_flow.hpp\"\nnamespace internal {\ntemplate <class\
+    \ E>\nstruct csr {\n    vector<int> start;\n    vector<E> elist;\n    explicit\
+    \ csr(const int n, const vector<pair<int, E>>& edges)\n        : start(n + 1),\
+    \ elist(edges.size()) {\n        for(const auto& e : edges) {\n            ++start[e.first\
+    \ + 1];\n        }\n        for(int i = 1; i <= n; ++i) {\n            start[i]\
+    \ += start[i - 1];\n        }\n        auto counter = start;\n        for(const\
+    \ auto& e : edges) {\n            elist[counter[e.first]++] = e.second;\n    \
+    \    }\n    }\n};\ntemplate <class T>\nstruct simple_queue {\n    vector<T> payload;\n\
+    \    int pos = 0;\n    void reserve(const int n) {\n        payload.reserve(n);\n\
+    \    }\n    int size() const {\n        return (int)payload.size() - pos;\n  \
+    \  }\n    bool empty() const {\n        return pos == (int)payload.size();\n \
+    \   }\n    void push(const T& t) {\n        payload.emplace_back(t);\n    }\n\
+    \    T& front() const {\n        return payload[pos];\n    }\n    void clear()\
+    \ {\n        payload.clear();\n        pos = 0;\n    }\n    void pop() {\n   \
+    \     ++pos;\n    }\n};\n}  // namespace internal\ntemplate <class Cap, class\
+    \ Cost>\nstruct MinCostFlow {\n   public:\n    MinCostFlow() {}\n    explicit\
+    \ MinCostFlow(const int n)\n        : _n(n) {}\n    int add_edge(const int from,\
+    \ const int to, const Cap& cap, const Cost& cost) {\n        assert(0 <= from\
+    \ and from < _n);\n        assert(0 <= to and to < _n);\n        assert(0 <= cap);\n\
+    \        assert(0 <= cost);\n        const int m = (int)_edges.size();\n     \
+    \   _edges.push_back({from, to, cap, Cap(0), cost});\n        return m;\n    }\n\
+    \    struct edge {\n        int from, to;\n        Cap cap, flow;\n        Cost\
+    \ cost;\n    };\n    edge get_edge(const int i) const {\n        const int m =\
+    \ (int)_edges.size();\n        assert(0 <= i and i < m);\n        return _edges[i];\n\
+    \    }\n    vector<edge> edges() const {\n        return _edges;\n    }\n    pair<Cap,\
+    \ Cost> flow(const int s, const int t) {\n        return flow(s, t, numeric_limits<Cap>::max());\n\
+    \    }\n    pair<Cap, Cost> flow(const int s, const int t, const Cap& flow_limit)\
+    \ {\n        return slope(s, t, flow_limit).back();\n    }\n    vector<pair<Cap,\
+    \ Cost>> slope(const int s, const int t) {\n        return slope(s, t, numeric_limits<Cap>::max());\n\
     \    }\n    vector<pair<Cap, Cost>> slope(const int s, const int t, const Cap&\
     \ flow_limit) {\n        assert(0 <= s and s < _n);\n        assert(0 <= t and\
     \ t < _n);\n        assert(s != t);\n        const int m = (int)_edges.size();\n\
@@ -148,8 +148,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/assignment_problem.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 00:36:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/graph/assignment_problem.test.cpp
 layout: document

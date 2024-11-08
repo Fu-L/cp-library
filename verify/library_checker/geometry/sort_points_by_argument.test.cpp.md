@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/geometry/point_2d.hpp
     title: point_2d
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
@@ -23,17 +23,17 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/geometry/sort_points_by_argument.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\n\
     #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
-    \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
-    \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/geometry/template.hpp\"\nusing Real = long double;\nconstexpr Real\
-    \ EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\nint sign(const Real&\
-    \ r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return +1;\n    return\
-    \ 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a - b) == 0;\n\
-    }\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\nistream&\
-    \ operator>>(istream& is, Point& p) {\n    Real a, b;\n    is >> a >> b;\n   \
-    \ p = Point(a, b);\n    return is;\n}\nostream& operator<<(ostream& os, const\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
+    \nusing Real = long double;\nconstexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\n\
+    int sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
+    \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
+    \ - b) == 0;\n}\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\n\
+    istream& operator>>(istream& is, Point& p) {\n    Real a, b;\n    is >> a >> b;\n\
+    \    p = Point(a, b);\n    return is;\n}\nostream& operator<<(ostream& os, const\
     \ Point& p) {\n    return os << p.real() << \" \" << p.imag();\n}\nPoint operator*(const\
     \ Point& p, const Real& d) {\n    return Point(p.real() * d, p.imag() * d);\n\
     }\nPoint operator/(const Point& p, const Real& d) {\n    return Point(p.real()\
@@ -79,8 +79,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 00:54:30+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/geometry/sort_points_by_argument.test.cpp
 layout: document

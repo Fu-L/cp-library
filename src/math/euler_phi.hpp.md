@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
     title: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/math/eratosthenes_seive.test.cpp
     title: verify/unit_test/math/eratosthenes_seive.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/euler_phi.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/euler_phi.hpp\"\
     \nlong long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n    for(long\
     \ long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res -=\
     \ res / i;\n            while(n % i == 0) n /= i;\n        }\n    }\n    if(n\
@@ -37,8 +37,8 @@ data:
   isVerificationFile: false
   path: src/math/euler_phi.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/math/eratosthenes_seive.test.cpp
   - verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp

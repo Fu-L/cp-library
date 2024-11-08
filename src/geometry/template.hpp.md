@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: line_and_segment_2d
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/geometry/point_2d.hpp
     title: point_2d
   - icon: ':heavy_check_mark:'
@@ -87,20 +87,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
     title: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
     title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
     \nusing Real = long double;\nconstexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\n\
     int sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
     \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
@@ -119,8 +119,8 @@ data:
   - src/geometry/circle_2d.hpp
   - src/geometry/polygon_2d.hpp
   - src/geometry/line_and_segment_2d.hpp
-  timestamp: '2024-11-09 00:54:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/geometry/sort_points_by_argument.test.cpp
   - verify/aizu_online_judge/cgl/cross_point.test.cpp

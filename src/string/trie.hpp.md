@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/aho_corasick.hpp
     title: AhoCorasick
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/430.test.cpp
     title: verify/yukicoder/430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define\
-    \ rep(i, a, b) for(ll i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a;\
-    \ i >= b; --i)\nconstexpr ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n\
-    \        ios::sync_with_stdio(0);\n        cin.tie(0);\n        cout << fixed\
-    \ << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/string/trie.hpp\"\n\
-    template <size_t X = 26, char margin = 'a'>\nstruct Trie {\n    struct Node {\n\
-    \        array<int, X> nxt;\n        vector<int> idxs;\n        int idx;\n   \
-    \     int count;\n        char key;\n        Node(char c)\n            : idx(-1),\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/string/trie.hpp\"\
+    \ntemplate <size_t X = 26, char margin = 'a'>\nstruct Trie {\n    struct Node\
+    \ {\n        array<int, X> nxt;\n        vector<int> idxs;\n        int idx;\n\
+    \        int count;\n        char key;\n        Node(char c)\n            : idx(-1),\
     \ count(0), key(c) {\n            fill(nxt.begin(), nxt.end(), -1);\n        }\n\
     \    };\n    vector<Node> st;\n    Trie(char c = '$') {\n        st.emplace_back(c);\n\
     \    }\n    inline int& next(int i, int j) {\n        return st[i].nxt[j];\n \
@@ -74,8 +74,8 @@ data:
   path: src/string/trie.hpp
   requiredBy:
   - src/string/aho_corasick.hpp
-  timestamp: '2024-06-28 18:08:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/430.test.cpp
 documentation_of: src/string/trie.hpp

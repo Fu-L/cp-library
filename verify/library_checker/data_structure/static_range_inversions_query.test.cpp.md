@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/mo.hpp
     title: Mo
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -23,38 +23,38 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/data_structure/static_range_inversions_query.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
     \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing P = pair<ll, ll>;\n#define rep(i, a, b) for(ll\
-    \ i = a; i < b; ++i)\n#define rrep(i, a, b) for(ll i = a; i >= b; --i)\nconstexpr\
-    \ ll inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/data_structure/fenwick_tree.hpp\"\ntemplate <typename T>\nstruct\
-    \ FenwickTree {\n    FenwickTree(int N)\n        : n(N), data(N) {}\n    void\
-    \ add(int p, const T x) {\n        assert(0 <= p and p < n);\n        ++p;\n \
-    \       while(p <= n) {\n            data[p - 1] += x;\n            p += p & -p;\n\
-    \        }\n    }\n    T sum(const int l, const int r) const {\n        assert(0\
-    \ <= l and l <= r and r <= n);\n        return sum(r) - sum(l);\n    }\n    T\
-    \ get(const int x) const {\n        assert(0 <= x and x < n);\n        return\
-    \ sum(x + 1) - sum(x);\n    }\n\n   private:\n    int n;\n    vector<T> data;\n\
-    \    inline T sum(int r) const {\n        T s = 0;\n        while(r > 0) {\n \
-    \           s += data[r - 1];\n            r -= r & -r;\n        }\n        return\
-    \ s;\n    }\n};\n#line 3 \"src/data_structure/mo.hpp\"\nstruct Mo {\n    Mo(const\
-    \ int N, const int Q)\n        : n(N), order(Q) {\n        width = max<int>(1,\
-    \ 1.0 * N / max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n        iota(order.begin(),\
-    \ order.end(), 0);\n    }\n    void insert(const int l, const int r) {\n     \
-    \   assert(0 <= l and l <= r and r <= n);\n        left.emplace_back(l);\n   \
-    \     right.emplace_back(r);\n    }\n    template <typename AL, typename AR, typename\
-    \ DL, typename DR, typename OUT>\n    void run(const AL& add_left, const AR& add_right,\
-    \ const DL& delete_left, const DR& delete_right, const OUT& out) {\n        assert(left.size()\
-    \ == order.size());\n        sort(order.begin(), order.end(), [&](const int i,\
-    \ const int j) {\n            const int iblock = left[i] / width, jblock = left[j]\
-    \ / width;\n            if(iblock != jblock) return iblock < jblock;\n       \
-    \     if(iblock & 1) return right[i] < right[j];\n            return right[i]\
-    \ > right[j];\n        });\n        int nl = 0, nr = 0;\n        for(const int\
-    \ idx : order) {\n            while(nl > left[idx]) add_left(--nl);\n        \
-    \    while(nr < right[idx]) add_right(nr++);\n            while(nl < left[idx])\
-    \ delete_left(nl++);\n            while(nr > right[idx]) delete_right(--nr);\n\
-    \            out(idx);\n        }\n    }\n\n   private:\n    int n, width;\n \
-    \   vector<int> left, right, order;\n};\n#line 5 \"verify/library_checker/data_structure/static_range_inversions_query.test.cpp\"\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/fenwick_tree.hpp\"\
+    \ntemplate <typename T>\nstruct FenwickTree {\n    FenwickTree(int N)\n      \
+    \  : n(N), data(N) {}\n    void add(int p, const T x) {\n        assert(0 <= p\
+    \ and p < n);\n        ++p;\n        while(p <= n) {\n            data[p - 1]\
+    \ += x;\n            p += p & -p;\n        }\n    }\n    T sum(const int l, const\
+    \ int r) const {\n        assert(0 <= l and l <= r and r <= n);\n        return\
+    \ sum(r) - sum(l);\n    }\n    T get(const int x) const {\n        assert(0 <=\
+    \ x and x < n);\n        return sum(x + 1) - sum(x);\n    }\n\n   private:\n \
+    \   int n;\n    vector<T> data;\n    inline T sum(int r) const {\n        T s\
+    \ = 0;\n        while(r > 0) {\n            s += data[r - 1];\n            r -=\
+    \ r & -r;\n        }\n        return s;\n    }\n};\n#line 3 \"src/data_structure/mo.hpp\"\
+    \nstruct Mo {\n    Mo(const int N, const int Q)\n        : n(N), order(Q) {\n\
+    \        width = max<int>(1, 1.0 * N / max<double>(1.0, sqrt(Q * 2.0 / 3.0)));\n\
+    \        iota(order.begin(), order.end(), 0);\n    }\n    void insert(const int\
+    \ l, const int r) {\n        assert(0 <= l and l <= r and r <= n);\n        left.emplace_back(l);\n\
+    \        right.emplace_back(r);\n    }\n    template <typename AL, typename AR,\
+    \ typename DL, typename DR, typename OUT>\n    void run(const AL& add_left, const\
+    \ AR& add_right, const DL& delete_left, const DR& delete_right, const OUT& out)\
+    \ {\n        assert(left.size() == order.size());\n        sort(order.begin(),\
+    \ order.end(), [&](const int i, const int j) {\n            const int iblock =\
+    \ left[i] / width, jblock = left[j] / width;\n            if(iblock != jblock)\
+    \ return iblock < jblock;\n            if(iblock & 1) return right[i] < right[j];\n\
+    \            return right[i] > right[j];\n        });\n        int nl = 0, nr\
+    \ = 0;\n        for(const int idx : order) {\n            while(nl > left[idx])\
+    \ add_left(--nl);\n            while(nr < right[idx]) add_right(nr++);\n     \
+    \       while(nl < left[idx]) delete_left(nl++);\n            while(nr > right[idx])\
+    \ delete_right(--nr);\n            out(idx);\n        }\n    }\n\n   private:\n\
+    \    int n, width;\n    vector<int> left, right, order;\n};\n#line 5 \"verify/library_checker/data_structure/static_range_inversions_query.test.cpp\"\
     \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    Mo mo(n, q);\n    vector<int>\
     \ a(n);\n    rep(i, 0, n) cin >> a[i];\n    vector<int> comp = a;\n    sort(comp.begin(),\
     \ comp.end());\n    comp.erase(unique(comp.begin(), comp.end()), comp.end());\n\
@@ -95,8 +95,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 00:13:43+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-11-09 01:34:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
 layout: document
