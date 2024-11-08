@@ -15,10 +15,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
     title: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/jump_on_tree.test.cpp
     title: verify/library_checker/tree/jump_on_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - icon: ':x:'

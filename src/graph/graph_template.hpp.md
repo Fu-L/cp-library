@@ -53,13 +53,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
   - icon: ':x:'
     path: src/tree/centroid.hpp
     title: centroid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
   - icon: ':question:'
@@ -71,10 +71,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/rerooting.hpp
     title: rerooting
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/rooted_hash_tree.hpp
     title: src/tree/rooted_hash_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/tree_diameter.hpp
     title: tree_diameter
   _extendedVerifiedWith:
@@ -144,28 +144,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/2_sat.test.cpp
     title: verify/library_checker/other/2_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/jump_on_tree.test.cpp
     title: verify/library_checker/tree/jump_on_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/jump_on_tree_2.test.cpp
     title: verify/library_checker/tree/jump_on_tree_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
     title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - icon: ':x:'

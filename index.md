@@ -12,7 +12,7 @@ data:
     - icon: ':question:'
       path: src/convolution/convolution_arbitrary.hpp
       title: convolution_arbitrary
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/convolution/convolution_ll.hpp
       title: convolution_ll
     - icon: ':heavy_check_mark:'
@@ -94,7 +94,7 @@ data:
       title: WeightedUnionFind
   - name: src/fps
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/fps/all_product.hpp
       title: all_product
     - icon: ':question:'
@@ -103,13 +103,13 @@ data:
     - icon: ':question:'
       path: src/fps/bostan_mori.hpp
       title: bostan_mori
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series.hpp
       title: FormalPowerSeries
     - icon: ':x:'
       path: src/fps/formal_power_series_arbitrary.hpp
       title: FormalPowerSeriesArbitrary
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/fps/formal_power_series_ll.hpp
       title: FormalPowerSeriesLL
     - icon: ':x:'
@@ -280,22 +280,22 @@ data:
     - icon: ':x:'
       path: src/string/dynamic_rolling_hash.hpp
       title: DynamicRollingHash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: manacher
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: RollingHash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/suffix_array.hpp
       title: suffix_array
     - icon: ':x:'
       path: src/string/trie.hpp
       title: Trie
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/wildcard_pattern_matching.hpp
       title: wildcard_pattern_matching
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/z_algorithm.hpp
       title: z_algorithm
   - name: src/template
@@ -323,13 +323,13 @@ data:
       title: template
   - name: src/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: cartesian_tree
     - icon: ':x:'
       path: src/tree/centroid.hpp
       title: centroid
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/centroid_decomposition.hpp
       title: centroid_decomposition
     - icon: ':question:'
@@ -341,10 +341,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/rerooting.hpp
       title: rerooting
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/rooted_hash_tree.hpp
       title: src/tree/rooted_hash_tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/tree_diameter.hpp
       title: tree_diameter
   verificationCategories:
@@ -677,71 +677,71 @@ data:
       title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - name: verify/library_checker/polynomial
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
       title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
       title: verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
       title: verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
       title: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
       title: verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
       title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
       title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - name: verify/library_checker/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/enumerate_palindromes.test.cpp
       title: verify/library_checker/string/enumerate_palindromes.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/number_of_substrings.test.cpp
       title: verify/library_checker/string/number_of_substrings.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/number_of_substrings_2.test.cpp
       title: verify/library_checker/string/number_of_substrings_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/suffix_array.test.cpp
       title: verify/library_checker/string/suffix_array.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
       title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/z_algorithm.test.cpp
       title: verify/library_checker/string/z_algorithm.test.cpp
   - name: verify/library_checker/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/cartesian_tree.test.cpp
       title: verify/library_checker/tree/cartesian_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
       title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/jump_on_tree.test.cpp
       title: verify/library_checker/tree/jump_on_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/jump_on_tree_2.test.cpp
       title: verify/library_checker/tree/jump_on_tree_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
       title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
       title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/tree_diameter.test.cpp
       title: verify/library_checker/tree/tree_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
       title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     - icon: ':x:'

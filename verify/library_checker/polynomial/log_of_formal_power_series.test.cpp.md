@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -105,7 +105,7 @@ data:
     \ i = 0; i < cnt; ++i) {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1)\
     \ {\n                ok = false;\n                break;\n            }\n    \
     \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\
-    \nconstexpr int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n\
+    \nconstexpr int countr_zero(const unsigned int n) {\n    int res = 0;\n    while(!(n\
     \ & (1 << res))) ++res;\n    return res;\n}\ntemplate <typename mint, int g =\
     \ primitive_root(mint::mod())>\nstruct FFT_Info {\n    static constexpr int rank2\
     \ = countr_zero(mint::mod() - 1);\n    array<mint, rank2 + 1> root;\n    array<mint,\
@@ -123,122 +123,123 @@ data:
     \ rank2 - 3; ++i) {\n                rate3[i] = root[i + 3] * prod;\n        \
     \        irate3[i] = iroot[i + 3] * iprod;\n                prod *= iroot[i +\
     \ 3];\n                iprod *= root[i + 3];\n            }\n        }\n    }\n\
-    };\ntemplate <typename mint>\nvoid butterfly(vector<mint>& a) {\n    int n = (int)a.size();\n\
-    \    int h = __builtin_ctz((unsigned int)n);\n    static const FFT_Info<mint>\
-    \ info;\n    int len = 0;\n    while(len < h) {\n        if(h - len == 1) {\n\
-    \            int p = 1 << (h - len - 1);\n            mint rot = 1;\n        \
-    \    for(int s = 0; s < (1 << len); ++s) {\n                int offset = s <<\
-    \ (h - len);\n                for(int i = 0; i < p; ++i) {\n                 \
-    \   auto l = a[i + offset];\n                    auto r = a[i + offset + p] *\
-    \ rot;\n                    a[i + offset] = l + r;\n                    a[i +\
-    \ offset + p] = l - r;\n                }\n                if(s + 1 != (1 << len))\
-    \ rot *= info.rate2[__builtin_ctz(~(unsigned int)(s))];\n            }\n     \
-    \       ++len;\n        } else {\n            int p = 1 << (h - len - 2);\n  \
-    \          mint rot = 1, imag = info.root[2];\n            for(int s = 0; s <\
-    \ (1 << len); ++s) {\n                mint rot2 = rot * rot;\n               \
-    \ mint rot3 = rot2 * rot;\n                int offset = s << (h - len);\n    \
-    \            for(int i = 0; i < p; ++i) {\n                    auto mod2 = 1ULL\
-    \ * mint::mod() * mint::mod();\n                    auto a0 = 1ULL * a[i + offset].val();\n\
-    \                    auto a1 = 1ULL * a[i + offset + p].val() * rot.val();\n \
-    \                   auto a2 = 1ULL * a[i + offset + 2 * p].val() * rot2.val();\n\
-    \                    auto a3 = 1ULL * a[i + offset + 3 * p].val() * rot3.val();\n\
-    \                    auto a1na3imag = 1ULL * mint(a1 + mod2 - a3).val() * imag.val();\n\
-    \                    auto na2 = mod2 - a2;\n                    a[i + offset]\
-    \ = a0 + a2 + a1 + a3;\n                    a[i + offset + 1 * p] = a0 + a2 +\
-    \ (2 * mod2 - (a1 + a3));\n                    a[i + offset + 2 * p] = a0 + na2\
-    \ + a1na3imag;\n                    a[i + offset + 3 * p] = a0 + na2 + (mod2 -\
-    \ a1na3imag);\n                }\n                if(s + 1 != (1 << len)) rot\
-    \ *= info.rate3[__builtin_ctz(~(unsigned int)(s))];\n            }\n         \
-    \   len += 2;\n        }\n    }\n}\ntemplate <typename mint>\nvoid butterfly_inv(vector<mint>&\
-    \ a) {\n    int n = (int)a.size();\n    int h = __builtin_ctz((unsigned int)n);\n\
-    \    static const FFT_Info<mint> info;\n    int len = h;\n    while(len) {\n \
-    \       if(len == 1) {\n            int p = 1 << (h - len);\n            mint\
-    \ irot = 1;\n            for(int s = 0; s < (1 << (len - 1)); ++s) {\n       \
-    \         int offset = s << (h - len + 1);\n                for(int i = 0; i <\
-    \ p; ++i) {\n                    auto l = a[i + offset];\n                   \
-    \ auto r = a[i + offset + p];\n                    a[i + offset] = l + r;\n  \
-    \                  a[i + offset + p] = (unsigned long long)(mint::mod() + l.val()\
-    \ - r.val()) * irot.val();\n                }\n                if(s + 1 != (1\
-    \ << (len - 1))) irot *= info.irate2[__builtin_ctz(~(unsigned int)(s))];\n   \
-    \         }\n            --len;\n        } else {\n            int p = 1 << (h\
-    \ - len);\n            mint irot = 1, iimag = info.iroot[2];\n            for(int\
-    \ s = 0; s < (1 << (len - 2)); ++s) {\n                mint irot2 = irot * irot;\n\
-    \                mint irot3 = irot2 * irot;\n                int offset = s <<\
-    \ (h - len + 2);\n                for(int i = 0; i < p; ++i) {\n             \
-    \       auto a0 = 1ULL * a[i + offset + 0 * p].val();\n                    auto\
-    \ a1 = 1ULL * a[i + offset + 1 * p].val();\n                    auto a2 = 1ULL\
-    \ * a[i + offset + 2 * p].val();\n                    auto a3 = 1ULL * a[i + offset\
-    \ + 3 * p].val();\n                    auto a2na3iimag = 1ULL * mint((mint::mod()\
-    \ + a2 - a3) * iimag.val()).val();\n                    a[i + offset] = a0 + a1\
-    \ + a2 + a3;\n                    a[i + offset + 1 * p] = (a0 + (mint::mod() -\
-    \ a1) + a2na3iimag) * irot.val();\n                    a[i + offset + 2 * p] =\
-    \ (a0 + a1 + (mint::mod() - a2) + (mint::mod() - a3)) * irot2.val();\n       \
-    \             a[i + offset + 3 * p] = (a0 + (mint::mod() - a1) + (mint::mod()\
-    \ - a2na3iimag)) * irot3.val();\n                }\n                if(s + 1 !=\
-    \ (1 << (len - 2))) irot *= info.irate3[__builtin_ctz(~(unsigned int)(s))];\n\
-    \            }\n            len -= 2;\n        }\n    }\n}\ntemplate <typename\
-    \ mint>\nvector<mint> convolution_naive(const vector<mint>& a, const vector<mint>&\
-    \ b) {\n    int n = (int)a.size(), m = (int)b.size();\n    vector<mint> res(n\
-    \ + m - 1);\n    if(n < m) {\n        for(int j = 0; j < m; ++j) {\n         \
-    \   for(int i = 0; i < n; ++i) {\n                res[i + j] += a[i] * b[j];\n\
-    \            }\n        }\n    } else {\n        for(int i = 0; i < n; ++i) {\n\
-    \            for(int j = 0; j < m; ++j) {\n                res[i + j] += a[i]\
-    \ * b[j];\n            }\n        }\n    }\n    return res;\n}\ntemplate <typename\
-    \ mint>\nvector<mint> convolution(vector<mint> a, vector<mint> b) {\n    const\
-    \ int n = (int)a.size(), m = (int)b.size();\n    if(n == 0 or m == 0) return {};\n\
-    \    int z = 1;\n    while(z < n + m - 1) z *= 2;\n    assert((mint::mod() - 1)\
-    \ % z == 0);\n    if(min(n, m) <= 60) return convolution_naive(a, b);\n    a.resize(z);\n\
-    \    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n    for(int i = 0; i\
-    \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
-    \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
-    \ *= iz;\n    return a;\n}\n#line 4 \"src/fps/formal_power_series.hpp\"\ntemplate\
-    \ <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using vector<mint>::vector;\n\
-    \    using F = FormalPowerSeries;\n    F& operator=(const vector<mint>& g) {\n\
-    \        const int n = (*this).size();\n        const int m = g.size();\n    \
-    \    if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
-    \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
-    \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
-    \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
-    \ int n = (*this).size();\n        const int m = g.size();\n        if(n < m)\
-    \ (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] += g[i];\n\
-    \        return (*this);\n    }\n    F& operator+=(const mint& r) {\n        if((*this).empty())\
-    \ (*this).resize(1, mint(0));\n        (*this)[0] += r;\n        return (*this);\n\
-    \    }\n    F& operator-=(const F& g) {\n        const int n = (*this).size();\n\
-    \        const int m = g.size();\n        if(n < m) (*this).resize(m);\n     \
-    \   for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n        return (*this);\n\
-    \    }\n    F& operator-=(const mint& r) {\n        if((*this).empty()) (*this).resize(1,\
-    \ mint(0));\n        (*this)[0] -= r;\n        return (*this);\n    }\n    F&\
-    \ operator*=(const F& g) {\n        (*this) = convolution((*this), g);\n     \
-    \   return (*this);\n    }\n    F& operator*=(const mint& r) {\n        const\
-    \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= r;\n\
-    \        return (*this);\n    }\n    F& operator/=(const F& g) {\n        if((*this).size()\
-    \ < g.size()) {\n            (*this).clear();\n            return (*this);\n \
-    \       }\n        const int n = (*this).size() - g.size() + 1;\n        (*this)\
-    \ = ((*this).rev().pre(n) * g.rev().inv(n)).pre(n).rev();\n        return (*this);\n\
-    \    }\n    F& operator/=(const mint& r) {\n        const int n = (*this).size();\n\
-    \        const mint inv_r = r.inv();\n        for(int i = 0; i < n; ++i) (*this)[i]\
-    \ *= inv_r;\n        return (*this);\n    }\n    F& operator%=(const F& g) {\n\
-    \        (*this) -= (*this) / g * g;\n        shrink();\n        return (*this);\n\
-    \    }\n    F operator*(const mint& g) const {\n        return F(*this) *= g;\n\
-    \    }\n    F operator-(const mint& g) const {\n        return F(*this) -= g;\n\
-    \    }\n    F operator+(const mint& g) const {\n        return F(*this) += g;\n\
-    \    }\n    F operator/(const mint& g) const {\n        return F(*this) /= g;\n\
-    \    }\n    F operator*(const F& g) const {\n        return F(*this) *= g;\n \
-    \   }\n    F operator-(const F& g) const {\n        return F(*this) -= g;\n  \
-    \  }\n    F operator+(const F& g) const {\n        return F(*this) += g;\n   \
-    \ }\n    F operator/(const F& g) const {\n        return F(*this) /= g;\n    }\n\
-    \    F operator%(const F& g) const {\n        return F(*this) %= g;\n    }\n \
-    \   F operator<<(const int d) const {\n        F ret(*this);\n        ret.insert(ret.begin(),\
-    \ d, mint(0));\n        return ret;\n    }\n    F operator>>(const int d) const\
-    \ {\n        const int n = (*this).size();\n        if(n <= d) return {};\n  \
-    \      F ret(*this);\n        ret.erase(ret.begin(), ret.begin() + d);\n     \
-    \   return ret;\n    }\n    void shrink() {\n        while(!(*this).empty() and\
-    \ (*this).back() == mint(0)) (*this).pop_back();\n    }\n    F rev() const {\n\
-    \        F ret(*this);\n        reverse(begin(ret), end(ret));\n        return\
-    \ ret;\n    }\n    F pre(const int deg) const {\n        assert(deg >= 0);\n \
-    \       F ret(begin(*this), begin(*this) + min((int)(*this).size(), deg));\n \
-    \       if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n    }\n\
-    \    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
+    };\ntemplate <typename mint>\nvoid butterfly(vector<mint>& a) {\n    const int\
+    \ n = (int)a.size();\n    const int h = __builtin_ctz((unsigned int)n);\n    static\
+    \ const FFT_Info<mint> info;\n    int len = 0;\n    while(len < h) {\n       \
+    \ if(h - len == 1) {\n            const int p = 1 << (h - len - 1);\n        \
+    \    mint rot = 1;\n            for(int s = 0; s < (1 << len); ++s) {\n      \
+    \          const int offset = s << (h - len);\n                for(int i = 0;\
+    \ i < p; ++i) {\n                    const auto l = a[i + offset];\n         \
+    \           const auto r = a[i + offset + p] * rot;\n                    a[i +\
+    \ offset] = l + r;\n                    a[i + offset + p] = l - r;\n         \
+    \       }\n                if(s + 1 != (1 << len)) rot *= info.rate2[__builtin_ctz(~(unsigned\
+    \ int)(s))];\n            }\n            ++len;\n        } else {\n          \
+    \  const int p = 1 << (h - len - 2);\n            mint rot = 1, imag = info.root[2];\n\
+    \            for(int s = 0; s < (1 << len); ++s) {\n                const mint\
+    \ rot2 = rot * rot;\n                const mint rot3 = rot2 * rot;\n         \
+    \       const int offset = s << (h - len);\n                for(int i = 0; i <\
+    \ p; ++i) {\n                    const auto mod2 = 1ULL * mint::mod() * mint::mod();\n\
+    \                    const auto a0 = 1ULL * a[i + offset].val();\n           \
+    \         const auto a1 = 1ULL * a[i + offset + p].val() * rot.val();\n      \
+    \              const auto a2 = 1ULL * a[i + offset + 2 * p].val() * rot2.val();\n\
+    \                    const auto a3 = 1ULL * a[i + offset + 3 * p].val() * rot3.val();\n\
+    \                    const auto a1na3imag = 1ULL * mint(a1 + mod2 - a3).val()\
+    \ * imag.val();\n                    const auto na2 = mod2 - a2;\n           \
+    \         a[i + offset] = a0 + a2 + a1 + a3;\n                    a[i + offset\
+    \ + 1 * p] = a0 + a2 + (2 * mod2 - (a1 + a3));\n                    a[i + offset\
+    \ + 2 * p] = a0 + na2 + a1na3imag;\n                    a[i + offset + 3 * p]\
+    \ = a0 + na2 + (mod2 - a1na3imag);\n                }\n                if(s +\
+    \ 1 != (1 << len)) rot *= info.rate3[__builtin_ctz(~(unsigned int)(s))];\n   \
+    \         }\n            len += 2;\n        }\n    }\n}\ntemplate <typename mint>\n\
+    void butterfly_inv(vector<mint>& a) {\n    const int n = (int)a.size();\n    const\
+    \ int h = __builtin_ctz((unsigned int)n);\n    static const FFT_Info<mint> info;\n\
+    \    int len = h;\n    while(len) {\n        if(len == 1) {\n            const\
+    \ int p = 1 << (h - len);\n            mint irot = 1;\n            for(int s =\
+    \ 0; s < (1 << (len - 1)); ++s) {\n                const int offset = s << (h\
+    \ - len + 1);\n                for(int i = 0; i < p; ++i) {\n                \
+    \    const auto l = a[i + offset];\n                    const auto r = a[i + offset\
+    \ + p];\n                    a[i + offset] = l + r;\n                    a[i +\
+    \ offset + p] = (unsigned long long)(mint::mod() + l.val() - r.val()) * irot.val();\n\
+    \                }\n                if(s + 1 != (1 << (len - 1))) irot *= info.irate2[__builtin_ctz(~(unsigned\
+    \ int)(s))];\n            }\n            --len;\n        } else {\n          \
+    \  const int p = 1 << (h - len);\n            mint irot = 1, iimag = info.iroot[2];\n\
+    \            for(int s = 0; s < (1 << (len - 2)); ++s) {\n                const\
+    \ mint irot2 = irot * irot;\n                const mint irot3 = irot2 * irot;\n\
+    \                const int offset = s << (h - len + 2);\n                for(int\
+    \ i = 0; i < p; ++i) {\n                    const auto a0 = 1ULL * a[i + offset\
+    \ + 0 * p].val();\n                    const auto a1 = 1ULL * a[i + offset + 1\
+    \ * p].val();\n                    const auto a2 = 1ULL * a[i + offset + 2 * p].val();\n\
+    \                    const auto a3 = 1ULL * a[i + offset + 3 * p].val();\n   \
+    \                 const auto a2na3iimag = 1ULL * mint((mint::mod() + a2 - a3)\
+    \ * iimag.val()).val();\n                    a[i + offset] = a0 + a1 + a2 + a3;\n\
+    \                    a[i + offset + 1 * p] = (a0 + (mint::mod() - a1) + a2na3iimag)\
+    \ * irot.val();\n                    a[i + offset + 2 * p] = (a0 + a1 + (mint::mod()\
+    \ - a2) + (mint::mod() - a3)) * irot2.val();\n                    a[i + offset\
+    \ + 3 * p] = (a0 + (mint::mod() - a1) + (mint::mod() - a2na3iimag)) * irot3.val();\n\
+    \                }\n                if(s + 1 != (1 << (len - 2))) irot *= info.irate3[__builtin_ctz(~(unsigned\
+    \ int)(s))];\n            }\n            len -= 2;\n        }\n    }\n}\ntemplate\
+    \ <typename mint>\nvector<mint> convolution_naive(const vector<mint>& a, const\
+    \ vector<mint>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n  \
+    \  vector<mint> res(n + m - 1);\n    if(n < m) {\n        for(int j = 0; j < m;\
+    \ ++j) {\n            for(int i = 0; i < n; ++i) {\n                res[i + j]\
+    \ += a[i] * b[j];\n            }\n        }\n    } else {\n        for(int i =\
+    \ 0; i < n; ++i) {\n            for(int j = 0; j < m; ++j) {\n               \
+    \ res[i + j] += a[i] * b[j];\n            }\n        }\n    }\n    return res;\n\
+    }\ntemplate <typename mint>\nvector<mint> convolution(vector<mint> a, vector<mint>\
+    \ b) {\n    const int n = (int)a.size(), m = (int)b.size();\n    if(n == 0 or\
+    \ m == 0) return {};\n    int z = 1;\n    while(z < n + m - 1) z *= 2;\n    assert((mint::mod()\
+    \ - 1) % z == 0);\n    if(min(n, m) <= 60) return convolution_naive(a, b);\n \
+    \   a.resize(z);\n    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n   \
+    \ for(int i = 0; i < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n\
+    \ + m - 1);\n    const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m\
+    \ - 1; ++i) a[i] *= iz;\n    return a;\n}\n#line 4 \"src/fps/formal_power_series.hpp\"\
+    \ntemplate <typename mint>\nstruct FormalPowerSeries : vector<mint> {\n    using\
+    \ vector<mint>::vector;\n    using F = FormalPowerSeries;\n    F& operator=(const\
+    \ vector<mint>& g) {\n        const int n = (*this).size();\n        const int\
+    \ m = g.size();\n        if(n < m) (*this).resize(m);\n        for(int i = 0;\
+    \ i < m; ++i) (*this)[i] = g[i];\n        return (*this);\n    }\n    F& operator-()\
+    \ {\n        const int n = (*this).size();\n        for(int i = 0; i < n; ++i)\
+    \ (*this)[i] *= -1;\n        return (*this);\n    }\n    F& operator+=(const F&\
+    \ g) {\n        const int n = (*this).size();\n        const int m = g.size();\n\
+    \        if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ += g[i];\n        return (*this);\n    }\n    F& operator+=(const mint& r) {\n\
+    \        if((*this).empty()) (*this).resize(1, mint(0));\n        (*this)[0] +=\
+    \ r;\n        return (*this);\n    }\n    F& operator-=(const F& g) {\n      \
+    \  const int n = (*this).size();\n        const int m = g.size();\n        if(n\
+    \ < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n\
+    \        return (*this);\n    }\n    F& operator-=(const mint& r) {\n        if((*this).empty())\
+    \ (*this).resize(1, mint(0));\n        (*this)[0] -= r;\n        return (*this);\n\
+    \    }\n    F& operator*=(const F& g) {\n        (*this) = convolution((*this),\
+    \ g);\n        return (*this);\n    }\n    F& operator*=(const mint& r) {\n  \
+    \      const int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i]\
+    \ *= r;\n        return (*this);\n    }\n    F& operator/=(const F& g) {\n   \
+    \     if((*this).size() < g.size()) {\n            (*this).clear();\n        \
+    \    return (*this);\n        }\n        const int n = (*this).size() - g.size()\
+    \ + 1;\n        (*this) = ((*this).rev().pre(n) * g.rev().inv(n)).pre(n).rev();\n\
+    \        return (*this);\n    }\n    F& operator/=(const mint& r) {\n        const\
+    \ int n = (*this).size();\n        const mint inv_r = r.inv();\n        for(int\
+    \ i = 0; i < n; ++i) (*this)[i] *= inv_r;\n        return (*this);\n    }\n  \
+    \  F& operator%=(const F& g) {\n        (*this) -= (*this) / g * g;\n        shrink();\n\
+    \        return (*this);\n    }\n    F operator*(const mint& g) const {\n    \
+    \    return F(*this) *= g;\n    }\n    F operator-(const mint& g) const {\n  \
+    \      return F(*this) -= g;\n    }\n    F operator+(const mint& g) const {\n\
+    \        return F(*this) += g;\n    }\n    F operator/(const mint& g) const {\n\
+    \        return F(*this) /= g;\n    }\n    F operator*(const F& g) const {\n \
+    \       return F(*this) *= g;\n    }\n    F operator-(const F& g) const {\n  \
+    \      return F(*this) -= g;\n    }\n    F operator+(const F& g) const {\n   \
+    \     return F(*this) += g;\n    }\n    F operator/(const F& g) const {\n    \
+    \    return F(*this) /= g;\n    }\n    F operator%(const F& g) const {\n     \
+    \   return F(*this) %= g;\n    }\n    F operator<<(const int d) const {\n    \
+    \    F ret(*this);\n        ret.insert(ret.begin(), d, mint(0));\n        return\
+    \ ret;\n    }\n    F operator>>(const int d) const {\n        const int n = (*this).size();\n\
+    \        if(n <= d) return {};\n        F ret(*this);\n        ret.erase(ret.begin(),\
+    \ ret.begin() + d);\n        return ret;\n    }\n    void shrink() {\n       \
+    \ while(!(*this).empty() and (*this).back() == mint(0)) (*this).pop_back();\n\
+    \    }\n    F rev() const {\n        F ret(*this);\n        reverse(begin(ret),\
+    \ end(ret));\n        return ret;\n    }\n    F pre(const int deg) const {\n \
+    \       assert(deg >= 0);\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
+    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
+    \    }\n    mint eval(const mint& a) const {\n        const int n = (*this).size();\n\
     \        mint x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n        \
     \    ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
     \    }\n    void onemul(const int d, const mint& c, int deg = -1) {\n        assert(deg\
@@ -315,14 +316,14 @@ data:
     \ = (*this).size();\n        if(deg == -1) deg = n;\n        if(k == 0) {\n  \
     \          F ret(deg);\n            if(deg) ret[0] = 1;\n            return ret;\n\
     \        }\n        for(int i = 0; i < n; ++i) {\n            if((*this)[i] !=\
-    \ mint(0)) {\n                mint rev = mint(1) / (*this)[i];\n             \
-    \   F ret = (((*this * rev) >> i).log(deg) * k).exp(deg);\n                ret\
-    \ *= (*this)[i].pow(k);\n                ret = (ret << (i * k)).pre(deg);\n  \
-    \              if((int)ret.size() < deg) ret.resize(deg, mint(0));\n         \
-    \       return ret;\n            }\n            if(__int128_t(i + 1) * k >= deg)\
-    \ return F(deg, mint(0));\n        }\n        return F(deg, mint(0));\n    }\n\
-    \    F shift(const mint& c) const {\n        const int n = (*this).size();\n \
-    \       vector<mint> fact(n), ifact(n);\n        fact[0] = ifact[0] = mint(1);\n\
+    \ mint(0)) {\n                const mint rev = mint(1) / (*this)[i];\n       \
+    \         F ret = (((*this * rev) >> i).log(deg) * k).exp(deg);\n            \
+    \    ret *= (*this)[i].pow(k);\n                ret = (ret << (i * k)).pre(deg);\n\
+    \                if((int)ret.size() < deg) ret.resize(deg, mint(0));\n       \
+    \         return ret;\n            }\n            if(__int128_t(i + 1) * k >=\
+    \ deg) return F(deg, mint(0));\n        }\n        return F(deg, mint(0));\n \
+    \   }\n    F shift(const mint& c) const {\n        const int n = (*this).size();\n\
+    \        vector<mint> fact(n), ifact(n);\n        fact[0] = ifact[0] = mint(1);\n\
     \        for(int i = 1; i < n; ++i) fact[i] = fact[i - 1] * i;\n        ifact[n\
     \ - 1] = mint(1) / fact[n - 1];\n        for(int i = n - 1; i > 1; --i) ifact[i\
     \ - 1] = ifact[i] * i;\n        F ret(*this);\n        for(int i = 0; i < n; ++i)\
@@ -351,8 +352,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 02:03:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-11-09 02:16:49+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
 layout: document

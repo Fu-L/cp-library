@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
   - icon: ':question:'
@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/wildcard_pattern_matching.hpp
     title: wildcard_pattern_matching
   - icon: ':question:'
@@ -24,9 +24,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/wildcard_pattern_matching
@@ -108,7 +108,7 @@ data:
     \ i = 0; i < cnt; ++i) {\n            if(pow_mod(g, (m - 1) / divs[i], m) == 1)\
     \ {\n                ok = false;\n                break;\n            }\n    \
     \    }\n        if(ok) return g;\n    }\n}\n#line 4 \"src/convolution/convolution.hpp\"\
-    \nconstexpr int countr_zero(unsigned int n) {\n    int res = 0;\n    while(!(n\
+    \nconstexpr int countr_zero(const unsigned int n) {\n    int res = 0;\n    while(!(n\
     \ & (1 << res))) ++res;\n    return res;\n}\ntemplate <typename mint, int g =\
     \ primitive_root(mint::mod())>\nstruct FFT_Info {\n    static constexpr int rank2\
     \ = countr_zero(mint::mod() - 1);\n    array<mint, rank2 + 1> root;\n    array<mint,\
@@ -126,114 +126,116 @@ data:
     \ rank2 - 3; ++i) {\n                rate3[i] = root[i + 3] * prod;\n        \
     \        irate3[i] = iroot[i + 3] * iprod;\n                prod *= iroot[i +\
     \ 3];\n                iprod *= root[i + 3];\n            }\n        }\n    }\n\
-    };\ntemplate <typename mint>\nvoid butterfly(vector<mint>& a) {\n    int n = (int)a.size();\n\
-    \    int h = __builtin_ctz((unsigned int)n);\n    static const FFT_Info<mint>\
-    \ info;\n    int len = 0;\n    while(len < h) {\n        if(h - len == 1) {\n\
-    \            int p = 1 << (h - len - 1);\n            mint rot = 1;\n        \
-    \    for(int s = 0; s < (1 << len); ++s) {\n                int offset = s <<\
-    \ (h - len);\n                for(int i = 0; i < p; ++i) {\n                 \
-    \   auto l = a[i + offset];\n                    auto r = a[i + offset + p] *\
-    \ rot;\n                    a[i + offset] = l + r;\n                    a[i +\
-    \ offset + p] = l - r;\n                }\n                if(s + 1 != (1 << len))\
-    \ rot *= info.rate2[__builtin_ctz(~(unsigned int)(s))];\n            }\n     \
-    \       ++len;\n        } else {\n            int p = 1 << (h - len - 2);\n  \
-    \          mint rot = 1, imag = info.root[2];\n            for(int s = 0; s <\
-    \ (1 << len); ++s) {\n                mint rot2 = rot * rot;\n               \
-    \ mint rot3 = rot2 * rot;\n                int offset = s << (h - len);\n    \
-    \            for(int i = 0; i < p; ++i) {\n                    auto mod2 = 1ULL\
-    \ * mint::mod() * mint::mod();\n                    auto a0 = 1ULL * a[i + offset].val();\n\
-    \                    auto a1 = 1ULL * a[i + offset + p].val() * rot.val();\n \
-    \                   auto a2 = 1ULL * a[i + offset + 2 * p].val() * rot2.val();\n\
-    \                    auto a3 = 1ULL * a[i + offset + 3 * p].val() * rot3.val();\n\
-    \                    auto a1na3imag = 1ULL * mint(a1 + mod2 - a3).val() * imag.val();\n\
-    \                    auto na2 = mod2 - a2;\n                    a[i + offset]\
-    \ = a0 + a2 + a1 + a3;\n                    a[i + offset + 1 * p] = a0 + a2 +\
-    \ (2 * mod2 - (a1 + a3));\n                    a[i + offset + 2 * p] = a0 + na2\
-    \ + a1na3imag;\n                    a[i + offset + 3 * p] = a0 + na2 + (mod2 -\
-    \ a1na3imag);\n                }\n                if(s + 1 != (1 << len)) rot\
-    \ *= info.rate3[__builtin_ctz(~(unsigned int)(s))];\n            }\n         \
-    \   len += 2;\n        }\n    }\n}\ntemplate <typename mint>\nvoid butterfly_inv(vector<mint>&\
-    \ a) {\n    int n = (int)a.size();\n    int h = __builtin_ctz((unsigned int)n);\n\
-    \    static const FFT_Info<mint> info;\n    int len = h;\n    while(len) {\n \
-    \       if(len == 1) {\n            int p = 1 << (h - len);\n            mint\
-    \ irot = 1;\n            for(int s = 0; s < (1 << (len - 1)); ++s) {\n       \
-    \         int offset = s << (h - len + 1);\n                for(int i = 0; i <\
-    \ p; ++i) {\n                    auto l = a[i + offset];\n                   \
-    \ auto r = a[i + offset + p];\n                    a[i + offset] = l + r;\n  \
-    \                  a[i + offset + p] = (unsigned long long)(mint::mod() + l.val()\
-    \ - r.val()) * irot.val();\n                }\n                if(s + 1 != (1\
-    \ << (len - 1))) irot *= info.irate2[__builtin_ctz(~(unsigned int)(s))];\n   \
-    \         }\n            --len;\n        } else {\n            int p = 1 << (h\
-    \ - len);\n            mint irot = 1, iimag = info.iroot[2];\n            for(int\
-    \ s = 0; s < (1 << (len - 2)); ++s) {\n                mint irot2 = irot * irot;\n\
-    \                mint irot3 = irot2 * irot;\n                int offset = s <<\
-    \ (h - len + 2);\n                for(int i = 0; i < p; ++i) {\n             \
-    \       auto a0 = 1ULL * a[i + offset + 0 * p].val();\n                    auto\
-    \ a1 = 1ULL * a[i + offset + 1 * p].val();\n                    auto a2 = 1ULL\
-    \ * a[i + offset + 2 * p].val();\n                    auto a3 = 1ULL * a[i + offset\
-    \ + 3 * p].val();\n                    auto a2na3iimag = 1ULL * mint((mint::mod()\
-    \ + a2 - a3) * iimag.val()).val();\n                    a[i + offset] = a0 + a1\
-    \ + a2 + a3;\n                    a[i + offset + 1 * p] = (a0 + (mint::mod() -\
-    \ a1) + a2na3iimag) * irot.val();\n                    a[i + offset + 2 * p] =\
-    \ (a0 + a1 + (mint::mod() - a2) + (mint::mod() - a3)) * irot2.val();\n       \
-    \             a[i + offset + 3 * p] = (a0 + (mint::mod() - a1) + (mint::mod()\
-    \ - a2na3iimag)) * irot3.val();\n                }\n                if(s + 1 !=\
-    \ (1 << (len - 2))) irot *= info.irate3[__builtin_ctz(~(unsigned int)(s))];\n\
-    \            }\n            len -= 2;\n        }\n    }\n}\ntemplate <typename\
-    \ mint>\nvector<mint> convolution_naive(const vector<mint>& a, const vector<mint>&\
-    \ b) {\n    int n = (int)a.size(), m = (int)b.size();\n    vector<mint> res(n\
-    \ + m - 1);\n    if(n < m) {\n        for(int j = 0; j < m; ++j) {\n         \
-    \   for(int i = 0; i < n; ++i) {\n                res[i + j] += a[i] * b[j];\n\
-    \            }\n        }\n    } else {\n        for(int i = 0; i < n; ++i) {\n\
-    \            for(int j = 0; j < m; ++j) {\n                res[i + j] += a[i]\
-    \ * b[j];\n            }\n        }\n    }\n    return res;\n}\ntemplate <typename\
-    \ mint>\nvector<mint> convolution(vector<mint> a, vector<mint> b) {\n    const\
-    \ int n = (int)a.size(), m = (int)b.size();\n    if(n == 0 or m == 0) return {};\n\
-    \    int z = 1;\n    while(z < n + m - 1) z *= 2;\n    assert((mint::mod() - 1)\
-    \ % z == 0);\n    if(min(n, m) <= 60) return convolution_naive(a, b);\n    a.resize(z);\n\
-    \    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n    for(int i = 0; i\
-    \ < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n + m - 1);\n \
-    \   const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m - 1; ++i) a[i]\
-    \ *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_ll.hpp\"\nvector<long\
-    \ long> convolution_ll(const vector<long long>& a, const vector<long long>& b)\
-    \ {\n    const int n = (int)a.size(), m = (int)b.size();\n    if(!n or !m) return\
-    \ {};\n    static constexpr unsigned long long MOD1 = 754974721;\n    static constexpr\
-    \ unsigned long long MOD2 = 167772161;\n    static constexpr unsigned long long\
-    \ MOD3 = 469762049;\n    static constexpr unsigned long long M2M3 = MOD2 * MOD3;\n\
-    \    static constexpr unsigned long long M1M3 = MOD1 * MOD3;\n    static constexpr\
-    \ unsigned long long M1M2 = MOD1 * MOD2;\n    static constexpr unsigned long long\
-    \ M1M2M3 = MOD1 * MOD2 * MOD3;\n    static constexpr unsigned long long i1 = 190329765;\n\
-    \    static constexpr unsigned long long i2 = 58587104;\n    static constexpr\
-    \ unsigned long long i3 = 187290749;\n    static constexpr int MAX_AB_BIT = 24;\n\
-    \    assert(n + m - 1 <= (1 << MAX_AB_BIT));\n    using mint1 = StaticModint<MOD1>;\n\
-    \    using mint2 = StaticModint<MOD2>;\n    using mint3 = StaticModint<MOD3>;\n\
-    \    vector<mint1> a1(n), b1(m);\n    vector<mint2> a2(n), b2(m);\n    vector<mint3>\
-    \ a3(n), b3(m);\n    for(int i = 0; i < n; ++i) a1[i] = a[i];\n    for(int i =\
-    \ 0; i < n; ++i) a2[i] = a[i];\n    for(int i = 0; i < n; ++i) a3[i] = a[i];\n\
-    \    for(int i = 0; i < m; ++i) b1[i] = b[i];\n    for(int i = 0; i < m; ++i)\
-    \ b2[i] = b[i];\n    for(int i = 0; i < m; ++i) b3[i] = b[i];\n    vector<mint1>\
-    \ c1 = convolution<mint1>(a1, b1);\n    vector<mint2> c2 = convolution<mint2>(a2,\
-    \ b2);\n    vector<mint3> c3 = convolution<mint3>(a3, b3);\n    vector<long long>\
-    \ c(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i) {\n        unsigned long\
-    \ long x = 0;\n        x += (c1[i].val() * i1) % MOD1 * M2M3;\n        x += (c2[i].val()\
-    \ * i2) % MOD2 * M1M3;\n        x += (c3[i].val() * i3) % MOD3 * M1M2;\n     \
-    \   long long diff = c1[i].val() - ((long long)x % (long long)MOD1 + (long long)MOD1)\
-    \ % (long long)MOD1;\n        if(diff < 0) diff += MOD1;\n        static constexpr\
-    \ unsigned long long offset[5] = {0, 0, M1M2M3, 2 * M1M2M3, 3 * M1M2M3};\n   \
-    \     x -= offset[diff % 5];\n        c[i] = x;\n    }\n    return c;\n}\n#line\
-    \ 4 \"src/string/wildcard_pattern_matching.hpp\"\nvector<bool> wildcard_pattrn_matching(const\
-    \ string& t, const string& p) {\n    int n = (int)t.size(), m = (int)p.size();\n\
-    \    if(n < m) return {};\n    vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m),\
-    \ p3(m);\n    for(int i = 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n\
-    \        t1[i] = t[i] - 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i]\
-    \ = t2[i] * t1[i];\n    }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] ==\
-    \ '*') continue;\n        p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 -\
-    \ i] = p1[m - 1 - i] * p1[m - 1 - i];\n        p3[m - 1 - i] = p2[m - 1 - i] *\
-    \ p1[m - 1 - i];\n    }\n    vector<long long> c31 = convolution_ll(t3, p1), c22\
-    \ = convolution_ll(t2, p2), c13 = convolution_ll(t1, p3);\n    vector<bool> res(n\
-    \ - m + 1);\n    for(int i = 0; i < n - m + 1; ++i) {\n        if(c31[i + m -\
-    \ 1] - 2 * c22[i + m - 1] + c13[i + m - 1] == 0) {\n            res[i] = true;\n\
-    \        }\n    }\n    return res;\n}\n#line 4 \"verify/library_checker/string/wildcard_pattern_matching.test.cpp\"\
+    };\ntemplate <typename mint>\nvoid butterfly(vector<mint>& a) {\n    const int\
+    \ n = (int)a.size();\n    const int h = __builtin_ctz((unsigned int)n);\n    static\
+    \ const FFT_Info<mint> info;\n    int len = 0;\n    while(len < h) {\n       \
+    \ if(h - len == 1) {\n            const int p = 1 << (h - len - 1);\n        \
+    \    mint rot = 1;\n            for(int s = 0; s < (1 << len); ++s) {\n      \
+    \          const int offset = s << (h - len);\n                for(int i = 0;\
+    \ i < p; ++i) {\n                    const auto l = a[i + offset];\n         \
+    \           const auto r = a[i + offset + p] * rot;\n                    a[i +\
+    \ offset] = l + r;\n                    a[i + offset + p] = l - r;\n         \
+    \       }\n                if(s + 1 != (1 << len)) rot *= info.rate2[__builtin_ctz(~(unsigned\
+    \ int)(s))];\n            }\n            ++len;\n        } else {\n          \
+    \  const int p = 1 << (h - len - 2);\n            mint rot = 1, imag = info.root[2];\n\
+    \            for(int s = 0; s < (1 << len); ++s) {\n                const mint\
+    \ rot2 = rot * rot;\n                const mint rot3 = rot2 * rot;\n         \
+    \       const int offset = s << (h - len);\n                for(int i = 0; i <\
+    \ p; ++i) {\n                    const auto mod2 = 1ULL * mint::mod() * mint::mod();\n\
+    \                    const auto a0 = 1ULL * a[i + offset].val();\n           \
+    \         const auto a1 = 1ULL * a[i + offset + p].val() * rot.val();\n      \
+    \              const auto a2 = 1ULL * a[i + offset + 2 * p].val() * rot2.val();\n\
+    \                    const auto a3 = 1ULL * a[i + offset + 3 * p].val() * rot3.val();\n\
+    \                    const auto a1na3imag = 1ULL * mint(a1 + mod2 - a3).val()\
+    \ * imag.val();\n                    const auto na2 = mod2 - a2;\n           \
+    \         a[i + offset] = a0 + a2 + a1 + a3;\n                    a[i + offset\
+    \ + 1 * p] = a0 + a2 + (2 * mod2 - (a1 + a3));\n                    a[i + offset\
+    \ + 2 * p] = a0 + na2 + a1na3imag;\n                    a[i + offset + 3 * p]\
+    \ = a0 + na2 + (mod2 - a1na3imag);\n                }\n                if(s +\
+    \ 1 != (1 << len)) rot *= info.rate3[__builtin_ctz(~(unsigned int)(s))];\n   \
+    \         }\n            len += 2;\n        }\n    }\n}\ntemplate <typename mint>\n\
+    void butterfly_inv(vector<mint>& a) {\n    const int n = (int)a.size();\n    const\
+    \ int h = __builtin_ctz((unsigned int)n);\n    static const FFT_Info<mint> info;\n\
+    \    int len = h;\n    while(len) {\n        if(len == 1) {\n            const\
+    \ int p = 1 << (h - len);\n            mint irot = 1;\n            for(int s =\
+    \ 0; s < (1 << (len - 1)); ++s) {\n                const int offset = s << (h\
+    \ - len + 1);\n                for(int i = 0; i < p; ++i) {\n                \
+    \    const auto l = a[i + offset];\n                    const auto r = a[i + offset\
+    \ + p];\n                    a[i + offset] = l + r;\n                    a[i +\
+    \ offset + p] = (unsigned long long)(mint::mod() + l.val() - r.val()) * irot.val();\n\
+    \                }\n                if(s + 1 != (1 << (len - 1))) irot *= info.irate2[__builtin_ctz(~(unsigned\
+    \ int)(s))];\n            }\n            --len;\n        } else {\n          \
+    \  const int p = 1 << (h - len);\n            mint irot = 1, iimag = info.iroot[2];\n\
+    \            for(int s = 0; s < (1 << (len - 2)); ++s) {\n                const\
+    \ mint irot2 = irot * irot;\n                const mint irot3 = irot2 * irot;\n\
+    \                const int offset = s << (h - len + 2);\n                for(int\
+    \ i = 0; i < p; ++i) {\n                    const auto a0 = 1ULL * a[i + offset\
+    \ + 0 * p].val();\n                    const auto a1 = 1ULL * a[i + offset + 1\
+    \ * p].val();\n                    const auto a2 = 1ULL * a[i + offset + 2 * p].val();\n\
+    \                    const auto a3 = 1ULL * a[i + offset + 3 * p].val();\n   \
+    \                 const auto a2na3iimag = 1ULL * mint((mint::mod() + a2 - a3)\
+    \ * iimag.val()).val();\n                    a[i + offset] = a0 + a1 + a2 + a3;\n\
+    \                    a[i + offset + 1 * p] = (a0 + (mint::mod() - a1) + a2na3iimag)\
+    \ * irot.val();\n                    a[i + offset + 2 * p] = (a0 + a1 + (mint::mod()\
+    \ - a2) + (mint::mod() - a3)) * irot2.val();\n                    a[i + offset\
+    \ + 3 * p] = (a0 + (mint::mod() - a1) + (mint::mod() - a2na3iimag)) * irot3.val();\n\
+    \                }\n                if(s + 1 != (1 << (len - 2))) irot *= info.irate3[__builtin_ctz(~(unsigned\
+    \ int)(s))];\n            }\n            len -= 2;\n        }\n    }\n}\ntemplate\
+    \ <typename mint>\nvector<mint> convolution_naive(const vector<mint>& a, const\
+    \ vector<mint>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n  \
+    \  vector<mint> res(n + m - 1);\n    if(n < m) {\n        for(int j = 0; j < m;\
+    \ ++j) {\n            for(int i = 0; i < n; ++i) {\n                res[i + j]\
+    \ += a[i] * b[j];\n            }\n        }\n    } else {\n        for(int i =\
+    \ 0; i < n; ++i) {\n            for(int j = 0; j < m; ++j) {\n               \
+    \ res[i + j] += a[i] * b[j];\n            }\n        }\n    }\n    return res;\n\
+    }\ntemplate <typename mint>\nvector<mint> convolution(vector<mint> a, vector<mint>\
+    \ b) {\n    const int n = (int)a.size(), m = (int)b.size();\n    if(n == 0 or\
+    \ m == 0) return {};\n    int z = 1;\n    while(z < n + m - 1) z *= 2;\n    assert((mint::mod()\
+    \ - 1) % z == 0);\n    if(min(n, m) <= 60) return convolution_naive(a, b);\n \
+    \   a.resize(z);\n    b.resize(z);\n    butterfly(a);\n    butterfly(b);\n   \
+    \ for(int i = 0; i < z; ++i) a[i] *= b[i];\n    butterfly_inv(a);\n    a.resize(n\
+    \ + m - 1);\n    const mint iz = mint(z).inv();\n    for(int i = 0; i < n + m\
+    \ - 1; ++i) a[i] *= iz;\n    return a;\n}\n#line 5 \"src/convolution/convolution_ll.hpp\"\
+    \nvector<long long> convolution_ll(const vector<long long>& a, const vector<long\
+    \ long>& b) {\n    const int n = (int)a.size(), m = (int)b.size();\n    if(!n\
+    \ or !m) return {};\n    static constexpr unsigned long long MOD1 = 754974721;\n\
+    \    static constexpr unsigned long long MOD2 = 167772161;\n    static constexpr\
+    \ unsigned long long MOD3 = 469762049;\n    static constexpr unsigned long long\
+    \ M2M3 = MOD2 * MOD3;\n    static constexpr unsigned long long M1M3 = MOD1 * MOD3;\n\
+    \    static constexpr unsigned long long M1M2 = MOD1 * MOD2;\n    static constexpr\
+    \ unsigned long long M1M2M3 = MOD1 * MOD2 * MOD3;\n    static constexpr unsigned\
+    \ long long i1 = 190329765;\n    static constexpr unsigned long long i2 = 58587104;\n\
+    \    static constexpr unsigned long long i3 = 187290749;\n    static constexpr\
+    \ int MAX_AB_BIT = 24;\n    assert(n + m - 1 <= (1 << MAX_AB_BIT));\n    using\
+    \ mint1 = StaticModint<MOD1>;\n    using mint2 = StaticModint<MOD2>;\n    using\
+    \ mint3 = StaticModint<MOD3>;\n    vector<mint1> a1(n), b1(m);\n    vector<mint2>\
+    \ a2(n), b2(m);\n    vector<mint3> a3(n), b3(m);\n    for(int i = 0; i < n; ++i)\
+    \ a1[i] = a[i];\n    for(int i = 0; i < n; ++i) a2[i] = a[i];\n    for(int i =\
+    \ 0; i < n; ++i) a3[i] = a[i];\n    for(int i = 0; i < m; ++i) b1[i] = b[i];\n\
+    \    for(int i = 0; i < m; ++i) b2[i] = b[i];\n    for(int i = 0; i < m; ++i)\
+    \ b3[i] = b[i];\n    vector<mint1> c1 = convolution<mint1>(a1, b1);\n    vector<mint2>\
+    \ c2 = convolution<mint2>(a2, b2);\n    vector<mint3> c3 = convolution<mint3>(a3,\
+    \ b3);\n    vector<long long> c(n + m - 1);\n    for(int i = 0; i < n + m - 1;\
+    \ ++i) {\n        unsigned long long x = 0;\n        x += (c1[i].val() * i1) %\
+    \ MOD1 * M2M3;\n        x += (c2[i].val() * i2) % MOD2 * M1M3;\n        x += (c3[i].val()\
+    \ * i3) % MOD3 * M1M2;\n        long long diff = c1[i].val() - ((long long)x %\
+    \ (long long)MOD1 + (long long)MOD1) % (long long)MOD1;\n        if(diff < 0)\
+    \ diff += MOD1;\n        static constexpr unsigned long long offset[5] = {0, 0,\
+    \ M1M2M3, 2 * M1M2M3, 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i]\
+    \ = x;\n    }\n    return c;\n}\n#line 4 \"src/string/wildcard_pattern_matching.hpp\"\
+    \nvector<bool> wildcard_pattrn_matching(const string& t, const string& p) {\n\
+    \    int n = (int)t.size(), m = (int)p.size();\n    if(n < m) return {};\n   \
+    \ vector<long long> t1(n), t2(n), t3(n), p1(m), p2(m), p3(m);\n    for(int i =\
+    \ 0; i < n; ++i) {\n        if(t[i] == '*') continue;\n        t1[i] = t[i] -\
+    \ 'a' + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] = t2[i] * t1[i];\n \
+    \   }\n    for(int i = 0; i < m; ++i) {\n        if(p[i] == '*') continue;\n \
+    \       p1[m - 1 - i] = p[i] - 'a' + 1;\n        p2[m - 1 - i] = p1[m - 1 - i]\
+    \ * p1[m - 1 - i];\n        p3[m - 1 - i] = p2[m - 1 - i] * p1[m - 1 - i];\n \
+    \   }\n    vector<long long> c31 = convolution_ll(t3, p1), c22 = convolution_ll(t2,\
+    \ p2), c13 = convolution_ll(t1, p3);\n    vector<bool> res(n - m + 1);\n    for(int\
+    \ i = 0; i < n - m + 1; ++i) {\n        if(c31[i + m - 1] - 2 * c22[i + m - 1]\
+    \ + c13[i + m - 1] == 0) {\n            res[i] = true;\n        }\n    }\n   \
+    \ return res;\n}\n#line 4 \"verify/library_checker/string/wildcard_pattern_matching.test.cpp\"\
     \nint main(void) {\n    string s, t;\n    cin >> s >> t;\n    vector<bool> ans\
     \ = wildcard_pattrn_matching(s, t);\n    rep(i, 0, (int)ans.size()) {\n      \
     \  cout << ans[i];\n    }\n    cout << '\\n';\n}\n"
@@ -253,8 +255,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 02:03:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-11-09 02:16:49+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/string/wildcard_pattern_matching.test.cpp
 layout: document

@@ -31,8 +31,8 @@ data:
     \ c = {mint(-1)};\n    mint y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n\
     \        int l = (int)c.size(), m = (int)b.size();\n        mint x = 0;\n    \
     \    for(int i = 0; i < l; ++i) x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n\
-    \        ++m;\n        if(x == mint(0)) continue;\n        mint freq = x / y;\n\
-    \        if(l < m) {\n            auto tmp = c;\n            c.insert(begin(c),\
+    \        ++m;\n        if(x == mint(0)) continue;\n        const mint freq = x\
+    \ / y;\n        if(l < m) {\n            const auto tmp = c;\n            c.insert(begin(c),\
     \ m - l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq\
     \ * b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
     \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
@@ -50,13 +50,13 @@ data:
     \ i += 2) p[i >> 1] = s[i];\n            for(int i = 0; i < (int)t.size(); i +=\
     \ 2) q[i >> 1] = t[i];\n        }\n        k >>= 1;\n    }\n    return p[0];\n\
     }\n#line 5 \"src/fps/nth_term.hpp\"\ntemplate <template <typename> typename FPS,\
-    \ typename mint>\nmint nth_term(const FPS<mint>& s, long long n) {\n    assert(n\
-    \ >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s,\
+    \ typename mint>\nmint nth_term(const FPS<mint>& s, const long long n) {\n   \
+    \ assert(n >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s,\
     \ c, n);\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./berlekamp_massey.hpp\"\
     \n#include \"./bostan_mori.hpp\"\ntemplate <template <typename> typename FPS,\
-    \ typename mint>\nmint nth_term(const FPS<mint>& s, long long n) {\n    assert(n\
-    \ >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s,\
+    \ typename mint>\nmint nth_term(const FPS<mint>& s, const long long n) {\n   \
+    \ assert(n >= 0);\n    const FPS<mint> c = berlekamp_massey(s);\n    return bostan_mori(s,\
     \ c, n);\n}"
   dependsOn:
   - src/template/template.hpp
@@ -65,7 +65,7 @@ data:
   isVerificationFile: false
   path: src/fps/nth_term.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:16:49+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/1559.test.cpp

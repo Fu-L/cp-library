@@ -31,8 +31,8 @@ data:
     \ c = {mint(-1)};\n    mint y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n\
     \        int l = (int)c.size(), m = (int)b.size();\n        mint x = 0;\n    \
     \    for(int i = 0; i < l; ++i) x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n\
-    \        ++m;\n        if(x == mint(0)) continue;\n        mint freq = x / y;\n\
-    \        if(l < m) {\n            auto tmp = c;\n            c.insert(begin(c),\
+    \        ++m;\n        if(x == mint(0)) continue;\n        const mint freq = x\
+    \ / y;\n        if(l < m) {\n            const auto tmp = c;\n            c.insert(begin(c),\
     \ m - l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq\
     \ * b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
     \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
@@ -43,8 +43,8 @@ data:
     \    mint y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n        int l =\
     \ (int)c.size(), m = (int)b.size();\n        mint x = 0;\n        for(int i =\
     \ 0; i < l; ++i) x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n    \
-    \    ++m;\n        if(x == mint(0)) continue;\n        mint freq = x / y;\n  \
-    \      if(l < m) {\n            auto tmp = c;\n            c.insert(begin(c),\
+    \    ++m;\n        if(x == mint(0)) continue;\n        const mint freq = x / y;\n\
+    \        if(l < m) {\n            const auto tmp = c;\n            c.insert(begin(c),\
     \ m - l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq\
     \ * b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
     \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
@@ -55,7 +55,7 @@ data:
   path: src/fps/berlekamp_massey.hpp
   requiredBy:
   - src/fps/nth_term.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-11-09 02:16:49+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/other/find_linear_recurrence.test.cpp
