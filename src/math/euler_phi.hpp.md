@@ -10,8 +10,8 @@ data:
     path: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
     title: verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/unit_test/math/eratosthenes_seive.test.cpp
-    title: verify/unit_test/math/eratosthenes_seive.test.cpp
+    path: verify/unit_test/math/eratosthenes_sieve.test.cpp
+    title: verify/unit_test/math/eratosthenes_sieve.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -40,7 +40,7 @@ data:
   timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/math/eratosthenes_seive.test.cpp
+  - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
 documentation_of: src/math/euler_phi.hpp
 layout: document

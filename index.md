@@ -200,8 +200,8 @@ data:
       path: src/math/divisor_multiple_transform.hpp
       title: Divisor/MultipleTransform
     - icon: ':heavy_check_mark:'
-      path: src/math/eratosthenes_seive.hpp
-      title: EratosthenesSeive
+      path: src/math/eratosthenes_sieve.hpp
+      title: EratosthenesSieve
     - icon: ':heavy_check_mark:'
       path: src/math/euler_phi.hpp
       title: euler_phi
@@ -777,8 +777,8 @@ data:
   - name: verify/unit_test/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/unit_test/math/eratosthenes_seive.test.cpp
-      title: verify/unit_test/math/eratosthenes_seive.test.cpp
+      path: verify/unit_test/math/eratosthenes_sieve.test.cpp
+      title: verify/unit_test/math/eratosthenes_sieve.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/math/lucas.test.cpp
       title: verify/unit_test/math/lucas.test.cpp

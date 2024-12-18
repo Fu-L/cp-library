@@ -148,9 +148,9 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
   - verify/unit_test/math/lucas.test.cpp
   - verify/unit_test/template/debug.test.cpp
+  - verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
 documentation_of: src/template/dynamic_modint.hpp
 layout: document
 title: DynamicModint

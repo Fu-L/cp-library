@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/eratosthenes_seive.hpp
-    title: EratosthenesSeive
+    path: src/math/eratosthenes_sieve.hpp
+    title: EratosthenesSieve
   - icon: ':heavy_check_mark:'
     path: src/math/euler_phi.hpp
     title: euler_phi
@@ -32,7 +32,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"verify/unit_test/math/eratosthenes_seive.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"verify/unit_test/math/eratosthenes_sieve.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i = (a);\
@@ -143,8 +143,8 @@ data:
     \ * (N - M) * (N + 1) / ((N - M + 1) * (N + M))) {\n                res += \"\
     (\";\n                --M;\n            } else {\n                res += \")\"\
     ;\n                --N;\n            }\n        }\n        return res;\n    }\n\
-    } rng;\n#line 3 \"src/math/eratosthenes_seive.hpp\"\nstruct EratosthenesSeive\
-    \ {\n    vector<int> primes, min_factor, moebius, euler;\n    EratosthenesSeive(const\
+    } rng;\n#line 3 \"src/math/eratosthenes_sieve.hpp\"\nstruct EratosthenesSieve\
+    \ {\n    vector<int> primes, min_factor, moebius, euler;\n    EratosthenesSieve(const\
     \ int n)\n        : primes(), min_factor(n + 1), moebius(n + 1, 1), euler(n +\
     \ 1) {\n        assert(n >= 1);\n        iota(min_factor.begin(), min_factor.end(),\
     \ 0);\n        min_factor[0] = min_factor[1] = -1;\n        iota(euler.begin(),\
@@ -171,53 +171,53 @@ data:
     \ n) {\n    assert(n >= 1);\n    if(n == 1) return 1;\n    const vector<pair<long\
     \ long, int>> p = prime_factors(n);\n    int res = 1;\n    for(const auto& it\
     \ : p) {\n        if(it.second >= 2) return 0;\n        res = -res;\n    }\n \
-    \   return res;\n}\n#line 8 \"verify/unit_test/math/eratosthenes_seive.test.cpp\"\
-    \nvoid test() {\n    EratosthenesSeive seive(10000000);\n    rep(i, 0, 10000)\
+    \   return res;\n}\n#line 8 \"verify/unit_test/math/eratosthenes_sieve.test.cpp\"\
+    \nvoid test() {\n    EratosthenesSieve sieve(10000000);\n    rep(i, 0, 10000)\
     \ {\n        int n = rng(1, 10000000);\n        if(is_prime(n)) {\n          \
-    \  assert(seive.min_factor[n] == n);\n        } else {\n            assert(seive.min_factor[n]\
-    \ != n);\n        }\n        if(is_prime(i)) {\n            assert(seive.min_factor[i]\
-    \ == i);\n        } else {\n            assert(seive.min_factor[i] != i);\n  \
-    \      }\n        assert(euler_phi(n) == seive.euler[n]);\n        assert(moebius(n)\
-    \ == seive.moebius[n]);\n    }\n    rep(i, 1, 100) {\n        if(is_prime(i))\
-    \ {\n            assert(seive.min_factor[i] == i);\n        } else {\n       \
-    \     assert(seive.min_factor[i] != i);\n        }\n        assert(euler_phi(i)\
-    \ == seive.euler[i]);\n        assert(moebius(i) == seive.moebius[i]);\n    }\n\
+    \  assert(sieve.min_factor[n] == n);\n        } else {\n            assert(sieve.min_factor[n]\
+    \ != n);\n        }\n        if(is_prime(i)) {\n            assert(sieve.min_factor[i]\
+    \ == i);\n        } else {\n            assert(sieve.min_factor[i] != i);\n  \
+    \      }\n        assert(euler_phi(n) == sieve.euler[n]);\n        assert(moebius(n)\
+    \ == sieve.moebius[n]);\n    }\n    rep(i, 1, 100) {\n        if(is_prime(i))\
+    \ {\n            assert(sieve.min_factor[i] == i);\n        } else {\n       \
+    \     assert(sieve.min_factor[i] != i);\n        }\n        assert(euler_phi(i)\
+    \ == sieve.euler[i]);\n        assert(moebius(i) == sieve.moebius[i]);\n    }\n\
     }\nint main(void) {\n    test();\n    int a, b;\n    cin >> a >> b;\n    cout\
     \ << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/math/eratosthenes_seive.hpp\"\n#include \"../../../src/math/is_prime.hpp\"\
+    ../../../src/math/eratosthenes_sieve.hpp\"\n#include \"../../../src/math/is_prime.hpp\"\
     \n#include \"../../../src/math/euler_phi.hpp\"\n#include \"../../../src/math/moebius.hpp\"\
-    \nvoid test() {\n    EratosthenesSeive seive(10000000);\n    rep(i, 0, 10000)\
+    \nvoid test() {\n    EratosthenesSieve sieve(10000000);\n    rep(i, 0, 10000)\
     \ {\n        int n = rng(1, 10000000);\n        if(is_prime(n)) {\n          \
-    \  assert(seive.min_factor[n] == n);\n        } else {\n            assert(seive.min_factor[n]\
-    \ != n);\n        }\n        if(is_prime(i)) {\n            assert(seive.min_factor[i]\
-    \ == i);\n        } else {\n            assert(seive.min_factor[i] != i);\n  \
-    \      }\n        assert(euler_phi(n) == seive.euler[n]);\n        assert(moebius(n)\
-    \ == seive.moebius[n]);\n    }\n    rep(i, 1, 100) {\n        if(is_prime(i))\
-    \ {\n            assert(seive.min_factor[i] == i);\n        } else {\n       \
-    \     assert(seive.min_factor[i] != i);\n        }\n        assert(euler_phi(i)\
-    \ == seive.euler[i]);\n        assert(moebius(i) == seive.moebius[i]);\n    }\n\
+    \  assert(sieve.min_factor[n] == n);\n        } else {\n            assert(sieve.min_factor[n]\
+    \ != n);\n        }\n        if(is_prime(i)) {\n            assert(sieve.min_factor[i]\
+    \ == i);\n        } else {\n            assert(sieve.min_factor[i] != i);\n  \
+    \      }\n        assert(euler_phi(n) == sieve.euler[n]);\n        assert(moebius(n)\
+    \ == sieve.moebius[n]);\n    }\n    rep(i, 1, 100) {\n        if(is_prime(i))\
+    \ {\n            assert(sieve.min_factor[i] == i);\n        } else {\n       \
+    \     assert(sieve.min_factor[i] != i);\n        }\n        assert(euler_phi(i)\
+    \ == sieve.euler[i]);\n        assert(moebius(i) == sieve.moebius[i]);\n    }\n\
     }\nint main(void) {\n    test();\n    int a, b;\n    cin >> a >> b;\n    cout\
     \ << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/random_number_generator.hpp
-  - src/math/eratosthenes_seive.hpp
+  - src/math/eratosthenes_sieve.hpp
   - src/math/is_prime.hpp
   - src/math/euler_phi.hpp
   - src/math/moebius.hpp
   - src/math/prime_factors.hpp
   isVerificationFile: true
-  path: verify/unit_test/math/eratosthenes_seive.test.cpp
+  path: verify/unit_test/math/eratosthenes_sieve.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 02:03:28+09:00'
+  timestamp: '2024-12-18 16:39:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/unit_test/math/eratosthenes_seive.test.cpp
+documentation_of: verify/unit_test/math/eratosthenes_sieve.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/unit_test/math/eratosthenes_seive.test.cpp
-- /verify/verify/unit_test/math/eratosthenes_seive.test.cpp.html
-title: verify/unit_test/math/eratosthenes_seive.test.cpp
+- /verify/verify/unit_test/math/eratosthenes_sieve.test.cpp
+- /verify/verify/unit_test/math/eratosthenes_sieve.test.cpp.html
+title: verify/unit_test/math/eratosthenes_sieve.test.cpp
 ---

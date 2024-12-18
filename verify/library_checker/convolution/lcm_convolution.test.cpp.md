@@ -8,8 +8,8 @@ data:
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
   - icon: ':heavy_check_mark:'
-    path: src/math/eratosthenes_seive.hpp
-    title: EratosthenesSeive
+    path: src/math/eratosthenes_sieve.hpp
+    title: EratosthenesSieve
   - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
@@ -86,8 +86,8 @@ data:
     \ -= m1 * u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n\
     \        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
-    #line 3 \"src/math/eratosthenes_seive.hpp\"\nstruct EratosthenesSeive {\n    vector<int>\
-    \ primes, min_factor, moebius, euler;\n    EratosthenesSeive(const int n)\n  \
+    #line 3 \"src/math/eratosthenes_sieve.hpp\"\nstruct EratosthenesSieve {\n    vector<int>\
+    \ primes, min_factor, moebius, euler;\n    EratosthenesSieve(const int n)\n  \
     \      : primes(), min_factor(n + 1), moebius(n + 1, 1), euler(n + 1) {\n    \
     \    assert(n >= 1);\n        iota(min_factor.begin(), min_factor.end(), 0);\n\
     \        min_factor[0] = min_factor[1] = -1;\n        iota(euler.begin(), euler.end(),\
@@ -99,18 +99,18 @@ data:
     \ = -moebius[j];\n                euler[j] = euler[j] / i * (i - 1);\n       \
     \     }\n        }\n    }\n};\n#line 4 \"src/math/divisor_multiple_transform.hpp\"\
     \nstruct DivisorTransform {\n    template <typename T>\n    static void zeta_transform(vector<T>&\
-    \ f) {\n        const int N = f.size() - 1;\n        const auto sieve = EratosthenesSeive(N).primes;\n\
+    \ f) {\n        const int N = f.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
     \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
     \ ++k) f[k * p] += f[k];\n        }\n    }\n    template <typename T>\n    static\
     \ void moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n\
-    \        const auto sieve = EratosthenesSeive(N).primes;\n        for(const auto&\
+    \        const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
     \ p : sieve) {\n            for(int k = N / p; k > 0; --k) g[k * p] -= g[k];\n\
     \        }\n    }\n};\nstruct MultipleTransform {\n    template <typename T>\n\
     \    static void zeta_transform(vector<T>& f) {\n        const int N = f.size()\
-    \ - 1;\n        const auto sieve = EratosthenesSeive(N).primes;\n        for(const\
+    \ - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n        for(const\
     \ auto& p : sieve) {\n            for(int k = N / p; k > 0; --k) f[k] += f[k *\
     \ p];\n        }\n    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
-    \ g) {\n        const int N = g.size() - 1;\n        const auto sieve = EratosthenesSeive(N).primes;\n\
+    \ g) {\n        const int N = g.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
     \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
     \ ++k) g[k] -= g[k * p];\n        }\n    }\n};\n#line 4 \"src/convolution/lcm_convolution.hpp\"\
     \ntemplate <typename mint>\nvector<mint> lcm_convolution(const vector<mint>& a,\
@@ -134,11 +134,11 @@ data:
   - src/template/static_modint.hpp
   - src/convolution/lcm_convolution.hpp
   - src/math/divisor_multiple_transform.hpp
-  - src/math/eratosthenes_seive.hpp
+  - src/math/eratosthenes_sieve.hpp
   isVerificationFile: true
   path: verify/library_checker/convolution/lcm_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-12-18 16:39:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/lcm_convolution.test.cpp
