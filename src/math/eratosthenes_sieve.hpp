@@ -1,8 +1,8 @@
 #pragma once
 #include "../template/template.hpp"
-struct EratosthenesSeive {
+struct EratosthenesSieve {
     vector<int> primes, min_factor, moebius, euler;
-    EratosthenesSeive(const int n)
+    EratosthenesSieve(const int n)
         : primes(), min_factor(n + 1), moebius(n + 1, 1), euler(n + 1) {
         assert(n >= 1);
         iota(min_factor.begin(), min_factor.end(), 0);
