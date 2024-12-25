@@ -149,7 +149,7 @@ data:
     \        res += dbg::to_string(v[i]);\n    }\n    res += \"}\";\n    return res;\n\
     }\ntemplate <size_t N>\nstring to_string(bitset<N> v) {\n    string res = \"\"\
     ;\n    for(size_t i = 0; i < N; i++) {\n        res += static_cast<char>('0' +\
-    \ v[i]);\n    }\n    return res;\n}\ntemplate <typename A, enable_if_t<!is_arithmetic<A>::value,\
+    \ v[N - 1 - i]);\n    }\n    return res;\n}\ntemplate <typename A, enable_if_t<!is_arithmetic<A>::value,\
     \ nullptr_t> = nullptr>\nstring to_string(A v) {\n    bool first = true;\n   \
     \ string res = \"{\";\n    for(const auto& x : v) {\n        if(!first) {\n  \
     \          res += \", \";\n        }\n        first = false;\n        res += dbg::to_string(x);\n\
@@ -184,7 +184,7 @@ data:
     \        res += dbg::to_string(v[i]);\n    }\n    res += \"}\";\n    return res;\n\
     }\ntemplate <size_t N>\nstring to_string(bitset<N> v) {\n    string res = \"\"\
     ;\n    for(size_t i = 0; i < N; i++) {\n        res += static_cast<char>('0' +\
-    \ v[i]);\n    }\n    return res;\n}\ntemplate <typename A, enable_if_t<!is_arithmetic<A>::value,\
+    \ v[N - 1 - i]);\n    }\n    return res;\n}\ntemplate <typename A, enable_if_t<!is_arithmetic<A>::value,\
     \ nullptr_t> = nullptr>\nstring to_string(A v) {\n    bool first = true;\n   \
     \ string res = \"{\";\n    for(const auto& x : v) {\n        if(!first) {\n  \
     \          res += \", \";\n        }\n        first = false;\n        res += dbg::to_string(x);\n\
@@ -209,7 +209,7 @@ data:
   isVerificationFile: false
   path: src/template/debug.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-12-25 20:22:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
