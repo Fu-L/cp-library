@@ -21,19 +21,21 @@ data:
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/xor_base.hpp\"\
     \ntemplate <typename T>\nvector<T> xor_base(const vector<T>& a) {\n    vector<T>\
-    \ base;\n    for(T v : a) {\n        for(const T e : base) {\n            v =\
-    \ min(v, v xor e);\n        }\n        if(v > 0) base.emplace_back(v);\n    }\n\
+    \ base;\n    for(T v : a) {\n        for(const T& e : base) {\n            if((v\
+    \ xor e) < v) v ^= e;\n        }\n        for(T& e : base) {\n            if((v\
+    \ xor e) < e) e ^= v;\n        }\n        if(v) base.emplace_back(v);\n    }\n\
     \    return base;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     vector<T> xor_base(const vector<T>& a) {\n    vector<T> base;\n    for(T v : a)\
-    \ {\n        for(const T e : base) {\n            v = min(v, v xor e);\n     \
-    \   }\n        if(v > 0) base.emplace_back(v);\n    }\n    return base;\n}"
+    \ {\n        for(const T& e : base) {\n            if((v xor e) < v) v ^= e;\n\
+    \        }\n        for(T& e : base) {\n            if((v xor e) < e) e ^= v;\n\
+    \        }\n        if(v) base.emplace_back(v);\n    }\n    return base;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/xor_base.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2024-12-29 15:24:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/184.test.cpp
@@ -48,9 +50,7 @@ title: xor_base
 vector<T> xor_base(vector<T> a)
 ```
 
-長さ $n$ の数列 $a$ の $\mathrm{xor}$ 基底を返します．
-
-基底を取り出すだけであり，基本形になっているとは限らないことに注意してください．
+長さ $n$ の数列 $a$ の $\mathrm{xor}$ 基底を基本形で返します．
 
 **計算量**
 
