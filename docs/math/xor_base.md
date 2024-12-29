@@ -9,9 +9,7 @@ documentation_of: ../../src/math/xor_base.hpp
 vector<T> xor_base(vector<T> a)
 ```
 
-長さ $n$ の数列 $a$ の $\mathrm{xor}$ 基底を返します．
-
-基底を取り出すだけであり，基本形になっているとは限らないことに注意してください．
+長さ $n$ の数列 $a$ の $\mathrm{xor}$ 基底を基本形で返します．
 
 **計算量**
 
