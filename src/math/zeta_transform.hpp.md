@@ -55,13 +55,13 @@ data:
   isVerificationFile: false
   path: src/math/zeta_transform.hpp
   requiredBy:
-  - src/convolution/or_convolution.hpp
   - src/convolution/and_convolution.hpp
+  - src/convolution/or_convolution.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
+  - verify/unit_test/convolution/or_convolution.test.cpp
 documentation_of: src/math/zeta_transform.hpp
 layout: document
 title: zeta_transform
