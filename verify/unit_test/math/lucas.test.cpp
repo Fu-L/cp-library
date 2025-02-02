@@ -7,17 +7,28 @@
 using mint = modint;
 void test() {
     static Lucas<mint> binom;
-    int n = rng(1, 5000000), k = rng(0, k);
+    int n = rng(1, 200000), k = rng(0, n);
     mint ans = 1;
+    int cnt = 0;
     rep(i, 1, k + 1) {
-        ans *= (n - i) / i;
+        int p = n - (i - 1), q = i;
+        while(p % mint::mod() == 0) {
+            cnt++;
+            p /= mint::mod();
+        }
+        while(q % mint::mod() == 0) {
+            cnt--;
+            q /= mint::mod();
+        }
+        ans *= mint(p) / q;
     }
+    if(cnt > 0) ans = 0;
     assert(binom(n, k).val() == ans.val());
 }
 int main(void) {
     int p = 1;
     while(!miller_rabin(p)) {
-        p = rng(2, 1e8);
+        p = rng(2, 200000);
     }
     mint::set_mod(p);
     constexpr int test_num = 1000;

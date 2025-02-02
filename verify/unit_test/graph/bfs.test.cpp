@@ -5,7 +5,7 @@
 #include "../../../src/graph/bfs.hpp"
 #include "../../../src/graph/dijkstra.hpp"
 void undirected() {
-    int n = rng(1, 200000), m = rng(1, min(200000ll, 1ll * n * (n - 1) / 2));
+    int n = rng(1, 200000), m = rng(1, (int)min(200000ll, 1ll * n * (n - 1) / 2));
     auto [u, v] = rng.graph(n, m, false);
     Graph<int> g(n);
     rep(i, 0, m) {
@@ -17,7 +17,7 @@ void undirected() {
     }
 }
 void directed() {
-    int n = rng(1, 200000), m = rng(1, min(200000ll, 1ll * n * (n - 1) / 2));
+    int n = rng(1, 200000), m = rng(1, (int)min(200000ll, 1ll * n * (n - 1) / 2));
     auto [u, v] = rng.graph(n, m, false);
     Graph<int> g(n);
     rep(i, 0, m) {
