@@ -4,13 +4,13 @@ template <typename S, auto op, auto e>
 struct SparseTable {
     SparseTable(const vector<S>& v)
         : n((int)v.size()) {
-        int b = 1;
-        while((1 << b) <= n) ++b;
-        table.push_back(v);
+        const int b = 32 - __builtin_clz(n);
+        table.assign(b, vector<S>(n, e()));
+        table[0] = v;
         for(int i = 1; i < b; ++i) {
-            table.push_back(vector<S>(n, e()));
-            for(int j = 0; j + (1 << i) <= n; ++j) {
-                table[i][j] = op(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
+            const int w = 1 << (i - 1);
+            for(int j = 0; j + w * 2 <= n; ++j) {
+                table[i][j] = op(table[i - 1][j], table[i - 1][j + w]);
             }
         }
     }
