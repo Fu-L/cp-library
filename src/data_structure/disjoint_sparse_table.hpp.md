@@ -1,0 +1,136 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: src/template/template.hpp
+    title: template
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/static_range_sum.test.cpp
+    title: verify/library_checker/data_structure/static_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/static_rmq_2.test.cpp
+    title: verify/library_checker/data_structure/static_rmq_2.test.cpp
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    links: []
+  bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
+    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
+    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
+    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/disjoint_sparse_table.hpp\"\
+    \ntemplate <typename S, auto op, auto e>\nstruct DisjointSparseTable {\n    DisjointSparseTable(const\
+    \ vector<S>& v)\n        : n((int)v.size() + 2) {\n        const int b = 32 -\
+    \ __builtin_clz(n - 1);\n        table.assign(b, vector<S>(n, e()));\n       \
+    \ for(int k = 1; k < b; ++k) {\n            const int w = (1 << k);\n        \
+    \    for(int i = w; i < n; i += w * 2) {\n                for(int j = i - 1; j\
+    \ > i - w; --j) {\n                    table[k][j - 1] = op(table[k][j], v[j -\
+    \ 1]);\n                }\n                const int m = min(i + w - 1, n - 1);\n\
+    \                for(int j = i; j < m; ++j) {\n                    table[k][j\
+    \ + 1] = op(table[k][j], v[j - 1]);\n                }\n            }\n      \
+    \  }\n    }\n    S prod(const int l, int r) const {\n        assert(0 <= l and\
+    \ l <= r and r <= n);\n        ++r;\n        const auto& s = table[31 - __builtin_clz(l\
+    \ xor r)];\n        return op(s[l], s[r]);\n    }\n\n   private:\n    int n;\n\
+    \    vector<vector<S>> table;\n};\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
+    \ auto op, auto e>\nstruct DisjointSparseTable {\n    DisjointSparseTable(const\
+    \ vector<S>& v)\n        : n((int)v.size() + 2) {\n        const int b = 32 -\
+    \ __builtin_clz(n - 1);\n        table.assign(b, vector<S>(n, e()));\n       \
+    \ for(int k = 1; k < b; ++k) {\n            const int w = (1 << k);\n        \
+    \    for(int i = w; i < n; i += w * 2) {\n                for(int j = i - 1; j\
+    \ > i - w; --j) {\n                    table[k][j - 1] = op(table[k][j], v[j -\
+    \ 1]);\n                }\n                const int m = min(i + w - 1, n - 1);\n\
+    \                for(int j = i; j < m; ++j) {\n                    table[k][j\
+    \ + 1] = op(table[k][j], v[j - 1]);\n                }\n            }\n      \
+    \  }\n    }\n    S prod(const int l, int r) const {\n        assert(0 <= l and\
+    \ l <= r and r <= n);\n        ++r;\n        const auto& s = table[31 - __builtin_clz(l\
+    \ xor r)];\n        return op(s[l], s[r]);\n    }\n\n   private:\n    int n;\n\
+    \    vector<vector<S>> table;\n};"
+  dependsOn:
+  - src/template/template.hpp
+  isVerificationFile: false
+  path: src/data_structure/disjoint_sparse_table.hpp
+  requiredBy: []
+  timestamp: '2025-02-05 15:45:56+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/library_checker/data_structure/static_range_sum.test.cpp
+  - verify/library_checker/data_structure/static_rmq_2.test.cpp
+documentation_of: src/data_structure/disjoint_sparse_table.hpp
+layout: document
+title: DisjointSparseTable
+---
+
+# DisjointSparseTable
+
+モノイド，つまり
+
+- 結合則: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for all $a, b, c \in S$
+- 単位元の存在: $a \cdot e = e \cdot a = a$ for all $a \in S$
+
+を満たす代数構造に対し使用できるデータ構造です．
+
+長さ $N$ の $S$ の配列に対し，
+
+- 区間の要素の総積の取得
+
+を $O(1)$ で行うことができます．
+
+ただし，これは二項演算 `op` と単位元取得 `e` が定数時間で動くと仮定したときの計算量です．<br>
+これらが $O(f(n))$ かかる場合は，すべての計算量が $O(f(n))$ 倍となります．
+
+また，要素を更新することはできません．
+
+## コンストラクタ
+
+```cpp
+DisjointSparseTable<S, op, e> st(vector<S> v)
+```
+
+- 型 `S`
+- 二項演算 `S op(S a, S b)`
+- 単位元 `S e()`
+
+を定義する必要があります．
+
+例として，Range Minimum Queryなら，
+
+```cpp
+int op(int a, int b) {
+    return min(a, b);
+}
+int e() {
+    return (int)1e9;
+}
+SparseTable<int, op, e> st(v);
+```
+
+のようになります．
+
+- 長さ `n = ssize(v)` の数列 `a` を作ります．<br>
+`v` の内容が初期値となります．
+
+**計算量**
+
+- $O(n \log n)$
+
+## prod
+
+```cpp
+S st.prod(int l, int r)
+```
+
+`op(a[l], a[l + 1], ..., a[r - 1])` を，モノイドの性質を満たしていると仮定して返します．<br>
+$l = r$ のときは `e()` を返します．
+
+**制約**
+
+- $0 \leq l \leq r \leq n$
+
+**計算量**
+
+- $O(1)$

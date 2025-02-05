@@ -36,6 +36,9 @@ data:
     path: src/data_structure/cumulative_sum_2d.hpp
     title: CumulativeSum2D
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/disjoint_sparse_table.hpp
+    title: DisjointSparseTable
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/dynamic_li_chao_tree.hpp
     title: DynamicLiChaoTree
   - icon: ':heavy_check_mark:'
@@ -532,8 +535,14 @@ data:
     path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/static_range_sum.test.cpp
+    title: verify/library_checker/data_structure/static_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rmq.test.cpp
     title: verify/library_checker/data_structure/static_rmq.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/static_rmq_2.test.cpp
+    title: verify/library_checker/data_structure/static_rmq_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
@@ -834,6 +843,7 @@ data:
   - src/data_structure/cumulative_sum_2d.hpp
   - src/data_structure/fenwick_tree.hpp
   - src/data_structure/slide_window_aggregation.hpp
+  - src/data_structure/disjoint_sparse_table.hpp
   - src/data_structure/segment_set.hpp
   - src/data_structure/slide_window_aggregation_deque.hpp
   - src/data_structure/fenwick_tree_2d.hpp
@@ -896,8 +906,10 @@ data:
   - verify/library_checker/data_structure/range_affine_point_get.test.cpp
   - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/static_range_sum.test.cpp
   - verify/library_checker/data_structure/static_range_frequency.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/static_rmq_2.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp
   - verify/library_checker/data_structure/range_kth_smallest.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp

@@ -39,6 +39,9 @@ data:
       path: src/data_structure/cumulative_sum_2d.hpp
       title: CumulativeSum2D
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/disjoint_sparse_table.hpp
+      title: DisjointSparseTable
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/dynamic_li_chao_tree.hpp
       title: DynamicLiChaoTree
     - icon: ':heavy_check_mark:'
@@ -577,8 +580,14 @@ data:
       path: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
       title: verify/library_checker/data_structure/static_range_inversions_query.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/static_range_sum.test.cpp
+      title: verify/library_checker/data_structure/static_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/static_rmq.test.cpp
       title: verify/library_checker/data_structure/static_rmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/static_rmq_2.test.cpp
+      title: verify/library_checker/data_structure/static_rmq_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/unionfind.test.cpp
       title: verify/library_checker/data_structure/unionfind.test.cpp

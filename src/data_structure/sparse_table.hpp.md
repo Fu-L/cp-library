@@ -21,32 +21,32 @@ data:
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/sparse_table.hpp\"\
     \ntemplate <typename S, auto op, auto e>\nstruct SparseTable {\n    SparseTable(const\
-    \ vector<S>& v)\n        : n((int)v.size()) {\n        int b = 1;\n        while((1\
-    \ << b) <= n) ++b;\n        table.push_back(v);\n        for(int i = 1; i < b;\
-    \ ++i) {\n            table.push_back(vector<S>(n, e()));\n            for(int\
-    \ j = 0; j + (1 << i) <= n; ++j) {\n                table[i][j] = op(table[i -\
-    \ 1][j], table[i - 1][j + (1 << (i - 1))]);\n            }\n        }\n    }\n\
-    \    S prod(const int l, const int r) const {\n        assert(0 <= l and l <=\
-    \ r and r <= n);\n        if(l == r) return e();\n        const int b = 31 - __builtin_clz(r\
-    \ - l);\n        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n  \
-    \ private:\n    int n;\n    vector<vector<S>> table;\n};\n"
+    \ vector<S>& v)\n        : n((int)v.size()) {\n        const int b = 32 - __builtin_clz(n);\n\
+    \        table.assign(b, vector<S>(n, e()));\n        table[0] = v;\n        for(int\
+    \ i = 1; i < b; ++i) {\n            const int w = 1 << (i - 1);\n            for(int\
+    \ j = 0; j + w * 2 <= n; ++j) {\n                table[i][j] = op(table[i - 1][j],\
+    \ table[i - 1][j + w]);\n            }\n        }\n    }\n    S prod(const int\
+    \ l, const int r) const {\n        assert(0 <= l and l <= r and r <= n);\n   \
+    \     if(l == r) return e();\n        const int b = 31 - __builtin_clz(r - l);\n\
+    \        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n\
+    \    int n;\n    vector<vector<S>> table;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SparseTable {\n    SparseTable(const vector<S>& v)\n\
-    \        : n((int)v.size()) {\n        int b = 1;\n        while((1 << b) <= n)\
-    \ ++b;\n        table.push_back(v);\n        for(int i = 1; i < b; ++i) {\n  \
-    \          table.push_back(vector<S>(n, e()));\n            for(int j = 0; j +\
-    \ (1 << i) <= n; ++j) {\n                table[i][j] = op(table[i - 1][j], table[i\
-    \ - 1][j + (1 << (i - 1))]);\n            }\n        }\n    }\n    S prod(const\
-    \ int l, const int r) const {\n        assert(0 <= l and l <= r and r <= n);\n\
-    \        if(l == r) return e();\n        const int b = 31 - __builtin_clz(r -\
-    \ l);\n        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n\
+    \        : n((int)v.size()) {\n        const int b = 32 - __builtin_clz(n);\n\
+    \        table.assign(b, vector<S>(n, e()));\n        table[0] = v;\n        for(int\
+    \ i = 1; i < b; ++i) {\n            const int w = 1 << (i - 1);\n            for(int\
+    \ j = 0; j + w * 2 <= n; ++j) {\n                table[i][j] = op(table[i - 1][j],\
+    \ table[i - 1][j + w]);\n            }\n        }\n    }\n    S prod(const int\
+    \ l, const int r) const {\n        assert(0 <= l and l <= r and r <= n);\n   \
+    \     if(l == r) return e();\n        const int b = 31 - __builtin_clz(r - l);\n\
+    \        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n\
     \    int n;\n    vector<vector<S>> table;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/sparse_table.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2025-02-05 15:45:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_rmq.test.cpp
