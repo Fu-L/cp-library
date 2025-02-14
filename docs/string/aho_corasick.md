@@ -54,10 +54,10 @@ void build()
 ## match
 
 ```cpp
-unordered_map<int, long long> match(string s)
+unordered_map<int, long long> match(string s, int pos = 0)
 ```
 
-テキスト文字列 $s$ が各パターン文字列とマッチした回数を返します．<br>
+状態 `pos` から始めて，テキスト文字列 $s$ が各パターン文字列とマッチした回数を返します．<br>
 `heavy` が `true` のときは `unordered_map` を返しますが， `false` のときは `long long` を返すので注意してください．
 
 **制約**
@@ -69,3 +69,21 @@ unordered_map<int, long long> match(string s)
 $s$ の長さを $n$ として，
 
 - $O(n)$
+
+## move
+
+```cpp
+(1) pair<long long, int> move(char c, int pos = 0)
+(2) pair<long long, int> move(string s, int pos = 0)
+```
+
+状態 `pos` から始めて，次に文字 $c$ または文字列 $s$ が与えられたときに新たにパターン文字列にマッチした個数と次状態を返します．
+
+**制約**
+
+- `build` を呼んだ後に使う．
+
+**計算量**
+
+- (1) $O(1)$
+- (2) $O(n)$ ( $n$ は $s$ の長さ)

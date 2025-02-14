@@ -47,9 +47,8 @@ struct AhoCorasick : Trie<X + 1, margin> {
             }
         }
     }
-    conditional_t<heavy, unordered_map<int, long long>, long long> match(const string& s) {
+    conditional_t<heavy, unordered_map<int, long long>, long long> match(const string& s, int pos = 0) {
         unordered_map<int, int> pos_cnt;
-        int pos = 0;
         for(const auto& c : s) {
             pos = next(pos, c - margin);
             ++pos_cnt[pos];
@@ -63,6 +62,19 @@ struct AhoCorasick : Trie<X + 1, margin> {
             }
         }
         return res;
+    }
+    pair<long long, int> move(const char c, int pos = 0) {
+        pos = next(pos, c - margin);
+        return {cnt[pos], pos};
+    }
+    pair<long long, int> move(const string& s, int pos = 0) {
+        long long sum = 0;
+        for(const char c : s) {
+            auto nxt = move(c, pos);
+            sum += nxt.first;
+            pos = nxt.second;
+        }
+        return {sum, pos};
     }
     int count(const int pos) const {
         return cnt[pos];
