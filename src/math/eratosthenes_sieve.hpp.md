@@ -66,9 +66,9 @@ data:
   isVerificationFile: false
   path: src/math/eratosthenes_sieve.hpp
   requiredBy:
-  - src/math/divisor_multiple_transform.hpp
   - src/convolution/lcm_convolution.hpp
   - src/convolution/gcd_convolution.hpp
+  - src/math/divisor_multiple_transform.hpp
   timestamp: '2024-12-18 16:39:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

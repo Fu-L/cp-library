@@ -68,8 +68,8 @@ data:
   timestamp: '2024-11-09 01:50:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   - verify/library_checker/data_structure/point_add_range_sum.test.cpp
+  - verify/library_checker/data_structure/static_range_inversions_query.test.cpp
   - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   - verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp

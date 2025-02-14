@@ -102,8 +102,8 @@ data:
   verifiedWith:
   - verify/library_checker/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - verify/aizu_online_judge/grl/articulation_points.test.cpp
   - verify/aizu_online_judge/grl/bridges.test.cpp
+  - verify/aizu_online_judge/grl/articulation_points.test.cpp
 documentation_of: src/graph/low_link.hpp
 layout: document
 title: LowLink

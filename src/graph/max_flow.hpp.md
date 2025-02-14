@@ -143,8 +143,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
-  - verify/aizu_online_judge/grl/maximum_flow.test.cpp
   - verify/aizu_online_judge/grl/bipartite_matching.test.cpp
+  - verify/aizu_online_judge/grl/maximum_flow.test.cpp
 documentation_of: src/graph/max_flow.hpp
 layout: document
 title: MaxFlow

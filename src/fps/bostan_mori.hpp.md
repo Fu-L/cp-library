@@ -60,8 +60,8 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/yukicoder/1559.test.cpp
+  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: src/fps/bostan_mori.hpp
 layout: document
 title: bostan_mori

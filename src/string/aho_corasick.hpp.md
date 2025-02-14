@@ -71,15 +71,20 @@ data:
     \ idz;\n                    set_union(idx.begin(), idx.end(), idy.begin(), idy.end(),\
     \ back_inserter(idz));\n                    idx = idz;\n                }\n  \
     \          }\n        }\n    }\n    conditional_t<heavy, unordered_map<int, long\
-    \ long>, long long> match(const string& s) {\n        unordered_map<int, int>\
-    \ pos_cnt;\n        int pos = 0;\n        for(const auto& c : s) {\n         \
-    \   pos = next(pos, c - margin);\n            ++pos_cnt[pos];\n        }\n   \
-    \     conditional_t<heavy, unordered_map<int, long long>, long long> res{};\n\
-    \        for(const auto& [key, val] : pos_cnt) {\n            if constexpr(heavy)\
-    \ {\n                for(const auto& x : st[key].idxs) res[x] += val;\n      \
-    \      } else {\n                res += 1ll * cnt[key] * val;\n            }\n\
-    \        }\n        return res;\n    }\n    int count(const int pos) const {\n\
-    \        return cnt[pos];\n    }\n};\n"
+    \ long>, long long> match(const string& s, int pos = 0) {\n        unordered_map<int,\
+    \ int> pos_cnt;\n        for(const auto& c : s) {\n            pos = next(pos,\
+    \ c - margin);\n            ++pos_cnt[pos];\n        }\n        conditional_t<heavy,\
+    \ unordered_map<int, long long>, long long> res{};\n        for(const auto& [key,\
+    \ val] : pos_cnt) {\n            if constexpr(heavy) {\n                for(const\
+    \ auto& x : st[key].idxs) res[x] += val;\n            } else {\n             \
+    \   res += 1ll * cnt[key] * val;\n            }\n        }\n        return res;\n\
+    \    }\n    pair<long long, int> move(const char c, int pos = 0) {\n        pos\
+    \ = next(pos, c - margin);\n        return {cnt[pos], pos};\n    }\n    pair<long\
+    \ long, int> move(const string& s, int pos = 0) {\n        long long sum = 0;\n\
+    \        for(const char c : s) {\n            auto nxt = move(c, pos);\n     \
+    \       sum += nxt.first;\n            pos = nxt.second;\n        }\n        return\
+    \ {sum, pos};\n    }\n    int count(const int pos) const {\n        return cnt[pos];\n\
+    \    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./trie.hpp\"\
     \ntemplate <size_t X = 26, char margin = 'a', bool heavy = true>\nstruct AhoCorasick\
     \ : Trie<X + 1, margin> {\n    using TRIE = Trie<X + 1, margin>;\n    using TRIE::next;\n\
@@ -101,22 +106,27 @@ data:
     \ idz;\n                    set_union(idx.begin(), idx.end(), idy.begin(), idy.end(),\
     \ back_inserter(idz));\n                    idx = idz;\n                }\n  \
     \          }\n        }\n    }\n    conditional_t<heavy, unordered_map<int, long\
-    \ long>, long long> match(const string& s) {\n        unordered_map<int, int>\
-    \ pos_cnt;\n        int pos = 0;\n        for(const auto& c : s) {\n         \
-    \   pos = next(pos, c - margin);\n            ++pos_cnt[pos];\n        }\n   \
-    \     conditional_t<heavy, unordered_map<int, long long>, long long> res{};\n\
-    \        for(const auto& [key, val] : pos_cnt) {\n            if constexpr(heavy)\
-    \ {\n                for(const auto& x : st[key].idxs) res[x] += val;\n      \
-    \      } else {\n                res += 1ll * cnt[key] * val;\n            }\n\
-    \        }\n        return res;\n    }\n    int count(const int pos) const {\n\
-    \        return cnt[pos];\n    }\n};"
+    \ long>, long long> match(const string& s, int pos = 0) {\n        unordered_map<int,\
+    \ int> pos_cnt;\n        for(const auto& c : s) {\n            pos = next(pos,\
+    \ c - margin);\n            ++pos_cnt[pos];\n        }\n        conditional_t<heavy,\
+    \ unordered_map<int, long long>, long long> res{};\n        for(const auto& [key,\
+    \ val] : pos_cnt) {\n            if constexpr(heavy) {\n                for(const\
+    \ auto& x : st[key].idxs) res[x] += val;\n            } else {\n             \
+    \   res += 1ll * cnt[key] * val;\n            }\n        }\n        return res;\n\
+    \    }\n    pair<long long, int> move(const char c, int pos = 0) {\n        pos\
+    \ = next(pos, c - margin);\n        return {cnt[pos], pos};\n    }\n    pair<long\
+    \ long, int> move(const string& s, int pos = 0) {\n        long long sum = 0;\n\
+    \        for(const char c : s) {\n            auto nxt = move(c, pos);\n     \
+    \       sum += nxt.first;\n            pos = nxt.second;\n        }\n        return\
+    \ {sum, pos};\n    }\n    int count(const int pos) const {\n        return cnt[pos];\n\
+    \    }\n};"
   dependsOn:
   - src/template/template.hpp
   - src/string/trie.hpp
   isVerificationFile: false
   path: src/string/aho_corasick.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:46:49+09:00'
+  timestamp: '2025-02-14 22:47:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/430.test.cpp
@@ -176,10 +186,10 @@ void build()
 ## match
 
 ```cpp
-unordered_map<int, long long> match(string s)
+unordered_map<int, long long> match(string s, int pos = 0)
 ```
 
-テキスト文字列 $s$ が各パターン文字列とマッチした回数を返します．<br>
+状態 `pos` から始めて，テキスト文字列 $s$ が各パターン文字列とマッチした回数を返します．<br>
 `heavy` が `true` のときは `unordered_map` を返しますが， `false` のときは `long long` を返すので注意してください．
 
 **制約**
@@ -191,3 +201,21 @@ unordered_map<int, long long> match(string s)
 $s$ の長さを $n$ として，
 
 - $O(n)$
+
+## move
+
+```cpp
+(1) pair<long long, int> move(char c, int pos = 0)
+(2) pair<long long, int> move(string s, int pos = 0)
+```
+
+状態 `pos` から始めて，次に文字 $c$ または文字列 $s$ が与えられたときに新たにパターン文字列にマッチした個数と次状態を返します．
+
+**制約**
+
+- `build` を呼んだ後に使う．
+
+**計算量**
+
+- (1) $O(1)$
+- (2) $O(n)$ ( $n$ は $s$ の長さ)
