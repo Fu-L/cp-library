@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
     title: verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/math/eratosthenes_sieve.test.cpp
+    title: verify/unit_test/math/eratosthenes_sieve.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -39,6 +42,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
+  - verify/unit_test/math/eratosthenes_sieve.test.cpp
 documentation_of: src/math/divisor.hpp
 layout: document
 title: divisor
