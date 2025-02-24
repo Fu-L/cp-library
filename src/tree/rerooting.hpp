@@ -18,7 +18,7 @@ vector<DP> rerooting(const Graph<T>& g, const F1& f1, const F2& f2, const DP& id
             if(e.to == par) continue;
             buf.emplace_back(f2(memo[e.to], e.to, cur));
         }
-        vector<T> head(buf.size() + 1), tail(buf.size() + 1);
+        vector<DP> head(buf.size() + 1), tail(buf.size() + 1);
         head[0] = tail[buf.size()] = id;
         for(int i = 0; i < (int)buf.size(); ++i) head[i + 1] = f1(head[i], buf[i]);
         for(int i = (int)buf.size() - 1; i >= 0; --i) {
