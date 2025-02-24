@@ -118,6 +118,9 @@ data:
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/tree_path_composite_sum.test.cpp
+    title: verify/library_checker/tree/tree_path_composite_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
     title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -285,6 +288,7 @@ data:
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - verify/library_checker/tree/tree_path_composite_sum.test.cpp
   - verify/library_checker/linear_algebra/matrix_product.test.cpp
   - verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
   - verify/library_checker/linear_algebra/pow_of_matrix.test.cpp

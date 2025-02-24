@@ -166,6 +166,9 @@ data:
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/tree/tree_path_composite_sum.test.cpp
+    title: verify/library_checker/tree/tree_path_composite_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -283,6 +286,7 @@ data:
   - verify/library_checker/tree/vertex_set_path_composite.test.cpp
   - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - verify/library_checker/tree/tree_path_composite_sum.test.cpp
   - verify/library_checker/tree/jump_on_tree.test.cpp
   - verify/library_checker/tree/jump_on_tree_2.test.cpp
   - verify/library_checker/tree/tree_diameter.test.cpp
