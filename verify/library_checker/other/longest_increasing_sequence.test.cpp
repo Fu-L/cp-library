@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/longest_increasing_subsequence"
 #include "../../../src/template/template.hpp"
-#include "../../../src/others/longest_increasing_sequence.hpp"
+#include "../../../src/dp/longest_increasing_sequence.hpp"
 int main(void) {
     int n;
     cin >> n;

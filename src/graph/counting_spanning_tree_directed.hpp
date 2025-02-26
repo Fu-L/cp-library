@@ -1,8 +1,8 @@
 #pragma once
 #include "../template/template.hpp"
 #include "../graph/graph_template.hpp"
-#include "./matrix.hpp"
-#include "./gauss_elimination.hpp"
+#include "../matrix/matrix.hpp"
+#include "../matrix/gauss_elimination.hpp"
 template <typename T, typename U>
 T counting_spanning_tree_directed(const Graph<U>& g, const int r) {
     const int n = g.size();

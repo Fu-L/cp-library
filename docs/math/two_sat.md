@@ -1,6 +1,6 @@
 ---
 title: TwoSAT
-documentation_of: ../../src/graph/two_sat.hpp
+documentation_of: ../../src/math/two_sat.hpp
 ---
 
 # TwoSAT

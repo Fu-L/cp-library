@@ -3,7 +3,7 @@
 #include "../../../src/template/static_modint.hpp"
 using mint = modint998244353;
 #include "../../../src/graph/graph_template.hpp"
-#include "../../../src/matrix/counting_spanning_tree_undirected.hpp"
+#include "../../../src/graph/counting_spanning_tree_undirected.hpp"
 int main(void) {
     int n, m;
     cin >> n >> m;

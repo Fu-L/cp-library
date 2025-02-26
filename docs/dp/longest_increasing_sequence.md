@@ -1,6 +1,6 @@
 ---
 title: longest_increasing_sequence
-documentation_of: ../../src/math/longest_increasing_sequence.hpp
+documentation_of: ../../src/dp/longest_increasing_sequence.hpp
 ---
 
 ## longest_increasing_sequence

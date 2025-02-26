@@ -1,6 +1,6 @@
 ---
 title: counting_spanning_tree_directed
-documentation_of: ../../src/matrix/counting_spanning_tree_directed.hpp
+documentation_of: ../../src/graph/counting_spanning_tree_directed.hpp
 ---
 
 ## counting_spanning_tree_directed

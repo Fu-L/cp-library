@@ -1,7 +1,7 @@
 #pragma once
 #include "../template/template.hpp"
-#include "./graph_template.hpp"
-#include "./strongly_connected_components.hpp"
+#include "../graph/graph_template.hpp"
+#include "../graph/strongly_connected_components.hpp"
 struct TwoSAT {
     TwoSAT(int N)
         : n(N), ans(N), graph(2 * N) {}
