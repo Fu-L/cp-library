@@ -275,6 +275,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/others/dice.hpp
       title: dice
+    - icon: ':heavy_check_mark:'
+      path: src/others/longest_increasing_sequence.hpp
+      title: src/others/longest_increasing_sequence.hpp
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -684,6 +687,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
       title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/other/longest_increasing_sequence.test.cpp
+      title: verify/library_checker/other/longest_increasing_sequence.test.cpp
   - name: verify/library_checker/polynomial
     pages:
     - icon: ':heavy_check_mark:'

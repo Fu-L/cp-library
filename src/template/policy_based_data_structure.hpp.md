@@ -49,8 +49,8 @@ data:
   timestamp: '2024-01-01 14:30:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yukicoder/649.test.cpp
   - verify/library_checker/number_theory/discrete_logarithm.test.cpp
+  - verify/yukicoder/649.test.cpp
 documentation_of: src/template/policy_based_data_structure.hpp
 layout: document
 title: policy_based_data_structure

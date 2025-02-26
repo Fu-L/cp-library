@@ -118,8 +118,8 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/point_set_range_composite.test.cpp
   - verify/library_checker/tree/vertex_set_path_composite.test.cpp
+  - verify/library_checker/data_structure/point_set_range_composite.test.cpp
 documentation_of: src/data_structure/segment_tree.hpp
 layout: document
 title: SegmentTree
