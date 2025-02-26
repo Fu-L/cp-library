@@ -9,10 +9,10 @@ data:
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_directed.hpp
+    path: src/graph/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
   - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_undirected.hpp
+    path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
   - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
@@ -122,10 +122,10 @@ data:
   isVerificationFile: false
   path: src/matrix/gauss_elimination.hpp
   requiredBy:
-  - src/matrix/counting_spanning_tree_undirected.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/inverse.hpp
-  - src/matrix/counting_spanning_tree_directed.hpp
+  - src/graph/counting_spanning_tree_undirected.hpp
+  - src/graph/counting_spanning_tree_directed.hpp
   timestamp: '2024-11-09 02:30:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

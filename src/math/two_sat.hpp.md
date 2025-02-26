@@ -74,8 +74,8 @@ data:
     \    for(const int x : ids) ++counts[x];\n    vector<vector<int>> groups(group_num);\n\
     \    for(int i = 0; i < group_num; ++i) groups[i].reserve(counts[i]);\n    for(int\
     \ i = 0; i < n; ++i) groups[ids[i]].emplace_back(i);\n    return groups;\n}\n\
-    #line 5 \"src/graph/two_sat.hpp\"\nstruct TwoSAT {\n    TwoSAT(int N)\n      \
-    \  : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const int i, const bool\
+    #line 5 \"src/math/two_sat.hpp\"\nstruct TwoSAT {\n    TwoSAT(int N)\n       \
+    \ : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const int i, const bool\
     \ f, const int j, const bool g) {\n        graph.add_directed_edge(2 * i + (f\
     \ ? 0 : 1), 2 * j + (g ? 1 : 0));\n        graph.add_directed_edge(2 * j + (g\
     \ ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool satisfiable() {\n        const\
@@ -84,10 +84,10 @@ data:
     \ = id[2 * i] < id[2 * i + 1];\n        }\n        return true;\n    }\n    vector<bool>\
     \ answer() const {\n        return ans;\n    }\n\n   private:\n    int n;\n  \
     \  vector<bool> ans;\n    Graph<int> graph;\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
-    \n#include \"./strongly_connected_components.hpp\"\nstruct TwoSAT {\n    TwoSAT(int\
-    \ N)\n        : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const int i,\
-    \ const bool f, const int j, const bool g) {\n        graph.add_directed_edge(2\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
+    \n#include \"../graph/strongly_connected_components.hpp\"\nstruct TwoSAT {\n \
+    \   TwoSAT(int N)\n        : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const\
+    \ int i, const bool f, const int j, const bool g) {\n        graph.add_directed_edge(2\
     \ * i + (f ? 0 : 1), 2 * j + (g ? 1 : 0));\n        graph.add_directed_edge(2\
     \ * j + (g ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool satisfiable() {\n\
     \        const vector<int> id = scc_ids(graph).second;\n        for(int i = 0;\
@@ -101,13 +101,13 @@ data:
   - src/graph/strongly_connected_components.hpp
   - src/graph/compressed_sparse_row.hpp
   isVerificationFile: false
-  path: src/graph/two_sat.hpp
+  path: src/math/two_sat.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2025-02-27 04:36:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/other/2_sat.test.cpp
-documentation_of: src/graph/two_sat.hpp
+documentation_of: src/math/two_sat.hpp
 layout: document
 title: TwoSAT
 ---

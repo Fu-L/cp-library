@@ -12,7 +12,7 @@ data:
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
-    path: src/graph/two_sat.hpp
+    path: src/math/two_sat.hpp
     title: TwoSAT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -73,7 +73,7 @@ data:
   isVerificationFile: false
   path: src/graph/compressed_sparse_row.hpp
   requiredBy:
-  - src/graph/two_sat.hpp
+  - src/math/two_sat.hpp
   - src/graph/strongly_connected_components.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC

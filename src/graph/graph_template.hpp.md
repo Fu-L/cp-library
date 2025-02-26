@@ -21,6 +21,12 @@ data:
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
+    path: src/graph/counting_spanning_tree_directed.hpp
+    title: counting_spanning_tree_directed
+  - icon: ':heavy_check_mark:'
+    path: src/graph/counting_spanning_tree_undirected.hpp
+    title: counting_spanning_tree_undirected
+  - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
   - icon: ':heavy_check_mark:'
@@ -45,14 +51,8 @@ data:
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
   - icon: ':heavy_check_mark:'
-    path: src/graph/two_sat.hpp
+    path: src/math/two_sat.hpp
     title: TwoSAT
-  - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_directed.hpp
-    title: counting_spanning_tree_directed
-  - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_undirected.hpp
-    title: counting_spanning_tree_undirected
   - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
@@ -242,8 +242,6 @@ data:
   isVerificationFile: false
   path: src/graph/graph_template.hpp
   requiredBy:
-  - src/matrix/counting_spanning_tree_undirected.hpp
-  - src/matrix/counting_spanning_tree_directed.hpp
   - src/tree/tree_diameter.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/tree/rerooting.hpp
@@ -252,12 +250,14 @@ data:
   - src/tree/cartesian_tree.hpp
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/rooted_tree_hash.hpp
+  - src/math/two_sat.hpp
   - src/graph/bfs01.hpp
+  - src/graph/counting_spanning_tree_undirected.hpp
   - src/graph/topological_sort.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/graph/two_edge_connected_components.hpp
   - src/graph/low_link.hpp
-  - src/graph/two_sat.hpp
+  - src/graph/counting_spanning_tree_directed.hpp
   - src/graph/bfs.hpp
   - src/graph/cycle_detection.hpp
   - src/graph/kruskal.hpp

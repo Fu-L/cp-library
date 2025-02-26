@@ -11,7 +11,7 @@ data:
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
-    path: src/graph/two_sat.hpp
+    path: src/math/two_sat.hpp
     title: TwoSAT
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
@@ -79,8 +79,8 @@ data:
     \    for(const int x : ids) ++counts[x];\n    vector<vector<int>> groups(group_num);\n\
     \    for(int i = 0; i < group_num; ++i) groups[i].reserve(counts[i]);\n    for(int\
     \ i = 0; i < n; ++i) groups[ids[i]].emplace_back(i);\n    return groups;\n}\n\
-    #line 5 \"src/graph/two_sat.hpp\"\nstruct TwoSAT {\n    TwoSAT(int N)\n      \
-    \  : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const int i, const bool\
+    #line 5 \"src/math/two_sat.hpp\"\nstruct TwoSAT {\n    TwoSAT(int N)\n       \
+    \ : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const int i, const bool\
     \ f, const int j, const bool g) {\n        graph.add_directed_edge(2 * i + (f\
     \ ? 0 : 1), 2 * j + (g ? 1 : 0));\n        graph.add_directed_edge(2 * j + (g\
     \ ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool satisfiable() {\n        const\
@@ -99,7 +99,7 @@ data:
     \ ' ';\n        }\n        cout << 0 << '\\n';\n    } else {\n        cout <<\
     \ \"s UNSATISFIABLE\" << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/two_sat\"\n#include \"\
-    ../../../src/template/template.hpp\"\n#include \"../../../src/graph/two_sat.hpp\"\
+    ../../../src/template/template.hpp\"\n#include \"../../../src/math/two_sat.hpp\"\
     \nint main(void) {\n    string p, cnf;\n    int n, m;\n    cin >> p >> cnf >>\
     \ n >> m;\n    TwoSAT ts(n);\n    rep(i, 0, m) {\n        int a, b, z;\n     \
     \   cin >> a >> b >> z;\n        bool f = a > 0, g = b > 0;\n        a = abs(a)\
@@ -111,14 +111,14 @@ data:
     \ \"s UNSATISFIABLE\" << '\\n';\n    }\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/graph/two_sat.hpp
+  - src/math/two_sat.hpp
   - src/graph/graph_template.hpp
   - src/graph/strongly_connected_components.hpp
   - src/graph/compressed_sparse_row.hpp
   isVerificationFile: true
   path: verify/library_checker/other/2_sat.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2025-02-27 04:36:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/other/2_sat.test.cpp

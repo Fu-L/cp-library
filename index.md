@@ -95,6 +95,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/weighted_union_find.hpp
       title: WeightedUnionFind
+  - name: src/dp
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/dp/longest_increasing_sequence.hpp
+      title: longest_increasing_sequence
   - name: src/fps
     pages:
     - icon: ':heavy_check_mark:'
@@ -153,6 +158,12 @@ data:
       path: src/graph/compressed_sparse_row.hpp
       title: CompressedSparseRow
     - icon: ':heavy_check_mark:'
+      path: src/graph/counting_spanning_tree_directed.hpp
+      title: counting_spanning_tree_directed
+    - icon: ':heavy_check_mark:'
+      path: src/graph/counting_spanning_tree_undirected.hpp
+      title: counting_spanning_tree_undirected
+    - icon: ':heavy_check_mark:'
       path: src/graph/cycle_detection.hpp
       title: cycle_detection
     - icon: ':heavy_check_mark:'
@@ -185,9 +196,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/two_edge_connected_components.hpp
       title: TwoEdgeConnectedComponents
-    - icon: ':heavy_check_mark:'
-      path: src/graph/two_sat.hpp
-      title: TwoSAT
   - name: src/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -242,6 +250,9 @@ data:
       path: src/math/primitive_root.hpp
       title: primitive_root
     - icon: ':heavy_check_mark:'
+      path: src/math/two_sat.hpp
+      title: TwoSAT
+    - icon: ':heavy_check_mark:'
       path: src/math/walsh_hadamard_transform.hpp
       title: walsh_hadamard_transform
     - icon: ':heavy_check_mark:'
@@ -252,12 +263,6 @@ data:
       title: zeta_transform
   - name: src/matrix
     pages:
-    - icon: ':heavy_check_mark:'
-      path: src/matrix/counting_spanning_tree_directed.hpp
-      title: counting_spanning_tree_directed
-    - icon: ':heavy_check_mark:'
-      path: src/matrix/counting_spanning_tree_undirected.hpp
-      title: counting_spanning_tree_undirected
     - icon: ':heavy_check_mark:'
       path: src/matrix/gauss_elimination.hpp
       title: gauss_elimination
@@ -275,9 +280,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/others/dice.hpp
       title: dice
-    - icon: ':heavy_check_mark:'
-      path: src/others/longest_increasing_sequence.hpp
-      title: src/others/longest_increasing_sequence.hpp
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'

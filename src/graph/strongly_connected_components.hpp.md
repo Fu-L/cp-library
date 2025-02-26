@@ -12,7 +12,7 @@ data:
     title: template
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: src/graph/two_sat.hpp
+    path: src/math/two_sat.hpp
     title: TwoSAT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -109,7 +109,7 @@ data:
   isVerificationFile: false
   path: src/graph/strongly_connected_components.hpp
   requiredBy:
-  - src/graph/two_sat.hpp
+  - src/math/two_sat.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -93,6 +93,9 @@ data:
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
   - icon: ':heavy_check_mark:'
+    path: src/dp/longest_increasing_sequence.hpp
+    title: longest_increasing_sequence
+  - icon: ':heavy_check_mark:'
     path: src/fps/all_product.hpp
     title: all_product
   - icon: ':heavy_check_mark:'
@@ -144,6 +147,12 @@ data:
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
+    path: src/graph/counting_spanning_tree_directed.hpp
+    title: counting_spanning_tree_directed
+  - icon: ':heavy_check_mark:'
+    path: src/graph/counting_spanning_tree_undirected.hpp
+    title: counting_spanning_tree_undirected
+  - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
   - icon: ':heavy_check_mark:'
@@ -176,9 +185,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
-  - icon: ':heavy_check_mark:'
-    path: src/graph/two_sat.hpp
-    title: TwoSAT
   - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
@@ -231,6 +237,9 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':heavy_check_mark:'
+    path: src/math/two_sat.hpp
+    title: TwoSAT
+  - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
   - icon: ':heavy_check_mark:'
@@ -239,12 +248,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
-  - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_directed.hpp
-    title: counting_spanning_tree_directed
-  - icon: ':heavy_check_mark:'
-    path: src/matrix/counting_spanning_tree_undirected.hpp
-    title: counting_spanning_tree_undirected
   - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
@@ -260,9 +263,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/others/dice.hpp
     title: dice
-  - icon: ':heavy_check_mark:'
-    path: src/others/longest_increasing_sequence.hpp
-    title: src/others/longest_increasing_sequence.hpp
   - icon: ':heavy_check_mark:'
     path: src/string/aho_corasick.hpp
     title: AhoCorasick
@@ -775,11 +775,9 @@ data:
   path: src/template/template.hpp
   requiredBy:
   - src/matrix/matrix.hpp
-  - src/matrix/counting_spanning_tree_undirected.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/gauss_elimination.hpp
   - src/matrix/inverse.hpp
-  - src/matrix/counting_spanning_tree_directed.hpp
   - src/tree/tree_diameter.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/tree/rerooting.hpp
@@ -789,7 +787,6 @@ data:
   - src/tree/lowest_common_ancestor.hpp
   - src/tree/rooted_tree_hash.hpp
   - src/others/dice.hpp
-  - src/others/longest_increasing_sequence.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/and_convolution.hpp
   - src/convolution/lcm_convolution.hpp
@@ -813,6 +810,7 @@ data:
   - src/math/moebius.hpp
   - src/math/prime_factors.hpp
   - src/math/floor_sum.hpp
+  - src/math/two_sat.hpp
   - src/math/euler_phi.hpp
   - src/math/divisor_multiple_transform.hpp
   - src/math/inv_gcd.hpp
@@ -833,13 +831,14 @@ data:
   - src/string/z_algorithm.hpp
   - src/graph/bfs01.hpp
   - src/graph/graph_template.hpp
+  - src/graph/counting_spanning_tree_undirected.hpp
   - src/graph/min_cost_flow.hpp
   - src/graph/topological_sort.hpp
   - src/graph/compressed_sparse_row.hpp
   - src/graph/two_edge_connected_components.hpp
   - src/graph/low_link.hpp
   - src/graph/max_flow.hpp
-  - src/graph/two_sat.hpp
+  - src/graph/counting_spanning_tree_directed.hpp
   - src/graph/bfs.hpp
   - src/graph/cycle_detection.hpp
   - src/graph/kruskal.hpp
@@ -882,6 +881,7 @@ data:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series.hpp
   - src/fps/berlekamp_massey.hpp
+  - src/dp/longest_increasing_sequence.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

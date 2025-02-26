@@ -96,7 +96,7 @@ data:
     \            if(a[i][j] != T(0)) {\n                const T coeff = a[i][j] /\
     \ a[rank][j];\n                for(int k = j; k < w; ++k) a[i][k] -= a[rank][k]\
     \ * coeff;\n            }\n        }\n        ++rank;\n    }\n    return {rank,\
-    \ det};\n}\n#line 6 \"src/matrix/counting_spanning_tree_undirected.hpp\"\ntemplate\
+    \ det};\n}\n#line 6 \"src/graph/counting_spanning_tree_undirected.hpp\"\ntemplate\
     \ <typename T, typename U>\nT counting_spanning_tree_undirected(const Graph<U>&\
     \ g) {\n    const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int i =\
     \ 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const auto&\
@@ -105,27 +105,27 @@ data:
     \ < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n    return\
     \ gauss_elimination(lap).second;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
-    \n#include \"./matrix.hpp\"\n#include \"./gauss_elimination.hpp\"\ntemplate <typename\
-    \ T, typename U>\nT counting_spanning_tree_undirected(const Graph<U>& g) {\n \
-    \   const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int i = 0; i <\
-    \ n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const auto& e\
-    \ : g[i]) {\n            --mat[i][e.to];\n        }\n    }\n    Matrix<T> lap(n\
-    \ - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n        for(int j = 0; j\
-    \ < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n    return\
-    \ gauss_elimination(lap).second;\n}"
+    \n#include \"../matrix/matrix.hpp\"\n#include \"../matrix/gauss_elimination.hpp\"\
+    \ntemplate <typename T, typename U>\nT counting_spanning_tree_undirected(const\
+    \ Graph<U>& g) {\n    const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int\
+    \ i = 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const\
+    \ auto& e : g[i]) {\n            --mat[i][e.to];\n        }\n    }\n    Matrix<T>\
+    \ lap(n - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n        for(int j\
+    \ = 0; j < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n\
+    \    return gauss_elimination(lap).second;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   - src/matrix/matrix.hpp
   - src/matrix/gauss_elimination.hpp
   isVerificationFile: false
-  path: src/matrix/counting_spanning_tree_undirected.hpp
+  path: src/graph/counting_spanning_tree_undirected.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:30:41+09:00'
+  timestamp: '2025-02-27 04:36:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-documentation_of: src/matrix/counting_spanning_tree_undirected.hpp
+documentation_of: src/graph/counting_spanning_tree_undirected.hpp
 layout: document
 title: counting_spanning_tree_undirected
 ---

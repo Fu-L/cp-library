@@ -19,7 +19,7 @@ data:
     #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/others/longest_increasing_sequence.hpp\"\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/dp/longest_increasing_sequence.hpp\"\
     \ntemplate <typename T>\nvector<int> longest_increasing_sequence(const vector<T>&\
     \ a) {\n    const int n = a.size();\n    vector<pair<T, int>> dp;\n    vector<int>\
     \ p(n, -1);\n    for(int i = 0; i < n; ++i) {\n        auto it = lower_bound(begin(dp),\
@@ -40,16 +40,26 @@ data:
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
-  path: src/others/longest_increasing_sequence.hpp
+  path: src/dp/longest_increasing_sequence.hpp
   requiredBy: []
-  timestamp: '2025-02-27 04:25:23+09:00'
+  timestamp: '2025-02-27 04:36:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/other/longest_increasing_sequence.test.cpp
-documentation_of: src/others/longest_increasing_sequence.hpp
+documentation_of: src/dp/longest_increasing_sequence.hpp
 layout: document
-redirect_from:
-- /library/src/others/longest_increasing_sequence.hpp
-- /library/src/others/longest_increasing_sequence.hpp.html
-title: src/others/longest_increasing_sequence.hpp
+title: longest_increasing_sequence
 ---
+
+## longest_increasing_sequence
+
+```cpp
+vector<int> longest_increasing_sequence(vector<T> a)
+```
+
+長さ $n$ の配列 `a` の最長増加部分列 `lcp` を計算します．<br>
+`lcp[i]` は，最長増加部分列の $i$ 番目の要素の添え字を表します．
+
+**計算量**
+
+- $O(n \log n)$
