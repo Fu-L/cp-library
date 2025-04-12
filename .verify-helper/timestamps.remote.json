@@ -60,6 +60,7 @@
 "verify/library_checker/data_structure/point_add_range_sum.test.cpp": "2024-11-09 01:50:04 +0900",
 "verify/library_checker/data_structure/point_add_rectangle_sum.test.cpp": "2024-11-09 01:50:04 +0900",
 "verify/library_checker/data_structure/point_set_range_composite.test.cpp": "2024-11-09 01:34:39 +0900",
+"verify/library_checker/data_structure/predecessor_problem.test.cpp": "2025-04-12 17:56:52 +0900",
 "verify/library_checker/data_structure/queue_operate_all_composite.test.cpp": "2024-11-09 01:34:39 +0900",
 "verify/library_checker/data_structure/range_affine_point_get.test.cpp": "2024-11-09 01:34:39 +0900",
 "verify/library_checker/data_structure/range_affine_range_sum.test.cpp": "2024-11-09 01:34:39 +0900",
