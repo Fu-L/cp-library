@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/predecessor_problem"
-#include "template/template.hpp"
-#include "data_structure/segment_tree.hpp"
+#include "../../../src/template/template.hpp"
+#include "../../../src/data_structure/segment_tree.hpp"
 int op(int a, int b) {
     return a + b;
 }
