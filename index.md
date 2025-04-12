@@ -557,7 +557,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/point_set_range_composite.test.cpp
       title: verify/library_checker/data_structure/point_set_range_composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/predecessor_problem.test.cpp
       title: verify/library_checker/data_structure/predecessor_problem.test.cpp
     - icon: ':heavy_check_mark:'
