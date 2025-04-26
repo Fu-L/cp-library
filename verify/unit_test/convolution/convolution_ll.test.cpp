@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/random_number_generator.hpp"
+#include "../../../src/random/permuted_congruential_generator.hpp"
 #include "../../../src/convolution/convolution_ll.hpp"
 void test() {
     int n = rng(0, 1000), m = rng(0, 1000);

@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/random_number_generator.hpp"
+#include "../../../src/random/random_number_generator.hpp"
 #include "../../../src/template/modint_2_61m1.hpp"
 #include "../../../src/string/dynamic_rolling_hash.hpp"
 using mint = Modint_2_61m1;

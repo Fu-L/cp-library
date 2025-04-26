@@ -1,5 +1,5 @@
 #pragma once
-#include "./template.hpp"
+#include "../template/template.hpp"
 struct RandomNumberGenerator {
     RandomNumberGenerator()
         : mt(chrono::steady_clock::now().time_since_epoch().count()) {}

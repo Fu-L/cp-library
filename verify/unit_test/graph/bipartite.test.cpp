@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/random_number_generator.hpp"
+#include "../../../src/random/random_number_generator.hpp"
 #include "../../../src/graph/graph_template.hpp"
 #include "../../../src/graph/bipartite.hpp"
 #include "../../../src/tree/lowest_common_ancestor.hpp"

@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/random_number_generator.hpp"
+#include "../../../src/random/random_number_generator.hpp"
 #include "../../../src/math/eratosthenes_sieve.hpp"
 #include "../../../src/math/is_prime.hpp"
 #include "../../../src/math/euler_phi.hpp"

@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/random_number_generator.hpp"
+#include "../../../src/random/random_number_generator.hpp"
 #include "../../../src/graph/graph_template.hpp"
 #include "../../../src/graph/bfs01.hpp"
 #include "../../../src/graph/dijkstra.hpp"
