@@ -40,8 +40,8 @@ data:
   timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
+  - verify/aizu_online_judge/ntl/eulers_phi_function.test.cpp
 documentation_of: src/math/euler_phi.hpp
 layout: document
 title: euler_phi

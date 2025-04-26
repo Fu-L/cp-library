@@ -20,7 +20,7 @@ data:
     path: src/math/prime_factors.hpp
     title: prime_factors
   - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
+    path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
@@ -42,7 +42,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -216,32 +216,32 @@ data:
     \    assert(d1[i] == d2[i]);\n        }\n    }\n}\nint main(void) {\n    test();\n\
     \    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/math/eratosthenes_sieve.hpp\"\n#include \"../../../src/math/is_prime.hpp\"\
-    \n#include \"../../../src/math/euler_phi.hpp\"\n#include \"../../../src/math/moebius.hpp\"\
-    \n#include \"../../../src/math/divisor.hpp\"\n#include \"../../../src/math/prime_factors.hpp\"\
-    \nvoid test() {\n    EratosthenesSieve sieve(10000000);\n    rep(i, 0, 10000)\
-    \ {\n        int n = rng(1, 10000000);\n        if(is_prime(n)) {\n          \
-    \  assert(sieve.min_factor[n] == n);\n        } else {\n            assert(sieve.min_factor[n]\
-    \ != n);\n        }\n        if(is_prime(i)) {\n            assert(sieve.min_factor[i]\
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/math/eratosthenes_sieve.hpp\"\
+    \n#include \"../../../src/math/is_prime.hpp\"\n#include \"../../../src/math/euler_phi.hpp\"\
+    \n#include \"../../../src/math/moebius.hpp\"\n#include \"../../../src/math/divisor.hpp\"\
+    \n#include \"../../../src/math/prime_factors.hpp\"\nvoid test() {\n    EratosthenesSieve\
+    \ sieve(10000000);\n    rep(i, 0, 10000) {\n        int n = rng(1, 10000000);\n\
+    \        if(is_prime(n)) {\n            assert(sieve.min_factor[n] == n);\n  \
+    \      } else {\n            assert(sieve.min_factor[n] != n);\n        }\n  \
+    \      if(is_prime(i)) {\n            assert(sieve.min_factor[i] == i);\n    \
+    \    } else {\n            assert(sieve.min_factor[i] != i);\n        }\n    \
+    \    assert(euler_phi(n) == sieve.euler[n]);\n        assert(moebius(n) == sieve.moebius[n]);\n\
+    \    }\n    rep(i, 1, 100) {\n        if(is_prime(i)) {\n            assert(sieve.min_factor[i]\
     \ == i);\n        } else {\n            assert(sieve.min_factor[i] != i);\n  \
-    \      }\n        assert(euler_phi(n) == sieve.euler[n]);\n        assert(moebius(n)\
-    \ == sieve.moebius[n]);\n    }\n    rep(i, 1, 100) {\n        if(is_prime(i))\
-    \ {\n            assert(sieve.min_factor[i] == i);\n        } else {\n       \
-    \     assert(sieve.min_factor[i] != i);\n        }\n        assert(euler_phi(i)\
-    \ == sieve.euler[i]);\n        assert(moebius(i) == sieve.moebius[i]);\n    }\n\
-    \    rep(i, 1, 10000) {\n        int n = rng(1, 10000000);\n        vector<pair<int,\
-    \ int>> pf1 = sieve.prime_factors(n);\n        vector<pair<long long, int>> pf2\
-    \ = prime_factors(n);\n        assert(pf1.size() == pf2.size());\n        for(int\
-    \ i = 0; i < (int)pf1.size(); ++i) {\n            assert(pf1[i].first == pf2[i].first);\n\
-    \            assert(pf1[i].second == pf2[i].second);\n        }\n        vector<int>\
-    \ d1 = sieve.divisor(n);\n        vector<ll> d2 = divisor(n);\n        assert(d1.size()\
-    \ == d2.size());\n        for(int i = 0; i < (int)d1.size(); ++i) {\n        \
-    \    assert(d1[i] == d2[i]);\n        }\n    }\n}\nint main(void) {\n    test();\n\
-    \    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    \      }\n        assert(euler_phi(i) == sieve.euler[i]);\n        assert(moebius(i)\
+    \ == sieve.moebius[i]);\n    }\n    rep(i, 1, 10000) {\n        int n = rng(1,\
+    \ 10000000);\n        vector<pair<int, int>> pf1 = sieve.prime_factors(n);\n \
+    \       vector<pair<long long, int>> pf2 = prime_factors(n);\n        assert(pf1.size()\
+    \ == pf2.size());\n        for(int i = 0; i < (int)pf1.size(); ++i) {\n      \
+    \      assert(pf1[i].first == pf2[i].first);\n            assert(pf1[i].second\
+    \ == pf2[i].second);\n        }\n        vector<int> d1 = sieve.divisor(n);\n\
+    \        vector<ll> d2 = divisor(n);\n        assert(d1.size() == d2.size());\n\
+    \        for(int i = 0; i < (int)d1.size(); ++i) {\n            assert(d1[i] ==\
+    \ d2[i]);\n        }\n    }\n}\nint main(void) {\n    test();\n    int a, b;\n\
+    \    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/math/eratosthenes_sieve.hpp
   - src/math/is_prime.hpp
   - src/math/euler_phi.hpp
@@ -251,7 +251,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/math/eratosthenes_sieve.test.cpp
   requiredBy: []
-  timestamp: '2025-02-22 22:56:16+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/math/eratosthenes_sieve.test.cpp

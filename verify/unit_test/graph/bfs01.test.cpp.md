@@ -11,7 +11,7 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
+    path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
@@ -33,7 +33,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -196,33 +196,32 @@ data:
     \        undirected();\n    }\n    rep(i, 0, test_num) {\n        directed();\n\
     \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/graph/graph_template.hpp\"\n#include \"../../../src/graph/bfs01.hpp\"\
-    \n#include \"../../../src/graph/dijkstra.hpp\"\nvoid undirected() {\n    int n\
-    \ = rng(1, 200000), m = rng(1, (int)min(200000ll, 1ll * n * (n - 1) / 2));\n \
-    \   auto [u, v, w] = rng.weighted_graph(n, m, 0, 1, false);\n    int weight =\
-    \ rng(1, 1000);\n    Graph<int> g(n);\n    rep(i, 0, m) {\n        g.add_edge(u[i],\
-    \ v[i], weight * w[i]);\n    }\n    vector<pair<int, int>> ans = dijkstra(g, 0),\
-    \ res = bfs01(g, 0);\n    rep(i, 0, n) {\n        assert(ans[i].first == res[i].first);\n\
-    \    }\n}\nvoid directed() {\n    int n = rng(1, 200000), m = rng(1, (int)min(200000ll,\
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
+    \n#include \"../../../src/graph/bfs01.hpp\"\n#include \"../../../src/graph/dijkstra.hpp\"\
+    \nvoid undirected() {\n    int n = rng(1, 200000), m = rng(1, (int)min(200000ll,\
     \ 1ll * n * (n - 1) / 2));\n    auto [u, v, w] = rng.weighted_graph(n, m, 0, 1,\
     \ false);\n    int weight = rng(1, 1000);\n    Graph<int> g(n);\n    rep(i, 0,\
-    \ m) {\n        g.add_directed_edge(u[i], v[i], weight * w[i]);\n    }\n    vector<pair<int,\
+    \ m) {\n        g.add_edge(u[i], v[i], weight * w[i]);\n    }\n    vector<pair<int,\
     \ int>> ans = dijkstra(g, 0), res = bfs01(g, 0);\n    rep(i, 0, n) {\n       \
-    \ assert(ans[i].first == res[i].first);\n    }\n}\nint main(void) {\n    int test_num\
-    \ = 50;\n    rep(i, 0, test_num) {\n        undirected();\n    }\n    rep(i, 0,\
-    \ test_num) {\n        directed();\n    }\n    int a, b;\n    cin >> a >> b;\n\
-    \    cout << a + b << '\\n';\n}"
+    \ assert(ans[i].first == res[i].first);\n    }\n}\nvoid directed() {\n    int\
+    \ n = rng(1, 200000), m = rng(1, (int)min(200000ll, 1ll * n * (n - 1) / 2));\n\
+    \    auto [u, v, w] = rng.weighted_graph(n, m, 0, 1, false);\n    int weight =\
+    \ rng(1, 1000);\n    Graph<int> g(n);\n    rep(i, 0, m) {\n        g.add_directed_edge(u[i],\
+    \ v[i], weight * w[i]);\n    }\n    vector<pair<int, int>> ans = dijkstra(g, 0),\
+    \ res = bfs01(g, 0);\n    rep(i, 0, n) {\n        assert(ans[i].first == res[i].first);\n\
+    \    }\n}\nint main(void) {\n    int test_num = 50;\n    rep(i, 0, test_num) {\n\
+    \        undirected();\n    }\n    rep(i, 0, test_num) {\n        directed();\n\
+    \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/graph/graph_template.hpp
   - src/graph/bfs01.hpp
   - src/graph/dijkstra.hpp
   isVerificationFile: true
   path: verify/unit_test/graph/bfs01.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bfs01.test.cpp

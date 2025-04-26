@@ -41,8 +41,8 @@ data:
   timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
+  - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
 documentation_of: src/math/divisor.hpp
 layout: document
 title: divisor

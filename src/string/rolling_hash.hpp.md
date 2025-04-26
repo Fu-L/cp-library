@@ -123,8 +123,8 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/aizu_online_judge/alds1/string_search.test.cpp
+  - verify/library_checker/string/number_of_substrings.test.cpp
 documentation_of: src/string/rolling_hash.hpp
 layout: document
 title: RollingHash

@@ -280,6 +280,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/others/dice.hpp
       title: dice
+  - name: src/random
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/random/permuted_congruential_generator.hpp
+      title: PermutedCongruentialGenerator
+    - icon: ':heavy_check_mark:'
+      path: src/random/random_number_generator.hpp
+      title: RandomNumberGenerator
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -320,9 +328,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
-    - icon: ':heavy_check_mark:'
-      path: src/template/random_number_generator.hpp
-      title: RandomNumberGenerator
     - icon: ':heavy_check_mark:'
       path: src/template/static_modint.hpp
       title: StaticModint

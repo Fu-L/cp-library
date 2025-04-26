@@ -286,30 +286,30 @@ data:
   isVerificationFile: false
   path: src/convolution/convolution.hpp
   requiredBy:
+  - src/string/wildcard_pattern_matching.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/convolution_ll.hpp
-  - src/string/wildcard_pattern_matching.hpp
+  - src/fps/formal_power_series.hpp
   - src/fps/formal_power_series_ll.hpp
   - src/fps/formal_power_series_arbitrary.hpp
-  - src/fps/formal_power_series.hpp
   timestamp: '2024-11-09 02:16:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
-  - verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
-  - verify/library_checker/polynomial/division_of_polynomial.test.cpp
-  - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
+  - verify/yukicoder/1559.test.cpp
+  - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
+  - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
+  - verify/library_checker/polynomial/division_of_polynomial.test.cpp
+  - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
+  - verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
+  - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-  - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
-  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - verify/library_checker/convolution/convolution.test.cpp
+  - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - verify/library_checker/other/find_linear_recurrence.test.cpp
-  - verify/unit_test/convolution/convolution_ll.test.cpp
-  - verify/yukicoder/1559.test.cpp
+  - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: src/convolution/convolution.hpp
 layout: document
 title: convolution

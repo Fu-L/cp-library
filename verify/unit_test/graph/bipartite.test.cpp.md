@@ -8,7 +8,7 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
+    path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
@@ -33,7 +33,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -229,20 +229,19 @@ data:
     \ {\n        tree();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a\
     \ + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/graph/graph_template.hpp\"\n#include \"../../../src/graph/bipartite.hpp\"\
-    \n#include \"../../../src/tree/lowest_common_ancestor.hpp\"\nvoid random_yes()\
-    \ {\n    int n = rng(1, 100000);\n    vector<vector<int>> color(2);\n    rep(i,\
-    \ 0, n) {\n        color[rng(0, 1)].push_back(i);\n    }\n    Graph<int> g(n);\n\
-    \    if(color[0].empty() or color[1].empty()) {\n        vector<int> col = bipartite(g);\n\
-    \        assert(!col.empty());\n        rep(i, 0, n) assert(col[i] == 0 or col[i]\
-    \ == 1);\n        return;\n    }\n    int m = rng(0, 200000);\n    rep(i, 0, m)\
-    \ {\n        int a = rng(0, (int)color[0].size() - 1);\n        int b = rng(0,\
-    \ (int)color[1].size() - 1);\n        g.add_edge(color[0][a], color[1][b]);\n\
-    \    }\n    vector<int> col = bipartite(g);\n    assert(!col.empty());\n    rep(i,\
-    \ 0, n) {\n        assert(col[i] == 0 or col[i] == 1);\n        for(const int\
-    \ to : g[i]) {\n            assert(col[to] == 1 - col[i]);\n        }\n    }\n\
-    }\nvoid namori() {\n    int n = rng(1, 100000);\n    auto [u, v] = rng.tree(n,\
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
+    \n#include \"../../../src/graph/bipartite.hpp\"\n#include \"../../../src/tree/lowest_common_ancestor.hpp\"\
+    \nvoid random_yes() {\n    int n = rng(1, 100000);\n    vector<vector<int>> color(2);\n\
+    \    rep(i, 0, n) {\n        color[rng(0, 1)].push_back(i);\n    }\n    Graph<int>\
+    \ g(n);\n    if(color[0].empty() or color[1].empty()) {\n        vector<int> col\
+    \ = bipartite(g);\n        assert(!col.empty());\n        rep(i, 0, n) assert(col[i]\
+    \ == 0 or col[i] == 1);\n        return;\n    }\n    int m = rng(0, 200000);\n\
+    \    rep(i, 0, m) {\n        int a = rng(0, (int)color[0].size() - 1);\n     \
+    \   int b = rng(0, (int)color[1].size() - 1);\n        g.add_edge(color[0][a],\
+    \ color[1][b]);\n    }\n    vector<int> col = bipartite(g);\n    assert(!col.empty());\n\
+    \    rep(i, 0, n) {\n        assert(col[i] == 0 or col[i] == 1);\n        for(const\
+    \ int to : g[i]) {\n            assert(col[to] == 1 - col[i]);\n        }\n  \
+    \  }\n}\nvoid namori() {\n    int n = rng(1, 100000);\n    auto [u, v] = rng.tree(n,\
     \ false);\n    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        g.add_edge(u[i],\
     \ v[i]);\n    }\n    LowestCommonAncestor<int> tree(g);\n    int a = rng(0, n\
     \ - 1);\n    int b = a;\n    while(b == a) b = rng(0, n - 1);\n    g.add_edge(a,\
@@ -262,14 +261,14 @@ data:
     \ + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/graph/graph_template.hpp
   - src/graph/bipartite.hpp
   - src/tree/lowest_common_ancestor.hpp
   isVerificationFile: true
   path: verify/unit_test/graph/bipartite.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bipartite.test.cpp

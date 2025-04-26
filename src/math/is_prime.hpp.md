@@ -38,8 +38,8 @@ data:
   timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/alds1/prime_numbers.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
+  - verify/aizu_online_judge/alds1/prime_numbers.test.cpp
 documentation_of: src/math/is_prime.hpp
 layout: document
 title: is_prime

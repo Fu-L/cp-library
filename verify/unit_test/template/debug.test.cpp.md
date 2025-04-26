@@ -169,24 +169,24 @@ data:
     \ << endl;\n}\ntemplate <typename Head, typename... Tail>\nvoid debug_out(Head\
     \ H, Tail... T) {\n    cerr << \" \" << dbg::to_string(H);\n    if(sizeof...(T)\
     \ != 0) cerr << \",\";\n    debug_out(T...);\n}\n}  // namespace dbg\n#define\
-    \ debug(...) cerr << \"Line \" << __LINE__ << \", \" << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", dbg::debug_out(__VA_ARGS__)\n#line 4 \"verify/unit_test/template/debug.test.cpp\"\
-    \nusing mint = modint998244353;\nusing Mint = modint;\nvoid test() {\n    int\
-    \ a = 5, b = 7, c = -1;\n    debug(a, b, c);\n    pair<int, int> p = {3, 4};\n\
-    \    pair<pair<int, int>, pair<pair<int, bool>, int>> q;\n    debug(p);\n    debug(q);\n\
-    \    debug(p, q);\n    pair<string, char> ps;\n    ps.second = 'f';\n    debug(ps);\n\
-    \    vector<vector<pair<string, char>>> v(3, vector<pair<string, char>>(4));\n\
-    \    debug(v);\n    map<int, int> mp;\n    mp[4] = 7;\n    mp[-2] = 9;\n    debug(mp);\n\
-    \    set<double> st;\n    st.insert(4.1);\n    st.insert(3173.4178);\n    debug(st);\n\
-    \    map<long double, set<pair<string, vector<bool>>>> ms;\n    debug(ms);\n \
-    \   map<string, vector<pair<int, long double>>> mp2;\n    mp2[\"hello\"] = {{2,\
-    \ 3}, {4, 5}};\n    mp2[\"hoge\"] = {{4, 1}, {3, 8}, {7, 10}};\n    debug(mp2);\n\
-    \    vector<pair<vector<ll>, vector<string>>> v2 = {{{2, 3, 4, 5}, {\"hello\"\
-    , \"hoge\"}}, {{3, 1, 4}, {\"hfo\", \"fah\"}}};\n    debug(v2);\n    mint ma =\
-    \ 998244352, mb = 2, mc = ma * mb;\n    debug(mc);\n    Mint::set_mod(1000000007);\n\
-    \    Mint dma = 500000004, dmb = 6, dmc = dma * dmb;\n    debug(dmc);\n}\nint\
-    \ main(void) {\n    test();\n    int a, b;\n    cin >> a >> b;\n    cout << a\
-    \ + b << '\\n';\n}\n"
+    \ debug(...) cerr << \"Line \" << __LINE__ << \", \"  \\\n                   \
+    \     << \"[\" << #__VA_ARGS__ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)\n\
+    #line 4 \"verify/unit_test/template/debug.test.cpp\"\nusing mint = modint998244353;\n\
+    using Mint = modint;\nvoid test() {\n    int a = 5, b = 7, c = -1;\n    debug(a,\
+    \ b, c);\n    pair<int, int> p = {3, 4};\n    pair<pair<int, int>, pair<pair<int,\
+    \ bool>, int>> q;\n    debug(p);\n    debug(q);\n    debug(p, q);\n    pair<string,\
+    \ char> ps;\n    ps.second = 'f';\n    debug(ps);\n    vector<vector<pair<string,\
+    \ char>>> v(3, vector<pair<string, char>>(4));\n    debug(v);\n    map<int, int>\
+    \ mp;\n    mp[4] = 7;\n    mp[-2] = 9;\n    debug(mp);\n    set<double> st;\n\
+    \    st.insert(4.1);\n    st.insert(3173.4178);\n    debug(st);\n    map<long\
+    \ double, set<pair<string, vector<bool>>>> ms;\n    debug(ms);\n    map<string,\
+    \ vector<pair<int, long double>>> mp2;\n    mp2[\"hello\"] = {{2, 3}, {4, 5}};\n\
+    \    mp2[\"hoge\"] = {{4, 1}, {3, 8}, {7, 10}};\n    debug(mp2);\n    vector<pair<vector<ll>,\
+    \ vector<string>>> v2 = {{{2, 3, 4, 5}, {\"hello\", \"hoge\"}}, {{3, 1, 4}, {\"\
+    hfo\", \"fah\"}}};\n    debug(v2);\n    mint ma = 998244352, mb = 2, mc = ma *\
+    \ mb;\n    debug(mc);\n    Mint::set_mod(1000000007);\n    Mint dma = 500000004,\
+    \ dmb = 6, dmc = dma * dmb;\n    debug(dmc);\n}\nint main(void) {\n    test();\n\
+    \    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/debug.hpp\"\nusing mint = modint998244353;\n\
     using Mint = modint;\nvoid test() {\n    int a = 5, b = 7, c = -1;\n    debug(a,\
@@ -212,7 +212,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/template/debug.test.cpp
   requiredBy: []
-  timestamp: '2024-12-25 20:22:39+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/template/debug.test.cpp

@@ -8,11 +8,11 @@ data:
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':heavy_check_mark:'
+    path: src/random/random_number_generator.hpp
+    title: RandomNumberGenerator
+  - icon: ':heavy_check_mark:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
-    title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
@@ -33,7 +33,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -232,29 +232,29 @@ data:
     \ 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n\
     \    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/template/dynamic_modint.hpp\"\n#include \"../../../src/math/lucas.hpp\"\
-    \n#include \"../../../src/math/miller_rabin.hpp\"\nusing mint = modint;\nvoid\
-    \ test() {\n    static Lucas<mint> binom;\n    int n = rng(1, 200000), k = rng(0,\
-    \ n);\n    mint ans = 1;\n    int cnt = 0;\n    rep(i, 1, k + 1) {\n        int\
-    \ p = n - (i - 1), q = i;\n        while(p % mint::mod() == 0) {\n           \
-    \ cnt++;\n            p /= mint::mod();\n        }\n        while(q % mint::mod()\
-    \ == 0) {\n            cnt--;\n            q /= mint::mod();\n        }\n    \
-    \    ans *= mint(p) / q;\n    }\n    if(cnt > 0) ans = 0;\n    assert(binom(n,\
-    \ k).val() == ans.val());\n}\nint main(void) {\n    int p = 1;\n    while(!miller_rabin(p))\
-    \ {\n        p = rng(2, 200000);\n    }\n    mint::set_mod(p);\n    constexpr\
-    \ int test_num = 1000;\n    rep(_, 0, test_num) {\n        test();\n    }\n  \
-    \  int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/template/dynamic_modint.hpp\"\
+    \n#include \"../../../src/math/lucas.hpp\"\n#include \"../../../src/math/miller_rabin.hpp\"\
+    \nusing mint = modint;\nvoid test() {\n    static Lucas<mint> binom;\n    int\
+    \ n = rng(1, 200000), k = rng(0, n);\n    mint ans = 1;\n    int cnt = 0;\n  \
+    \  rep(i, 1, k + 1) {\n        int p = n - (i - 1), q = i;\n        while(p %\
+    \ mint::mod() == 0) {\n            cnt++;\n            p /= mint::mod();\n   \
+    \     }\n        while(q % mint::mod() == 0) {\n            cnt--;\n         \
+    \   q /= mint::mod();\n        }\n        ans *= mint(p) / q;\n    }\n    if(cnt\
+    \ > 0) ans = 0;\n    assert(binom(n, k).val() == ans.val());\n}\nint main(void)\
+    \ {\n    int p = 1;\n    while(!miller_rabin(p)) {\n        p = rng(2, 200000);\n\
+    \    }\n    mint::set_mod(p);\n    constexpr int test_num = 1000;\n    rep(_,\
+    \ 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n\
+    \    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/template/dynamic_modint.hpp
   - src/math/lucas.hpp
   - src/math/miller_rabin.hpp
   isVerificationFile: true
   path: verify/unit_test/math/lucas.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/math/lucas.test.cpp

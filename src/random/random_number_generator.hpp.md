@@ -7,12 +7,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/unit_test/convolution/convolution_ll.test.cpp
-    title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/unit_test/convolution/or_convolution.test.cpp
-    title: verify/unit_test/convolution/or_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -46,7 +40,7 @@ data:
     #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
     \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/random_number_generator.hpp\"\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/random/random_number_generator.hpp\"\
     \nstruct RandomNumberGenerator {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -156,8 +150,8 @@ data:
     \     } else {\n                res += \")\";\n                --N;\n        \
     \    }\n        }\n        return res;\n    }\n\n   private:\n    mt19937_64 mt;\n\
     } rng;\n"
-  code: "#pragma once\n#include \"./template.hpp\"\nstruct RandomNumberGenerator {\n\
-    \    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
+  code: "#pragma once\n#include \"../template/template.hpp\"\nstruct RandomNumberGenerator\
+    \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
     \        assert(lower <= upper);\n        if constexpr(is_integral_v<T>) {\n \
@@ -269,22 +263,20 @@ data:
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
-  path: src/template/random_number_generator.hpp
+  path: src/random/random_number_generator.hpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/tree/centroid.test.cpp
-  - verify/unit_test/convolution/convolution_ll.test.cpp
-  - verify/unit_test/convolution/or_convolution.test.cpp
-  - verify/unit_test/math/eratosthenes_sieve.test.cpp
-  - verify/unit_test/math/lucas.test.cpp
-  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
-  - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp
+  - verify/unit_test/graph/bfs.test.cpp
+  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
-documentation_of: src/template/random_number_generator.hpp
+  - verify/unit_test/math/lucas.test.cpp
+  - verify/unit_test/math/eratosthenes_sieve.test.cpp
+documentation_of: src/random/random_number_generator.hpp
 layout: document
 title: RandomNumberGenerator
 ---
@@ -318,46 +310,14 @@ RandomNumberGenerator rng()
 # operator ()
 
 ```cpp
-ll rng(ll lower, ll upper)
+T rng(T lower, T upper)
 ```
 
-$\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の整数を一様ランダムに返します．
+$\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の整数・実数を一様ランダムに返します．
 
 **制約**
 
-- $-10^{18} \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^{18}$
-
-**計算量**
-
-- $O(1)$
-
-# num
-
-```cpp
-ll rng.num(ll lower, ll upper)
-```
-
-$\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の整数を一様ランダムに返します．
-
-**制約**
-
-- $-10^{18} \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^{18}$
-
-**計算量**
-
-- $O(1)$
-
-# rnum
-
-```cpp
-long double rng.rnum(long double lower, long double upper)
-```
-
-$\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の実数を一様ランダムに返します．
-
-**制約**
-
-- $-10^{18} \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^{18}$
+- $\mathrm{lower} \leq \mathrm{upper}$
 
 **計算量**
 
@@ -366,7 +326,7 @@ $\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の実数を一様ランダムに
 # vec
 
 ```cpp
-vector<ll> rng.vec(int n, ll lower, ll upper, bool dup = true)
+vector<T> rng.vec(int n, T lower, T upper, bool dup = true)
 ```
 
 $\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の整数からなる長さ $n$ の配列を一様ランダムに返します．
@@ -375,25 +335,8 @@ $\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の整数からなる長さ $n$ �
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
-- $-10^{18} \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^{18}$
-
-**計算量**
-
-- 期待 $O(n)$
-
-# rvec
-
-```cpp
-vector<long double> rng.rvec(int n, long double lower, long double upper)
-```
-
-$\mathrm{lower}$ 以上 $\mathrm{upper}$ 以下の実数からなる長さ $n$ の配列を一様ランダムに返します．
-
-**制約**
-
-- $1 \leq n \leq 2 \cdot 10^5$
-- $-10^{18} \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^{18}$
+- $0 \leq n \leq 10^8$
+- $\mathrm{lower} \leq \mathrm{upper}$
 
 **計算量**
 
@@ -411,7 +354,7 @@ vector<int> rng.perm(int n, bool one = true)
 
 **制約**
 
-- $1 \leq n \leq 10^6$
+- $0 \leq n \leq 10^8$
 
 **計算量**
 
@@ -429,7 +372,7 @@ $n$ 頂点の木を一様ランダムに生成し，辺の両端の頂点ラベ�
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
+- $0 \leq n \leq 10^8$
 
 **計算量**
 
@@ -438,7 +381,7 @@ $n$ 頂点の木を一様ランダムに生成し，辺の両端の頂点ラベ�
 # weighted_tree
 
 ```cpp
-tuple<vector<int>, vector<int>, vector<int>> rng.weighted_tree(int n, int lower, int upper, bool one = true)
+tuple<vector<int>, vector<int>, vector<T>> rng.weighted_tree(int n, T lower, T upper, bool one = true)
 ```
 
 辺の重みが $[\mathrm{lower}, \mathrm{upper}]$ である $n$ 頂点の重み付き木を一様ランダムに生成し，辺の両端の頂点ラベルと重みを返します．
@@ -447,8 +390,8 @@ tuple<vector<int>, vector<int>, vector<int>> rng.weighted_tree(int n, int lower,
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
-- $-10^9 \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^9$
+- $0 \leq n \leq 10^8$
+- $\mathrm{lower} \leq \mathrm{upper}$
 
 **計算量**
 
@@ -466,8 +409,8 @@ $n$ 頂点 $m$ 辺の単純無向グラフを一様ランダムに生成し，�
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
-- $1 \leq m \leq \mathrm{min}(2 \cdot 10^5, \frac{n (n - 1)}{2})$
+- $0 \leq n \leq 10^8$
+- $0 \leq m \leq \mathrm{min}(10^8, \frac{n (n - 1)}{2})$
 
 **計算量**
 
@@ -476,7 +419,7 @@ $n$ 頂点 $m$ 辺の単純無向グラフを一様ランダムに生成し，�
 # weighted_graph
 
 ```cpp
-tuple<vector<int>, vector<int>, vector<int>> rng.weighted_graph(int n, int m, int lower, int upper, bool one = true)
+tuple<vector<int>, vector<int>, vector<T>> rng.weighted_graph(int n, int m, T lower, T upper, bool one = true)
 ```
 
 辺の重みが $[\mathrm{lower}, \mathrm{upper}]$ である $n$ 頂点 $m$ 辺の重み付き単純無向グラフを一様ランダムに生成し，辺の両端の頂点ラベルと重みを返します．
@@ -485,9 +428,9 @@ tuple<vector<int>, vector<int>, vector<int>> rng.weighted_graph(int n, int m, in
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
-- $1 \leq m \leq \mathrm{min}(2 \cdot 10^5, \frac{n (n - 1)}{2})$
-- $-10^9 \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^9$
+- $0 \leq n \leq 10^8$
+- $0 \leq m \leq \mathrm{min}(10^8, \frac{n (n - 1)}{2})$
+- $\mathrm{lower} \leq \mathrm{upper}$
 
 **計算量**
 
@@ -505,8 +448,8 @@ $n$ 頂点 $m$ 辺の単純無向連結グラフをランダムに生成し，�
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
-- $n - 1 \leq m \leq \mathrm{min}(2 \cdot 10^5, \frac{n (n - 1)}{2})$
+- $0 \leq n \leq 10^8$
+- $\mathrm{max}(n - 1, 0) \leq m \leq \mathrm{min}(10^8, \frac{n (n - 1)}{2})$
 
 **計算量**
 
@@ -515,7 +458,7 @@ $n$ 頂点 $m$ 辺の単純無向連結グラフをランダムに生成し，�
 # weighted_connected_graph
 
 ```cpp
-tuple<vector<int>, vector<int>, vector<int>> rng.weighted_connected_graph(int n, int m, int lower, int upper, bool one = true)
+tuple<vector<int>, vector<int>, vector<T>> rng.weighted_connected_graph(int n, int m, T lower, T upper, bool one = true)
 ```
 
 辺の重みが $[\mathrm{lower}, \mathrm{upper}]$ である $n$ 頂点 $m$ 辺の重み付き単純無向連結グラフをランダムに生成し，辺の両端の頂点ラベルと重みを返します．
@@ -524,9 +467,9 @@ tuple<vector<int>, vector<int>, vector<int>> rng.weighted_connected_graph(int n,
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
-- $n - 1 \leq m \leq \mathrm{min}(2 \cdot 10^5, \frac{n (n - 1)}{2})$
-- $-10^9 \leq \mathrm{lower} \leq \mathrm{upper} \leq 10^9$
+- $0 \leq n \leq 10^8$
+- $\mathrm{max}(n - 1, 0) \leq m \leq \mathrm{min}(10^8, \frac{n (n - 1)}{2})$
+- $\mathrm{lower} \leq \mathrm{upper}$
 
 **計算量**
 
@@ -542,7 +485,7 @@ string rng.parenthesis(int n)
 
 **制約**
 
-- $1 \leq n \leq 2 \cdot 10^5$
+- $1 \leq n \leq 10^8$
 
 **計算量**
 

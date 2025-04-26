@@ -5,7 +5,7 @@ data:
     path: src/data_structure/sparse_table_2d.hpp
     title: SparseTable2D
   - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
+    path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
@@ -27,7 +27,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -171,27 +171,27 @@ data:
     \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
     \ << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/data_structure/sparse_table_2d.hpp\"\nint op(int a, int b) {\n  \
-    \  return min(a, b);\n}\nint e() {\n    return (int)1e9;\n}\nvoid test() {\n \
-    \   int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>> a(h, vector<int>(w));\n\
-    \    rep(i, 0, h) {\n        rep(j, 0, w) {\n            a[i][j] = rng(0, (int)1e9);\n\
-    \        }\n    }\n    SparseTable2D<int, op, e> st(a);\n    int query_num = 1000;\n\
-    \    while(query_num--) {\n        int xl = rng(0, h), xr = rng(xl, h);\n    \
-    \    int yl = rng(0, w), yr = rng(yl, w);\n        int expected = 1e9;\n     \
-    \   rep(i, xl, xr) {\n            rep(j, yl, yr) {\n                expected =\
-    \ min(expected, a[i][j]);\n            }\n        }\n        assert(st.prod(xl,\
-    \ xr, yl, yr) == expected);\n    }\n}\nint main(void) {\n    constexpr int test_num\
-    \ = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int a, b;\n \
-    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/data_structure/sparse_table_2d.hpp\"\
+    \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
+    }\nvoid test() {\n    int h = rng(10, 100), w = rng(10, 100);\n    vector<vector<int>>\
+    \ a(h, vector<int>(w));\n    rep(i, 0, h) {\n        rep(j, 0, w) {\n        \
+    \    a[i][j] = rng(0, (int)1e9);\n        }\n    }\n    SparseTable2D<int, op,\
+    \ e> st(a);\n    int query_num = 1000;\n    while(query_num--) {\n        int\
+    \ xl = rng(0, h), xr = rng(xl, h);\n        int yl = rng(0, w), yr = rng(yl, w);\n\
+    \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
+    \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
+    \       }\n        assert(st.prod(xl, xr, yl, yr) == expected);\n    }\n}\nint\
+    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
+    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
+    \ << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/data_structure/sparse_table_2d.hpp
   isVerificationFile: true
   path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp

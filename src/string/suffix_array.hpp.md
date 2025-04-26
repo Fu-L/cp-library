@@ -169,8 +169,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/number_of_substrings.test.cpp
-  - verify/library_checker/string/number_of_substrings_2.test.cpp
   - verify/library_checker/string/suffix_array.test.cpp
+  - verify/library_checker/string/number_of_substrings_2.test.cpp
 documentation_of: src/string/suffix_array.hpp
 layout: document
 title: suffix_array

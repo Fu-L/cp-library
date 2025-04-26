@@ -5,7 +5,7 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
+    path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
@@ -30,7 +30,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -192,35 +192,35 @@ data:
     \ {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a\
     \ + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/graph/graph_template.hpp\"\n#include \"../../../src/tree/centroid.hpp\"\
-    \nvoid test() {\n    int n = rng(2, 1000);\n    auto [u, v] = rng.tree(n, false);\n\
-    \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        g.add_edge(u[i], v[i]);\n\
-    \    }\n    vector<bool> visited(n);\n    auto dfs = [&](auto& dfs, int cur, int\
-    \ root, bool is_centroid) -> int {\n        visited[cur] = true;\n        vector<int>\
-    \ sub;\n        int sum = 1;\n        for(const auto& e : g[cur]) {\n        \
-    \    if(visited[e.to]) continue;\n            sub.push_back(dfs(dfs, e.to, root,\
-    \ is_centroid));\n            sum += sub.back();\n        }\n        if(cur ==\
-    \ root) {\n            if(is_centroid) {\n                for(const int val :\
-    \ sub) {\n                    assert(2 * val <= n);\n                }\n     \
-    \       } else {\n                bool flag = false;\n                for(const\
-    \ int val : sub) {\n                    if(2 * val > n) flag = true;\n       \
-    \         }\n                assert(flag);\n            }\n        }\n       \
-    \ visited[cur] = false;\n        return sum;\n    };\n    vector<int> cent = centroid(g);\n\
-    \    rep(i, 0, n) {\n        bool is_centroid = false;\n        for(const int\
-    \ x : cent) {\n            if(i == x) is_centroid = true;\n        }\n       \
-    \ dfs(dfs, i, i, is_centroid);\n    }\n}\nint main(void) {\n    constexpr int\
-    \ test_num = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int\
-    \ a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
+    \n#include \"../../../src/tree/centroid.hpp\"\nvoid test() {\n    int n = rng(2,\
+    \ 1000);\n    auto [u, v] = rng.tree(n, false);\n    Graph<int> g(n);\n    rep(i,\
+    \ 0, n - 1) {\n        g.add_edge(u[i], v[i]);\n    }\n    vector<bool> visited(n);\n\
+    \    auto dfs = [&](auto& dfs, int cur, int root, bool is_centroid) -> int {\n\
+    \        visited[cur] = true;\n        vector<int> sub;\n        int sum = 1;\n\
+    \        for(const auto& e : g[cur]) {\n            if(visited[e.to]) continue;\n\
+    \            sub.push_back(dfs(dfs, e.to, root, is_centroid));\n            sum\
+    \ += sub.back();\n        }\n        if(cur == root) {\n            if(is_centroid)\
+    \ {\n                for(const int val : sub) {\n                    assert(2\
+    \ * val <= n);\n                }\n            } else {\n                bool\
+    \ flag = false;\n                for(const int val : sub) {\n                \
+    \    if(2 * val > n) flag = true;\n                }\n                assert(flag);\n\
+    \            }\n        }\n        visited[cur] = false;\n        return sum;\n\
+    \    };\n    vector<int> cent = centroid(g);\n    rep(i, 0, n) {\n        bool\
+    \ is_centroid = false;\n        for(const int x : cent) {\n            if(i ==\
+    \ x) is_centroid = true;\n        }\n        dfs(dfs, i, i, is_centroid);\n  \
+    \  }\n}\nint main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num)\
+    \ {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a\
+    \ + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/graph/graph_template.hpp
   - src/tree/centroid.hpp
   isVerificationFile: true
   path: verify/unit_test/tree/centroid.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/tree/centroid.test.cpp

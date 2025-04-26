@@ -98,8 +98,8 @@ data:
   timestamp: '2025-02-22 22:56:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/convolution/gcd_convolution.test.cpp
   - verify/library_checker/convolution/lcm_convolution.test.cpp
+  - verify/library_checker/convolution/gcd_convolution.test.cpp
 documentation_of: src/math/divisor_multiple_transform.hpp
 layout: document
 title: Divisor/MultipleTransform

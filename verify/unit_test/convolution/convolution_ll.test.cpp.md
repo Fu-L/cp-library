@@ -14,8 +14,8 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
-    title: RandomNumberGenerator
+    path: src/random/permuted_congruential_generator.hpp
+    title: PermutedCongruentialGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/static_modint.hpp
     title: StaticModint
@@ -39,142 +39,49 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
-    \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
-    \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
-    \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
-    \        assert(lower <= upper);\n        if constexpr(is_integral_v<T>) {\n \
-    \           uniform_int_distribution<T> dist(lower, upper);\n            return\
-    \ dist(mt);\n        } else if constexpr(is_floating_point_v<T>) {\n         \
-    \   uniform_real_distribution<T> dist(lower, upper);\n            return dist(mt);\n\
-    \        }\n    }\n    template <typename T>\n    inline vector<T> vec(const int\
-    \ n, const T lower, const T upper, const bool dup = true) {\n        static_assert(is_integral_v<T>\
-    \ or is_floating_point_v<T>);\n        assert(0 <= n and n <= (int)1e8);\n   \
-    \     assert(lower <= upper);\n        if(n == 0) return {};\n        vector<T>\
-    \ res(n);\n        if(dup or is_floating_point_v<T>) {\n            for(int i\
-    \ = 0; i < n; ++i) res[i] = this->operator()(lower, upper);\n        } else {\n\
-    \            assert(upper - lower + 1 >= n);\n            if(upper - lower + 1\
-    \ >= 2 * n) {\n                set<T> used;\n                while((int)used.size()\
-    \ < n) {\n                    const T a = this->operator()(lower, upper);\n  \
-    \                  used.insert(a);\n                }\n                int i =\
-    \ 0;\n                for(const T a : used) {\n                    res[i] = a;\n\
-    \                    ++i;\n                }\n            } else {\n         \
-    \       const vector<int> p = perm(upper - lower + 1, false);\n              \
-    \  for(int i = 0; i < n; ++i) {\n                    res[i] = p[i] + lower;\n\
-    \                }\n            }\n        }\n        return res;\n    }\n   \
-    \ inline vector<int> perm(const int n, const bool one = true) {\n        assert(0\
-    \ <= n and n <= (int)1e8);\n        vector<int> res(n);\n        for(int i = 0;\
-    \ i < n; ++i) res[i] = i + one;\n        for(int i = n - 1; i > 0; --i) {\n  \
-    \          swap(res[i], res[this->operator()(0, i)]);\n        }\n        return\
-    \ res;\n    }\n    inline pair<vector<int>, vector<int>> tree(const int n, const\
-    \ bool one = true) {\n        assert(0 <= n and n <= (int)1e8);\n        if(n\
-    \ <= 1) return {{}, {}};\n        if(n == 2) return {{0 + one}, {1 + one}};\n\
-    \        vector<int> u(n - 1), v(n - 1);\n        const vector<int> pruefer =\
-    \ vec(n - 2, 0, n - 1);\n        set<int> st;\n        vector<int> cnt(n);\n \
-    \       for(int i = 0; i < n; ++i) st.insert(i);\n        auto add = [&](const\
-    \ int x) -> void {\n            if(x > n) return;\n            if(cnt[x] == 0)\
-    \ st.erase(x);\n            ++cnt[x];\n        };\n        auto del = [&](const\
-    \ int x) -> void {\n            if(x > n) return;\n            --cnt[x];\n   \
-    \         if(cnt[x] == 0) st.insert(x);\n        };\n        for(int i = 0; i\
-    \ < n - 2; ++i) add(pruefer[i]);\n        for(int i = 0; i < n - 2; ++i) {\n \
-    \           const int a = *st.begin();\n            const int b = pruefer[i];\n\
-    \            u[i] = a + one;\n            v[i] = b + one;\n            del(b);\n\
-    \            add(a);\n        }\n        const int a = *st.begin();\n        add(a);\n\
-    \        const int b = *st.begin();\n        u[n - 2] = a + one;\n        v[n\
-    \ - 2] = b + one;\n        return {u, v};\n    }\n    template <typename T>\n\
-    \    inline tuple<vector<int>, vector<int>, vector<T>> weighted_tree(const int\
-    \ n, const T lower, const T upper, const bool one = true) {\n        static_assert(is_integral_v<T>\
-    \ or is_floating_point_v<T>);\n        assert(0 <= n and n <= (int)1e8);\n   \
-    \     assert(lower <= upper);\n        if(n == 0) return {{}, {}, {}};\n     \
-    \   const auto [u, v] = tree(n, one);\n        const vector<T> w = vec(n - 1,\
-    \ lower, upper, true);\n        return {u, v, w};\n    }\n    inline pair<vector<int>,\
-    \ vector<int>> graph(const int n, const int m, const bool one = true) {\n    \
-    \    assert(0 <= n and n <= (int)1e8);\n        assert(0 <= m and m <= (int)min((ll)1e8,\
-    \ 1ll * n * (n - 1) / 2));\n        vector<int> u, v;\n        u.reserve(m);\n\
-    \        v.reserve(m);\n        if(1ll * n * (n - 1) / 2 >= 2e6) {\n         \
-    \   set<pair<int, int>> edge;\n            while((int)edge.size() < m) {\n   \
-    \             const int a = this->operator()(0, n - 1);\n                const\
-    \ int b = this->operator()(0, n - 1);\n                if(a >= b) continue;\n\
-    \                edge.insert({a, b});\n            }\n            for(const auto&\
-    \ [a, b] : edge) {\n                u.push_back(a + one);\n                v.push_back(b\
-    \ + one);\n            }\n        } else {\n            vector<pair<int, int>>\
-    \ edge;\n            edge.reserve(n * (n - 1) / 2);\n            for(int i = 0;\
-    \ i < n; ++i) {\n                for(int j = i + 1; j < n; ++j) {\n          \
-    \          edge.push_back({i, j});\n                }\n            }\n       \
-    \     const vector<int> p = perm(n * (n - 1) / 2, false);\n            for(int\
-    \ i = 0; i < m; ++i) {\n                u.push_back(edge[p[i]].first + one);\n\
-    \                v.push_back(edge[p[i]].second + one);\n            }\n      \
-    \  }\n        return {u, v};\n    }\n    template <typename T>\n    inline tuple<vector<int>,\
-    \ vector<int>, vector<T>> weighted_graph(const int n, const int m, const T lower,\
-    \ const T upper, const bool one = true) {\n        static_assert(is_integral_v<T>\
-    \ or is_floating_point_v<T>);\n        assert(0 <= n and n <= (int)1e8);\n   \
-    \     assert(0 <= m and m <= (int)min((ll)1e8, 1ll * n * (n - 1) / 2));\n    \
-    \    assert(lower <= upper);\n        const auto [u, v] = graph(n, m, one);\n\
-    \        const vector<T> w = vec(m, lower, upper, true);\n        return {u, v,\
-    \ w};\n    }\n    inline pair<vector<int>, vector<int>> connected_graph(const\
-    \ int n, const int m, const bool one = true) {\n        assert(0 <= n and n <=\
-    \ (int)1e8);\n        assert(max(n - 1, 0) <= m and m <= (int)min((ll)1e8, 1ll\
-    \ * n * (n - 1) / 2));\n        if(n <= 1) return {{}, {}};\n        vector<int>\
-    \ u, v;\n        u.reserve(m);\n        v.reserve(m);\n        auto [ut, vt] =\
-    \ tree(n, false);\n        if(1ll * n * (n - 1) / 2 >= 2e6) {\n            set<pair<int,\
-    \ int>> edge;\n            for(int i = 0; i < n - 1; ++i) {\n                edge.insert({min(ut[i],\
-    \ vt[i]), max(ut[i], vt[i])});\n            }\n            while((int)edge.size()\
-    \ < m) {\n                const int a = this->operator()(0, n - 1);\n        \
-    \        const int b = this->operator()(0, n - 1);\n                if(a >= b)\
-    \ continue;\n                edge.insert({a, b});\n            }\n           \
-    \ for(const auto& [a, b] : edge) {\n                u.push_back(a + one);\n  \
-    \              v.push_back(b + one);\n            }\n        } else {\n      \
-    \      set<pair<int, int>> used;\n            for(int i = 0; i < n - 1; ++i) {\n\
-    \                u.push_back(ut[i] + one);\n                v.push_back(vt[i]\
-    \ + one);\n                used.insert({min(ut[i], vt[i]), max(ut[i], vt[i])});\n\
-    \            }\n            vector<pair<int, int>> edge;\n            edge.reserve(n\
-    \ * (n - 1) / 2 - (n - 1));\n            for(int i = 0; i < n; ++i) {\n      \
-    \          for(int j = i + 1; j < n; ++j) {\n                    if(used.find({i,\
-    \ j}) == used.end()) edge.push_back({i, j});\n                }\n            }\n\
-    \            const vector<int> p = perm(n * (n - 1) / 2 - (n - 1), false);\n \
-    \           for(int i = 0; i < m - (n - 1); ++i) {\n                u.push_back(edge[p[i]].first\
-    \ + one);\n                v.push_back(edge[p[i]].second + one);\n           \
-    \ }\n        }\n        return {u, v};\n    }\n    template <typename T>\n   \
-    \ inline tuple<vector<int>, vector<int>, vector<T>> weighted_connected_graph(const\
-    \ int n, const int m, const T lower, const T upper, const bool one = true) {\n\
-    \        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n        assert(0\
-    \ <= n and n <= (int)1e8);\n        assert(max(n - 1, 0) <= m and m <= (int)min((ll)1e8,\
-    \ 1ll * n * (n - 1) / 2));\n        assert(lower <= upper);\n        const auto\
-    \ [u, v] = connected_graph(n, m, one);\n        const vector<T> w = vec(m, lower,\
-    \ upper, true);\n        return {u, v, w};\n    }\n    inline string parenthesis(const\
-    \ int n) {\n        assert(0 <= n and n <= 1e8);\n        string res = \"\";\n\
-    \        int N = n, M = n;\n        for(int i = 0; i < 2 * n; ++i) {\n       \
-    \     if(this->operator()(0.0l, 1.0l) > 1.0l * (N - M) * (N + 1) / ((N - M + 1)\
-    \ * (N + M))) {\n                res += \"(\";\n                --M;\n       \
-    \     } else {\n                res += \")\";\n                --N;\n        \
-    \    }\n        }\n        return res;\n    }\n\n   private:\n    mt19937_64 mt;\n\
-    } rng;\n#line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct\
-    \ StaticModint {\n    using mint = StaticModint;\n    static constexpr uint32_t\
-    \ mod() {\n        return m;\n    }\n    static constexpr mint raw(const uint32_t\
-    \ v) {\n        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr\
-    \ StaticModint()\n        : _v(0) {}\n    template <class T>\n    constexpr StaticModint(const\
-    \ T& v) {\n        static_assert(is_integral_v<T>);\n        if constexpr(is_signed_v<T>)\
-    \ {\n            int64_t x = int64_t(v % int64_t(m));\n            if(x < 0) x\
-    \ += m;\n            _v = uint32_t(x);\n        } else _v = uint32_t(v % m);\n\
-    \    }\n    constexpr uint32_t val() const {\n        return _v;\n    }\n    constexpr\
-    \ mint& operator++() {\n        return *this += 1;\n    }\n    constexpr mint&\
-    \ operator--() {\n        return *this -= 1;\n    }\n    constexpr mint operator++(int)\
-    \ {\n        mint res = *this;\n        ++*this;\n        return res;\n    }\n\
-    \    constexpr mint operator--(int) {\n        mint res = *this;\n        --*this;\n\
-    \        return res;\n    }\n    constexpr mint& operator+=(mint rhs) {\n    \
-    \    if(_v >= m - rhs._v) _v -= m;\n        _v += rhs._v;\n        return *this;\n\
-    \    }\n    constexpr mint& operator-=(mint rhs) {\n        if(_v < rhs._v) _v\
-    \ += m;\n        _v -= rhs._v;\n        return *this;\n    }\n    constexpr mint&\
-    \ operator*=(mint rhs) {\n        return *this = *this * rhs;\n    }\n    constexpr\
-    \ mint& operator/=(mint rhs) {\n        return *this *= rhs.inv();\n    }\n  \
-    \  constexpr mint operator+() const {\n        return *this;\n    }\n    constexpr\
-    \ mint operator-() const {\n        return mint{} - *this;\n    }\n    constexpr\
-    \ mint pow(long long n) const {\n        assert(0 <= n);\n        if(n == 0) return\
-    \ 1;\n        mint x = *this, r = 1;\n        while(1) {\n            if(n & 1)\
-    \ r *= x;\n            n >>= 1;\n            if(n == 0) return r;\n          \
-    \  x *= x;\n        }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime)\
-    \ {\n            assert(_v);\n            return pow(m - 2);\n        } else {\n\
-    \            const auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n\
+    #line 3 \"src/random/permuted_congruential_generator.hpp\"\nstruct PermutedCongruentialGenerator\
+    \ {\n    template <typename T>\n        requires(is_integral_v<T> and sizeof(T)\
+    \ == 4) or (is_floating_point_v<T> and sizeof(T) == 8)\n    inline T operator()(const\
+    \ T l, const T r) {\n        assert(l <= r);\n        if constexpr(is_integral_v<T>)\
+    \ {\n            const unsigned int range = static_cast<unsigned int>(r - l +\
+    \ 1);\n            return l + (next32() % range);\n        } else {\n        \
+    \    static constexpr unsigned long long denom = 1ull << 53;\n            const\
+    \ unsigned long long x = next64() >> 11;\n            const double u = static_cast<double>(x)\
+    \ / denom;\n            return l + (r - l) * u;\n        }\n    }\n\n   private:\n\
+    \    static constexpr unsigned long long MULT = 6364136223846793005;\n    static\
+    \ inline unsigned long long state = chrono::steady_clock::now().time_since_epoch().count();\n\
+    \    inline unsigned int next32() {\n        unsigned long long x = state;\n \
+    \       state *= MULT;\n        const unsigned int count = x >> 61;\n        x\
+    \ ^= x >> 22;\n        return static_cast<unsigned int>(x >> (22 + count));\n\
+    \    }\n    inline unsigned long long next64() {\n        return (static_cast<unsigned\
+    \ long long>(next32()) << 32) | next32();\n    }\n} rng;\n#line 3 \"src/template/static_modint.hpp\"\
+    \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
+    \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
+    \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
+    \ a;\n    }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class\
+    \ T>\n    constexpr StaticModint(const T& v) {\n        static_assert(is_integral_v<T>);\n\
+    \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
+    \            if(x < 0) x += m;\n            _v = uint32_t(x);\n        } else\
+    \ _v = uint32_t(v % m);\n    }\n    constexpr uint32_t val() const {\n       \
+    \ return _v;\n    }\n    constexpr mint& operator++() {\n        return *this\
+    \ += 1;\n    }\n    constexpr mint& operator--() {\n        return *this -= 1;\n\
+    \    }\n    constexpr mint operator++(int) {\n        mint res = *this;\n    \
+    \    ++*this;\n        return res;\n    }\n    constexpr mint operator--(int)\
+    \ {\n        mint res = *this;\n        --*this;\n        return res;\n    }\n\
+    \    constexpr mint& operator+=(mint rhs) {\n        if(_v >= m - rhs._v) _v -=\
+    \ m;\n        _v += rhs._v;\n        return *this;\n    }\n    constexpr mint&\
+    \ operator-=(mint rhs) {\n        if(_v < rhs._v) _v += m;\n        _v -= rhs._v;\n\
+    \        return *this;\n    }\n    constexpr mint& operator*=(mint rhs) {\n  \
+    \      return *this = *this * rhs;\n    }\n    constexpr mint& operator/=(mint\
+    \ rhs) {\n        return *this *= rhs.inv();\n    }\n    constexpr mint operator+()\
+    \ const {\n        return *this;\n    }\n    constexpr mint operator-() const\
+    \ {\n        return mint{} - *this;\n    }\n    constexpr mint pow(long long n)\
+    \ const {\n        assert(0 <= n);\n        if(n == 0) return 1;\n        mint\
+    \ x = *this, r = 1;\n        while(1) {\n            if(n & 1) r *= x;\n     \
+    \       n >>= 1;\n            if(n == 0) return r;\n            x *= x;\n    \
+    \    }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime) {\n\
+    \            assert(_v);\n            return pow(m - 2);\n        } else {\n \
+    \           const auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n\
     \            return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
     \ lhs, mint rhs) {\n        return lhs += rhs;\n    }\n    friend constexpr mint\
     \ operator-(mint lhs, mint rhs) {\n        return lhs -= rhs;\n    }\n    friend\
@@ -342,10 +249,10 @@ data:
     \    rep(_, 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >>\
     \ a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/convolution/convolution_ll.hpp\"\nvoid test() {\n    int n = rng(0,\
-    \ 1000), m = rng(0, 1000);\n    vector<ll> a(n), b(m);\n    rep(i, 0, n) a[i]\
-    \ = rng(-1000000, 1000000);\n    rep(i, 0, m) b[i] = rng(-1000000, 1000000);\n\
+    \n#include \"../../../src/random/permuted_congruential_generator.hpp\"\n#include\
+    \ \"../../../src/convolution/convolution_ll.hpp\"\nvoid test() {\n    int n =\
+    \ rng(0, 1000), m = rng(0, 1000);\n    vector<ll> a(n), b(m);\n    rep(i, 0, n)\
+    \ a[i] = rng(-1000000, 1000000);\n    rep(i, 0, m) b[i] = rng(-1000000, 1000000);\n\
     \    vector<ll> c = convolution_ll(a, b);\n    if(!n or !m) {\n        assert(c.empty());\n\
     \        return;\n    }\n    vector<ll> expected(n + m - 1);\n    rep(i, 0, n\
     \ + m - 1) {\n        rep(j, 0, i + 1) {\n            if(0 <= j and j < n and\
@@ -356,7 +263,7 @@ data:
     \ << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/permuted_congruential_generator.hpp
   - src/convolution/convolution_ll.hpp
   - src/template/static_modint.hpp
   - src/convolution/convolution.hpp
@@ -365,7 +272,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp

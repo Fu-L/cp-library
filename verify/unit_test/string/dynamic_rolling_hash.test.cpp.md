@@ -5,14 +5,14 @@ data:
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
   - icon: ':heavy_check_mark:'
+    path: src/random/random_number_generator.hpp
+    title: RandomNumberGenerator
+  - icon: ':heavy_check_mark:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
   - icon: ':heavy_check_mark:'
     path: src/template/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
-    path: src/template/random_number_generator.hpp
-    title: RandomNumberGenerator
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
@@ -33,7 +33,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
     \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
@@ -223,30 +223,30 @@ data:
     \ {\n    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test();\n\
     \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/template/random_number_generator.hpp\"\n#include \"\
-    ../../../src/template/modint_2_61m1.hpp\"\n#include \"../../../src/string/dynamic_rolling_hash.hpp\"\
-    \nusing mint = Modint_2_61m1;\nvoid test() {\n    int n = rng(1, 2000), q = 2000;\n\
-    \    string s = \"\";\n    rep(i, 0, n) {\n        s += 'a' + rng(0, 25);\n  \
-    \  }\n    ll base = rng(1ll << 10, 1ll << 60);\n    DynamicRollingHash drh(s,\
-    \ base);\n    while(q--) {\n        int type = rng(0, 1);\n        if(type ==\
-    \ 0) {\n            int len = rng(0, n);\n            int l = rng(0, n - len),\
-    \ r = l + len;\n            mint ans = 0, b = 1;\n            rep(i, l, r) {\n\
-    \                ans += b * s[i];\n                b *= base;\n            }\n\
-    \            assert(drh.get(l, r) == ans.val());\n        } else {\n         \
-    \   int idx = rng(0, n - 1);\n            char c = 'a' + rng(0, 25);\n       \
-    \     s[idx] = c;\n            drh.set(idx, c);\n        }\n    }\n}\nint main(void)\
-    \ {\n    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test();\n\
-    \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/template/modint_2_61m1.hpp\"\
+    \n#include \"../../../src/string/dynamic_rolling_hash.hpp\"\nusing mint = Modint_2_61m1;\n\
+    void test() {\n    int n = rng(1, 2000), q = 2000;\n    string s = \"\";\n   \
+    \ rep(i, 0, n) {\n        s += 'a' + rng(0, 25);\n    }\n    ll base = rng(1ll\
+    \ << 10, 1ll << 60);\n    DynamicRollingHash drh(s, base);\n    while(q--) {\n\
+    \        int type = rng(0, 1);\n        if(type == 0) {\n            int len =\
+    \ rng(0, n);\n            int l = rng(0, n - len), r = l + len;\n            mint\
+    \ ans = 0, b = 1;\n            rep(i, l, r) {\n                ans += b * s[i];\n\
+    \                b *= base;\n            }\n            assert(drh.get(l, r) ==\
+    \ ans.val());\n        } else {\n            int idx = rng(0, n - 1);\n      \
+    \      char c = 'a' + rng(0, 25);\n            s[idx] = c;\n            drh.set(idx,\
+    \ c);\n        }\n    }\n}\nint main(void) {\n    constexpr int test_num = 100;\n\
+    \    rep(_, 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >>\
+    \ a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/random_number_generator.hpp
+  - src/random/random_number_generator.hpp
   - src/template/modint_2_61m1.hpp
   - src/string/dynamic_rolling_hash.hpp
   - src/data_structure/fenwick_tree.hpp
   isVerificationFile: true
   path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 23:19:15+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/string/dynamic_rolling_hash.test.cpp

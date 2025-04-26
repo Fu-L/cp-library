@@ -165,8 +165,8 @@ data:
     \ << endl;\n}\ntemplate <typename Head, typename... Tail>\nvoid debug_out(Head\
     \ H, Tail... T) {\n    cerr << \" \" << dbg::to_string(H);\n    if(sizeof...(T)\
     \ != 0) cerr << \",\";\n    debug_out(T...);\n}\n}  // namespace dbg\n#define\
-    \ debug(...) cerr << \"Line \" << __LINE__ << \", \" << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", dbg::debug_out(__VA_ARGS__)\n"
+    \ debug(...) cerr << \"Line \" << __LINE__ << \", \"  \\\n                   \
+    \     << \"[\" << #__VA_ARGS__ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)\n"
   code: "#pragma once\n#include \"./template.hpp\"\n#include \"./static_modint.hpp\"\
     \n#include \"./dynamic_modint.hpp\"\nnamespace dbg {\ntemplate <typename A, typename\
     \ B>\nstring to_string(pair<A, B> p);\ntemplate <typename A, typename B, typename\
@@ -200,8 +200,8 @@ data:
     \ << endl;\n}\ntemplate <typename Head, typename... Tail>\nvoid debug_out(Head\
     \ H, Tail... T) {\n    cerr << \" \" << dbg::to_string(H);\n    if(sizeof...(T)\
     \ != 0) cerr << \",\";\n    debug_out(T...);\n}\n}  // namespace dbg\n#define\
-    \ debug(...) cerr << \"Line \" << __LINE__ << \", \" << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", dbg::debug_out(__VA_ARGS__)"
+    \ debug(...) cerr << \"Line \" << __LINE__ << \", \"  \\\n                   \
+    \     << \"[\" << #__VA_ARGS__ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)"
   dependsOn:
   - src/template/template.hpp
   - src/template/static_modint.hpp
@@ -209,7 +209,7 @@ data:
   isVerificationFile: false
   path: src/template/debug.hpp
   requiredBy: []
-  timestamp: '2024-12-25 20:22:39+09:00'
+  timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
