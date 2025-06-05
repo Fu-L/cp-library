@@ -505,7 +505,7 @@ F id() {
 ```cpp
 struct S {
     mint a;
-    ll size;
+    long long size;
 };
 struct F {
     mint a, b;
@@ -524,5 +524,33 @@ F composition(const F& l, const F& r) {
 }
 F id() {
     return F{1, 0};
+}
+```
+
+**区間等差数列加算区間和取得**
+
+- 切片に注意してください．例えば `{0, 0, 0, 0, 0, 0, 0}` に `seg.apply(2, 6, {2, 3})` とすると `{0, 0, 7, 9, 11, 13, 0}` になります．
+
+```cpp
+struct S {
+    long long value_sum, index_sum, length;
+};
+struct F {
+    long long a, b;
+};
+S op(const S& a, const S& b) {
+    return {a.value_sum + b.value_sum, a.index_sum + b.index_sum, a.length + b.length};
+}
+S e() {
+    return {0, 0, 0};
+}
+S mapping(const F& f, const S& x) {
+    return {x.value_sum + f.a * x.index_sum + f.b * x.length, x.index_sum, x.length};
+}
+F composition(const F& f, const F& g) {
+    return {f.a + g.a, f.b + g.b};
+}
+F id() {
+    return {0, 0};
 }
 ```

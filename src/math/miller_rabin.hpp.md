@@ -57,8 +57,8 @@ data:
   timestamp: '2024-11-09 02:03:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/math/lucas.test.cpp
   - verify/library_checker/number_theory/primality_test.test.cpp
+  - verify/unit_test/math/lucas.test.cpp
 documentation_of: src/math/miller_rabin.hpp
 layout: document
 title: miller_rabin

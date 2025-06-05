@@ -129,12 +129,12 @@ data:
   timestamp: '2024-11-09 02:30:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
-  - verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
+  - verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+  - verify/library_checker/linear_algebra/inverse_matrix.test.cpp
+  - verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
 documentation_of: src/matrix/gauss_elimination.hpp
 layout: document
 title: gauss_elimination

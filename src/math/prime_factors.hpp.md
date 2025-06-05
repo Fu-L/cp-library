@@ -48,8 +48,8 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/aizu_online_judge/ntl/prime_factorize.test.cpp
+  - verify/unit_test/math/eratosthenes_sieve.test.cpp
 documentation_of: src/math/prime_factors.hpp
 layout: document
 title: prime_factors
