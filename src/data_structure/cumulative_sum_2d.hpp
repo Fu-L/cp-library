@@ -9,7 +9,7 @@ struct CumulativeSum2D {
         assert(0 <= j and j < w);
         data[i + 1][j + 1] += x;
     }
-    void init() {
+    void build() {
         for(int i = 1; i < (int)data.size(); ++i) {
             for(int j = 1; j < (int)data[i].size(); ++j) {
                 data[i][j] += data[i][j - 1] + data[i - 1][j] - data[i - 1][j - 1];

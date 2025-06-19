@@ -7,7 +7,7 @@ documentation_of: ../../src/data_structure/cumulative_sum_2d.hpp
 
 $2$ 次元累積和を計算するデータ構造です．
 
-事前に `add` で $2$ 次元配列を作り， `init` で累積和テーブルの初期化を行ってください．<br>
+事前に `add` で $2$ 次元配列を作り， `build` で累積和テーブルの初期化を行ってください．<br>
 それ以降は `sum` で長方形領域の総和を計算できます．
 
 ## コンストラクタ
@@ -35,16 +35,16 @@ cum.add(int i, int j, T x)
 
 - $0 \leq i < n$
 - $0 \leq j < m$
-- `init` を呼び出していない
+- `build` を呼び出していない
 
 **計算量**
 
 - $O(1)$
 
-## init
+## build
 
 ```cpp
-cum.init()
+cum.build()
 ```
 
 $2$ 次元累積和テーブルの初期化を行います．<br>
@@ -66,7 +66,7 @@ T cum.sum(int li, int lj, int ri, int rj)
 
 - $0 \leq li \leq ri \leq n$
 - $0 \leq lj \leq rj \leq m$
-- 事前に `init` をちょうど $1$ 度だけ呼び出している．
+- 事前に `build` をちょうど $1$ 度だけ呼び出している．
 
 **計算量**
 
@@ -84,7 +84,7 @@ T cum.get(int i, int j)
 
 - $0 \leq i < n$
 - $0 \leq j < m$
-- 事前に `init` をちょうど $1$ 度だけ呼び出している．
+- 事前に `build` をちょうど $1$ 度だけ呼び出している．
 
 **計算量**
 

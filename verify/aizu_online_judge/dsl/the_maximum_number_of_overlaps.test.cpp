@@ -13,7 +13,7 @@ int main(void) {
         cum.add(xr, yl, -1);
         cum.add(xr, yr, 1);
     }
-    cum.init();
+    cum.build();
     int ans = 0;
     rep(i, 0, 1001) {
         rep(j, 0, 1001) {
