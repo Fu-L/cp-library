@@ -273,14 +273,14 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
   - verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
-  - verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
+  - verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
+  - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
   - verify/aizu_online_judge/cgl/intersection_circle.test.cpp
+  - verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
+  - verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
   - verify/aizu_online_judge/cgl/incircle_of_a_triangle.test.cpp
   - verify/aizu_online_judge/cgl/common_tangent.test.cpp
-  - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
-  - verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
   - verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
 documentation_of: src/geometry/circle_2d.hpp
 layout: document

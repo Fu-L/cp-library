@@ -81,9 +81,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
-  - verify/library_checker/graph/shortest_path.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp
   - verify/unit_test/graph/bfs.test.cpp
+  - verify/library_checker/graph/shortest_path.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document
 title: dijkstra

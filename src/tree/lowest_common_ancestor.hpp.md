@@ -123,9 +123,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
   - verify/library_checker/tree/lowest_common_ancestor.test.cpp
   - verify/library_checker/tree/jump_on_tree_2.test.cpp
-  - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/tree/lowest_common_ancestor.hpp
 layout: document
 title: LowestCommonAncestor
