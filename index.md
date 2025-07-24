@@ -22,6 +22,9 @@ data:
       path: src/convolution/lcm_convolution.hpp
       title: lcm_convolution
     - icon: ':heavy_check_mark:'
+      path: src/convolution/min_plus_convolution.hpp
+      title: min_plus_convolution
+    - icon: ':heavy_check_mark:'
       path: src/convolution/or_convolution.hpp
       title: or_convolution
     - icon: ':heavy_check_mark:'
@@ -100,6 +103,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/dp/longest_increasing_sequence.hpp
       title: longest_increasing_sequence
+    - icon: ':heavy_check_mark:'
+      path: src/dp/monotone_minima.hpp
+      title: monotone_minima
   - name: src/fps
     pages:
     - icon: ':heavy_check_mark:'
@@ -545,6 +551,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/convolution/lcm_convolution.test.cpp
       title: verify/library_checker/convolution/lcm_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
+      title: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/convolution/min_plus_convolution(convex_and_convex).test.cpp
+      title: verify/library_checker/convolution/min_plus_convolution(convex_and_convex).test.cpp
   - name: verify/library_checker/data_structure
     pages:
     - icon: ':heavy_check_mark:'

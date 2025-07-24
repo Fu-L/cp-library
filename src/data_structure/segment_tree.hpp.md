@@ -122,8 +122,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/vertex_set_path_composite.test.cpp
-  - verify/library_checker/data_structure/predecessor_problem.test.cpp
   - verify/library_checker/data_structure/point_set_range_composite.test.cpp
+  - verify/library_checker/data_structure/predecessor_problem.test.cpp
 documentation_of: src/data_structure/segment_tree.hpp
 layout: document
 title: SegmentTree

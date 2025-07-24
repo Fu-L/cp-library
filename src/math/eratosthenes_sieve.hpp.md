@@ -91,16 +91,16 @@ data:
   isVerificationFile: false
   path: src/math/eratosthenes_sieve.hpp
   requiredBy:
-  - src/convolution/gcd_convolution.hpp
   - src/convolution/lcm_convolution.hpp
+  - src/convolution/gcd_convolution.hpp
   - src/math/divisor_multiple_transform.hpp
   timestamp: '2025-02-22 22:56:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
-  - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/library_checker/convolution/gcd_convolution.test.cpp
   - verify/library_checker/convolution/lcm_convolution.test.cpp
+  - verify/unit_test/math/eratosthenes_sieve.test.cpp
 documentation_of: src/math/eratosthenes_sieve.hpp
 layout: document
 title: EratosthenesSieve

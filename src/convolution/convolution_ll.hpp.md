@@ -264,14 +264,14 @@ data:
   isVerificationFile: false
   path: src/convolution/convolution_ll.hpp
   requiredBy:
-  - src/fps/formal_power_series_ll.hpp
   - src/string/wildcard_pattern_matching.hpp
+  - src/fps/formal_power_series_ll.hpp
   timestamp: '2024-11-09 02:16:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/convolution/convolution_ll.test.cpp
-  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - verify/library_checker/string/wildcard_pattern_matching.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - verify/unit_test/convolution/convolution_ll.test.cpp
 documentation_of: src/convolution/convolution_ll.hpp
 layout: document
 title: convolution_ll

@@ -93,8 +93,8 @@ data:
   isVerificationFile: false
   path: src/math/divisor_multiple_transform.hpp
   requiredBy:
-  - src/convolution/gcd_convolution.hpp
   - src/convolution/lcm_convolution.hpp
+  - src/convolution/gcd_convolution.hpp
   timestamp: '2025-02-22 22:56:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
