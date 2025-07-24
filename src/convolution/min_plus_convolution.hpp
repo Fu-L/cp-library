@@ -11,7 +11,7 @@ vector<T> min_plus_convolution(const vector<T>& a, const vector<T>& b) {
         return a[i - j] + b[j] < a[i - k] + b[k];
     };
     const auto argmin = monotone_minima(n + m - 1, m, f);
-    vector<int> res(n + m - 1);
+    vector<T> res(n + m - 1);
     for(int i = 0; i < n + m - 1; ++i) {
         const int j = argmin[i];
         res[i] = a[i - j] + b[j];
@@ -28,7 +28,7 @@ vector<T> max_plus_convolution(const vector<T>& a, const vector<T>& b) {
         return a[i - j] + b[j] > a[i - k] + b[k];
     };
     const auto argmax = monotone_minima(n + m - 1, m, f);
-    vector<int> res(n + m - 1);
+    vector<T> res(n + m - 1);
     for(int i = 0; i < n + m - 1; ++i) {
         const int j = argmax[i];
         res[i] = a[i - j] + b[j];
