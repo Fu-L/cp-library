@@ -95,6 +95,10 @@ $$c_i = \min_{j}\{a_{i-j} + b_{j}\}$$
 
 を計算します．
 
+**制約**
+
+- $a$ は下に凸
+
 **計算量**
 
 - $O((n + m) \log n)$
@@ -110,6 +114,10 @@ vector<T> max_plus_convolution(vector<T> a, vector<T> b)
 $$c_i = \max_{j}\{a_{i-j} + b_{j}\}$$
 
 を計算します．
+
+**制約**
+
+- $a$ は上に凸
 
 **計算量**
 
