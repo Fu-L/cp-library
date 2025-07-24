@@ -41,14 +41,14 @@ data:
     \ f = [&](const int i, const int j, const int k) -> bool {\n        if(i < k)\
     \ return true;\n        if(i - j >= n) return false;\n        return a[i - j]\
     \ + b[j] < a[i - k] + b[k];\n    };\n    const auto argmin = monotone_minima(n\
-    \ + m - 1, m, f);\n    vector<int> res(n + m - 1);\n    for(int i = 0; i < n +\
-    \ m - 1; ++i) {\n        const int j = argmin[i];\n        res[i] = a[i - j] +\
-    \ b[j];\n    }\n    return res;\n}\ntemplate <typename T>\nvector<T> max_plus_convolution(const\
+    \ + m - 1, m, f);\n    vector<T> res(n + m - 1);\n    for(int i = 0; i < n + m\
+    \ - 1; ++i) {\n        const int j = argmin[i];\n        res[i] = a[i - j] + b[j];\n\
+    \    }\n    return res;\n}\ntemplate <typename T>\nvector<T> max_plus_convolution(const\
     \ vector<T>& a, const vector<T>& b) {\n    if(a.empty() or b.empty()) return {};\n\
     \    const int n = a.size(), m = b.size();\n    auto f = [&](const int i, const\
     \ int j, const int k) -> bool {\n        if(i < k) return true;\n        if(i\
     \ - j >= n) return false;\n        return a[i - j] + b[j] > a[i - k] + b[k];\n\
-    \    };\n    const auto argmax = monotone_minima(n + m - 1, m, f);\n    vector<int>\
+    \    };\n    const auto argmax = monotone_minima(n + m - 1, m, f);\n    vector<T>\
     \ res(n + m - 1);\n    for(int i = 0; i < n + m - 1; ++i) {\n        const int\
     \ j = argmax[i];\n        res[i] = a[i - j] + b[j];\n    }\n    return res;\n\
     }\n#line 4 \"verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp\"\
@@ -69,7 +69,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
   requiredBy: []
-  timestamp: '2025-07-24 13:14:34+09:00'
+  timestamp: '2025-07-24 17:37:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
