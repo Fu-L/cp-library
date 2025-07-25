@@ -54,6 +54,9 @@ data:
     path: src/math/two_sat.hpp
     title: TwoSAT
   - icon: ':heavy_check_mark:'
+    path: src/tree/auxiliary_tree.hpp
+    title: AuxiliaryTree
+  - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
   - icon: ':heavy_check_mark:'
@@ -187,6 +190,9 @@ data:
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/auxiliary_tree.test.cpp
+    title: verify/unit_test/tree/auxiliary_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   _isVerificationFailed: false
@@ -265,6 +271,7 @@ data:
   - src/tree/tree_diameter.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/tree/rooted_tree_hash.hpp
+  - src/tree/auxiliary_tree.hpp
   - src/math/two_sat.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -306,6 +313,7 @@ data:
   - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/tree/auxiliary_tree.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

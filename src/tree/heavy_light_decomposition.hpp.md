@@ -7,7 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/tree/auxiliary_tree.hpp
+    title: AuxiliaryTree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
@@ -27,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
     title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/auxiliary_tree.test.cpp
+    title: verify/unit_test/tree/auxiliary_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -166,7 +172,8 @@ data:
   - src/graph/graph_template.hpp
   isVerificationFile: false
   path: src/tree/heavy_light_decomposition.hpp
-  requiredBy: []
+  requiredBy:
+  - src/tree/auxiliary_tree.hpp
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -176,6 +183,7 @@ data:
   - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
   - verify/library_checker/tree/vertex_add_path_sum.test.cpp
   - verify/library_checker/tree/jump_on_tree.test.cpp
+  - verify/unit_test/tree/auxiliary_tree.test.cpp
 documentation_of: src/tree/heavy_light_decomposition.hpp
 layout: document
 title: HeavyLightDecomposition

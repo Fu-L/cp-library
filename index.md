@@ -343,6 +343,9 @@ data:
   - name: src/tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/tree/auxiliary_tree.hpp
+      title: AuxiliaryTree
+    - icon: ':heavy_check_mark:'
       path: src/tree/cartesian_tree.hpp
       title: cartesian_tree
     - icon: ':heavy_check_mark:'
@@ -834,6 +837,9 @@ data:
       title: verify/unit_test/template/debug.test.cpp
   - name: verify/unit_test/tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/tree/auxiliary_tree.test.cpp
+      title: verify/unit_test/tree/auxiliary_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/tree/centroid.test.cpp
       title: verify/unit_test/tree/centroid.test.cpp

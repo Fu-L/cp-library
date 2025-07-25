@@ -312,6 +312,9 @@ data:
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
+    path: src/tree/auxiliary_tree.hpp
+    title: AuxiliaryTree
+  - icon: ':heavy_check_mark:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
   - icon: ':heavy_check_mark:'
@@ -754,6 +757,9 @@ data:
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/auxiliary_tree.test.cpp
+    title: verify/unit_test/tree/auxiliary_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
   - icon: ':heavy_check_mark:'
@@ -848,6 +854,7 @@ data:
   - src/tree/tree_diameter.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/tree/rooted_tree_hash.hpp
+  - src/tree/auxiliary_tree.hpp
   - src/fps/all_product.hpp
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/nth_term.hpp
@@ -1048,6 +1055,7 @@ data:
   - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/tree/auxiliary_tree.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/unit_test/math/lucas.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp

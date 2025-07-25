@@ -130,6 +130,9 @@ data:
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/auxiliary_tree.test.cpp
+    title: verify/unit_test/tree/auxiliary_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
   _isVerificationFailed: false
@@ -297,6 +300,7 @@ data:
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/template/debug.test.cpp
+  - verify/unit_test/tree/auxiliary_tree.test.cpp
 documentation_of: src/template/static_modint.hpp
 layout: document
 title: StaticModint
