@@ -90,8 +90,8 @@ data:
   timestamp: '2024-11-09 01:50:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
+  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
 documentation_of: src/graph/kruskal.hpp
 layout: document
 title: kruskal

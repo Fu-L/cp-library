@@ -131,22 +131,22 @@ data:
   isVerificationFile: false
   path: src/matrix/matrix.hpp
   requiredBy:
-  - src/graph/counting_spanning_tree_undirected.hpp
-  - src/graph/counting_spanning_tree_directed.hpp
+  - src/matrix/linear_equation.hpp
   - src/matrix/inverse.hpp
   - src/matrix/gauss_elimination.hpp
-  - src/matrix/linear_equation.hpp
+  - src/graph/counting_spanning_tree_directed.hpp
+  - src/graph/counting_spanning_tree_undirected.hpp
   timestamp: '2024-11-09 02:30:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - verify/library_checker/linear_algebra/matrix_product.test.cpp
   - verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
-  - verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
   - verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
+  - verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
+  - verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+  - verify/library_checker/linear_algebra/inverse_matrix.test.cpp
+  - verify/library_checker/linear_algebra/matrix_product.test.cpp
 documentation_of: src/matrix/matrix.hpp
 layout: document
 title: Matrix

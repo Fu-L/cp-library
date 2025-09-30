@@ -90,8 +90,8 @@ data:
   timestamp: '2025-02-24 20:07:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
   - verify/library_checker/tree/tree_path_composite_sum.test.cpp
+  - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
 documentation_of: src/tree/rerooting.hpp
 layout: document
 title: rerooting

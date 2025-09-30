@@ -271,15 +271,15 @@ data:
   timestamp: '2025-04-27 00:17:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/unit_test/graph/bfs01.test.cpp
-  - verify/unit_test/graph/bfs.test.cpp
-  - verify/unit_test/graph/bipartite.test.cpp
   - verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  - verify/unit_test/tree/centroid.test.cpp
-  - verify/unit_test/tree/auxiliary_tree.test.cpp
+  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/unit_test/math/lucas.test.cpp
-  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - verify/unit_test/graph/bfs.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
+  - verify/unit_test/graph/bfs01.test.cpp
+  - verify/unit_test/tree/auxiliary_tree.test.cpp
+  - verify/unit_test/tree/centroid.test.cpp
 documentation_of: src/random/random_number_generator.hpp
 layout: document
 title: RandomNumberGenerator

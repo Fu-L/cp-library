@@ -67,8 +67,8 @@ data:
   timestamp: '2024-11-09 01:34:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
+  - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
 documentation_of: src/data_structure/weighted_union_find.hpp
 layout: document
 title: WeightedUnionFind

@@ -235,6 +235,9 @@ data:
       path: src/math/is_prime.hpp
       title: is_prime
     - icon: ':heavy_check_mark:'
+      path: src/math/kth_root_integer.hpp
+      title: kth_root_integer
+    - icon: ':heavy_check_mark:'
       path: src/math/log_mod.hpp
       title: log_mod
     - icon: ':heavy_check_mark:'
@@ -695,6 +698,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
       title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number_theory/kth_root_integer.test.cpp
+      title: verify/library_checker/number_theory/kth_root_integer.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number_theory/primality_test.test.cpp
       title: verify/library_checker/number_theory/primality_test.test.cpp
