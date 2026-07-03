@@ -7,12 +7,12 @@ data:
   - icon: ':x:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
+  - icon: ':question:'
+    path: src/modint/dynamic_modint.hpp
+    title: DynamicModint
   - icon: ':x:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
-    path: src/template/dynamic_modint.hpp
-    title: DynamicModint
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
@@ -142,7 +142,7 @@ data:
     \ * (N + M))) {\n                res += \"(\";\n                --M;\n       \
     \     } else {\n                res += \")\";\n                --N;\n        \
     \    }\n        }\n        return res;\n    }\n\n   private:\n    mt19937_64 mt;\n\
-    } rng;\n#line 3 \"src/template/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit\
+    } rng;\n#line 3 \"src/modint/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit\
     \ Barrett(const unsigned int m)\n        : _m(m), im((unsigned long long)(-1)\
     \ / m + 1) {}\n    inline unsigned int umod() const {\n        return _m;\n  \
     \  }\n    inline unsigned int mul(const unsigned int a, const unsigned int b)\
@@ -232,7 +232,7 @@ data:
     \ 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n\
     \    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/template/dynamic_modint.hpp\"\
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/modint/dynamic_modint.hpp\"\
     \n#include \"../../../src/math/lucas.hpp\"\n#include \"../../../src/math/miller_rabin.hpp\"\
     \nusing mint = modint;\nvoid test() {\n    static Lucas<mint> binom;\n    int\
     \ n = rng(1, 200000), k = rng(0, n);\n    mint ans = 1;\n    int cnt = 0;\n  \
@@ -248,13 +248,13 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/random/random_number_generator.hpp
-  - src/template/dynamic_modint.hpp
+  - src/modint/dynamic_modint.hpp
   - src/math/lucas.hpp
   - src/math/miller_rabin.hpp
   isVerificationFile: true
   path: verify/unit_test/math/lucas.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/math/lucas.test.cpp

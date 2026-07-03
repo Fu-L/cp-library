@@ -14,7 +14,7 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -37,7 +37,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -219,7 +219,7 @@ data:
     \ 0, m) cin >> b[i];\n    vector<mint> c = convolution_arbitrary(a, b);\n    rep(i,\
     \ 0, n + m - 1) cout << c[i] << \" \\n\"[i + 1 == n + m - 1];\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/convolution/convolution_arbitrary.hpp\"\nusing mint\
     \ = modint1000000007;\nint main(void) {\n    int n, m;\n    cin >> n >> m;\n \
     \   vector<mint> a(n), b(m);\n    rep(i, 0, n) cin >> a[i];\n    rep(i, 0, m)\
@@ -227,7 +227,7 @@ data:
     \ 0, n + m - 1) cout << c[i] << \" \\n\"[i + 1 == n + m - 1];\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
@@ -235,7 +235,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp

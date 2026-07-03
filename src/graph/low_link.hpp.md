@@ -8,10 +8,10 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
   _extendedVerifiedWith:
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/bridges.test.cpp
     title: verify/aizu_online_judge/grl/bridges.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -99,7 +99,7 @@ data:
   - src/graph/two_edge_connected_components.hpp
   - src/graph/biconnected_components.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/bridges.test.cpp
   - verify/aizu_online_judge/grl/articulation_points.test.cpp

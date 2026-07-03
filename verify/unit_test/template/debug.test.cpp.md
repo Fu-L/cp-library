@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: src/modint/dynamic_modint.hpp
+    title: DynamicModint
+  - icon: ':question:'
+    path: src/modint/static_modint.hpp
+    title: StaticModint
   - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':question:'
-    path: src/template/dynamic_modint.hpp
-    title: DynamicModint
-  - icon: ':question:'
-    path: src/template/static_modint.hpp
-    title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
@@ -30,7 +30,7 @@ data:
     \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
     \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
     \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/modint/static_modint.hpp\"\
     \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
     \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
@@ -83,7 +83,7 @@ data:
     \ -= m1 * u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n\
     \        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
-    #line 3 \"src/template/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit Barrett(const\
+    #line 3 \"src/modint/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit Barrett(const\
     \ unsigned int m)\n        : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\
     \    inline unsigned int umod() const {\n        return _m;\n    }\n    inline\
     \ unsigned int mul(const unsigned int a, const unsigned int b) const {\n     \
@@ -208,12 +208,12 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/template/debug.hpp
-  - src/template/static_modint.hpp
-  - src/template/dynamic_modint.hpp
+  - src/modint/static_modint.hpp
+  - src/modint/dynamic_modint.hpp
   isVerificationFile: true
   path: verify/unit_test/template/debug.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/template/debug.test.cpp

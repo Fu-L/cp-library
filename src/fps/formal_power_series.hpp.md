@@ -470,7 +470,7 @@ $\mathrm{mod}$ が $\mathrm{NTT-friendly}$ なときのみ使えます．<br>
 
 ```cpp
 #include "template/template.hpp"
-#include "template/static_modint.hpp"
+#include "modint/static_modint.hpp"
 #include "fps/formal_power_series.hpp"
 using mint = modint998244353;
 using fps = FormalPowerSeries<mint>;

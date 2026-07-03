@@ -5,7 +5,7 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':question:'
-    path: src/template/modint_2_61m1.hpp
+    path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
   - icon: ':question:'
     path: src/template/template.hpp
@@ -26,8 +26,8 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using\
-    \ mint = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
+    #line 3 \"src/modint/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using mint\
+    \ = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
     \    static constexpr u64 mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const u64 v) {\n        mint a;\n        a._v = v;\n        return\
     \ a;\n    }\n    constexpr Modint_2_61m1()\n        : _v(0) {}\n    template <class\
@@ -96,7 +96,7 @@ data:
     \ e : g[cur]) {\n            if(e.to == par) continue;\n            h *= (r +\
     \ res[e.to]);\n        }\n        res[cur] = h.val();\n        return depth;\n\
     \    };\n    dfs(dfs, root, -1);\n    return res;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/modint_2_61m1.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../modint/modint_2_61m1.hpp\"\
     \n#include \"../graph/graph_template.hpp\"\ntemplate <typename T>\nvector<ll>\
     \ rooted_tree_hash(const Graph<T>& g, const int root = 0) {\n    const int n =\
     \ g.size();\n    assert(0 <= root and root < n);\n    static mt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
@@ -112,12 +112,12 @@ data:
     \    };\n    dfs(dfs, root, -1);\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/modint_2_61m1.hpp
+  - src/modint/modint_2_61m1.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
   path: src/tree/rooted_tree_hash.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp

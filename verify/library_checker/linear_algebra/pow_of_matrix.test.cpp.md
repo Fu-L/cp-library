@@ -5,7 +5,7 @@ data:
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -27,7 +27,7 @@ data:
     \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
     \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/modint/static_modint.hpp\"\
     \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
     \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
@@ -122,7 +122,7 @@ data:
     \    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cout << b[i][j] << \"\
     \ \\n\"[j + 1 == n];\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n#include\
-    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/matrix/matrix.hpp\"\nusing mint = modint998244353;\n\
     int main(void) {\n    int n;\n    ll k;\n    cin >> n >> k;\n    Matrix<mint>\
     \ a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cin >> a[i][j];\n\
@@ -131,12 +131,12 @@ data:
     \    }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/matrix/matrix.hpp
   isVerificationFile: true
   path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp

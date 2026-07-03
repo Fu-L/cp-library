@@ -4,12 +4,12 @@ data:
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
+  - icon: ':question:'
+    path: src/modint/static_modint.hpp
+    title: StaticModint
   - icon: ':x:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
-    path: src/template/static_modint.hpp
-    title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
@@ -145,7 +145,7 @@ data:
     \ * (N + M))) {\n                res += \"(\";\n                --M;\n       \
     \     } else {\n                res += \")\";\n                --N;\n        \
     \    }\n        }\n        return res;\n    }\n\n   private:\n    mt19937_64 mt;\n\
-    } rng;\n#line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct\
+    } rng;\n#line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct\
     \ StaticModint {\n    using mint = StaticModint;\n    static constexpr uint32_t\
     \ mod() {\n        return m;\n    }\n    static constexpr mint raw(const uint32_t\
     \ v) {\n        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr\
@@ -322,7 +322,7 @@ data:
     \ 0, test_num) {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n\
     \    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \nusing mint = modint998244353;\n#include \"../../../src/graph/graph_template.hpp\"\
     \n#include \"../../../src/tree/auxiliary_tree.hpp\"\n// ABC340-G\nvoid test()\
     \ {\n    int n = rng(1, 500);\n    int ma = rng(1, n);\n    vector<int> a = rng.vec(n,\
@@ -365,14 +365,14 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/random/random_number_generator.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/graph/graph_template.hpp
   - src/tree/auxiliary_tree.hpp
   - src/tree/heavy_light_decomposition.hpp
   isVerificationFile: true
   path: verify/unit_test/tree/auxiliary_tree.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/tree/auxiliary_tree.test.cpp

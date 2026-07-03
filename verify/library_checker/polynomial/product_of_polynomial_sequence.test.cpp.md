@@ -17,7 +17,7 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -40,7 +40,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -349,7 +349,7 @@ data:
     \    }\n    fps ans = all_product(f);\n    rep(i, 0, D + 1) cout << ans[i] <<\
     \ \" \\n\"[i == D];\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/fps/formal_power_series.hpp\"\n#include \"../../../src/fps/all_product.hpp\"\
     \nusing mint = modint998244353;\nusing fps = FormalPowerSeries<mint>;\nint main(void)\
     \ {\n    int n;\n    cin >> n;\n    vector<int> d(n);\n    int D = 0;\n    vector<fps>\
@@ -359,7 +359,7 @@ data:
     \ \" \\n\"[i == D];\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/fps/formal_power_series.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
@@ -368,7 +368,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp

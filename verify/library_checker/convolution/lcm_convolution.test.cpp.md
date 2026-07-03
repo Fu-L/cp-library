@@ -11,7 +11,7 @@ data:
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -33,7 +33,7 @@ data:
     \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
     \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/modint/static_modint.hpp\"\
     \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
     \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
@@ -136,7 +136,7 @@ data:
     \ rep(i, 1, n + 1) cin >> b[i];\n    vector<mint> c = lcm_convolution(a, b);\n\
     \    rep(i, 1, n + 1) cout << c[i] << \" \\n\"[i == n];\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lcm_convolution\"\n#include\
-    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \ \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/convolution/lcm_convolution.hpp\"\nusing mint = modint998244353;\n\
     int main(void) {\n    int n;\n    cin >> n;\n    vector<mint> a(n + 1), b(n +\
     \ 1);\n    rep(i, 1, n + 1) cin >> a[i];\n    rep(i, 1, n + 1) cin >> b[i];\n\
@@ -144,14 +144,14 @@ data:
     \ << \" \\n\"[i == n];\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/lcm_convolution.hpp
   - src/math/divisor_multiple_transform.hpp
   - src/math/eratosthenes_sieve.hpp
   isVerificationFile: true
   path: verify/library_checker/convolution/lcm_convolution.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/lcm_convolution.test.cpp

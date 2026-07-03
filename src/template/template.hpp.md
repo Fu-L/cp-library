@@ -89,7 +89,7 @@ data:
   - icon: ':x:'
     path: src/data_structure/sparse_table_2d.hpp
     title: SparseTable2D
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
   - icon: ':heavy_check_mark:'
@@ -131,13 +131,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/line_and_segment_2d.hpp
     title: line_and_segment_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: point_2d
   - icon: ':heavy_check_mark:'
     path: src/geometry/polygon_2d.hpp
     title: polygon_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
   - icon: ':x:'
@@ -146,7 +146,7 @@ data:
   - icon: ':x:'
     path: src/graph/bfs01.hpp
     title: bfs01
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
   - icon: ':x:'
@@ -158,10 +158,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
   - icon: ':question:'
@@ -170,19 +170,19 @@ data:
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: MaxFlow
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/max_matching.hpp
     title: max_matching
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
   - icon: ':question:'
@@ -191,7 +191,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
   - icon: ':heavy_check_mark:'
@@ -272,6 +272,15 @@ data:
   - icon: ':question:'
     path: src/matrix/matrix.hpp
     title: Matrix
+  - icon: ':question:'
+    path: src/modint/dynamic_modint.hpp
+    title: DynamicModint
+  - icon: ':question:'
+    path: src/modint/modint_2_61m1.hpp
+    title: Modint_2_61m1
+  - icon: ':question:'
+    path: src/modint/static_modint.hpp
+    title: StaticModint
   - icon: ':heavy_check_mark:'
     path: src/others/dice.hpp
     title: dice
@@ -308,15 +317,6 @@ data:
   - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':question:'
-    path: src/template/dynamic_modint.hpp
-    title: DynamicModint
-  - icon: ':question:'
-    path: src/template/modint_2_61m1.hpp
-    title: Modint_2_61m1
-  - icon: ':question:'
-    path: src/template/static_modint.hpp
-    title: StaticModint
   - icon: ':x:'
     path: src/tree/auxiliary_tree.hpp
     title: AuxiliaryTree
@@ -585,43 +585,43 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
     title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/assignment_problem.test.cpp
     title: verify/library_checker/graph/assignment_problem.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_directed.test.cpp
     title: verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
     title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
     title: verify/library_checker/graph/matching_on_bipartite_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_general_graph.test.cpp
     title: verify/library_checker/graph/matching_on_general_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
   - icon: ':x:'
@@ -807,10 +807,7 @@ data:
   isVerificationFile: false
   path: src/template/template.hpp
   requiredBy:
-  - src/template/static_modint.hpp
-  - src/template/dynamic_modint.hpp
   - src/template/debug.hpp
-  - src/template/modint_2_61m1.hpp
   - src/others/dice.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/xor_convolution.hpp
@@ -835,6 +832,9 @@ data:
   - src/geometry/line_and_segment_2d.hpp
   - src/geometry/point_2d.hpp
   - src/geometry/template.hpp
+  - src/modint/static_modint.hpp
+  - src/modint/dynamic_modint.hpp
+  - src/modint/modint_2_61m1.hpp
   - src/data_structure/binary_trie.hpp
   - src/data_structure/cumulative_sum_2d.hpp
   - src/data_structure/fenwick_tree_2d.hpp

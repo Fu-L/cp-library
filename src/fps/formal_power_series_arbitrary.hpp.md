@@ -14,7 +14,7 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -35,7 +35,7 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -410,14 +410,14 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/convolution/convolution_arbitrary.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: false
   path: src/fps/formal_power_series_arbitrary.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/1559.test.cpp

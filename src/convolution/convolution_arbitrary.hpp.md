@@ -11,7 +11,7 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -38,7 +38,7 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -215,7 +215,7 @@ data:
     \ long)z[i].val() - ((long long)x[i].val() + MOD1 * v1) % MOD3) * M12_inv_M3 %\
     \ MOD3;\n        if(v2 < 0) v2 += MOD3;\n        c[i] = (long long)x[i].val()\
     \ + MOD1 * v1 + M12_mod * v2;\n    }\n    return c;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/static_modint.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../modint/static_modint.hpp\"\
     \n#include \"./convolution.hpp\"\ntemplate <typename mint>\nvector<mint> convolution_arbitrary(const\
     \ vector<mint>& a, const vector<mint>& b) {\n    const int n = (int)a.size(),\
     \ m = (int)b.size();\n    if(!n or !m) return {};\n    static constexpr long long\
@@ -239,7 +239,7 @@ data:
     \ + MOD1 * v1 + M12_mod * v2;\n    }\n    return c;\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
@@ -247,7 +247,7 @@ data:
   path: src/convolution/convolution_arbitrary.hpp
   requiredBy:
   - src/fps/formal_power_series_arbitrary.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yukicoder/1559.test.cpp

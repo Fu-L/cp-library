@@ -11,7 +11,7 @@ data:
   - icon: ':x:'
     path: src/graph/bfs01.hpp
     title: bfs01
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
   - icon: ':x:'
@@ -23,22 +23,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
   - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/max_matching.hpp
     title: max_matching
   - icon: ':question:'
@@ -47,7 +47,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
   - icon: ':x:'
@@ -117,31 +117,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_directed.test.cpp
     title: verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
     title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_general_graph.test.cpp
     title: verify/library_checker/graph/matching_on_general_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
   - icon: ':x:'

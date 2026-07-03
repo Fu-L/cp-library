@@ -5,7 +5,7 @@ data:
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -28,7 +28,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -107,7 +107,7 @@ data:
     \ '\\n';\n            } else {\n                cout << uf.diff(u, v) << '\\n';\n\
     \            }\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind_with_potential\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/data_structure/weighted_union_find.hpp\"\nusing mint\
     \ = modint998244353;\nint main(void) {\n    int n, q;\n    cin >> n >> q;\n  \
     \  WeightedUnionFind<mint> uf(n);\n    while(q--) {\n        int t, u, v;\n  \
@@ -118,12 +118,12 @@ data:
     \       }\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/data_structure/weighted_union_find.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/unionfind_with_potential.test.cpp

@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
   - icon: ':question:'
@@ -24,10 +24,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
   - icon: ':x:'

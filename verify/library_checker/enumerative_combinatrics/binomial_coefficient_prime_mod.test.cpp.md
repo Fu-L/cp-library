@@ -5,7 +5,7 @@ data:
     path: src/math/binomial.hpp
     title: Binomial
   - icon: ':question:'
-    path: src/template/dynamic_modint.hpp
+    path: src/modint/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -28,7 +28,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit Barrett(const\
+    #line 3 \"src/modint/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit Barrett(const\
     \ unsigned int m)\n        : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\
     \    inline unsigned int umod() const {\n        return _m;\n    }\n    inline\
     \ unsigned int mul(const unsigned int a, const unsigned int b) const {\n     \
@@ -101,19 +101,19 @@ data:
     \ {\n        int n, k;\n        cin >> n >> k;\n        cout << binom(n, k) <<\
     \ '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/dynamic_modint.hpp\"\
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/dynamic_modint.hpp\"\
     \n#include \"../../../src/math/binomial.hpp\"\nusing mint = modint;\nint main(void)\
     \ {\n    int t, m;\n    cin >> t >> m;\n    mint::set_mod(m);\n    Binomial<mint>\
     \ binom(min(m - 1, 10000005));\n    while(t--) {\n        int n, k;\n        cin\
     \ >> n >> k;\n        cout << binom(n, k) << '\\n';\n    }\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/dynamic_modint.hpp
+  - src/modint/dynamic_modint.hpp
   - src/math/binomial.hpp
   isVerificationFile: true
   path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp

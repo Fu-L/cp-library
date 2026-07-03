@@ -11,7 +11,7 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -44,7 +44,7 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -227,7 +227,7 @@ data:
     \ diff += MOD1;\n        static constexpr unsigned long long offset[5] = {0, 0,\
     \ M1M2M3, 2 * M1M2M3, 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i]\
     \ = x;\n    }\n    return c;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/static_modint.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../modint/static_modint.hpp\"\
     \n#include \"./convolution.hpp\"\nvector<long long> convolution_ll(const vector<long\
     \ long>& a, const vector<long long>& b) {\n    const int n = (int)a.size(), m\
     \ = (int)b.size();\n    if(!n or !m) return {};\n    static constexpr unsigned\
@@ -257,7 +257,7 @@ data:
     \ % 5];\n        c[i] = x;\n    }\n    return c;\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
@@ -266,7 +266,7 @@ data:
   requiredBy:
   - src/string/wildcard_pattern_matching.hpp
   - src/fps/formal_power_series_ll.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/convolution/convolution_ll.test.cpp

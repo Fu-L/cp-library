@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: src/template/modint_2_61m1.hpp
+    path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
   - icon: ':question:'
     path: src/template/template.hpp
@@ -26,8 +26,8 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using\
-    \ mint = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
+    #line 3 \"src/modint/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using mint\
+    \ = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
     \    static constexpr u64 mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const u64 v) {\n        mint a;\n        a._v = v;\n        return\
     \ a;\n    }\n    constexpr Modint_2_61m1()\n        : _v(0) {}\n    template <class\
@@ -89,7 +89,7 @@ data:
     \ = med;\n            } else {\n                ng = med;\n            }\n   \
     \     }\n        return ok;\n    }\n\n   private:\n    int len;\n    mint base;\n\
     \    vector<mint> pow;\n    vector<mint> hash;\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../template/modint_2_61m1.hpp\"\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../modint/modint_2_61m1.hpp\"\
     \nstruct RollingHash {\n    using mint = Modint_2_61m1;\n    RollingHash(const\
     \ string& s, unsigned long long BASE = 0)\n        : len((int)s.size()), pow(len\
     \ + 1), hash(len + 1) {\n        if(BASE == 0) {\n            mt19937 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
@@ -116,11 +116,11 @@ data:
     \    vector<mint> pow;\n    vector<mint> hash;\n};"
   dependsOn:
   - src/template/template.hpp
-  - src/template/modint_2_61m1.hpp
+  - src/modint/modint_2_61m1.hpp
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aizu_online_judge/alds1/string_search.test.cpp

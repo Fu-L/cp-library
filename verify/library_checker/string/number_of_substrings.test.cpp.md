@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
+    path: src/modint/modint_2_61m1.hpp
+    title: Modint_2_61m1
+  - icon: ':question:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
   - icon: ':x:'
     path: src/string/suffix_array.hpp
     title: suffix_array
-  - icon: ':question:'
-    path: src/template/modint_2_61m1.hpp
-    title: Modint_2_61m1
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
@@ -30,7 +30,7 @@ data:
     \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
     \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/modint_2_61m1.hpp\"\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/modint/modint_2_61m1.hpp\"\
     \nstruct Modint_2_61m1 {\n    using mint = Modint_2_61m1;\n    using u64 = uint64_t;\n\
     \    using u128 = __uint128_t;\n    static constexpr u64 mod() {\n        return\
     \ m;\n    }\n    static constexpr mint raw(const u64 v) {\n        mint a;\n \
@@ -175,12 +175,12 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/string/rolling_hash.hpp
-  - src/template/modint_2_61m1.hpp
+  - src/modint/modint_2_61m1.hpp
   - src/string/suffix_array.hpp
   isVerificationFile: true
   path: verify/library_checker/string/number_of_substrings.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/string/number_of_substrings.test.cpp

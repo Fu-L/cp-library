@@ -8,7 +8,7 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -34,7 +34,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -221,7 +221,7 @@ data:
     \                }\n            };\n            hld.path_query(u, v, true, query);\n\
     \            cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/graph/graph_template.hpp\"\n#include \"../../../src/tree/heavy_light_decomposition.hpp\"\
     \n#include \"../../../src/data_structure/segment_tree.hpp\"\nusing mint = modint998244353;\n\
     struct S {\n    mint a, b;\n};\nS op1(S x, S y) {\n    return {x.a * y.a, x.b\
@@ -245,14 +245,14 @@ data:
     \ v, true, query);\n            cout << ans << '\\n';\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/graph/graph_template.hpp
   - src/tree/heavy_light_decomposition.hpp
   - src/data_structure/segment_tree.hpp
   isVerificationFile: true
   path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/tree/vertex_set_path_composite.test.cpp

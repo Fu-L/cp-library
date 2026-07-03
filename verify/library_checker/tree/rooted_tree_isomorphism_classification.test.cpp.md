@@ -5,7 +5,7 @@ data:
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':question:'
-    path: src/template/modint_2_61m1.hpp
+    path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
   - icon: ':question:'
     path: src/template/template.hpp
@@ -49,8 +49,8 @@ data:
     \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
     \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
-    #line 3 \"src/template/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using\
-    \ mint = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
+    #line 3 \"src/modint/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n    using mint\
+    \ = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
     \    static constexpr u64 mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const u64 v) {\n        mint a;\n        a._v = v;\n        return\
     \ a;\n    }\n    constexpr Modint_2_61m1()\n        : _v(0) {}\n    template <class\
@@ -121,11 +121,11 @@ data:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   - src/tree/rooted_tree_hash.hpp
-  - src/template/modint_2_61m1.hpp
+  - src/modint/modint_2_61m1.hpp
   isVerificationFile: true
   path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp

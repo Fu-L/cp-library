@@ -4,15 +4,15 @@ data:
   - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
+  - icon: ':question:'
+    path: src/modint/modint_2_61m1.hpp
+    title: Modint_2_61m1
   - icon: ':x:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
   - icon: ':x:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
-  - icon: ':question:'
-    path: src/template/modint_2_61m1.hpp
-    title: Modint_2_61m1
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
@@ -142,8 +142,8 @@ data:
     \ * (N + M))) {\n                res += \"(\";\n                --M;\n       \
     \     } else {\n                res += \")\";\n                --N;\n        \
     \    }\n        }\n        return res;\n    }\n\n   private:\n    mt19937_64 mt;\n\
-    } rng;\n#line 3 \"src/template/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n \
-    \   using mint = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
+    } rng;\n#line 3 \"src/modint/modint_2_61m1.hpp\"\nstruct Modint_2_61m1 {\n   \
+    \ using mint = Modint_2_61m1;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
     \    static constexpr u64 mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const u64 v) {\n        mint a;\n        a._v = v;\n        return\
     \ a;\n    }\n    constexpr Modint_2_61m1()\n        : _v(0) {}\n    template <class\
@@ -223,7 +223,7 @@ data:
     \ {\n    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test();\n\
     \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
-    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/template/modint_2_61m1.hpp\"\
+    \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/modint/modint_2_61m1.hpp\"\
     \n#include \"../../../src/string/dynamic_rolling_hash.hpp\"\nusing mint = Modint_2_61m1;\n\
     void test() {\n    int n = rng(1, 2000), q = 2000;\n    string s = \"\";\n   \
     \ rep(i, 0, n) {\n        s += 'a' + rng(0, 25);\n    }\n    ll base = rng(1ll\
@@ -240,13 +240,13 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/random/random_number_generator.hpp
-  - src/template/modint_2_61m1.hpp
+  - src/modint/modint_2_61m1.hpp
   - src/string/dynamic_rolling_hash.hpp
   - src/data_structure/fenwick_tree.hpp
   isVerificationFile: true
   path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/string/dynamic_rolling_hash.test.cpp

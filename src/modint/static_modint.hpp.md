@@ -63,10 +63,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
   - icon: ':x:'
@@ -146,7 +146,7 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -198,8 +198,8 @@ data:
     \ -= m1 * u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n\
     \        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n"
-  code: "#pragma once\n#include \"./template.hpp\"\ntemplate <uint32_t m>\nstruct\
-    \ StaticModint {\n    using mint = StaticModint;\n    static constexpr uint32_t\
+  code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <uint32_t m>\n\
+    struct StaticModint {\n    using mint = StaticModint;\n    static constexpr uint32_t\
     \ mod() {\n        return m;\n    }\n    static constexpr mint raw(const uint32_t\
     \ v) {\n        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr\
     \ StaticModint()\n        : _v(0) {}\n    template <class T>\n    constexpr StaticModint(const\
@@ -253,7 +253,7 @@ data:
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
-  path: src/template/static_modint.hpp
+  path: src/modint/static_modint.hpp
   requiredBy:
   - src/template/debug.hpp
   - src/convolution/convolution_arbitrary.hpp
@@ -261,7 +261,7 @@ data:
   - src/string/wildcard_pattern_matching.hpp
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series_ll.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
@@ -301,7 +301,7 @@ data:
   - verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
   - verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
-documentation_of: src/template/static_modint.hpp
+documentation_of: src/modint/static_modint.hpp
 layout: document
 title: StaticModint
 ---
@@ -315,7 +315,7 @@ $\mathrm{mod}$ はコンパイル時定数である必要があります．
 
 ```cpp
 #include "template/template.hpp"
-#include "template/static_modint.hpp"
+#include "modint/static_modint.hpp"
 using mint = modint998244353;
 int main(void) {
     mint sum = 0;

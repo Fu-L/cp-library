@@ -13,12 +13,12 @@ data:
   - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
+  - icon: ':question:'
+    path: src/modint/static_modint.hpp
+    title: StaticModint
   - icon: ':x:'
     path: src/random/permuted_congruential_generator.hpp
     title: PermutedCongruentialGenerator
-  - icon: ':question:'
-    path: src/template/static_modint.hpp
-    title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
@@ -54,7 +54,7 @@ data:
     \       state *= MULT;\n        const unsigned int count = x >> 61;\n        x\
     \ ^= x >> 22;\n        return static_cast<unsigned int>(x >> (22 + count));\n\
     \    }\n    inline unsigned long long next64() {\n        return (static_cast<unsigned\
-    \ long long>(next32()) << 32) | next32();\n    }\n} rng;\n#line 3 \"src/template/static_modint.hpp\"\
+    \ long long>(next32()) << 32) | next32();\n    }\n} rng;\n#line 3 \"src/modint/static_modint.hpp\"\
     \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
     \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
     \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
@@ -265,14 +265,14 @@ data:
   - src/template/template.hpp
   - src/random/permuted_congruential_generator.hpp
   - src/convolution/convolution_ll.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:57:43+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp

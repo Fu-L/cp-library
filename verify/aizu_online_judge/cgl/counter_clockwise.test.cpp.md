@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/point_2d.hpp
     title: point_2d
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
   - icon: ':question:'

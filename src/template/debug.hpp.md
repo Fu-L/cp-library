@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: src/template/dynamic_modint.hpp
+    path: src/modint/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -26,7 +26,7 @@ data:
     \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -78,7 +78,7 @@ data:
     \ -= m1 * u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n\
     \        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
     \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
-    #line 3 \"src/template/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit Barrett(const\
+    #line 3 \"src/modint/dynamic_modint.hpp\"\nstruct Barrett {\n    explicit Barrett(const\
     \ unsigned int m)\n        : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\
     \    inline unsigned int umod() const {\n        return _m;\n    }\n    inline\
     \ unsigned int mul(const unsigned int a, const unsigned int b) const {\n     \
@@ -167,11 +167,11 @@ data:
     \ != 0) cerr << \",\";\n    debug_out(T...);\n}\n}  // namespace dbg\n#define\
     \ debug(...) cerr << \"Line \" << __LINE__ << \", \"  \\\n                   \
     \     << \"[\" << #__VA_ARGS__ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)\n"
-  code: "#pragma once\n#include \"./template.hpp\"\n#include \"./static_modint.hpp\"\
-    \n#include \"./dynamic_modint.hpp\"\nnamespace dbg {\ntemplate <typename A, typename\
-    \ B>\nstring to_string(pair<A, B> p);\ntemplate <typename A, typename B, typename\
-    \ C>\nstring to_string(tuple<A, B, C> p);\ntemplate <typename A, typename B, typename\
-    \ C, typename D>\nstring to_string(tuple<A, B, C, D> p);\nstring to_string(const\
+  code: "#pragma once\n#include \"./template.hpp\"\n#include \"../modint/static_modint.hpp\"\
+    \n#include \"../modint/dynamic_modint.hpp\"\nnamespace dbg {\ntemplate <typename\
+    \ A, typename B>\nstring to_string(pair<A, B> p);\ntemplate <typename A, typename\
+    \ B, typename C>\nstring to_string(tuple<A, B, C> p);\ntemplate <typename A, typename\
+    \ B, typename C, typename D>\nstring to_string(tuple<A, B, C, D> p);\nstring to_string(const\
     \ string& s) {\n    return \"\\\"\" + s + \"\\\"\";\n}\nstring to_string(const\
     \ char& c) {\n    return \"'\" + string(1, c) + \"'\";\n}\nstring to_string(bool\
     \ b) {\n    return (b ? \"true\" : \"false\");\n}\ntemplate <typename T, enable_if_t<is_arithmetic<T>::value,\
@@ -204,12 +204,12 @@ data:
     \     << \"[\" << #__VA_ARGS__ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
-  - src/template/dynamic_modint.hpp
+  - src/modint/static_modint.hpp
+  - src/modint/dynamic_modint.hpp
   isVerificationFile: false
   path: src/template/debug.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
@@ -243,5 +243,5 @@ debug(hoge, fuga, piyo)
 int n = 5; debug(n);
 ```
 
-`modint` 型のデバッグに対応させるために，内部で `template/static_modint.hpp` と `template/dynamic_modint.hpp` をインクルードしています．<br>
+`modint` 型のデバッグに対応させるために，内部で `modint/static_modint.hpp` と `modint/dynamic_modint.hpp` をインクルードしています．<br>
 `#include "template/debug.hpp"` をすると自動で `modint` 型が使えるようになりますが `make b` の際に内部インクルードが削除されるので， `main.cpp` 内でも `modint` をインクルードすることを忘れないようにしてください．

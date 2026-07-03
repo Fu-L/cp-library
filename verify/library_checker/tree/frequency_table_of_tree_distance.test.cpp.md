@@ -20,7 +20,7 @@ data:
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -82,7 +82,7 @@ data:
     \ int nex = dfs(dfs, e.to);\n            if(centroid != nex) tree.add_directed_edge(centroid,\
     \ nex);\n        }\n        visited[centroid] = false;\n        return centroid;\n\
     \    };\n    const int root = dfs(dfs, 0);\n    return {tree, root};\n}\n#line\
-    \ 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    \ 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -361,14 +361,14 @@ data:
   - src/tree/centroid_decomposition.hpp
   - src/fps/formal_power_series_ll.hpp
   - src/convolution/convolution_ll.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/convolution/convolution.hpp
   - src/math/primitive_root.hpp
   - src/math/pow_mod.hpp
   isVerificationFile: true
   path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp

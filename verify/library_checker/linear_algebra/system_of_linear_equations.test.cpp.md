@@ -11,7 +11,7 @@ data:
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'
-    path: src/template/static_modint.hpp
+    path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
     path: src/template/template.hpp
@@ -34,7 +34,7 @@ data:
     \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/template/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
+    #line 3 \"src/modint/static_modint.hpp\"\ntemplate <uint32_t m>\nstruct StaticModint\
     \ {\n    using mint = StaticModint;\n    static constexpr uint32_t mod() {\n \
     \       return m;\n    }\n    static constexpr mint raw(const uint32_t v) {\n\
     \        mint a;\n        a._v = v;\n        return a;\n    }\n    constexpr StaticModint()\n\
@@ -159,7 +159,7 @@ data:
     \    rep(i, 0, r) {\n        rep(j, 0, m) {\n            cout << ans[i][j] <<\
     \ \" \\n\"[j + 1 == m];\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/system_of_linear_equations\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/template/static_modint.hpp\"\
+    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/matrix/matrix.hpp\"\n#include \"../../../src/matrix/linear_equation.hpp\"\
     \nusing mint = modint998244353;\nint main(void) {\n    int n, m;\n    cin >> n\
     \ >> m;\n    Matrix<mint> a(n, m), b(n, 1);\n    rep(i, 0, n) {\n        rep(j,\
@@ -171,14 +171,14 @@ data:
     \ \" \\n\"[j + 1 == m];\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
-  - src/template/static_modint.hpp
+  - src/modint/static_modint.hpp
   - src/matrix/matrix.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/gauss_elimination.hpp
   isVerificationFile: true
   path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
