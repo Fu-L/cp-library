@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: FenwickTree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
   - icon: ':question:'
@@ -18,9 +18,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -247,7 +247,7 @@ data:
   path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
   requiredBy: []
   timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/string/dynamic_rolling_hash.test.cpp
 layout: document

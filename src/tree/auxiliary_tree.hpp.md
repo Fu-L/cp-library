@@ -7,17 +7,17 @@ data:
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/heavy_light_decomposition.hpp
     title: HeavyLightDecomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/auxiliary_tree.test.cpp
     title: verify/unit_test/tree/auxiliary_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -135,7 +135,7 @@ data:
   path: src/tree/auxiliary_tree.hpp
   requiredBy: []
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/tree/auxiliary_tree.test.cpp
 documentation_of: src/tree/auxiliary_tree.hpp

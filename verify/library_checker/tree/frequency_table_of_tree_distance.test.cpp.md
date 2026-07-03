@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
   - icon: ':question:'
@@ -25,14 +25,14 @@ data:
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
@@ -369,7 +369,7 @@ data:
   path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
   timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
 layout: document

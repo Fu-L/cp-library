@@ -6,15 +6,21 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/data_structure/convex_hull_trick.test.cpp
+    title: verify/unit_test/data_structure/convex_hull_trick.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/data_structure/segment_set.test.cpp
+    title: verify/unit_test/data_structure/segment_set.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -61,10 +67,12 @@ data:
   path: src/random/permuted_congruential_generator.hpp
   requiredBy: []
   timestamp: '2026-07-04 00:57:43+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
+  - verify/unit_test/data_structure/convex_hull_trick.test.cpp
+  - verify/unit_test/data_structure/segment_set.test.cpp
 documentation_of: src/random/permuted_congruential_generator.hpp
 layout: document
 title: PermutedCongruentialGenerator

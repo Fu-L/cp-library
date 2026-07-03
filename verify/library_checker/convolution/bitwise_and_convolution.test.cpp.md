@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':question:'

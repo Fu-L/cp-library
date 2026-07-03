@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -143,7 +143,7 @@ data:
   path: src/modint/dynamic_modint.hpp
   requiredBy: []
   timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/math/lucas.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':question:'

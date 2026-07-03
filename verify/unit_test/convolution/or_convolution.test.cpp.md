@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/random/permuted_congruential_generator.hpp
     title: PermutedCongruentialGenerator
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -90,7 +90,7 @@ data:
   path: verify/unit_test/convolution/or_convolution.test.cpp
   requiredBy: []
   timestamp: '2026-07-04 00:57:43+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/or_convolution.test.cpp
 layout: document

@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/wildcard_pattern_matching.hpp
     title: wildcard_pattern_matching
   - icon: ':question:'
@@ -24,9 +24,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/wildcard_pattern_matching
@@ -256,7 +256,7 @@ data:
   path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
   requiredBy: []
   timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/string/wildcard_pattern_matching.test.cpp
 layout: document

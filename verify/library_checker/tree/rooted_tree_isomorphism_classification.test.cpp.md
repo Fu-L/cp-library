@@ -4,20 +4,20 @@ data:
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/rooted_tree_hash.hpp
     title: rooted_tree_hash
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
@@ -126,7 +126,7 @@ data:
   path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
   requiredBy: []
   timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
 layout: document

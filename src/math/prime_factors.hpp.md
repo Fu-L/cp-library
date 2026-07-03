@@ -5,19 +5,19 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/moebius.hpp
     title: moebius
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
     title: verify/aizu_online_judge/ntl/prime_factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/eratosthenes_sieve.test.cpp
     title: verify/unit_test/math/eratosthenes_sieve.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -46,7 +46,7 @@ data:
   requiredBy:
   - src/math/moebius.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/aizu_online_judge/ntl/prime_factorize.test.cpp

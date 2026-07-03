@@ -5,10 +5,13 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/unit_test/data_structure/segment_set.test.cpp
+    title: verify/unit_test/data_structure/segment_set.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -65,8 +68,9 @@ data:
   path: src/data_structure/segment_set.hpp
   requiredBy: []
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/unit_test/data_structure/segment_set.test.cpp
 documentation_of: src/data_structure/segment_set.hpp
 layout: document
 title: SegmentSet

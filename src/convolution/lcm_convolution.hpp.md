@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
   - icon: ':question:'
