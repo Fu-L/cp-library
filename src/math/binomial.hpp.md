@@ -1,37 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
     title: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/binomial.hpp\"\
-    \ntemplate <typename mint>\nstruct Binomial {\n    Binomial(int n)\n        :\
-    \ fac(n + 1), ifac(n + 1) {\n        fac[0] = 1;\n        for(int i = 1; i <=\
-    \ n; ++i) fac[i] = fac[i - 1] * i;\n        ifac[n] = fac[n].inv();\n        for(int\
-    \ i = n; i >= 1; --i) ifac[i - 1] = ifac[i] * i;\n    }\n    mint fact(int n)\
-    \ const {\n        if(n < 0) return 0;\n        return fac[n];\n    }\n    mint\
-    \ perm(int n, int r) const {\n        if(n < 0 or n < r or r < 0) return 0;\n\
-    \        return fac[n] * ifac[n - r];\n    }\n    mint comb(int n, int r) const\
-    \ {\n        if(n < 0 or n < r or r < 0) return 0;\n        return fac[n] * ifac[n\
-    \ - r] * ifac[r];\n    }\n    mint homo(int n, int r) const {\n        if(n <\
-    \ 0 or r < 0) return 0;\n        if(r == 0) return 1;\n        return comb(n +\
-    \ r - 1, r);\n    }\n    mint operator()(int n, int r) const {\n        return\
-    \ comb(n, r);\n    }\n\n   private:\n    vector<mint> fac, ifac;\n};\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/math/binomial.hpp\"\ntemplate <typename mint>\nstruct Binomial {\n\
+    \    Binomial(int n)\n        : fac(n + 1), ifac(n + 1) {\n        fac[0] = 1;\n\
+    \        for(int i = 1; i <= n; ++i) fac[i] = fac[i - 1] * i;\n        ifac[n]\
+    \ = fac[n].inv();\n        for(int i = n; i >= 1; --i) ifac[i - 1] = ifac[i] *\
+    \ i;\n    }\n    mint fact(int n) const {\n        if(n < 0) return 0;\n     \
+    \   return fac[n];\n    }\n    mint perm(int n, int r) const {\n        if(n <\
+    \ 0 or n < r or r < 0) return 0;\n        return fac[n] * ifac[n - r];\n    }\n\
+    \    mint comb(int n, int r) const {\n        if(n < 0 or n < r or r < 0) return\
+    \ 0;\n        return fac[n] * ifac[n - r] * ifac[r];\n    }\n    mint homo(int\
+    \ n, int r) const {\n        if(n < 0 or r < 0) return 0;\n        if(r == 0)\
+    \ return 1;\n        return comb(n + r - 1, r);\n    }\n    mint operator()(int\
+    \ n, int r) const {\n        return comb(n, r);\n    }\n\n   private:\n    vector<mint>\
+    \ fac, ifac;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename mint>\n\
     struct Binomial {\n    Binomial(int n)\n        : fac(n + 1), ifac(n + 1) {\n\
     \        fac[0] = 1;\n        for(int i = 1; i <= n; ++i) fac[i] = fac[i - 1]\
@@ -50,8 +51,8 @@ data:
   isVerificationFile: false
   path: src/math/binomial.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:03:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
 documentation_of: src/math/binomial.hpp

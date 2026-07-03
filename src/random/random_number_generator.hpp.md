@@ -1,50 +1,51 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs.test.cpp
     title: verify/unit_test/graph/bfs.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/math/eratosthenes_sieve.test.cpp
     title: verify/unit_test/math/eratosthenes_sieve.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/tree/auxiliary_tree.test.cpp
     title: verify/unit_test/tree/auxiliary_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/random/random_number_generator.hpp\"\
-    \nstruct RandomNumberGenerator {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
+    \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
     \        assert(lower <= upper);\n        if constexpr(is_integral_v<T>) {\n \
@@ -268,18 +269,18 @@ data:
   isVerificationFile: false
   path: src/random/random_number_generator.hpp
   requiredBy: []
-  timestamp: '2025-04-27 00:17:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
-  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
-  - verify/unit_test/math/eratosthenes_sieve.test.cpp
-  - verify/unit_test/math/lucas.test.cpp
-  - verify/unit_test/graph/bfs.test.cpp
-  - verify/unit_test/graph/bipartite.test.cpp
-  - verify/unit_test/graph/bfs01.test.cpp
   - verify/unit_test/tree/auxiliary_tree.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - verify/unit_test/string/dynamic_rolling_hash.test.cpp
+  - verify/unit_test/math/lucas.test.cpp
+  - verify/unit_test/math/eratosthenes_sieve.test.cpp
+  - verify/unit_test/graph/bfs.test.cpp
+  - verify/unit_test/graph/bfs01.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
 documentation_of: src/random/random_number_generator.hpp
 layout: document
 title: RandomNumberGenerator

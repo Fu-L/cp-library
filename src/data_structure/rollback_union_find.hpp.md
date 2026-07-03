@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aizu_online_judge/others/1645.test.cpp
     title: verify/aizu_online_judge/others/1645.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/rollback_union_find.hpp\"\
-    \nstruct RollbackUnionFind {\n    RollbackUnionFind(const int N)\n        : n(N),\
-    \ data(N, -1), inner_snap(0) {\n    }\n    int merge(const int a, const int b)\
-    \ {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n  \
-    \      int x = leader(a), y = leader(b);\n        history.emplace(x, data[x]);\n\
-    \        history.emplace(y, data[y]);\n        if(x == y) return x;\n        if(-data[x]\
-    \ < -data[y]) swap(x, y);\n        data[x] += data[y];\n        data[y] = x;\n\
-    \        return x;\n    }\n    bool same(const int a, const int b) const {\n \
-    \       assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n       \
-    \ return leader(a) == leader(b);\n    }\n    int leader(const int a) const {\n\
-    \        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n      \
-    \  return leader(data[a]);\n    }\n    int size(const int a) const {\n       \
-    \ assert(0 <= a and a < n);\n        return (-data[leader(a)]);\n    }\n    void\
-    \ undo() {\n        assert((int)history.size() >= 2);\n        data[history.top().first]\
-    \ = history.top().second;\n        history.pop();\n        data[history.top().first]\
-    \ = history.top().second;\n        history.pop();\n    }\n    void snapshot()\
-    \ {\n        inner_snap = (int)history.size() / 2;\n    }\n    int get_state()\
-    \ const {\n        return (int)history.size() / 2;\n    }\n    void rollback(int\
-    \ state = -1) {\n        if(state == -1) state = inner_snap;\n        state *=\
-    \ 2;\n        assert(state <= (int)history.size());\n        while(state < (int)history.size())\
-    \ undo();\n    }\n\n   private:\n    int n;\n    vector<int> data;\n    stack<pair<int,\
-    \ int>> history;\n    int inner_snap;\n};\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/data_structure/rollback_union_find.hpp\"\nstruct RollbackUnionFind\
+    \ {\n    RollbackUnionFind(const int N)\n        : n(N), data(N, -1), inner_snap(0)\
+    \ {\n    }\n    int merge(const int a, const int b) {\n        assert(0 <= a and\
+    \ a < n);\n        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
+    \        history.emplace(x, data[x]);\n        history.emplace(y, data[y]);\n\
+    \        if(x == y) return x;\n        if(-data[x] < -data[y]) swap(x, y);\n \
+    \       data[x] += data[y];\n        data[y] = x;\n        return x;\n    }\n\
+    \    bool same(const int a, const int b) const {\n        assert(0 <= a and a\
+    \ < n);\n        assert(0 <= b and b < n);\n        return leader(a) == leader(b);\n\
+    \    }\n    int leader(const int a) const {\n        assert(0 <= a and a < n);\n\
+    \        if(data[a] < 0) return a;\n        return leader(data[a]);\n    }\n \
+    \   int size(const int a) const {\n        assert(0 <= a and a < n);\n       \
+    \ return (-data[leader(a)]);\n    }\n    void undo() {\n        assert((int)history.size()\
+    \ >= 2);\n        data[history.top().first] = history.top().second;\n        history.pop();\n\
+    \        data[history.top().first] = history.top().second;\n        history.pop();\n\
+    \    }\n    void snapshot() {\n        inner_snap = (int)history.size() / 2;\n\
+    \    }\n    int get_state() const {\n        return (int)history.size() / 2;\n\
+    \    }\n    void rollback(int state = -1) {\n        if(state == -1) state = inner_snap;\n\
+    \        state *= 2;\n        assert(state <= (int)history.size());\n        while(state\
+    \ < (int)history.size()) undo();\n    }\n\n   private:\n    int n;\n    vector<int>\
+    \ data;\n    stack<pair<int, int>> history;\n    int inner_snap;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nstruct RollbackUnionFind\
     \ {\n    RollbackUnionFind(const int N)\n        : n(N), data(N, -1), inner_snap(0)\
     \ {\n    }\n    int merge(const int a, const int b) {\n        assert(0 <= a and\
@@ -67,8 +67,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/rollback_union_find.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aizu_online_judge/others/1645.test.cpp
 documentation_of: src/data_structure/rollback_union_find.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -9,38 +9,38 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
     title: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
     title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/weighted_union_find.hpp\"\
-    \ntemplate <typename T>\nstruct WeightedUnionFind {\n    WeightedUnionFind(const\
-    \ int N)\n        : n(N), data(N, -1), ws(N, T()) {}\n    bool merge(const int\
-    \ a, const int b, T w) {\n        assert(0 <= a and a < n);\n        assert(0\
-    \ <= b and b < n);\n        w += weight(b) - weight(a);\n        int x = leader(a),\
-    \ y = leader(b);\n        if(x == y) return w == T();\n        if(-data[x] > -data[y])\
-    \ swap(x, y), w = -w;\n        data[y] += data[x];\n        data[x] = y;\n   \
-    \     ws[x] = w;\n        return true;\n    }\n    bool same(const int a, const\
-    \ int b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
-    \        return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n\
-    \        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n      \
-    \  const int r = leader(data[a]);\n        ws[a] += ws[data[a]];\n        return\
-    \ data[a] = r;\n    }\n    int size(const int a) {\n        assert(0 <= a and\
-    \ a < n);\n        return -data[leader(a)];\n    }\n    T weight(const int a)\
-    \ {\n        assert(0 <= a and a < n);\n        leader(a);\n        return ws[a];\n\
-    \    }\n    T diff(const int a, const int b) {\n        assert(0 <= a and a <\
-    \ n);\n        assert(0 <= b and b < n);\n        return weight(a) - weight(b);\n\
-    \    }\n\n   private:\n    int n;\n    vector<int> data;\n    vector<T> ws;\n\
-    };\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/data_structure/weighted_union_find.hpp\"\ntemplate <typename T>\n\
+    struct WeightedUnionFind {\n    WeightedUnionFind(const int N)\n        : n(N),\
+    \ data(N, -1), ws(N, T()) {}\n    bool merge(const int a, const int b, T w) {\n\
+    \        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n      \
+    \  w += weight(b) - weight(a);\n        int x = leader(a), y = leader(b);\n  \
+    \      if(x == y) return w == T();\n        if(-data[x] > -data[y]) swap(x, y),\
+    \ w = -w;\n        data[y] += data[x];\n        data[x] = y;\n        ws[x] =\
+    \ w;\n        return true;\n    }\n    bool same(const int a, const int b) {\n\
+    \        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n      \
+    \  return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n    \
+    \    assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n        const\
+    \ int r = leader(data[a]);\n        ws[a] += ws[data[a]];\n        return data[a]\
+    \ = r;\n    }\n    int size(const int a) {\n        assert(0 <= a and a < n);\n\
+    \        return -data[leader(a)];\n    }\n    T weight(const int a) {\n      \
+    \  assert(0 <= a and a < n);\n        leader(a);\n        return ws[a];\n    }\n\
+    \    T diff(const int a, const int b) {\n        assert(0 <= a and a < n);\n \
+    \       assert(0 <= b and b < n);\n        return weight(a) - weight(b);\n   \
+    \ }\n\n   private:\n    int n;\n    vector<int> data;\n    vector<T> ws;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct WeightedUnionFind {\n    WeightedUnionFind(const int N)\n        : n(N),\
     \ data(N, -1), ws(N, T()) {}\n    bool merge(const int a, const int b, T w) {\n\
@@ -64,11 +64,11 @@ data:
   isVerificationFile: false
   path: src/data_structure/weighted_union_find.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
   - verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
+  - verify/library_checker/data_structure/unionfind_with_potential.test.cpp
 documentation_of: src/data_structure/weighted_union_find.hpp
 layout: document
 title: WeightedUnionFind

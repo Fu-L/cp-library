@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/disjoint_sparse_table.hpp
     title: DisjointSparseTable
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -19,12 +19,12 @@ data:
     - https://judge.yosupo.jp/problem/static_range_sum
   bundledCode: "#line 1 \"verify/library_checker/data_structure/static_range_sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#line\
-    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
-    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
-    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/disjoint_sparse_table.hpp\"\
+    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/disjoint_sparse_table.hpp\"\
     \ntemplate <typename S, auto op, auto e>\nstruct DisjointSparseTable {\n    DisjointSparseTable(const\
     \ vector<S>& v)\n        : n((int)v.size() + 2) {\n        const int b = 32 -\
     \ __builtin_clz(n - 1);\n        table.assign(b, vector<S>(n, e()));\n       \
@@ -56,8 +56,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-02-05 15:45:56+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_range_sum.test.cpp
 layout: document

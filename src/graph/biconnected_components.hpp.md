@@ -1,60 +1,61 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
-    \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const\
-    \ int from, const int to, const T& cost = 1, const int idx = -1)\n        : from(from),\
-    \ to(to), cost(cost), idx(idx) {}\n    operator int() const {\n        return\
-    \ to;\n    }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(const int N)\n\
-    \        : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n \
-    \   }\n    int edge_size() const {\n        return es;\n    }\n    void add_edge(const\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
+    \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to, const T&\
+    \ cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
+    \ T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0), g(N) {}\n\
+    \    int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(const int from, const int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
     \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
     \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(const int from, const int to, const T& cost = 1) {\n\
-    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
-    \        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline vector<Edge<T>>&\
-    \ operator[](const int& k) {\n        assert(0 <= k and k < n);\n        return\
-    \ g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const int& k) const\
-    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
-    \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
-    \ Edges = vector<Edge<T>>;\n#line 4 \"src/graph/low_link.hpp\"\ntemplate <typename\
-    \ T>\nstruct LowLink {\n    vector<int> ord, low, articulation;\n    vector<pair<int,\
-    \ int>> bridge;\n    LowLink(const Graph<T>& g)\n        : ord(g.size(), -1),\
-    \ low(g.size(), -1) {\n        for(int i = 0, k = 0; i < g.size(); ++i) {\n  \
-    \          if(ord[i] == -1) k = dfs(g, i, k, -1);\n        }\n    }\n\n   private:\n\
-    \    int dfs(const Graph<T>& g, const int idx, int k, const int par) {\n     \
-    \   low[idx] = (ord[idx] = k++);\n        int cnt = 0;\n        bool arti = false,\
-    \ second = false;\n        for(const Edge<T>& e : g[idx]) {\n            const\
-    \ int to = e.to;\n            if(ord[to] == -1) {\n                ++cnt;\n  \
-    \              k = dfs(g, to, k, idx);\n                low[idx] = min(low[idx],\
-    \ low[to]);\n                arti |= (par != -1) and (low[to] >= ord[idx]);\n\
-    \                if(ord[idx] < low[to]) {\n                    bridge.emplace_back(minmax(idx,\
+    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
+    \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
+    \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
+    \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
+    #line 4 \"src/graph/low_link.hpp\"\ntemplate <typename T>\nstruct LowLink {\n\
+    \    vector<int> ord, low, articulation;\n    vector<pair<int, int>> bridge;\n\
+    \    LowLink(const Graph<T>& g)\n        : ord(g.size(), -1), low(g.size(), -1)\
+    \ {\n        for(int i = 0, k = 0; i < g.size(); ++i) {\n            if(ord[i]\
+    \ == -1) k = dfs(g, i, k, -1);\n        }\n    }\n\n   private:\n    int dfs(const\
+    \ Graph<T>& g, const int idx, int k, const int par) {\n        low[idx] = (ord[idx]\
+    \ = k++);\n        int cnt = 0;\n        bool arti = false, second = false;\n\
+    \        for(const Edge<T>& e : g[idx]) {\n            const int to = e.to;\n\
+    \            if(ord[to] == -1) {\n                ++cnt;\n                k =\
+    \ dfs(g, to, k, idx);\n                low[idx] = min(low[idx], low[to]);\n  \
+    \              arti |= (par != -1) and (low[to] >= ord[idx]);\n              \
+    \  if(ord[idx] < low[to]) {\n                    bridge.emplace_back(minmax(idx,\
     \ to));\n                }\n            } else if(to != par or second) {\n   \
     \             low[idx] = min(low[idx], ord[to]);\n            } else {\n     \
     \           second = true;\n            }\n        }\n        arti |= (par ==\
@@ -101,8 +102,8 @@ data:
   isVerificationFile: false
   path: src/graph/biconnected_components.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/graph/biconnected_components.test.cpp
 documentation_of: src/graph/biconnected_components.hpp

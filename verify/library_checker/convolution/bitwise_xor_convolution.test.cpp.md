@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/xor_convolution.hpp
     title: xor_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_xor_convolution
@@ -25,11 +25,11 @@ data:
     - https://judge.yosupo.jp/problem/bitwise_xor_convolution
   bundledCode: "#line 1 \"verify/library_checker/convolution/bitwise_xor_convolution.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\n\
-    #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
-    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
-    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
-    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/template/static_modint.hpp\"\
     \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
     \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
@@ -116,8 +116,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
 layout: document

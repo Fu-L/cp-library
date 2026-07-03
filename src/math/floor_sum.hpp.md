@@ -1,31 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
     title: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/floor_sum.hpp\"\
-    \nconstexpr long long floor_sum(const long long n, const long long m, long long\
-    \ a, long long b) {\n    long long res = 0;\n    if(a >= m) res += (n - 1) * n\
-    \ * (a / m) / 2, a %= m;\n    if(b >= m) res += n * (b / m), b %= m;\n    const\
-    \ long long y = (a * n + b) / m;\n    if(y == 0) return res;\n    const long long\
-    \ x = y * m - b;\n    res += (n - (x + a - 1) / a) * y;\n    res += floor_sum(y,\
-    \ a, m, (a - x % a) % a);\n    return res;\n}\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/math/floor_sum.hpp\"\nconstexpr long long floor_sum(const long long\
+    \ n, const long long m, long long a, long long b) {\n    long long res = 0;\n\
+    \    if(a >= m) res += (n - 1) * n * (a / m) / 2, a %= m;\n    if(b >= m) res\
+    \ += n * (b / m), b %= m;\n    const long long y = (a * n + b) / m;\n    if(y\
+    \ == 0) return res;\n    const long long x = y * m - b;\n    res += (n - (x +\
+    \ a - 1) / a) * y;\n    res += floor_sum(y, a, m, (a - x % a) % a);\n    return\
+    \ res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nconstexpr long long\
     \ floor_sum(const long long n, const long long m, long long a, long long b) {\n\
     \    long long res = 0;\n    if(a >= m) res += (n - 1) * n * (a / m) / 2, a %=\
@@ -38,8 +39,8 @@ data:
   isVerificationFile: false
   path: src/math/floor_sum.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:03:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
 documentation_of: src/math/floor_sum.hpp

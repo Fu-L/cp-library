@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/bfs01.hpp
     title: bfs01
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -28,13 +28,13 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"verify/unit_test/graph/bfs01.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
-    \ P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i = (a);\
-    \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
-    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/random/random_number_generator.hpp\"\nstruct RandomNumberGenerator\
-    \ {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
+    \n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\nusing namespace\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/random/random_number_generator.hpp\"\
+    \nstruct RandomNumberGenerator {\n    RandomNumberGenerator()\n        : mt(chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    template <typename T>\n    inline T operator()(const T lower, const\
     \ T upper) {\n        static_assert(is_integral_v<T> or is_floating_point_v<T>);\n\
     \        assert(lower <= upper);\n        if constexpr(is_integral_v<T>) {\n \
@@ -221,8 +221,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/graph/bfs01.test.cpp
   requiredBy: []
-  timestamp: '2025-04-27 00:17:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/graph/bfs01.test.cpp
 layout: document

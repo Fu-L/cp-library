@@ -1,83 +1,83 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/bfs.hpp
     title: bfs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/bfs01.hpp
     title: bfs01
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/biconnected_components.hpp
     title: BiconnectedComponents
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/cycle_detection.hpp
     title: cycle_detection
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/max_matching.hpp
     title: max_matching
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/two_sat.hpp
     title: TwoSAT
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/auxiliary_tree.hpp
     title: AuxiliaryTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/cartesian_tree.hpp
     title: cartesian_tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/centroid.hpp
     title: centroid
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/heavy_light_decomposition.hpp
     title: HeavyLightDecomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/lowest_common_ancestor.hpp
     title: LowestCommonAncestor
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/rerooting.hpp
     title: rerooting
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/rooted_tree_hash.hpp
     title: rooted_tree_hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/tree_diameter.hpp
     title: tree_diameter
   _extendedVerifiedWith:
@@ -114,116 +114,116 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/cycle_detection_directed.test.cpp
     title: verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/cycle_detection_undirected.test.cpp
     title: verify/library_checker/graph/cycle_detection_undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/matching_on_general_graph.test.cpp
     title: verify/library_checker/graph/matching_on_general_graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/strongly_connected_components.test.cpp
     title: verify/library_checker/graph/strongly_connected_components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/other/2_sat.test.cpp
     title: verify/library_checker/other/2_sat.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/cartesian_tree.test.cpp
     title: verify/library_checker/tree/cartesian_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/jump_on_tree.test.cpp
     title: verify/library_checker/tree/jump_on_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/jump_on_tree_2.test.cpp
     title: verify/library_checker/tree/jump_on_tree_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/lowest_common_ancestor.test.cpp
     title: verify/library_checker/tree/lowest_common_ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
     title: verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/tree_diameter.test.cpp
     title: verify/library_checker/tree/tree_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/tree_path_composite_sum.test.cpp
     title: verify/library_checker/tree/tree_path_composite_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_add_path_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_path_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
     title: verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/vertex_set_path_composite.test.cpp
     title: verify/library_checker/tree/vertex_set_path_composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs.test.cpp
     title: verify/unit_test/graph/bfs.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/tree/auxiliary_tree.test.cpp
     title: verify/unit_test/tree/auxiliary_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
-    \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const\
-    \ int from, const int to, const T& cost = 1, const int idx = -1)\n        : from(from),\
-    \ to(to), cost(cost), idx(idx) {}\n    operator int() const {\n        return\
-    \ to;\n    }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(const int N)\n\
-    \        : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n \
-    \   }\n    int edge_size() const {\n        return es;\n    }\n    void add_edge(const\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
+    \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to, const T&\
+    \ cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
+    \ T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0), g(N) {}\n\
+    \    int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(const int from, const int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
     \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
     \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(const int from, const int to, const T& cost = 1) {\n\
-    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
-    \        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline vector<Edge<T>>&\
-    \ operator[](const int& k) {\n        assert(0 <= k and k < n);\n        return\
-    \ g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const int& k) const\
-    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
-    \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
-    \ Edges = vector<Edge<T>>;\n"
+    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
+    \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
+    \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
+    \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct Edge {\n    int from, to;\n    T cost;\n    int idx;\n    Edge()\n    \
     \    : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const\
@@ -248,72 +248,72 @@ data:
   isVerificationFile: false
   path: src/graph/graph_template.hpp
   requiredBy:
-  - src/math/two_sat.hpp
-  - src/graph/counting_spanning_tree_directed.hpp
-  - src/graph/kruskal.hpp
-  - src/graph/low_link.hpp
-  - src/graph/biconnected_components.hpp
-  - src/graph/topological_sort.hpp
-  - src/graph/compressed_sparse_row.hpp
-  - src/graph/two_edge_connected_components.hpp
-  - src/graph/max_matching.hpp
-  - src/graph/bfs.hpp
-  - src/graph/cycle_detection.hpp
-  - src/graph/counting_spanning_tree_undirected.hpp
-  - src/graph/bfs01.hpp
-  - src/graph/bipartite.hpp
-  - src/graph/strongly_connected_components.hpp
-  - src/graph/dijkstra.hpp
+  - src/tree/rooted_tree_hash.hpp
+  - src/tree/tree_diameter.hpp
+  - src/tree/centroid_decomposition.hpp
+  - src/tree/lowest_common_ancestor.hpp
   - src/tree/cartesian_tree.hpp
   - src/tree/heavy_light_decomposition.hpp
-  - src/tree/rooted_tree_hash.hpp
-  - src/tree/lowest_common_ancestor.hpp
   - src/tree/rerooting.hpp
-  - src/tree/tree_diameter.hpp
-  - src/tree/centroid.hpp
   - src/tree/auxiliary_tree.hpp
-  - src/tree/centroid_decomposition.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - src/tree/centroid.hpp
+  - src/math/two_sat.hpp
+  - src/graph/dijkstra.hpp
+  - src/graph/kruskal.hpp
+  - src/graph/bipartite.hpp
+  - src/graph/counting_spanning_tree_directed.hpp
+  - src/graph/max_matching.hpp
+  - src/graph/two_edge_connected_components.hpp
+  - src/graph/counting_spanning_tree_undirected.hpp
+  - src/graph/bfs01.hpp
+  - src/graph/compressed_sparse_row.hpp
+  - src/graph/strongly_connected_components.hpp
+  - src/graph/topological_sort.hpp
+  - src/graph/cycle_detection.hpp
+  - src/graph/bfs.hpp
+  - src/graph/low_link.hpp
+  - src/graph/biconnected_components.hpp
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - verify/library_checker/graph/cycle_detection_undirected.test.cpp
-  - verify/library_checker/graph/cycle_detection_directed.test.cpp
-  - verify/library_checker/graph/biconnected_components.test.cpp
-  - verify/library_checker/graph/shortest_path.test.cpp
-  - verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - verify/library_checker/graph/strongly_connected_components.test.cpp
-  - verify/library_checker/graph/matching_on_general_graph.test.cpp
-  - verify/library_checker/other/2_sat.test.cpp
-  - verify/library_checker/tree/lowest_common_ancestor.test.cpp
-  - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
-  - verify/library_checker/tree/tree_path_composite_sum.test.cpp
-  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  - verify/library_checker/tree/tree_diameter.test.cpp
-  - verify/library_checker/tree/vertex_add_path_sum.test.cpp
-  - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
-  - verify/library_checker/tree/cartesian_tree.test.cpp
-  - verify/library_checker/tree/jump_on_tree_2.test.cpp
-  - verify/library_checker/tree/jump_on_tree.test.cpp
-  - verify/library_checker/tree/vertex_set_path_composite.test.cpp
-  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
-  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
-  - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
-  - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
-  - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
-  - verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
-  - verify/aizu_online_judge/grl/bridges.test.cpp
-  - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
-  - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
-  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
-  - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
-  - verify/aizu_online_judge/grl/articulation_points.test.cpp
-  - verify/unit_test/graph/bfs.test.cpp
-  - verify/unit_test/graph/bipartite.test.cpp
-  - verify/unit_test/graph/bfs01.test.cpp
   - verify/unit_test/tree/auxiliary_tree.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/graph/bfs.test.cpp
+  - verify/unit_test/graph/bfs01.test.cpp
+  - verify/unit_test/graph/bipartite.test.cpp
+  - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
+  - verify/aizu_online_judge/grl/bridges.test.cpp
+  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
+  - verify/aizu_online_judge/grl/lowest_common_ancestor.test.cpp
+  - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
+  - verify/aizu_online_judge/grl/range_query_on_a_tree.test.cpp
+  - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
+  - verify/aizu_online_judge/grl/height_of_a_tree.test.cpp
+  - verify/aizu_online_judge/grl/single_source_shortest_path.test.cpp
+  - verify/aizu_online_judge/grl/articulation_points.test.cpp
+  - verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
+  - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
+  - verify/library_checker/other/2_sat.test.cpp
+  - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
+  - verify/library_checker/tree/rooted_tree_isomorphism_classification.test.cpp
+  - verify/library_checker/tree/lowest_common_ancestor.test.cpp
+  - verify/library_checker/tree/vertex_set_path_composite.test.cpp
+  - verify/library_checker/tree/cartesian_tree.test.cpp
+  - verify/library_checker/tree/jump_on_tree_2.test.cpp
+  - verify/library_checker/tree/vertex_add_subtree_sum.test.cpp
+  - verify/library_checker/tree/tree_diameter.test.cpp
+  - verify/library_checker/tree/vertex_add_path_sum.test.cpp
+  - verify/library_checker/tree/jump_on_tree.test.cpp
+  - verify/library_checker/tree/tree_path_composite_sum.test.cpp
+  - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/graph/cycle_detection_undirected.test.cpp
+  - verify/library_checker/graph/minimum_spanning_tree.test.cpp
+  - verify/library_checker/graph/matching_on_general_graph.test.cpp
+  - verify/library_checker/graph/biconnected_components.test.cpp
+  - verify/library_checker/graph/cycle_detection_directed.test.cpp
+  - verify/library_checker/graph/strongly_connected_components.test.cpp
+  - verify/library_checker/graph/two_edge_connected_components.test.cpp
 documentation_of: src/graph/graph_template.hpp
 layout: document
 title: Graph

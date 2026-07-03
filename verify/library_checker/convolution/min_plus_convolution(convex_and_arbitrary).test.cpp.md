@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/min_plus_convolution.hpp
     title: min_plus_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/dp/monotone_minima.hpp
     title: monotone_minima
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary
@@ -22,25 +22,25 @@ data:
     - https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary
   bundledCode: "#line 1 \"verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary\"\
-    \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
-    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
-    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
-    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/dp/monotone_minima.hpp\"\
-    \ntemplate <class F>\nvector<int> monotone_minima(const int n, const int m, const\
-    \ F& f) {\n    vector<int> res(n);\n    auto dfs = [&](const auto& dfs, const\
-    \ int is, const int ie, const int l, const int r) -> void {\n        if(is ==\
-    \ ie) return;\n        const int i = (is + ie) / 2;\n        int m = l;\n    \
-    \    for(int k = l + 1; k < r; ++k) {\n            if(!f(i, m, k)) m = k;\n  \
-    \      }\n        res[i] = m;\n        dfs(dfs, is, i, l, m + 1);\n        dfs(dfs,\
-    \ i + 1, ie, m, r);\n    };\n    dfs(dfs, 0, n, 0, m);\n    return res;\n}\n#line\
-    \ 4 \"src/convolution/min_plus_convolution.hpp\"\ntemplate <typename T>\nvector<T>\
-    \ min_plus_convolution(const vector<T>& a, const vector<T>& b) {\n    if(a.empty()\
-    \ or b.empty()) return {};\n    const int n = a.size(), m = b.size();\n    auto\
-    \ f = [&](const int i, const int j, const int k) -> bool {\n        if(i < k)\
-    \ return true;\n        if(i - j >= n) return false;\n        return a[i - j]\
-    \ + b[j] < a[i - k] + b[k];\n    };\n    const auto argmin = monotone_minima(n\
+    \n#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"\
+    src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\nusing\
+    \ P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i = (a);\
+    \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/dp/monotone_minima.hpp\"\ntemplate <class F>\nvector<int> monotone_minima(const\
+    \ int n, const int m, const F& f) {\n    vector<int> res(n);\n    auto dfs = [&](const\
+    \ auto& dfs, const int is, const int ie, const int l, const int r) -> void {\n\
+    \        if(is == ie) return;\n        const int i = (is + ie) / 2;\n        int\
+    \ m = l;\n        for(int k = l + 1; k < r; ++k) {\n            if(!f(i, m, k))\
+    \ m = k;\n        }\n        res[i] = m;\n        dfs(dfs, is, i, l, m + 1);\n\
+    \        dfs(dfs, i + 1, ie, m, r);\n    };\n    dfs(dfs, 0, n, 0, m);\n    return\
+    \ res;\n}\n#line 4 \"src/convolution/min_plus_convolution.hpp\"\ntemplate <typename\
+    \ T>\nvector<T> min_plus_convolution(const vector<T>& a, const vector<T>& b) {\n\
+    \    if(a.empty() or b.empty()) return {};\n    const int n = a.size(), m = b.size();\n\
+    \    auto f = [&](const int i, const int j, const int k) -> bool {\n        if(i\
+    \ < k) return true;\n        if(i - j >= n) return false;\n        return a[i\
+    \ - j] + b[j] < a[i - k] + b[k];\n    };\n    const auto argmin = monotone_minima(n\
     \ + m - 1, m, f);\n    vector<T> res(n + m - 1);\n    for(int i = 0; i < n + m\
     \ - 1; ++i) {\n        const int j = argmin[i];\n        res[i] = a[i - j] + b[j];\n\
     \    }\n    return res;\n}\ntemplate <typename T>\nvector<T> max_plus_convolution(const\
@@ -69,8 +69,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
   requiredBy: []
-  timestamp: '2025-07-24 17:37:03+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
 layout: document

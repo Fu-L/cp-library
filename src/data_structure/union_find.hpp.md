@@ -1,50 +1,50 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/kruskal.hpp
     title: kruskal
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
     title: verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/unionfind.test.cpp
     title: verify/library_checker/data_structure/unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
     title: verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/union_find.hpp\"\
-    \nstruct UnionFind {\n    UnionFind(const int N)\n        : n(N), data(N, -1)\
-    \ {}\n    int merge(const int a, const int b) {\n        assert(0 <= a and a <\
-    \ n);\n        assert(0 <= b and b < n);\n        int x = leader(a), y = leader(b);\n\
-    \        if(x == y) return x;\n        if(-data[x] < -data[y]) swap(x, y);\n \
-    \       data[x] += data[y];\n        data[y] = x;\n        return x;\n    }\n\
-    \    bool same(const int a, const int b) {\n        assert(0 <= a and a < n);\n\
-    \        assert(0 <= b and b < n);\n        return leader(a) == leader(b);\n \
-    \   }\n    int leader(const int a) {\n        assert(0 <= a and a < n);\n    \
-    \    if(data[a] < 0) return a;\n        return data[a] = leader(data[a]);\n  \
-    \  }\n    int size(const int a) {\n        assert(0 <= a and a < n);\n       \
-    \ return -data[leader(a)];\n    }\n    vector<vector<int>> groups() {\n      \
-    \  vector<int> leader_buf(n), group_size(n);\n        for(int i = 0; i < n; ++i)\
-    \ {\n            leader_buf[i] = leader(i);\n            ++group_size[leader_buf[i]];\n\
-    \        }\n        vector<vector<int>> result(n);\n        for(int i = 0; i <\
-    \ n; ++i) {\n            result[i].reserve(group_size[i]);\n        }\n      \
-    \  for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/data_structure/union_find.hpp\"\nstruct UnionFind {\n    UnionFind(const\
+    \ int N)\n        : n(N), data(N, -1) {}\n    int merge(const int a, const int\
+    \ b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
+    \        int x = leader(a), y = leader(b);\n        if(x == y) return x;\n   \
+    \     if(-data[x] < -data[y]) swap(x, y);\n        data[x] += data[y];\n     \
+    \   data[y] = x;\n        return x;\n    }\n    bool same(const int a, const int\
+    \ b) {\n        assert(0 <= a and a < n);\n        assert(0 <= b and b < n);\n\
+    \        return leader(a) == leader(b);\n    }\n    int leader(const int a) {\n\
+    \        assert(0 <= a and a < n);\n        if(data[a] < 0) return a;\n      \
+    \  return data[a] = leader(data[a]);\n    }\n    int size(const int a) {\n   \
+    \     assert(0 <= a and a < n);\n        return -data[leader(a)];\n    }\n   \
+    \ vector<vector<int>> groups() {\n        vector<int> leader_buf(n), group_size(n);\n\
+    \        for(int i = 0; i < n; ++i) {\n            leader_buf[i] = leader(i);\n\
+    \            ++group_size[leader_buf[i]];\n        }\n        vector<vector<int>>\
+    \ result(n);\n        for(int i = 0; i < n; ++i) {\n            result[i].reserve(group_size[i]);\n\
+    \        }\n        for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
     \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
     \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
     \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n"
@@ -73,12 +73,12 @@ data:
   path: src/data_structure/union_find.hpp
   requiredBy:
   - src/graph/kruskal.hpp
-  timestamp: '2024-11-09 01:50:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
   - verify/library_checker/data_structure/unionfind.test.cpp
   - verify/library_checker/graph/minimum_spanning_tree.test.cpp
-  - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp
 documentation_of: src/data_structure/union_find.hpp
 layout: document
 title: UnionFind

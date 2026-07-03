@@ -1,44 +1,45 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/and_convolution.hpp
     title: and_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/zeta_transform.hpp\"\
-    \ntemplate <typename T>\nvoid superset_zeta_transform(vector<T>& f, const bool\
-    \ inv = false) {\n    const int n = (int)f.size();\n    assert((n & (n - 1)) ==\
-    \ 0);\n    const int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i <<= 1)\
-    \ {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n  \
-    \              f[j] += sign * f[j | i];\n            }\n        }\n    }\n}\n\
-    template <typename T>\nvoid subset_zeta_transform(vector<T>& f, const bool inv\
-    \ = false) {\n    const int n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n\
-    \    const int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i <<= 1) {\n  \
-    \      for(int j = 0; j < n; ++j) {\n            if((j & i) == 0) {\n        \
-    \        f[j | i] += sign * f[j];\n            }\n        }\n    }\n}\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/math/zeta_transform.hpp\"\ntemplate <typename T>\nvoid superset_zeta_transform(vector<T>&\
+    \ f, const bool inv = false) {\n    const int n = (int)f.size();\n    assert((n\
+    \ & (n - 1)) == 0);\n    const int sign = inv ? -1 : 1;\n    for(int i = 1; i\
+    \ < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i)\
+    \ == 0) {\n                f[j] += sign * f[j | i];\n            }\n        }\n\
+    \    }\n}\ntemplate <typename T>\nvoid subset_zeta_transform(vector<T>& f, const\
+    \ bool inv = false) {\n    const int n = (int)f.size();\n    assert((n & (n -\
+    \ 1)) == 0);\n    const int sign = inv ? -1 : 1;\n    for(int i = 1; i < n; i\
+    \ <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) == 0)\
+    \ {\n                f[j | i] += sign * f[j];\n            }\n        }\n    }\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     void superset_zeta_transform(vector<T>& f, const bool inv = false) {\n    const\
     \ int n = (int)f.size();\n    assert((n & (n - 1)) == 0);\n    const int sign\
@@ -57,11 +58,11 @@ data:
   requiredBy:
   - src/convolution/or_convolution.hpp
   - src/convolution/and_convolution.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
+  - verify/library_checker/convolution/bitwise_and_convolution.test.cpp
 documentation_of: src/math/zeta_transform.hpp
 layout: document
 title: zeta_transform

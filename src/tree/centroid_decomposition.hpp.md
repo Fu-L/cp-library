@@ -1,64 +1,64 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/graph/graph_template.hpp\"\
-    \ntemplate <typename T>\nstruct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ idx;\n    Edge()\n        : from(-1), to(-1), cost(-1), idx(-1) {}\n    Edge(const\
-    \ int from, const int to, const T& cost = 1, const int idx = -1)\n        : from(from),\
-    \ to(to), cost(cost), idx(idx) {}\n    operator int() const {\n        return\
-    \ to;\n    }\n};\ntemplate <typename T>\nstruct Graph {\n    Graph(const int N)\n\
-    \        : n(N), es(0), g(N) {}\n    int size() const {\n        return n;\n \
-    \   }\n    int edge_size() const {\n        return es;\n    }\n    void add_edge(const\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/graph/graph_template.hpp\"\ntemplate <typename T>\nstruct Edge {\n\
+    \    int from, to;\n    T cost;\n    int idx;\n    Edge()\n        : from(-1),\
+    \ to(-1), cost(-1), idx(-1) {}\n    Edge(const int from, const int to, const T&\
+    \ cost = 1, const int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n    operator int() const {\n        return to;\n    }\n};\ntemplate <typename\
+    \ T>\nstruct Graph {\n    Graph(const int N)\n        : n(N), es(0), g(N) {}\n\
+    \    int size() const {\n        return n;\n    }\n    int edge_size() const {\n\
+    \        return es;\n    }\n    void add_edge(const int from, const int to, const\
+    \ T& cost = 1) {\n        assert(0 <= from and from < n);\n        assert(0 <=\
+    \ to and to < n);\n        g[from].emplace_back(from, to, cost, es);\n       \
+    \ g[to].emplace_back(to, from, cost, es++);\n    }\n    void add_directed_edge(const\
     \ int from, const int to, const T& cost = 1) {\n        assert(0 <= from and from\
     \ < n);\n        assert(0 <= to and to < n);\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n \
-    \   void add_directed_edge(const int from, const int to, const T& cost = 1) {\n\
-    \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
-    \        g[from].emplace_back(from, to, cost, es++);\n    }\n    inline vector<Edge<T>>&\
-    \ operator[](const int& k) {\n        assert(0 <= k and k < n);\n        return\
-    \ g[k];\n    }\n    inline const vector<Edge<T>>& operator[](const int& k) const\
-    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n\n   private:\n\
-    \    int n, es;\n    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing\
-    \ Edges = vector<Edge<T>>;\n#line 4 \"src/tree/centroid_decomposition.hpp\"\n\
-    template <typename T>\npair<Graph<int>, int> centroid_decomposition(const Graph<T>&\
-    \ g) {\n    const int n = g.size();\n    vector<int> sub(n);\n    vector<bool>\
-    \ visited(n);\n    Graph<int> tree(n);\n    auto get_size = [&](const auto& get_size,\
-    \ const int cur, const int par) -> int {\n        sub[cur] = 1;\n        for(const\
-    \ Edge<T>& e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n\
-    \            sub[cur] += get_size(get_size, e.to, cur);\n        }\n        return\
-    \ sub[cur];\n    };\n    auto get_centroid = [&](const auto& get_centroid, const\
-    \ int cur, const int par, const int mid) -> int {\n        for(const Edge<T>&\
-    \ e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n    \
-    \        if(sub[e.to] > mid) return get_centroid(get_centroid, e.to, cur, mid);\n\
-    \        }\n        return cur;\n    };\n    auto dfs = [&](const auto& dfs, const\
-    \ int cur) -> int {\n        const int centroid = get_centroid(get_centroid, cur,\
-    \ -1, get_size(get_size, cur, -1) / 2);\n        visited[centroid] = true;\n \
-    \       for(const Edge<T>& e : g[centroid]) {\n            if(visited[e.to]) continue;\n\
-    \            const int nex = dfs(dfs, e.to);\n            if(centroid != nex)\
-    \ tree.add_directed_edge(centroid, nex);\n        }\n        visited[centroid]\
-    \ = false;\n        return centroid;\n    };\n    const int root = dfs(dfs, 0);\n\
-    \    return {tree, root};\n}\n"
+    \ to, cost, es++);\n    }\n    inline vector<Edge<T>>& operator[](const int& k)\
+    \ {\n        assert(0 <= k and k < n);\n        return g[k];\n    }\n    inline\
+    \ const vector<Edge<T>>& operator[](const int& k) const {\n        assert(0 <=\
+    \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
+    \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
+    #line 4 \"src/tree/centroid_decomposition.hpp\"\ntemplate <typename T>\npair<Graph<int>,\
+    \ int> centroid_decomposition(const Graph<T>& g) {\n    const int n = g.size();\n\
+    \    vector<int> sub(n);\n    vector<bool> visited(n);\n    Graph<int> tree(n);\n\
+    \    auto get_size = [&](const auto& get_size, const int cur, const int par) ->\
+    \ int {\n        sub[cur] = 1;\n        for(const Edge<T>& e : g[cur]) {\n   \
+    \         if(e.to == par or visited[e.to]) continue;\n            sub[cur] +=\
+    \ get_size(get_size, e.to, cur);\n        }\n        return sub[cur];\n    };\n\
+    \    auto get_centroid = [&](const auto& get_centroid, const int cur, const int\
+    \ par, const int mid) -> int {\n        for(const Edge<T>& e : g[cur]) {\n   \
+    \         if(e.to == par or visited[e.to]) continue;\n            if(sub[e.to]\
+    \ > mid) return get_centroid(get_centroid, e.to, cur, mid);\n        }\n     \
+    \   return cur;\n    };\n    auto dfs = [&](const auto& dfs, const int cur) ->\
+    \ int {\n        const int centroid = get_centroid(get_centroid, cur, -1, get_size(get_size,\
+    \ cur, -1) / 2);\n        visited[centroid] = true;\n        for(const Edge<T>&\
+    \ e : g[centroid]) {\n            if(visited[e.to]) continue;\n            const\
+    \ int nex = dfs(dfs, e.to);\n            if(centroid != nex) tree.add_directed_edge(centroid,\
+    \ nex);\n        }\n        visited[centroid] = false;\n        return centroid;\n\
+    \    };\n    const int root = dfs(dfs, 0);\n    return {tree, root};\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
     \ntemplate <typename T>\npair<Graph<int>, int> centroid_decomposition(const Graph<T>&\
     \ g) {\n    const int n = g.size();\n    vector<int> sub(n);\n    vector<bool>\
@@ -84,8 +84,8 @@ data:
   isVerificationFile: false
   path: src/tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:42:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
 documentation_of: src/tree/centroid_decomposition.hpp

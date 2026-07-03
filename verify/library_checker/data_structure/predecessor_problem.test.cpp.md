@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/segment_tree.hpp
     title: SegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/predecessor_problem
@@ -19,12 +19,12 @@ data:
     - https://judge.yosupo.jp/problem/predecessor_problem
   bundledCode: "#line 1 \"verify/library_checker/data_structure/predecessor_problem.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/predecessor_problem\"\n#line\
-    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
-    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
-    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/segment_tree.hpp\"\
+    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/segment_tree.hpp\"\
     \ntemplate <typename S, auto op, auto e>\nstruct SegmentTree {\n    SegmentTree(const\
     \ int N)\n        : SegmentTree(vector<S>(N, e())) {}\n    SegmentTree(const vector<S>&\
     \ v)\n        : n((int)v.size()) {\n        size = bit_ceil((unsigned int)n);\n\
@@ -104,8 +104,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/predecessor_problem.test.cpp
   requiredBy: []
-  timestamp: '2025-04-12 17:56:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/predecessor_problem.test.cpp
 layout: document

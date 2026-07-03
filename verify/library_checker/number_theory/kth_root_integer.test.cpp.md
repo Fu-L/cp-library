@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/kth_root_integer.hpp
     title: kth_root_integer
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/kth_root_integer
@@ -19,12 +19,12 @@ data:
     - https://judge.yosupo.jp/problem/kth_root_integer
   bundledCode: "#line 1 \"verify/library_checker/number_theory/kth_root_integer.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/kth_root_integer\"\n#line\
-    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
-    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
-    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/kth_root_integer.hpp\"\
+    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/math/kth_root_integer.hpp\"\
     \nunsigned long long kth_root_integer(const unsigned long long x, const int k)\
     \ {\n    if(k <= 1) return k ? x : 1;\n    if(x <= 1) return x;\n    if(k >= 64)\
     \ return 1;\n    auto check = [&](unsigned long long a) -> bool {\n        unsigned\
@@ -48,8 +48,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number_theory/kth_root_integer.test.cpp
   requiredBy: []
-  timestamp: '2025-09-30 23:32:07+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/number_theory/kth_root_integer.test.cpp
 layout: document

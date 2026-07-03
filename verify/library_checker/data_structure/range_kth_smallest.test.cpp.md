@@ -1,17 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/data_structure/bit_vector.hpp
+    title: BitVector
+  - icon: ':x:'
     path: src/data_structure/wavelet_matrix.hpp
     title: WaveletMatrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -19,12 +22,12 @@ data:
     - https://judge.yosupo.jp/problem/range_kth_smallest
   bundledCode: "#line 1 \"verify/library_checker/data_structure/range_kth_smallest.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n#line\
-    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
-    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
-    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/wavelet_matrix.hpp\"\
+    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/bit_vector.hpp\"\
     \n#include <immintrin.h>\nstruct BitVector {\n    using u32 = uint32_t;\n    using\
     \ i64 = int64_t;\n    using u64 = uint64_t;\n    static constexpr u32 w = 64;\n\
     \    vector<u64> block;\n    vector<u32> count;\n    u32 n, zeros;\n    inline\
@@ -39,22 +42,22 @@ data:
     \ }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const u32 i) const\
     \ {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"bmi2,popcnt\"\
     ))) inline u32 rank1(const u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
-    \ / w], i % w));\n    }\n};\ntemplate <typename T>\nstruct WaveletMatrix {\n \
-    \  private:\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64\
-    \ = uint64_t;\n    int n, lg;\n    vector<T> a;\n    vector<BitVector> bv;\n \
-    \   inline pair<u32, u32> succ0(const int l, const int r, const int h) const {\n\
-    \        return make_pair(bv[h].rank0(l), bv[h].rank0(r));\n    }\n    inline\
-    \ pair<u32, u32> succ1(const int l, const int r, const int h) const {\n      \
-    \  const u32 l0 = bv[h].rank0(l);\n        const u32 r0 = bv[h].rank0(r);\n  \
-    \      const u32 zeros = bv[h].zeros;\n        return make_pair(l + zeros - l0,\
-    \ r + zeros - r0);\n    }\n\n   public:\n    WaveletMatrix(const u32 _n)\n   \
-    \     : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const vector<T>& _a)\n\
-    \        : n(_a.size()), a(_a) {\n        if(n == 0) {\n            a.push_back(0);\n\
-    \            n = 1;\n        }\n        build();\n    }\n    __attribute__((optimize(\"\
-    O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a), end(a)),\
-    \ 1)) + 1;\n        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n  \
-    \      for(int h = lg - 1; h >= 0; --h) {\n            for(int i = 0; i < n; ++i)\n\
-    \                if((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
+    \ / w], i % w));\n    }\n};\n#line 4 \"src/data_structure/wavelet_matrix.hpp\"\
+    \ntemplate <typename T>\nstruct WaveletMatrix {\n   private:\n    using u32 =\
+    \ uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n    int n, lg;\n\
+    \    vector<T> a;\n    vector<BitVector> bv;\n    inline pair<u32, u32> succ0(const\
+    \ int l, const int r, const int h) const {\n        return make_pair(bv[h].rank0(l),\
+    \ bv[h].rank0(r));\n    }\n    inline pair<u32, u32> succ1(const int l, const\
+    \ int r, const int h) const {\n        const u32 l0 = bv[h].rank0(l);\n      \
+    \  const u32 r0 = bv[h].rank0(r);\n        const u32 zeros = bv[h].zeros;\n  \
+    \      return make_pair(l + zeros - l0, r + zeros - r0);\n    }\n\n   public:\n\
+    \    WaveletMatrix(const u32 _n)\n        : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const\
+    \ vector<T>& _a)\n        : n(_a.size()), a(_a) {\n        if(n == 0) {\n    \
+    \        a.push_back(0);\n            n = 1;\n        }\n        build();\n  \
+    \  }\n    __attribute__((optimize(\"O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a),\
+    \ end(a)), 1)) + 1;\n        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n\
+    \        for(int h = lg - 1; h >= 0; --h) {\n            for(int i = 0; i < n;\
+    \ ++i)\n                if((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
     \            array<decltype(begin(nxt)), 2> it{begin(nxt), begin(nxt) + bv[h].zeros};\n\
     \            for(int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n      \
     \      swap(cur, nxt);\n        }\n        return;\n    }\n    void set(const\
@@ -103,11 +106,12 @@ data:
   dependsOn:
   - src/template/template.hpp
   - src/data_structure/wavelet_matrix.hpp
+  - src/data_structure/bit_vector.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:50:04+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/range_kth_smallest.test.cpp
 layout: document

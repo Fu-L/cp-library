@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/manacher.hpp
     title: manacher
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
@@ -19,11 +19,11 @@ data:
     - https://judge.yosupo.jp/problem/enumerate_palindromes
   bundledCode: "#line 1 \"verify/library_checker/string/enumerate_palindromes.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\n\
-    #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
-    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
-    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
-    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/string/manacher.hpp\"\
     \ntemplate <typename T>\nvector<int> manacher(T s) {\n    int n = (int)s.size();\n\
     \    s.resize(2 * n - 1);\n    for(int i = n - 1; i >= 0; --i) {\n        s[2\
@@ -50,8 +50,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/string/enumerate_palindromes.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 02:46:49+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/string/enumerate_palindromes.test.cpp
 layout: document

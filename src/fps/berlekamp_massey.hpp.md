@@ -1,40 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/nth_term.hpp
     title: nth_term
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/other/find_linear_recurrence.test.cpp
     title: verify/library_checker/other/find_linear_recurrence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/fps/berlekamp_massey.hpp\"\
-    \ntemplate <template <typename> typename FPS, typename mint>\nFPS<mint> berlekamp_massey(const\
-    \ FPS<mint>& s) {\n    const int n = (int)s.size();\n    FPS<mint> b = {mint(-1)},\
-    \ c = {mint(-1)};\n    mint y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n\
-    \        int l = (int)c.size(), m = (int)b.size();\n        mint x = 0;\n    \
-    \    for(int i = 0; i < l; ++i) x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n\
-    \        ++m;\n        if(x == mint(0)) continue;\n        const mint freq = x\
-    \ / y;\n        if(l < m) {\n            const auto tmp = c;\n            c.insert(begin(c),\
-    \ m - l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq\
-    \ * b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/fps/berlekamp_massey.hpp\"\ntemplate <template <typename> typename\
+    \ FPS, typename mint>\nFPS<mint> berlekamp_massey(const FPS<mint>& s) {\n    const\
+    \ int n = (int)s.size();\n    FPS<mint> b = {mint(-1)}, c = {mint(-1)};\n    mint\
+    \ y = mint(1);\n    for(int ed = 1; ed <= n; ++ed) {\n        int l = (int)c.size(),\
+    \ m = (int)b.size();\n        mint x = 0;\n        for(int i = 0; i < l; ++i)\
+    \ x += c[i] * s[ed - l + i];\n        b.emplace_back(0);\n        ++m;\n     \
+    \   if(x == mint(0)) continue;\n        const mint freq = x / y;\n        if(l\
+    \ < m) {\n            const auto tmp = c;\n            c.insert(begin(c), m -\
+    \ l, mint(0));\n            for(int i = 0; i < m; ++i) c[m - 1 - i] -= freq *\
+    \ b[m - 1 - i];\n            b = tmp;\n            y = x;\n        } else {\n\
     \            for(int i = 0; i < m; ++i) c[l - 1 - i] -= freq * b[m - 1 - i];\n\
     \        }\n    }\n    c.pop_back();\n    c = c.rev();\n    return c;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <template <typename>\
@@ -55,11 +56,11 @@ data:
   path: src/fps/berlekamp_massey.hpp
   requiredBy:
   - src/fps/nth_term.hpp
-  timestamp: '2024-11-09 02:16:49+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/other/find_linear_recurrence.test.cpp
   - verify/yukicoder/1559.test.cpp
+  - verify/library_checker/other/find_linear_recurrence.test.cpp
 documentation_of: src/fps/berlekamp_massey.hpp
 layout: document
 title: berlekamp_massey

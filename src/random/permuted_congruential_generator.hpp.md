@@ -1,31 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/random/permuted_congruential_generator.hpp\"\
-    \nstruct PermutedCongruentialGenerator {\n    template <typename T>\n        requires(is_integral_v<T>\
-    \ and sizeof(T) == 4) or (is_floating_point_v<T> and sizeof(T) == 8)\n    inline\
-    \ T operator()(const T l, const T r) {\n        assert(l <= r);\n        if constexpr(is_integral_v<T>)\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/random/permuted_congruential_generator.hpp\"\nstruct PermutedCongruentialGenerator\
+    \ {\n    template <typename T>\n        requires(is_integral_v<T> and sizeof(T)\
+    \ == 4) or (is_floating_point_v<T> and sizeof(T) == 8)\n    inline T operator()(const\
+    \ T l, const T r) {\n        assert(l <= r);\n        if constexpr(is_integral_v<T>)\
     \ {\n            const unsigned int range = static_cast<unsigned int>(r - l +\
     \ 1);\n            return l + (next32() % range);\n        } else {\n        \
     \    static constexpr unsigned long long denom = 1ull << 53;\n            const\
@@ -59,8 +60,8 @@ data:
   isVerificationFile: false
   path: src/random/permuted_congruential_generator.hpp
   requiredBy: []
-  timestamp: '2025-04-27 00:17:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:57:43+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -9,77 +9,78 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
     title: verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/range_affine_point_get.test.cpp
     title: verify/library_checker/data_structure/range_affine_point_get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/lazy_segment_tree.hpp\"\
-    \ntemplate <typename S, auto op, auto e, typename F, auto mapping, auto composition,\
-    \ auto id>\nstruct LazySegmentTree {\n    LazySegmentTree(const int N)\n     \
-    \   : LazySegmentTree(vector<S>(N, e())) {}\n    LazySegmentTree(const vector<S>&\
-    \ v)\n        : n((int)v.size()) {\n        size = bit_ceil((unsigned int)n);\n\
-    \        log = countr_zero((unsigned int)size);\n        data = vector<S>(2 *\
-    \ size, e());\n        lazy = vector<F>(size, id());\n        for(int i = 0; i\
-    \ < n; ++i) {\n            data[size + i] = v[i];\n        }\n        for(int\
-    \ i = size - 1; i >= 1; --i) {\n            update(i);\n        }\n    }\n   \
-    \ void set(int p, const S& x) {\n        assert(0 <= p and p < n);\n        p\
-    \ += size;\n        for(int i = log; i >= 1; --i) {\n            push(p >> i);\n\
-    \        }\n        data[p] = x;\n        for(int i = 1; i <= log; ++i) {\n  \
-    \          update(p >> i);\n        }\n    }\n    S get(int p) {\n        assert(0\
-    \ <= p and p < n);\n        p += size;\n        for(int i = log; i >= 1; --i)\
-    \ {\n            push(p >> i);\n        }\n        return data[p];\n    }\n  \
-    \  S prod(int l, int r) {\n        assert(0 <= l and l <= r and r <= n);\n   \
-    \     if(l == r) return e();\n        l += size;\n        r += size;\n       \
-    \ for(int i = log; i >= 1; --i) {\n            if(((l >> i) << i) != l) push(l\
-    \ >> i);\n            if(((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\
-    \        S sml = e(), smr = e();\n        while(l < r) {\n            if(l & 1)\
-    \ sml = op(sml, data[l++]);\n            if(r & 1) smr = op(data[--r], smr);\n\
-    \            l >>= 1;\n            r >>= 1;\n        }\n        return op(sml,\
-    \ smr);\n    }\n    S all_prod() const {\n        return data[1];\n    }\n   \
-    \ void apply(int l, int r, const F& f) {\n        assert(0 <= l and l <= r and\
-    \ r <= n);\n        if(l == r) return;\n        l += size;\n        r += size;\n\
-    \        for(int i = log; i >= 1; --i) {\n            if(((l >> i) << i) != l)\
-    \ push(l >> i);\n            if(((r >> i) << i) != r) push((r - 1) >> i);\n  \
-    \      }\n        {\n            int l2 = l, r2 = r;\n            while(l < r)\
-    \ {\n                if(l & 1) all_apply(l++, f);\n                if(r & 1) all_apply(--r,\
-    \ f);\n                l >>= 1;\n                r >>= 1;\n            }\n   \
-    \         l = l2;\n            r = r2;\n        }\n        for(int i = 1; i <=\
-    \ log; ++i) {\n            if(((l >> i) << i) != l) update(l >> i);\n        \
-    \    if(((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\n    template\
-    \ <bool (*g)(S)>\n    int max_right(const int l) {\n        return max_right(l,\
-    \ [](const S& x) { return g(x); });\n    }\n    template <class G>\n    int max_right(int\
-    \ l, const G& g) {\n        assert(0 <= l and l <= n);\n        assert(g(e()));\n\
-    \        if(l == n) return n;\n        l += size;\n        for(int i = log; i\
-    \ >= 1; --i) push(l >> i);\n        S sm = e();\n        do {\n            while(l\
-    \ % 2 == 0) l >>= 1;\n            if(!g(op(sm, data[l]))) {\n                while(l\
-    \ < size) {\n                    push(l);\n                    l = 2 * l;\n  \
-    \                  if(g(op(sm, data[l]))) {\n                        sm = op(sm,\
-    \ data[l]);\n                        ++l;\n                    }\n           \
-    \     }\n                return l - size;\n            }\n            sm = op(sm,\
-    \ data[l]);\n            ++l;\n        } while((l & -l) != l);\n        return\
-    \ n;\n    }\n\n    template <bool (*g)(S)>\n    int min_left(const int r) {\n\
-    \        return min_left(r, [](const S& x) { return g(x); });\n    }\n    template\
-    \ <class G>\n    int min_left(int r, const G& g) {\n        assert(0 <= r and\
-    \ r <= n);\n        assert(g(e()));\n        if(r == 0) return 0;\n        r +=\
-    \ size;\n        for(int i = log; i >= 1; --i) push((r - 1) >> i);\n        S\
-    \ sm = e();\n        do {\n            --r;\n            while(r > 1 and (r %\
-    \ 2)) r >>= 1;\n            if(!g(op(data[r], sm))) {\n                while(r\
-    \ < size) {\n                    push(r);\n                    r = 2 * r + 1;\n\
-    \                    if(g(op(data[r], sm))) {\n                        sm = op(data[r],\
-    \ sm);\n                        --r;\n                    }\n                }\n\
-    \                return r + 1 - size;\n            }\n            sm = op(data[r],\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/data_structure/lazy_segment_tree.hpp\"\ntemplate <typename S, auto\
+    \ op, auto e, typename F, auto mapping, auto composition, auto id>\nstruct LazySegmentTree\
+    \ {\n    LazySegmentTree(const int N)\n        : LazySegmentTree(vector<S>(N,\
+    \ e())) {}\n    LazySegmentTree(const vector<S>& v)\n        : n((int)v.size())\
+    \ {\n        size = bit_ceil((unsigned int)n);\n        log = countr_zero((unsigned\
+    \ int)size);\n        data = vector<S>(2 * size, e());\n        lazy = vector<F>(size,\
+    \ id());\n        for(int i = 0; i < n; ++i) {\n            data[size + i] = v[i];\n\
+    \        }\n        for(int i = size - 1; i >= 1; --i) {\n            update(i);\n\
+    \        }\n    }\n    void set(int p, const S& x) {\n        assert(0 <= p and\
+    \ p < n);\n        p += size;\n        for(int i = log; i >= 1; --i) {\n     \
+    \       push(p >> i);\n        }\n        data[p] = x;\n        for(int i = 1;\
+    \ i <= log; ++i) {\n            update(p >> i);\n        }\n    }\n    S get(int\
+    \ p) {\n        assert(0 <= p and p < n);\n        p += size;\n        for(int\
+    \ i = log; i >= 1; --i) {\n            push(p >> i);\n        }\n        return\
+    \ data[p];\n    }\n    S prod(int l, int r) {\n        assert(0 <= l and l <=\
+    \ r and r <= n);\n        if(l == r) return e();\n        l += size;\n       \
+    \ r += size;\n        for(int i = log; i >= 1; --i) {\n            if(((l >> i)\
+    \ << i) != l) push(l >> i);\n            if(((r >> i) << i) != r) push((r - 1)\
+    \ >> i);\n        }\n        S sml = e(), smr = e();\n        while(l < r) {\n\
+    \            if(l & 1) sml = op(sml, data[l++]);\n            if(r & 1) smr =\
+    \ op(data[--r], smr);\n            l >>= 1;\n            r >>= 1;\n        }\n\
+    \        return op(sml, smr);\n    }\n    S all_prod() const {\n        return\
+    \ data[1];\n    }\n    void apply(int l, int r, const F& f) {\n        assert(0\
+    \ <= l and l <= r and r <= n);\n        if(l == r) return;\n        l += size;\n\
+    \        r += size;\n        for(int i = log; i >= 1; --i) {\n            if(((l\
+    \ >> i) << i) != l) push(l >> i);\n            if(((r >> i) << i) != r) push((r\
+    \ - 1) >> i);\n        }\n        {\n            int l2 = l, r2 = r;\n       \
+    \     while(l < r) {\n                if(l & 1) all_apply(l++, f);\n         \
+    \       if(r & 1) all_apply(--r, f);\n                l >>= 1;\n             \
+    \   r >>= 1;\n            }\n            l = l2;\n            r = r2;\n      \
+    \  }\n        for(int i = 1; i <= log; ++i) {\n            if(((l >> i) << i)\
+    \ != l) update(l >> i);\n            if(((r >> i) << i) != r) update((r - 1) >>\
+    \ i);\n        }\n    }\n\n    template <bool (*g)(S)>\n    int max_right(const\
+    \ int l) {\n        return max_right(l, [](const S& x) { return g(x); });\n  \
+    \  }\n    template <class G>\n    int max_right(int l, const G& g) {\n       \
+    \ assert(0 <= l and l <= n);\n        assert(g(e()));\n        if(l == n) return\
+    \ n;\n        l += size;\n        for(int i = log; i >= 1; --i) push(l >> i);\n\
+    \        S sm = e();\n        do {\n            while(l % 2 == 0) l >>= 1;\n \
+    \           if(!g(op(sm, data[l]))) {\n                while(l < size) {\n   \
+    \                 push(l);\n                    l = 2 * l;\n                 \
+    \   if(g(op(sm, data[l]))) {\n                        sm = op(sm, data[l]);\n\
+    \                        ++l;\n                    }\n                }\n    \
+    \            return l - size;\n            }\n            sm = op(sm, data[l]);\n\
+    \            ++l;\n        } while((l & -l) != l);\n        return n;\n    }\n\
+    \n    template <bool (*g)(S)>\n    int min_left(const int r) {\n        return\
+    \ min_left(r, [](const S& x) { return g(x); });\n    }\n    template <class G>\n\
+    \    int min_left(int r, const G& g) {\n        assert(0 <= r and r <= n);\n \
+    \       assert(g(e()));\n        if(r == 0) return 0;\n        r += size;\n  \
+    \      for(int i = log; i >= 1; --i) push((r - 1) >> i);\n        S sm = e();\n\
+    \        do {\n            --r;\n            while(r > 1 and (r % 2)) r >>= 1;\n\
+    \            if(!g(op(data[r], sm))) {\n                while(r < size) {\n  \
+    \                  push(r);\n                    r = 2 * r + 1;\n            \
+    \        if(g(op(data[r], sm))) {\n                        sm = op(data[r], sm);\n\
+    \                        --r;\n                    }\n                }\n    \
+    \            return r + 1 - size;\n            }\n            sm = op(data[r],\
     \ sm);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n   private:\n\
     \    int n, size, log;\n    vector<S> data;\n    vector<F> lazy;\n    inline void\
     \ update(const int k) {\n        data[k] = op(data[2 * k], data[2 * k + 1]);\n\
@@ -162,12 +163,12 @@ data:
   isVerificationFile: false
   path: src/data_structure/lazy_segment_tree.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
   - verify/library_checker/data_structure/range_affine_range_sum.test.cpp
   - verify/library_checker/data_structure/range_affine_point_get.test.cpp
-  - verify/aizu_online_judge/grl/range_query_on_a_tree_2.test.cpp
 documentation_of: src/data_structure/lazy_segment_tree.hpp
 layout: document
 title: LazySegmentTree

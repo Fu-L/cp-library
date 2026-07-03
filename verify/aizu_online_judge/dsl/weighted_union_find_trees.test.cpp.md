@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -19,12 +19,12 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/problems/DSL_1_B
   bundledCode: "#line 1 \"verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_1_B\"\n#line\
-    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing P = pair<long long, long long>;\n#define rep(i, a,\
-    \ b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long\
-    \ i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO {\n\
-    \    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n    \
-    \    cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/weighted_union_find.hpp\"\
+    \ 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
+    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
+    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
+    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
+    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/weighted_union_find.hpp\"\
     \ntemplate <typename T>\nstruct WeightedUnionFind {\n    WeightedUnionFind(const\
     \ int N)\n        : n(N), data(N, -1), ws(N, T()) {}\n    bool merge(const int\
     \ a, const int b, T w) {\n        assert(0 <= a and a < n);\n        assert(0\
@@ -65,7 +65,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
+  timestamp: '2026-07-04 00:41:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/dsl/weighted_union_find_trees.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -87,26 +87,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
     title: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/sort_points_by_argument.test.cpp
     title: verify/library_checker/geometry/sort_points_by_argument.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/geometry/template.hpp\"\
-    \nusing Real = long double;\nconstexpr Real EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\n\
-    int sign(const Real& r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return\
-    \ +1;\n    return 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a\
-    \ - b) == 0;\n}\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\n\
-    istream& operator>>(istream& is, Point& p) {\n    Real a, b;\n    is >> a >> b;\n\
-    \    p = Point(a, b);\n    return is;\n}\nostream& operator<<(ostream& os, const\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/geometry/template.hpp\"\nusing Real = long double;\nconstexpr Real\
+    \ EPS = Real(1e-8), PI = 3.141592653589793238462643383279L;\nint sign(const Real&\
+    \ r) {\n    if(r <= -EPS) return -1;\n    if(r >= +EPS) return +1;\n    return\
+    \ 0;\n}\nbool eq(const Real& a, const Real& b) {\n    return sign(a - b) == 0;\n\
+    }\n#line 4 \"src/geometry/point_2d.hpp\"\nusing Point = complex<Real>;\nistream&\
+    \ operator>>(istream& is, Point& p) {\n    Real a, b;\n    is >> a >> b;\n   \
+    \ p = Point(a, b);\n    return is;\n}\nostream& operator<<(ostream& os, const\
     \ Point& p) {\n    return os << p.real() << \" \" << p.imag();\n}\nPoint operator*(const\
     \ Point& p, const Real& d) {\n    return Point(p.real() * d, p.imag() * d);\n\
     }\nPoint operator/(const Point& p, const Real& d) {\n    return Point(p.real()\
@@ -173,35 +174,35 @@ data:
   path: src/geometry/point_2d.hpp
   requiredBy:
   - src/geometry/circle_2d.hpp
-  - src/geometry/line_and_segment_2d.hpp
   - src/geometry/polygon_2d.hpp
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - src/geometry/line_and_segment_2d.hpp
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/geometry/sort_points_by_argument.test.cpp
+  - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
+  - verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
+  - verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
+  - verify/aizu_online_judge/cgl/is_convex.test.cpp
+  - verify/aizu_online_judge/cgl/closest_pair.test.cpp
+  - verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
+  - verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
+  - verify/aizu_online_judge/cgl/area.test.cpp
+  - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+  - verify/aizu_online_judge/cgl/cross_point.test.cpp
+  - verify/aizu_online_judge/cgl/reflection.test.cpp
   - verify/aizu_online_judge/cgl/intersection.test.cpp
   - verify/aizu_online_judge/cgl/parallel_orthogonal.test.cpp
-  - verify/aizu_online_judge/cgl/is_convex.test.cpp
-  - verify/aizu_online_judge/cgl/area.test.cpp
-  - verify/aizu_online_judge/cgl/common_tangent.test.cpp
+  - verify/aizu_online_judge/cgl/distance.test.cpp
+  - verify/aizu_online_judge/cgl/convex_hull.test.cpp
+  - verify/aizu_online_judge/cgl/convex_cut.test.cpp
   - verify/aizu_online_judge/cgl/diameter_of_a_convex_polygon.test.cpp
-  - verify/aizu_online_judge/cgl/area_of_intersection_between_two_circles.test.cpp
   - verify/aizu_online_judge/cgl/circumscribed_circle_of_a_triangle.test.cpp
   - verify/aizu_online_judge/cgl/incircle_of_a_triangle.test.cpp
-  - verify/aizu_online_judge/cgl/distance.test.cpp
-  - verify/aizu_online_judge/cgl/closest_pair.test.cpp
-  - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
-  - verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
-  - verify/aizu_online_judge/cgl/convex_cut.test.cpp
-  - verify/aizu_online_judge/cgl/reflection.test.cpp
-  - verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
   - verify/aizu_online_judge/cgl/projection.test.cpp
-  - verify/aizu_online_judge/cgl/convex_hull.test.cpp
-  - verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
-  - verify/aizu_online_judge/cgl/cross_point.test.cpp
-  - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
   - verify/aizu_online_judge/cgl/intersection_circle.test.cpp
-  - verify/aizu_online_judge/cgl/counter_clockwise.test.cpp
+  - verify/aizu_online_judge/cgl/common_tangent.test.cpp
+  - verify/library_checker/geometry/sort_points_by_argument.test.cpp
 documentation_of: src/geometry/point_2d.hpp
 layout: document
 title: point_2d

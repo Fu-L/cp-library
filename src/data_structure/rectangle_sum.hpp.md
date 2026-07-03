@@ -1,42 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/data_structure/bit_vector.hpp
+    title: BitVector
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/rectangle_sum.hpp\"\
-    \n#include <immintrin.h>\nstruct BitVector {\n    using u32 = uint32_t;\n    using\
-    \ i64 = int64_t;\n    using u64 = uint64_t;\n    static constexpr u32 w = 64;\n\
-    \    vector<u64> block;\n    vector<u32> count;\n    u32 n, zeros;\n    inline\
-    \ u32 get(const u32 i) const {\n        return u32(block[i / w] >> (i % w)) &\
-    \ 1u;\n    }\n    inline void set(const u32 i) {\n        block[i / w] |= 1LL\
-    \ << (i % w);\n    }\n    BitVector() {}\n    BitVector(const int _n) {\n    \
-    \    init(_n);\n    }\n    __attribute__((optimize(\"O3,unroll-loops\"))) void\
-    \ init(const int _n) {\n        n = zeros = _n;\n        block.resize(n / w +\
-    \ 1, 0);\n        count.resize(block.size(), 0);\n    }\n    __attribute__((target(\"\
-    popcnt\"))) void build() {\n        for(u32 i = 1; i < block.size(); ++i) {\n\
-    \            count[i] = count[i - 1] + _mm_popcnt_u64(block[i - 1]);\n       \
-    \ }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const u32 i) const\
-    \ {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"bmi2,popcnt\"\
-    ))) inline u32 rank1(const u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
-    \ / w], i % w));\n    }\n};\ntemplate <typename S, typename T>\nstruct RectangleSum\
-    \ {\n    RectangleSum() {}\n    void add_point(const S& x, const S& y, const T&\
-    \ w) {\n        ps.emplace_back(make_pair(x, y), w);\n        ys.emplace_back(y);\n\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/data_structure/bit_vector.hpp\"\n#include <immintrin.h>\nstruct\
+    \ BitVector {\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using\
+    \ u64 = uint64_t;\n    static constexpr u32 w = 64;\n    vector<u64> block;\n\
+    \    vector<u32> count;\n    u32 n, zeros;\n    inline u32 get(const u32 i) const\
+    \ {\n        return u32(block[i / w] >> (i % w)) & 1u;\n    }\n    inline void\
+    \ set(const u32 i) {\n        block[i / w] |= 1LL << (i % w);\n    }\n    BitVector()\
+    \ {}\n    BitVector(const int _n) {\n        init(_n);\n    }\n    __attribute__((optimize(\"\
+    O3,unroll-loops\"))) void init(const int _n) {\n        n = zeros = _n;\n    \
+    \    block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n   \
+    \ }\n    __attribute__((target(\"popcnt\"))) void build() {\n        for(u32 i\
+    \ = 1; i < block.size(); ++i) {\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
+    \ - 1]);\n        }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const\
+    \ u32 i) const {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"\
+    bmi2,popcnt\"))) inline u32 rank1(const u32 i) const {\n        return count[i\
+    \ / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i % w));\n    }\n};\n#line 4 \"\
+    src/data_structure/rectangle_sum.hpp\"\ntemplate <typename S, typename T>\nstruct\
+    \ RectangleSum {\n    RectangleSum() {}\n    void add_point(const S& x, const\
+    \ S& y, const T& w) {\n        ps.emplace_back(make_pair(x, y), w);\n        ys.emplace_back(y);\n\
     \    }\n    __attribute__((optimize(\"O3\"))) void build() {\n        n = ps.size();\n\
     \        sort(begin(ps), end(ps));\n        sort(begin(ys), end(ys));\n      \
     \  ys.erase(unique(begin(ys), end(ys)), end(ys));\n        lg = __lg(max(n, 1))\
@@ -70,23 +74,9 @@ data:
     \                l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n\
     \            } else {\n                l = l0;\n                r = r0;\n    \
     \        }\n        }\n        return ret;\n    }\n};\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include <immintrin.h>\n\
-    struct BitVector {\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using\
-    \ u64 = uint64_t;\n    static constexpr u32 w = 64;\n    vector<u64> block;\n\
-    \    vector<u32> count;\n    u32 n, zeros;\n    inline u32 get(const u32 i) const\
-    \ {\n        return u32(block[i / w] >> (i % w)) & 1u;\n    }\n    inline void\
-    \ set(const u32 i) {\n        block[i / w] |= 1LL << (i % w);\n    }\n    BitVector()\
-    \ {}\n    BitVector(const int _n) {\n        init(_n);\n    }\n    __attribute__((optimize(\"\
-    O3,unroll-loops\"))) void init(const int _n) {\n        n = zeros = _n;\n    \
-    \    block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n   \
-    \ }\n    __attribute__((target(\"popcnt\"))) void build() {\n        for(u32 i\
-    \ = 1; i < block.size(); ++i) {\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
-    \ - 1]);\n        }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const\
-    \ u32 i) const {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"\
-    bmi2,popcnt\"))) inline u32 rank1(const u32 i) const {\n        return count[i\
-    \ / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i % w));\n    }\n};\ntemplate\
-    \ <typename S, typename T>\nstruct RectangleSum {\n    RectangleSum() {}\n   \
-    \ void add_point(const S& x, const S& y, const T& w) {\n        ps.emplace_back(make_pair(x,\
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./bit_vector.hpp\"\
+    \ntemplate <typename S, typename T>\nstruct RectangleSum {\n    RectangleSum()\
+    \ {}\n    void add_point(const S& x, const S& y, const T& w) {\n        ps.emplace_back(make_pair(x,\
     \ y), w);\n        ys.emplace_back(y);\n    }\n    __attribute__((optimize(\"\
     O3\"))) void build() {\n        n = ps.size();\n        sort(begin(ps), end(ps));\n\
     \        sort(begin(ys), end(ys));\n        ys.erase(unique(begin(ys), end(ys)),\
@@ -123,11 +113,12 @@ data:
     \      }\n        return ret;\n    }\n};"
   dependsOn:
   - src/template/template.hpp
+  - src/data_structure/bit_vector.hpp
   isVerificationFile: false
   path: src/data_structure/rectangle_sum.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
 documentation_of: src/data_structure/rectangle_sum.hpp

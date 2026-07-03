@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/random/permuted_congruential_generator.hpp
     title: PermutedCongruentialGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -34,15 +34,15 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"verify/unit_test/convolution/convolution_ll.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
-    \ P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i = (a);\
-    \ i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
-    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
-    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
-    #line 3 \"src/random/permuted_congruential_generator.hpp\"\nstruct PermutedCongruentialGenerator\
-    \ {\n    template <typename T>\n        requires(is_integral_v<T> and sizeof(T)\
-    \ == 4) or (is_floating_point_v<T> and sizeof(T) == 8)\n    inline T operator()(const\
-    \ T l, const T r) {\n        assert(l <= r);\n        if constexpr(is_integral_v<T>)\
+    \n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\nusing namespace\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/random/permuted_congruential_generator.hpp\"\
+    \nstruct PermutedCongruentialGenerator {\n    template <typename T>\n        requires(is_integral_v<T>\
+    \ and sizeof(T) == 4) or (is_floating_point_v<T> and sizeof(T) == 8)\n    inline\
+    \ T operator()(const T l, const T r) {\n        assert(l <= r);\n        if constexpr(is_integral_v<T>)\
     \ {\n            const unsigned int range = static_cast<unsigned int>(r - l +\
     \ 1);\n            return l + (next32() % range);\n        } else {\n        \
     \    static constexpr unsigned long long denom = 1ull << 53;\n            const\
@@ -272,8 +272,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2025-04-27 00:17:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 00:57:43+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp
 layout: document

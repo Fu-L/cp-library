@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -15,15 +15,15 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 2 \"src/math/extgcd.hpp\"\
-    \nconstexpr long long extgcd(const long long a, const long long b, long long&\
-    \ x, long long& y) {\n    long long d = a;\n    if(b != 0) {\n        d = extgcd(b,\
-    \ a % b, y, x);\n        y -= (a / b) * x;\n    } else {\n        x = 1;\n   \
-    \     y = 0;\n    }\n    return d;\n}\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 2 \"src/math/extgcd.hpp\"\nconstexpr long long extgcd(const long long a,\
+    \ const long long b, long long& x, long long& y) {\n    long long d = a;\n   \
+    \ if(b != 0) {\n        d = extgcd(b, a % b, y, x);\n        y -= (a / b) * x;\n\
+    \    } else {\n        x = 1;\n        y = 0;\n    }\n    return d;\n}\n"
   code: "#include \"../template/template.hpp\"\nconstexpr long long extgcd(const long\
     \ long a, const long long b, long long& x, long long& y) {\n    long long d =\
     \ a;\n    if(b != 0) {\n        d = extgcd(b, a % b, y, x);\n        y -= (a /\
@@ -34,7 +34,7 @@ data:
   isVerificationFile: false
   path: src/math/extgcd.hpp
   requiredBy: []
-  timestamp: '2024-11-09 02:03:28+09:00'
+  timestamp: '2026-07-04 00:41:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/ntl/extended_euclid_algorithm.test.cpp

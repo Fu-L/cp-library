@@ -1,61 +1,62 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/trie.hpp
     title: Trie
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/430.test.cpp
     title: verify/yukicoder/430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/string/trie.hpp\"\
-    \ntemplate <size_t X = 26, char margin = 'a'>\nstruct Trie {\n    struct Node\
-    \ {\n        array<int, X> nxt;\n        vector<int> idxs;\n        int idx, count,\
-    \ parent;\n        char key;\n        Node(const char c, const int par)\n    \
-    \        : idx(-1), count(0), parent(par), key(c) {\n            fill(nxt.begin(),\
-    \ nxt.end(), -1);\n        }\n    };\n    vector<Node> st;\n    Trie(const char\
-    \ c = '$', const int p = -1) {\n        st.emplace_back(c, p);\n    }\n    inline\
-    \ int& next(const int i, const int j) {\n        assert(0 <= i and i < (int)st.size());\n\
-    \        assert(0 <= j and j < (int)X);\n        return st[i].nxt[j];\n    }\n\
-    \    void insert(const string& s, const int x) {\n        int pos = 0;\n     \
-    \   for(int i = 0; i < (int)s.size(); ++i) {\n            ++st[pos].count;\n \
-    \           const int k = s[i] - margin;\n            if(~next(pos, k)) {\n  \
-    \              pos = next(pos, k);\n                continue;\n            }\n\
-    \            const int npos = st.size();\n            next(pos, k) = npos;\n \
-    \           st.emplace_back(s[i], pos);\n            pos = npos;\n        }\n\
-    \        ++st[pos].count;\n        st[pos].idx = x;\n        st[pos].idxs.emplace_back(x);\n\
-    \    }\n    int find(const string& s) {\n        int pos = 0;\n        for(int\
-    \ i = 0; i < (int)s.size(); ++i) {\n            const int k = s[i] - margin;\n\
-    \            if(next(pos, k) < 0) return -1;\n            pos = next(pos, k);\n\
-    \        }\n        return pos;\n    }\n    int move(const int pos, const char\
-    \ c) {\n        assert(0 <= pos and pos < (int)st.size());\n        return next(pos,\
-    \ c - margin);\n    }\n    int size() const {\n        return st.size();\n   \
-    \ }\n    int idx(const int pos) const {\n        assert(0 <= pos and pos < (int)st.size());\n\
-    \        return st[pos].idx;\n    }\n    int count(const int pos) const {\n  \
-    \      assert(0 <= pos and pos < (int)st.size());\n        return st[pos].count;\n\
-    \    }\n    int par(const int pos) const {\n        assert(0 <= pos and pos <\
-    \ (int)st.size());\n        return st[pos].parent;\n    }\n    vector<int> idxs(const\
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/string/trie.hpp\"\ntemplate <size_t X = 26, char margin = 'a'>\n\
+    struct Trie {\n    struct Node {\n        array<int, X> nxt;\n        vector<int>\
+    \ idxs;\n        int idx, count, parent;\n        char key;\n        Node(const\
+    \ char c, const int par)\n            : idx(-1), count(0), parent(par), key(c)\
+    \ {\n            fill(nxt.begin(), nxt.end(), -1);\n        }\n    };\n    vector<Node>\
+    \ st;\n    Trie(const char c = '$', const int p = -1) {\n        st.emplace_back(c,\
+    \ p);\n    }\n    inline int& next(const int i, const int j) {\n        assert(0\
+    \ <= i and i < (int)st.size());\n        assert(0 <= j and j < (int)X);\n    \
+    \    return st[i].nxt[j];\n    }\n    void insert(const string& s, const int x)\
+    \ {\n        int pos = 0;\n        for(int i = 0; i < (int)s.size(); ++i) {\n\
+    \            ++st[pos].count;\n            const int k = s[i] - margin;\n    \
+    \        if(~next(pos, k)) {\n                pos = next(pos, k);\n          \
+    \      continue;\n            }\n            const int npos = st.size();\n   \
+    \         next(pos, k) = npos;\n            st.emplace_back(s[i], pos);\n    \
+    \        pos = npos;\n        }\n        ++st[pos].count;\n        st[pos].idx\
+    \ = x;\n        st[pos].idxs.emplace_back(x);\n    }\n    int find(const string&\
+    \ s) {\n        int pos = 0;\n        for(int i = 0; i < (int)s.size(); ++i) {\n\
+    \            const int k = s[i] - margin;\n            if(next(pos, k) < 0) return\
+    \ -1;\n            pos = next(pos, k);\n        }\n        return pos;\n    }\n\
+    \    int move(const int pos, const char c) {\n        assert(0 <= pos and pos\
+    \ < (int)st.size());\n        return next(pos, c - margin);\n    }\n    int size()\
+    \ const {\n        return st.size();\n    }\n    int idx(const int pos) const\
+    \ {\n        assert(0 <= pos and pos < (int)st.size());\n        return st[pos].idx;\n\
+    \    }\n    int count(const int pos) const {\n        assert(0 <= pos and pos\
+    \ < (int)st.size());\n        return st[pos].count;\n    }\n    int par(const\
     \ int pos) const {\n        assert(0 <= pos and pos < (int)st.size());\n     \
-    \   return st[pos].idxs;\n    }\n};\n#line 4 \"src/string/aho_corasick.hpp\"\n\
-    template <size_t X = 26, char margin = 'a', bool heavy = true>\nstruct AhoCorasick\
-    \ : Trie<X + 1, margin> {\n    using TRIE = Trie<X + 1, margin>;\n    using TRIE::next;\n\
-    \    using TRIE::st;\n    using TRIE::TRIE;\n    vector<int> cnt;\n    void build()\
-    \ {\n        const int n = (int)st.size();\n        cnt.resize(n);\n        for(int\
-    \ i = 0; i < n; ++i) {\n            if(heavy) sort(st[i].idxs.begin(), st[i].idxs.end());\n\
+    \   return st[pos].parent;\n    }\n    vector<int> idxs(const int pos) const {\n\
+    \        assert(0 <= pos and pos < (int)st.size());\n        return st[pos].idxs;\n\
+    \    }\n};\n#line 4 \"src/string/aho_corasick.hpp\"\ntemplate <size_t X = 26,\
+    \ char margin = 'a', bool heavy = true>\nstruct AhoCorasick : Trie<X + 1, margin>\
+    \ {\n    using TRIE = Trie<X + 1, margin>;\n    using TRIE::next;\n    using TRIE::st;\n\
+    \    using TRIE::TRIE;\n    vector<int> cnt;\n    void build() {\n        const\
+    \ int n = (int)st.size();\n        cnt.resize(n);\n        for(int i = 0; i <\
+    \ n; ++i) {\n            if(heavy) sort(st[i].idxs.begin(), st[i].idxs.end());\n\
     \            cnt[i] = (int)st[i].idxs.size();\n        }\n        queue<int> que;\n\
     \        for(int i = 0; i < (int)X; ++i) {\n            if(~next(0, i)) {\n  \
     \              next(next(0, i), X) = 0;\n                que.emplace(next(0, i));\n\
@@ -126,8 +127,8 @@ data:
   isVerificationFile: false
   path: src/string/aho_corasick.hpp
   requiredBy: []
-  timestamp: '2025-02-14 22:47:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yukicoder/430.test.cpp
 documentation_of: src/string/aho_corasick.hpp

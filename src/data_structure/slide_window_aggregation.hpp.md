@@ -1,38 +1,39 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n\
-    #define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a,\
-    \ b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
-    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/slide_window_aggregation.hpp\"\
-    \ntemplate <typename S, auto op, auto e>\nstruct SlideWindowAggregation {\n  \
-    \  SlideWindowAggregation()\n        : f0(e()), f1(e()) {}\n    void push(const\
-    \ S& x) {\n        if(a0.empty()) {\n            push_s0(x);\n            transfer();\n\
-    \        } else {\n            push_s1(x);\n        }\n    }\n    void pop() {\n\
-    \        if(a0.empty()) transfer();\n        a0.pop_back();\n        r0.pop_back();\n\
-    \        f0 = r0.empty() ? e() : r0.back();\n    }\n    S prod() const {\n   \
-    \     return op(f0, f1);\n    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n\
-    \    S f0, f1;\n    void push_s0(const S& x) {\n        a0.emplace_back(x);\n\
-    \        r0.emplace_back(f0 = op(x, f0));\n    }\n    void push_s1(const S& x)\
-    \ {\n        a1.emplace_back(x);\n        r1.emplace_back(f1 = op(f1, x));\n \
-    \   }\n    void transfer() {\n        while(!a1.empty()) {\n            push_s0(a1.back());\n\
-    \            a1.pop_back();\n        }\n        while(!r1.empty()) r1.pop_back();\n\
-    \        f1 = e();\n    }\n};\n"
+    #line 4 \"src/template/template.hpp\"\nusing namespace std;\nusing ll = long long;\n\
+    using P = pair<long long, long long>;\n#define rep(i, a, b) for(long long i =\
+    \ (a); i < (b); ++i)\n#define rrep(i, a, b) for(long long i = (a); i >= (b); --i)\n\
+    constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
+    \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
+    #line 3 \"src/data_structure/slide_window_aggregation.hpp\"\ntemplate <typename\
+    \ S, auto op, auto e>\nstruct SlideWindowAggregation {\n    SlideWindowAggregation()\n\
+    \        : f0(e()), f1(e()) {}\n    void push(const S& x) {\n        if(a0.empty())\
+    \ {\n            push_s0(x);\n            transfer();\n        } else {\n    \
+    \        push_s1(x);\n        }\n    }\n    void pop() {\n        if(a0.empty())\
+    \ transfer();\n        a0.pop_back();\n        r0.pop_back();\n        f0 = r0.empty()\
+    \ ? e() : r0.back();\n    }\n    S prod() const {\n        return op(f0, f1);\n\
+    \    }\n\n   private:\n    vector<S> a0, a1, r0, r1;\n    S f0, f1;\n    void\
+    \ push_s0(const S& x) {\n        a0.emplace_back(x);\n        r0.emplace_back(f0\
+    \ = op(x, f0));\n    }\n    void push_s1(const S& x) {\n        a1.emplace_back(x);\n\
+    \        r1.emplace_back(f1 = op(f1, x));\n    }\n    void transfer() {\n    \
+    \    while(!a1.empty()) {\n            push_s0(a1.back());\n            a1.pop_back();\n\
+    \        }\n        while(!r1.empty()) r1.pop_back();\n        f1 = e();\n   \
+    \ }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SlideWindowAggregation {\n    SlideWindowAggregation()\n\
     \        : f0(e()), f1(e()) {}\n    void push(const S& x) {\n        if(a0.empty())\
@@ -52,8 +53,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/slide_window_aggregation.hpp
   requiredBy: []
-  timestamp: '2024-11-09 01:34:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 00:41:26+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
 documentation_of: src/data_structure/slide_window_aggregation.hpp
