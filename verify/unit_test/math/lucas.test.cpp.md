@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: src/math/lucas.hpp
     title: Lucas
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':question:'

@@ -98,22 +98,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/weighted_union_find.hpp
     title: WeightedUnionFind
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/dp/longest_increasing_sequence.hpp
     title: longest_increasing_sequence
   - icon: ':heavy_check_mark:'
     path: src/dp/monotone_minima.hpp
     title: monotone_minima
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/all_product.hpp
     title: all_product
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/berlekamp_massey.hpp
     title: berlekamp_massey
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/fps/bostan_mori.hpp
     title: bostan_mori
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
   - icon: ':x:'
@@ -152,7 +152,7 @@ data:
   - icon: ':x:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
@@ -185,7 +185,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
@@ -215,7 +215,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/extgcd.hpp
     title: extgcd
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/floor_sum.hpp
     title: floor_sum
   - icon: ':x:'
@@ -224,16 +224,16 @@ data:
   - icon: ':question:'
     path: src/math/is_prime.hpp
     title: is_prime
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/kth_root_integer.hpp
     title: kth_root_integer
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
   - icon: ':x:'
     path: src/math/lucas.hpp
     title: Lucas
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
   - icon: ':x:'
@@ -248,7 +248,7 @@ data:
   - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/two_sat.hpp
     title: TwoSAT
   - icon: ':heavy_check_mark:'
@@ -260,16 +260,16 @@ data:
   - icon: ':question:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/inverse.hpp
     title: inverse
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: linear_equation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'
@@ -296,13 +296,13 @@ data:
   - icon: ':x:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/manacher.hpp
     title: manacher
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/string/suffix_array.hpp
     title: suffix_array
   - icon: ':x:'
@@ -624,70 +624,70 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
     title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/matrix_product.test.cpp
     title: verify/library_checker/linear_algebra/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
     title: verify/library_checker/number_theory/discrete_logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/kth_root_integer.test.cpp
     title: verify/library_checker/number_theory/kth_root_integer.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/primality_test.test.cpp
     title: verify/library_checker/number_theory/primality_test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
     title: verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/2_sat.test.cpp
     title: verify/library_checker/other/2_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/find_linear_recurrence.test.cpp
     title: verify/library_checker/other/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/longest_increasing_sequence.test.cpp
     title: verify/library_checker/other/longest_increasing_sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
     title: verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/enumerate_palindromes.test.cpp
     title: verify/library_checker/string/enumerate_palindromes.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
   - icon: ':x:'
@@ -765,6 +765,9 @@ data:
   - icon: ':x:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/template/debug_without_modint.test.cpp
+    title: verify/unit_test/template/debug_without_modint.test.cpp
   - icon: ':x:'
     path: verify/unit_test/tree/auxiliary_tree.test.cpp
     title: verify/unit_test/tree/auxiliary_tree.test.cpp
@@ -925,6 +928,7 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
+  - verify/unit_test/template/debug_without_modint.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/tree/auxiliary_tree.test.cpp

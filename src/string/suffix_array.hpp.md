@@ -6,7 +6,7 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: verify/library_checker/string/suffix_array.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -166,7 +166,7 @@ data:
   path: src/string/suffix_array.hpp
   requiredBy: []
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/string/number_of_substrings.test.cpp
   - verify/library_checker/string/suffix_array.test.cpp

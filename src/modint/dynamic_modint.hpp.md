@@ -4,10 +4,7 @@ data:
   - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: src/template/debug.hpp
-    title: debug
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/binomial_coefficient_prime_mod.test.cpp
@@ -144,8 +141,7 @@ data:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/modint/dynamic_modint.hpp
-  requiredBy:
-  - src/template/debug.hpp
+  requiredBy: []
   timestamp: '2026-07-04 01:57:55+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:

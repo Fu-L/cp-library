@@ -8,7 +8,7 @@ data:
   - icon: ':x:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: RollingHash
   - icon: ':x:'
@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/alds1/string_search.test.cpp
     title: verify/aizu_online_judge/alds1/string_search.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/number_of_substrings.test.cpp
     title: verify/library_checker/string/number_of_substrings.test.cpp
   - icon: ':x:'

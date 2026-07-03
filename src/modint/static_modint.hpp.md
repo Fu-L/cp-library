@@ -20,9 +20,6 @@ data:
   - icon: ':x:'
     path: src/string/wildcard_pattern_matching.hpp
     title: wildcard_pattern_matching
-  - icon: ':x:'
-    path: src/template/debug.hpp
-    title: debug
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
@@ -69,46 +66,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
     title: verify/library_checker/linear_algebra/determinant_of_matric.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
     title: verify/library_checker/linear_algebra/inverse_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/matrix_product.test.cpp
     title: verify/library_checker/linear_algebra/matrix_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
     title: verify/library_checker/linear_algebra/rank_of_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/find_linear_recurrence.test.cpp
     title: verify/library_checker/other/find_linear_recurrence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/division_of_polynomial.test.cpp
     title: verify/library_checker/polynomial/division_of_polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/exp_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/log_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
     title: verify/library_checker/polynomial/polynomial_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - icon: ':x:'
@@ -255,7 +252,6 @@ data:
   isVerificationFile: false
   path: src/modint/static_modint.hpp
   requiredBy:
-  - src/template/debug.hpp
   - src/convolution/convolution_arbitrary.hpp
   - src/convolution/convolution_ll.hpp
   - src/string/wildcard_pattern_matching.hpp

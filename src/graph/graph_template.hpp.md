@@ -17,7 +17,7 @@ data:
   - icon: ':x:'
     path: src/graph/bipartite.hpp
     title: bipartite
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
   - icon: ':heavy_check_mark:'
@@ -41,7 +41,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/max_matching.hpp
     title: max_matching
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
   - icon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/two_edge_connected_components.hpp
     title: TwoEdgeConnectedComponents
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/two_sat.hpp
     title: TwoSAT
   - icon: ':x:'
@@ -144,7 +144,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/two_edge_connected_components.test.cpp
     title: verify/library_checker/graph/two_edge_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/other/2_sat.test.cpp
     title: verify/library_checker/other/2_sat.test.cpp
   - icon: ':x:'
