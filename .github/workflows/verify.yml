@@ -1,28 +1,46 @@
 name: verify
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
 
 jobs:
   verify:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-    - name: Install clang-format
-      run: sudo apt-get update && sudo apt-get install -y clang-format
-    
-    - name: Install Boost
-      run: sudo apt-get install -y libboost-all-dev
+    - name: Install Boost and clang-format
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libboost-all-dev clang-format
 
-    - name: Run clang-format
-      run: clang-format -i */*/*.hpp */*/*/*.cpp */*/*.cpp
+    - name: Check code formatting
+      run: |
+        clang-format -i */*/*.hpp */*/*/*.cpp */*/*.cpp
+        # 差分があればエラー終了（手元でフォーマットし忘れていることを検知）
+        git diff --exit-code
 
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
 
     - name: Install dependencies
-      run: pip3 install -U online-judge-verify-helper
+      run: pip3 install -U online-judge-verify-helper setuptools
+
+    - name: Cache test cases
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/online-judge-tools
+        key: ${{ runner.os }}-oj-cache
 
     - name: Run tests
       env:
