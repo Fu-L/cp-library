@@ -5,6 +5,10 @@ struct ConvexHullTrick {
     void add(const T& a, const T& b) {
         Linear l(a, b);
         assert(ls.empty() or ls.back().a >= l.a);
+        if(!ls.empty() and ls.back().a == l.a) {
+            if(ls.back().b <= l.b) return;
+            ls.pop_back();
+        }
         int len = (int)ls.size();
         while(len >= 2 and check(ls[len - 2], ls[len - 1], l)) {
             --len;

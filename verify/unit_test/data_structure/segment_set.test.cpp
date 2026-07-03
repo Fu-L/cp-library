@@ -55,7 +55,8 @@ void assert_same(const SegmentSet<int>& st, const vector<bool>& used) {
             assert(lb == st.end());
         } else {
             assert(lb != st.end());
-            assert(*lb == expected_lb);
+            assert(lb->first == expected_lb.first);
+            assert(lb->second == expected_lb.second);
         }
     }
 }
