@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/matrix.hpp
     title: Matrix
   - icon: ':question:'

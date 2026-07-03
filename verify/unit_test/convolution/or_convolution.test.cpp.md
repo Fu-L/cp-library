@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/zeta_transform.hpp
     title: zeta_transform
   - icon: ':x:'

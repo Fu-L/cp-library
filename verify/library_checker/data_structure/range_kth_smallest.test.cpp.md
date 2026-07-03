@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/bit_vector.hpp
     title: BitVector
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/wavelet_matrix.hpp
     title: WaveletMatrix
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -28,25 +28,38 @@ data:
     \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
     struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/bit_vector.hpp\"\
-    \n#include <immintrin.h>\nstruct BitVector {\n    using u32 = uint32_t;\n    using\
-    \ i64 = int64_t;\n    using u64 = uint64_t;\n    static constexpr u32 w = 64;\n\
-    \    vector<u64> block;\n    vector<u32> count;\n    u32 n, zeros;\n    inline\
-    \ u32 get(const u32 i) const {\n        return u32(block[i / w] >> (i % w)) &\
-    \ 1u;\n    }\n    inline void set(const u32 i) {\n        block[i / w] |= 1LL\
-    \ << (i % w);\n    }\n    BitVector() {}\n    BitVector(const int _n) {\n    \
-    \    init(_n);\n    }\n    __attribute__((optimize(\"O3,unroll-loops\"))) void\
-    \ init(const int _n) {\n        n = zeros = _n;\n        block.resize(n / w +\
-    \ 1, 0);\n        count.resize(block.size(), 0);\n    }\n    __attribute__((target(\"\
-    popcnt\"))) void build() {\n        for(u32 i = 1; i < block.size(); ++i) {\n\
-    \            count[i] = count[i - 1] + _mm_popcnt_u64(block[i - 1]);\n       \
-    \ }\n        zeros = rank0(n);\n    }\n    inline u32 rank0(const u32 i) const\
-    \ {\n        return i - rank1(i);\n    }\n    __attribute__((target(\"bmi2,popcnt\"\
-    ))) inline u32 rank1(const u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
-    \ / w], i % w));\n    }\n};\n#line 4 \"src/data_structure/wavelet_matrix.hpp\"\
-    \ntemplate <typename T>\nstruct WaveletMatrix {\n   private:\n    using u32 =\
-    \ uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n    int n, lg;\n\
-    \    vector<T> a;\n    vector<BitVector> bv;\n    inline pair<u32, u32> succ0(const\
-    \ int l, const int r, const int h) const {\n        return make_pair(bv[h].rank0(l),\
+    \n#if __has_include(<immintrin.h>)\n#include <immintrin.h>\n#define CP_LIBRARY_TARGET_POPCNT\
+    \ __attribute__((target(\"popcnt\")))\n#define CP_LIBRARY_TARGET_BMI __attribute__((target(\"\
+    bmi\")))\n#define CP_LIBRARY_TARGET_BMI2_POPCNT __attribute__((target(\"bmi2,popcnt\"\
+    )))\n#else\n#define CP_LIBRARY_TARGET_POPCNT\n#define CP_LIBRARY_TARGET_BMI\n\
+    #define CP_LIBRARY_TARGET_BMI2_POPCNT\n#endif\nCP_LIBRARY_TARGET_POPCNT inline\
+    \ uint32_t popcount64(const uint64_t x) {\n#if __has_include(<immintrin.h>)\n\
+    \    return _mm_popcnt_u64(x);\n#else\n    return __builtin_popcountll(x);\n#endif\n\
+    }\nCP_LIBRARY_TARGET_BMI2_POPCNT inline uint64_t low_bits(const uint64_t x, const\
+    \ uint32_t n) {\n#if __has_include(<immintrin.h>)\n    return _bzhi_u64(x, n);\n\
+    #else\n    return n == 64 ? x : x & ((uint64_t(1) << n) - 1);\n#endif\n}\nCP_LIBRARY_TARGET_BMI\
+    \ inline uint32_t lowbit(const uint32_t x) {\n#if __has_include(<immintrin.h>)\n\
+    \    return _blsi_u32(x);\n#else\n    return x & -x;\n#endif\n}\nCP_LIBRARY_TARGET_BMI\
+    \ inline uint32_t clear_lowbit(const uint32_t x) {\n#if __has_include(<immintrin.h>)\n\
+    \    return _blsr_u32(x);\n#else\n    return x & (x - 1);\n#endif\n}\nstruct BitVector\
+    \ {\n    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
+    \    static constexpr u32 w = 64;\n    vector<u64> block;\n    vector<u32> count;\n\
+    \    u32 n, zeros;\n    inline u32 get(const u32 i) const {\n        return u32(block[i\
+    \ / w] >> (i % w)) & 1u;\n    }\n    inline void set(const u32 i) {\n        block[i\
+    \ / w] |= 1LL << (i % w);\n    }\n    BitVector() {}\n    BitVector(const int\
+    \ _n) {\n        init(_n);\n    }\n    __attribute__((optimize(\"O3,unroll-loops\"\
+    ))) void init(const int _n) {\n        n = zeros = _n;\n        block.resize(n\
+    \ / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n    CP_LIBRARY_TARGET_POPCNT\
+    \ void build() {\n        for(u32 i = 1; i < block.size(); ++i) {\n          \
+    \  count[i] = count[i - 1] + popcount64(block[i - 1]);\n        }\n        zeros\
+    \ = rank0(n);\n    }\n    inline u32 rank0(const u32 i) const {\n        return\
+    \ i - rank1(i);\n    }\n    CP_LIBRARY_TARGET_BMI2_POPCNT inline u32 rank1(const\
+    \ u32 i) const {\n        return count[i / w] + popcount64(low_bits(block[i /\
+    \ w], i % w));\n    }\n};\n#line 4 \"src/data_structure/wavelet_matrix.hpp\"\n\
+    template <typename T>\nstruct WaveletMatrix {\n   private:\n    using u32 = uint32_t;\n\
+    \    using i64 = int64_t;\n    using u64 = uint64_t;\n    int n, lg;\n    vector<T>\
+    \ a;\n    vector<BitVector> bv;\n    inline pair<u32, u32> succ0(const int l,\
+    \ const int r, const int h) const {\n        return make_pair(bv[h].rank0(l),\
     \ bv[h].rank0(r));\n    }\n    inline pair<u32, u32> succ1(const int l, const\
     \ int r, const int h) const {\n        const u32 l0 = bv[h].rank0(l);\n      \
     \  const u32 r0 = bv[h].rank0(r);\n        const u32 zeros = bv[h].zeros;\n  \
@@ -110,8 +123,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-07-04 01:44:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/range_kth_smallest.test.cpp
 layout: document

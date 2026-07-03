@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/data_structure/segment_tree.hpp
     title: SegmentTree
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/predecessor_problem
@@ -105,7 +105,7 @@ data:
   path: verify/library_checker/data_structure/predecessor_problem.test.cpp
   requiredBy: []
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/predecessor_problem.test.cpp
 layout: document

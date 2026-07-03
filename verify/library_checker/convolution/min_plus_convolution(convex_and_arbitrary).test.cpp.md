@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution.hpp
     title: min_plus_convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/dp/monotone_minima.hpp
     title: monotone_minima
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary
@@ -70,7 +70,7 @@ data:
   path: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
   requiredBy: []
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/min_plus_convolution(convex_and_arbitrary).test.cpp
 layout: document

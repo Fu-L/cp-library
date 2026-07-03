@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':question:'

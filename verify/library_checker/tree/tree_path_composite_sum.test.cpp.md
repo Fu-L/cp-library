@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':question:'

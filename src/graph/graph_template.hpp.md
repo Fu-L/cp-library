@@ -20,7 +20,7 @@ data:
   - icon: ':question:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_directed.hpp
     title: counting_spanning_tree_directed
   - icon: ':x:'
@@ -114,7 +114,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
     title: verify/aizu_online_judge/grl/strongly_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - icon: ':x:'

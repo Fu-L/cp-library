@@ -7,13 +7,13 @@ data:
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/gauss_elimination.hpp
     title: gauss_elimination
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':question:'

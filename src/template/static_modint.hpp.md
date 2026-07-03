@@ -5,7 +5,7 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
   - icon: ':x:'
@@ -24,43 +24,43 @@ data:
     path: src/template/debug.hpp
     title: debug
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_and_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution.test.cpp
     title: verify/library_checker/convolution/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/gcd_convolution.test.cpp
     title: verify/library_checker/convolution/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/lcm_convolution.test.cpp
     title: verify/library_checker/convolution/lcm_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_set_range_composite.test.cpp
     title: verify/library_checker/data_structure/point_set_range_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_affine_point_get.test.cpp
     title: verify/library_checker/data_structure/range_affine_point_get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
     title: verify/library_checker/data_structure/range_affine_range_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
     title: verify/library_checker/data_structure/unionfind_with_potential.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
     title: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - icon: ':x:'
@@ -137,7 +137,7 @@ data:
     title: verify/yukicoder/1559.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -262,7 +262,7 @@ data:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series_ll.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp

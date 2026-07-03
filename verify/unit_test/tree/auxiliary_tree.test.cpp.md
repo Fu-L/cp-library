@@ -7,7 +7,7 @@ data:
   - icon: ':x:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':question:'

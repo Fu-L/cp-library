@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':question:'

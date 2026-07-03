@@ -5,10 +5,10 @@ data:
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
   - icon: ':x:'
@@ -23,7 +23,7 @@ data:
   - icon: ':x:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':x:'
@@ -33,10 +33,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/ntl/power.test.cpp
     title: verify/aizu_online_judge/ntl/power.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution.test.cpp
     title: verify/library_checker/convolution/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
     title: verify/library_checker/convolution/convolution_mod_1000000007.test.cpp
   - icon: ':x:'

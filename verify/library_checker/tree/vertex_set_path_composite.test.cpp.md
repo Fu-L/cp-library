@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/data_structure/segment_tree.hpp
     title: SegmentTree
   - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/template/static_modint.hpp
     title: StaticModint
   - icon: ':question:'
