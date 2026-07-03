@@ -18,23 +18,23 @@ struct FenwickTreeonWaveletMatrix {
             N = size;
             data.assign(N + 1, 0);
         }
-        __attribute__((target("bmi"))) void add(u32 k, const T& x) {
-            for(++k; k <= N; k += _blsi_u32(k)) data[k] += x;
+        CP_LIBRARY_TARGET_BMI void add(u32 k, const T& x) {
+            for(++k; k <= N; k += lowbit(k)) data[k] += x;
         }
-        __attribute__((target("bmi"))) T sum(u32 k) const {
+        CP_LIBRARY_TARGET_BMI T sum(u32 k) const {
             T ret = T();
-            for(; k; k = _blsr_u32(k)) ret += data[k];
+            for(; k; k = clear_lowbit(k)) ret += data[k];
             return ret;
         }
-        __attribute__((target("bmi"))) T sum(int l, int r) const {
+        CP_LIBRARY_TARGET_BMI T sum(int l, int r) const {
             T ret = T();
             while(l != r) {
                 if(l < r) {
                     ret += data[r];
-                    r = _blsr_u32(r);
+                    r = clear_lowbit(r);
                 } else {
                     ret -= data[l];
-                    l = _blsr_u32(l);
+                    l = clear_lowbit(l);
                 }
             }
             return ret;
