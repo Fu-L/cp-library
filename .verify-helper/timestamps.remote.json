@@ -98,6 +98,7 @@
 "verify/library_checker/linear_algebra/rank_of_matrix.test.cpp": "2024-11-09 02:30:41 +0900",
 "verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp": "2024-11-09 02:30:41 +0900",
 "verify/library_checker/number_theory/discrete_logarithm.test.cpp": "2024-11-09 02:03:28 +0900",
+"verify/library_checker/number_theory/kth_root_integer.test.cpp": "2025-09-30 23:32:07 +0900",
 "verify/library_checker/number_theory/primality_test.test.cpp": "2024-11-09 02:03:28 +0900",
 "verify/library_checker/number_theory/sum_of_floor_of_linear.test.cpp": "2024-11-09 02:03:28 +0900",
 "verify/library_checker/other/2_sat.test.cpp": "2025-02-27 04:36:58 +0900",
