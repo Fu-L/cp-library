@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
 #include "../../../src/random/random_number_generator.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 using mint = modint998244353;
 #include "../../../src/graph/graph_template.hpp"
 #include "../../../src/tree/auxiliary_tree.hpp"

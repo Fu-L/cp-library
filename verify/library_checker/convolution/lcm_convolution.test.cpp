@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lcm_convolution"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/convolution/lcm_convolution.hpp"
 using mint = modint998244353;
 int main(void) {

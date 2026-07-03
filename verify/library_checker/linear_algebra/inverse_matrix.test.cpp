@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/inverse_matrix"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/matrix/matrix.hpp"
 #include "../../../src/matrix/inverse.hpp"
 using mint = modint998244353;

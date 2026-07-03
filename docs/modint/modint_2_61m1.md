@@ -1,6 +1,6 @@
 ---
 title: Modint_2_61m1
-documentation_of: ../../src/template/modint_2_61m1.hpp
+documentation_of: ../../src/modint/modint_2_61m1.hpp
 ---
 
 # Modint_2_61m1

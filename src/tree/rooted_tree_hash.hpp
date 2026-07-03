@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-#include "../template/modint_2_61m1.hpp"
+#include "../modint/modint_2_61m1.hpp"
 #include "../graph/graph_template.hpp"
 template <typename T>
 vector<ll> rooted_tree_hash(const Graph<T>& g, const int root = 0) {

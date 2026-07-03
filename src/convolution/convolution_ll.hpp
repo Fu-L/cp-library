@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-#include "../template/static_modint.hpp"
+#include "../modint/static_modint.hpp"
 #include "./convolution.hpp"
 vector<long long> convolution_ll(const vector<long long>& a, const vector<long long>& b) {
     const int n = (int)a.size(), m = (int)b.size();

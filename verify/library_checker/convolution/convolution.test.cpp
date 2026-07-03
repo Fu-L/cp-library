@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/convolution/convolution.hpp"
 using mint = modint998244353;
 int main(void) {

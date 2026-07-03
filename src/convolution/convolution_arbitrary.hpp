@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-#include "../template/static_modint.hpp"
+#include "../modint/static_modint.hpp"
 #include "./convolution.hpp"
 template <typename mint>
 vector<mint> convolution_arbitrary(const vector<mint>& a, const vector<mint>& b) {

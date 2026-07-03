@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-#include "../template/modint_2_61m1.hpp"
+#include "../modint/modint_2_61m1.hpp"
 struct RollingHash {
     using mint = Modint_2_61m1;
     RollingHash(const string& s, unsigned long long BASE = 0)

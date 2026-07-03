@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../../src/template/template.hpp"
 #include "../../../src/random/random_number_generator.hpp"
-#include "../../../src/template/dynamic_modint.hpp"
+#include "../../../src/modint/dynamic_modint.hpp"
 #include "../../../src/math/lucas.hpp"
 #include "../../../src/math/miller_rabin.hpp"
 using mint = modint;

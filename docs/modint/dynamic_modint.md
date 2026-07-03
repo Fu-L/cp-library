@@ -1,6 +1,6 @@
 ---
 title: DynamicModint
-documentation_of: ../../src/template/dynamic_modint.hpp
+documentation_of: ../../src/modint/dynamic_modint.hpp
 ---
 
 # DynamicModint

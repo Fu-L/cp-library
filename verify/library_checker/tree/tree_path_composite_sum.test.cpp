@@ -2,7 +2,7 @@
 #include "../../../src/template/template.hpp"
 #include "../../../src/graph/graph_template.hpp"
 #include "../../../src/tree/rerooting.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 using mint = modint998244353;
 int main(void) {
     int n;

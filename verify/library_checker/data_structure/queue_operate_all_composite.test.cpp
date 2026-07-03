@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/data_structure/slide_window_aggregation.hpp"
 using mint = modint998244353;
 struct S {

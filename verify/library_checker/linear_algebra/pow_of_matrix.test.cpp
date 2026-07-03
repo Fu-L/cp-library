@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/pow_of_matrix"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/matrix/matrix.hpp"
 using mint = modint998244353;
 int main(void) {

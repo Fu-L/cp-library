@@ -1,7 +1,7 @@
 #pragma once
 #include "./template.hpp"
-#include "./static_modint.hpp"
-#include "./dynamic_modint.hpp"
+#include "../modint/static_modint.hpp"
+#include "../modint/dynamic_modint.hpp"
 namespace dbg {
 template <typename A, typename B>
 string to_string(pair<A, B> p);

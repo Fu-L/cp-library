@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/dynamic_modint.hpp"
+#include "../../../src/modint/dynamic_modint.hpp"
 #include "../../../src/math/binomial.hpp"
 using mint = modint;
 int main(void) {

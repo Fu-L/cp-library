@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_rank"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/matrix/gauss_elimination.hpp"
 using mint = modint998244353;
 int main(void) {

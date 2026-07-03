@@ -1,6 +1,6 @@
 #pragma once
 #include "../template/template.hpp"
-#include "../template/modint_2_61m1.hpp"
+#include "../modint/modint_2_61m1.hpp"
 #include "../data_structure/fenwick_tree.hpp"
 struct DynamicRollingHash {
     using mint = Modint_2_61m1;

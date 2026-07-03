@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_set_path_composite"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/graph/graph_template.hpp"
 #include "../../../src/tree/heavy_light_decomposition.hpp"
 #include "../../../src/data_structure/segment_tree.hpp"

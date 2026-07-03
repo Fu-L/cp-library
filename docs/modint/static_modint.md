@@ -1,6 +1,6 @@
 ---
 title: StaticModint
-documentation_of: ../../src/template/static_modint.hpp
+documentation_of: ../../src/modint/static_modint.hpp
 ---
 
 # StaticModint
@@ -12,7 +12,7 @@ $\mathrm{mod}$ はコンパイル時定数である必要があります．
 
 ```cpp
 #include "template/template.hpp"
-#include "template/static_modint.hpp"
+#include "modint/static_modint.hpp"
 using mint = modint998244353;
 int main(void) {
     mint sum = 0;

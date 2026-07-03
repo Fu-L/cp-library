@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/polynomial_taylor_shift"
 #include "../../../src/template/template.hpp"
-#include "../../../src/template/static_modint.hpp"
+#include "../../../src/modint/static_modint.hpp"
 #include "../../../src/fps/formal_power_series.hpp"
 using mint = modint998244353;
 using fps = FormalPowerSeries<mint>;
