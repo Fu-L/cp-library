@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/convex_hull_trick.hpp
     title: ConvexHullTrick
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/permuted_congruential_generator.hpp
     title: PermutedCongruentialGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -45,18 +45,19 @@ data:
     \ long long>(next32()) << 32) | next32();\n    }\n} rng;\n#line 3 \"src/data_structure/convex_hull_trick.hpp\"\
     \ntemplate <typename T>\nstruct ConvexHullTrick {\n    void add(const T& a, const\
     \ T& b) {\n        Linear l(a, b);\n        assert(ls.empty() or ls.back().a >=\
-    \ l.a);\n        int len = (int)ls.size();\n        while(len >= 2 and check(ls[len\
-    \ - 2], ls[len - 1], l)) {\n            --len;\n            ls.pop_back();\n \
-    \       }\n        ls.emplace_back(l);\n    }\n    T operator()(const T& x) {\n\
-    \        assert(x >= x_last);\n        while((int)ls.size() >= 2 and ls[0](x)\
-    \ >= ls[1](x)) {\n            ls.pop_front();\n        }\n        x_last = x;\n\
-    \        return ls[0](x);\n    }\n\n   private:\n    struct Linear {\n       \
-    \ T a, b;\n        Linear(const T& a = 0, const T& b = 0)\n            : a(a),\
-    \ b(b) {}\n        inline T operator()(const T& x) const {\n            return\
-    \ a * x + b;\n        }\n    };\n    inline bool check(const Linear& f1, const\
-    \ Linear& f2, const Linear& f3) const {\n        return (f2.a - f1.a) * (f3.b\
-    \ - f2.b) >= (f2.b - f1.b) * (f3.a - f2.a);\n    }\n    deque<Linear> ls;\n  \
-    \  T x_last = numeric_limits<T>::min();\n};\n#line 5 \"verify/unit_test/data_structure/convex_hull_trick.test.cpp\"\
+    \ l.a);\n        if(!ls.empty() and ls.back().a == l.a) {\n            if(ls.back().b\
+    \ <= l.b) return;\n            ls.pop_back();\n        }\n        int len = (int)ls.size();\n\
+    \        while(len >= 2 and check(ls[len - 2], ls[len - 1], l)) {\n          \
+    \  --len;\n            ls.pop_back();\n        }\n        ls.emplace_back(l);\n\
+    \    }\n    T operator()(const T& x) {\n        assert(x >= x_last);\n       \
+    \ while((int)ls.size() >= 2 and ls[0](x) >= ls[1](x)) {\n            ls.pop_front();\n\
+    \        }\n        x_last = x;\n        return ls[0](x);\n    }\n\n   private:\n\
+    \    struct Linear {\n        T a, b;\n        Linear(const T& a = 0, const T&\
+    \ b = 0)\n            : a(a), b(b) {}\n        inline T operator()(const T& x)\
+    \ const {\n            return a * x + b;\n        }\n    };\n    inline bool check(const\
+    \ Linear& f1, const Linear& f2, const Linear& f3) const {\n        return (f2.a\
+    \ - f1.a) * (f3.b - f2.b) >= (f2.b - f1.b) * (f3.a - f2.a);\n    }\n    deque<Linear>\
+    \ ls;\n    T x_last = numeric_limits<T>::min();\n};\n#line 5 \"verify/unit_test/data_structure/convex_hull_trick.test.cpp\"\
     \nvoid test_random() {\n    const int n = rng(1, 200);\n    vector<pair<ll, ll>>\
     \ lines;\n    ConvexHullTrick<ll> cht;\n    ll a = rng(-1000, 1000);\n    rep(i,\
     \ 0, n) {\n        a -= rng(0, 5);\n        const ll b = rng(-1000000, 1000000);\n\
@@ -89,7 +90,7 @@ data:
     \      expected = min(expected, a * x + b);\n        }\n        assert(cht(x)\
     \ == expected);\n    }\n}\nint main(void) {\n    test_sample_like();\n    constexpr\
     \ int test_num = 100;\n    rep(_, 0, test_num) {\n        test_random();\n   \
-    \ }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
+    \ }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/random/permuted_congruential_generator.hpp
@@ -97,8 +98,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/data_structure/convex_hull_trick.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 02:23:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-07-04 03:17:29+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/convex_hull_trick.test.cpp
 layout: document

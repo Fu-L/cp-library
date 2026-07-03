@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/policy_based_data_structure.hpp
     title: policy_based_data_structure
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

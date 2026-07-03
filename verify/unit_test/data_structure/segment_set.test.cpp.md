@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segment_set.hpp
     title: SegmentSet
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/permuted_congruential_generator.hpp
     title: PermutedCongruentialGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -83,19 +83,20 @@ data:
     \   for(const auto& p : expected) {\n            if(p.second <= x) continue;\n\
     \            expected_lb = p;\n            break;\n        }\n        if(expected_lb.first\
     \ == -1) {\n            assert(lb == st.end());\n        } else {\n          \
-    \  assert(lb != st.end());\n            assert(*lb == expected_lb);\n        }\n\
-    \    }\n}\nvoid test_sample_like() {\n    SegmentSet<int> st;\n    vector<bool>\
-    \ used(25);\n    auto insert = [&](int l, int r) {\n        st.insert(l, r);\n\
-    \        rep(i, l, r) used[i] = true;\n        assert_same(st, used);\n    };\n\
-    \    auto erase = [&](int l, int r) {\n        st.erase(l, r);\n        rep(i,\
-    \ l, r) used[i] = false;\n        assert_same(st, used);\n    };\n    insert(3,\
-    \ 7);\n    insert(10, 15);\n    insert(13, 20);\n    erase(5, 13);\n}\nvoid test_random()\
-    \ {\n    constexpr int n = 80;\n    SegmentSet<int> st;\n    vector<bool> used(n);\n\
-    \    const int query_num = 1000;\n    rep(_, 0, query_num) {\n        int l =\
-    \ rng(0, n - 1);\n        int r = rng(l + 1, n);\n        if(rng(0, 1)) {\n  \
-    \          st.insert(l, r);\n            rep(i, l, r) used[i] = true;\n      \
-    \  } else {\n            st.erase(l, r);\n            rep(i, l, r) used[i] = false;\n\
-    \        }\n        assert_same(st, used);\n    }\n}\nint main(void) {\n    test_sample_like();\n\
+    \  assert(lb != st.end());\n            assert(lb->first == expected_lb.first);\n\
+    \            assert(lb->second == expected_lb.second);\n        }\n    }\n}\n\
+    void test_sample_like() {\n    SegmentSet<int> st;\n    vector<bool> used(25);\n\
+    \    auto insert = [&](int l, int r) {\n        st.insert(l, r);\n        rep(i,\
+    \ l, r) used[i] = true;\n        assert_same(st, used);\n    };\n    auto erase\
+    \ = [&](int l, int r) {\n        st.erase(l, r);\n        rep(i, l, r) used[i]\
+    \ = false;\n        assert_same(st, used);\n    };\n    insert(3, 7);\n    insert(10,\
+    \ 15);\n    insert(13, 20);\n    erase(5, 13);\n}\nvoid test_random() {\n    constexpr\
+    \ int n = 80;\n    SegmentSet<int> st;\n    vector<bool> used(n);\n    const int\
+    \ query_num = 1000;\n    rep(_, 0, query_num) {\n        int l = rng(0, n - 1);\n\
+    \        int r = rng(l + 1, n);\n        if(rng(0, 1)) {\n            st.insert(l,\
+    \ r);\n            rep(i, l, r) used[i] = true;\n        } else {\n          \
+    \  st.erase(l, r);\n            rep(i, l, r) used[i] = false;\n        }\n   \
+    \     assert_same(st, used);\n    }\n}\nint main(void) {\n    test_sample_like();\n\
     \    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test_random();\n\
     \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
@@ -119,13 +120,14 @@ data:
     \ int> expected_lb{-1, -1};\n        for(const auto& p : expected) {\n       \
     \     if(p.second <= x) continue;\n            expected_lb = p;\n            break;\n\
     \        }\n        if(expected_lb.first == -1) {\n            assert(lb == st.end());\n\
-    \        } else {\n            assert(lb != st.end());\n            assert(*lb\
-    \ == expected_lb);\n        }\n    }\n}\nvoid test_sample_like() {\n    SegmentSet<int>\
-    \ st;\n    vector<bool> used(25);\n    auto insert = [&](int l, int r) {\n   \
-    \     st.insert(l, r);\n        rep(i, l, r) used[i] = true;\n        assert_same(st,\
-    \ used);\n    };\n    auto erase = [&](int l, int r) {\n        st.erase(l, r);\n\
-    \        rep(i, l, r) used[i] = false;\n        assert_same(st, used);\n    };\n\
-    \    insert(3, 7);\n    insert(10, 15);\n    insert(13, 20);\n    erase(5, 13);\n\
+    \        } else {\n            assert(lb != st.end());\n            assert(lb->first\
+    \ == expected_lb.first);\n            assert(lb->second == expected_lb.second);\n\
+    \        }\n    }\n}\nvoid test_sample_like() {\n    SegmentSet<int> st;\n   \
+    \ vector<bool> used(25);\n    auto insert = [&](int l, int r) {\n        st.insert(l,\
+    \ r);\n        rep(i, l, r) used[i] = true;\n        assert_same(st, used);\n\
+    \    };\n    auto erase = [&](int l, int r) {\n        st.erase(l, r);\n     \
+    \   rep(i, l, r) used[i] = false;\n        assert_same(st, used);\n    };\n  \
+    \  insert(3, 7);\n    insert(10, 15);\n    insert(13, 20);\n    erase(5, 13);\n\
     }\nvoid test_random() {\n    constexpr int n = 80;\n    SegmentSet<int> st;\n\
     \    vector<bool> used(n);\n    const int query_num = 1000;\n    rep(_, 0, query_num)\
     \ {\n        int l = rng(0, n - 1);\n        int r = rng(l + 1, n);\n        if(rng(0,\
@@ -134,7 +136,7 @@ data:
     \ = false;\n        }\n        assert_same(st, used);\n    }\n}\nint main(void)\
     \ {\n    test_sample_like();\n    constexpr int test_num = 100;\n    rep(_, 0,\
     \ test_num) {\n        test_random();\n    }\n    int a, b;\n    cin >> a >> b;\n\
-    \    cout << a + b << '\\n';\n}\n"
+    \    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/random/permuted_congruential_generator.hpp
@@ -142,8 +144,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/data_structure/segment_set.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 02:23:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-07-04 03:17:29+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/segment_set.test.cpp
 layout: document
