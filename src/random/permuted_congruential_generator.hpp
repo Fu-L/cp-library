@@ -2,7 +2,8 @@
 #include "../template/template.hpp"
 struct PermutedCongruentialGenerator {
     template <typename T>
-    requires(is_integral_v<T> and sizeof(T) == 4) or (is_floating_point_v<T> and sizeof(T) == 8) inline T operator()(const T l, const T r) {
+        requires(is_integral_v<T> and sizeof(T) == 4) or (is_floating_point_v<T> and sizeof(T) == 8)
+    inline T operator()(const T l, const T r) {
         assert(l <= r);
         if constexpr(is_integral_v<T>) {
             const unsigned int range = static_cast<unsigned int>(r - l + 1);
