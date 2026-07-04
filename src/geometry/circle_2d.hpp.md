@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -140,23 +140,24 @@ data:
     \ Line(s));\n    vector<Point> res;\n    for(const Point& p : cand) {\n      \
     \  if(ccw(s.a, s.b, p) == 0) {\n            res.emplace_back(p);\n        }\n\
     \    }\n    return res;\n}\nvector<Point> intersection_cc(const Circle& c1, const\
-    \ Circle& c2) {\n    const Real d = abs(c1.p - c2.p);\n    const Real a = acos((c1.r\
-    \ * c1.r + d * d - c2.r * c2.r) / (Real(2.0) * c1.r * d));\n    const Real t =\
-    \ atan2(c2.p.imag() - c1.p.imag(), c2.p.real() - c1.p.real());\n    vector<Point>\
-    \ res;\n    if(is_intersect_cc(c1, c2) % 4 == 0) return res;\n    if(eq(a, 0.0))\
-    \ {\n        res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t));\n    } else {\n\
-    \        res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t + a));\n        res.emplace_back(c1.p\
-    \ + rot(Point(c1.r, 0.0), t - a));\n    }\n    return res;\n}\nvector<Point> tangent_cp(const\
-    \ Circle& c, const Point& p) {\n    return intersection_cc(c, Circle(p, sqrt(norm(p\
-    \ - c.p) - c.r * c.r)));\n}\nvector<Line> tangent_cc(Circle c1, Circle c2) {\n\
-    \    vector<Line> res;\n    if(c1.r < c2.r) swap(c1, c2);\n    const Real r =\
-    \ abs(c2.p - c1.p);\n    if(eq(r, 0.0)) return res;\n    const Point u = (c2.p\
-    \ - c1.p) / r;\n    const Point v = rot(u, PI * 0.5);\n    for(const Real s :\
-    \ {Real(1.0), Real(-1.0)}) {\n        const Real h = (c1.r + c2.r * s) / r;\n\
-    \        if(eq(abs(h), Real(1.0))) {\n            res.emplace_back(c1.p + u *\
-    \ c1.r, c1.p + (u + v) * c1.r);\n        } else if(abs(h) < Real(1.0)) {\n   \
-    \         const Point uu = u * h, vv = v * sqrt(Real(1.0) - h * h);\n        \
-    \    res.emplace_back(c1.p + (uu + vv) * c1.r, c2.p - (uu + vv) * c2.r * s);\n\
+    \ Circle& c2) {\n    vector<Point> res;\n    if(is_intersect_cc(c1, c2) % 4 ==\
+    \ 0) return res;\n    const Real d = abs(c1.p - c2.p);\n    if(eq(d, 0.0)) return\
+    \ res;\n    const Real a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (Real(2.0)\
+    \ * c1.r * d));\n    const Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real()\
+    \ - c1.p.real());\n    if(eq(a, 0.0)) {\n        res.emplace_back(c1.p + rot(Point(c1.r,\
+    \ 0.0), t));\n    } else {\n        res.emplace_back(c1.p + rot(Point(c1.r, 0.0),\
+    \ t + a));\n        res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t - a));\n \
+    \   }\n    return res;\n}\nvector<Point> tangent_cp(const Circle& c, const Point&\
+    \ p) {\n    if(sign(norm(p - c.p) - c.r * c.r) == -1) return {};\n    return intersection_cc(c,\
+    \ Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));\n}\nvector<Line> tangent_cc(Circle\
+    \ c1, Circle c2) {\n    vector<Line> res;\n    if(c1.r < c2.r) swap(c1, c2);\n\
+    \    const Real r = abs(c2.p - c1.p);\n    if(eq(r, 0.0)) return res;\n    const\
+    \ Point u = (c2.p - c1.p) / r;\n    const Point v = rot(u, PI * 0.5);\n    for(const\
+    \ Real s : {Real(1.0), Real(-1.0)}) {\n        const Real h = (c1.r + c2.r * s)\
+    \ / r;\n        if(eq(abs(h), Real(1.0))) {\n            res.emplace_back(c1.p\
+    \ + u * c1.r, c1.p + (u + v) * c1.r);\n        } else if(abs(h) < Real(1.0)) {\n\
+    \            const Point uu = u * h, vv = v * sqrt(Real(1.0) - h * h);\n     \
+    \       res.emplace_back(c1.p + (uu + vv) * c1.r, c2.p - (uu + vv) * c2.r * s);\n\
     \            res.emplace_back(c1.p + (uu - vv) * c1.r, c2.p - (uu - vv) * c2.r\
     \ * s);\n        }\n    }\n    return res;\n}\nCircle inscribed_circle(const Point&\
     \ a, const Point& b, const Point& c) {\n    const Real A = abs(b - c), B = abs(c\
@@ -211,23 +212,24 @@ data:
     \ Line(s));\n    vector<Point> res;\n    for(const Point& p : cand) {\n      \
     \  if(ccw(s.a, s.b, p) == 0) {\n            res.emplace_back(p);\n        }\n\
     \    }\n    return res;\n}\nvector<Point> intersection_cc(const Circle& c1, const\
-    \ Circle& c2) {\n    const Real d = abs(c1.p - c2.p);\n    const Real a = acos((c1.r\
-    \ * c1.r + d * d - c2.r * c2.r) / (Real(2.0) * c1.r * d));\n    const Real t =\
-    \ atan2(c2.p.imag() - c1.p.imag(), c2.p.real() - c1.p.real());\n    vector<Point>\
-    \ res;\n    if(is_intersect_cc(c1, c2) % 4 == 0) return res;\n    if(eq(a, 0.0))\
-    \ {\n        res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t));\n    } else {\n\
-    \        res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t + a));\n        res.emplace_back(c1.p\
-    \ + rot(Point(c1.r, 0.0), t - a));\n    }\n    return res;\n}\nvector<Point> tangent_cp(const\
-    \ Circle& c, const Point& p) {\n    return intersection_cc(c, Circle(p, sqrt(norm(p\
-    \ - c.p) - c.r * c.r)));\n}\nvector<Line> tangent_cc(Circle c1, Circle c2) {\n\
-    \    vector<Line> res;\n    if(c1.r < c2.r) swap(c1, c2);\n    const Real r =\
-    \ abs(c2.p - c1.p);\n    if(eq(r, 0.0)) return res;\n    const Point u = (c2.p\
-    \ - c1.p) / r;\n    const Point v = rot(u, PI * 0.5);\n    for(const Real s :\
-    \ {Real(1.0), Real(-1.0)}) {\n        const Real h = (c1.r + c2.r * s) / r;\n\
-    \        if(eq(abs(h), Real(1.0))) {\n            res.emplace_back(c1.p + u *\
-    \ c1.r, c1.p + (u + v) * c1.r);\n        } else if(abs(h) < Real(1.0)) {\n   \
-    \         const Point uu = u * h, vv = v * sqrt(Real(1.0) - h * h);\n        \
-    \    res.emplace_back(c1.p + (uu + vv) * c1.r, c2.p - (uu + vv) * c2.r * s);\n\
+    \ Circle& c2) {\n    vector<Point> res;\n    if(is_intersect_cc(c1, c2) % 4 ==\
+    \ 0) return res;\n    const Real d = abs(c1.p - c2.p);\n    if(eq(d, 0.0)) return\
+    \ res;\n    const Real a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (Real(2.0)\
+    \ * c1.r * d));\n    const Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real()\
+    \ - c1.p.real());\n    if(eq(a, 0.0)) {\n        res.emplace_back(c1.p + rot(Point(c1.r,\
+    \ 0.0), t));\n    } else {\n        res.emplace_back(c1.p + rot(Point(c1.r, 0.0),\
+    \ t + a));\n        res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t - a));\n \
+    \   }\n    return res;\n}\nvector<Point> tangent_cp(const Circle& c, const Point&\
+    \ p) {\n    if(sign(norm(p - c.p) - c.r * c.r) == -1) return {};\n    return intersection_cc(c,\
+    \ Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));\n}\nvector<Line> tangent_cc(Circle\
+    \ c1, Circle c2) {\n    vector<Line> res;\n    if(c1.r < c2.r) swap(c1, c2);\n\
+    \    const Real r = abs(c2.p - c1.p);\n    if(eq(r, 0.0)) return res;\n    const\
+    \ Point u = (c2.p - c1.p) / r;\n    const Point v = rot(u, PI * 0.5);\n    for(const\
+    \ Real s : {Real(1.0), Real(-1.0)}) {\n        const Real h = (c1.r + c2.r * s)\
+    \ / r;\n        if(eq(abs(h), Real(1.0))) {\n            res.emplace_back(c1.p\
+    \ + u * c1.r, c1.p + (u + v) * c1.r);\n        } else if(abs(h) < Real(1.0)) {\n\
+    \            const Point uu = u * h, vv = v * sqrt(Real(1.0) - h * h);\n     \
+    \       res.emplace_back(c1.p + (uu + vv) * c1.r, c2.p - (uu + vv) * c2.r * s);\n\
     \            res.emplace_back(c1.p + (uu - vv) * c1.r, c2.p - (uu - vv) * c2.r\
     \ * s);\n        }\n    }\n    return res;\n}\nCircle inscribed_circle(const Point&\
     \ a, const Point& b, const Point& c) {\n    const Real A = abs(b - c), B = abs(c\
@@ -271,7 +273,7 @@ data:
   isVerificationFile: false
   path: src/geometry/circle_2d.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp

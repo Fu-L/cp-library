@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -75,22 +75,23 @@ data:
     \ C(h, vector<T>(B.w, 0));\n        for(int i = 0; i < h; ++i) {\n           \
     \ for(int k = 0; k < w; ++k) {\n                for(int j = 0; j < B.w; ++j) {\n\
     \                    C[i][j] += (*this)[i][k] * B[k][j];\n                }\n\
-    \            }\n        }\n        A.swap(C);\n        return (*this);\n    }\n\
-    \    Matrix& pow(long long t) {\n        assert(h == w);\n        assert(t >=\
-    \ 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t\
-    \ & 1ll) B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n\
-    \        }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
-    \ Matrix& B) const {\n        return (Matrix(*this) += B);\n    }\n    Matrix\
-    \ operator-(const Matrix& B) const {\n        return (Matrix(*this) -= B);\n \
-    \   }\n    Matrix operator*(const Matrix& B) const {\n        return (Matrix(*this)\
-    \ *= B);\n    }\n    bool operator==(const Matrix& B) const {\n        assert(h\
+    \            }\n        }\n        A.swap(C);\n        w = B.w;\n        return\
+    \ (*this);\n    }\n    Matrix& pow(long long t) {\n        assert(h == w);\n \
+    \       assert(t >= 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0)\
+    \ {\n            if(t & 1ll) B *= (*this);\n            (*this) *= (*this);\n\
+    \            t >>= 1ll;\n        }\n        A.swap(B.A);\n        return (*this);\n\
+    \    }\n    Matrix operator+(const Matrix& B) const {\n        return (Matrix(*this)\
+    \ += B);\n    }\n    Matrix operator-(const Matrix& B) const {\n        return\
+    \ (Matrix(*this) -= B);\n    }\n    Matrix operator*(const Matrix& B) const {\n\
+    \        return (Matrix(*this) *= B);\n    }\n    bool operator==(const Matrix&\
+    \ B) const {\n        assert(h == B.H() and w == B.W());\n        for(int i =\
+    \ 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n               \
+    \ if(A[i][j] != B[i][j]) return false;\n            }\n        }\n        return\
+    \ true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
     \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
     \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
-    \ false;\n            }\n        }\n        return true;\n    }\n    bool operator!=(const\
-    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
-    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
-    \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
-    \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n"
+    \ true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> A;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct Matrix {\n    Matrix(const int h, const int w, const T& val = 0)\n    \
     \    : h(h), w(w), A(h, vector<T>(w, val)) {}\n    int H() const {\n        return\
@@ -110,22 +111,23 @@ data:
     \ C(h, vector<T>(B.w, 0));\n        for(int i = 0; i < h; ++i) {\n           \
     \ for(int k = 0; k < w; ++k) {\n                for(int j = 0; j < B.w; ++j) {\n\
     \                    C[i][j] += (*this)[i][k] * B[k][j];\n                }\n\
-    \            }\n        }\n        A.swap(C);\n        return (*this);\n    }\n\
-    \    Matrix& pow(long long t) {\n        assert(h == w);\n        assert(t >=\
-    \ 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t\
-    \ & 1ll) B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n\
-    \        }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
-    \ Matrix& B) const {\n        return (Matrix(*this) += B);\n    }\n    Matrix\
-    \ operator-(const Matrix& B) const {\n        return (Matrix(*this) -= B);\n \
-    \   }\n    Matrix operator*(const Matrix& B) const {\n        return (Matrix(*this)\
-    \ *= B);\n    }\n    bool operator==(const Matrix& B) const {\n        assert(h\
+    \            }\n        }\n        A.swap(C);\n        w = B.w;\n        return\
+    \ (*this);\n    }\n    Matrix& pow(long long t) {\n        assert(h == w);\n \
+    \       assert(t >= 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0)\
+    \ {\n            if(t & 1ll) B *= (*this);\n            (*this) *= (*this);\n\
+    \            t >>= 1ll;\n        }\n        A.swap(B.A);\n        return (*this);\n\
+    \    }\n    Matrix operator+(const Matrix& B) const {\n        return (Matrix(*this)\
+    \ += B);\n    }\n    Matrix operator-(const Matrix& B) const {\n        return\
+    \ (Matrix(*this) -= B);\n    }\n    Matrix operator*(const Matrix& B) const {\n\
+    \        return (Matrix(*this) *= B);\n    }\n    bool operator==(const Matrix&\
+    \ B) const {\n        assert(h == B.H() and w == B.W());\n        for(int i =\
+    \ 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n               \
+    \ if(A[i][j] != B[i][j]) return false;\n            }\n        }\n        return\
+    \ true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
     \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
     \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
-    \ false;\n            }\n        }\n        return true;\n    }\n    bool operator!=(const\
-    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
-    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
-    \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
-    \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};"
+    \ true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> A;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
@@ -136,7 +138,7 @@ data:
   - src/matrix/linear_equation.hpp
   - src/graph/counting_spanning_tree_directed.hpp
   - src/graph/counting_spanning_tree_undirected.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp

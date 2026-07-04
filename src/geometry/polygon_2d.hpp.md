@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -127,27 +127,27 @@ data:
     \ <= 0 and sign(b.imag()) == 1 and sign(cross(a, b)) == 1) ret ^= 2;\n    }\n\
     \    return ret;\n}\nvector<Point> convex_hull(vector<Point> ps) {\n    sort(ps.begin(),\
     \ ps.end(), comp_x);\n    ps.erase(unique(ps.begin(), ps.end()), ps.end());\n\
-    \    const int n = (int)ps.size();\n    if(n == 1) return ps;\n    vector<Point>\
+    \    const int n = (int)ps.size();\n    if(n <= 1) return ps;\n    vector<Point>\
     \ ch(2 * n);\n    int k = 0;\n    for(int i = 0; i < n; ch[k++] = ps[i++]) {\n\
     \        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k - 1]))\
     \ == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t = k +\
     \ 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k -\
     \ 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
     \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
-    \ polygon) {\n    const int n = (int)polygon.size();\n    int is = 0, js = 0;\n\
-    \    for(int i = 1; i < n; ++i) {\n        if(sign(polygon[i].imag() - polygon[is].imag())\
-    \ == 1) is = i;\n        if(sign(polygon[i].imag() - polygon[js].imag()) == -1)\
-    \ js = i;\n    }\n    Real maxdis = norm(polygon[is] - polygon[js]);\n    int\
-    \ i = is, j = js;\n    do {\n        if(sign(cross(polygon[(i + 1) % n] - polygon[i],\
-    \ polygon[(j + 1) % n] - polygon[j])) >= 0) {\n            j = (j + 1) % n;\n\
-    \        } else {\n            i = (i + 1) % n;\n        }\n        if(norm(polygon[i]\
-    \ - polygon[j]) > maxdis) {\n            maxdis = norm(polygon[i] - polygon[j]);\n\
-    \        }\n    } while(i != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point>\
-    \ convex_cut(const vector<Point>& polygon, const Line& l) {\n    const int n =\
-    \ (int)polygon.size();\n    vector<Point> res;\n    for(int i = 0; i < n; ++i)\
-    \ {\n        const Point cur = polygon[i], nex = polygon[(i + 1) % n];\n     \
-    \   if(ccw(l.a, l.b, cur) != -1) res.emplace_back(cur);\n        if(ccw(l.a, l.b,\
-    \ cur) * ccw(l.a, l.b, nex) < 0) {\n            res.emplace_back(intersection_ll(Line(cur,\
+    \ polygon) {\n    const int n = (int)polygon.size();\n    if(n <= 1) return 0.0;\n\
+    \    int is = 0, js = 0;\n    for(int i = 1; i < n; ++i) {\n        if(sign(polygon[i].imag()\
+    \ - polygon[is].imag()) == 1) is = i;\n        if(sign(polygon[i].imag() - polygon[js].imag())\
+    \ == -1) js = i;\n    }\n    Real maxdis = norm(polygon[is] - polygon[js]);\n\
+    \    int i = is, j = js;\n    do {\n        if(sign(cross(polygon[(i + 1) % n]\
+    \ - polygon[i], polygon[(j + 1) % n] - polygon[j])) >= 0) {\n            j = (j\
+    \ + 1) % n;\n        } else {\n            i = (i + 1) % n;\n        }\n     \
+    \   if(norm(polygon[i] - polygon[j]) > maxdis) {\n            maxdis = norm(polygon[i]\
+    \ - polygon[j]);\n        }\n    } while(i != is or j != js);\n    return sqrt(maxdis);\n\
+    }\nvector<Point> convex_cut(const vector<Point>& polygon, const Line& l) {\n \
+    \   const int n = (int)polygon.size();\n    vector<Point> res;\n    for(int i\
+    \ = 0; i < n; ++i) {\n        const Point cur = polygon[i], nex = polygon[(i +\
+    \ 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.emplace_back(cur);\n    \
+    \    if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.emplace_back(intersection_ll(Line(cur,\
     \ nex), l)[0]);\n        }\n    }\n    return res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./template.hpp\"\
     \n#include \"./point_2d.hpp\"\n#include \"./line_and_segment_2d.hpp\"\nReal area(const\
@@ -164,27 +164,27 @@ data:
     \ <= 0 and sign(b.imag()) == 1 and sign(cross(a, b)) == 1) ret ^= 2;\n    }\n\
     \    return ret;\n}\nvector<Point> convex_hull(vector<Point> ps) {\n    sort(ps.begin(),\
     \ ps.end(), comp_x);\n    ps.erase(unique(ps.begin(), ps.end()), ps.end());\n\
-    \    const int n = (int)ps.size();\n    if(n == 1) return ps;\n    vector<Point>\
+    \    const int n = (int)ps.size();\n    if(n <= 1) return ps;\n    vector<Point>\
     \ ch(2 * n);\n    int k = 0;\n    for(int i = 0; i < n; ch[k++] = ps[i++]) {\n\
     \        while(k >= 2 and sign(cross(ch[k - 1] - ch[k - 2], ps[i] - ch[k - 1]))\
     \ == -1) {\n            --k;\n        }\n    }\n    for(int i = n - 2, t = k +\
     \ 1; i >= 0; ch[k++] = ps[i--]) {\n        while(k >= t and sign(cross(ch[k -\
     \ 1] - ch[k - 2], ps[i] - ch[k - 1])) == -1) {\n            --k;\n        }\n\
     \    }\n    ch.resize(k - 1);\n    return ch;\n}\nReal convex_diameter(const vector<Point>&\
-    \ polygon) {\n    const int n = (int)polygon.size();\n    int is = 0, js = 0;\n\
-    \    for(int i = 1; i < n; ++i) {\n        if(sign(polygon[i].imag() - polygon[is].imag())\
-    \ == 1) is = i;\n        if(sign(polygon[i].imag() - polygon[js].imag()) == -1)\
-    \ js = i;\n    }\n    Real maxdis = norm(polygon[is] - polygon[js]);\n    int\
-    \ i = is, j = js;\n    do {\n        if(sign(cross(polygon[(i + 1) % n] - polygon[i],\
-    \ polygon[(j + 1) % n] - polygon[j])) >= 0) {\n            j = (j + 1) % n;\n\
-    \        } else {\n            i = (i + 1) % n;\n        }\n        if(norm(polygon[i]\
-    \ - polygon[j]) > maxdis) {\n            maxdis = norm(polygon[i] - polygon[j]);\n\
-    \        }\n    } while(i != is or j != js);\n    return sqrt(maxdis);\n}\nvector<Point>\
-    \ convex_cut(const vector<Point>& polygon, const Line& l) {\n    const int n =\
-    \ (int)polygon.size();\n    vector<Point> res;\n    for(int i = 0; i < n; ++i)\
-    \ {\n        const Point cur = polygon[i], nex = polygon[(i + 1) % n];\n     \
-    \   if(ccw(l.a, l.b, cur) != -1) res.emplace_back(cur);\n        if(ccw(l.a, l.b,\
-    \ cur) * ccw(l.a, l.b, nex) < 0) {\n            res.emplace_back(intersection_ll(Line(cur,\
+    \ polygon) {\n    const int n = (int)polygon.size();\n    if(n <= 1) return 0.0;\n\
+    \    int is = 0, js = 0;\n    for(int i = 1; i < n; ++i) {\n        if(sign(polygon[i].imag()\
+    \ - polygon[is].imag()) == 1) is = i;\n        if(sign(polygon[i].imag() - polygon[js].imag())\
+    \ == -1) js = i;\n    }\n    Real maxdis = norm(polygon[is] - polygon[js]);\n\
+    \    int i = is, j = js;\n    do {\n        if(sign(cross(polygon[(i + 1) % n]\
+    \ - polygon[i], polygon[(j + 1) % n] - polygon[j])) >= 0) {\n            j = (j\
+    \ + 1) % n;\n        } else {\n            i = (i + 1) % n;\n        }\n     \
+    \   if(norm(polygon[i] - polygon[j]) > maxdis) {\n            maxdis = norm(polygon[i]\
+    \ - polygon[j]);\n        }\n    } while(i != is or j != js);\n    return sqrt(maxdis);\n\
+    }\nvector<Point> convex_cut(const vector<Point>& polygon, const Line& l) {\n \
+    \   const int n = (int)polygon.size();\n    vector<Point> res;\n    for(int i\
+    \ = 0; i < n; ++i) {\n        const Point cur = polygon[i], nex = polygon[(i +\
+    \ 1) % n];\n        if(ccw(l.a, l.b, cur) != -1) res.emplace_back(cur);\n    \
+    \    if(ccw(l.a, l.b, cur) * ccw(l.a, l.b, nex) < 0) {\n            res.emplace_back(intersection_ll(Line(cur,\
     \ nex), l)[0]);\n        }\n    }\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
@@ -194,7 +194,7 @@ data:
   isVerificationFile: false
   path: src/geometry/polygon_2d.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/cgl/is_convex.test.cpp

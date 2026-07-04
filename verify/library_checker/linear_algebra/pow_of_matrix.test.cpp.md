@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -99,28 +99,28 @@ data:
     \ C(h, vector<T>(B.w, 0));\n        for(int i = 0; i < h; ++i) {\n           \
     \ for(int k = 0; k < w; ++k) {\n                for(int j = 0; j < B.w; ++j) {\n\
     \                    C[i][j] += (*this)[i][k] * B[k][j];\n                }\n\
-    \            }\n        }\n        A.swap(C);\n        return (*this);\n    }\n\
-    \    Matrix& pow(long long t) {\n        assert(h == w);\n        assert(t >=\
-    \ 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t\
-    \ & 1ll) B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n\
-    \        }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
-    \ Matrix& B) const {\n        return (Matrix(*this) += B);\n    }\n    Matrix\
-    \ operator-(const Matrix& B) const {\n        return (Matrix(*this) -= B);\n \
-    \   }\n    Matrix operator*(const Matrix& B) const {\n        return (Matrix(*this)\
-    \ *= B);\n    }\n    bool operator==(const Matrix& B) const {\n        assert(h\
+    \            }\n        }\n        A.swap(C);\n        w = B.w;\n        return\
+    \ (*this);\n    }\n    Matrix& pow(long long t) {\n        assert(h == w);\n \
+    \       assert(t >= 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0)\
+    \ {\n            if(t & 1ll) B *= (*this);\n            (*this) *= (*this);\n\
+    \            t >>= 1ll;\n        }\n        A.swap(B.A);\n        return (*this);\n\
+    \    }\n    Matrix operator+(const Matrix& B) const {\n        return (Matrix(*this)\
+    \ += B);\n    }\n    Matrix operator-(const Matrix& B) const {\n        return\
+    \ (Matrix(*this) -= B);\n    }\n    Matrix operator*(const Matrix& B) const {\n\
+    \        return (Matrix(*this) *= B);\n    }\n    bool operator==(const Matrix&\
+    \ B) const {\n        assert(h == B.H() and w == B.W());\n        for(int i =\
+    \ 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n               \
+    \ if(A[i][j] != B[i][j]) return false;\n            }\n        }\n        return\
+    \ true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
     \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
     \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
-    \ false;\n            }\n        }\n        return true;\n    }\n    bool operator!=(const\
-    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
-    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
-    \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
-    \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n\
-    #line 5 \"verify/library_checker/linear_algebra/pow_of_matrix.test.cpp\"\nusing\
-    \ mint = modint998244353;\nint main(void) {\n    int n;\n    ll k;\n    cin >>\
-    \ n >> k;\n    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j, 0, n)\
-    \ {\n            cin >> a[i][j];\n        }\n    }\n    Matrix<mint> b = a.pow(k);\n\
-    \    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cout << b[i][j] << \"\
-    \ \\n\"[j + 1 == n];\n        }\n    }\n}\n"
+    \ true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 5 \"verify/library_checker/linear_algebra/pow_of_matrix.test.cpp\"\
+    \nusing mint = modint998244353;\nint main(void) {\n    int n;\n    ll k;\n   \
+    \ cin >> n >> k;\n    Matrix<mint> a(n, n);\n    rep(i, 0, n) {\n        rep(j,\
+    \ 0, n) {\n            cin >> a[i][j];\n        }\n    }\n    Matrix<mint> b =\
+    \ a.pow(k);\n    rep(i, 0, n) {\n        rep(j, 0, n) {\n            cout << b[i][j]\
+    \ << \" \\n\"[j + 1 == n];\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n#include\
     \ \"../../../src/template/template.hpp\"\n#include \"../../../src/modint/static_modint.hpp\"\
     \n#include \"../../../src/matrix/matrix.hpp\"\nusing mint = modint998244353;\n\
@@ -136,7 +136,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 01:57:55+09:00'
+  timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/linear_algebra/pow_of_matrix.test.cpp

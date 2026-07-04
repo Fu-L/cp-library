@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/centroid_decomposition.hpp
     title: centroid_decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
@@ -267,53 +267,52 @@ data:
     \ = x;\n    }\n    return c;\n}\n#line 4 \"src/fps/formal_power_series_ll.hpp\"\
     \ntemplate <typename T>\nstruct FormalPowerSeriesLL : vector<T> {\n    using vector<T>::vector;\n\
     \    using F = FormalPowerSeriesLL;\n    F& operator=(const vector<T>& g) {\n\
-    \        const int n = (*this).size();\n        const int m = g.size();\n    \
-    \    if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
-    \ = g[i];\n        return (*this);\n    }\n    F& operator-() {\n        const\
-    \ int n = (*this).size();\n        for(int i = 0; i < n; ++i) (*this)[i] *= -1;\n\
-    \        return (*this);\n    }\n    F& operator+=(const F& g) {\n        const\
-    \ int n = (*this).size();\n        const int m = g.size();\n        if(n < m)\
-    \ (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i] += g[i];\n\
-    \        return (*this);\n    }\n    F& operator+=(const T& r) {\n        if((*this).empty())\
-    \ (*this).resize(1, T(0));\n        (*this)[0] += r;\n        return (*this);\n\
-    \    }\n    F& operator-=(const F& g) {\n        const int n = (*this).size();\n\
-    \        const int m = g.size();\n        if(n < m) (*this).resize(m);\n     \
-    \   for(int i = 0; i < m; ++i) (*this)[i] -= g[i];\n        return (*this);\n\
-    \    }\n    F& operator-=(const T& r) {\n        if((*this).empty()) (*this).resize(1,\
-    \ T(0));\n        (*this)[0] -= r;\n        return (*this);\n    }\n    F& operator*=(const\
-    \ F& g) {\n        (*this) = convolution_ll((*this), g);\n        return (*this);\n\
-    \    }\n    F& operator*=(const T& r) {\n        const int n = (*this).size();\n\
-    \        for(int i = 0; i < n; ++i) (*this)[i] *= r;\n        return (*this);\n\
-    \    }\n    F& operator/=(const T& r) {\n        const int n = (*this).size();\n\
-    \        for(int i = 0; i < (int)n; ++i) (*this)[i] /= r;\n        return (*this);\n\
-    \    }\n    F operator*(const T& g) const {\n        return F(*this) *= g;\n \
-    \   }\n    F operator-(const T& g) const {\n        return F(*this) -= g;\n  \
-    \  }\n    F operator+(const T& g) const {\n        return F(*this) += g;\n   \
-    \ }\n    F operator/(const T& g) const {\n        return F(*this) /= g;\n    }\n\
-    \    F operator*(const F& g) const {\n        return F(*this) *= g;\n    }\n \
-    \   F operator-(const F& g) const {\n        return F(*this) -= g;\n    }\n  \
-    \  F operator+(const F& g) const {\n        return F(*this) += g;\n    }\n   \
-    \ F operator<<(const int d) const {\n        F ret(*this);\n        ret.insert(ret.begin(),\
-    \ d, T(0));\n        return ret;\n    }\n    F operator>>(const int d) const {\n\
-    \        const int n = (*this).size();\n        if(n <= d) return {};\n      \
-    \  F ret(*this);\n        ret.erase(ret.begin(), ret.begin() + d);\n        return\
-    \ ret;\n    }\n    void shrink() {\n        while(!(*this).empty() and (*this).back()\
-    \ == T(0)) (*this).pop_back();\n    }\n    F rev() const {\n        F ret(*this);\n\
-    \        reverse(begin(ret), end(ret));\n        return ret;\n    }\n    F pre(const\
-    \ int deg) const {\n        assert(deg >= 0);\n        F ret(begin(*this), begin(*this)\
-    \ + min((int)(*this).size(), deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n\
-    \        return ret;\n    }\n    T eval(const T& a) const {\n        const int\
-    \ n = (*this).size();\n        T x = 1, ret = 0;\n        for(int i = 0; i < n;\
-    \ ++i) {\n            ret += (*this)[i] * x;\n            x *= a;\n        }\n\
-    \        return ret;\n    }\n    void onemul(const int d, const T& c, int deg\
-    \ = -1) {\n        assert(deg >= -1);\n        const int n = (*this).size();\n\
-    \        if(deg == -1) deg = n + d;\n        if(deg > n) (*this).resize(deg);\n\
-    \        for(int i = deg - d - 1; i >= 0; --i) {\n            (*this)[i + d] +=\
-    \ (*this)[i] * c;\n        }\n    }\n    void onediv(const int d, const T& c,\
-    \ int deg = -1) {\n        assert(deg >= -1);\n        const int n = (*this).size();\n\
-    \        if(deg == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n\
-    \        for(int i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i]\
-    \ * c;\n        }\n    }\n};\n#line 6 \"verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp\"\
+    \        this->assign(g.begin(), g.end());\n        return (*this);\n    }\n \
+    \   F operator-() const {\n        F ret(*this);\n        const int n = ret.size();\n\
+    \        for(int i = 0; i < n; ++i) ret[i] *= -1;\n        return ret;\n    }\n\
+    \    F& operator+=(const F& g) {\n        const int n = (*this).size();\n    \
+    \    const int m = g.size();\n        if(n < m) (*this).resize(m);\n        for(int\
+    \ i = 0; i < m; ++i) (*this)[i] += g[i];\n        return (*this);\n    }\n   \
+    \ F& operator+=(const T& r) {\n        if((*this).empty()) (*this).resize(1, T(0));\n\
+    \        (*this)[0] += r;\n        return (*this);\n    }\n    F& operator-=(const\
+    \ F& g) {\n        const int n = (*this).size();\n        const int m = g.size();\n\
+    \        if(n < m) (*this).resize(m);\n        for(int i = 0; i < m; ++i) (*this)[i]\
+    \ -= g[i];\n        return (*this);\n    }\n    F& operator-=(const T& r) {\n\
+    \        if((*this).empty()) (*this).resize(1, T(0));\n        (*this)[0] -= r;\n\
+    \        return (*this);\n    }\n    F& operator*=(const F& g) {\n        (*this)\
+    \ = convolution_ll((*this), g);\n        return (*this);\n    }\n    F& operator*=(const\
+    \ T& r) {\n        const int n = (*this).size();\n        for(int i = 0; i < n;\
+    \ ++i) (*this)[i] *= r;\n        return (*this);\n    }\n    F& operator/=(const\
+    \ T& r) {\n        const int n = (*this).size();\n        for(int i = 0; i < (int)n;\
+    \ ++i) (*this)[i] /= r;\n        return (*this);\n    }\n    F operator*(const\
+    \ T& g) const {\n        return F(*this) *= g;\n    }\n    F operator-(const T&\
+    \ g) const {\n        return F(*this) -= g;\n    }\n    F operator+(const T& g)\
+    \ const {\n        return F(*this) += g;\n    }\n    F operator/(const T& g) const\
+    \ {\n        return F(*this) /= g;\n    }\n    F operator*(const F& g) const {\n\
+    \        return F(*this) *= g;\n    }\n    F operator-(const F& g) const {\n \
+    \       return F(*this) -= g;\n    }\n    F operator+(const F& g) const {\n  \
+    \      return F(*this) += g;\n    }\n    F operator<<(const int d) const {\n \
+    \       F ret(*this);\n        ret.insert(ret.begin(), d, T(0));\n        return\
+    \ ret;\n    }\n    F operator>>(const int d) const {\n        const int n = (*this).size();\n\
+    \        if(n <= d) return {};\n        F ret(*this);\n        ret.erase(ret.begin(),\
+    \ ret.begin() + d);\n        return ret;\n    }\n    void shrink() {\n       \
+    \ while(!(*this).empty() and (*this).back() == T(0)) (*this).pop_back();\n   \
+    \ }\n    F rev() const {\n        F ret(*this);\n        reverse(begin(ret), end(ret));\n\
+    \        return ret;\n    }\n    F pre(const int deg) const {\n        assert(deg\
+    \ >= 0);\n        F ret(begin(*this), begin(*this) + min((int)(*this).size(),\
+    \ deg));\n        if((int)ret.size() < deg) ret.resize(deg);\n        return ret;\n\
+    \    }\n    T eval(const T& a) const {\n        const int n = (*this).size();\n\
+    \        T x = 1, ret = 0;\n        for(int i = 0; i < n; ++i) {\n           \
+    \ ret += (*this)[i] * x;\n            x *= a;\n        }\n        return ret;\n\
+    \    }\n    void onemul(const int d, const T& c, int deg = -1) {\n        assert(deg\
+    \ >= -1);\n        const int n = (*this).size();\n        if(deg == -1) deg =\
+    \ n + d;\n        if(deg > n) (*this).resize(deg);\n        for(int i = deg -\
+    \ d - 1; i >= 0; --i) {\n            (*this)[i + d] += (*this)[i] * c;\n     \
+    \   }\n    }\n    void onediv(const int d, const T& c, int deg = -1) {\n     \
+    \   assert(deg >= -1);\n        const int n = (*this).size();\n        if(deg\
+    \ == -1) deg = n;\n        if(deg > n) (*this).resize(deg + 1);\n        for(int\
+    \ i = 0; i < deg - d; ++i) {\n            (*this)[i + d] -= (*this)[i] * c;\n\
+    \        }\n    }\n};\n#line 6 \"verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp\"\
     \nusing fps = FormalPowerSeriesLL<ll>;\nint main() {\n    int n;\n    cin >> n;\n\
     \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        int a, b;\n        cin\
     \ >> a >> b;\n        g.add_edge(a, b);\n    }\n    auto [tree, root] = centroid_decomposition(g);\n\
@@ -368,8 +367,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 15:50:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
 layout: document

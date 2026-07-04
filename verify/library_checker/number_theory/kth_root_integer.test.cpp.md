@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/kth_root_integer.hpp
     title: kth_root_integer
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

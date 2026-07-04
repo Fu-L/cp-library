@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

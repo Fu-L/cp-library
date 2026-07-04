@@ -6,13 +6,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/and_convolution.hpp
       title: and_convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/convolution/convolution.hpp
       title: convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/convolution/convolution_arbitrary.hpp
       title: convolution_arbitrary
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/convolution/convolution_ll.hpp
       title: convolution_ll
     - icon: ':heavy_check_mark:'
@@ -111,25 +111,25 @@ data:
       title: monotone_minima
   - name: src/fps
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/fps/all_product.hpp
       title: all_product
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/fps/berlekamp_massey.hpp
       title: berlekamp_massey
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/fps/bostan_mori.hpp
       title: bostan_mori
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/fps/formal_power_series.hpp
       title: FormalPowerSeries
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/fps/formal_power_series_arbitrary.hpp
       title: FormalPowerSeriesArbitrary
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/fps/formal_power_series_ll.hpp
       title: FormalPowerSeriesLL
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/fps/nth_term.hpp
       title: nth_term
   - name: src/geometry
@@ -178,7 +178,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: dijkstra
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/graph_template.hpp
       title: Graph
     - icon: ':heavy_check_mark:'
@@ -252,13 +252,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/moebius.hpp
       title: moebius
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/pow_mod.hpp
       title: pow_mod
     - icon: ':heavy_check_mark:'
       path: src/math/prime_factors.hpp
       title: prime_factors
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/primitive_root.hpp
       title: primitive_root
     - icon: ':heavy_check_mark:'
@@ -295,7 +295,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/modint/modint_2_61m1.hpp
       title: Modint_2_61m1
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/modint/static_modint.hpp
       title: StaticModint
   - name: src/others
@@ -345,7 +345,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/template.hpp
       title: template
   - name: src/tree
@@ -359,7 +359,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/centroid.hpp
       title: centroid
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/tree/centroid_decomposition.hpp
       title: centroid_decomposition
     - icon: ':heavy_check_mark:'
@@ -746,7 +746,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
       title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
       title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - name: verify/library_checker/string
@@ -774,7 +774,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/tree/cartesian_tree.test.cpp
       title: verify/library_checker/tree/cartesian_tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
       title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     - icon: ':heavy_check_mark:'
@@ -865,7 +865,7 @@ data:
       title: verify/unit_test/tree/centroid.test.cpp
   - name: verify/yukicoder
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/yukicoder/1559.test.cpp
       title: verify/yukicoder/1559.test.cpp
     - icon: ':heavy_check_mark:'

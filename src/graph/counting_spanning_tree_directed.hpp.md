@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -66,38 +66,39 @@ data:
     \ C(h, vector<T>(B.w, 0));\n        for(int i = 0; i < h; ++i) {\n           \
     \ for(int k = 0; k < w; ++k) {\n                for(int j = 0; j < B.w; ++j) {\n\
     \                    C[i][j] += (*this)[i][k] * B[k][j];\n                }\n\
-    \            }\n        }\n        A.swap(C);\n        return (*this);\n    }\n\
-    \    Matrix& pow(long long t) {\n        assert(h == w);\n        assert(t >=\
-    \ 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0) {\n            if(t\
-    \ & 1ll) B *= (*this);\n            (*this) *= (*this);\n            t >>= 1ll;\n\
-    \        }\n        A.swap(B.A);\n        return (*this);\n    }\n    Matrix operator+(const\
-    \ Matrix& B) const {\n        return (Matrix(*this) += B);\n    }\n    Matrix\
-    \ operator-(const Matrix& B) const {\n        return (Matrix(*this) -= B);\n \
-    \   }\n    Matrix operator*(const Matrix& B) const {\n        return (Matrix(*this)\
-    \ *= B);\n    }\n    bool operator==(const Matrix& B) const {\n        assert(h\
+    \            }\n        }\n        A.swap(C);\n        w = B.w;\n        return\
+    \ (*this);\n    }\n    Matrix& pow(long long t) {\n        assert(h == w);\n \
+    \       assert(t >= 0);\n        Matrix B = Matrix::I(h);\n        while(t > 0)\
+    \ {\n            if(t & 1ll) B *= (*this);\n            (*this) *= (*this);\n\
+    \            t >>= 1ll;\n        }\n        A.swap(B.A);\n        return (*this);\n\
+    \    }\n    Matrix operator+(const Matrix& B) const {\n        return (Matrix(*this)\
+    \ += B);\n    }\n    Matrix operator-(const Matrix& B) const {\n        return\
+    \ (Matrix(*this) -= B);\n    }\n    Matrix operator*(const Matrix& B) const {\n\
+    \        return (Matrix(*this) *= B);\n    }\n    bool operator==(const Matrix&\
+    \ B) const {\n        assert(h == B.H() and w == B.W());\n        for(int i =\
+    \ 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n               \
+    \ if(A[i][j] != B[i][j]) return false;\n            }\n        }\n        return\
+    \ true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
     \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
     \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
-    \ false;\n            }\n        }\n        return true;\n    }\n    bool operator!=(const\
-    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
-    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
-    \     if(A[i][j] != B[i][j]) return true;\n            }\n        }\n        return\
-    \ false;\n    }\n\n   private:\n    int h, w;\n    vector<vector<T>> A;\n};\n\
-    #line 4 \"src/matrix/gauss_elimination.hpp\"\ntemplate <typename T>\npair<int,\
-    \ T> gauss_elimination(Matrix<T>& a, int pivot_end = -1) {\n    const int h =\
-    \ a.H(), w = a.W();\n    int rank = 0;\n    assert(-1 <= pivot_end and pivot_end\
-    \ <= w);\n    if(pivot_end == -1) pivot_end = w;\n    T det = 1;\n    for(int\
-    \ j = 0; j < pivot_end; ++j) {\n        int idx = -1;\n        for(int i = rank;\
-    \ i < h; ++i) {\n            if(a[i][j] != T(0)) {\n                idx = i;\n\
-    \                break;\n            }\n        }\n        if(idx == -1) {\n \
-    \           det = 0;\n            continue;\n        }\n        if(rank != idx)\
-    \ det = -det, swap(a[rank], a[idx]);\n        det *= a[rank][j];\n        if(a[rank][j]\
-    \ != T(1)) {\n            const T coeff = T(1) / a[rank][j];\n            for(int\
-    \ k = j; k < w; ++k) a[rank][k] *= coeff;\n        }\n        for(int i = 0; i\
-    \ < h; ++i) {\n            if(i == rank) continue;\n            if(a[i][j] !=\
-    \ T(0)) {\n                const T coeff = a[i][j] / a[rank][j];\n           \
-    \     for(int k = j; k < w; ++k) a[i][k] -= a[rank][k] * coeff;\n            }\n\
-    \        }\n        ++rank;\n    }\n    return {rank, det};\n}\n#line 6 \"src/graph/counting_spanning_tree_directed.hpp\"\
-    \ntemplate <typename T, typename U>\nT counting_spanning_tree_directed(const Graph<U>&\
+    \ true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
+    \    int h, w;\n    vector<vector<T>> A;\n};\n#line 4 \"src/matrix/gauss_elimination.hpp\"\
+    \ntemplate <typename T>\npair<int, T> gauss_elimination(Matrix<T>& a, int pivot_end\
+    \ = -1) {\n    const int h = a.H(), w = a.W();\n    int rank = 0;\n    assert(-1\
+    \ <= pivot_end and pivot_end <= w);\n    if(pivot_end == -1) pivot_end = w;\n\
+    \    T det = 1;\n    for(int j = 0; j < pivot_end; ++j) {\n        int idx = -1;\n\
+    \        for(int i = rank; i < h; ++i) {\n            if(a[i][j] != T(0)) {\n\
+    \                idx = i;\n                break;\n            }\n        }\n\
+    \        if(idx == -1) {\n            det = 0;\n            continue;\n      \
+    \  }\n        if(rank != idx) det = -det, swap(a[rank], a[idx]);\n        det\
+    \ *= a[rank][j];\n        if(a[rank][j] != T(1)) {\n            const T coeff\
+    \ = T(1) / a[rank][j];\n            for(int k = j; k < w; ++k) a[rank][k] *= coeff;\n\
+    \        }\n        for(int i = 0; i < h; ++i) {\n            if(i == rank) continue;\n\
+    \            if(a[i][j] != T(0)) {\n                const T coeff = a[i][j] /\
+    \ a[rank][j];\n                for(int k = j; k < w; ++k) a[i][k] -= a[rank][k]\
+    \ * coeff;\n            }\n        }\n        ++rank;\n    }\n    return {rank,\
+    \ det};\n}\n#line 6 \"src/graph/counting_spanning_tree_directed.hpp\"\ntemplate\
+    \ <typename T, typename U>\nT counting_spanning_tree_directed(const Graph<U>&\
     \ g, const int r) {\n    const int n = g.size();\n    assert(0 <= r and r < n);\n\
     \    Matrix<T> mat(n, n);\n    for(int i = 0; i < n; ++i) {\n        for(const\
     \ auto& e : g[i]) {\n            --mat[i][e.to];\n            ++mat[e.to][e.to];\n\
@@ -127,7 +128,7 @@ data:
   isVerificationFile: false
   path: src/graph/counting_spanning_tree_directed.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp

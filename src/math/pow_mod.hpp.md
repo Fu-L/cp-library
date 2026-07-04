@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/fps/formal_power_series.hpp
     title: FormalPowerSeries
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: FormalPowerSeriesArbitrary
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: primitive_root
   - icon: ':heavy_check_mark:'
@@ -63,24 +63,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
     title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -113,7 +113,7 @@ data:
   - src/fps/formal_power_series.hpp
   - src/fps/formal_power_series_ll.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/aizu_online_judge/ntl/power.test.cpp

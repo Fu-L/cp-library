@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -128,18 +128,18 @@ data:
     \ i = 0; i < h; ++i) {\n            for(int k = 0; k < w; ++k) {\n           \
     \     for(int j = 0; j < B.w; ++j) {\n                    C[i][j] += (*this)[i][k]\
     \ * B[k][j];\n                }\n            }\n        }\n        A.swap(C);\n\
-    \        return (*this);\n    }\n    Matrix& pow(long long t) {\n        assert(h\
-    \ == w);\n        assert(t >= 0);\n        Matrix B = Matrix::I(h);\n        while(t\
-    \ > 0) {\n            if(t & 1ll) B *= (*this);\n            (*this) *= (*this);\n\
-    \            t >>= 1ll;\n        }\n        A.swap(B.A);\n        return (*this);\n\
-    \    }\n    Matrix operator+(const Matrix& B) const {\n        return (Matrix(*this)\
-    \ += B);\n    }\n    Matrix operator-(const Matrix& B) const {\n        return\
-    \ (Matrix(*this) -= B);\n    }\n    Matrix operator*(const Matrix& B) const {\n\
-    \        return (Matrix(*this) *= B);\n    }\n    bool operator==(const Matrix&\
-    \ B) const {\n        assert(h == B.H() and w == B.W());\n        for(int i =\
-    \ 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n               \
-    \ if(A[i][j] != B[i][j]) return false;\n            }\n        }\n        return\
-    \ true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
+    \        w = B.w;\n        return (*this);\n    }\n    Matrix& pow(long long t)\
+    \ {\n        assert(h == w);\n        assert(t >= 0);\n        Matrix B = Matrix::I(h);\n\
+    \        while(t > 0) {\n            if(t & 1ll) B *= (*this);\n            (*this)\
+    \ *= (*this);\n            t >>= 1ll;\n        }\n        A.swap(B.A);\n     \
+    \   return (*this);\n    }\n    Matrix operator+(const Matrix& B) const {\n  \
+    \      return (Matrix(*this) += B);\n    }\n    Matrix operator-(const Matrix&\
+    \ B) const {\n        return (Matrix(*this) -= B);\n    }\n    Matrix operator*(const\
+    \ Matrix& B) const {\n        return (Matrix(*this) *= B);\n    }\n    bool operator==(const\
+    \ Matrix& B) const {\n        assert(h == B.H() and w == B.W());\n        for(int\
+    \ i = 0; i < h; ++i) {\n            for(int j = 0; j < w; ++j) {\n           \
+    \     if(A[i][j] != B[i][j]) return false;\n            }\n        }\n       \
+    \ return true;\n    }\n    bool operator!=(const Matrix& B) const {\n        assert(h\
     \ == B.H() and w == B.W());\n        for(int i = 0; i < h; ++i) {\n          \
     \  for(int j = 0; j < w; ++j) {\n                if(A[i][j] != B[i][j]) return\
     \ true;\n            }\n        }\n        return false;\n    }\n\n   private:\n\
@@ -187,7 +187,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 01:57:55+09:00'
+  timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

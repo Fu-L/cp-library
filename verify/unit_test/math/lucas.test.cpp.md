@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

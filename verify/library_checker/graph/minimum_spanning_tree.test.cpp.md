@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
