@@ -3,7 +3,8 @@
 template <typename S, auto op, auto e>
 struct SparseTable2D {
     SparseTable2D(const vector<vector<S>>& v)
-        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {
+        : h((int)v.size()), w(h == 0 ? 0 : (int)v[0].size()), LOG(max(h, w) + 1) {
+        for(int i = 0; i < h; ++i) assert((int)v[i].size() == w);
         for(int i = 2; i < (int)LOG.size(); ++i) LOG[i] = LOG[i / 2] + 1;
         table = vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w] + 1, vector<vector<S>>(h, vector<S>(w, e()))));
         for(int i = 0; i < h; ++i) {

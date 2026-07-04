@@ -50,7 +50,7 @@ struct BitVector {
         return u32(block[i / w] >> (i % w)) & 1u;
     }
     inline void set(const u32 i) {
-        block[i / w] |= 1LL << (i % w);
+        block[i / w] |= 1ULL << (i % w);
     }
     BitVector() {}
     BitVector(const int _n) {
@@ -58,8 +58,8 @@ struct BitVector {
     }
     __attribute__((optimize("O3,unroll-loops"))) void init(const int _n) {
         n = zeros = _n;
-        block.resize(n / w + 1, 0);
-        count.resize(block.size(), 0);
+        block.assign(n / w + 1, 0);
+        count.assign(block.size(), 0);
     }
     CP_LIBRARY_TARGET_POPCNT void build() {
         for(u32 i = 1; i < block.size(); ++i) {

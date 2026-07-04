@@ -33,14 +33,18 @@ struct UnionFind {
             leader_buf[i] = leader(i);
             ++group_size[leader_buf[i]];
         }
-        vector<vector<int>> result(n);
+        vector<vector<int>> result;
+        result.reserve(count_if(group_size.begin(), group_size.end(), [](const int sz) { return sz > 0; }));
         for(int i = 0; i < n; ++i) {
-            result[i].reserve(group_size[i]);
+            if(group_size[i] == 0) continue;
+            const int id = result.size();
+            result.emplace_back();
+            result.back().reserve(group_size[i]);
+            group_size[i] = id;
         }
         for(int i = 0; i < n; ++i) {
-            result[leader_buf[i]].push_back(i);
+            result[group_size[leader_buf[i]]].push_back(i);
         }
-        result.erase(remove_if(result.begin(), result.end(), [&](const vector<int>& v) { return v.empty(); }), result.end());
         return result;
     }
 

@@ -54,8 +54,9 @@ struct BinaryTrie {
         return res;
     }
     int lower_bound(const T& val, const T& x = 0) const {
-        assert(0 <= val and val < (T(1) << MAX_LOG));
+        assert(0 <= val and val <= (T(1) << MAX_LOG));
         assert(0 <= x and x < (T(1) << MAX_LOG));
+        if(val == (T(1) << MAX_LOG)) return size();
         int res = 0;
         Node* cur = root;
         for(int i = MAX_LOG - 1; i >= 0; --i) {

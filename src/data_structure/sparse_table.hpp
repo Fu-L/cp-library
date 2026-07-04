@@ -4,7 +4,7 @@ template <typename S, auto op, auto e>
 struct SparseTable {
     SparseTable(const vector<S>& v)
         : n((int)v.size()) {
-        const int b = 32 - __builtin_clz(n);
+        const int b = n == 0 ? 1 : 32 - __builtin_clz(n);
         table.assign(b, vector<S>(n, e()));
         table[0] = v;
         for(int i = 1; i < b; ++i) {
