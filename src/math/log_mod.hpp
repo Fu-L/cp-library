@@ -1,8 +1,13 @@
 #pragma once
 #include "../template/template.hpp"
 #include "../template/policy_based_data_structure.hpp"
-long long log_mod(const long long a, long long b, const long long mod) {
+long long log_mod(long long a, long long b, const long long mod) {
     assert(mod >= 1);
+    a %= mod;
+    b %= mod;
+    if(a < 0) a += mod;
+    if(b < 0) b += mod;
+    if(mod == 1) return 0;
     long long g = 1;
     for(long long i = mod; i; i /= 2) (g *= a) %= mod;
     g = gcd(g, mod);

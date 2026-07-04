@@ -36,7 +36,7 @@ struct EratosthenesSieve {
         return res;
     }
     vector<int> divisor(const int n) const {
-        assert(1 <= n and n <= n);
+        assert(1 <= n and n <= N);
         vector<int> res({1});
         const auto pf = prime_factors(n);
         for(const auto& p : pf) {

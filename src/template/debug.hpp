@@ -214,6 +214,7 @@ void debug_out(const Head& H, const Tail&... T) {
     debug_out(T...);
 }
 }  // namespace dbg
-#define debug(...) cerr << "Line " << __LINE__ << ", "  \
-                        << "[" << #__VA_ARGS__ << "]:", \
-                   dbg::debug_out(__VA_ARGS__)
+#define debug(...)                       \
+    cerr << "Line " << __LINE__ << ", "  \
+         << "[" << #__VA_ARGS__ << "]:", \
+        dbg::debug_out(__VA_ARGS__)
