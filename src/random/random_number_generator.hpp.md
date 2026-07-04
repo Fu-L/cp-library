@@ -480,7 +480,7 @@ tuple<vector<int>, vector<int>, vector<T>> rng.weighted_connected_graph(int n, i
 
 - 期待 $O(m \log m)$
 
-# parenthesis
+## parenthesis
 
 ```cpp
 string rng.parenthesis(int n)
@@ -490,7 +490,7 @@ string rng.parenthesis(int n)
 
 **制約**
 
-- $1 \leq n \leq 10^8$
+- $0 \leq n \leq 10^8$
 
 **計算量**
 

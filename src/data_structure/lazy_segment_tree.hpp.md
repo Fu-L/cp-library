@@ -195,8 +195,8 @@ title: LazySegmentTree
 ## コンストラクタ
 
 ```cpp
-(1) lazy_segtree<S, op, e, F, mapping, composition, id> seg(int n);
-(2) lazy_segtree<S, op, e, F, mapping, composition, id> seg(vector<S> v);
+(1) LazySegmentTree<S, op, e, F, mapping, composition, id> seg(int n);
+(2) LazySegmentTree<S, op, e, F, mapping, composition, id> seg(vector<S> v);
 ```
 
 - モノイドの型 `S`

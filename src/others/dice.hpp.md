@@ -116,10 +116,10 @@ Dice d(int top, int front, int right, int left, int back, int bottom)
 (5) サイコロを時計回りに回します．<br>
 (6) サイコロを反時計回りに回します．<br>
 (7) サイコロを以下の方向に転がします．<br>
-- `dir = 1` のとき正面
-- `dir = 2` のとき右
-- `dir = 3` のとき後ろ
-- `dir = 4` のとき左
+- `dir = 0` のとき正面
+- `dir = 1` のとき右
+- `dir = 2` のとき後ろ
+- `dir = 3` のとき左
 
 ## all_rotate
 

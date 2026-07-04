@@ -144,7 +144,7 @@ $lx = rx$ または $ly = ry$ のときは `e()` を返します．
 **制約**
 
 - $0 \leq lx \leq rx \leq n$
-- $0 \leq ly \leq ry \leq n$
+- $0 \leq ly \leq ry \leq m$
 
 **計算量**
 
