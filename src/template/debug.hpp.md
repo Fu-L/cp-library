@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/template/debug_without_modint.test.cpp
     title: verify/unit_test/template/debug_without_modint.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -184,14 +184,14 @@ data:
     \ << \" \" << dbg::to_string(H);\n    if(sizeof...(T) != 0) cerr << \",\";\n \
     \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...) cerr << \"Line\
     \ \" << __LINE__ << \", \"  \\\n                        << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)\n"
+    \ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/template/debug.hpp
   requiredBy: []
-  timestamp: '2026-07-04 02:11:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-07-04 16:35:52+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/template/debug_without_modint.test.cpp

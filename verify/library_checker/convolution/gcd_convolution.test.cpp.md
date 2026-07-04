@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/is_prime.hpp
     title: is_prime
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

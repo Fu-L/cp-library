@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/tree_regression.test.cpp
+    title: verify/unit_test/tree/tree_regression.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -83,6 +86,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/tree/tree_regression.test.cpp
 documentation_of: src/tree/centroid.hpp
 layout: document
 title: centroid

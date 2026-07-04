@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/matching_on_general_graph.test.cpp
     title: verify/library_checker/graph/matching_on_general_graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/max_matching.test.cpp
+    title: verify/unit_test/graph/max_matching.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -163,6 +166,7 @@ data:
   timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/graph/max_matching.test.cpp
   - verify/library_checker/graph/matching_on_general_graph.test.cpp
 documentation_of: src/graph/max_matching.hpp
 layout: document

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rmq_2.test.cpp
     title: verify/library_checker/data_structure/static_rmq_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
+    title: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -61,6 +64,7 @@ data:
   timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
   - verify/library_checker/data_structure/static_rmq_2.test.cpp
   - verify/library_checker/data_structure/static_range_sum.test.cpp
 documentation_of: src/data_structure/disjoint_sparse_table.hpp

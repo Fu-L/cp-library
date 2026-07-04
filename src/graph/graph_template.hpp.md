@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -187,14 +187,29 @@ data:
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/biconnected_components.test.cpp
+    title: verify/unit_test/graph/biconnected_components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/compressed_sparse_row.test.cpp
+    title: verify/unit_test/graph/compressed_sparse_row.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/graph_regression.test.cpp
+    title: verify/unit_test/graph/graph_regression.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/max_matching.test.cpp
+    title: verify/unit_test/graph/max_matching.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/auxiliary_tree.test.cpp
     title: verify/unit_test/tree/auxiliary_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/tree_regression.test.cpp
+    title: verify/unit_test/tree/tree_regression.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -278,9 +293,14 @@ data:
   verifiedWith:
   - verify/unit_test/tree/auxiliary_tree.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/tree/tree_regression.test.cpp
   - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
+  - verify/unit_test/graph/biconnected_components.test.cpp
+  - verify/unit_test/graph/compressed_sparse_row.test.cpp
+  - verify/unit_test/graph/graph_regression.test.cpp
+  - verify/unit_test/graph/max_matching.test.cpp
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp
   - verify/aizu_online_judge/grl/bridges.test.cpp
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp

@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -42,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/fps/formal_power_series_regression.test.cpp
+    title: verify/unit_test/fps/formal_power_series_regression.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -443,6 +446,7 @@ data:
   timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/fps/formal_power_series_regression.test.cpp
   - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/other/find_linear_recurrence.test.cpp
   - verify/library_checker/polynomial/inv_of_formal_power_series.test.cpp

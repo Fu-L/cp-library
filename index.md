@@ -15,10 +15,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/convolution_ll.hpp
       title: convolution_ll
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/convolution/gcd_convolution.hpp
       title: gcd_convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/convolution/lcm_convolution.hpp
       title: lcm_convolution
     - icon: ':heavy_check_mark:'
@@ -27,7 +27,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/or_convolution.hpp
       title: or_convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/convolution/xor_convolution.hpp
       title: xor_convolution
   - name: src/data_structure
@@ -216,10 +216,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/divisor.hpp
       title: divisor
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/divisor_multiple_transform.hpp
       title: Divisor/MultipleTransform
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/eratosthenes_sieve.hpp
       title: EratosthenesSieve
     - icon: ':heavy_check_mark:'
@@ -240,7 +240,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/kth_root_integer.hpp
       title: kth_root_integer
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/log_mod.hpp
       title: log_mod
     - icon: ':heavy_check_mark:'
@@ -264,7 +264,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/two_sat.hpp
       title: TwoSAT
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/walsh_hadamard_transform.hpp
       title: walsh_hadamard_transform
     - icon: ':heavy_check_mark:'
@@ -289,13 +289,13 @@ data:
       title: Matrix
   - name: src/modint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/modint/dynamic_modint.hpp
       title: DynamicModint
     - icon: ':heavy_check_mark:'
       path: src/modint/modint_2_61m1.hpp
       title: Modint_2_61m1
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/modint/static_modint.hpp
       title: StaticModint
   - name: src/others
@@ -339,13 +339,13 @@ data:
       title: z_algorithm
   - name: src/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/template/debug.hpp
       title: debug
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/policy_based_data_structure.hpp
       title: policy_based_data_structure
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template/template.hpp
       title: template
   - name: src/tree
@@ -809,20 +809,45 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/convolution/convolution_ll.test.cpp
       title: verify/unit_test/convolution/convolution_ll.test.cpp
+    - icon: ':x:'
+      path: verify/unit_test/convolution/empty_convolution.test.cpp
+      title: verify/unit_test/convolution/empty_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/convolution/or_convolution.test.cpp
       title: verify/unit_test/convolution/or_convolution.test.cpp
   - name: verify/unit_test/data_structure
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/unit_test/data_structure/binary_trie.test.cpp
+      title: verify/unit_test/data_structure/binary_trie.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/data_structure/bit_vector.test.cpp
+      title: verify/unit_test/data_structure/bit_vector.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/convex_hull_trick.test.cpp
       title: verify/unit_test/data_structure/convex_hull_trick.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
+      title: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/segment_set.test.cpp
       title: verify/unit_test/data_structure/segment_set.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/unit_test/data_structure/sparse_table.test.cpp
+      title: verify/unit_test/data_structure/sparse_table.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
       title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - name: verify/unit_test/fps
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/fps/formal_power_series_regression.test.cpp
+      title: verify/unit_test/fps/formal_power_series_regression.test.cpp
+  - name: verify/unit_test/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/geometry/geometry_regression.test.cpp
+      title: verify/unit_test/geometry/geometry_regression.test.cpp
   - name: verify/unit_test/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -832,27 +857,58 @@ data:
       path: verify/unit_test/graph/bfs01.test.cpp
       title: verify/unit_test/graph/bfs01.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/biconnected_components.test.cpp
+      title: verify/unit_test/graph/biconnected_components.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/unit_test/graph/bipartite.test.cpp
       title: verify/unit_test/graph/bipartite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/compressed_sparse_row.test.cpp
+      title: verify/unit_test/graph/compressed_sparse_row.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/graph_regression.test.cpp
+      title: verify/unit_test/graph/graph_regression.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/graph/max_matching.test.cpp
+      title: verify/unit_test/graph/max_matching.test.cpp
   - name: verify/unit_test/math
     pages:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/math/eratosthenes_sieve.test.cpp
       title: verify/unit_test/math/eratosthenes_sieve.test.cpp
+    - icon: ':x:'
+      path: verify/unit_test/math/log_mod.test.cpp
+      title: verify/unit_test/math/log_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/math/lucas.test.cpp
       title: verify/unit_test/math/lucas.test.cpp
+  - name: verify/unit_test/matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/matrix/matrix.test.cpp
+      title: verify/unit_test/matrix/matrix.test.cpp
+  - name: verify/unit_test/random
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/random/random_regression.test.cpp
+      title: verify/unit_test/random/random_regression.test.cpp
   - name: verify/unit_test/string
     pages:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
       title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/string/manacher.test.cpp
+      title: verify/unit_test/string/manacher.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/string/suffix_array.test.cpp
+      title: verify/unit_test/string/suffix_array.test.cpp
   - name: verify/unit_test/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/unit_test/template/debug.test.cpp
       title: verify/unit_test/template/debug.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/unit_test/template/debug_without_modint.test.cpp
       title: verify/unit_test/template/debug_without_modint.test.cpp
   - name: verify/unit_test/tree
@@ -863,6 +919,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/tree/centroid.test.cpp
       title: verify/unit_test/tree/centroid.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/tree/tree_regression.test.cpp
+      title: verify/unit_test/tree/tree_regression.test.cpp
   - name: verify/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

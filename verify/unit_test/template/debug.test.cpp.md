@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -276,7 +276,7 @@ data:
     \    debug(pr);\n    mint ma = 998244352, mb = 2, mc = ma * mb;\n    debug(mc);\n\
     \    Mint::set_mod(1000000007);\n    Mint dma = 500000004, dmb = 6, dmc = dma\
     \ * dmb;\n    debug(dmc);\n}\nint main(void) {\n    test();\n    int a, b;\n \
-    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
+    \   cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/debug.hpp
@@ -285,8 +285,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/template/debug.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 02:11:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 16:35:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/template/debug.test.cpp
 layout: document

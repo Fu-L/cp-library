@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -112,15 +112,15 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/debug.hpp\"\nvoid test() {\n    vector<int>\
     \ v = {1, 2, 3};\n    debug(v);\n}\nint main(void) {\n    test();\n    int a,\
-    \ b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
+    \ b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/template/debug.hpp
   isVerificationFile: true
   path: verify/unit_test/template/debug_without_modint.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 02:11:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-07-04 16:35:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/unit_test/template/debug_without_modint.test.cpp
 layout: document

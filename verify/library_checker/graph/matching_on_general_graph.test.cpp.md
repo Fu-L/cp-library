@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/max_matching.hpp
     title: max_matching
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

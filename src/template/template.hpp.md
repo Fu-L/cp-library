@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
   - icon: ':heavy_check_mark:'
@@ -26,7 +26,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/xor_convolution.hpp
     title: xor_convolution
   - icon: ':heavy_check_mark:'
@@ -203,10 +203,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/divisor.hpp
     title: divisor
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
   - icon: ':heavy_check_mark:'
@@ -227,7 +227,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/kth_root_integer.hpp
     title: kth_root_integer
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/log_mod.hpp
     title: log_mod
   - icon: ':heavy_check_mark:'
@@ -251,7 +251,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/two_sat.hpp
     title: TwoSAT
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
   - icon: ':heavy_check_mark:'
@@ -272,13 +272,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':heavy_check_mark:'
     path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
@@ -314,7 +314,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/z_algorithm.hpp
     title: z_algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template/debug.hpp
     title: debug
   - icon: ':heavy_check_mark:'
@@ -738,18 +738,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/convolution/empty_convolution.test.cpp
+    title: verify/unit_test/convolution/empty_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/or_convolution.test.cpp
     title: verify/unit_test/convolution/or_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/binary_trie.test.cpp
+    title: verify/unit_test/data_structure/binary_trie.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/bit_vector.test.cpp
+    title: verify/unit_test/data_structure/bit_vector.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/convex_hull_trick.test.cpp
     title: verify/unit_test/data_structure/convex_hull_trick.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
+    title: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/segment_set.test.cpp
     title: verify/unit_test/data_structure/segment_set.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/sparse_table.test.cpp
+    title: verify/unit_test/data_structure/sparse_table.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/fps/formal_power_series_regression.test.cpp
+    title: verify/unit_test/fps/formal_power_series_regression.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/geometry/geometry_regression.test.cpp
+    title: verify/unit_test/geometry/geometry_regression.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bfs.test.cpp
     title: verify/unit_test/graph/bfs.test.cpp
@@ -757,21 +778,48 @@ data:
     path: verify/unit_test/graph/bfs01.test.cpp
     title: verify/unit_test/graph/bfs01.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/biconnected_components.test.cpp
+    title: verify/unit_test/graph/biconnected_components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/graph/bipartite.test.cpp
     title: verify/unit_test/graph/bipartite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/compressed_sparse_row.test.cpp
+    title: verify/unit_test/graph/compressed_sparse_row.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/graph_regression.test.cpp
+    title: verify/unit_test/graph/graph_regression.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/max_matching.test.cpp
+    title: verify/unit_test/graph/max_matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/eratosthenes_sieve.test.cpp
     title: verify/unit_test/math/eratosthenes_sieve.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/math/log_mod.test.cpp
+    title: verify/unit_test/math/log_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/lucas.test.cpp
     title: verify/unit_test/math/lucas.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/matrix/matrix.test.cpp
+    title: verify/unit_test/matrix/matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/random/random_regression.test.cpp
+    title: verify/unit_test/random/random_regression.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/string/dynamic_rolling_hash.test.cpp
     title: verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/string/manacher.test.cpp
+    title: verify/unit_test/string/manacher.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/string/suffix_array.test.cpp
+    title: verify/unit_test/string/suffix_array.test.cpp
+  - icon: ':x:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/unit_test/template/debug_without_modint.test.cpp
     title: verify/unit_test/template/debug_without_modint.test.cpp
   - icon: ':heavy_check_mark:'
@@ -780,6 +828,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/centroid.test.cpp
     title: verify/unit_test/tree/centroid.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/tree/tree_regression.test.cpp
+    title: verify/unit_test/tree/tree_regression.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
@@ -795,9 +846,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -931,23 +982,40 @@ data:
   - src/dp/monotone_minima.hpp
   - src/dp/longest_increasing_sequence.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/template/debug_without_modint.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp
   - verify/unit_test/convolution/or_convolution.test.cpp
+  - verify/unit_test/convolution/empty_convolution.test.cpp
   - verify/unit_test/tree/auxiliary_tree.test.cpp
   - verify/unit_test/tree/centroid.test.cpp
+  - verify/unit_test/tree/tree_regression.test.cpp
+  - verify/unit_test/geometry/geometry_regression.test.cpp
+  - verify/unit_test/data_structure/bit_vector.test.cpp
   - verify/unit_test/data_structure/convex_hull_trick.test.cpp
   - verify/unit_test/data_structure/segment_set.test.cpp
+  - verify/unit_test/data_structure/sparse_table.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
+  - verify/unit_test/data_structure/binary_trie.test.cpp
+  - verify/unit_test/string/manacher.test.cpp
+  - verify/unit_test/string/suffix_array.test.cpp
   - verify/unit_test/string/dynamic_rolling_hash.test.cpp
   - verify/unit_test/math/lucas.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
+  - verify/unit_test/math/log_mod.test.cpp
+  - verify/unit_test/fps/formal_power_series_regression.test.cpp
+  - verify/unit_test/matrix/matrix.test.cpp
+  - verify/unit_test/random/random_regression.test.cpp
   - verify/unit_test/graph/bfs.test.cpp
   - verify/unit_test/graph/bfs01.test.cpp
   - verify/unit_test/graph/bipartite.test.cpp
+  - verify/unit_test/graph/biconnected_components.test.cpp
+  - verify/unit_test/graph/compressed_sparse_row.test.cpp
+  - verify/unit_test/graph/graph_regression.test.cpp
+  - verify/unit_test/graph/max_matching.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/aizu_online_judge/others/0502.test.cpp
   - verify/aizu_online_judge/others/1645.test.cpp

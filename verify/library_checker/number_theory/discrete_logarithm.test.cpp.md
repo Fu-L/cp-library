@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/log_mod.hpp
     title: log_mod
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/policy_based_data_structure.hpp
     title: policy_based_data_structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

@@ -1,0 +1,204 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/convolution/gcd_convolution.hpp
+    title: gcd_convolution
+  - icon: ':question:'
+    path: src/convolution/lcm_convolution.hpp
+    title: lcm_convolution
+  - icon: ':question:'
+    path: src/convolution/xor_convolution.hpp
+    title: xor_convolution
+  - icon: ':question:'
+    path: src/math/divisor_multiple_transform.hpp
+    title: Divisor/MultipleTransform
+  - icon: ':question:'
+    path: src/math/eratosthenes_sieve.hpp
+    title: EratosthenesSieve
+  - icon: ':question:'
+    path: src/math/walsh_hadamard_transform.hpp
+    title: walsh_hadamard_transform
+  - icon: ':question:'
+    path: src/modint/static_modint.hpp
+    title: StaticModint
+  - icon: ':question:'
+    path: src/template/template.hpp
+    title: template
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: true
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"verify/unit_test/convolution/empty_convolution.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
+    \n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\nusing namespace\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/modint/static_modint.hpp\"\
+    \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
+    \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
+    \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
+    \ a;\n    }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class\
+    \ T>\n    constexpr StaticModint(const T& v) {\n        static_assert(is_integral_v<T>);\n\
+    \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
+    \            if(x < 0) x += m;\n            _v = uint32_t(x);\n        } else\
+    \ _v = uint32_t(v % m);\n    }\n    constexpr uint32_t val() const {\n       \
+    \ return _v;\n    }\n    constexpr mint& operator++() {\n        return *this\
+    \ += 1;\n    }\n    constexpr mint& operator--() {\n        return *this -= 1;\n\
+    \    }\n    constexpr mint operator++(int) {\n        mint res = *this;\n    \
+    \    ++*this;\n        return res;\n    }\n    constexpr mint operator--(int)\
+    \ {\n        mint res = *this;\n        --*this;\n        return res;\n    }\n\
+    \    constexpr mint& operator+=(mint rhs) {\n        if(_v >= m - rhs._v) _v -=\
+    \ m;\n        _v += rhs._v;\n        return *this;\n    }\n    constexpr mint&\
+    \ operator-=(mint rhs) {\n        if(_v < rhs._v) _v += m;\n        _v -= rhs._v;\n\
+    \        return *this;\n    }\n    constexpr mint& operator*=(mint rhs) {\n  \
+    \      return *this = *this * rhs;\n    }\n    constexpr mint& operator/=(mint\
+    \ rhs) {\n        return *this *= rhs.inv();\n    }\n    constexpr mint operator+()\
+    \ const {\n        return *this;\n    }\n    constexpr mint operator-() const\
+    \ {\n        return mint{} - *this;\n    }\n    constexpr mint pow(long long n)\
+    \ const {\n        assert(0 <= n);\n        if(n == 0) return 1;\n        mint\
+    \ x = *this, r = 1;\n        while(1) {\n            if(n & 1) r *= x;\n     \
+    \       n >>= 1;\n            if(n == 0) return r;\n            x *= x;\n    \
+    \    }\n    }\n    constexpr mint inv() const {\n        if constexpr(prime) {\n\
+    \            assert(_v);\n            return pow(m - 2);\n        } else {\n \
+    \           const auto eg = inv_gcd(_v, m);\n            assert(eg.first == 1);\n\
+    \            return eg.second;\n        }\n    }\n    friend constexpr mint operator+(mint\
+    \ lhs, mint rhs) {\n        return lhs += rhs;\n    }\n    friend constexpr mint\
+    \ operator-(mint lhs, mint rhs) {\n        return lhs -= rhs;\n    }\n    friend\
+    \ constexpr mint operator*(mint lhs, mint rhs) {\n        return uint64_t(lhs._v)\
+    \ * rhs._v;\n    }\n    friend constexpr mint operator/(mint lhs, mint rhs) {\n\
+    \        return lhs /= rhs;\n    }\n    friend constexpr bool operator==(mint\
+    \ lhs, mint rhs) {\n        return lhs._v == rhs._v;\n    }\n    friend constexpr\
+    \ bool operator!=(mint lhs, mint rhs) {\n        return lhs._v != rhs._v;\n  \
+    \  }\n    friend istream& operator>>(istream& in, mint& x) {\n        long long\
+    \ a;\n        in >> a;\n        x = a;\n        return in;\n    }\n    friend\
+    \ ostream& operator<<(ostream& out, const mint& x) {\n        return out << x.val();\n\
+    \    }\n\n   private:\n    uint32_t _v = 0;\n    static constexpr bool prime =\
+    \ []() -> bool {\n        if(m == 1) return 0;\n        if(m == 2 or m == 7 or\
+    \ m == 61) return 1;\n        if(m % 2 == 0) return 0;\n        uint32_t d = m\
+    \ - 1;\n        while(d % 2 == 0) d /= 2;\n        for(uint32_t a : {2, 7, 61})\
+    \ {\n            uint32_t t = d;\n            mint y = mint(a).pow(t);\n     \
+    \       while(t != m - 1 && y != 1 && y != m - 1) {\n                y *= y;\n\
+    \                t <<= 1;\n            }\n            if(y != m - 1 && t % 2 ==\
+    \ 0) return 0;\n        }\n        return 1;\n    }();\n    static constexpr pair<int32_t,\
+    \ int32_t> inv_gcd(const int32_t a, const int32_t b) {\n        if(a == 0) return\
+    \ {b, 0};\n        int32_t s = b, t = a, m0 = 0, m1 = 1;\n        while(t) {\n\
+    \            const int32_t u = s / t;\n            s -= t * u;\n            m0\
+    \ -= m1 * u;\n            swap(s, t);\n            swap(m0, m1);\n        }\n\
+    \        if(m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing modint998244353\
+    \ = StaticModint<998244353>;\nusing modint1000000007 = StaticModint<1000000007>;\n\
+    #line 3 \"src/math/eratosthenes_sieve.hpp\"\nstruct EratosthenesSieve {\n    vector<int>\
+    \ primes, min_factor, moebius, euler;\n    EratosthenesSieve(const int N)\n  \
+    \      : primes(), min_factor(N + 1), moebius(N + 1, 1), euler(N + 1), N(N) {\n\
+    \        assert(N >= 1);\n        iota(min_factor.begin(), min_factor.end(), 0);\n\
+    \        min_factor[0] = min_factor[1] = -1;\n        iota(euler.begin(), euler.end(),\
+    \ 0);\n        for(int i = 2; i <= N; ++i) {\n            if(min_factor[i] < i)\
+    \ continue;\n            primes.emplace_back(i);\n            moebius[i] = -1;\n\
+    \            euler[i] = euler[i] / i * (i - 1);\n            for(int j = i * 2;\
+    \ j <= N; j += i) {\n                if(min_factor[j] == j) min_factor[j] = i;\n\
+    \                if((j / i) % i == 0) moebius[j] = 0;\n                else moebius[j]\
+    \ = -moebius[j];\n                euler[j] = euler[j] / i * (i - 1);\n       \
+    \     }\n        }\n    }\n    vector<pair<int, int>> prime_factors(int n) const\
+    \ {\n        assert(1 <= n and n <= N);\n        vector<pair<int, int>> res;\n\
+    \        while(n > 1) {\n            const int p = min_factor[n];\n          \
+    \  int exp = 0;\n            while(min_factor[n] == p) {\n                n /=\
+    \ p;\n                ++exp;\n            }\n            res.emplace_back(p, exp);\n\
+    \        }\n        return res;\n    }\n    vector<int> divisor(const int n) const\
+    \ {\n        assert(1 <= n and n <= n);\n        vector<int> res({1});\n     \
+    \   const auto pf = prime_factors(n);\n        for(const auto& p : pf) {\n   \
+    \         const int s = (int)res.size();\n            for(int i = 0; i < s; ++i)\
+    \ {\n                int v = 1;\n                for(int j = 0; j < p.second;\
+    \ ++j) {\n                    v *= p.first;\n                    res.push_back(res[i]\
+    \ * v);\n                }\n            }\n        }\n        sort(res.begin(),\
+    \ res.end());\n        return res;\n    }\n\n   private:\n    int N;\n};\n#line\
+    \ 4 \"src/math/divisor_multiple_transform.hpp\"\nstruct DivisorTransform {\n \
+    \   template <typename T>\n    static void zeta_transform(vector<T>& f) {\n  \
+    \      const int N = f.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
+    \ ++k) f[k * p] += f[k];\n        }\n    }\n    template <typename T>\n    static\
+    \ void moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n\
+    \        const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
+    \ p : sieve) {\n            for(int k = N / p; k > 0; --k) g[k * p] -= g[k];\n\
+    \        }\n    }\n};\nstruct MultipleTransform {\n    template <typename T>\n\
+    \    static void zeta_transform(vector<T>& f) {\n        const int N = f.size()\
+    \ - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n        for(const\
+    \ auto& p : sieve) {\n            for(int k = N / p; k > 0; --k) f[k] += f[k *\
+    \ p];\n        }\n    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
+    \ g) {\n        const int N = g.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
+    \ ++k) g[k] -= g[k * p];\n        }\n    }\n};\n#line 4 \"src/convolution/gcd_convolution.hpp\"\
+    \ntemplate <typename mint>\nvector<mint> gcd_convolution(const vector<mint>& a,\
+    \ const vector<mint>& b) {\n    assert(a.size() == b.size());\n    auto s = a,\
+    \ t = b;\n    MultipleTransform::zeta_transform(s);\n    MultipleTransform::zeta_transform(t);\n\
+    \    for(int i = 0; i < (int)a.size(); ++i) s[i] *= t[i];\n    MultipleTransform::moebius_transform(s);\n\
+    \    return s;\n}\n#line 4 \"src/convolution/lcm_convolution.hpp\"\ntemplate <typename\
+    \ mint>\nvector<mint> lcm_convolution(const vector<mint>& a, const vector<mint>&\
+    \ b) {\n    assert(a.size() == b.size());\n    auto s = a, t = b;\n    DivisorTransform::zeta_transform(s);\n\
+    \    DivisorTransform::zeta_transform(t);\n    for(int i = 0; i < (int)a.size();\
+    \ ++i) s[i] *= t[i];\n    DivisorTransform::moebius_transform(s);\n    return\
+    \ s;\n}\n#line 3 \"src/math/walsh_hadamard_transform.hpp\"\ntemplate <typename\
+    \ T>\nvoid walsh_hadamard_transform(vector<T>& f, const bool inv = false) {\n\
+    \    const int n = f.size();\n    assert((n & (n - 1)) == 0);\n    for(int i =\
+    \ 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j\
+    \ & i) == 0) {\n                const T x = f[j], y = f[j | i];\n            \
+    \    f[j] = x + y, f[j | i] = x - y;\n            }\n        }\n    }\n    if(inv)\
+    \ {\n        if constexpr(is_integral<T>::value) {\n            for(auto& x :\
+    \ f) x /= n;\n        } else {\n            const T invn = T(1) / T(f.size());\n\
+    \            for(auto& x : f) x *= invn;\n        }\n    }\n}\n#line 4 \"src/convolution/xor_convolution.hpp\"\
+    \ntemplate <typename T>\nvector<T> xor_convolution(vector<T> a, vector<T> b) {\n\
+    \    const int n = (int)a.size(), m = (int)b.size();\n    assert(n == m and (n\
+    \ & (n - 1)) == 0);\n    walsh_hadamard_transform(a);\n    walsh_hadamard_transform(b);\n\
+    \    for(int i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    walsh_hadamard_transform(a,\
+    \ true);\n    return a;\n}\n#line 9 \"verify/unit_test/convolution/empty_convolution.test.cpp\"\
+    \nusing mint = modint998244353;\nint main() {\n    vector<mint> empty;\n    DivisorTransform::zeta_transform(empty);\n\
+    \    DivisorTransform::moebius_transform(empty);\n    MultipleTransform::zeta_transform(empty);\n\
+    \    MultipleTransform::moebius_transform(empty);\n    assert(empty.empty());\n\
+    \    assert(gcd_convolution(empty, empty).empty());\n    assert(lcm_convolution(empty,\
+    \ empty).empty());\n    assert(xor_convolution(empty, empty).empty());\n    walsh_hadamard_transform(empty,\
+    \ true);\n    assert(empty.empty());\n    vector<mint> one{5};\n    DivisorTransform::zeta_transform(one);\n\
+    \    DivisorTransform::moebius_transform(one);\n    MultipleTransform::zeta_transform(one);\n\
+    \    MultipleTransform::moebius_transform(one);\n    assert(one == vector<mint>{5});\n\
+    \    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
+    \n#include \"../../../src/modint/static_modint.hpp\"\n#include \"../../../src/convolution/gcd_convolution.hpp\"\
+    \n#include \"../../../src/convolution/lcm_convolution.hpp\"\n#include \"../../../src/convolution/xor_convolution.hpp\"\
+    \n#include \"../../../src/math/divisor_multiple_transform.hpp\"\n#include \"../../../src/math/walsh_hadamard_transform.hpp\"\
+    \nusing mint = modint998244353;\nint main() {\n    vector<mint> empty;\n    DivisorTransform::zeta_transform(empty);\n\
+    \    DivisorTransform::moebius_transform(empty);\n    MultipleTransform::zeta_transform(empty);\n\
+    \    MultipleTransform::moebius_transform(empty);\n    assert(empty.empty());\n\
+    \    assert(gcd_convolution(empty, empty).empty());\n    assert(lcm_convolution(empty,\
+    \ empty).empty());\n    assert(xor_convolution(empty, empty).empty());\n    walsh_hadamard_transform(empty,\
+    \ true);\n    assert(empty.empty());\n    vector<mint> one{5};\n    DivisorTransform::zeta_transform(one);\n\
+    \    DivisorTransform::moebius_transform(one);\n    MultipleTransform::zeta_transform(one);\n\
+    \    MultipleTransform::moebius_transform(one);\n    assert(one == vector<mint>{5});\n\
+    \    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
+  dependsOn:
+  - src/template/template.hpp
+  - src/modint/static_modint.hpp
+  - src/convolution/gcd_convolution.hpp
+  - src/math/divisor_multiple_transform.hpp
+  - src/math/eratosthenes_sieve.hpp
+  - src/convolution/lcm_convolution.hpp
+  - src/convolution/xor_convolution.hpp
+  - src/math/walsh_hadamard_transform.hpp
+  isVerificationFile: true
+  path: verify/unit_test/convolution/empty_convolution.test.cpp
+  requiredBy: []
+  timestamp: '2026-07-04 16:35:52+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: verify/unit_test/convolution/empty_convolution.test.cpp
+layout: document
+redirect_from:
+- /verify/verify/unit_test/convolution/empty_convolution.test.cpp
+- /verify/verify/unit_test/convolution/empty_convolution.test.cpp.html
+title: verify/unit_test/convolution/empty_convolution.test.cpp
+---

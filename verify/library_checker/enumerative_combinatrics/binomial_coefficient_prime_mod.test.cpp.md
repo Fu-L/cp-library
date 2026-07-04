@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/binomial.hpp
     title: Binomial
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -72,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/fps/formal_power_series_regression.test.cpp
+    title: verify/unit_test/fps/formal_power_series_regression.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
@@ -296,6 +299,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/convolution/convolution_ll.test.cpp
+  - verify/unit_test/fps/formal_power_series_regression.test.cpp
   - verify/yukicoder/1559.test.cpp
   - verify/library_checker/convolution/convolution.test.cpp
   - verify/library_checker/convolution/convolution_mod_1000000007.test.cpp

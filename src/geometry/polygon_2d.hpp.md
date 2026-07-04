@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
     title: verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/geometry/geometry_regression.test.cpp
+    title: verify/unit_test/geometry/geometry_regression.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -197,6 +200,7 @@ data:
   timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/geometry/geometry_regression.test.cpp
   - verify/aizu_online_judge/cgl/is_convex.test.cpp
   - verify/aizu_online_judge/cgl/area.test.cpp
   - verify/aizu_online_judge/cgl/polygon_point_containment.test.cpp

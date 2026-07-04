@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/dp/longest_increasing_sequence.hpp
     title: longest_increasing_sequence
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

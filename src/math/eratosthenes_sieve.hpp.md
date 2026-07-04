@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
   _extendedVerifiedWith:
@@ -24,12 +24,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/lcm_convolution.test.cpp
     title: verify/library_checker/convolution/lcm_convolution.test.cpp
+  - icon: ':x:'
+    path: verify/unit_test/convolution/empty_convolution.test.cpp
+    title: verify/unit_test/convolution/empty_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/eratosthenes_sieve.test.cpp
     title: verify/unit_test/math/eratosthenes_sieve.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -95,8 +98,9 @@ data:
   - src/convolution/gcd_convolution.hpp
   - src/math/divisor_multiple_transform.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/unit_test/convolution/empty_convolution.test.cpp
   - verify/unit_test/math/eratosthenes_sieve.test.cpp
   - verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
   - verify/library_checker/convolution/gcd_convolution.test.cpp

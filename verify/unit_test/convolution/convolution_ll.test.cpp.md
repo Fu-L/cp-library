@@ -13,13 +13,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
     path: src/random/permuted_congruential_generator.hpp
     title: PermutedCongruentialGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -43,21 +43,27 @@ data:
     \nstruct PermutedCongruentialGenerator {\n    template <typename T>\n        requires(is_integral_v<T>\
     \ and sizeof(T) == 4) or (is_floating_point_v<T> and sizeof(T) == 8)\n    inline\
     \ T operator()(const T l, const T r) {\n        assert(l <= r);\n        if constexpr(is_integral_v<T>)\
-    \ {\n            const unsigned int range = static_cast<unsigned int>(r - l +\
-    \ 1);\n            return l + (next32() % range);\n        } else {\n        \
-    \    static constexpr unsigned long long denom = 1ull << 53;\n            const\
-    \ unsigned long long x = next64() >> 11;\n            const double u = static_cast<double>(x)\
-    \ / denom;\n            return l + (r - l) * u;\n        }\n    }\n\n   private:\n\
-    \    static constexpr unsigned long long MULT = 6364136223846793005;\n    static\
-    \ inline unsigned long long state = chrono::steady_clock::now().time_since_epoch().count();\n\
-    \    inline unsigned int next32() {\n        unsigned long long x = state;\n \
-    \       state *= MULT;\n        const unsigned int count = x >> 61;\n        x\
-    \ ^= x >> 22;\n        return static_cast<unsigned int>(x >> (22 + count));\n\
-    \    }\n    inline unsigned long long next64() {\n        return (static_cast<unsigned\
-    \ long long>(next32()) << 32) | next32();\n    }\n} rng;\n#line 3 \"src/modint/static_modint.hpp\"\
-    \ntemplate <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n\
-    \    static constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr\
-    \ mint raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
+    \ {\n            const unsigned int x = next32();\n            if constexpr(is_signed_v<T>)\
+    \ {\n                const uint64_t range = uint64_t(int64_t(r) - int64_t(l))\
+    \ + 1;\n                const uint64_t offset = range == (uint64_t(1) << 32) ?\
+    \ x : x % range;\n                return T(int64_t(l) + int64_t(offset));\n  \
+    \          } else {\n                const uint64_t range = uint64_t(r) - uint64_t(l)\
+    \ + 1;\n                const uint64_t offset = range == (uint64_t(1) << 32) ?\
+    \ x : x % range;\n                return T(l + T(offset));\n            }\n  \
+    \      } else {\n            static constexpr unsigned long long denom = 1ull\
+    \ << 53;\n            const unsigned long long x = next64() >> 11;\n         \
+    \   const double u = static_cast<double>(x) / denom;\n            return l + (r\
+    \ - l) * u;\n        }\n    }\n\n   private:\n    static constexpr unsigned long\
+    \ long MULT = 6364136223846793005;\n    static inline unsigned long long state\
+    \ = chrono::steady_clock::now().time_since_epoch().count();\n    inline unsigned\
+    \ int next32() {\n        unsigned long long x = state;\n        state *= MULT;\n\
+    \        const unsigned int count = x >> 61;\n        x ^= x >> 22;\n        return\
+    \ static_cast<unsigned int>(x >> (22 + count));\n    }\n    inline unsigned long\
+    \ long next64() {\n        return (static_cast<unsigned long long>(next32()) <<\
+    \ 32) | next32();\n    }\n} rng;\n#line 3 \"src/modint/static_modint.hpp\"\ntemplate\
+    \ <uint32_t m>\nstruct StaticModint {\n    using mint = StaticModint;\n    static\
+    \ constexpr uint32_t mod() {\n        return m;\n    }\n    static constexpr mint\
+    \ raw(const uint32_t v) {\n        mint a;\n        a._v = v;\n        return\
     \ a;\n    }\n    constexpr StaticModint()\n        : _v(0) {}\n    template <class\
     \ T>\n    constexpr StaticModint(const T& v) {\n        static_assert(is_integral_v<T>);\n\
     \        if constexpr(is_signed_v<T>) {\n            int64_t x = int64_t(v % int64_t(m));\n\
@@ -272,7 +278,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/convolution_ll.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 01:57:55+09:00'
+  timestamp: '2026-07-04 16:35:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/convolution_ll.test.cpp

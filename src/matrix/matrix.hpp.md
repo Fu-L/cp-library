@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -45,6 +45,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
     title: verify/library_checker/linear_algebra/system_of_linear_equations.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/graph_regression.test.cpp
+    title: verify/unit_test/graph/graph_regression.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/matrix/matrix.test.cpp
+    title: verify/unit_test/matrix/matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -141,6 +147,8 @@ data:
   timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/matrix/matrix.test.cpp
+  - verify/unit_test/graph/graph_regression.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_directed.test.cpp
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   - verify/library_checker/linear_algebra/pow_of_matrix.test.cpp

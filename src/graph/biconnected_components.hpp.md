@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/biconnected_components.test.cpp
     title: verify/library_checker/graph/biconnected_components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/graph/biconnected_components.test.cpp
+    title: verify/unit_test/graph/biconnected_components.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -106,6 +109,7 @@ data:
   timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/graph/biconnected_components.test.cpp
   - verify/library_checker/graph/biconnected_components.test.cpp
 documentation_of: src/graph/biconnected_components.hpp
 layout: document

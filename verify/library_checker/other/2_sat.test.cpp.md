@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/two_sat.hpp
     title: TwoSAT
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

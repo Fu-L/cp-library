@@ -13,14 +13,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/fps/formal_power_series_regression.test.cpp
+    title: verify/unit_test/fps/formal_power_series_regression.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
@@ -416,6 +419,7 @@ data:
   timestamp: '2026-07-04 15:50:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/fps/formal_power_series_regression.test.cpp
   - verify/yukicoder/1559.test.cpp
 documentation_of: src/fps/formal_power_series_arbitrary.hpp
 layout: document

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
   _extendedVerifiedWith:
@@ -21,9 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/lcm_convolution.test.cpp
     title: verify/library_checker/convolution/lcm_convolution.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/unit_test/convolution/empty_convolution.test.cpp
+    title: verify/unit_test/convolution/empty_convolution.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -97,8 +100,9 @@ data:
   - src/convolution/lcm_convolution.hpp
   - src/convolution/gcd_convolution.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/unit_test/convolution/empty_convolution.test.cpp
   - verify/library_checker/convolution/gcd_convolution.test.cpp
   - verify/library_checker/convolution/lcm_convolution.test.cpp
 documentation_of: src/math/divisor_multiple_transform.hpp

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'
@@ -63,10 +63,10 @@ data:
     \        vector<int> u(n - 1), v(n - 1);\n        const vector<int> pruefer =\
     \ vec(n - 2, 0, n - 1);\n        set<int> st;\n        vector<int> cnt(n);\n \
     \       for(int i = 0; i < n; ++i) st.insert(i);\n        auto add = [&](const\
-    \ int x) -> void {\n            if(x > n) return;\n            if(cnt[x] == 0)\
+    \ int x) -> void {\n            if(x >= n) return;\n            if(cnt[x] == 0)\
     \ st.erase(x);\n            ++cnt[x];\n        };\n        auto del = [&](const\
-    \ int x) -> void {\n            if(x > n) return;\n            --cnt[x];\n   \
-    \         if(cnt[x] == 0) st.insert(x);\n        };\n        for(int i = 0; i\
+    \ int x) -> void {\n            if(x >= n) return;\n            --cnt[x];\n  \
+    \          if(cnt[x] == 0) st.insert(x);\n        };\n        for(int i = 0; i\
     \ < n - 2; ++i) add(pruefer[i]);\n        for(int i = 0; i < n - 2; ++i) {\n \
     \           const int a = *st.begin();\n            const int b = pruefer[i];\n\
     \            u[i] = a + one;\n            v[i] = b + one;\n            del(b);\n\
@@ -220,7 +220,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/tree/centroid.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 16:19:05+09:00'
+  timestamp: '2026-07-04 16:35:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/tree/centroid.test.cpp

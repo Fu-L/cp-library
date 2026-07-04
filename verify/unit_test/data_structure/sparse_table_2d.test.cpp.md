@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -60,10 +60,10 @@ data:
     \        vector<int> u(n - 1), v(n - 1);\n        const vector<int> pruefer =\
     \ vec(n - 2, 0, n - 1);\n        set<int> st;\n        vector<int> cnt(n);\n \
     \       for(int i = 0; i < n; ++i) st.insert(i);\n        auto add = [&](const\
-    \ int x) -> void {\n            if(x > n) return;\n            if(cnt[x] == 0)\
+    \ int x) -> void {\n            if(x >= n) return;\n            if(cnt[x] == 0)\
     \ st.erase(x);\n            ++cnt[x];\n        };\n        auto del = [&](const\
-    \ int x) -> void {\n            if(x > n) return;\n            --cnt[x];\n   \
-    \         if(cnt[x] == 0) st.insert(x);\n        };\n        for(int i = 0; i\
+    \ int x) -> void {\n            if(x >= n) return;\n            --cnt[x];\n  \
+    \          if(cnt[x] == 0) st.insert(x);\n        };\n        for(int i = 0; i\
     \ < n - 2; ++i) add(pruefer[i]);\n        for(int i = 0; i < n - 2; ++i) {\n \
     \           const int a = *st.begin();\n            const int b = pruefer[i];\n\
     \            u[i] = a + one;\n            v[i] = b + one;\n            del(b);\n\
@@ -168,9 +168,12 @@ data:
     \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
     \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
     \       }\n        assert(st.prod(xl, xr, yl, yr) == expected);\n    }\n}\nint\
-    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
-    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
-    \ << '\\n';\n}\n"
+    \ main(void) {\n    {\n        SparseTable2D<int, op, e> st(vector<vector<int>>{});\n\
+    \        assert(st.prod(0, 0, 0, 0) == e());\n        SparseTable2D<int, op, e>\
+    \ st2(vector<vector<int>>(3));\n        assert(st2.prod(0, 3, 0, 0) == e());\n\
+    \    }\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n       \
+    \ test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\\
+    n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/data_structure/sparse_table_2d.hpp\"\
     \nint op(int a, int b) {\n    return min(a, b);\n}\nint e() {\n    return (int)1e9;\n\
@@ -182,9 +185,12 @@ data:
     \        int expected = 1e9;\n        rep(i, xl, xr) {\n            rep(j, yl,\
     \ yr) {\n                expected = min(expected, a[i][j]);\n            }\n \
     \       }\n        assert(st.prod(xl, xr, yl, yr) == expected);\n    }\n}\nint\
-    \ main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n\
-    \        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b\
-    \ << '\\n';\n}"
+    \ main(void) {\n    {\n        SparseTable2D<int, op, e> st(vector<vector<int>>{});\n\
+    \        assert(st.prod(0, 0, 0, 0) == e());\n        SparseTable2D<int, op, e>\
+    \ st2(vector<vector<int>>(3));\n        assert(st2.prod(0, 3, 0, 0) == e());\n\
+    \    }\n    constexpr int test_num = 100;\n    rep(i, 0, test_num) {\n       \
+    \ test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\\
+    n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/random/random_number_generator.hpp
@@ -192,7 +198,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 15:44:36+09:00'
+  timestamp: '2026-07-04 16:35:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/sparse_table_2d.test.cpp

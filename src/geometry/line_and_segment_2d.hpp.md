@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/template.hpp
     title: template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -81,6 +81,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
     title: verify/aizu_online_judge/cgl/tangent_to_a_circle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/geometry/geometry_regression.test.cpp
+    title: verify/unit_test/geometry/geometry_regression.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -211,6 +214,7 @@ data:
   timestamp: '2026-07-04 00:41:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/geometry/geometry_regression.test.cpp
   - verify/aizu_online_judge/cgl/cross_points_of_a_circle_and_a_line.test.cpp
   - verify/aizu_online_judge/cgl/intersection_of_a_circle_and_a_polygon.test.cpp
   - verify/aizu_online_judge/cgl/cross_points_of_circles.test.cpp
