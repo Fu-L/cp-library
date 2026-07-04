@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/topological_sort.hpp
     title: topological_sort
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -49,13 +49,13 @@ data:
     \ <typename T>\nvector<int> topological_sort(const Graph<T>& g) {\n    const int\
     \ n = g.size();\n    vector<int> deg(n);\n    for(int i = 0; i < n; ++i) {\n \
     \       for(const auto& e : g[i]) {\n            ++deg[e.to];\n        }\n   \
-    \ }\n    stack<int> st;\n    for(int i = 0; i < n; ++i) {\n        if(deg[i] ==\
-    \ 0) {\n            st.emplace(i);\n        }\n    }\n    vector<int> res;\n \
-    \   res.reserve(n);\n    while(!st.empty()) {\n        const int p = st.top();\n\
-    \        st.pop();\n        res.emplace_back(p);\n        for(const Edge<T>& e\
-    \ : g[p]) {\n            if(--deg[e.to] == 0) {\n                st.emplace(e.to);\n\
-    \            }\n        }\n    }\n    if((int)res.size() != n) return {};\n  \
-    \  return res;\n}\n#line 5 \"verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp\"\
+    \ }\n    vector<int> st;\n    st.reserve(n);\n    for(int i = 0; i < n; ++i) {\n\
+    \        if(deg[i] == 0) {\n            st.emplace_back(i);\n        }\n    }\n\
+    \    vector<int> res;\n    res.reserve(n);\n    while(!st.empty()) {\n       \
+    \ const int p = st.back();\n        st.pop_back();\n        res.emplace_back(p);\n\
+    \        for(const Edge<T>& e : g[p]) {\n            if(--deg[e.to] == 0) {\n\
+    \                st.emplace_back(e.to);\n            }\n        }\n    }\n   \
+    \ if((int)res.size() != n) return {};\n    return res;\n}\n#line 5 \"verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp\"\
     \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Graph<int> g(n);\n\
     \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add_directed_edge(u,\
     \ v);\n    }\n    vector<int> topo = topological_sort(g);\n    if((int)topo.size()\
@@ -76,7 +76,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/counting_spanning_tree_undirected.hpp
     title: counting_spanning_tree_undirected
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -160,12 +160,12 @@ data:
     \ * coeff;\n            }\n        }\n        ++rank;\n    }\n    return {rank,\
     \ det};\n}\n#line 6 \"src/graph/counting_spanning_tree_undirected.hpp\"\ntemplate\
     \ <typename T, typename U>\nT counting_spanning_tree_undirected(const Graph<U>&\
-    \ g) {\n    const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int i =\
-    \ 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const auto&\
-    \ e : g[i]) {\n            --mat[i][e.to];\n        }\n    }\n    Matrix<T> lap(n\
-    \ - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n        for(int j = 0; j\
-    \ < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n    return\
-    \ gauss_elimination(lap).second;\n}\n#line 7 \"verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp\"\
+    \ g) {\n    const int n = g.size();\n    if(n == 0) return T(1);\n    Matrix<T>\
+    \ mat(n, n);\n    for(int i = 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n\
+    \        for(const auto& e : g[i]) {\n            --mat[i][e.to];\n        }\n\
+    \    }\n    Matrix<T> lap(n - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n\
+    \        for(int j = 0; j < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n\
+    \        }\n    }\n    return gauss_elimination(lap).second;\n}\n#line 7 \"verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp\"\
     \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Graph<int> g(n);\n\
     \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add_edge(u,\
     \ v);\n    }\n    cout << counting_spanning_tree_undirected<mint>(g) << '\\n';\n\
@@ -187,7 +187,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 15:50:24+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

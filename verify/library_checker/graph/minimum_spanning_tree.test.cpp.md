@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: UnionFind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/kruskal.hpp
     title: kruskal
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -70,12 +70,12 @@ data:
     \        }\n        for(int i = 0; i < n; ++i) {\n            result[group_size[leader_buf[i]]].push_back(i);\n\
     \        }\n        return result;\n    }\n\n   private:\n    int n;\n    vector<int>\
     \ data;\n};\n#line 5 \"src/graph/kruskal.hpp\"\ntemplate <typename T>\npair<T,\
-    \ Edges<T>> kruskal(const int n, Edges<T> es) {\n    sort(es.begin(), es.end(),\
-    \ [&](const Edge<T>& a, const Edge<T>& b) { return a.cost < b.cost; });\n    UnionFind\
-    \ uf(n);\n    T cost = 0;\n    Edges<T> res;\n    res.reserve(n - 1);\n    for(const\
-    \ Edge<T>& e : es) {\n        if(uf.same(e.from, e.to)) continue;\n        cost\
-    \ += e.cost;\n        uf.merge(e.from, e.to);\n        res.emplace_back(e);\n\
-    \    }\n    return {cost, res};\n}\n#line 5 \"verify/library_checker/graph/minimum_spanning_tree.test.cpp\"\
+    \ Edges<T>> kruskal(const int n, Edges<T> es) {\n    if(n <= 1) return {0, {}};\n\
+    \    sort(es.begin(), es.end(), [&](const Edge<T>& a, const Edge<T>& b) { return\
+    \ a.cost < b.cost; });\n    UnionFind uf(n);\n    T cost = 0;\n    Edges<T> res;\n\
+    \    res.reserve(n - 1);\n    for(const Edge<T>& e : es) {\n        if(uf.same(e.from,\
+    \ e.to)) continue;\n        cost += e.cost;\n        uf.merge(e.from, e.to);\n\
+    \        res.emplace_back(e);\n    }\n    return {cost, res};\n}\n#line 5 \"verify/library_checker/graph/minimum_spanning_tree.test.cpp\"\
     \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Edges<ll> e(m);\n \
     \   rep(i, 0, m) {\n        cin >> e[i].from >> e[i].to >> e[i].cost;\n      \
     \  e[i].idx = i;\n    }\n    auto [cost, tree] = kruskal(n, e);\n    cout << cost\
@@ -96,7 +96,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 15:44:36+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/minimum_spanning_tree.test.cpp

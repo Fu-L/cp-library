@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'
@@ -51,13 +51,13 @@ data:
     \ Edges = vector<Edge<T>>;\n#line 4 \"src/tree/rerooting.hpp\"\ntemplate <typename\
     \ DP, typename T, typename F1, typename F2>\nvector<DP> rerooting(const Graph<T>&\
     \ g, const F1& f1, const F2& f2, const DP& id) {\n    const int n = g.size();\n\
-    \    vector<DP> memo(n, id), dp(n, id);\n    auto dfs = [&](const auto& dfs, const\
-    \ int cur, const int par) -> void {\n        for(const Edge<T>& e : g[cur]) {\n\
-    \            if(e.to == par) continue;\n            dfs(dfs, e.to, cur);\n   \
-    \         memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));\n        }\n \
-    \   };\n    auto efs = [&](const auto& efs, const int cur, const int par, const\
-    \ DP& pval) -> void {\n        vector<DP> buf;\n        for(const Edge<T>& e :\
-    \ g[cur]) {\n            if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
+    \    if(n == 0) return {};\n    vector<DP> memo(n, id), dp(n, id);\n    auto dfs\
+    \ = [&](const auto& dfs, const int cur, const int par) -> void {\n        for(const\
+    \ Edge<T>& e : g[cur]) {\n            if(e.to == par) continue;\n            dfs(dfs,\
+    \ e.to, cur);\n            memo[cur] = f1(memo[cur], f2(memo[e.to], e.to, cur));\n\
+    \        }\n    };\n    auto efs = [&](const auto& efs, const int cur, const int\
+    \ par, const DP& pval) -> void {\n        vector<DP> buf;\n        for(const Edge<T>&\
+    \ e : g[cur]) {\n            if(e.to == par) continue;\n            buf.emplace_back(f2(memo[e.to],\
     \ e.to, cur));\n        }\n        vector<DP> head(buf.size() + 1), tail(buf.size()\
     \ + 1);\n        head[0] = tail[buf.size()] = id;\n        for(int i = 0; i <\
     \ (int)buf.size(); ++i) head[i + 1] = f1(head[i], buf[i]);\n        for(int i\
@@ -154,7 +154,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/tree/tree_path_composite_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 01:57:55+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/tree/tree_path_composite_sum.test.cpp

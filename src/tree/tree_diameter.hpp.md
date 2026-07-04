@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -45,7 +45,20 @@ data:
     \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
     #line 4 \"src/tree/tree_diameter.hpp\"\ntemplate <typename T>\npair<T, vector<int>>\
-    \ tree_diameter(const Graph<T>& g) {\n    const int n = g.size();\n    vector<T>\
+    \ tree_diameter(const Graph<T>& g) {\n    const int n = g.size();\n    if(n ==\
+    \ 0) return {T(0), {}};\n    vector<T> depth(n);\n    vector<int> par(n);\n  \
+    \  auto dfs = [&](const auto& dfs, const int v, const int p, const T& d) -> void\
+    \ {\n        depth[v] = d;\n        par[v] = p;\n        for(const Edge<T>& e\
+    \ : g[v]) {\n            if(e.to == p) continue;\n            dfs(dfs, e.to, v,\
+    \ d + e.cost);\n        }\n    };\n    int s = 0;\n    for(int i = 0; i < 2; ++i)\
+    \ {\n        dfs(dfs, s, -1, 0);\n        T ma = -1;\n        for(int j = 0; j\
+    \ < n; ++j) {\n            if(depth[j] > ma) {\n                ma = depth[j];\n\
+    \                s = j;\n            }\n        }\n    }\n    vector<int> path;\n\
+    \    const T diameter = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n\
+    \        s = par[s];\n    }\n    return {diameter, path};\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
+    \ntemplate <typename T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g)\
+    \ {\n    const int n = g.size();\n    if(n == 0) return {T(0), {}};\n    vector<T>\
     \ depth(n);\n    vector<int> par(n);\n    auto dfs = [&](const auto& dfs, const\
     \ int v, const int p, const T& d) -> void {\n        depth[v] = d;\n        par[v]\
     \ = p;\n        for(const Edge<T>& e : g[v]) {\n            if(e.to == p) continue;\n\
@@ -55,26 +68,14 @@ data:
     \                ma = depth[j];\n                s = j;\n            }\n     \
     \   }\n    }\n    vector<int> path;\n    const T diameter = depth[s];\n    while(s\
     \ != -1) {\n        path.emplace_back(s);\n        s = par[s];\n    }\n    return\
-    \ {diameter, path};\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
-    \ntemplate <typename T>\npair<T, vector<int>> tree_diameter(const Graph<T>& g)\
-    \ {\n    const int n = g.size();\n    vector<T> depth(n);\n    vector<int> par(n);\n\
-    \    auto dfs = [&](const auto& dfs, const int v, const int p, const T& d) ->\
-    \ void {\n        depth[v] = d;\n        par[v] = p;\n        for(const Edge<T>&\
-    \ e : g[v]) {\n            if(e.to == p) continue;\n            dfs(dfs, e.to,\
-    \ v, d + e.cost);\n        }\n    };\n    int s = 0;\n    for(int i = 0; i < 2;\
-    \ ++i) {\n        dfs(dfs, s, -1, 0);\n        T ma = -1;\n        for(int j =\
-    \ 0; j < n; ++j) {\n            if(depth[j] > ma) {\n                ma = depth[j];\n\
-    \                s = j;\n            }\n        }\n    }\n    vector<int> path;\n\
-    \    const T diameter = depth[s];\n    while(s != -1) {\n        path.emplace_back(s);\n\
-    \        s = par[s];\n    }\n    return {diameter, path};\n}"
+    \ {diameter, path};\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
   path: src/tree/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/diameter_of_a_tree.test.cpp

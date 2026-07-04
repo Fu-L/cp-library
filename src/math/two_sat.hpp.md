@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/compressed_sparse_row.hpp
     title: CompressedSparseRow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/strongly_connected_components.hpp
     title: strongly_connected_components
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -49,42 +49,42 @@ data:
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
     #line 4 \"src/graph/compressed_sparse_row.hpp\"\ntemplate <typename T>\nstruct\
     \ CompressedSparseRow {\n    vector<int> start, elist;\n    CompressedSparseRow(const\
-    \ Graph<T>& g)\n        : start(g.size() + 1), elist(g.edge_size()) {\n      \
-    \  const int n = g.size();\n        for(int i = 0; i < n; ++i) {\n           \
-    \ start[i + 1] = start[i] + g[i].size();\n            int counter = start[i];\n\
-    \            for(const Edge<T>& e : g[i]) {\n                elist[counter++]\
-    \ = e.to;\n            }\n        }\n    }\n};\n#line 5 \"src/graph/strongly_connected_components.hpp\"\
-    \ntemplate <typename T>\npair<int, vector<int>> scc_ids(const Graph<T>& g) {\n\
-    \    const int n = g.size();\n    const CompressedSparseRow<T> g_csr(g);\n   \
-    \ int now_ord = 0, group_num = 0;\n    vector<int> visited, low(n), ord(n, -1),\
-    \ ids(n);\n    visited.reserve(n);\n    auto dfs = [&](const auto& dfs, const\
-    \ int v) -> void {\n        low[v] = ord[v] = now_ord++;\n        visited.emplace_back(v);\n\
-    \        for(int i = g_csr.start[v]; i < g_csr.start[v + 1]; ++i) {\n        \
-    \    const int to = g_csr.elist[i];\n            if(ord[to] == -1) {\n       \
-    \         dfs(dfs, to);\n                low[v] = min(low[v], low[to]);\n    \
-    \        } else {\n                low[v] = min(low[v], ord[to]);\n          \
-    \  }\n        }\n        if(low[v] == ord[v]) {\n            while(true) {\n \
-    \               const int u = visited.back();\n                visited.pop_back();\n\
-    \                ord[u] = n;\n                ids[u] = group_num;\n          \
-    \      if(u == v) break;\n            }\n            ++group_num;\n        }\n\
-    \    };\n    for(int i = 0; i < n; ++i) {\n        if(ord[i] == -1) {\n      \
-    \      dfs(dfs, i);\n        }\n    }\n    for(auto& x : ids) x = group_num -\
-    \ 1 - x;\n    return {group_num, ids};\n}\ntemplate <typename T>\nvector<vector<int>>\
-    \ strongly_connected_components(const Graph<T>& g) {\n    const auto [group_num,\
-    \ ids] = scc_ids(g);\n    const int n = g.size();\n    vector<int> counts(group_num);\n\
-    \    for(const int x : ids) ++counts[x];\n    vector<vector<int>> groups(group_num);\n\
-    \    for(int i = 0; i < group_num; ++i) groups[i].reserve(counts[i]);\n    for(int\
-    \ i = 0; i < n; ++i) groups[ids[i]].emplace_back(i);\n    return groups;\n}\n\
-    #line 5 \"src/math/two_sat.hpp\"\nstruct TwoSAT {\n    TwoSAT(int N)\n       \
-    \ : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const int i, const bool\
-    \ f, const int j, const bool g) {\n        graph.add_directed_edge(2 * i + (f\
-    \ ? 0 : 1), 2 * j + (g ? 1 : 0));\n        graph.add_directed_edge(2 * j + (g\
-    \ ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool satisfiable() {\n        const\
-    \ vector<int> id = scc_ids(graph).second;\n        for(int i = 0; i < n; ++i)\
-    \ {\n            if(id[2 * i] == id[2 * i + 1]) return false;\n            ans[i]\
-    \ = id[2 * i] < id[2 * i + 1];\n        }\n        return true;\n    }\n    vector<bool>\
-    \ answer() const {\n        return ans;\n    }\n\n   private:\n    int n;\n  \
-    \  vector<bool> ans;\n    Graph<int> graph;\n};\n"
+    \ Graph<T>& g)\n        : start(g.size() + 1) {\n        const int n = g.size();\n\
+    \        for(int i = 0; i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n\
+    \        }\n        elist.resize(start[n]);\n        for(int i = 0; i < n; ++i)\
+    \ {\n            int counter = start[i];\n            for(const Edge<T>& e : g[i])\
+    \ {\n                elist[counter++] = e.to;\n            }\n        }\n    }\n\
+    };\n#line 5 \"src/graph/strongly_connected_components.hpp\"\ntemplate <typename\
+    \ T>\npair<int, vector<int>> scc_ids(const Graph<T>& g) {\n    const int n = g.size();\n\
+    \    const CompressedSparseRow<T> g_csr(g);\n    int now_ord = 0, group_num =\
+    \ 0;\n    vector<int> visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n\
+    \    auto dfs = [&](const auto& dfs, const int v) -> void {\n        low[v] =\
+    \ ord[v] = now_ord++;\n        visited.emplace_back(v);\n        for(int i = g_csr.start[v];\
+    \ i < g_csr.start[v + 1]; ++i) {\n            const int to = g_csr.elist[i];\n\
+    \            if(ord[to] == -1) {\n                dfs(dfs, to);\n            \
+    \    low[v] = min(low[v], low[to]);\n            } else {\n                low[v]\
+    \ = min(low[v], ord[to]);\n            }\n        }\n        if(low[v] == ord[v])\
+    \ {\n            while(true) {\n                const int u = visited.back();\n\
+    \                visited.pop_back();\n                ord[u] = n;\n          \
+    \      ids[u] = group_num;\n                if(u == v) break;\n            }\n\
+    \            ++group_num;\n        }\n    };\n    for(int i = 0; i < n; ++i) {\n\
+    \        if(ord[i] == -1) {\n            dfs(dfs, i);\n        }\n    }\n    for(auto&\
+    \ x : ids) x = group_num - 1 - x;\n    return {group_num, ids};\n}\ntemplate <typename\
+    \ T>\nvector<vector<int>> strongly_connected_components(const Graph<T>& g) {\n\
+    \    const auto [group_num, ids] = scc_ids(g);\n    const int n = g.size();\n\
+    \    vector<int> counts(group_num);\n    for(const int x : ids) ++counts[x];\n\
+    \    vector<vector<int>> groups(group_num);\n    for(int i = 0; i < group_num;\
+    \ ++i) groups[i].reserve(counts[i]);\n    for(int i = 0; i < n; ++i) groups[ids[i]].emplace_back(i);\n\
+    \    return groups;\n}\n#line 5 \"src/math/two_sat.hpp\"\nstruct TwoSAT {\n  \
+    \  TwoSAT(int N)\n        : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const\
+    \ int i, const bool f, const int j, const bool g) {\n        graph.add_directed_edge(2\
+    \ * i + (f ? 0 : 1), 2 * j + (g ? 1 : 0));\n        graph.add_directed_edge(2\
+    \ * j + (g ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool satisfiable() {\n\
+    \        const vector<int> id = scc_ids(graph).second;\n        for(int i = 0;\
+    \ i < n; ++i) {\n            if(id[2 * i] == id[2 * i + 1]) return false;\n  \
+    \          ans[i] = id[2 * i] < id[2 * i + 1];\n        }\n        return true;\n\
+    \    }\n    vector<bool> answer() const {\n        return ans;\n    }\n\n   private:\n\
+    \    int n;\n    vector<bool> ans;\n    Graph<int> graph;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
     \n#include \"../graph/strongly_connected_components.hpp\"\nstruct TwoSAT {\n \
     \   TwoSAT(int N)\n        : n(N), ans(N), graph(2 * N) {}\n    void add_clause(const\
@@ -104,7 +104,7 @@ data:
   isVerificationFile: false
   path: src/math/two_sat.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/other/2_sat.test.cpp

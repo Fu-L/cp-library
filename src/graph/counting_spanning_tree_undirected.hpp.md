@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -99,21 +99,21 @@ data:
     \ * coeff;\n            }\n        }\n        ++rank;\n    }\n    return {rank,\
     \ det};\n}\n#line 6 \"src/graph/counting_spanning_tree_undirected.hpp\"\ntemplate\
     \ <typename T, typename U>\nT counting_spanning_tree_undirected(const Graph<U>&\
-    \ g) {\n    const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int i =\
-    \ 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const auto&\
-    \ e : g[i]) {\n            --mat[i][e.to];\n        }\n    }\n    Matrix<T> lap(n\
-    \ - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n        for(int j = 0; j\
-    \ < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n    return\
-    \ gauss_elimination(lap).second;\n}\n"
+    \ g) {\n    const int n = g.size();\n    if(n == 0) return T(1);\n    Matrix<T>\
+    \ mat(n, n);\n    for(int i = 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n\
+    \        for(const auto& e : g[i]) {\n            --mat[i][e.to];\n        }\n\
+    \    }\n    Matrix<T> lap(n - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n\
+    \        for(int j = 0; j < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n\
+    \        }\n    }\n    return gauss_elimination(lap).second;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
     \n#include \"../matrix/matrix.hpp\"\n#include \"../matrix/gauss_elimination.hpp\"\
     \ntemplate <typename T, typename U>\nT counting_spanning_tree_undirected(const\
-    \ Graph<U>& g) {\n    const int n = g.size();\n    Matrix<T> mat(n, n);\n    for(int\
-    \ i = 0; i < n; ++i) {\n        mat[i][i] = (int)g[i].size();\n        for(const\
-    \ auto& e : g[i]) {\n            --mat[i][e.to];\n        }\n    }\n    Matrix<T>\
-    \ lap(n - 1, n - 1);\n    for(int i = 0; i < n - 1; ++i) {\n        for(int j\
-    \ = 0; j < n - 1; ++j) {\n            lap[i][j] = mat[i][j];\n        }\n    }\n\
-    \    return gauss_elimination(lap).second;\n}"
+    \ Graph<U>& g) {\n    const int n = g.size();\n    if(n == 0) return T(1);\n \
+    \   Matrix<T> mat(n, n);\n    for(int i = 0; i < n; ++i) {\n        mat[i][i]\
+    \ = (int)g[i].size();\n        for(const auto& e : g[i]) {\n            --mat[i][e.to];\n\
+    \        }\n    }\n    Matrix<T> lap(n - 1, n - 1);\n    for(int i = 0; i < n\
+    \ - 1; ++i) {\n        for(int j = 0; j < n - 1; ++j) {\n            lap[i][j]\
+    \ = mat[i][j];\n        }\n    }\n    return gauss_elimination(lap).second;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -122,7 +122,7 @@ data:
   isVerificationFile: false
   path: src/graph/counting_spanning_tree_undirected.hpp
   requiredBy: []
-  timestamp: '2026-07-04 15:50:24+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/enumerative_combinatrics/counting_spanning_tree_undirected.test.cpp

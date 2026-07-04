@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -43,25 +43,7 @@ data:
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
     #line 4 \"src/tree/centroid_decomposition.hpp\"\ntemplate <typename T>\npair<Graph<int>,\
     \ int> centroid_decomposition(const Graph<T>& g) {\n    const int n = g.size();\n\
-    \    vector<int> sub(n);\n    vector<bool> visited(n);\n    Graph<int> tree(n);\n\
-    \    auto get_size = [&](const auto& get_size, const int cur, const int par) ->\
-    \ int {\n        sub[cur] = 1;\n        for(const Edge<T>& e : g[cur]) {\n   \
-    \         if(e.to == par or visited[e.to]) continue;\n            sub[cur] +=\
-    \ get_size(get_size, e.to, cur);\n        }\n        return sub[cur];\n    };\n\
-    \    auto get_centroid = [&](const auto& get_centroid, const int cur, const int\
-    \ par, const int mid) -> int {\n        for(const Edge<T>& e : g[cur]) {\n   \
-    \         if(e.to == par or visited[e.to]) continue;\n            if(sub[e.to]\
-    \ > mid) return get_centroid(get_centroid, e.to, cur, mid);\n        }\n     \
-    \   return cur;\n    };\n    auto dfs = [&](const auto& dfs, const int cur) ->\
-    \ int {\n        const int centroid = get_centroid(get_centroid, cur, -1, get_size(get_size,\
-    \ cur, -1) / 2);\n        visited[centroid] = true;\n        for(const Edge<T>&\
-    \ e : g[centroid]) {\n            if(visited[e.to]) continue;\n            const\
-    \ int nex = dfs(dfs, e.to);\n            if(centroid != nex) tree.add_directed_edge(centroid,\
-    \ nex);\n        }\n        visited[centroid] = false;\n        return centroid;\n\
-    \    };\n    const int root = dfs(dfs, 0);\n    return {tree, root};\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
-    \ntemplate <typename T>\npair<Graph<int>, int> centroid_decomposition(const Graph<T>&\
-    \ g) {\n    const int n = g.size();\n    vector<int> sub(n);\n    vector<bool>\
+    \    if(n == 0) return {Graph<int>(0), -1};\n    vector<int> sub(n);\n    vector<bool>\
     \ visited(n);\n    Graph<int> tree(n);\n    auto get_size = [&](const auto& get_size,\
     \ const int cur, const int par) -> int {\n        sub[cur] = 1;\n        for(const\
     \ Edge<T>& e : g[cur]) {\n            if(e.to == par or visited[e.to]) continue;\n\
@@ -77,15 +59,34 @@ data:
     \            const int nex = dfs(dfs, e.to);\n            if(centroid != nex)\
     \ tree.add_directed_edge(centroid, nex);\n        }\n        visited[centroid]\
     \ = false;\n        return centroid;\n    };\n    const int root = dfs(dfs, 0);\n\
-    \    return {tree, root};\n}"
+    \    return {tree, root};\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
+    \ntemplate <typename T>\npair<Graph<int>, int> centroid_decomposition(const Graph<T>&\
+    \ g) {\n    const int n = g.size();\n    if(n == 0) return {Graph<int>(0), -1};\n\
+    \    vector<int> sub(n);\n    vector<bool> visited(n);\n    Graph<int> tree(n);\n\
+    \    auto get_size = [&](const auto& get_size, const int cur, const int par) ->\
+    \ int {\n        sub[cur] = 1;\n        for(const Edge<T>& e : g[cur]) {\n   \
+    \         if(e.to == par or visited[e.to]) continue;\n            sub[cur] +=\
+    \ get_size(get_size, e.to, cur);\n        }\n        return sub[cur];\n    };\n\
+    \    auto get_centroid = [&](const auto& get_centroid, const int cur, const int\
+    \ par, const int mid) -> int {\n        for(const Edge<T>& e : g[cur]) {\n   \
+    \         if(e.to == par or visited[e.to]) continue;\n            if(sub[e.to]\
+    \ > mid) return get_centroid(get_centroid, e.to, cur, mid);\n        }\n     \
+    \   return cur;\n    };\n    auto dfs = [&](const auto& dfs, const int cur) ->\
+    \ int {\n        const int centroid = get_centroid(get_centroid, cur, -1, get_size(get_size,\
+    \ cur, -1) / 2);\n        visited[centroid] = true;\n        for(const Edge<T>&\
+    \ e : g[centroid]) {\n            if(visited[e.to]) continue;\n            const\
+    \ int nex = dfs(dfs, e.to);\n            if(centroid != nex) tree.add_directed_edge(centroid,\
+    \ nex);\n        }\n        visited[centroid] = false;\n        return centroid;\n\
+    \    };\n    const int root = dfs(dfs, 0);\n    return {tree, root};\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
   path: src/tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2026-07-04 16:19:05+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
 documentation_of: src/tree/centroid_decomposition.hpp

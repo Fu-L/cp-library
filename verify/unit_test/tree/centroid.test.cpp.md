@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   - icon: ':heavy_check_mark:'
@@ -158,39 +158,39 @@ data:
     \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
     #line 4 \"src/tree/centroid.hpp\"\ntemplate <typename T>\nvector<int> centroid(const\
-    \ Graph<T>& g) {\n    const int n = g.size();\n    stack<pair<int, int>> st;\n\
-    \    st.emplace(0, -1);\n    vector<int> sz(n), par(n);\n    while(!st.empty())\
-    \ {\n        const pair<int, int> p = st.top();\n        if(sz[p.first] == 0)\
-    \ {\n            sz[p.first] = 1;\n            for(const Edge<T>& e : g[p.first])\
-    \ {\n                if(e.to != p.second) {\n                    st.emplace(e.to,\
-    \ p.first);\n                }\n            }\n        } else {\n            for(const\
+    \ Graph<T>& g) {\n    const int n = g.size();\n    if(n == 0) return {};\n   \
+    \ stack<pair<int, int>> st;\n    st.emplace(0, -1);\n    vector<int> sz(n), par(n);\n\
+    \    while(!st.empty()) {\n        const pair<int, int> p = st.top();\n      \
+    \  if(sz[p.first] == 0) {\n            sz[p.first] = 1;\n            for(const\
     \ Edge<T>& e : g[p.first]) {\n                if(e.to != p.second) {\n       \
-    \             sz[p.first] += sz[e.to];\n                }\n            }\n   \
-    \         par[p.first] = p.second;\n            st.pop();\n        }\n    }\n\
-    \    vector<int> ret;\n    int size = n;\n    for(int i = 0; i < n; ++i) {\n \
-    \       int val = n - sz[i];\n        for(const Edge<T>& e : g[i]) {\n       \
-    \     if(e.to != par[i]) {\n                val = max(val, sz[e.to]);\n      \
-    \      }\n        }\n        if(val < size) size = val, ret.clear();\n       \
-    \ if(val == size) ret.emplace_back(i);\n    }\n    return ret;\n}\n#line 6 \"\
-    verify/unit_test/tree/centroid.test.cpp\"\nvoid test() {\n    int n = rng(2, 1000);\n\
-    \    auto [u, v] = rng.tree(n, false);\n    Graph<int> g(n);\n    rep(i, 0, n\
-    \ - 1) {\n        g.add_edge(u[i], v[i]);\n    }\n    vector<bool> visited(n);\n\
-    \    auto dfs = [&](auto& dfs, int cur, int root, bool is_centroid) -> int {\n\
-    \        visited[cur] = true;\n        vector<int> sub;\n        int sum = 1;\n\
-    \        for(const auto& e : g[cur]) {\n            if(visited[e.to]) continue;\n\
-    \            sub.push_back(dfs(dfs, e.to, root, is_centroid));\n            sum\
-    \ += sub.back();\n        }\n        if(cur == root) {\n            if(is_centroid)\
-    \ {\n                for(const int val : sub) {\n                    assert(2\
-    \ * val <= n);\n                }\n            } else {\n                bool\
-    \ flag = false;\n                for(const int val : sub) {\n                \
-    \    if(2 * val > n) flag = true;\n                }\n                assert(flag);\n\
-    \            }\n        }\n        visited[cur] = false;\n        return sum;\n\
-    \    };\n    vector<int> cent = centroid(g);\n    rep(i, 0, n) {\n        bool\
-    \ is_centroid = false;\n        for(const int x : cent) {\n            if(i ==\
-    \ x) is_centroid = true;\n        }\n        dfs(dfs, i, i, is_centroid);\n  \
-    \  }\n}\nint main(void) {\n    constexpr int test_num = 100;\n    rep(i, 0, test_num)\
-    \ {\n        test();\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a\
-    \ + b << '\\n';\n}\n"
+    \             st.emplace(e.to, p.first);\n                }\n            }\n \
+    \       } else {\n            for(const Edge<T>& e : g[p.first]) {\n         \
+    \       if(e.to != p.second) {\n                    sz[p.first] += sz[e.to];\n\
+    \                }\n            }\n            par[p.first] = p.second;\n    \
+    \        st.pop();\n        }\n    }\n    vector<int> ret;\n    int size = n;\n\
+    \    for(int i = 0; i < n; ++i) {\n        int val = n - sz[i];\n        for(const\
+    \ Edge<T>& e : g[i]) {\n            if(e.to != par[i]) {\n                val\
+    \ = max(val, sz[e.to]);\n            }\n        }\n        if(val < size) size\
+    \ = val, ret.clear();\n        if(val == size) ret.emplace_back(i);\n    }\n \
+    \   return ret;\n}\n#line 6 \"verify/unit_test/tree/centroid.test.cpp\"\nvoid\
+    \ test() {\n    int n = rng(2, 1000);\n    auto [u, v] = rng.tree(n, false);\n\
+    \    Graph<int> g(n);\n    rep(i, 0, n - 1) {\n        g.add_edge(u[i], v[i]);\n\
+    \    }\n    vector<bool> visited(n);\n    auto dfs = [&](auto& dfs, int cur, int\
+    \ root, bool is_centroid) -> int {\n        visited[cur] = true;\n        vector<int>\
+    \ sub;\n        int sum = 1;\n        for(const auto& e : g[cur]) {\n        \
+    \    if(visited[e.to]) continue;\n            sub.push_back(dfs(dfs, e.to, root,\
+    \ is_centroid));\n            sum += sub.back();\n        }\n        if(cur ==\
+    \ root) {\n            if(is_centroid) {\n                for(const int val :\
+    \ sub) {\n                    assert(2 * val <= n);\n                }\n     \
+    \       } else {\n                bool flag = false;\n                for(const\
+    \ int val : sub) {\n                    if(2 * val > n) flag = true;\n       \
+    \         }\n                assert(flag);\n            }\n        }\n       \
+    \ visited[cur] = false;\n        return sum;\n    };\n    vector<int> cent = centroid(g);\n\
+    \    rep(i, 0, n) {\n        bool is_centroid = false;\n        for(const int\
+    \ x : cent) {\n            if(i == x) is_centroid = true;\n        }\n       \
+    \ dfs(dfs, i, i, is_centroid);\n    }\n}\nint main(void) {\n    constexpr int\
+    \ test_num = 100;\n    rep(i, 0, test_num) {\n        test();\n    }\n    int\
+    \ a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/random/random_number_generator.hpp\"\n#include \"../../../src/graph/graph_template.hpp\"\
     \n#include \"../../../src/tree/centroid.hpp\"\nvoid test() {\n    int n = rng(2,\
@@ -220,7 +220,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/tree/centroid.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/tree/centroid.test.cpp

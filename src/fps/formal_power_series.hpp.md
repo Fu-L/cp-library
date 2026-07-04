@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution.hpp
     title: convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/pow_mod.hpp
     title: pow_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: primitive_root
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -39,12 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -441,7 +441,7 @@ data:
   path: src/fps/formal_power_series.hpp
   requiredBy: []
   timestamp: '2026-07-04 15:50:24+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/other/kth_term_of_linearly_recurrent_sequence.test.cpp
   - verify/library_checker/other/find_linear_recurrence.test.cpp

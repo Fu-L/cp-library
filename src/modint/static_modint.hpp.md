@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_arbitrary.hpp
     title: convolution_arbitrary
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_arbitrary.hpp
     title: FormalPowerSeriesArbitrary
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/fps/formal_power_series_ll.hpp
     title: FormalPowerSeriesLL
   - icon: ':heavy_check_mark:'
@@ -105,13 +105,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
     title: verify/library_checker/polynomial/pow_of_formal_power_series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
     title: verify/library_checker/polynomial/product_of_polynomial_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/wildcard_pattern_matching.test.cpp
     title: verify/library_checker/string/wildcard_pattern_matching.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
     title: verify/library_checker/tree/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -129,12 +129,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/tree/auxiliary_tree.test.cpp
     title: verify/unit_test/tree/auxiliary_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/1559.test.cpp
     title: verify/yukicoder/1559.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -258,7 +258,7 @@ data:
   - src/fps/formal_power_series_arbitrary.hpp
   - src/fps/formal_power_series_ll.hpp
   timestamp: '2026-07-04 01:57:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/convolution/convolution_ll.test.cpp

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
   - icon: ':heavy_check_mark:'
     path: src/graph/low_link.hpp
     title: LowLink
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -64,37 +64,38 @@ data:
     \ <typename T>\nstruct BiconnectedComponents {\n    vector<vector<pair<int, int>>>\
     \ bc;\n    BiconnectedComponents(const Graph<T>& g)\n        : n(g.size()), lowlink(g),\
     \ used(n) {\n        for(int i = 0; i < n; ++i) {\n            if(!used[i]) dfs(g,\
-    \ i, -1);\n        }\n    }\n\n   private:\n    int n;\n    LowLink<T> lowlink;\n\
-    \    vector<int> used;\n    vector<pair<int, int>> tmp;\n    void dfs(const Graph<T>&\
-    \ g, const int idx, const int par) {\n        used[idx] = true;\n        for(const\
-    \ Edge<T>& e : g[idx]) {\n            const int to = e.to;\n            if(to\
-    \ == par) continue;\n            if(!used[to] or lowlink.ord[to] < lowlink.ord[idx])\
-    \ {\n                tmp.emplace_back(minmax(idx, to));\n            }\n     \
-    \       if(!used[to]) {\n                dfs(g, to, idx);\n                if(lowlink.low[to]\
-    \ >= lowlink.ord[idx]) {\n                    bc.emplace_back();\n           \
-    \         while(true) {\n                        const pair<int, int> ed = tmp.back();\n\
-    \                        bc.back().emplace_back(ed);\n                       \
-    \ tmp.pop_back();\n                        if(ed.first == min(idx, to) and ed.second\
-    \ == max(idx, to)) break;\n                    }\n                }\n        \
-    \    }\n        }\n    }\n};\n"
+    \ i, -1);\n        }\n    }\n\n   private:\n    struct edge_key {\n        int\
+    \ u, v, idx;\n    };\n    int n;\n    LowLink<T> lowlink;\n    vector<int> used;\n\
+    \    vector<edge_key> tmp;\n    void dfs(const Graph<T>& g, const int idx, const\
+    \ int par_edge_idx) {\n        used[idx] = true;\n        for(const Edge<T>& e\
+    \ : g[idx]) {\n            const int to = e.to;\n            if(e.idx == par_edge_idx)\
+    \ continue;\n            if(!used[to] or lowlink.ord[to] < lowlink.ord[idx]) {\n\
+    \                const auto [u, v] = minmax(idx, to);\n                tmp.push_back({u,\
+    \ v, e.idx});\n            }\n            if(!used[to]) {\n                dfs(g,\
+    \ to, e.idx);\n                if(lowlink.low[to] >= lowlink.ord[idx]) {\n   \
+    \                 bc.emplace_back();\n                    while(true) {\n    \
+    \                    const edge_key ed = tmp.back();\n                       \
+    \ bc.back().emplace_back(ed.u, ed.v);\n                        tmp.pop_back();\n\
+    \                        if(ed.idx == e.idx) break;\n                    }\n \
+    \               }\n            }\n        }\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
     \n#include \"./low_link.hpp\"\ntemplate <typename T>\nstruct BiconnectedComponents\
     \ {\n    vector<vector<pair<int, int>>> bc;\n    BiconnectedComponents(const Graph<T>&\
     \ g)\n        : n(g.size()), lowlink(g), used(n) {\n        for(int i = 0; i <\
     \ n; ++i) {\n            if(!used[i]) dfs(g, i, -1);\n        }\n    }\n\n   private:\n\
-    \    int n;\n    LowLink<T> lowlink;\n    vector<int> used;\n    vector<pair<int,\
-    \ int>> tmp;\n    void dfs(const Graph<T>& g, const int idx, const int par) {\n\
-    \        used[idx] = true;\n        for(const Edge<T>& e : g[idx]) {\n       \
-    \     const int to = e.to;\n            if(to == par) continue;\n            if(!used[to]\
-    \ or lowlink.ord[to] < lowlink.ord[idx]) {\n                tmp.emplace_back(minmax(idx,\
-    \ to));\n            }\n            if(!used[to]) {\n                dfs(g, to,\
-    \ idx);\n                if(lowlink.low[to] >= lowlink.ord[idx]) {\n         \
-    \           bc.emplace_back();\n                    while(true) {\n          \
-    \              const pair<int, int> ed = tmp.back();\n                       \
-    \ bc.back().emplace_back(ed);\n                        tmp.pop_back();\n     \
-    \                   if(ed.first == min(idx, to) and ed.second == max(idx, to))\
-    \ break;\n                    }\n                }\n            }\n        }\n\
-    \    }\n};"
+    \    struct edge_key {\n        int u, v, idx;\n    };\n    int n;\n    LowLink<T>\
+    \ lowlink;\n    vector<int> used;\n    vector<edge_key> tmp;\n    void dfs(const\
+    \ Graph<T>& g, const int idx, const int par_edge_idx) {\n        used[idx] = true;\n\
+    \        for(const Edge<T>& e : g[idx]) {\n            const int to = e.to;\n\
+    \            if(e.idx == par_edge_idx) continue;\n            if(!used[to] or\
+    \ lowlink.ord[to] < lowlink.ord[idx]) {\n                const auto [u, v] = minmax(idx,\
+    \ to);\n                tmp.push_back({u, v, e.idx});\n            }\n       \
+    \     if(!used[to]) {\n                dfs(g, to, e.idx);\n                if(lowlink.low[to]\
+    \ >= lowlink.ord[idx]) {\n                    bc.emplace_back();\n           \
+    \         while(true) {\n                        const edge_key ed = tmp.back();\n\
+    \                        bc.back().emplace_back(ed.u, ed.v);\n               \
+    \         tmp.pop_back();\n                        if(ed.idx == e.idx) break;\n\
+    \                    }\n                }\n            }\n        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -102,7 +103,7 @@ data:
   isVerificationFile: false
   path: src/graph/biconnected_components.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/biconnected_components.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
@@ -55,19 +55,20 @@ data:
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
     #line 4 \"src/graph/compressed_sparse_row.hpp\"\ntemplate <typename T>\nstruct\
     \ CompressedSparseRow {\n    vector<int> start, elist;\n    CompressedSparseRow(const\
-    \ Graph<T>& g)\n        : start(g.size() + 1), elist(g.edge_size()) {\n      \
-    \  const int n = g.size();\n        for(int i = 0; i < n; ++i) {\n           \
-    \ start[i + 1] = start[i] + g[i].size();\n            int counter = start[i];\n\
-    \            for(const Edge<T>& e : g[i]) {\n                elist[counter++]\
-    \ = e.to;\n            }\n        }\n    }\n};\n"
+    \ Graph<T>& g)\n        : start(g.size() + 1) {\n        const int n = g.size();\n\
+    \        for(int i = 0; i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n\
+    \        }\n        elist.resize(start[n]);\n        for(int i = 0; i < n; ++i)\
+    \ {\n            int counter = start[i];\n            for(const Edge<T>& e : g[i])\
+    \ {\n                elist[counter++] = e.to;\n            }\n        }\n    }\n\
+    };\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
     \ntemplate <typename T>\nstruct CompressedSparseRow {\n    vector<int> start,\
     \ elist;\n    CompressedSparseRow(const Graph<T>& g)\n        : start(g.size()\
-    \ + 1), elist(g.edge_size()) {\n        const int n = g.size();\n        for(int\
-    \ i = 0; i < n; ++i) {\n            start[i + 1] = start[i] + g[i].size();\n \
-    \           int counter = start[i];\n            for(const Edge<T>& e : g[i])\
-    \ {\n                elist[counter++] = e.to;\n            }\n        }\n    }\n\
-    };"
+    \ + 1) {\n        const int n = g.size();\n        for(int i = 0; i < n; ++i)\
+    \ {\n            start[i + 1] = start[i] + g[i].size();\n        }\n        elist.resize(start[n]);\n\
+    \        for(int i = 0; i < n; ++i) {\n            int counter = start[i];\n \
+    \           for(const Edge<T>& e : g[i]) {\n                elist[counter++] =\
+    \ e.to;\n            }\n        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
@@ -76,7 +77,7 @@ data:
   requiredBy:
   - src/math/two_sat.hpp
   - src/graph/strongly_connected_components.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/strongly_connected_components.test.cpp

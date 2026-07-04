@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/dynamic_rolling_hash.hpp
     title: DynamicRollingHash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

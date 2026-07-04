@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -44,31 +44,31 @@ data:
     #line 4 \"src/graph/topological_sort.hpp\"\ntemplate <typename T>\nvector<int>\
     \ topological_sort(const Graph<T>& g) {\n    const int n = g.size();\n    vector<int>\
     \ deg(n);\n    for(int i = 0; i < n; ++i) {\n        for(const auto& e : g[i])\
-    \ {\n            ++deg[e.to];\n        }\n    }\n    stack<int> st;\n    for(int\
-    \ i = 0; i < n; ++i) {\n        if(deg[i] == 0) {\n            st.emplace(i);\n\
+    \ {\n            ++deg[e.to];\n        }\n    }\n    vector<int> st;\n    st.reserve(n);\n\
+    \    for(int i = 0; i < n; ++i) {\n        if(deg[i] == 0) {\n            st.emplace_back(i);\n\
     \        }\n    }\n    vector<int> res;\n    res.reserve(n);\n    while(!st.empty())\
-    \ {\n        const int p = st.top();\n        st.pop();\n        res.emplace_back(p);\n\
+    \ {\n        const int p = st.back();\n        st.pop_back();\n        res.emplace_back(p);\n\
     \        for(const Edge<T>& e : g[p]) {\n            if(--deg[e.to] == 0) {\n\
-    \                st.emplace(e.to);\n            }\n        }\n    }\n    if((int)res.size()\
-    \ != n) return {};\n    return res;\n}\n"
+    \                st.emplace_back(e.to);\n            }\n        }\n    }\n   \
+    \ if((int)res.size() != n) return {};\n    return res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"./graph_template.hpp\"\
     \ntemplate <typename T>\nvector<int> topological_sort(const Graph<T>& g) {\n \
     \   const int n = g.size();\n    vector<int> deg(n);\n    for(int i = 0; i < n;\
     \ ++i) {\n        for(const auto& e : g[i]) {\n            ++deg[e.to];\n    \
-    \    }\n    }\n    stack<int> st;\n    for(int i = 0; i < n; ++i) {\n        if(deg[i]\
-    \ == 0) {\n            st.emplace(i);\n        }\n    }\n    vector<int> res;\n\
-    \    res.reserve(n);\n    while(!st.empty()) {\n        const int p = st.top();\n\
-    \        st.pop();\n        res.emplace_back(p);\n        for(const Edge<T>& e\
-    \ : g[p]) {\n            if(--deg[e.to] == 0) {\n                st.emplace(e.to);\n\
-    \            }\n        }\n    }\n    if((int)res.size() != n) return {};\n  \
-    \  return res;\n}"
+    \    }\n    }\n    vector<int> st;\n    st.reserve(n);\n    for(int i = 0; i <\
+    \ n; ++i) {\n        if(deg[i] == 0) {\n            st.emplace_back(i);\n    \
+    \    }\n    }\n    vector<int> res;\n    res.reserve(n);\n    while(!st.empty())\
+    \ {\n        const int p = st.back();\n        st.pop_back();\n        res.emplace_back(p);\n\
+    \        for(const Edge<T>& e : g[p]) {\n            if(--deg[e.to] == 0) {\n\
+    \                st.emplace_back(e.to);\n            }\n        }\n    }\n   \
+    \ if((int)res.size() != n) return {};\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
   path: src/graph/topological_sort.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/cycle_detection_for_a_directed_graph.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: MinCostFlow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -60,17 +60,17 @@ data:
     \        vector<int> edge_idx(m);\n        auto g = [&]() {\n            vector<int>\
     \ degree(_n), redge_idx(m);\n            vector<pair<int, _edge>> elist;\n   \
     \         elist.reserve(2 * m);\n            for(int i = 0; i < m; ++i) {\n  \
-    \              const auto e = _edges[i];\n                edge_idx[i] = degree[e.from]++;\n\
+    \              const auto& e = _edges[i];\n                edge_idx[i] = degree[e.from]++;\n\
     \                redge_idx[i] = degree[e.to]++;\n                elist.push_back({e.from,\
     \ {e.to, -1, e.cap - e.flow, e.cost}});\n                elist.push_back({e.to,\
     \ {e.from, -1, e.flow, -e.cost}});\n            }\n            auto _g = internal::csr<_edge>(_n,\
-    \ elist);\n            for(int i = 0; i < m; ++i) {\n                const auto\
+    \ elist);\n            for(int i = 0; i < m; ++i) {\n                const auto&\
     \ e = _edges[i];\n                edge_idx[i] += _g.start[e.from];\n         \
     \       redge_idx[i] += _g.start[e.to];\n                _g.elist[edge_idx[i]].rev\
     \ = redge_idx[i];\n                _g.elist[redge_idx[i]].rev = edge_idx[i];\n\
     \            }\n            return _g;\n        }();\n        const auto result\
     \ = slope(g, s, t, flow_limit);\n        for(int i = 0; i < m; ++i) {\n      \
-    \      const auto e = g.elist[edge_idx[i]];\n            _edges[i].flow = _edges[i].cap\
+    \      const auto& e = g.elist[edge_idx[i]];\n            _edges[i].flow = _edges[i].cap\
     \ - e.cap;\n        }\n        return result;\n    }\n\n   private:\n    int _n;\n\
     \    vector<edge> _edges;\n    struct _edge {\n        int to, rev;\n        Cap\
     \ cap;\n        Cost cost;\n    };\n    vector<pair<Cap, Cost>> slope(internal::csr<_edge>&\
@@ -95,7 +95,7 @@ data:
     \                vis[v] = true;\n                if(v == t) break;\n         \
     \       const Cost dual_v = dual_dist[v].first, dist_v = dual_dist[v].second;\n\
     \                for(int i = g.start[v]; i < g.start[v + 1]; ++i) {\n        \
-    \            const auto e = g.elist[i];\n                    if(!e.cap) continue;\n\
+    \            const auto& e = g.elist[i];\n                    if(!e.cap) continue;\n\
     \                    const Cost cost = e.cost - dual_dist[e.to].first + dual_v;\n\
     \                    if(dual_dist[e.to].second - dist_v > cost) {\n          \
     \              const Cost dist_to = dist_v + cost;\n                        dual_dist[e.to].second\
@@ -149,7 +149,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/assignment_problem.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/assignment_problem.test.cpp

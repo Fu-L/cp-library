@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/graph_template.hpp
     title: Graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -42,7 +42,24 @@ data:
     \ k and k < n);\n        return g[k];\n    }\n\n   private:\n    int n, es;\n\
     \    vector<vector<Edge<T>>> g;\n};\ntemplate <typename T>\nusing Edges = vector<Edge<T>>;\n\
     #line 4 \"src/tree/centroid.hpp\"\ntemplate <typename T>\nvector<int> centroid(const\
-    \ Graph<T>& g) {\n    const int n = g.size();\n    stack<pair<int, int>> st;\n\
+    \ Graph<T>& g) {\n    const int n = g.size();\n    if(n == 0) return {};\n   \
+    \ stack<pair<int, int>> st;\n    st.emplace(0, -1);\n    vector<int> sz(n), par(n);\n\
+    \    while(!st.empty()) {\n        const pair<int, int> p = st.top();\n      \
+    \  if(sz[p.first] == 0) {\n            sz[p.first] = 1;\n            for(const\
+    \ Edge<T>& e : g[p.first]) {\n                if(e.to != p.second) {\n       \
+    \             st.emplace(e.to, p.first);\n                }\n            }\n \
+    \       } else {\n            for(const Edge<T>& e : g[p.first]) {\n         \
+    \       if(e.to != p.second) {\n                    sz[p.first] += sz[e.to];\n\
+    \                }\n            }\n            par[p.first] = p.second;\n    \
+    \        st.pop();\n        }\n    }\n    vector<int> ret;\n    int size = n;\n\
+    \    for(int i = 0; i < n; ++i) {\n        int val = n - sz[i];\n        for(const\
+    \ Edge<T>& e : g[i]) {\n            if(e.to != par[i]) {\n                val\
+    \ = max(val, sz[e.to]);\n            }\n        }\n        if(val < size) size\
+    \ = val, ret.clear();\n        if(val == size) ret.emplace_back(i);\n    }\n \
+    \   return ret;\n}\n"
+  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
+    \ntemplate <typename T>\nvector<int> centroid(const Graph<T>& g) {\n    const\
+    \ int n = g.size();\n    if(n == 0) return {};\n    stack<pair<int, int>> st;\n\
     \    st.emplace(0, -1);\n    vector<int> sz(n), par(n);\n    while(!st.empty())\
     \ {\n        const pair<int, int> p = st.top();\n        if(sz[p.first] == 0)\
     \ {\n            sz[p.first] = 1;\n            for(const Edge<T>& e : g[p.first])\
@@ -55,30 +72,14 @@ data:
     \       int val = n - sz[i];\n        for(const Edge<T>& e : g[i]) {\n       \
     \     if(e.to != par[i]) {\n                val = max(val, sz[e.to]);\n      \
     \      }\n        }\n        if(val < size) size = val, ret.clear();\n       \
-    \ if(val == size) ret.emplace_back(i);\n    }\n    return ret;\n}\n"
-  code: "#pragma once\n#include \"../template/template.hpp\"\n#include \"../graph/graph_template.hpp\"\
-    \ntemplate <typename T>\nvector<int> centroid(const Graph<T>& g) {\n    const\
-    \ int n = g.size();\n    stack<pair<int, int>> st;\n    st.emplace(0, -1);\n \
-    \   vector<int> sz(n), par(n);\n    while(!st.empty()) {\n        const pair<int,\
-    \ int> p = st.top();\n        if(sz[p.first] == 0) {\n            sz[p.first]\
-    \ = 1;\n            for(const Edge<T>& e : g[p.first]) {\n                if(e.to\
-    \ != p.second) {\n                    st.emplace(e.to, p.first);\n           \
-    \     }\n            }\n        } else {\n            for(const Edge<T>& e : g[p.first])\
-    \ {\n                if(e.to != p.second) {\n                    sz[p.first] +=\
-    \ sz[e.to];\n                }\n            }\n            par[p.first] = p.second;\n\
-    \            st.pop();\n        }\n    }\n    vector<int> ret;\n    int size =\
-    \ n;\n    for(int i = 0; i < n; ++i) {\n        int val = n - sz[i];\n       \
-    \ for(const Edge<T>& e : g[i]) {\n            if(e.to != par[i]) {\n         \
-    \       val = max(val, sz[e.to]);\n            }\n        }\n        if(val <\
-    \ size) size = val, ret.clear();\n        if(val == size) ret.emplace_back(i);\n\
-    \    }\n    return ret;\n}"
+    \ if(val == size) ret.emplace_back(i);\n    }\n    return ret;\n}"
   dependsOn:
   - src/template/template.hpp
   - src/graph/graph_template.hpp
   isVerificationFile: false
   path: src/tree/centroid.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:19:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/tree/centroid.test.cpp
