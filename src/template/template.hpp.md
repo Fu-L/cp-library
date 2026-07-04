@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/convolution_ll.hpp
     title: convolution_ll
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
   - icon: ':heavy_check_mark:'
@@ -26,7 +26,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/or_convolution.hpp
     title: or_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/xor_convolution.hpp
     title: xor_convolution
   - icon: ':heavy_check_mark:'
@@ -203,10 +203,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/divisor.hpp
     title: divisor
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
   - icon: ':heavy_check_mark:'
@@ -227,7 +227,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/kth_root_integer.hpp
     title: kth_root_integer
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
   - icon: ':heavy_check_mark:'
@@ -251,7 +251,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/two_sat.hpp
     title: TwoSAT
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
   - icon: ':heavy_check_mark:'
@@ -272,13 +272,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/matrix.hpp
     title: Matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':heavy_check_mark:'
     path: src/modint/modint_2_61m1.hpp
     title: Modint_2_61m1
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/static_modint.hpp
     title: StaticModint
   - icon: ':heavy_check_mark:'
@@ -314,7 +314,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/z_algorithm.hpp
     title: z_algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template/debug.hpp
     title: debug
   - icon: ':heavy_check_mark:'
@@ -738,7 +738,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/convolution_ll.test.cpp
     title: verify/unit_test/convolution/convolution_ll.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/empty_convolution.test.cpp
     title: verify/unit_test/convolution/empty_convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -795,7 +795,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/eratosthenes_sieve.test.cpp
     title: verify/unit_test/math/eratosthenes_sieve.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/math/log_mod.test.cpp
     title: verify/unit_test/math/log_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -816,10 +816,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/string/suffix_array.test.cpp
     title: verify/unit_test/string/suffix_array.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug_without_modint.test.cpp
     title: verify/unit_test/template/debug_without_modint.test.cpp
   - icon: ':heavy_check_mark:'
@@ -846,9 +846,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/649.test.cpp
     title: verify/yukicoder/649.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -982,7 +982,7 @@ data:
   - src/dp/monotone_minima.hpp
   - src/dp/longest_increasing_sequence.hpp
   timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/template/debug_without_modint.test.cpp

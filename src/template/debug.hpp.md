@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug.test.cpp
     title: verify/unit_test/template/debug.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/template/debug_without_modint.test.cpp
     title: verify/unit_test/template/debug_without_modint.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -101,9 +101,9 @@ data:
     ;\n    }\n}\n\nvoid debug_out() {\n    cerr << endl;\n}\ntemplate <typename Head,\
     \ typename... Tail>\nvoid debug_out(const Head& H, const Tail&... T) {\n    cerr\
     \ << \" \" << dbg::to_string(H);\n    if(sizeof...(T) != 0) cerr << \",\";\n \
-    \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...) cerr << \"Line\
-    \ \" << __LINE__ << \", \"  \\\n                        << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)\n"
+    \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...)             \
+    \          \\\n    cerr << \"Line \" << __LINE__ << \", \"  \\\n         << \"\
+    [\" << #__VA_ARGS__ << \"]:\", \\\n        dbg::debug_out(__VA_ARGS__)\n"
   code: "#pragma once\n#include \"./template.hpp\"\nnamespace dbg {\ntemplate <typename\
     \ T>\nstruct is_pair : false_type {};\ntemplate <typename A, typename B>\nstruct\
     \ is_pair<pair<A, B>> : true_type {};\n\ntemplate <typename T>\nstruct is_optional\
@@ -182,16 +182,16 @@ data:
     ;\n    }\n}\n\nvoid debug_out() {\n    cerr << endl;\n}\ntemplate <typename Head,\
     \ typename... Tail>\nvoid debug_out(const Head& H, const Tail&... T) {\n    cerr\
     \ << \" \" << dbg::to_string(H);\n    if(sizeof...(T) != 0) cerr << \",\";\n \
-    \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...) cerr << \"Line\
-    \ \" << __LINE__ << \", \"  \\\n                        << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)"
+    \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...)             \
+    \          \\\n    cerr << \"Line \" << __LINE__ << \", \"  \\\n         << \"\
+    [\" << #__VA_ARGS__ << \"]:\", \\\n        dbg::debug_out(__VA_ARGS__)\n"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/template/debug.hpp
   requiredBy: []
-  timestamp: '2026-07-04 16:35:52+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2026-07-04 16:48:09+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/template/debug.test.cpp
   - verify/unit_test/template/debug_without_modint.test.cpp

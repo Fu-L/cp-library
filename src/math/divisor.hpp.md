@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -25,20 +25,20 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/math/divisor.hpp\"\nvector<long long> divisor(const long long n)\
     \ {\n    assert(n >= 1);\n    vector<long long> res;\n    for(long long i = 1;\
-    \ i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
-    \            if(i * i != n) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
+    \ i <= n / i; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
+    \            if(i != n / i) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
     \ res.end());\n    return res;\n}\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nvector<long long> divisor(const\
     \ long long n) {\n    assert(n >= 1);\n    vector<long long> res;\n    for(long\
-    \ long i = 1; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
-    \            if(i * i != n) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
+    \ long i = 1; i <= n / i; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
+    \            if(i != n / i) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
     \ res.end());\n    return res;\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/divisor.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:48:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/math/eratosthenes_sieve.test.cpp

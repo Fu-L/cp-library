@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/xor_convolution.hpp
     title: xor_convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
     title: verify/library_checker/convolution/bitwise_xor_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/empty_convolution.test.cpp
     title: verify/unit_test/convolution/empty_convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -28,30 +28,31 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/math/walsh_hadamard_transform.hpp\"\ntemplate <typename T>\nvoid\
     \ walsh_hadamard_transform(vector<T>& f, const bool inv = false) {\n    const\
-    \ int n = f.size();\n    assert((n & (n - 1)) == 0);\n    for(int i = 1; i < n;\
-    \ i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) ==\
-    \ 0) {\n                const T x = f[j], y = f[j | i];\n                f[j]\
-    \ = x + y, f[j | i] = x - y;\n            }\n        }\n    }\n    if(inv) {\n\
-    \        if constexpr(is_integral<T>::value) {\n            for(auto& x : f) x\
-    \ /= n;\n        } else {\n            const T invn = T(1) / T(f.size());\n  \
-    \          for(auto& x : f) x *= invn;\n        }\n    }\n}\n"
+    \ int n = f.size();\n    if(n == 0) return;\n    assert((n & (n - 1)) == 0);\n\
+    \    for(int i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n\
+    \            if((j & i) == 0) {\n                const T x = f[j], y = f[j | i];\n\
+    \                f[j] = x + y, f[j | i] = x - y;\n            }\n        }\n \
+    \   }\n    if(inv) {\n        if constexpr(is_integral<T>::value) {\n        \
+    \    for(auto& x : f) x /= n;\n        } else {\n            const T invn = T(1)\
+    \ / T(f.size());\n            for(auto& x : f) x *= invn;\n        }\n    }\n\
+    }\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     void walsh_hadamard_transform(vector<T>& f, const bool inv = false) {\n    const\
-    \ int n = f.size();\n    assert((n & (n - 1)) == 0);\n    for(int i = 1; i < n;\
-    \ i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j & i) ==\
-    \ 0) {\n                const T x = f[j], y = f[j | i];\n                f[j]\
-    \ = x + y, f[j | i] = x - y;\n            }\n        }\n    }\n    if(inv) {\n\
-    \        if constexpr(is_integral<T>::value) {\n            for(auto& x : f) x\
-    \ /= n;\n        } else {\n            const T invn = T(1) / T(f.size());\n  \
-    \          for(auto& x : f) x *= invn;\n        }\n    }\n}"
+    \ int n = f.size();\n    if(n == 0) return;\n    assert((n & (n - 1)) == 0);\n\
+    \    for(int i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n\
+    \            if((j & i) == 0) {\n                const T x = f[j], y = f[j | i];\n\
+    \                f[j] = x + y, f[j | i] = x - y;\n            }\n        }\n \
+    \   }\n    if(inv) {\n        if constexpr(is_integral<T>::value) {\n        \
+    \    for(auto& x : f) x /= n;\n        } else {\n            const T invn = T(1)\
+    \ / T(f.size());\n            for(auto& x : f) x *= invn;\n        }\n    }\n}"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/math/walsh_hadamard_transform.hpp
   requiredBy:
   - src/convolution/xor_convolution.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-07-04 16:48:09+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/convolution/empty_convolution.test.cpp
   - verify/library_checker/convolution/bitwise_xor_convolution.test.cpp

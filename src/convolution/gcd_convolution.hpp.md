@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/convolution/gcd_convolution.test.cpp
     title: verify/library_checker/convolution/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/convolution/empty_convolution.test.cpp
     title: verify/unit_test/convolution/empty_convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n\
@@ -46,7 +46,7 @@ data:
     \  int exp = 0;\n            while(min_factor[n] == p) {\n                n /=\
     \ p;\n                ++exp;\n            }\n            res.emplace_back(p, exp);\n\
     \        }\n        return res;\n    }\n    vector<int> divisor(const int n) const\
-    \ {\n        assert(1 <= n and n <= n);\n        vector<int> res({1});\n     \
+    \ {\n        assert(1 <= n and n <= N);\n        vector<int> res({1});\n     \
     \   const auto pf = prime_factors(n);\n        for(const auto& p : pf) {\n   \
     \         const int s = (int)res.size();\n            for(int i = 0; i < s; ++i)\
     \ {\n                int v = 1;\n                for(int j = 0; j < p.second;\
@@ -55,18 +55,20 @@ data:
     \ res.end());\n        return res;\n    }\n\n   private:\n    int N;\n};\n#line\
     \ 4 \"src/math/divisor_multiple_transform.hpp\"\nstruct DivisorTransform {\n \
     \   template <typename T>\n    static void zeta_transform(vector<T>& f) {\n  \
-    \      const int N = f.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
-    \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
-    \ ++k) f[k * p] += f[k];\n        }\n    }\n    template <typename T>\n    static\
-    \ void moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n\
-    \        const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
+    \      const int N = f.size() - 1;\n        if(N <= 0) return;\n        const\
+    \ auto sieve = EratosthenesSieve(N).primes;\n        for(const auto& p : sieve)\
+    \ {\n            for(int k = 1; k * p <= N; ++k) f[k * p] += f[k];\n        }\n\
+    \    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
+    \ g) {\n        const int N = g.size() - 1;\n        if(N <= 0) return;\n    \
+    \    const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
     \ p : sieve) {\n            for(int k = N / p; k > 0; --k) g[k * p] -= g[k];\n\
     \        }\n    }\n};\nstruct MultipleTransform {\n    template <typename T>\n\
     \    static void zeta_transform(vector<T>& f) {\n        const int N = f.size()\
-    \ - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n        for(const\
-    \ auto& p : sieve) {\n            for(int k = N / p; k > 0; --k) f[k] += f[k *\
-    \ p];\n        }\n    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
-    \ g) {\n        const int N = g.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \ - 1;\n        if(N <= 0) return;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \        for(const auto& p : sieve) {\n            for(int k = N / p; k > 0; --k)\
+    \ f[k] += f[k * p];\n        }\n    }\n    template <typename T>\n    static void\
+    \ moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n   \
+    \     if(N <= 0) return;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
     \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
     \ ++k) g[k] -= g[k * p];\n        }\n    }\n};\n#line 4 \"src/convolution/gcd_convolution.hpp\"\
     \ntemplate <typename mint>\nvector<mint> gcd_convolution(const vector<mint>& a,\
@@ -87,8 +89,8 @@ data:
   isVerificationFile: false
   path: src/convolution/gcd_convolution.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-07-04 16:48:09+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/convolution/empty_convolution.test.cpp
   - verify/library_checker/convolution/gcd_convolution.test.cpp

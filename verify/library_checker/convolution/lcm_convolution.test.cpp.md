@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -103,7 +103,7 @@ data:
     \  int exp = 0;\n            while(min_factor[n] == p) {\n                n /=\
     \ p;\n                ++exp;\n            }\n            res.emplace_back(p, exp);\n\
     \        }\n        return res;\n    }\n    vector<int> divisor(const int n) const\
-    \ {\n        assert(1 <= n and n <= n);\n        vector<int> res({1});\n     \
+    \ {\n        assert(1 <= n and n <= N);\n        vector<int> res({1});\n     \
     \   const auto pf = prime_factors(n);\n        for(const auto& p : pf) {\n   \
     \         const int s = (int)res.size();\n            for(int i = 0; i < s; ++i)\
     \ {\n                int v = 1;\n                for(int j = 0; j < p.second;\
@@ -112,18 +112,20 @@ data:
     \ res.end());\n        return res;\n    }\n\n   private:\n    int N;\n};\n#line\
     \ 4 \"src/math/divisor_multiple_transform.hpp\"\nstruct DivisorTransform {\n \
     \   template <typename T>\n    static void zeta_transform(vector<T>& f) {\n  \
-    \      const int N = f.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
-    \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
-    \ ++k) f[k * p] += f[k];\n        }\n    }\n    template <typename T>\n    static\
-    \ void moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n\
-    \        const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
+    \      const int N = f.size() - 1;\n        if(N <= 0) return;\n        const\
+    \ auto sieve = EratosthenesSieve(N).primes;\n        for(const auto& p : sieve)\
+    \ {\n            for(int k = 1; k * p <= N; ++k) f[k * p] += f[k];\n        }\n\
+    \    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
+    \ g) {\n        const int N = g.size() - 1;\n        if(N <= 0) return;\n    \
+    \    const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
     \ p : sieve) {\n            for(int k = N / p; k > 0; --k) g[k * p] -= g[k];\n\
     \        }\n    }\n};\nstruct MultipleTransform {\n    template <typename T>\n\
     \    static void zeta_transform(vector<T>& f) {\n        const int N = f.size()\
-    \ - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n        for(const\
-    \ auto& p : sieve) {\n            for(int k = N / p; k > 0; --k) f[k] += f[k *\
-    \ p];\n        }\n    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
-    \ g) {\n        const int N = g.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \ - 1;\n        if(N <= 0) return;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \        for(const auto& p : sieve) {\n            for(int k = N / p; k > 0; --k)\
+    \ f[k] += f[k * p];\n        }\n    }\n    template <typename T>\n    static void\
+    \ moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n   \
+    \     if(N <= 0) return;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
     \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
     \ ++k) g[k] -= g[k * p];\n        }\n    }\n};\n#line 4 \"src/convolution/lcm_convolution.hpp\"\
     \ntemplate <typename mint>\nvector<mint> lcm_convolution(const vector<mint>& a,\
@@ -151,7 +153,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/convolution/lcm_convolution.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 01:57:55+09:00'
+  timestamp: '2026-07-04 16:48:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/convolution/lcm_convolution.test.cpp

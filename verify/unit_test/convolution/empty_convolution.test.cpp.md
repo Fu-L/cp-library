@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/gcd_convolution.hpp
     title: gcd_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/lcm_convolution.hpp
     title: lcm_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/convolution/xor_convolution.hpp
     title: xor_convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor_multiple_transform.hpp
     title: Divisor/MultipleTransform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/walsh_hadamard_transform.hpp
     title: walsh_hadamard_transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/static_modint.hpp
     title: StaticModint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -112,7 +112,7 @@ data:
     \  int exp = 0;\n            while(min_factor[n] == p) {\n                n /=\
     \ p;\n                ++exp;\n            }\n            res.emplace_back(p, exp);\n\
     \        }\n        return res;\n    }\n    vector<int> divisor(const int n) const\
-    \ {\n        assert(1 <= n and n <= n);\n        vector<int> res({1});\n     \
+    \ {\n        assert(1 <= n and n <= N);\n        vector<int> res({1});\n     \
     \   const auto pf = prime_factors(n);\n        for(const auto& p : pf) {\n   \
     \         const int s = (int)res.size();\n            for(int i = 0; i < s; ++i)\
     \ {\n                int v = 1;\n                for(int j = 0; j < p.second;\
@@ -121,18 +121,20 @@ data:
     \ res.end());\n        return res;\n    }\n\n   private:\n    int N;\n};\n#line\
     \ 4 \"src/math/divisor_multiple_transform.hpp\"\nstruct DivisorTransform {\n \
     \   template <typename T>\n    static void zeta_transform(vector<T>& f) {\n  \
-    \      const int N = f.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
-    \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
-    \ ++k) f[k * p] += f[k];\n        }\n    }\n    template <typename T>\n    static\
-    \ void moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n\
-    \        const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
+    \      const int N = f.size() - 1;\n        if(N <= 0) return;\n        const\
+    \ auto sieve = EratosthenesSieve(N).primes;\n        for(const auto& p : sieve)\
+    \ {\n            for(int k = 1; k * p <= N; ++k) f[k * p] += f[k];\n        }\n\
+    \    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
+    \ g) {\n        const int N = g.size() - 1;\n        if(N <= 0) return;\n    \
+    \    const auto sieve = EratosthenesSieve(N).primes;\n        for(const auto&\
     \ p : sieve) {\n            for(int k = N / p; k > 0; --k) g[k * p] -= g[k];\n\
     \        }\n    }\n};\nstruct MultipleTransform {\n    template <typename T>\n\
     \    static void zeta_transform(vector<T>& f) {\n        const int N = f.size()\
-    \ - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n        for(const\
-    \ auto& p : sieve) {\n            for(int k = N / p; k > 0; --k) f[k] += f[k *\
-    \ p];\n        }\n    }\n    template <typename T>\n    static void moebius_transform(vector<T>&\
-    \ g) {\n        const int N = g.size() - 1;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \ - 1;\n        if(N <= 0) return;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
+    \        for(const auto& p : sieve) {\n            for(int k = N / p; k > 0; --k)\
+    \ f[k] += f[k * p];\n        }\n    }\n    template <typename T>\n    static void\
+    \ moebius_transform(vector<T>& g) {\n        const int N = g.size() - 1;\n   \
+    \     if(N <= 0) return;\n        const auto sieve = EratosthenesSieve(N).primes;\n\
     \        for(const auto& p : sieve) {\n            for(int k = 1; k * p <= N;\
     \ ++k) g[k] -= g[k * p];\n        }\n    }\n};\n#line 4 \"src/convolution/gcd_convolution.hpp\"\
     \ntemplate <typename mint>\nvector<mint> gcd_convolution(const vector<mint>& a,\
@@ -146,17 +148,18 @@ data:
     \ ++i) s[i] *= t[i];\n    DivisorTransform::moebius_transform(s);\n    return\
     \ s;\n}\n#line 3 \"src/math/walsh_hadamard_transform.hpp\"\ntemplate <typename\
     \ T>\nvoid walsh_hadamard_transform(vector<T>& f, const bool inv = false) {\n\
-    \    const int n = f.size();\n    assert((n & (n - 1)) == 0);\n    for(int i =\
-    \ 1; i < n; i <<= 1) {\n        for(int j = 0; j < n; ++j) {\n            if((j\
-    \ & i) == 0) {\n                const T x = f[j], y = f[j | i];\n            \
-    \    f[j] = x + y, f[j | i] = x - y;\n            }\n        }\n    }\n    if(inv)\
-    \ {\n        if constexpr(is_integral<T>::value) {\n            for(auto& x :\
-    \ f) x /= n;\n        } else {\n            const T invn = T(1) / T(f.size());\n\
-    \            for(auto& x : f) x *= invn;\n        }\n    }\n}\n#line 4 \"src/convolution/xor_convolution.hpp\"\
-    \ntemplate <typename T>\nvector<T> xor_convolution(vector<T> a, vector<T> b) {\n\
-    \    const int n = (int)a.size(), m = (int)b.size();\n    assert(n == m and (n\
-    \ & (n - 1)) == 0);\n    walsh_hadamard_transform(a);\n    walsh_hadamard_transform(b);\n\
-    \    for(int i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    walsh_hadamard_transform(a,\
+    \    const int n = f.size();\n    if(n == 0) return;\n    assert((n & (n - 1))\
+    \ == 0);\n    for(int i = 1; i < n; i <<= 1) {\n        for(int j = 0; j < n;\
+    \ ++j) {\n            if((j & i) == 0) {\n                const T x = f[j], y\
+    \ = f[j | i];\n                f[j] = x + y, f[j | i] = x - y;\n            }\n\
+    \        }\n    }\n    if(inv) {\n        if constexpr(is_integral<T>::value)\
+    \ {\n            for(auto& x : f) x /= n;\n        } else {\n            const\
+    \ T invn = T(1) / T(f.size());\n            for(auto& x : f) x *= invn;\n    \
+    \    }\n    }\n}\n#line 4 \"src/convolution/xor_convolution.hpp\"\ntemplate <typename\
+    \ T>\nvector<T> xor_convolution(vector<T> a, vector<T> b) {\n    const int n =\
+    \ (int)a.size(), m = (int)b.size();\n    assert(n == m and (n & (n - 1)) == 0);\n\
+    \    walsh_hadamard_transform(a);\n    walsh_hadamard_transform(b);\n    for(int\
+    \ i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n    walsh_hadamard_transform(a,\
     \ true);\n    return a;\n}\n#line 9 \"verify/unit_test/convolution/empty_convolution.test.cpp\"\
     \nusing mint = modint998244353;\nint main() {\n    vector<mint> empty;\n    DivisorTransform::zeta_transform(empty);\n\
     \    DivisorTransform::moebius_transform(empty);\n    MultipleTransform::zeta_transform(empty);\n\
@@ -192,8 +195,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/convolution/empty_convolution.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 16:35:52+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-07-04 16:48:09+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/convolution/empty_convolution.test.cpp
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -42,7 +42,7 @@ data:
     \  int exp = 0;\n            while(min_factor[n] == p) {\n                n /=\
     \ p;\n                ++exp;\n            }\n            res.emplace_back(p, exp);\n\
     \        }\n        return res;\n    }\n    vector<int> divisor(const int n) const\
-    \ {\n        assert(1 <= n and n <= n);\n        vector<int> res({1});\n     \
+    \ {\n        assert(1 <= n and n <= N);\n        vector<int> res({1});\n     \
     \   const auto pf = prime_factors(n);\n        for(const auto& p : pf) {\n   \
     \         const int s = (int)res.size();\n            for(int i = 0; i < s; ++i)\
     \ {\n                int v = 1;\n                for(int j = 0; j < p.second;\
@@ -65,7 +65,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:48:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/alds1/prime_numbers_2.test.cpp

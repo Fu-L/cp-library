@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/divisor.hpp
     title: divisor
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/eratosthenes_sieve.hpp
     title: EratosthenesSieve
   - icon: ':heavy_check_mark:'
@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -168,7 +168,7 @@ data:
     \         int exp = 0;\n            while(min_factor[n] == p) {\n            \
     \    n /= p;\n                ++exp;\n            }\n            res.emplace_back(p,\
     \ exp);\n        }\n        return res;\n    }\n    vector<int> divisor(const\
-    \ int n) const {\n        assert(1 <= n and n <= n);\n        vector<int> res({1});\n\
+    \ int n) const {\n        assert(1 <= n and n <= N);\n        vector<int> res({1});\n\
     \        const auto pf = prime_factors(n);\n        for(const auto& p : pf) {\n\
     \            const int s = (int)res.size();\n            for(int i = 0; i < s;\
     \ ++i) {\n                int v = 1;\n                for(int j = 0; j < p.second;\
@@ -176,14 +176,14 @@ data:
     \ * v);\n                }\n            }\n        }\n        sort(res.begin(),\
     \ res.end());\n        return res;\n    }\n\n   private:\n    int N;\n};\n#line\
     \ 3 \"src/math/is_prime.hpp\"\nconstexpr bool is_prime(const long long n) {\n\
-    \    if(n <= 1) return false;\n    for(long long i = 2; i * i <= n; ++i) {\n \
+    \    if(n <= 1) return false;\n    for(long long i = 2; i <= n / i; ++i) {\n \
     \       if(n % i == 0) return false;\n    }\n    return true;\n}\n#line 3 \"src/math/euler_phi.hpp\"\
     \nconstexpr long long euler_phi(long long n) {\n    long long res = max(n, 0ll);\n\
-    \    for(long long i = 2; i * i <= n; ++i) {\n        if(n % i == 0) {\n     \
+    \    for(long long i = 2; i <= n / i; ++i) {\n        if(n % i == 0) {\n     \
     \       res -= res / i;\n            while(n % i == 0) n /= i;\n        }\n  \
     \  }\n    if(n > 1) res -= res / n;\n    return res;\n}\n#line 3 \"src/math/prime_factors.hpp\"\
     \nvector<pair<long long, int>> prime_factors(long long n) {\n    assert(n >= 1);\n\
-    \    vector<pair<long long, int>> res;\n    for(long long i = 2; i * i <= n; ++i)\
+    \    vector<pair<long long, int>> res;\n    for(long long i = 2; i <= n / i; ++i)\
     \ {\n        if(n % i == 0) {\n            res.emplace_back(i, 0);\n         \
     \   while(n % i == 0) {\n                n /= i;\n                ++res.back().second;\n\
     \            }\n        }\n    }\n    if(n >= 2) res.emplace_back(n, 1);\n   \
@@ -193,8 +193,8 @@ data:
     \ : p) {\n        if(it.second >= 2) return 0;\n        res = -res;\n    }\n \
     \   return res;\n}\n#line 3 \"src/math/divisor.hpp\"\nvector<long long> divisor(const\
     \ long long n) {\n    assert(n >= 1);\n    vector<long long> res;\n    for(long\
-    \ long i = 1; i * i <= n; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
-    \            if(i * i != n) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
+    \ long i = 1; i <= n / i; ++i) {\n        if(n % i == 0) {\n            res.push_back(i);\n\
+    \            if(i != n / i) res.emplace_back(n / i);\n        }\n    }\n    sort(res.begin(),\
     \ res.end());\n    return res;\n}\n#line 10 \"verify/unit_test/math/eratosthenes_sieve.test.cpp\"\
     \nvoid test() {\n    assert(is_prime(2147483647LL));\n    assert(!is_prime(1LL\
     \ * 999983 * 999983));\n    assert(euler_phi(36) == 12);\n    assert((prime_factors(1LL\
@@ -256,7 +256,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/math/eratosthenes_sieve.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 16:35:52+09:00'
+  timestamp: '2026-07-04 16:48:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/math/eratosthenes_sieve.test.cpp

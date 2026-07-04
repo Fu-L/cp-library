@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template/debug.hpp
     title: debug
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -103,12 +103,12 @@ data:
     ;\n    }\n}\n\nvoid debug_out() {\n    cerr << endl;\n}\ntemplate <typename Head,\
     \ typename... Tail>\nvoid debug_out(const Head& H, const Tail&... T) {\n    cerr\
     \ << \" \" << dbg::to_string(H);\n    if(sizeof...(T) != 0) cerr << \",\";\n \
-    \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...) cerr << \"Line\
-    \ \" << __LINE__ << \", \"  \\\n                        << \"[\" << #__VA_ARGS__\
-    \ << \"]:\", \\\n                   dbg::debug_out(__VA_ARGS__)\n#line 4 \"verify/unit_test/template/debug_without_modint.test.cpp\"\
-    \nvoid test() {\n    vector<int> v = {1, 2, 3};\n    debug(v);\n}\nint main(void)\
-    \ {\n    test();\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\\
-    n';\n}\n"
+    \   debug_out(T...);\n}\n}  // namespace dbg\n#define debug(...)             \
+    \          \\\n    cerr << \"Line \" << __LINE__ << \", \"  \\\n         << \"\
+    [\" << #__VA_ARGS__ << \"]:\", \\\n        dbg::debug_out(__VA_ARGS__)\n#line\
+    \ 4 \"verify/unit_test/template/debug_without_modint.test.cpp\"\nvoid test() {\n\
+    \    vector<int> v = {1, 2, 3};\n    debug(v);\n}\nint main(void) {\n    test();\n\
+    \    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
     \n#include \"../../../src/template/debug.hpp\"\nvoid test() {\n    vector<int>\
     \ v = {1, 2, 3};\n    debug(v);\n}\nint main(void) {\n    test();\n    int a,\
@@ -119,8 +119,8 @@ data:
   isVerificationFile: true
   path: verify/unit_test/template/debug_without_modint.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 16:35:52+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-07-04 16:48:09+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/template/debug_without_modint.test.cpp
 layout: document

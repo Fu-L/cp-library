@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/log_mod.hpp
     title: log_mod
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/policy_based_data_structure.hpp
     title: policy_based_data_structure
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -30,17 +30,18 @@ data:
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 2 \"src/template/policy_based_data_structure.hpp\"\
     \n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\
     #include <ext/pb_ds/tag_and_trait.hpp>\nusing namespace __gnu_pbds;\n#line 4 \"\
-    src/math/log_mod.hpp\"\nlong long log_mod(const long long a, long long b, const\
-    \ long long mod) {\n    assert(mod >= 1);\n    long long g = 1;\n    for(long\
-    \ long i = mod; i; i /= 2) (g *= a) %= mod;\n    g = gcd(g, mod);\n    long long\
-    \ t = 1, c = 0;\n    for(; t % g; ++c) {\n        if(t == b) return c;\n     \
-    \   (t *= a) %= mod;\n    }\n    if(b % g) return -1;\n    t /= g;\n    b /= g;\n\
-    \    const long long n = mod / g;\n    long long h = 0, gs = 1;\n    for(; h *\
-    \ h < n; ++h) (gs *= a) %= n;\n    gp_hash_table<long long, long long> ht;\n \
-    \   for(long long s = 0, e = b; s < h; ht[e] = ++s) {\n        (e *= a) %= n;\n\
-    \    }\n    for(long long s = 0, e = t; s < n;) {\n        (e *= gs) %= n;\n \
-    \       s += h;\n        if(ht.find(e) != ht.end()) return c + s - ht[e];\n  \
-    \  }\n    return -1;\n}\n#line 4 \"verify/library_checker/number_theory/discrete_logarithm.test.cpp\"\
+    src/math/log_mod.hpp\"\nlong long log_mod(long long a, long long b, const long\
+    \ long mod) {\n    assert(mod >= 1);\n    a %= mod;\n    b %= mod;\n    if(a <\
+    \ 0) a += mod;\n    if(b < 0) b += mod;\n    if(mod == 1) return 0;\n    long\
+    \ long g = 1;\n    for(long long i = mod; i; i /= 2) (g *= a) %= mod;\n    g =\
+    \ gcd(g, mod);\n    long long t = 1, c = 0;\n    for(; t % g; ++c) {\n       \
+    \ if(t == b) return c;\n        (t *= a) %= mod;\n    }\n    if(b % g) return\
+    \ -1;\n    t /= g;\n    b /= g;\n    const long long n = mod / g;\n    long long\
+    \ h = 0, gs = 1;\n    for(; h * h < n; ++h) (gs *= a) %= n;\n    gp_hash_table<long\
+    \ long, long long> ht;\n    for(long long s = 0, e = b; s < h; ht[e] = ++s) {\n\
+    \        (e *= a) %= n;\n    }\n    for(long long s = 0, e = t; s < n;) {\n  \
+    \      (e *= gs) %= n;\n        s += h;\n        if(ht.find(e) != ht.end()) return\
+    \ c + s - ht[e];\n    }\n    return -1;\n}\n#line 4 \"verify/library_checker/number_theory/discrete_logarithm.test.cpp\"\
     \nint main(void) {\n    int t;\n    cin >> t;\n    while(t--) {\n        ll x,\
     \ y, m;\n        cin >> x >> y >> m;\n        cout << log_mod(x, y, m) << '\\\
     n';\n    }\n}\n"
@@ -56,7 +57,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number_theory/discrete_logarithm.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:48:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number_theory/discrete_logarithm.test.cpp

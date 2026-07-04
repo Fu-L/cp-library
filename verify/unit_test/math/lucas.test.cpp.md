@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/miller_rabin.hpp
     title: miller_rabin
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/modint/dynamic_modint.hpp
     title: DynamicModint
   - icon: ':heavy_check_mark:'
     path: src/random/random_number_generator.hpp
     title: RandomNumberGenerator
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []

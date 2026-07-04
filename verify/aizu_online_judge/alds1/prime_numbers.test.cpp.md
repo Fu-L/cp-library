@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/is_prime.hpp
     title: is_prime
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template/template.hpp
     title: template
   _extendedRequiredBy: []
@@ -26,7 +26,7 @@ data:
     constexpr long long inf = 4e18;\nstruct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n\
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/math/is_prime.hpp\"\nconstexpr bool is_prime(const long long n)\
-    \ {\n    if(n <= 1) return false;\n    for(long long i = 2; i * i <= n; ++i) {\n\
+    \ {\n    if(n <= 1) return false;\n    for(long long i = 2; i <= n / i; ++i) {\n\
     \        if(n % i == 0) return false;\n    }\n    return true;\n}\n#line 4 \"\
     verify/aizu_online_judge/alds1/prime_numbers.test.cpp\"\nint main(void) {\n  \
     \  int n;\n    cin >> n;\n    int ans = 0;\n    while(n--) {\n        int m;\n\
@@ -43,7 +43,7 @@ data:
   isVerificationFile: true
   path: verify/aizu_online_judge/alds1/prime_numbers.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 16:48:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aizu_online_judge/alds1/prime_numbers.test.cpp
