@@ -6,7 +6,7 @@ documentation_of: ../../src/dp/monotone_minima.hpp
 ## monotone_minima
 
 ```cpp
-vector<int> monotome_minima<F>(int n, int m, F f)
+vector<int> monotone_minima<F>(int n, int m, F f)
 ```
 
 $n \times m$ のmonotone行列 $A$ に対して，各行における最小値を取る列を列挙します．<br>

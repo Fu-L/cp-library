@@ -67,7 +67,7 @@ void swag.push_front(S x)
 ## push_back
 
 ```cpp
-void swag.push_bacl(S x)
+void swag.push_back(S x)
 ```
 
 `swag` の末尾に $x$ を挿入します．
@@ -75,6 +75,38 @@ void swag.push_bacl(S x)
 **計算量**
 
 - 償却 $O(1)$
+
+## front
+
+```cpp
+S swag.front()
+```
+
+`swag` の先頭の要素を返します．
+
+**制約**
+
+- `swag` が空でない
+
+**計算量**
+
+- $O(1)$
+
+## back
+
+```cpp
+S swag.back()
+```
+
+`swag` の末尾の要素を返します．
+
+**制約**
+
+- `swag` が空でない
+
+**計算量**
+
+- $O(1)$
 
 ## pop_front
 

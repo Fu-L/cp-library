@@ -47,9 +47,9 @@ int e() {
     return (int)1e9;
 }
 string s;
-vector<int> sa = saffix_array(s);
+vector<int> sa = suffix_array(s);
 vector<int> lcp = lcp_array(s, sa);
 SparseTable<int, op, e> st(lcp);
-int len = st.query(l, r)
+int len = st.query(l, r);
 ```
 により，`LCP(s[sa[l], n), s[sa[r], n))` を前計算 $O(n \log n)$ クエリ $O(1)$ で計算できます．

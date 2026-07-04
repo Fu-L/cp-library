@@ -128,7 +128,7 @@ T trie.max(T x = 0)
 ## kth_element
 
 ```cpp
-T trie.kth_element(T x = 0)
+T trie.kth_element(int k, T x = 0)
 ```
 
 `trie` に格納されている要素全てに対して $\mathrm{xor} ~ x$ を作用させたときの $k$ 番目に小さい値を返します．
@@ -169,7 +169,7 @@ int trie.upper_bound(T val, T x = 0)
 
 **制約**
 
-- $0 \leq \mathrm{val} < 2^{MAX\\_LOG} - 1$
+- $0 \leq \mathrm{val} < 2^{MAX\\_LOG}$
 - $0 \leq x < 2^{MAX\\_LOG}$
 
 **計算量**

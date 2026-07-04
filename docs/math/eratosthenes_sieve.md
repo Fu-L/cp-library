@@ -65,4 +65,4 @@ vector<int> divisor(int n)
 
 **計算量**
 
-- $O(\log{n})$
+- $O(\tau(n) \log{\tau(n)})$
