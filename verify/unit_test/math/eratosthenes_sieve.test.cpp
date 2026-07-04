@@ -8,6 +8,10 @@
 #include "../../../src/math/divisor.hpp"
 #include "../../../src/math/prime_factors.hpp"
 void test() {
+    assert(is_prime(2147483647LL));
+    assert(!is_prime(1LL * 999983 * 999983));
+    assert(euler_phi(36) == 12);
+    assert((prime_factors(1LL * 999983 * 999983) == vector<pair<long long, int>>{{999983LL, 2}}));
     EratosthenesSieve sieve(10000000);
     rep(i, 0, 10000) {
         int n = rng(1, 10000000);

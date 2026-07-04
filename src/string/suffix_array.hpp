@@ -2,6 +2,7 @@
 #include "../template/template.hpp"
 template <typename T>
 vector<int> suffix_array(const vector<T>& s, const bool compress = true) {
+    if(s.empty()) return {};
     auto sa_is = [&](auto& sa_is, const vector<int>& s, const int upper) -> vector<int> {
         const int n = (int)s.size();
         if(n == 0) return {};

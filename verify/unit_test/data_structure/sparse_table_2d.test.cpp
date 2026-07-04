@@ -31,6 +31,12 @@ void test() {
     }
 }
 int main(void) {
+    {
+        SparseTable2D<int, op, e> st(vector<vector<int>>{});
+        assert(st.prod(0, 0, 0, 0) == e());
+        SparseTable2D<int, op, e> st2(vector<vector<int>>(3));
+        assert(st2.prod(0, 3, 0, 0) == e());
+    }
     constexpr int test_num = 100;
     rep(i, 0, test_num) {
         test();

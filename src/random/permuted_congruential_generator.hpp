@@ -6,8 +6,16 @@ struct PermutedCongruentialGenerator {
     inline T operator()(const T l, const T r) {
         assert(l <= r);
         if constexpr(is_integral_v<T>) {
-            const unsigned int range = static_cast<unsigned int>(r - l + 1);
-            return l + (next32() % range);
+            const unsigned int x = next32();
+            if constexpr(is_signed_v<T>) {
+                const uint64_t range = uint64_t(int64_t(r) - int64_t(l)) + 1;
+                const uint64_t offset = range == (uint64_t(1) << 32) ? x : x % range;
+                return T(int64_t(l) + int64_t(offset));
+            } else {
+                const uint64_t range = uint64_t(r) - uint64_t(l) + 1;
+                const uint64_t offset = range == (uint64_t(1) << 32) ? x : x % range;
+                return T(l + T(offset));
+            }
         } else {
             static constexpr unsigned long long denom = 1ull << 53;
             const unsigned long long x = next64() >> 11;

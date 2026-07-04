@@ -3,6 +3,7 @@
 template <typename T>
 vector<int> manacher(T s) {
     int n = (int)s.size();
+    if(n == 0) return {};
     s.resize(2 * n - 1);
     for(int i = n - 1; i >= 0; --i) {
         s[2 * i] = s[i];

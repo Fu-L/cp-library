@@ -65,12 +65,12 @@ struct RandomNumberGenerator {
         vector<int> cnt(n);
         for(int i = 0; i < n; ++i) st.insert(i);
         auto add = [&](const int x) -> void {
-            if(x > n) return;
+            if(x >= n) return;
             if(cnt[x] == 0) st.erase(x);
             ++cnt[x];
         };
         auto del = [&](const int x) -> void {
-            if(x > n) return;
+            if(x >= n) return;
             --cnt[x];
             if(cnt[x] == 0) st.insert(x);
         };
