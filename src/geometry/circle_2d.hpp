@@ -48,11 +48,12 @@ vector<Point> intersection_cs(const Circle& c, const Segment& s) {
     return res;
 }
 vector<Point> intersection_cc(const Circle& c1, const Circle& c2) {
-    const Real d = abs(c1.p - c2.p);
-    const Real a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (Real(2.0) * c1.r * d));
-    const Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real() - c1.p.real());
     vector<Point> res;
     if(is_intersect_cc(c1, c2) % 4 == 0) return res;
+    const Real d = abs(c1.p - c2.p);
+    if(eq(d, 0.0)) return res;
+    const Real a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (Real(2.0) * c1.r * d));
+    const Real t = atan2(c2.p.imag() - c1.p.imag(), c2.p.real() - c1.p.real());
     if(eq(a, 0.0)) {
         res.emplace_back(c1.p + rot(Point(c1.r, 0.0), t));
     } else {
@@ -62,6 +63,7 @@ vector<Point> intersection_cc(const Circle& c1, const Circle& c2) {
     return res;
 }
 vector<Point> tangent_cp(const Circle& c, const Point& p) {
+    if(sign(norm(p - c.p) - c.r * c.r) == -1) return {};
     return intersection_cc(c, Circle(p, sqrt(norm(p - c.p) - c.r * c.r)));
 }
 vector<Line> tangent_cc(Circle c1, Circle c2) {

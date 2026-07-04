@@ -52,6 +52,7 @@ struct Matrix {
             }
         }
         A.swap(C);
+        w = B.w;
         return (*this);
     }
     Matrix& pow(long long t) {

@@ -6,16 +6,14 @@ struct FormalPowerSeriesLL : vector<T> {
     using vector<T>::vector;
     using F = FormalPowerSeriesLL;
     F& operator=(const vector<T>& g) {
-        const int n = (*this).size();
-        const int m = g.size();
-        if(n < m) (*this).resize(m);
-        for(int i = 0; i < m; ++i) (*this)[i] = g[i];
+        this->assign(g.begin(), g.end());
         return (*this);
     }
-    F& operator-() {
-        const int n = (*this).size();
-        for(int i = 0; i < n; ++i) (*this)[i] *= -1;
-        return (*this);
+    F operator-() const {
+        F ret(*this);
+        const int n = ret.size();
+        for(int i = 0; i < n; ++i) ret[i] *= -1;
+        return ret;
     }
     F& operator+=(const F& g) {
         const int n = (*this).size();

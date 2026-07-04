@@ -33,7 +33,7 @@ vector<Point> convex_hull(vector<Point> ps) {
     sort(ps.begin(), ps.end(), comp_x);
     ps.erase(unique(ps.begin(), ps.end()), ps.end());
     const int n = (int)ps.size();
-    if(n == 1) return ps;
+    if(n <= 1) return ps;
     vector<Point> ch(2 * n);
     int k = 0;
     for(int i = 0; i < n; ch[k++] = ps[i++]) {
@@ -51,6 +51,7 @@ vector<Point> convex_hull(vector<Point> ps) {
 }
 Real convex_diameter(const vector<Point>& polygon) {
     const int n = (int)polygon.size();
+    if(n <= 1) return 0.0;
     int is = 0, js = 0;
     for(int i = 1; i < n; ++i) {
         if(sign(polygon[i].imag() - polygon[is].imag()) == 1) is = i;
