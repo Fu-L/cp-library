@@ -25,38 +25,40 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/data_structure/disjoint_sparse_table.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct DisjointSparseTable {\n    DisjointSparseTable(const\
-    \ vector<S>& v)\n        : n((int)v.size() + 2) {\n        const int b = 32 -\
-    \ __builtin_clz(n - 1);\n        table.assign(b, vector<S>(n, e()));\n       \
-    \ for(int k = 1; k < b; ++k) {\n            const int w = (1 << k);\n        \
-    \    for(int i = w; i < n; i += w * 2) {\n                for(int j = i - 1; j\
-    \ > i - w; --j) {\n                    table[k][j - 1] = op(table[k][j], v[j -\
-    \ 1]);\n                }\n                const int m = min(i + w - 1, n - 1);\n\
-    \                for(int j = i; j < m; ++j) {\n                    table[k][j\
-    \ + 1] = op(table[k][j], v[j - 1]);\n                }\n            }\n      \
-    \  }\n    }\n    S prod(const int l, int r) const {\n        assert(0 <= l and\
-    \ l <= r and r <= n);\n        ++r;\n        const auto& s = table[31 - __builtin_clz(l\
-    \ xor r)];\n        return op(s[l], s[r]);\n    }\n\n   private:\n    int n;\n\
-    \    vector<vector<S>> table;\n};\n"
+    \ vector<S>& v)\n        : n((int)v.size()), internal_n(n + 2) {\n        const\
+    \ int b = 32 - __builtin_clz(internal_n - 1);\n        table.assign(b, vector<S>(internal_n,\
+    \ e()));\n        for(int k = 1; k < b; ++k) {\n            const int w = (1 <<\
+    \ k);\n            for(int i = w; i < internal_n; i += w * 2) {\n            \
+    \    for(int j = i - 1; j > i - w; --j) {\n                    table[k][j - 1]\
+    \ = op(table[k][j], v[j - 1]);\n                }\n                const int m\
+    \ = min(i + w - 1, internal_n - 1);\n                for(int j = i; j < m; ++j)\
+    \ {\n                    table[k][j + 1] = op(table[k][j], v[j - 1]);\n      \
+    \          }\n            }\n        }\n    }\n    S prod(const int l, int r)\
+    \ const {\n        assert(0 <= l and l <= r and r <= n);\n        ++r;\n     \
+    \   const auto& s = table[31 - __builtin_clz(l xor r)];\n        return op(s[l],\
+    \ s[r]);\n    }\n\n   private:\n    int n, internal_n;\n    vector<vector<S>>\
+    \ table;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct DisjointSparseTable {\n    DisjointSparseTable(const\
-    \ vector<S>& v)\n        : n((int)v.size() + 2) {\n        const int b = 32 -\
-    \ __builtin_clz(n - 1);\n        table.assign(b, vector<S>(n, e()));\n       \
-    \ for(int k = 1; k < b; ++k) {\n            const int w = (1 << k);\n        \
-    \    for(int i = w; i < n; i += w * 2) {\n                for(int j = i - 1; j\
-    \ > i - w; --j) {\n                    table[k][j - 1] = op(table[k][j], v[j -\
-    \ 1]);\n                }\n                const int m = min(i + w - 1, n - 1);\n\
-    \                for(int j = i; j < m; ++j) {\n                    table[k][j\
-    \ + 1] = op(table[k][j], v[j - 1]);\n                }\n            }\n      \
-    \  }\n    }\n    S prod(const int l, int r) const {\n        assert(0 <= l and\
-    \ l <= r and r <= n);\n        ++r;\n        const auto& s = table[31 - __builtin_clz(l\
-    \ xor r)];\n        return op(s[l], s[r]);\n    }\n\n   private:\n    int n;\n\
-    \    vector<vector<S>> table;\n};"
+    \ vector<S>& v)\n        : n((int)v.size()), internal_n(n + 2) {\n        const\
+    \ int b = 32 - __builtin_clz(internal_n - 1);\n        table.assign(b, vector<S>(internal_n,\
+    \ e()));\n        for(int k = 1; k < b; ++k) {\n            const int w = (1 <<\
+    \ k);\n            for(int i = w; i < internal_n; i += w * 2) {\n            \
+    \    for(int j = i - 1; j > i - w; --j) {\n                    table[k][j - 1]\
+    \ = op(table[k][j], v[j - 1]);\n                }\n                const int m\
+    \ = min(i + w - 1, internal_n - 1);\n                for(int j = i; j < m; ++j)\
+    \ {\n                    table[k][j + 1] = op(table[k][j], v[j - 1]);\n      \
+    \          }\n            }\n        }\n    }\n    S prod(const int l, int r)\
+    \ const {\n        assert(0 <= l and l <= r and r <= n);\n        ++r;\n     \
+    \   const auto& s = table[31 - __builtin_clz(l xor r)];\n        return op(s[l],\
+    \ s[r]);\n    }\n\n   private:\n    int n, internal_n;\n    vector<vector<S>>\
+    \ table;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/disjoint_sparse_table.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_rmq_2.test.cpp

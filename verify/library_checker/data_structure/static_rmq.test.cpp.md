@@ -26,15 +26,16 @@ data:
     \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/sparse_table.hpp\"\
     \ntemplate <typename S, auto op, auto e>\nstruct SparseTable {\n    SparseTable(const\
-    \ vector<S>& v)\n        : n((int)v.size()) {\n        const int b = 32 - __builtin_clz(n);\n\
-    \        table.assign(b, vector<S>(n, e()));\n        table[0] = v;\n        for(int\
-    \ i = 1; i < b; ++i) {\n            const int w = 1 << (i - 1);\n            for(int\
-    \ j = 0; j + w * 2 <= n; ++j) {\n                table[i][j] = op(table[i - 1][j],\
-    \ table[i - 1][j + w]);\n            }\n        }\n    }\n    S prod(const int\
-    \ l, const int r) const {\n        assert(0 <= l and l <= r and r <= n);\n   \
-    \     if(l == r) return e();\n        const int b = 31 - __builtin_clz(r - l);\n\
-    \        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n\n   private:\n\
-    \    int n;\n    vector<vector<S>> table;\n};\n#line 4 \"verify/library_checker/data_structure/static_rmq.test.cpp\"\
+    \ vector<S>& v)\n        : n((int)v.size()) {\n        const int b = n == 0 ?\
+    \ 1 : 32 - __builtin_clz(n);\n        table.assign(b, vector<S>(n, e()));\n  \
+    \      table[0] = v;\n        for(int i = 1; i < b; ++i) {\n            const\
+    \ int w = 1 << (i - 1);\n            for(int j = 0; j + w * 2 <= n; ++j) {\n \
+    \               table[i][j] = op(table[i - 1][j], table[i - 1][j + w]);\n    \
+    \        }\n        }\n    }\n    S prod(const int l, const int r) const {\n \
+    \       assert(0 <= l and l <= r and r <= n);\n        if(l == r) return e();\n\
+    \        const int b = 31 - __builtin_clz(r - l);\n        return op(table[b][l],\
+    \ table[b][r - (1 << b)]);\n    }\n\n   private:\n    int n;\n    vector<vector<S>>\
+    \ table;\n};\n#line 4 \"verify/library_checker/data_structure/static_rmq.test.cpp\"\
     \nint op(int x, int y) {\n    return min(x, y);\n}\nint e() {\n    return 1e9;\n\
     }\nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n\
     \    rep(i, 0, n) {\n        cin >> a[i];\n    }\n    SparseTable<int, op, e>\
@@ -53,7 +54,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_rmq.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_rmq.test.cpp

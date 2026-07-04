@@ -45,10 +45,10 @@ data:
     \    static constexpr u32 w = 64;\n    vector<u64> block;\n    vector<u32> count;\n\
     \    u32 n, zeros;\n    inline u32 get(const u32 i) const {\n        return u32(block[i\
     \ / w] >> (i % w)) & 1u;\n    }\n    inline void set(const u32 i) {\n        block[i\
-    \ / w] |= 1LL << (i % w);\n    }\n    BitVector() {}\n    BitVector(const int\
+    \ / w] |= 1ULL << (i % w);\n    }\n    BitVector() {}\n    BitVector(const int\
     \ _n) {\n        init(_n);\n    }\n    __attribute__((optimize(\"O3,unroll-loops\"\
-    ))) void init(const int _n) {\n        n = zeros = _n;\n        block.resize(n\
-    \ / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n    CP_LIBRARY_TARGET_POPCNT\
+    ))) void init(const int _n) {\n        n = zeros = _n;\n        block.assign(n\
+    \ / w + 1, 0);\n        count.assign(block.size(), 0);\n    }\n    CP_LIBRARY_TARGET_POPCNT\
     \ void build() {\n        for(u32 i = 1; i < block.size(); ++i) {\n          \
     \  count[i] = count[i - 1] + popcount64(block[i - 1]);\n        }\n        zeros\
     \ = rank0(n);\n    }\n    inline u32 rank0(const u32 i) const {\n        return\
@@ -162,7 +162,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/wavelet_matrix.hpp
   requiredBy: []
-  timestamp: '2026-07-04 01:44:53+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_range_frequency.test.cpp

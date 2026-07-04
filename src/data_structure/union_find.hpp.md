@@ -43,11 +43,14 @@ data:
     \ vector<vector<int>> groups() {\n        vector<int> leader_buf(n), group_size(n);\n\
     \        for(int i = 0; i < n; ++i) {\n            leader_buf[i] = leader(i);\n\
     \            ++group_size[leader_buf[i]];\n        }\n        vector<vector<int>>\
-    \ result(n);\n        for(int i = 0; i < n; ++i) {\n            result[i].reserve(group_size[i]);\n\
-    \        }\n        for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
-    \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
-    \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n"
+    \ result;\n        result.reserve(count_if(group_size.begin(), group_size.end(),\
+    \ [](const int sz) { return sz > 0; }));\n        for(int i = 0; i < n; ++i) {\n\
+    \            if(group_size[i] == 0) continue;\n            const int id = result.size();\n\
+    \            result.emplace_back();\n            result.back().reserve(group_size[i]);\n\
+    \            group_size[i] = id;\n        }\n        for(int i = 0; i < n; ++i)\
+    \ {\n            result[group_size[leader_buf[i]]].push_back(i);\n        }\n\
+    \        return result;\n    }\n\n   private:\n    int n;\n    vector<int> data;\n\
+    };\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\nstruct UnionFind {\n\
     \    UnionFind(const int N)\n        : n(N), data(N, -1) {}\n    int merge(const\
     \ int a, const int b) {\n        assert(0 <= a and a < n);\n        assert(0 <=\
@@ -62,18 +65,21 @@ data:
     \ vector<vector<int>> groups() {\n        vector<int> leader_buf(n), group_size(n);\n\
     \        for(int i = 0; i < n; ++i) {\n            leader_buf[i] = leader(i);\n\
     \            ++group_size[leader_buf[i]];\n        }\n        vector<vector<int>>\
-    \ result(n);\n        for(int i = 0; i < n; ++i) {\n            result[i].reserve(group_size[i]);\n\
-    \        }\n        for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
-    \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
-    \    }\n\n   private:\n    int n;\n    vector<int> data;\n};"
+    \ result;\n        result.reserve(count_if(group_size.begin(), group_size.end(),\
+    \ [](const int sz) { return sz > 0; }));\n        for(int i = 0; i < n; ++i) {\n\
+    \            if(group_size[i] == 0) continue;\n            const int id = result.size();\n\
+    \            result.emplace_back();\n            result.back().reserve(group_size[i]);\n\
+    \            group_size[i] = id;\n        }\n        for(int i = 0; i < n; ++i)\
+    \ {\n            result[group_size[leader_buf[i]]].push_back(i);\n        }\n\
+    \        return result;\n    }\n\n   private:\n    int n;\n    vector<int> data;\n\
+    };"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/union_find.hpp
   requiredBy:
   - src/graph/kruskal.hpp
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aizu_online_judge/grl/minimum_spanning_tree.test.cpp

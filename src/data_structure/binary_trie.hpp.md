@@ -43,22 +43,22 @@ data:
     \      cur = cur->child[nex ^ 1];\n            } else {\n                cur =\
     \ cur->child[nex];\n            }\n        }\n        return res;\n    }\n   \
     \ int lower_bound(const T& val, const T& x = 0) const {\n        assert(0 <= val\
-    \ and val < (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
-    \        int res = 0;\n        Node* cur = root;\n        for(int i = MAX_LOG\
-    \ - 1; i >= 0; --i) {\n            if(!cur) break;\n            const int xi =\
-    \ (x >> i) & 1, vi = (val >> i) & 1;\n            const int nex = xi xor vi;\n\
-    \            if(vi and cur->child[xi]) {\n                res += cur->child[xi]->cnt;\n\
-    \            }\n            cur = cur->child[nex];\n        }\n        return\
-    \ res;\n    }\n    int upper_bound(const T& val, const T& x = 0) const {\n   \
-    \     assert(0 <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and\
-    \ x < (T(1) << MAX_LOG));\n        return lower_bound(val + 1, x);\n    }\n\n\
-    \   private:\n    struct Node {\n        Node* child[2] = {};\n        int cnt\
-    \ = 0;\n        Node() {}\n    };\n    Node* root;\n    void update(const T& x,\
-    \ const int delta) {\n        Node* cur = root;\n        cur->cnt += delta;\n\
-    \        for(int i = MAX_LOG - 1; i >= 0; --i) {\n            const int nex =\
-    \ (x >> i) & 1;\n            if(!cur->child[nex]) {\n                cur->child[nex]\
-    \ = new Node;\n            }\n            cur = cur->child[nex];\n           \
-    \ cur->cnt += delta;\n        }\n    }\n};\n"
+    \ and val <= (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
+    \        if(val == (T(1) << MAX_LOG)) return size();\n        int res = 0;\n \
+    \       Node* cur = root;\n        for(int i = MAX_LOG - 1; i >= 0; --i) {\n \
+    \           if(!cur) break;\n            const int xi = (x >> i) & 1, vi = (val\
+    \ >> i) & 1;\n            const int nex = xi xor vi;\n            if(vi and cur->child[xi])\
+    \ {\n                res += cur->child[xi]->cnt;\n            }\n            cur\
+    \ = cur->child[nex];\n        }\n        return res;\n    }\n    int upper_bound(const\
+    \ T& val, const T& x = 0) const {\n        assert(0 <= val and val < (T(1) <<\
+    \ MAX_LOG));\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n        return\
+    \ lower_bound(val + 1, x);\n    }\n\n   private:\n    struct Node {\n        Node*\
+    \ child[2] = {};\n        int cnt = 0;\n        Node() {}\n    };\n    Node* root;\n\
+    \    void update(const T& x, const int delta) {\n        Node* cur = root;\n \
+    \       cur->cnt += delta;\n        for(int i = MAX_LOG - 1; i >= 0; --i) {\n\
+    \            const int nex = (x >> i) & 1;\n            if(!cur->child[nex]) {\n\
+    \                cur->child[nex] = new Node;\n            }\n            cur =\
+    \ cur->child[nex];\n            cur->cnt += delta;\n        }\n    }\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T,\
     \ int MAX_LOG>\nstruct BinaryTrie {\n    BinaryTrie()\n        : root(new Node)\
     \ {}\n    void insert(const T& x) {\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n\
@@ -82,28 +82,29 @@ data:
     \            cur = cur->child[nex ^ 1];\n            } else {\n              \
     \  cur = cur->child[nex];\n            }\n        }\n        return res;\n   \
     \ }\n    int lower_bound(const T& val, const T& x = 0) const {\n        assert(0\
+    \ <= val and val <= (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) <<\
+    \ MAX_LOG));\n        if(val == (T(1) << MAX_LOG)) return size();\n        int\
+    \ res = 0;\n        Node* cur = root;\n        for(int i = MAX_LOG - 1; i >= 0;\
+    \ --i) {\n            if(!cur) break;\n            const int xi = (x >> i) & 1,\
+    \ vi = (val >> i) & 1;\n            const int nex = xi xor vi;\n            if(vi\
+    \ and cur->child[xi]) {\n                res += cur->child[xi]->cnt;\n       \
+    \     }\n            cur = cur->child[nex];\n        }\n        return res;\n\
+    \    }\n    int upper_bound(const T& val, const T& x = 0) const {\n        assert(0\
     \ <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and x < (T(1) <<\
-    \ MAX_LOG));\n        int res = 0;\n        Node* cur = root;\n        for(int\
-    \ i = MAX_LOG - 1; i >= 0; --i) {\n            if(!cur) break;\n            const\
-    \ int xi = (x >> i) & 1, vi = (val >> i) & 1;\n            const int nex = xi\
-    \ xor vi;\n            if(vi and cur->child[xi]) {\n                res += cur->child[xi]->cnt;\n\
-    \            }\n            cur = cur->child[nex];\n        }\n        return\
-    \ res;\n    }\n    int upper_bound(const T& val, const T& x = 0) const {\n   \
-    \     assert(0 <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and\
-    \ x < (T(1) << MAX_LOG));\n        return lower_bound(val + 1, x);\n    }\n\n\
-    \   private:\n    struct Node {\n        Node* child[2] = {};\n        int cnt\
-    \ = 0;\n        Node() {}\n    };\n    Node* root;\n    void update(const T& x,\
-    \ const int delta) {\n        Node* cur = root;\n        cur->cnt += delta;\n\
-    \        for(int i = MAX_LOG - 1; i >= 0; --i) {\n            const int nex =\
-    \ (x >> i) & 1;\n            if(!cur->child[nex]) {\n                cur->child[nex]\
-    \ = new Node;\n            }\n            cur = cur->child[nex];\n           \
-    \ cur->cnt += delta;\n        }\n    }\n};"
+    \ MAX_LOG));\n        return lower_bound(val + 1, x);\n    }\n\n   private:\n\
+    \    struct Node {\n        Node* child[2] = {};\n        int cnt = 0;\n     \
+    \   Node() {}\n    };\n    Node* root;\n    void update(const T& x, const int\
+    \ delta) {\n        Node* cur = root;\n        cur->cnt += delta;\n        for(int\
+    \ i = MAX_LOG - 1; i >= 0; --i) {\n            const int nex = (x >> i) & 1;\n\
+    \            if(!cur->child[nex]) {\n                cur->child[nex] = new Node;\n\
+    \            }\n            cur = cur->child[nex];\n            cur->cnt += delta;\n\
+    \        }\n    }\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/binary_trie.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/set_xor_min.test.cpp

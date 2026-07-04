@@ -38,12 +38,14 @@ data:
     \ return -data[leader(a)];\n    }\n    vector<vector<int>> groups() {\n      \
     \  vector<int> leader_buf(n), group_size(n);\n        for(int i = 0; i < n; ++i)\
     \ {\n            leader_buf[i] = leader(i);\n            ++group_size[leader_buf[i]];\n\
-    \        }\n        vector<vector<int>> result(n);\n        for(int i = 0; i <\
-    \ n; ++i) {\n            result[i].reserve(group_size[i]);\n        }\n      \
-    \  for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
-    \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
-    \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n#line 4 \"verify/library_checker/data_structure/unionfind.test.cpp\"\
+    \        }\n        vector<vector<int>> result;\n        result.reserve(count_if(group_size.begin(),\
+    \ group_size.end(), [](const int sz) { return sz > 0; }));\n        for(int i\
+    \ = 0; i < n; ++i) {\n            if(group_size[i] == 0) continue;\n         \
+    \   const int id = result.size();\n            result.emplace_back();\n      \
+    \      result.back().reserve(group_size[i]);\n            group_size[i] = id;\n\
+    \        }\n        for(int i = 0; i < n; ++i) {\n            result[group_size[leader_buf[i]]].push_back(i);\n\
+    \        }\n        return result;\n    }\n\n   private:\n    int n;\n    vector<int>\
+    \ data;\n};\n#line 4 \"verify/library_checker/data_structure/unionfind.test.cpp\"\
     \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    UnionFind uf(n);\n\
     \    while(q--) {\n        int t, u, v;\n        cin >> t >> u >> v;\n       \
     \ if(t == 0) {\n            uf.merge(u, v);\n        } else {\n            cout\
@@ -60,7 +62,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/unionfind.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/unionfind.test.cpp

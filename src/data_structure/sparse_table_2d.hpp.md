@@ -22,7 +22,8 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/data_structure/sparse_table_2d.hpp\"\ntemplate <typename S, auto\
     \ op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const vector<vector<S>>&\
-    \ v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {\n\
+    \ v)\n        : h((int)v.size()), w(h == 0 ? 0 : (int)v[0].size()), LOG(max(h,\
+    \ w) + 1) {\n        for(int i = 0; i < h; ++i) assert((int)v[i].size() == w);\n\
     \        for(int i = 2; i < (int)LOG.size(); ++i) LOG[i] = LOG[i / 2] + 1;\n \
     \       table = vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
     \ + 1, vector<vector<S>>(h, vector<S>(w, e()))));\n        for(int i = 0; i <\
@@ -44,7 +45,8 @@ data:
     \ table;\n    vector<int> LOG;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SparseTable2D {\n    SparseTable2D(const vector<vector<S>>&\
-    \ v)\n        : h((int)v.size()), w((int)v[0].size()), LOG(max(h, w) + 1) {\n\
+    \ v)\n        : h((int)v.size()), w(h == 0 ? 0 : (int)v[0].size()), LOG(max(h,\
+    \ w) + 1) {\n        for(int i = 0; i < h; ++i) assert((int)v[i].size() == w);\n\
     \        for(int i = 2; i < (int)LOG.size(); ++i) LOG[i] = LOG[i / 2] + 1;\n \
     \       table = vector<vector<vector<vector<S>>>>(LOG[h] + 1, vector<vector<vector<S>>>(LOG[w]\
     \ + 1, vector<vector<S>>(h, vector<S>(w, e()))));\n        for(int i = 0; i <\
@@ -69,7 +71,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/sparse_table_2d.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp

@@ -47,28 +47,28 @@ data:
     \   res += T(1) << i;\n                cur = cur->child[nex ^ 1];\n          \
     \  } else {\n                cur = cur->child[nex];\n            }\n        }\n\
     \        return res;\n    }\n    int lower_bound(const T& val, const T& x = 0)\
-    \ const {\n        assert(0 <= val and val < (T(1) << MAX_LOG));\n        assert(0\
-    \ <= x and x < (T(1) << MAX_LOG));\n        int res = 0;\n        Node* cur =\
-    \ root;\n        for(int i = MAX_LOG - 1; i >= 0; --i) {\n            if(!cur)\
-    \ break;\n            const int xi = (x >> i) & 1, vi = (val >> i) & 1;\n    \
-    \        const int nex = xi xor vi;\n            if(vi and cur->child[xi]) {\n\
-    \                res += cur->child[xi]->cnt;\n            }\n            cur =\
-    \ cur->child[nex];\n        }\n        return res;\n    }\n    int upper_bound(const\
-    \ T& val, const T& x = 0) const {\n        assert(0 <= val and val < (T(1) <<\
-    \ MAX_LOG));\n        assert(0 <= x and x < (T(1) << MAX_LOG));\n        return\
-    \ lower_bound(val + 1, x);\n    }\n\n   private:\n    struct Node {\n        Node*\
-    \ child[2] = {};\n        int cnt = 0;\n        Node() {}\n    };\n    Node* root;\n\
-    \    void update(const T& x, const int delta) {\n        Node* cur = root;\n \
-    \       cur->cnt += delta;\n        for(int i = MAX_LOG - 1; i >= 0; --i) {\n\
-    \            const int nex = (x >> i) & 1;\n            if(!cur->child[nex]) {\n\
-    \                cur->child[nex] = new Node;\n            }\n            cur =\
-    \ cur->child[nex];\n            cur->cnt += delta;\n        }\n    }\n};\n#line\
-    \ 4 \"verify/library_checker/data_structure/set_xor_min.test.cpp\"\nint main(void)\
-    \ {\n    int q;\n    cin >> q;\n    BinaryTrie<int, 30> trie;\n    while(q--)\
-    \ {\n        int t, x;\n        cin >> t >> x;\n        if(t == 0) {\n       \
-    \     trie.insert(x);\n        } else if(t == 1) {\n            trie.erase(x);\n\
-    \        } else {\n            cout << trie.min(x) << '\\n';\n        }\n    }\n\
-    }\n"
+    \ const {\n        assert(0 <= val and val <= (T(1) << MAX_LOG));\n        assert(0\
+    \ <= x and x < (T(1) << MAX_LOG));\n        if(val == (T(1) << MAX_LOG)) return\
+    \ size();\n        int res = 0;\n        Node* cur = root;\n        for(int i\
+    \ = MAX_LOG - 1; i >= 0; --i) {\n            if(!cur) break;\n            const\
+    \ int xi = (x >> i) & 1, vi = (val >> i) & 1;\n            const int nex = xi\
+    \ xor vi;\n            if(vi and cur->child[xi]) {\n                res += cur->child[xi]->cnt;\n\
+    \            }\n            cur = cur->child[nex];\n        }\n        return\
+    \ res;\n    }\n    int upper_bound(const T& val, const T& x = 0) const {\n   \
+    \     assert(0 <= val and val < (T(1) << MAX_LOG));\n        assert(0 <= x and\
+    \ x < (T(1) << MAX_LOG));\n        return lower_bound(val + 1, x);\n    }\n\n\
+    \   private:\n    struct Node {\n        Node* child[2] = {};\n        int cnt\
+    \ = 0;\n        Node() {}\n    };\n    Node* root;\n    void update(const T& x,\
+    \ const int delta) {\n        Node* cur = root;\n        cur->cnt += delta;\n\
+    \        for(int i = MAX_LOG - 1; i >= 0; --i) {\n            const int nex =\
+    \ (x >> i) & 1;\n            if(!cur->child[nex]) {\n                cur->child[nex]\
+    \ = new Node;\n            }\n            cur = cur->child[nex];\n           \
+    \ cur->cnt += delta;\n        }\n    }\n};\n#line 4 \"verify/library_checker/data_structure/set_xor_min.test.cpp\"\
+    \nint main(void) {\n    int q;\n    cin >> q;\n    BinaryTrie<int, 30> trie;\n\
+    \    while(q--) {\n        int t, x;\n        cin >> t >> x;\n        if(t ==\
+    \ 0) {\n            trie.insert(x);\n        } else if(t == 1) {\n           \
+    \ trie.erase(x);\n        } else {\n            cout << trie.min(x) << '\\n';\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\n#include\
     \ \"../../../src/template/template.hpp\"\n#include \"../../../src/data_structure/binary_trie.hpp\"\
     \nint main(void) {\n    int q;\n    cin >> q;\n    BinaryTrie<int, 30> trie;\n\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/set_xor_min.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/set_xor_min.test.cpp

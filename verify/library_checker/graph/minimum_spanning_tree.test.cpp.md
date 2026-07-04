@@ -62,18 +62,20 @@ data:
     \ return -data[leader(a)];\n    }\n    vector<vector<int>> groups() {\n      \
     \  vector<int> leader_buf(n), group_size(n);\n        for(int i = 0; i < n; ++i)\
     \ {\n            leader_buf[i] = leader(i);\n            ++group_size[leader_buf[i]];\n\
-    \        }\n        vector<vector<int>> result(n);\n        for(int i = 0; i <\
-    \ n; ++i) {\n            result[i].reserve(group_size[i]);\n        }\n      \
-    \  for(int i = 0; i < n; ++i) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(remove_if(result.begin(), result.end(), [&](const\
-    \ vector<int>& v) { return v.empty(); }), result.end());\n        return result;\n\
-    \    }\n\n   private:\n    int n;\n    vector<int> data;\n};\n#line 5 \"src/graph/kruskal.hpp\"\
-    \ntemplate <typename T>\npair<T, Edges<T>> kruskal(const int n, Edges<T> es) {\n\
-    \    sort(es.begin(), es.end(), [&](const Edge<T>& a, const Edge<T>& b) { return\
-    \ a.cost < b.cost; });\n    UnionFind uf(n);\n    T cost = 0;\n    Edges<T> res;\n\
-    \    res.reserve(n - 1);\n    for(const Edge<T>& e : es) {\n        if(uf.same(e.from,\
-    \ e.to)) continue;\n        cost += e.cost;\n        uf.merge(e.from, e.to);\n\
-    \        res.emplace_back(e);\n    }\n    return {cost, res};\n}\n#line 5 \"verify/library_checker/graph/minimum_spanning_tree.test.cpp\"\
+    \        }\n        vector<vector<int>> result;\n        result.reserve(count_if(group_size.begin(),\
+    \ group_size.end(), [](const int sz) { return sz > 0; }));\n        for(int i\
+    \ = 0; i < n; ++i) {\n            if(group_size[i] == 0) continue;\n         \
+    \   const int id = result.size();\n            result.emplace_back();\n      \
+    \      result.back().reserve(group_size[i]);\n            group_size[i] = id;\n\
+    \        }\n        for(int i = 0; i < n; ++i) {\n            result[group_size[leader_buf[i]]].push_back(i);\n\
+    \        }\n        return result;\n    }\n\n   private:\n    int n;\n    vector<int>\
+    \ data;\n};\n#line 5 \"src/graph/kruskal.hpp\"\ntemplate <typename T>\npair<T,\
+    \ Edges<T>> kruskal(const int n, Edges<T> es) {\n    sort(es.begin(), es.end(),\
+    \ [&](const Edge<T>& a, const Edge<T>& b) { return a.cost < b.cost; });\n    UnionFind\
+    \ uf(n);\n    T cost = 0;\n    Edges<T> res;\n    res.reserve(n - 1);\n    for(const\
+    \ Edge<T>& e : es) {\n        if(uf.same(e.from, e.to)) continue;\n        cost\
+    \ += e.cost;\n        uf.merge(e.from, e.to);\n        res.emplace_back(e);\n\
+    \    }\n    return {cost, res};\n}\n#line 5 \"verify/library_checker/graph/minimum_spanning_tree.test.cpp\"\
     \nint main(void) {\n    int n, m;\n    cin >> n >> m;\n    Edges<ll> e(m);\n \
     \   rep(i, 0, m) {\n        cin >> e[i].from >> e[i].to >> e[i].cost;\n      \
     \  e[i].idx = i;\n    }\n    auto [cost, tree] = kruskal(n, e);\n    cout << cost\
@@ -94,7 +96,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/minimum_spanning_tree.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/minimum_spanning_tree.test.cpp

@@ -22,8 +22,8 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/data_structure/sparse_table.hpp\"\ntemplate <typename S, auto op,\
     \ auto e>\nstruct SparseTable {\n    SparseTable(const vector<S>& v)\n       \
-    \ : n((int)v.size()) {\n        const int b = 32 - __builtin_clz(n);\n       \
-    \ table.assign(b, vector<S>(n, e()));\n        table[0] = v;\n        for(int\
+    \ : n((int)v.size()) {\n        const int b = n == 0 ? 1 : 32 - __builtin_clz(n);\n\
+    \        table.assign(b, vector<S>(n, e()));\n        table[0] = v;\n        for(int\
     \ i = 1; i < b; ++i) {\n            const int w = 1 << (i - 1);\n            for(int\
     \ j = 0; j + w * 2 <= n; ++j) {\n                table[i][j] = op(table[i - 1][j],\
     \ table[i - 1][j + w]);\n            }\n        }\n    }\n    S prod(const int\
@@ -33,7 +33,7 @@ data:
     \    int n;\n    vector<vector<S>> table;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename S,\
     \ auto op, auto e>\nstruct SparseTable {\n    SparseTable(const vector<S>& v)\n\
-    \        : n((int)v.size()) {\n        const int b = 32 - __builtin_clz(n);\n\
+    \        : n((int)v.size()) {\n        const int b = n == 0 ? 1 : 32 - __builtin_clz(n);\n\
     \        table.assign(b, vector<S>(n, e()));\n        table[0] = v;\n        for(int\
     \ i = 1; i < b; ++i) {\n            const int w = 1 << (i - 1);\n            for(int\
     \ j = 0; j + w * 2 <= n; ++j) {\n                table[i][j] = op(table[i - 1][j],\
@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/sparse_table.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-04 15:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_rmq.test.cpp
