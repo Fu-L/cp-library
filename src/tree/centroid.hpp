@@ -4,6 +4,7 @@
 template <typename T>
 vector<int> centroid(const Graph<T>& g) {
     const int n = g.size();
+    if(n == 0) return {};
     stack<pair<int, int>> st;
     st.emplace(0, -1);
     vector<int> sz(n), par(n);

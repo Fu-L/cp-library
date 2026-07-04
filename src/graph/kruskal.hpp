@@ -4,6 +4,7 @@
 #include "../data_structure/union_find.hpp"
 template <typename T>
 pair<T, Edges<T>> kruskal(const int n, Edges<T> es) {
+    if(n <= 1) return {0, {}};
     sort(es.begin(), es.end(), [&](const Edge<T>& a, const Edge<T>& b) { return a.cost < b.cost; });
     UnionFind uf(n);
     T cost = 0;

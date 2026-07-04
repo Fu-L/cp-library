@@ -4,6 +4,7 @@
 template <typename DP, typename T, typename F1, typename F2>
 vector<DP> rerooting(const Graph<T>& g, const F1& f1, const F2& f2, const DP& id) {
     const int n = g.size();
+    if(n == 0) return {};
     vector<DP> memo(n, id), dp(n, id);
     auto dfs = [&](const auto& dfs, const int cur, const int par) -> void {
         for(const Edge<T>& e : g[cur]) {

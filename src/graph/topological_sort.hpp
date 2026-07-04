@@ -10,21 +10,22 @@ vector<int> topological_sort(const Graph<T>& g) {
             ++deg[e.to];
         }
     }
-    stack<int> st;
+    vector<int> st;
+    st.reserve(n);
     for(int i = 0; i < n; ++i) {
         if(deg[i] == 0) {
-            st.emplace(i);
+            st.emplace_back(i);
         }
     }
     vector<int> res;
     res.reserve(n);
     while(!st.empty()) {
-        const int p = st.top();
-        st.pop();
+        const int p = st.back();
+        st.pop_back();
         res.emplace_back(p);
         for(const Edge<T>& e : g[p]) {
             if(--deg[e.to] == 0) {
-                st.emplace(e.to);
+                st.emplace_back(e.to);
             }
         }
     }

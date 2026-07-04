@@ -4,6 +4,7 @@
 template <typename T>
 pair<T, vector<int>> tree_diameter(const Graph<T>& g) {
     const int n = g.size();
+    if(n == 0) return {T(0), {}};
     vector<T> depth(n);
     vector<int> par(n);
     auto dfs = [&](const auto& dfs, const int v, const int p, const T& d) -> void {

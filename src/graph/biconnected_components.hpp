@@ -13,27 +13,31 @@ struct BiconnectedComponents {
     }
 
    private:
+    struct edge_key {
+        int u, v, idx;
+    };
     int n;
     LowLink<T> lowlink;
     vector<int> used;
-    vector<pair<int, int>> tmp;
-    void dfs(const Graph<T>& g, const int idx, const int par) {
+    vector<edge_key> tmp;
+    void dfs(const Graph<T>& g, const int idx, const int par_edge_idx) {
         used[idx] = true;
         for(const Edge<T>& e : g[idx]) {
             const int to = e.to;
-            if(to == par) continue;
+            if(e.idx == par_edge_idx) continue;
             if(!used[to] or lowlink.ord[to] < lowlink.ord[idx]) {
-                tmp.emplace_back(minmax(idx, to));
+                const auto [u, v] = minmax(idx, to);
+                tmp.push_back({u, v, e.idx});
             }
             if(!used[to]) {
-                dfs(g, to, idx);
+                dfs(g, to, e.idx);
                 if(lowlink.low[to] >= lowlink.ord[idx]) {
                     bc.emplace_back();
                     while(true) {
-                        const pair<int, int> ed = tmp.back();
-                        bc.back().emplace_back(ed);
+                        const edge_key ed = tmp.back();
+                        bc.back().emplace_back(ed.u, ed.v);
                         tmp.pop_back();
-                        if(ed.first == min(idx, to) and ed.second == max(idx, to)) break;
+                        if(ed.idx == e.idx) break;
                     }
                 }
             }

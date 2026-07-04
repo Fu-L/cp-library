@@ -95,7 +95,7 @@ struct MinCostFlow {
             vector<pair<int, _edge>> elist;
             elist.reserve(2 * m);
             for(int i = 0; i < m; ++i) {
-                const auto e = _edges[i];
+                const auto& e = _edges[i];
                 edge_idx[i] = degree[e.from]++;
                 redge_idx[i] = degree[e.to]++;
                 elist.push_back({e.from, {e.to, -1, e.cap - e.flow, e.cost}});
@@ -103,7 +103,7 @@ struct MinCostFlow {
             }
             auto _g = internal::csr<_edge>(_n, elist);
             for(int i = 0; i < m; ++i) {
-                const auto e = _edges[i];
+                const auto& e = _edges[i];
                 edge_idx[i] += _g.start[e.from];
                 redge_idx[i] += _g.start[e.to];
                 _g.elist[edge_idx[i]].rev = redge_idx[i];
@@ -113,7 +113,7 @@ struct MinCostFlow {
         }();
         const auto result = slope(g, s, t, flow_limit);
         for(int i = 0; i < m; ++i) {
-            const auto e = g.elist[edge_idx[i]];
+            const auto& e = g.elist[edge_idx[i]];
             _edges[i].flow = _edges[i].cap - e.cap;
         }
         return result;
@@ -170,7 +170,7 @@ struct MinCostFlow {
                 if(v == t) break;
                 const Cost dual_v = dual_dist[v].first, dist_v = dual_dist[v].second;
                 for(int i = g.start[v]; i < g.start[v + 1]; ++i) {
-                    const auto e = g.elist[i];
+                    const auto& e = g.elist[i];
                     if(!e.cap) continue;
                     const Cost cost = e.cost - dual_dist[e.to].first + dual_v;
                     if(dual_dist[e.to].second - dist_v > cost) {

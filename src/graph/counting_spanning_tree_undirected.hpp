@@ -6,6 +6,7 @@
 template <typename T, typename U>
 T counting_spanning_tree_undirected(const Graph<U>& g) {
     const int n = g.size();
+    if(n == 0) return T(1);
     Matrix<T> mat(n, n);
     for(int i = 0; i < n; ++i) {
         mat[i][i] = (int)g[i].size();

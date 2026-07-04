@@ -4,6 +4,7 @@
 template <typename T>
 pair<Graph<int>, int> centroid_decomposition(const Graph<T>& g) {
     const int n = g.size();
+    if(n == 0) return {Graph<int>(0), -1};
     vector<int> sub(n);
     vector<bool> visited(n);
     Graph<int> tree(n);
