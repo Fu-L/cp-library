@@ -22,16 +22,18 @@ struct WaveletMatrix {
 
    public:
     WaveletMatrix(const u32 _n)
-        : n(max<u32>(_n, 1)), a(n) {}
+        : n(_n), lg(0), a(n) {}
     WaveletMatrix(const vector<T>& _a)
-        : n(_a.size()), a(_a) {
-        if(n == 0) {
-            a.push_back(0);
-            n = 1;
-        }
+        : n(_a.size()), lg(0), a(_a) {
         build();
     }
     __attribute__((optimize("O3"))) void build() {
+        if(n == 0) {
+            lg = 0;
+            bv.clear();
+            return;
+        }
+        for(const T& x : a) assert(x >= 0);
         lg = __lg(max<T>(*max_element(begin(a), end(a)), 1)) + 1;
         bv.assign(lg, n);
         vector<T> cur = a, nxt(n);
@@ -84,7 +86,8 @@ struct WaveletMatrix {
     }
     int range_freq(int l, int r, const T& upper) const {
         assert(0 <= l and l <= r and r <= n);
-        if(upper >= (T(1) << lg)) return r - l;
+        if(upper <= 0) return 0;
+        if(lg < (int)numeric_limits<T>::digits and upper >= (T(1) << lg)) return r - l;
         int ret = 0;
         for(int h = lg - 1; h >= 0; --h) {
             const bool f = (upper >> h) & 1;

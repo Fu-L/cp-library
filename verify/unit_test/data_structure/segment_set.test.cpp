@@ -24,7 +24,6 @@ void assert_same(const SegmentSet<int>& st, const vector<bool>& used) {
     vector<pair<int, int>> actual;
     for(const auto& p : st) actual.push_back(p);
     assert(actual == expected);
-
     const int n = used.size();
     rep(x, 0, n) {
         const auto it = st.find(x);
@@ -34,7 +33,6 @@ void assert_same(const SegmentSet<int>& st, const vector<bool>& used) {
         } else {
             assert(it == st.end());
         }
-
         int expected_next = numeric_limits<int>::max();
         rep(y, x, n) {
             if(used[y]) {
@@ -43,7 +41,6 @@ void assert_same(const SegmentSet<int>& st, const vector<bool>& used) {
             }
         }
         assert(st.next(x) == expected_next);
-
         const auto lb = st.lower_bound(x);
         pair<int, int> expected_lb{-1, -1};
         for(const auto& p : expected) {
@@ -77,6 +74,8 @@ void test_sample_like() {
     insert(10, 15);
     insert(13, 20);
     erase(5, 13);
+    insert(7, 7);
+    erase(13, 13);
 }
 void test_random() {
     constexpr int n = 80;
@@ -85,7 +84,7 @@ void test_random() {
     const int query_num = 1000;
     rep(_, 0, query_num) {
         int l = rng(0, n - 1);
-        int r = rng(l + 1, n);
+        int r = rng(l, n);
         if(rng(0, 1)) {
             st.insert(l, r);
             rep(i, l, r) used[i] = true;

@@ -9,6 +9,8 @@ struct DynamicLiChaoTree {
         root = add_line(root, x, x_low, x_high, x.get(x_low), x.get(x_high));
     }
     void add_segment(const T& l, const T& r, const T& a, const T& b) {
+        assert(l <= r);
+        if(l == r) return;
         Line x(a, b);
         root = add_segment(root, x, l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));
     }

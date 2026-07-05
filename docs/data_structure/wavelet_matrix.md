@@ -17,6 +17,8 @@ documentation_of: ../../src/data_structure/wavelet_matrix.hpp
 - (1): 長さ `n` の数列 `wm` を作ります．初期値は $0$ です．
 - (2): 長さ `n = ssize(v)` の数列 `wm` を作り， `v` の内容を初期値として `build` を行います．
 
+空配列も扱えます．
+
 **計算量**
 
 - (1) $O(n)$
@@ -32,7 +34,7 @@ void wm.set(int i, T x)
 
 **制約**
 
-- $0 \leq n < n$
+- $0 \leq i < n$
 - $0 \leq x$
 - `build` をした後に呼び出してはいけない
 
@@ -111,10 +113,12 @@ T wm.kth_largest(int l, int r, int k)
 
 (1) `wm[l, r)` における $\mathrm{upper}$ 未満の要素の個数を返します．<br>
 (2) `wm[l, r)` における $\mathrm{lower}$ 以上 $\mathrm{upper}$ 未満の要素の個数を返します．
+`upper <= 0` の場合は $0$ を返します．
 
 **制約**
 
 - $0 \leq l \leq r \leq n$
+- (1) $0 \leq$ `wm` の各要素
 - (2) $\mathrm{lower} \leq \mathrm{upper}$
 
 **計算量**

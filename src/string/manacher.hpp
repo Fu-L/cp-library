@@ -1,31 +1,31 @@
 #pragma once
 #include "../template/template.hpp"
 template <typename T>
-vector<int> manacher(T s) {
-    int n = (int)s.size();
+vector<int> manacher(const T& s) {
+    const int n = (int)s.size();
     if(n == 0) return {};
-    s.resize(2 * n - 1);
-    for(int i = n - 1; i >= 0; --i) {
-        s[2 * i] = s[i];
-    }
-    const auto d = *min_element(s.begin(), s.end());
-    for(int i = 0; i < n - 1; ++i) {
-        s[2 * i + 1] = d;
-    }
-    n = (int)s.size();
-    vector<int> res(n);
-    for(int i = 0, j = 0; i < n;) {
-        while(i - j >= 0 and i + j < n and s[i - j] == s[i + j]) ++j;
-        res[i] = j;
-        int k = 1;
-        while(i - k >= 0 and i + k < n and k + res[i - k] < j) {
-            res[i + k] = res[i - k];
-            ++k;
+    vector<int> odd(n), even(n), res(2 * n - 1);
+    for(int i = 0, l = 0, r = -1; i < n; ++i) {
+        int k = (i > r ? 1 : min(odd[l + r - i], r - i + 1));
+        while(0 <= i - k and i + k < n and s[i - k] == s[i + k]) ++k;
+        odd[i] = k;
+        if(i + k - 1 > r) {
+            l = i - k + 1;
+            r = i + k - 1;
         }
-        i += k, j -= k;
+    }
+    for(int i = 0, l = 0, r = -1; i < n; ++i) {
+        int k = (i > r ? 0 : min(even[l + r - i + 1], r - i + 1));
+        while(0 <= i - k - 1 and i + k < n and s[i - k - 1] == s[i + k]) ++k;
+        even[i] = k;
+        if(i + k - 1 > r) {
+            l = i - k;
+            r = i + k - 1;
+        }
     }
     for(int i = 0; i < n; ++i) {
-        if(((i ^ res[i]) & 1) == 0) --res[i];
+        res[2 * i] = 2 * odd[i] - 1;
+        if(i) res[2 * i - 1] = 2 * even[i];
     }
     return res;
 }

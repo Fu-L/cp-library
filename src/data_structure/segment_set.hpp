@@ -21,6 +21,8 @@ struct SegmentSet {
         return prev(it);
     }
     void insert(T l, T r) {
+        assert(l <= r);
+        if(l == r) return;
         auto L = st.upper_bound(l), R = st.upper_bound(r);
         if(L != st.begin() and l <= prev(L)->second) --L;
         if(L != R) {
@@ -31,6 +33,8 @@ struct SegmentSet {
         st[l] = r;
     }
     void erase(const T& l, const T& r) {
+        assert(l <= r);
+        if(l == r) return;
         auto L = st.upper_bound(l), R = st.upper_bound(r);
         if(L != st.begin() and l <= prev(L)->second) --L;
         if(L == R) return;

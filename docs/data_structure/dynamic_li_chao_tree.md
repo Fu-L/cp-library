@@ -47,6 +47,11 @@ void cht.add_segment(T l, T r, T a, T b)
 ```
 
 `cht` に線分 $y = ax + b ~ (l \leq x < r)$ を追加します．
+$l = r$ の場合は何もしません．
+
+**制約**
+
+- $l \leq r$
 
 **計算量**
 

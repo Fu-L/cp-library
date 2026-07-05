@@ -3,6 +3,7 @@
 template <typename T>
 vector<int> longest_increasing_sequence(const vector<T>& a) {
     const int n = a.size();
+    if(n == 0) return {};
     vector<pair<T, int>> dp;
     vector<int> p(n, -1);
     for(int i = 0; i < n; ++i) {
