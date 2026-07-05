@@ -27,13 +27,13 @@ data:
     \        cin.tie(0);\n        cout << fixed << setprecision(30);\n    }\n} setup_io;\n\
     #line 3 \"src/dp/longest_increasing_sequence.hpp\"\ntemplate <typename T>\nvector<int>\
     \ longest_increasing_sequence(const vector<T>& a) {\n    const int n = a.size();\n\
-    \    vector<pair<T, int>> dp;\n    vector<int> p(n, -1);\n    for(int i = 0; i\
-    \ < n; ++i) {\n        auto it = lower_bound(begin(dp), end(dp), make_pair(a[i],\
-    \ -i));\n        if(it != begin(dp)) p[i] = -prev(it)->second;\n        if(it\
-    \ == end(dp)) {\n            dp.emplace_back(a[i], -i);\n        } else {\n  \
-    \          *it = make_pair(a[i], -i);\n        }\n    }\n    vector<int> res;\n\
-    \    for(int i = -dp.back().second; i != -1; i = p[i]) res.push_back(i);\n   \
-    \ reverse(begin(res), end(res));\n    return res;\n}\n#line 4 \"verify/library_checker/other/longest_increasing_sequence.test.cpp\"\
+    \    if(n == 0) return {};\n    vector<pair<T, int>> dp;\n    vector<int> p(n,\
+    \ -1);\n    for(int i = 0; i < n; ++i) {\n        auto it = lower_bound(begin(dp),\
+    \ end(dp), make_pair(a[i], -i));\n        if(it != begin(dp)) p[i] = -prev(it)->second;\n\
+    \        if(it == end(dp)) {\n            dp.emplace_back(a[i], -i);\n       \
+    \ } else {\n            *it = make_pair(a[i], -i);\n        }\n    }\n    vector<int>\
+    \ res;\n    for(int i = -dp.back().second; i != -1; i = p[i]) res.push_back(i);\n\
+    \    reverse(begin(res), end(res));\n    return res;\n}\n#line 4 \"verify/library_checker/other/longest_increasing_sequence.test.cpp\"\
     \nint main(void) {\n    int n;\n    cin >> n;\n    vector<int> a(n);\n    rep(i,\
     \ 0, n) cin >> a[i];\n    vector<int> lis = longest_increasing_sequence(a);\n\
     \    cout << lis.size() << '\\n';\n    rep(i, 0, (int)lis.size()) cout << lis[i]\
@@ -50,7 +50,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/other/longest_increasing_sequence.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-05 23:31:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/other/longest_increasing_sequence.test.cpp

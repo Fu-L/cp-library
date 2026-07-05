@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/bit_vector.test.cpp
     title: verify/unit_test/data_structure/bit_vector.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/wavelet_matrix.test.cpp
+    title: verify/unit_test/data_structure/wavelet_matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -111,6 +114,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/data_structure/bit_vector.test.cpp
+  - verify/unit_test/data_structure/wavelet_matrix.test.cpp
   - verify/library_checker/data_structure/static_range_frequency.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/range_kth_smallest.test.cpp

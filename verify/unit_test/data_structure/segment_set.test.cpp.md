@@ -57,18 +57,19 @@ data:
     \ (--it)->second <= x) return st.end();\n        return it;\n    }\n    const_iterator\
     \ lower_bound(const T& x) const {\n        auto it = st.lower_bound(x);\n    \
     \    if(it == st.begin() or prev(it)->second <= x) return it;\n        return\
-    \ prev(it);\n    }\n    void insert(T l, T r) {\n        auto L = st.upper_bound(l),\
-    \ R = st.upper_bound(r);\n        if(L != st.begin() and l <= prev(L)->second)\
-    \ --L;\n        if(L != R) {\n            l = min(l, L->first);\n            r\
-    \ = max(r, prev(R)->second);\n            st.erase(L, R);\n        }\n       \
-    \ st[l] = r;\n    }\n    void erase(const T& l, const T& r) {\n        auto L\
-    \ = st.upper_bound(l), R = st.upper_bound(r);\n        if(L != st.begin() and\
-    \ l <= prev(L)->second) --L;\n        if(L == R) return;\n        const T nl =\
-    \ min(l, L->first), nr = max(r, prev(R)->second);\n        st.erase(L, R);\n \
-    \       if(nl < l) st[nl] = l;\n        if(r < nr) st[r] = nr;\n    }\n    T next(const\
-    \ T& x) const {\n        auto it = this->lower_bound(x);\n        if(it == this->end())\
-    \ return numeric_limits<T>::max();\n        return max<T>(x, it->first);\n   \
-    \ }\n    size_t size() const {\n        return st.size();\n    }\n\n   private:\n\
+    \ prev(it);\n    }\n    void insert(T l, T r) {\n        assert(l <= r);\n   \
+    \     if(l == r) return;\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
+    \        if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L != R)\
+    \ {\n            l = min(l, L->first);\n            r = max(r, prev(R)->second);\n\
+    \            st.erase(L, R);\n        }\n        st[l] = r;\n    }\n    void erase(const\
+    \ T& l, const T& r) {\n        assert(l <= r);\n        if(l == r) return;\n \
+    \       auto L = st.upper_bound(l), R = st.upper_bound(r);\n        if(L != st.begin()\
+    \ and l <= prev(L)->second) --L;\n        if(L == R) return;\n        const T\
+    \ nl = min(l, L->first), nr = max(r, prev(R)->second);\n        st.erase(L, R);\n\
+    \        if(nl < l) st[nl] = l;\n        if(r < nr) st[r] = nr;\n    }\n    T\
+    \ next(const T& x) const {\n        auto it = this->lower_bound(x);\n        if(it\
+    \ == this->end()) return numeric_limits<T>::max();\n        return max<T>(x, it->first);\n\
+    \    }\n    size_t size() const {\n        return st.size();\n    }\n\n   private:\n\
     \    map<T, T> st;\n};\n#line 5 \"verify/unit_test/data_structure/segment_set.test.cpp\"\
     \nvector<pair<int, int>> enumerate_segments(const vector<bool>& used) {\n    vector<pair<int,\
     \ int>> res;\n    const int n = used.size();\n    int i = 0;\n    while(i < n)\
@@ -78,28 +79,28 @@ data:
     \ st, const vector<bool>& used) {\n    const vector<pair<int, int>> expected =\
     \ enumerate_segments(used);\n    assert(st.size() == expected.size());\n    vector<pair<int,\
     \ int>> actual;\n    for(const auto& p : st) actual.push_back(p);\n    assert(actual\
-    \ == expected);\n\n    const int n = used.size();\n    rep(x, 0, n) {\n      \
-    \  const auto it = st.find(x);\n        if(used[x]) {\n            assert(it !=\
-    \ st.end());\n            assert(it->first <= x and x < it->second);\n       \
-    \ } else {\n            assert(it == st.end());\n        }\n\n        int expected_next\
-    \ = numeric_limits<int>::max();\n        rep(y, x, n) {\n            if(used[y])\
-    \ {\n                expected_next = y;\n                break;\n            }\n\
-    \        }\n        assert(st.next(x) == expected_next);\n\n        const auto\
-    \ lb = st.lower_bound(x);\n        pair<int, int> expected_lb{-1, -1};\n     \
-    \   for(const auto& p : expected) {\n            if(p.second <= x) continue;\n\
-    \            expected_lb = p;\n            break;\n        }\n        if(expected_lb.first\
-    \ == -1) {\n            assert(lb == st.end());\n        } else {\n          \
-    \  assert(lb != st.end());\n            assert(lb->first == expected_lb.first);\n\
-    \            assert(lb->second == expected_lb.second);\n        }\n    }\n}\n\
-    void test_sample_like() {\n    SegmentSet<int> st;\n    vector<bool> used(25);\n\
-    \    auto insert = [&](int l, int r) {\n        st.insert(l, r);\n        rep(i,\
-    \ l, r) used[i] = true;\n        assert_same(st, used);\n    };\n    auto erase\
-    \ = [&](int l, int r) {\n        st.erase(l, r);\n        rep(i, l, r) used[i]\
-    \ = false;\n        assert_same(st, used);\n    };\n    insert(3, 7);\n    insert(10,\
-    \ 15);\n    insert(13, 20);\n    erase(5, 13);\n}\nvoid test_random() {\n    constexpr\
+    \ == expected);\n    const int n = used.size();\n    rep(x, 0, n) {\n        const\
+    \ auto it = st.find(x);\n        if(used[x]) {\n            assert(it != st.end());\n\
+    \            assert(it->first <= x and x < it->second);\n        } else {\n  \
+    \          assert(it == st.end());\n        }\n        int expected_next = numeric_limits<int>::max();\n\
+    \        rep(y, x, n) {\n            if(used[y]) {\n                expected_next\
+    \ = y;\n                break;\n            }\n        }\n        assert(st.next(x)\
+    \ == expected_next);\n        const auto lb = st.lower_bound(x);\n        pair<int,\
+    \ int> expected_lb{-1, -1};\n        for(const auto& p : expected) {\n       \
+    \     if(p.second <= x) continue;\n            expected_lb = p;\n            break;\n\
+    \        }\n        if(expected_lb.first == -1) {\n            assert(lb == st.end());\n\
+    \        } else {\n            assert(lb != st.end());\n            assert(lb->first\
+    \ == expected_lb.first);\n            assert(lb->second == expected_lb.second);\n\
+    \        }\n    }\n}\nvoid test_sample_like() {\n    SegmentSet<int> st;\n   \
+    \ vector<bool> used(25);\n    auto insert = [&](int l, int r) {\n        st.insert(l,\
+    \ r);\n        rep(i, l, r) used[i] = true;\n        assert_same(st, used);\n\
+    \    };\n    auto erase = [&](int l, int r) {\n        st.erase(l, r);\n     \
+    \   rep(i, l, r) used[i] = false;\n        assert_same(st, used);\n    };\n  \
+    \  insert(3, 7);\n    insert(10, 15);\n    insert(13, 20);\n    erase(5, 13);\n\
+    \    insert(7, 7);\n    erase(13, 13);\n}\nvoid test_random() {\n    constexpr\
     \ int n = 80;\n    SegmentSet<int> st;\n    vector<bool> used(n);\n    const int\
     \ query_num = 1000;\n    rep(_, 0, query_num) {\n        int l = rng(0, n - 1);\n\
-    \        int r = rng(l + 1, n);\n        if(rng(0, 1)) {\n            st.insert(l,\
+    \        int r = rng(l, n);\n        if(rng(0, 1)) {\n            st.insert(l,\
     \ r);\n            rep(i, l, r) used[i] = true;\n        } else {\n          \
     \  st.erase(l, r);\n            rep(i, l, r) used[i] = false;\n        }\n   \
     \     assert_same(st, used);\n    }\n}\nint main(void) {\n    test_sample_like();\n\
@@ -116,17 +117,17 @@ data:
     \ {\n    const vector<pair<int, int>> expected = enumerate_segments(used);\n \
     \   assert(st.size() == expected.size());\n    vector<pair<int, int>> actual;\n\
     \    for(const auto& p : st) actual.push_back(p);\n    assert(actual == expected);\n\
-    \n    const int n = used.size();\n    rep(x, 0, n) {\n        const auto it =\
-    \ st.find(x);\n        if(used[x]) {\n            assert(it != st.end());\n  \
-    \          assert(it->first <= x and x < it->second);\n        } else {\n    \
-    \        assert(it == st.end());\n        }\n\n        int expected_next = numeric_limits<int>::max();\n\
-    \        rep(y, x, n) {\n            if(used[y]) {\n                expected_next\
-    \ = y;\n                break;\n            }\n        }\n        assert(st.next(x)\
-    \ == expected_next);\n\n        const auto lb = st.lower_bound(x);\n        pair<int,\
-    \ int> expected_lb{-1, -1};\n        for(const auto& p : expected) {\n       \
-    \     if(p.second <= x) continue;\n            expected_lb = p;\n            break;\n\
-    \        }\n        if(expected_lb.first == -1) {\n            assert(lb == st.end());\n\
-    \        } else {\n            assert(lb != st.end());\n            assert(lb->first\
+    \    const int n = used.size();\n    rep(x, 0, n) {\n        const auto it = st.find(x);\n\
+    \        if(used[x]) {\n            assert(it != st.end());\n            assert(it->first\
+    \ <= x and x < it->second);\n        } else {\n            assert(it == st.end());\n\
+    \        }\n        int expected_next = numeric_limits<int>::max();\n        rep(y,\
+    \ x, n) {\n            if(used[y]) {\n                expected_next = y;\n   \
+    \             break;\n            }\n        }\n        assert(st.next(x) == expected_next);\n\
+    \        const auto lb = st.lower_bound(x);\n        pair<int, int> expected_lb{-1,\
+    \ -1};\n        for(const auto& p : expected) {\n            if(p.second <= x)\
+    \ continue;\n            expected_lb = p;\n            break;\n        }\n   \
+    \     if(expected_lb.first == -1) {\n            assert(lb == st.end());\n   \
+    \     } else {\n            assert(lb != st.end());\n            assert(lb->first\
     \ == expected_lb.first);\n            assert(lb->second == expected_lb.second);\n\
     \        }\n    }\n}\nvoid test_sample_like() {\n    SegmentSet<int> st;\n   \
     \ vector<bool> used(25);\n    auto insert = [&](int l, int r) {\n        st.insert(l,\
@@ -134,15 +135,15 @@ data:
     \    };\n    auto erase = [&](int l, int r) {\n        st.erase(l, r);\n     \
     \   rep(i, l, r) used[i] = false;\n        assert_same(st, used);\n    };\n  \
     \  insert(3, 7);\n    insert(10, 15);\n    insert(13, 20);\n    erase(5, 13);\n\
-    }\nvoid test_random() {\n    constexpr int n = 80;\n    SegmentSet<int> st;\n\
-    \    vector<bool> used(n);\n    const int query_num = 1000;\n    rep(_, 0, query_num)\
-    \ {\n        int l = rng(0, n - 1);\n        int r = rng(l + 1, n);\n        if(rng(0,\
-    \ 1)) {\n            st.insert(l, r);\n            rep(i, l, r) used[i] = true;\n\
-    \        } else {\n            st.erase(l, r);\n            rep(i, l, r) used[i]\
-    \ = false;\n        }\n        assert_same(st, used);\n    }\n}\nint main(void)\
-    \ {\n    test_sample_like();\n    constexpr int test_num = 100;\n    rep(_, 0,\
-    \ test_num) {\n        test_random();\n    }\n    int a, b;\n    cin >> a >> b;\n\
-    \    cout << a + b << '\\n';\n}"
+    \    insert(7, 7);\n    erase(13, 13);\n}\nvoid test_random() {\n    constexpr\
+    \ int n = 80;\n    SegmentSet<int> st;\n    vector<bool> used(n);\n    const int\
+    \ query_num = 1000;\n    rep(_, 0, query_num) {\n        int l = rng(0, n - 1);\n\
+    \        int r = rng(l, n);\n        if(rng(0, 1)) {\n            st.insert(l,\
+    \ r);\n            rep(i, l, r) used[i] = true;\n        } else {\n          \
+    \  st.erase(l, r);\n            rep(i, l, r) used[i] = false;\n        }\n   \
+    \     assert_same(st, used);\n    }\n}\nint main(void) {\n    test_sample_like();\n\
+    \    constexpr int test_num = 100;\n    rep(_, 0, test_num) {\n        test_random();\n\
+    \    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n}"
   dependsOn:
   - src/template/template.hpp
   - src/random/permuted_congruential_generator.hpp
@@ -150,7 +151,7 @@ data:
   isVerificationFile: true
   path: verify/unit_test/data_structure/segment_set.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 16:35:52+09:00'
+  timestamp: '2026-07-05 23:31:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/unit_test/data_structure/segment_set.test.cpp

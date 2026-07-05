@@ -830,6 +830,9 @@ data:
       path: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
       title: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+      title: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/segment_set.test.cpp
       title: verify/unit_test/data_structure/segment_set.test.cpp
     - icon: ':heavy_check_mark:'
@@ -838,6 +841,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
       title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/data_structure/wavelet_matrix.test.cpp
+      title: verify/unit_test/data_structure/wavelet_matrix.test.cpp
+  - name: verify/unit_test/dp
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/unit_test/dp/longest_increasing_sequence.test.cpp
+      title: verify/unit_test/dp/longest_increasing_sequence.test.cpp
   - name: verify/unit_test/fps
     pages:
     - icon: ':heavy_check_mark:'

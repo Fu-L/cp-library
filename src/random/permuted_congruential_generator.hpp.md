@@ -16,6 +16,9 @@ data:
     path: verify/unit_test/data_structure/convex_hull_trick.test.cpp
     title: verify/unit_test/data_structure/convex_hull_trick.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+    title: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/segment_set.test.cpp
     title: verify/unit_test/data_structure/segment_set.test.cpp
   - icon: ':heavy_check_mark:'
@@ -88,6 +91,7 @@ data:
   - verify/unit_test/convolution/or_convolution.test.cpp
   - verify/unit_test/data_structure/convex_hull_trick.test.cpp
   - verify/unit_test/data_structure/segment_set.test.cpp
+  - verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
   - verify/unit_test/random/random_regression.test.cpp
 documentation_of: src/random/permuted_congruential_generator.hpp
 layout: document

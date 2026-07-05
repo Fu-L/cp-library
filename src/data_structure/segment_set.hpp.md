@@ -29,18 +29,19 @@ data:
     \  return it;\n    }\n    const_iterator lower_bound(const T& x) const {\n   \
     \     auto it = st.lower_bound(x);\n        if(it == st.begin() or prev(it)->second\
     \ <= x) return it;\n        return prev(it);\n    }\n    void insert(T l, T r)\
-    \ {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n        if(L\
-    \ != st.begin() and l <= prev(L)->second) --L;\n        if(L != R) {\n       \
-    \     l = min(l, L->first);\n            r = max(r, prev(R)->second);\n      \
-    \      st.erase(L, R);\n        }\n        st[l] = r;\n    }\n    void erase(const\
-    \ T& l, const T& r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
-    \        if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L == R)\
-    \ return;\n        const T nl = min(l, L->first), nr = max(r, prev(R)->second);\n\
-    \        st.erase(L, R);\n        if(nl < l) st[nl] = l;\n        if(r < nr) st[r]\
-    \ = nr;\n    }\n    T next(const T& x) const {\n        auto it = this->lower_bound(x);\n\
-    \        if(it == this->end()) return numeric_limits<T>::max();\n        return\
-    \ max<T>(x, it->first);\n    }\n    size_t size() const {\n        return st.size();\n\
-    \    }\n\n   private:\n    map<T, T> st;\n};\n"
+    \ {\n        assert(l <= r);\n        if(l == r) return;\n        auto L = st.upper_bound(l),\
+    \ R = st.upper_bound(r);\n        if(L != st.begin() and l <= prev(L)->second)\
+    \ --L;\n        if(L != R) {\n            l = min(l, L->first);\n            r\
+    \ = max(r, prev(R)->second);\n            st.erase(L, R);\n        }\n       \
+    \ st[l] = r;\n    }\n    void erase(const T& l, const T& r) {\n        assert(l\
+    \ <= r);\n        if(l == r) return;\n        auto L = st.upper_bound(l), R =\
+    \ st.upper_bound(r);\n        if(L != st.begin() and l <= prev(L)->second) --L;\n\
+    \        if(L == R) return;\n        const T nl = min(l, L->first), nr = max(r,\
+    \ prev(R)->second);\n        st.erase(L, R);\n        if(nl < l) st[nl] = l;\n\
+    \        if(r < nr) st[r] = nr;\n    }\n    T next(const T& x) const {\n     \
+    \   auto it = this->lower_bound(x);\n        if(it == this->end()) return numeric_limits<T>::max();\n\
+    \        return max<T>(x, it->first);\n    }\n    size_t size() const {\n    \
+    \    return st.size();\n    }\n\n   private:\n    map<T, T> st;\n};\n"
   code: "#pragma once\n#include \"../template/template.hpp\"\ntemplate <typename T>\n\
     struct SegmentSet {\n    SegmentSet() = default;\n    using const_iterator = typename\
     \ map<T, T>::const_iterator;\n    const_iterator begin() const {\n        return\
@@ -50,24 +51,25 @@ data:
     \  return it;\n    }\n    const_iterator lower_bound(const T& x) const {\n   \
     \     auto it = st.lower_bound(x);\n        if(it == st.begin() or prev(it)->second\
     \ <= x) return it;\n        return prev(it);\n    }\n    void insert(T l, T r)\
-    \ {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n        if(L\
-    \ != st.begin() and l <= prev(L)->second) --L;\n        if(L != R) {\n       \
-    \     l = min(l, L->first);\n            r = max(r, prev(R)->second);\n      \
-    \      st.erase(L, R);\n        }\n        st[l] = r;\n    }\n    void erase(const\
-    \ T& l, const T& r) {\n        auto L = st.upper_bound(l), R = st.upper_bound(r);\n\
-    \        if(L != st.begin() and l <= prev(L)->second) --L;\n        if(L == R)\
-    \ return;\n        const T nl = min(l, L->first), nr = max(r, prev(R)->second);\n\
-    \        st.erase(L, R);\n        if(nl < l) st[nl] = l;\n        if(r < nr) st[r]\
-    \ = nr;\n    }\n    T next(const T& x) const {\n        auto it = this->lower_bound(x);\n\
-    \        if(it == this->end()) return numeric_limits<T>::max();\n        return\
-    \ max<T>(x, it->first);\n    }\n    size_t size() const {\n        return st.size();\n\
-    \    }\n\n   private:\n    map<T, T> st;\n};"
+    \ {\n        assert(l <= r);\n        if(l == r) return;\n        auto L = st.upper_bound(l),\
+    \ R = st.upper_bound(r);\n        if(L != st.begin() and l <= prev(L)->second)\
+    \ --L;\n        if(L != R) {\n            l = min(l, L->first);\n            r\
+    \ = max(r, prev(R)->second);\n            st.erase(L, R);\n        }\n       \
+    \ st[l] = r;\n    }\n    void erase(const T& l, const T& r) {\n        assert(l\
+    \ <= r);\n        if(l == r) return;\n        auto L = st.upper_bound(l), R =\
+    \ st.upper_bound(r);\n        if(L != st.begin() and l <= prev(L)->second) --L;\n\
+    \        if(L == R) return;\n        const T nl = min(l, L->first), nr = max(r,\
+    \ prev(R)->second);\n        st.erase(L, R);\n        if(nl < l) st[nl] = l;\n\
+    \        if(r < nr) st[r] = nr;\n    }\n    T next(const T& x) const {\n     \
+    \   auto it = this->lower_bound(x);\n        if(it == this->end()) return numeric_limits<T>::max();\n\
+    \        return max<T>(x, it->first);\n    }\n    size_t size() const {\n    \
+    \    return st.size();\n    }\n\n   private:\n    map<T, T> st;\n};"
   dependsOn:
   - src/template/template.hpp
   isVerificationFile: false
   path: src/data_structure/segment_set.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-05 23:31:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/unit_test/data_structure/segment_set.test.cpp
@@ -101,6 +103,11 @@ void st.insert(T l, T r)
 集合 `st` に区間 $[l, r)$ を追加します．
 
 すでに入っている区間と重なりがある場合，それらの区間はマージされます． (サンプルコードを参照)
+$l = r$ の場合は何もしません．
+
+**制約**
+
+- $l \leq r$
 
 **計算量**
 
@@ -115,6 +122,11 @@ void st.erase(T l, T r)
 集合 `st` から区間 $[l, r)$ を削除します．
 
 元から入っていない部分については何も起こりません． (サンプルコード参照)
+$l = r$ の場合は何もしません．
+
+**制約**
+
+- $l \leq r$
 
 **計算量**
 

@@ -17,16 +17,16 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://judge.yosupo.jp/problem/static_range_frequency
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/static_range_frequency.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\
-    #line 2 \"src/template/template.hpp\"\n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\
-    \nusing namespace std;\nusing ll = long long;\nusing P = pair<long long, long\
-    \ long>;\n#define rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i,\
-    \ a, b) for(long long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\n\
-    struct SetupIO {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"verify/unit_test/data_structure/wavelet_matrix.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 2 \"src/template/template.hpp\"\
+    \n#include <bits/stdc++.h>\n#line 4 \"src/template/template.hpp\"\nusing namespace\
+    \ std;\nusing ll = long long;\nusing P = pair<long long, long long>;\n#define\
+    \ rep(i, a, b) for(long long i = (a); i < (b); ++i)\n#define rrep(i, a, b) for(long\
+    \ long i = (a); i >= (b); --i)\nconstexpr long long inf = 4e18;\nstruct SetupIO\
+    \ {\n    SetupIO() {\n        ios::sync_with_stdio(0);\n        cin.tie(0);\n\
     \        cout << fixed << setprecision(30);\n    }\n} setup_io;\n#line 3 \"src/data_structure/bit_vector.hpp\"\
     \n#if __has_include(<immintrin.h>)\n#include <immintrin.h>\n#define CP_LIBRARY_TARGET_POPCNT\
     \ __attribute__((target(\"popcnt\")))\n#define CP_LIBRARY_TARGET_BMI __attribute__((target(\"\
@@ -107,33 +107,71 @@ data:
     \    }\n    T next_value(const int l, const int r, const T& lower) const {\n \
     \       assert(0 <= l and l <= r and r <= n);\n        const int cnt = range_freq(l,\
     \ r, lower);\n        return cnt == r - l ? T(-1) : kth_smallest(l, r, cnt);\n\
-    \    }\n};\n#line 4 \"verify/library_checker/data_structure/static_range_frequency.test.cpp\"\
-    \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n\
-    \    rep(i, 0, n) {\n        cin >> a[i];\n    }\n    WaveletMatrix<int> wm(a);\n\
-    \    while(q--) {\n        int l, r, x;\n        cin >> l >> r >> x;\n       \
-    \ cout << wm.range_freq(l, r, x + 1) - wm.range_freq(l, r, x) << '\\n';\n    }\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n#include \"../../../src/template/template.hpp\"\n#include \"../../../src/data_structure/wavelet_matrix.hpp\"\
-    \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n\
-    \    rep(i, 0, n) {\n        cin >> a[i];\n    }\n    WaveletMatrix<int> wm(a);\n\
-    \    while(q--) {\n        int l, r, x;\n        cin >> l >> r >> x;\n       \
-    \ cout << wm.range_freq(l, r, x + 1) - wm.range_freq(l, r, x) << '\\n';\n    }\n\
+    \    }\n};\n#line 4 \"verify/unit_test/data_structure/wavelet_matrix.test.cpp\"\
+    \nint main() {\n    {\n        WaveletMatrix<int> wm(vector<int>{});\n       \
+    \ assert(wm.range_freq(0, 0, -1) == 0);\n        assert(wm.range_freq(0, 0, 0)\
+    \ == 0);\n        assert(wm.range_freq(0, 0, 10) == 0);\n        assert(wm.prev_value(0,\
+    \ 0, 10) == -1);\n        assert(wm.next_value(0, 0, 0) == -1);\n    }\n    {\n\
+    \        WaveletMatrix<int> wm(5);\n        for(int i = 0; i < 5; ++i) wm.set(i,\
+    \ i * i % 7);\n        wm.build();\n        assert(wm.get(0) == 0);\n        assert(wm.get(1)\
+    \ == 1);\n        assert(wm.get(2) == 4);\n        assert(wm.get(3) == 2);\n \
+    \       assert(wm.get(4) == 2);\n    }\n    mt19937 mt(0);\n    for(int n = 0;\
+    \ n <= 80; ++n) {\n        vector<int> a(n);\n        for(int& x : a) x = mt()\
+    \ % 32;\n        WaveletMatrix<int> wm(a);\n        for(int l = 0; l <= n; ++l)\
+    \ {\n            for(int r = l; r <= n; ++r) {\n                vector<int> b(a.begin()\
+    \ + l, a.begin() + r);\n                sort(b.begin(), b.end());\n          \
+    \      for(int upper = -2; upper <= 35; ++upper) {\n                    const\
+    \ int freq = lower_bound(b.begin(), b.end(), upper) - b.begin();\n           \
+    \         assert(wm.range_freq(l, r, upper) == freq);\n                    if(upper\
+    \ >= 0) assert(wm.range_freq(l, r, 0, upper) == freq);\n                    const\
+    \ int less = lower_bound(b.begin(), b.end(), upper) - b.begin();\n           \
+    \         assert(wm.prev_value(l, r, upper) == (less == 0 ? -1 : b[less - 1]));\n\
+    \                    assert(wm.next_value(l, r, upper) == (less == (int)b.size()\
+    \ ? -1 : b[less]));\n                }\n                for(int k = 0; k < (int)b.size();\
+    \ ++k) {\n                    assert(wm.kth_smallest(l, r, k) == b[k]);\n    \
+    \                assert(wm.kth_largest(l, r, k) == b[(int)b.size() - 1 - k]);\n\
+    \                }\n            }\n        }\n    }\n    int a, b;\n    cin >>\
+    \ a >> b;\n    cout << a + b << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../src/template/template.hpp\"\
+    \n#include \"../../../src/data_structure/wavelet_matrix.hpp\"\nint main() {\n\
+    \    {\n        WaveletMatrix<int> wm(vector<int>{});\n        assert(wm.range_freq(0,\
+    \ 0, -1) == 0);\n        assert(wm.range_freq(0, 0, 0) == 0);\n        assert(wm.range_freq(0,\
+    \ 0, 10) == 0);\n        assert(wm.prev_value(0, 0, 10) == -1);\n        assert(wm.next_value(0,\
+    \ 0, 0) == -1);\n    }\n    {\n        WaveletMatrix<int> wm(5);\n        for(int\
+    \ i = 0; i < 5; ++i) wm.set(i, i * i % 7);\n        wm.build();\n        assert(wm.get(0)\
+    \ == 0);\n        assert(wm.get(1) == 1);\n        assert(wm.get(2) == 4);\n \
+    \       assert(wm.get(3) == 2);\n        assert(wm.get(4) == 2);\n    }\n    mt19937\
+    \ mt(0);\n    for(int n = 0; n <= 80; ++n) {\n        vector<int> a(n);\n    \
+    \    for(int& x : a) x = mt() % 32;\n        WaveletMatrix<int> wm(a);\n     \
+    \   for(int l = 0; l <= n; ++l) {\n            for(int r = l; r <= n; ++r) {\n\
+    \                vector<int> b(a.begin() + l, a.begin() + r);\n              \
+    \  sort(b.begin(), b.end());\n                for(int upper = -2; upper <= 35;\
+    \ ++upper) {\n                    const int freq = lower_bound(b.begin(), b.end(),\
+    \ upper) - b.begin();\n                    assert(wm.range_freq(l, r, upper) ==\
+    \ freq);\n                    if(upper >= 0) assert(wm.range_freq(l, r, 0, upper)\
+    \ == freq);\n                    const int less = lower_bound(b.begin(), b.end(),\
+    \ upper) - b.begin();\n                    assert(wm.prev_value(l, r, upper) ==\
+    \ (less == 0 ? -1 : b[less - 1]));\n                    assert(wm.next_value(l,\
+    \ r, upper) == (less == (int)b.size() ? -1 : b[less]));\n                }\n \
+    \               for(int k = 0; k < (int)b.size(); ++k) {\n                   \
+    \ assert(wm.kth_smallest(l, r, k) == b[k]);\n                    assert(wm.kth_largest(l,\
+    \ r, k) == b[(int)b.size() - 1 - k]);\n                }\n            }\n    \
+    \    }\n    }\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n\
     }"
   dependsOn:
   - src/template/template.hpp
   - src/data_structure/wavelet_matrix.hpp
   - src/data_structure/bit_vector.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/static_range_frequency.test.cpp
+  path: verify/unit_test/data_structure/wavelet_matrix.test.cpp
   requiredBy: []
   timestamp: '2026-07-05 23:31:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/static_range_frequency.test.cpp
+documentation_of: verify/unit_test/data_structure/wavelet_matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/static_range_frequency.test.cpp
-- /verify/verify/library_checker/data_structure/static_range_frequency.test.cpp.html
-title: verify/library_checker/data_structure/static_range_frequency.test.cpp
+- /verify/verify/unit_test/data_structure/wavelet_matrix.test.cpp
+- /verify/verify/unit_test/data_structure/wavelet_matrix.test.cpp.html
+title: verify/unit_test/data_structure/wavelet_matrix.test.cpp
 ---

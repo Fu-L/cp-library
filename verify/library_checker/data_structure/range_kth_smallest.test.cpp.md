@@ -64,10 +64,11 @@ data:
     \ int r, const int h) const {\n        const u32 l0 = bv[h].rank0(l);\n      \
     \  const u32 r0 = bv[h].rank0(r);\n        const u32 zeros = bv[h].zeros;\n  \
     \      return make_pair(l + zeros - l0, r + zeros - r0);\n    }\n\n   public:\n\
-    \    WaveletMatrix(const u32 _n)\n        : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const\
-    \ vector<T>& _a)\n        : n(_a.size()), a(_a) {\n        if(n == 0) {\n    \
-    \        a.push_back(0);\n            n = 1;\n        }\n        build();\n  \
-    \  }\n    __attribute__((optimize(\"O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a),\
+    \    WaveletMatrix(const u32 _n)\n        : n(_n), lg(0), a(n) {}\n    WaveletMatrix(const\
+    \ vector<T>& _a)\n        : n(_a.size()), lg(0), a(_a) {\n        build();\n \
+    \   }\n    __attribute__((optimize(\"O3\"))) void build() {\n        if(n == 0)\
+    \ {\n            lg = 0;\n            bv.clear();\n            return;\n     \
+    \   }\n        for(const T& x : a) assert(x >= 0);\n        lg = __lg(max<T>(*max_element(begin(a),\
     \ end(a)), 1)) + 1;\n        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n\
     \        for(int h = lg - 1; h >= 0; --h) {\n            for(int i = 0; i < n;\
     \ ++i)\n                if((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
@@ -90,22 +91,23 @@ data:
     \ {\n        assert(0 <= l and l <= r and r <= n);\n        assert(0 <= k and\
     \ k < r - l);\n        return kth_smallest(l, r, r - l - k - 1);\n    }\n    int\
     \ range_freq(int l, int r, const T& upper) const {\n        assert(0 <= l and\
-    \ l <= r and r <= n);\n        if(upper >= (T(1) << lg)) return r - l;\n     \
-    \   int ret = 0;\n        for(int h = lg - 1; h >= 0; --h) {\n            const\
-    \ bool f = (upper >> h) & 1;\n            const u32 l0 = bv[h].rank0(l), r0 =\
-    \ bv[h].rank0(r);\n            if(f) {\n                ret += r0 - l0;\n    \
-    \            l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n\
-    \            } else {\n                l = l0;\n                r = r0;\n    \
-    \        }\n        }\n        return ret;\n    }\n    int range_freq(const int\
-    \ l, const int r, const T& lower, const T& upper) const {\n        assert(0 <=\
-    \ l and l <= r and r <= n);\n        assert(lower <= upper);\n        return range_freq(l,\
-    \ r, upper) - range_freq(l, r, lower);\n    }\n    T prev_value(const int l, const\
-    \ int r, const T& upper) const {\n        assert(0 <= l and l <= r and r <= n);\n\
-    \        const int cnt = range_freq(l, r, upper);\n        return cnt == 0 ? T(-1)\
-    \ : kth_smallest(l, r, cnt - 1);\n    }\n    T next_value(const int l, const int\
-    \ r, const T& lower) const {\n        assert(0 <= l and l <= r and r <= n);\n\
-    \        const int cnt = range_freq(l, r, lower);\n        return cnt == r - l\
-    \ ? T(-1) : kth_smallest(l, r, cnt);\n    }\n};\n#line 4 \"verify/library_checker/data_structure/range_kth_smallest.test.cpp\"\
+    \ l <= r and r <= n);\n        if(upper <= 0) return 0;\n        if(lg < (int)numeric_limits<T>::digits\
+    \ and upper >= (T(1) << lg)) return r - l;\n        int ret = 0;\n        for(int\
+    \ h = lg - 1; h >= 0; --h) {\n            const bool f = (upper >> h) & 1;\n \
+    \           const u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);\n            if(f)\
+    \ {\n                ret += r0 - l0;\n                l += bv[h].zeros - l0;\n\
+    \                r += bv[h].zeros - r0;\n            } else {\n              \
+    \  l = l0;\n                r = r0;\n            }\n        }\n        return\
+    \ ret;\n    }\n    int range_freq(const int l, const int r, const T& lower, const\
+    \ T& upper) const {\n        assert(0 <= l and l <= r and r <= n);\n        assert(lower\
+    \ <= upper);\n        return range_freq(l, r, upper) - range_freq(l, r, lower);\n\
+    \    }\n    T prev_value(const int l, const int r, const T& upper) const {\n \
+    \       assert(0 <= l and l <= r and r <= n);\n        const int cnt = range_freq(l,\
+    \ r, upper);\n        return cnt == 0 ? T(-1) : kth_smallest(l, r, cnt - 1);\n\
+    \    }\n    T next_value(const int l, const int r, const T& lower) const {\n \
+    \       assert(0 <= l and l <= r and r <= n);\n        const int cnt = range_freq(l,\
+    \ r, lower);\n        return cnt == r - l ? T(-1) : kth_smallest(l, r, cnt);\n\
+    \    }\n};\n#line 4 \"verify/library_checker/data_structure/range_kth_smallest.test.cpp\"\
     \nint main(void) {\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n\
     \    rep(i, 0, n) {\n        cin >> a[i];\n    }\n    WaveletMatrix<int> wm(a);\n\
     \    while(q--) {\n        int l, r, k;\n        cin >> l >> r >> k;\n       \
@@ -123,7 +125,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2026-07-04 15:44:36+09:00'
+  timestamp: '2026-07-05 23:31:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/range_kth_smallest.test.cpp

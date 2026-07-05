@@ -757,6 +757,9 @@ data:
     path: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
     title: verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+    title: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/segment_set.test.cpp
     title: verify/unit_test/data_structure/segment_set.test.cpp
   - icon: ':heavy_check_mark:'
@@ -765,6 +768,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/data_structure/sparse_table_2d.test.cpp
     title: verify/unit_test/data_structure/sparse_table_2d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/wavelet_matrix.test.cpp
+    title: verify/unit_test/data_structure/wavelet_matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/dp/longest_increasing_sequence.test.cpp
+    title: verify/unit_test/dp/longest_increasing_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/unit_test/fps/formal_power_series_regression.test.cpp
     title: verify/unit_test/fps/formal_power_series_regression.test.cpp
@@ -994,8 +1003,10 @@ data:
   - verify/unit_test/tree/tree_regression.test.cpp
   - verify/unit_test/geometry/geometry_regression.test.cpp
   - verify/unit_test/data_structure/bit_vector.test.cpp
+  - verify/unit_test/data_structure/wavelet_matrix.test.cpp
   - verify/unit_test/data_structure/convex_hull_trick.test.cpp
   - verify/unit_test/data_structure/segment_set.test.cpp
+  - verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
   - verify/unit_test/data_structure/sparse_table.test.cpp
   - verify/unit_test/data_structure/sparse_table_2d.test.cpp
   - verify/unit_test/data_structure/disjoint_sparse_table.test.cpp
@@ -1016,6 +1027,7 @@ data:
   - verify/unit_test/graph/compressed_sparse_row.test.cpp
   - verify/unit_test/graph/graph_regression.test.cpp
   - verify/unit_test/graph/max_matching.test.cpp
+  - verify/unit_test/dp/longest_increasing_sequence.test.cpp
   - verify/aizu_online_judge/itp1/how_many_divisors.test.cpp
   - verify/aizu_online_judge/others/0502.test.cpp
   - verify/aizu_online_judge/others/1645.test.cpp

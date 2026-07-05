@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
+    title: verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -28,11 +31,12 @@ data:
     \      : root{nullptr} {}\n    void add_line(const T& a, const T& b) {\n     \
     \   Line x(a, b);\n        root = add_line(root, x, x_low, x_high, x.get(x_low),\
     \ x.get(x_high));\n    }\n    void add_segment(const T& l, const T& r, const T&\
-    \ a, const T& b) {\n        Line x(a, b);\n        root = add_segment(root, x,\
-    \ l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));\n    }\n    T operator()(const\
-    \ T& x) const {\n        assert(x_low <= x and x <= x_high);\n        return query(root,\
-    \ x_low, x_high, x);\n    }\n\n   private:\n    struct Line {\n        T a, b;\n\
-    \        Line(const T& a, const T& b)\n            : a(a), b(b) {}\n        inline\
+    \ a, const T& b) {\n        assert(l <= r);\n        if(l == r) return;\n    \
+    \    Line x(a, b);\n        root = add_segment(root, x, l, r - 1, x_low, x_high,\
+    \ x.get(x_low), x.get(x_high));\n    }\n    T operator()(const T& x) const {\n\
+    \        assert(x_low <= x and x <= x_high);\n        return query(root, x_low,\
+    \ x_high, x);\n    }\n\n   private:\n    struct Line {\n        T a, b;\n    \
+    \    Line(const T& a, const T& b)\n            : a(a), b(b) {}\n        inline\
     \ T get(const T& x) const {\n            return a * x + b;\n        }\n    };\n\
     \    struct Node {\n        Line x;\n        Node *l, *r;\n        Node(const\
     \ Line& x)\n            : x{x}, l{nullptr}, r{nullptr} {}\n    };\n    const T\
@@ -67,11 +71,12 @@ data:
     \      : root{nullptr} {}\n    void add_line(const T& a, const T& b) {\n     \
     \   Line x(a, b);\n        root = add_line(root, x, x_low, x_high, x.get(x_low),\
     \ x.get(x_high));\n    }\n    void add_segment(const T& l, const T& r, const T&\
-    \ a, const T& b) {\n        Line x(a, b);\n        root = add_segment(root, x,\
-    \ l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high));\n    }\n    T operator()(const\
-    \ T& x) const {\n        assert(x_low <= x and x <= x_high);\n        return query(root,\
-    \ x_low, x_high, x);\n    }\n\n   private:\n    struct Line {\n        T a, b;\n\
-    \        Line(const T& a, const T& b)\n            : a(a), b(b) {}\n        inline\
+    \ a, const T& b) {\n        assert(l <= r);\n        if(l == r) return;\n    \
+    \    Line x(a, b);\n        root = add_segment(root, x, l, r - 1, x_low, x_high,\
+    \ x.get(x_low), x.get(x_high));\n    }\n    T operator()(const T& x) const {\n\
+    \        assert(x_low <= x and x <= x_high);\n        return query(root, x_low,\
+    \ x_high, x);\n    }\n\n   private:\n    struct Line {\n        T a, b;\n    \
+    \    Line(const T& a, const T& b)\n            : a(a), b(b) {}\n        inline\
     \ T get(const T& x) const {\n            return a * x + b;\n        }\n    };\n\
     \    struct Node {\n        Line x;\n        Node *l, *r;\n        Node(const\
     \ Line& x)\n            : x{x}, l{nullptr}, r{nullptr} {}\n    };\n    const T\
@@ -106,9 +111,10 @@ data:
   isVerificationFile: false
   path: src/data_structure/dynamic_li_chao_tree.hpp
   requiredBy: []
-  timestamp: '2026-07-04 00:41:26+09:00'
+  timestamp: '2026-07-05 23:31:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/unit_test/data_structure/dynamic_li_chao_tree.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
 documentation_of: src/data_structure/dynamic_li_chao_tree.hpp
@@ -160,6 +166,11 @@ void cht.add_segment(T l, T r, T a, T b)
 ```
 
 `cht` に線分 $y = ax + b ~ (l \leq x < r)$ を追加します．
+$l = r$ の場合は何もしません．
+
+**制約**
+
+- $l \leq r$
 
 **計算量**
 
